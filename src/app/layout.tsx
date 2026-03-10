@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Transformujemy Twoją firmę dzięki inteligentnym rozwiązaniom AI. Automatyzacja, optymalizacja i innowacje dla małych, średnich i dużych przedsiębiorstw.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/logo.jpg",
         width: 1200,
         height: 630,
         alt: "Infinity Tech - AI dla Twojego Biznesu",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Infinity Tech | AI Solutions for Business",
     description: "Transformujemy Twoją firmę dzięki inteligentnym rozwiązaniom AI.",
-    images: ["/og-image.png"],
+    images: ["/logo.jpg"],
     creator: "@InfinityTech_PL",
   },
 };
