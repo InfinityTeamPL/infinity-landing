@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   CheckCircle2,
@@ -778,11 +779,22 @@ export default function AgentsPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <a href="/" className="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">Infinity Tech</a>
+            <a href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 relative">
+                <Image 
+                  src="/-2147483648_-211442.webp" 
+                  alt="Infinity Tech Logo" 
+                  width={40} 
+                  height={40}
+                  className="rounded-lg object-contain"
+                />
+              </div>
+              <span className="text-xl md:text-2xl font-bold logo-text gradient-text">INFINITY TECH</span>
+            </a>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="/" className="text-slate-700 hover:text-indigo-600 transition-colors">Start</a>
-              <a href="/agents" className="text-slate-700 hover:text-indigo-600 transition-colors">Agenci AI</a>
+              <a href="/" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Start</a>
+              <a href="/agents" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Agenci AI</a>
               <a href="#kontakt" className="px-5 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors">
                 Kontakt
               </a>

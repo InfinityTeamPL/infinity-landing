@@ -710,14 +710,25 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold gradient-text">Infinity Tech</div>
+            <a href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 relative">
+                <Image 
+                  src="/-2147483648_-211442.webp" 
+                  alt="Infinity Tech Logo" 
+                  width={40} 
+                  height={40}
+                  className="rounded-lg object-contain"
+                />
+              </div>
+              <span className="text-xl md:text-2xl font-bold logo-text gradient-text">INFINITY TECH</span>
+            </a>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="#start" className="text-slate-700 hover:text-indigo-600 transition-colors">Start</a>
-              <a href="#o-nas" className="text-slate-700 hover:text-indigo-600 transition-colors">O nas</a>
-              <a href="/agents" className="text-slate-700 hover:text-indigo-600 transition-colors">Agenci AI</a>
-              <a href="#uslugi" className="text-slate-700 hover:text-indigo-600 transition-colors">Usługi</a>
-              <a href="#faq" className="text-slate-700 hover:text-indigo-600 transition-colors">FAQ</a>
+              <a href="#start" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Start</a>
+              <a href="#o-nas" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">O nas</a>
+              <a href="/agents" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Agenci AI</a>
+              <a href="#uslugi" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Usługi</a>
+              <a href="#faq" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">FAQ</a>
               <a href="#kontakt" className="px-5 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors">
                 Kontakt
               </a>
