@@ -12,6 +12,7 @@ interface TiltedCardProps {
   features?: string[];
   className?: string;
   accentColor?: string;
+  featured?: boolean;
 }
 
 export default function TiltedCard({
@@ -22,6 +23,7 @@ export default function TiltedCard({
   features,
   className = '',
   accentColor = '#6366f1',
+  featured = false,
 }: TiltedCardProps) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
@@ -50,27 +52,45 @@ export default function TiltedCard({
   return (
     <div
       ref={cardRef}
-      className={cn('perspective-1000', className)}
+      className={cn(
+        'perspective-1000 h-full',
+        featured && 'md:-mt-4 md:mb-4',
+        className
+      )}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="relative overflow-hidden rounded-2xl bg-white shadow-xl transition-transform duration-300 ease-out"
+        className={cn(
+          'relative overflow-hidden rounded-2xl bg-white shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
+          featured && 'md:shadow-2xl md:ring-2'
+        )}
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
+          ringColor: featured ? accentColor : 'transparent',
         }}
       >
         {/* Gradient overlay */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none z-10"
           style={{
             background: `linear-gradient(135deg, ${accentColor}10 0%, transparent 50%, ${accentColor}10 100%)`,
           }}
         />
 
+        {/* Featured badge */}
+        {featured && (
+          <div 
+            className="absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-bold text-white"
+            style={{ backgroundColor: accentColor }}
+          >
+            Popularny
+          </div>
+        )}
+
         {image && (
-          <div className="relative h-48 w-full overflow-hidden">
+          <div className="relative h-40 w-full overflow-hidden flex-shrink-0">
             <Image
               src={image}
               alt={title}
@@ -81,35 +101,43 @@ export default function TiltedCard({
           </div>
         )}
 
-        <div className="p-6">
+        <div className="p-5 flex-1 flex flex-col">
           {price && (
             <div className="mb-3">
-              <span className="text-3xl font-bold" style={{ color: accentColor }}>
+              <span 
+                className="text-3xl font-bold"
+                style={{ color: accentColor }}
+              >
                 {price}
               </span>
               <span className="text-sm text-slate-500">/miesiąc</span>
             </div>
           )}
           
-          <h3 className="mb-2 text-xl font-bold text-slate-900">{title}</h3>
+          <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
           
           {description && (
-            <p className="mb-4 text-slate-600">{description}</p>
+            <p className="text-sm text-slate-600 mb-4 line-clamp-2">{description}</p>
           )}
 
-          {features && features.length > 0 && (
-            <ul className="space-y-2">
-              {features.map((feature, index) => (
-                <li key={index} className="flex items-center gap-2 text-sm text-slate-700">
-                  <div
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: accentColor }}
-                  />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="flex-1">
+            {features && features.length > 0 && (
+              <ul className="space-y-2">
+                {features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-2 text-xs text-slate-700">
+                    <div
+                      className="h-1.5 w-1.5 rounded-full mt-1.5 flex-shrink-0"
+                      style={{ backgroundColor: accentColor }}
+                    />
+                    <span className="line-clamp-2">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Spacer for consistent button position */}
+          <div className="mt-4" />
         </div>
       </div>
     </div>

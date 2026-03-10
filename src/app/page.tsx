@@ -117,9 +117,12 @@ const SERVICES = [
       'Chatbot wsparcia',
       'Inteligentny CRM',
       'Podstawowe analizy',
-      'E-mail support'
+      'E-mail support',
+      'Dostęp do API',
+      'Raporty miesięczne'
     ],
-    accentColor: '#10b981'
+    accentColor: '#10b981',
+    featured: false
   },
   {
     title: 'Professional',
@@ -132,9 +135,11 @@ const SERVICES = [
       'Integracja API',
       'Automatyzacja HR',
       'Dedykowany opiekun',
-      'Priorytetowy support'
+      'Priorytetowy support',
+      'Raporty tygodniowe'
     ],
-    accentColor: '#6366f1'
+    accentColor: '#6366f1',
+    featured: true
   },
   {
     title: 'Enterprise',
@@ -150,7 +155,8 @@ const SERVICES = [
       '24/7 Dedicated Support',
       'SLA gwarancje'
     ],
-    accentColor: '#a855f7'
+    accentColor: '#a855f7',
+    featured: false
   }
 ];
 
@@ -383,9 +389,9 @@ function ServicesSection() {
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {SERVICES.map((service, i) => (
-            <FadeIn key={i} delay={i * 0.2}>
+            <FadeIn key={i} delay={i * 0.15}>
               <TiltedCard
                 image={service.image}
                 title={service.title}
@@ -393,6 +399,7 @@ function ServicesSection() {
                 price={service.price}
                 features={service.features}
                 accentColor={service.accentColor}
+                featured={service.featured}
               />
             </FadeIn>
           ))}
