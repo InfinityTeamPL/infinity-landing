@@ -1,0 +1,83 @@
+import { NextResponse } from 'next/server';
+
+export async function POST(request: Request) {
+  try {
+    const { message } = await request.json();
+
+    if (!message) {
+      return NextResponse.json(
+        { error: 'Wiadomość jest wymagana' },
+        { status: 400 }
+      );
+    }
+
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      // Fallback response when no API key is configured
+      const fallbackResponses = [
+        'Dziękuję za wiadomość! Aby uzyskać więcej informacji o naszych usługach AI, proszę o kontakt mailowy: contact@infinityteam.io',
+        'Chętnie opowiem więcej o naszych rozwiązaniach AI. Zapraszamy do kontaktu telefonicznego lub mailowego!',
+        'Nasze rozwiązania AI pomagają firmom automatyzować procesy i oszczędzać czas. Więcej szczegółów na naszej stronie!',
+        'Świetnie, że się zainteresowałeś! Umów bezpłatną konsultację, a przedstawimy Ci dopasowane rozwiązanie.'
+      ];
+      
+      const randomResponse = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+      
+      return NextResponse.json({ response: randomResponse });
+    }
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'system',
+            content: `Jesteś asystentem AI firmy Infinity Tech - polskiej firmy specjalizującej się w rozwiązaniach AI dla biznesu.
+
+Firma oferuje:
+- Automatyzację procesów biznesowych za pomocą AI
+- AI Agentów do obsługi HR, marketingu i sprzedaży
+- Integrację z OpenCLAW (otwarty framework AI)
+- Consulting w zakresie transformacji cyfrowej
+
+Kluczowe informacje:
+- Email: contact@infinityteam.io
+- Lokalizacja: Warszawa, Polska
+- Język: Polski (odpowiadaj po polsku)
+- Ton: profesjonalny, ale przyjazny
+
+Odpowiadaj krótko i zwięźle (max 2-3 zdania).`
+          },
+          {
+            role: 'user',
+            content: message
+          }
+        ],
+        max_tokens: 150,
+        temperature: 0.7,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('OpenAI API error');
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices[0]?.message?.content || 'Przepraszam, nie udało mi się odpowiedzieć.';
+
+    return NextResponse.json({ response: aiResponse });
+
+  } catch (error) {
+    console.error('Chat API error:', error);
+    return NextResponse.json(
+      { error: 'Wystąpił błąd podczas przetwarzania wiadomości' },
+      { status: 500 }
+    );
+  }
+}

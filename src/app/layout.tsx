@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://infinity-team.io'),
+  metadataBase: new URL('https://infinityteam.io'),
   title: "Infinity Tech | AI Solutions for Business",
   description: "Transformujemy Twoją firmę dzięki inteligentnym rozwiązaniom AI. Automatyzacja, optymalizacja i innowacje dla małych, średnich i dużych przedsiębiorstw.",
   keywords: ["AI", "sztuczna inteligencja", "automatyzacja", "biznes", "Poland", "HR", "marketing", "sprzedaż"],
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pl_PL",
-    url: "https://infinity-team.io",
+    url: "https://infinityteam.io",
     siteName: "Infinity Tech",
     title: "Infinity Tech | AI Solutions for Business",
     description: "Transformujemy Twoją firmę dzięki inteligentnym rozwiązaniom AI. Automatyzacja, optymalizacja i innowacje dla małych, średnich i dużych przedsiębiorstw.",

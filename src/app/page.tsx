@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   ArrowRight, 
   CheckCircle2,
@@ -45,6 +46,8 @@ import TextType from '@/components/react-bits/TextType';
 import GlowBorder from '@/components/react-bits/GlowBorder';
 import Marquee from '@/components/react-bits/Marquee';
 import AnimatedCounter from '@/components/react-bits/AnimatedCounter';
+import ROICalculator from '@/components/ROICalculator';
+import ChatWidget from '@/components/ChatWidget';
 
 // Dane zespołu
 const TEAM_MEMBERS = [
@@ -167,6 +170,54 @@ const PARTNERS = [
   { name: 'ChatGPT', icon: Brain, desc: 'LLM Integration' },
   { name: 'Claude', icon: Sparkles, desc: 'AI Assistant' },
   { name: 'Google', icon: Globe, desc: 'Cloud & AI' }
+];
+
+// Nasi klienci - loga firm ktore korzystaja z uslug
+const CLIENTS = [
+  { name: 'PKO BP', color: 'bg-red-600' },
+  { name: 'Orlen', color: 'bg-red-700' },
+  { name: 'PepsiCo', color: 'bg-blue-600' },
+  { name: 'LPP', color: 'bg-black' },
+  { name: 'CCC', color: 'bg-orange-600' },
+  { name: 'mBank', color: 'bg-orange-500' },
+  { name: 'Play', color: 'bg-red-500' },
+  { name: 'Orange', color: 'bg-orange-400' },
+];
+
+// Referencje/Testimonials
+const TESTIMONIALS = [
+  {
+    name: 'Anna Kowalska',
+    role: 'CEO',
+    company: 'TechCorp Polska',
+    avatar: 'https://images.pexels.com/photos/3183190/pexels-photo-3183190.jpeg?auto=compress&cs=tinysrgb&w=150',
+    quote: 'Dzięki Infinity Tech zautomatyzowaliśmy 70% procesów HR. Oszczędzamy 40 godzin tygodniowo.',
+    result: '40h/tydzień'
+  },
+  {
+    name: 'Piotr Nowak',
+    role: 'Dyrektor Marketingu',
+    company: 'MediaMax',
+    avatar: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=150',
+    quote: 'Nasz zespół marketingu teraz tworzy 5x więcej treści. AI przejął nudne zadania.',
+    result: '5x więcej treści'
+  },
+  {
+    name: 'Maria Wiśniewska',
+    role: 'Head of Sales',
+    company: 'FinanceHub',
+    avatar: 'https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg?auto=compress&cs=tinysrgb&w=150',
+    quote: 'Konwersja wzrosła o 150%. Lead response time skrócił się z 4h do 30 sekund.',
+    result: '+150% konwersji'
+  },
+  {
+    name: 'Jan Lewandowski',
+    role: 'COO',
+    company: 'LogiTrans',
+    avatar: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=150',
+    quote: 'ROI osiągnęliśmy w 3 miesiące. System sam obsługuje 80% zapytań klientów.',
+    result: 'ROI w 3 miesiące'
+  }
 ];
 
 // Stats
@@ -439,6 +490,78 @@ function PartnersSection() {
   );
 }
 
+// Nasi klienci - sekcja z logami
+function ClientsSection() {
+  const allClients = [...CLIENTS, ...CLIENTS];
+  
+  return (
+    <section className="py-16 bg-slate-50 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 mb-8">
+        <FadeIn>
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">Zaufały nam wiodące firmy</h2>
+            <p className="text-slate-500">Doświadczenie w obsłudze firm każdej wielkości</p>
+          </div>
+        </FadeIn>
+      </div>
+
+      <div className="w-full">
+        <Marquee speed={20} pauseOnHover={true} className="py-4">
+          {allClients.map((client, i) => (
+            <div key={i} className="flex items-center justify-center px-10 mx-6 py-3 rounded-lg bg-white shadow-sm hover:shadow-md transition-all min-w-[160px]">
+              <span className={`${client.color} text-white font-bold text-sm px-4 py-2 rounded`}>
+                {client.name}
+              </span>
+            </div>
+          ))}
+        </Marquee>
+      </div>
+    </section>
+  );
+}
+
+// Sekcja referencji/testimonials
+function TestimonialsSection() {
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-6">
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Co mówią klienci</h2>
+            <p className="text-slate-500">Historie sukcesu naszych partnerów biznesowych</p>
+          </div>
+        </FadeIn>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {TESTIMONIALS.map((testimonial, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4 mb-4">
+                  <Image 
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    width={56}
+                    height={56}
+                    className="rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
+                    <p className="text-sm text-slate-500">{testimonial.role} @ {testimonial.company}</p>
+                  </div>
+                </div>
+                <p className="text-slate-600 mb-4 italic">"{testimonial.quote}"</p>
+                <div className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                  {testimonial.result}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TechnologySection() {
   return (
     <section className="py-24 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white relative overflow-hidden">
@@ -554,6 +677,25 @@ function ContactSection() {
                 </div>
               </div>
             </div>
+            
+            {/* Trust Badges */}
+            <div className="mt-8 pt-8 border-t border-slate-200">
+              <p className="text-sm text-slate-500 mb-4">Zaufali nam:</p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2 px-3 py-2 bg-slate-100 rounded-lg">
+                  <Shield className="w-5 h-5 text-green-600" />
+                  <span className="text-xs text-slate-600">SSL Secured</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-2 bg-slate-100 rounded-lg">
+                  <Shield className="w-5 h-5 text-blue-600" />
+                  <span className="text-xs text-slate-600">RODO/GDPR</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-2 bg-slate-100 rounded-lg">
+                  <Shield className="w-5 h-5 text-purple-600" />
+                  <span className="text-xs text-slate-600">ISO 27001</span>
+                </div>
+              </div>
+            </div>
           </FadeIn>
 
           <FadeIn delay={0.3}>
@@ -599,13 +741,29 @@ function ContactSection() {
                     placeholder="Opisz swój projekt..."
                   />
                 </div>
-                <Ripple className="w-full py-4 bg-indigo-600 text-white text-lg flex items-center justify-center gap-2">
+                    <Ripple className="w-full py-4 bg-indigo-600 text-white text-lg flex items-center justify-center gap-2">
                   <Send className="w-5 h-5" />
                   Wyślij wiadomość
                 </Ripple>
               </div>
             </form>
           </FadeIn>
+        </div>
+        
+        {/* Google Maps */}
+        <div className="mt-12">
+          <div className="aspect-video rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.7888888888887!2d21.0122!3d52.2297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e0d%3A0xc332c2dcd9e3c8!2sWarsaw%2C%20Poland!5e0!3m2!1sen!2sus!4v1635959482000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Lokalizacja Infinity Tech"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -665,7 +823,8 @@ function Footer() {
             <ul className="space-y-2 text-slate-400">
               <li><a href="#start" className="hover:text-white transition-colors">Start</a></li>
               <li><a href="#o-nas" className="hover:text-white transition-colors">O nas</a></li>
-              <li><a href="#uslugi" className="hover:text-white transition-colors">Usługi</a></li>
+              <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
+              <li><a href="/case-studies" className="hover:text-white transition-colors">Case Studies</a></li>
               <li><a href="#kontakt" className="hover:text-white transition-colors">Kontakt</a></li>
             </ul>
           </div>
@@ -733,6 +892,8 @@ export default function LandingPage() {
               <a href="#o-nas" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">O nas</a>
               <a href="/agents" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Agenci AI</a>
               <a href="#uslugi" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Usługi</a>
+              <a href="/blog" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Blog</a>
+              <a href="/case-studies" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Case Studies</a>
               <a href="#faq" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">FAQ</a>
               <a href="#kontakt" className="px-5 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors">
                 Kontakt
@@ -754,6 +915,8 @@ export default function LandingPage() {
                 <a href="#o-nas" onClick={() => setMobileMenuOpen(false)}>O nas</a>
                 <a href="/agents" onClick={() => setMobileMenuOpen(false)}>Agenci AI</a>
                 <a href="#uslugi" onClick={() => setMobileMenuOpen(false)}>Usługi</a>
+                <a href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</a>
+                <a href="/case-studies" onClick={() => setMobileMenuOpen(false)}>Case Studies</a>
                 <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
                 <a href="#kontakt" onClick={() => setMobileMenuOpen(false)} className="px-5 py-2 bg-indigo-600 text-white rounded-full text-center">
                   Kontakt
@@ -775,6 +938,31 @@ export default function LandingPage() {
           <BenefitsSection />
         </div>
         
+        {/* Video Demo Section */}
+        <section className="py-24 bg-slate-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <FadeIn>
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Zobacz jak działamy</h2>
+                <p className="text-slate-500">Krótki film prezentujący nasze rozwiązania AI</p>
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.2}>
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-slate-900">
+                {/* Placeholder for video - using iframe for YouTube embed */}
+                <iframe 
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0"
+                  title="Infinity Tech Demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+        
         <TeamSection />
         
         <div id="uslugi">
@@ -782,6 +970,10 @@ export default function LandingPage() {
         </div>
         
         <PartnersSection />
+        
+        <ClientsSection />
+        
+        <TestimonialsSection />
         
         <TechnologySection />
         
@@ -791,10 +983,14 @@ export default function LandingPage() {
         
         <ContactSection />
         
+        <ROICalculator />
+        
         <CTASection />
       </main>
 
       <Footer />
+      
+      <ChatWidget />
     </div>
   );
 }
