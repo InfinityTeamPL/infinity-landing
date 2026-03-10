@@ -84,7 +84,7 @@ export default function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
         {/* Testimonial */}
         {caseStudy.testimonial && (
           <div className="bg-slate-50 rounded-xl p-4 mb-6">
-            <p className="text-sm text-slate-600 italic mb-2">"{caseStudy.testimonial.quote}"</p>
+            <p className="text-sm text-slate-600 italic mb-2">{`"${caseStudy.testimonial.quote}"`}</p>
             <p className="text-xs text-slate-500">
               {caseStudy.testimonial.name}, {caseStudy.testimonial.role}
             </p>
