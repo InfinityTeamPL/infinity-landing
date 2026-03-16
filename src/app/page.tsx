@@ -439,12 +439,12 @@ function PartnersSection() {
   const allPartners = [...PARTNERS, ...PARTNERS, ...PARTNERS];
   
   return (
-    <section className="py-20 bg-white border-y border-slate-100 overflow-hidden">
+    <section className="py-20 overflow-hidden" style={{ backgroundColor: '#0D0F05' }}>
       <div className="max-w-6xl mx-auto px-6 mb-12">
         <FadeIn>
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">Technologie, których używamy</h2>
-            <p className="text-slate-500">Współpracujemy z najlepszymi dostawcami AI na rynku</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">Technologie, których używamy</h2>
+            <p style={{ color: '#777870' }}>Współpracujemy z najlepszymi dostawcami AI na rynku</p>
           </div>
         </FadeIn>
       </div>
@@ -452,10 +452,10 @@ function PartnersSection() {
       <div className="w-full">
         <Marquee speed={25} pauseOnHover={true} className="py-4">
           {allPartners.map((partner, i) => (
-            <div key={i} className="flex flex-col items-center px-8 mx-4 py-4 rounded-2xl bg-slate-50 hover:bg-orange-50 transition-colors min-w-[180px]">
-              <partner.icon className="w-10 h-10 text-orange-600 mb-2" />
-              <h3 className="font-bold text-slate-900 text-sm">{partner.name}</h3>
-              <p className="text-xs text-slate-500">{partner.desc}</p>
+            <div key={i} className="flex flex-col items-center px-8 mx-4 py-4 rounded-2xl transition-colors min-w-[180px]" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
+              <partner.icon className="w-10 h-10 mb-2" style={{ color: '#EC6B2D' }} />
+              <h3 className="font-bold text-white text-sm">{partner.name}</h3>
+              <p className="text-xs" style={{ color: '#777870' }}>{partner.desc}</p>
             </div>
           ))}
         </Marquee>
@@ -469,12 +469,12 @@ function ClientsSection() {
   const allClients = [...CLIENTS, ...CLIENTS];
   
   return (
-    <section className="py-16 bg-slate-50 overflow-hidden">
+    <section className="py-16 overflow-hidden" style={{ backgroundColor: '#E4E6DD' }}>
       <div className="max-w-6xl mx-auto px-6 mb-8">
         <FadeIn>
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-slate-900">Zaufały nam wiodące firmy</h2>
-            <p className="text-slate-500">Doświadczenie w obsłudze firm każdej wielkości</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#0D0F05' }}>Zaufały nam wiodące firmy</h2>
+            <p style={{ color: '#777870' }}>Doświadczenie w obsłudze firm każdej wielkości</p>
           </div>
         </FadeIn>
       </div>
@@ -482,8 +482,8 @@ function ClientsSection() {
       <div className="w-full">
         <Marquee speed={20} pauseOnHover={true} className="py-4">
           {allClients.map((client, i) => (
-            <div key={i} className="flex items-center justify-center px-10 mx-6 py-3 rounded-lg bg-white shadow-sm hover:shadow-md transition-all min-w-[160px]">
-              <span className={`${client.color} text-white font-bold text-sm px-4 py-2 rounded`}>
+            <div key={i} className="flex items-center justify-center px-10 mx-6 py-3 rounded-xl transition-all min-w-[160px] border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(119,120,112,0.15)' }}>
+              <span className="font-bold text-sm" style={{ color: '#0D0F05' }}>
                 {client.name}
               </span>
             </div>
@@ -497,21 +497,21 @@ function ClientsSection() {
 // Sekcja referencji/testimonials
 function TestimonialsSection() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ backgroundColor: '#E4E6DD' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Co mówią klienci</h2>
-            <p className="text-slate-500">Historie sukcesu naszych partnerów biznesowych</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0D0F05' }}>Co mówią klienci</h2>
+            <p style={{ color: '#777870' }}>Historie sukcesu naszych partnerów biznesowych</p>
           </div>
         </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-6">
           {TESTIMONIALS.map((testimonial, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="bg-slate-50 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+              <div className="rounded-2xl p-6 hover:shadow-lg transition-shadow border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(119,120,112,0.12)' }}>
                 <div className="flex items-start gap-4 mb-4">
-                  <Image 
+                  <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
                     width={56}
@@ -519,12 +519,12 @@ function TestimonialsSection() {
                     className="rounded-full object-cover"
                   />
                   <div>
-                    <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-                    <p className="text-sm text-slate-500">{testimonial.role} @ {testimonial.company}</p>
+                    <h4 className="font-bold" style={{ color: '#0D0F05' }}>{testimonial.name}</h4>
+                    <p className="text-sm" style={{ color: '#777870' }}>{testimonial.role} @ {testimonial.company}</p>
                   </div>
                 </div>
-                <p className="text-slate-600 mb-4 italic">{`"${testimonial.quote}"`}</p>
-                <div className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+                <p className="mb-4 italic" style={{ color: '#333' }}>{`"${testimonial.quote}"`}</p>
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'rgba(236,107,45,0.12)', color: '#EC6B2D' }}>
                   {testimonial.result}
                 </div>
               </div>
