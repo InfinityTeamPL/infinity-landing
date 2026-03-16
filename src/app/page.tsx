@@ -570,17 +570,64 @@ function TechnologySection() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="glass rounded-3xl p-8 bg-white/5 backdrop-blur-sm">
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                {[1,2,3,4,5,6,7,8,9].map((i) => (
-                  <div key={i} className="aspect-square rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-orange-400" />
-                  </div>
-                ))}
+            <div className="rounded-3xl overflow-hidden border border-white/10">
+              {/* Terminal header */}
+              <div className="flex items-center gap-2 px-4 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}>
+                <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                <div className="w-3 h-3 rounded-full bg-green-500/70" />
+                <span className="ml-3 text-xs text-white/40 font-mono">openclaw-agent.ts</span>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold gradient-text mb-2">OpenCLAW</div>
-                <div className="text-sm text-slate-400">AI Agent Framework</div>
+
+              {/* Terminal body */}
+              <div className="p-6 font-mono text-sm space-y-3" style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}>
+                <div className="flex items-center gap-2">
+                  <span style={{ color: '#EC6B2D' }}>▸</span>
+                  <span className="text-white/50">Inicjalizacja agenta...</span>
+                  <span className="text-green-400">✓</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span style={{ color: '#EC6B2D' }}>▸</span>
+                  <span className="text-white/50">Łączenie z GPT-4o + Claude...</span>
+                  <span className="text-green-400">✓</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span style={{ color: '#EC6B2D' }}>▸</span>
+                  <span className="text-white/50">Integracja: Slack, Teams, CRM...</span>
+                  <span className="text-green-400">✓</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span style={{ color: '#EC6B2D' }}>▸</span>
+                  <span className="text-white/50">Agent aktywny — tryb 24/7</span>
+                  <span className="text-green-400">✓</span>
+                </div>
+
+                <div className="pt-3 mt-3 border-t border-white/10 space-y-2">
+                  <div className="text-white/30 text-xs">// live stats</div>
+                  <div className="flex justify-between">
+                    <span className="text-white/50">Obsłużone zapytania</span>
+                    <span className="font-bold" style={{ color: '#EC6B2D' }}>12 847</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/50">Średni czas odpowiedzi</span>
+                    <span className="font-bold" style={{ color: '#EC6B2D' }}>1.2s</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/50">Zadowolenie klientów</span>
+                    <span className="font-bold" style={{ color: '#EC6B2D' }}>97.3%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/50">Uptime</span>
+                    <span className="font-bold text-green-400">99.99%</span>
+                  </div>
+                </div>
+
+                <div className="pt-3 mt-2 border-t border-white/10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                    <span className="text-green-400 text-xs">Agent działa — wszystkie systemy operacyjne</span>
+                  </div>
+                </div>
               </div>
             </div>
           </FadeIn>
