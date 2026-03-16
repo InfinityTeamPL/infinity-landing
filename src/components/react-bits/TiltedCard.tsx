@@ -2,10 +2,10 @@
 
 import { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
+import { CheckCircle2 } from 'lucide-react';
 
 interface TiltedCardProps {
-  image?: string;
+  tierLabel?: string;
   title: string;
   description?: string;
   price?: string;
@@ -16,13 +16,13 @@ interface TiltedCardProps {
 }
 
 export default function TiltedCard({
-  image,
+  tierLabel,
   title,
   description,
   price,
   features,
   className = '',
-  accentColor = '#6366f1',
+  accentColor = '#EC6B2D',
   featured = false,
 }: TiltedCardProps) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -31,57 +31,39 @@ export default function TiltedCard({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
-
     const rect = card.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
-
-    const rotateX = (mouseY / (rect.height / 2)) * -10;
-    const rotateY = (mouseX / (rect.width / 2)) * 10;
-
-    setRotation({ x: rotateX, y: rotateY });
+    const mouseX = e.clientX - (rect.left + rect.width / 2);
+    const mouseY = e.clientY - (rect.top + rect.height / 2);
+    setRotation({
+      x: (mouseY / (rect.height / 2)) * -8,
+      y: (mouseX / (rect.width / 2)) * 8,
+    });
   };
 
-  const handleMouseLeave = () => {
-    setRotation({ x: 0, y: 0 });
-  };
+  const handleMouseLeave = () => setRotation({ x: 0, y: 0 });
 
   return (
     <div
       ref={cardRef}
-      className={cn(
-        'perspective-1000 h-full',
-        featured && 'md:-mt-4 md:mb-4',
-        className
-      )}
+      className={cn('perspective-1000 h-full', featured && 'md:-mt-4 md:mb-4', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <div
         className={cn(
-          'relative overflow-hidden rounded-2xl bg-white shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
-          featured && 'md:shadow-2xl'
+          'relative overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
+          featured ? 'md:shadow-2xl border-2' : 'border'
         )}
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
-          borderColor: featured ? accentColor : 'transparent',
+          borderColor: featured ? accentColor : 'rgba(119,120,112,0.15)',
+          backgroundColor: '#ffffff',
         }}
       >
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none z-10"
-          style={{
-            background: `linear-gradient(135deg, ${accentColor}10 0%, transparent 50%, ${accentColor}10 100%)`,
-          }}
-        />
-
         {/* Featured badge */}
         {featured && (
-          <div 
+          <div
             className="absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-xs font-bold text-white"
             style={{ backgroundColor: accentColor }}
           >
@@ -89,55 +71,83 @@ export default function TiltedCard({
           </div>
         )}
 
-        {image && (
-          <div className="relative h-40 w-full overflow-hidden flex-shrink-0">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover"
+        {/* Branded header */}
+        <div
+          className="relative h-32 w-full flex-shrink-0 overflow-hidden"
+          style={{ backgroundColor: accentColor }}
+        >
+          {/* Decorative circles */}
+          <div
+            className="absolute -right-8 -top-8 w-32 h-32 rounded-full opacity-10"
+            style={{ backgroundColor: '#fff' }}
+          />
+          <div
+            className="absolute -right-2 -bottom-10 w-24 h-24 rounded-full opacity-[0.07]"
+            style={{ backgroundColor: '#fff' }}
+          />
+          <div
+            className="absolute left-1/2 -bottom-6 w-40 h-16 rounded-full opacity-[0.05]"
+            style={{ backgroundColor: '#fff' }}
+          />
+
+          {/* Content: logo left, label right */}
+          <div className="relative z-10 h-full flex items-center justify-between px-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="h-10 w-auto"
+              style={{ filter: accentColor === '#0D0F05' ? 'brightness(0) saturate(100%) invert(45%) sepia(85%) saturate(1000%) hue-rotate(350deg)' : undefined, opacity: 0.9 }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <span className="text-white font-extrabold text-3xl tracking-widest uppercase">
+              {tierLabel || title.toUpperCase()}
+            </span>
           </div>
-        )}
+        </div>
 
         <div className="p-5 flex-1 flex flex-col">
           {price && (
             <div className="mb-3">
-              <span 
-                className="text-3xl font-bold"
-                style={{ color: accentColor }}
-              >
+              <span className="text-3xl font-bold" style={{ color: accentColor }}>
                 {price}
               </span>
-              <span className="text-sm text-slate-500">/miesiąc</span>
+              <span className="text-sm" style={{ color: '#777870' }}> zł/miesiąc</span>
             </div>
           )}
-          
-          <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
-          
+
+          <h3 className="text-lg font-bold mb-1" style={{ color: '#0D0F05' }}>{title}</h3>
+
           {description && (
-            <p className="text-sm text-slate-600 mb-4 line-clamp-2">{description}</p>
+            <p className="text-sm mb-4" style={{ color: '#777870' }}>{description}</p>
           )}
 
           <div className="flex-1">
             {features && features.length > 0 && (
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2 text-xs text-slate-700">
-                    <div
-                      className="h-1.5 w-1.5 rounded-full mt-1.5 flex-shrink-0"
-                      style={{ backgroundColor: accentColor }}
+                  <li key={index} className="flex items-start gap-2 text-sm" style={{ color: '#333' }}>
+                    <CheckCircle2
+                      className="h-4 w-4 mt-0.5 flex-shrink-0"
+                      style={{ color: accentColor }}
                     />
-                    <span className="line-clamp-2">{feature}</span>
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
             )}
           </div>
 
-          {/* Spacer for consistent button position */}
-          <div className="mt-4" />
+          <a
+            href="#kontakt"
+            className="mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all"
+            style={{
+              backgroundColor: featured ? accentColor : 'transparent',
+              color: featured ? '#fff' : accentColor,
+              border: `2px solid ${accentColor}`,
+            }}
+          >
+            Wybierz {title}
+          </a>
         </div>
       </div>
     </div>

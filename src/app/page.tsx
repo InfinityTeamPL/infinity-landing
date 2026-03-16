@@ -116,53 +116,53 @@ const FAQ_ITEMS = [
 const SERVICES = [
   {
     title: 'Starter',
-    description: 'Idealne dla małych firm rozpoczynających przygodę z AI',
-    price: '999',
-    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tierLabel: 'STARTER',
+    description: 'Dla firm, które chcą zacząć automatyzację',
+    price: '149',
     features: [
-      'Automatyzacja fakturowania',
-      'Chatbot wsparcia',
-      'Inteligentny CRM',
-      'Podstawowe analizy',
-      'E-mail support',
-      'Dostęp do API',
-      'Raporty miesięczne'
+      'Jeden agent AI (np. chatbot)',
+      'Automatyzacja do 3 procesów',
+      'Integracja z e-mail i CRM',
+      'Podstawowe raporty',
+      'Wsparcie e-mail',
+      'Panel zarządzania',
+      'Aktualizacje co miesiąc'
     ],
-    accentColor: '#10b981',
+    accentColor: '#777870',
     featured: false
   },
   {
-    title: 'Professional',
-    description: 'Dla firm gotowych na kompleksową transformację',
-    price: '2999',
-    image: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=600',
+    title: 'Pro',
+    tierLabel: 'PRO',
+    description: 'Pełna automatyzacja dla rosnących zespołów',
+    price: '799',
     features: [
       'Wszystko ze Starter',
-      'Zaawansowane Analytics AI',
-      'Integracja API',
-      'Automatyzacja HR',
+      'Do 5 agentów AI',
+      'Automatyzacja HR i sprzedaży',
+      'Zaawansowane analytics',
+      'Integracja API (Slack, Teams)',
       'Dedykowany opiekun',
-      'Priorytetowy support',
-      'Raporty tygodniowe'
+      'Priorytetowy support'
     ],
-    accentColor: '#EA580C',
+    accentColor: '#EC6B2D',
     featured: true
   },
   {
-    title: 'Enterprise',
-    description: 'Najpotężniejsze rozwiązania dla dużych organizacji',
-    price: '9999',
-    image: 'https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg?auto=compress&cs=tinysrgb&w=600',
+    title: 'Firma',
+    tierLabel: 'FIRMA',
+    description: 'Rozwiązania enterprise bez limitów',
+    price: '3999',
     features: [
-      'Wszystko z Professional',
-      'Korporacyjne AI Agents',
-      'Predictive Analytics',
-      'Custom AI Development',
-      'On-premise opcje',
-      '24/7 Dedicated Support',
-      'SLA gwarancje'
+      'Wszystko z Pro',
+      'Nielimitowani agenci AI',
+      'Custom AI development',
+      'Predictive analytics',
+      'On-premise / dedykowany cloud',
+      '24/7 support z SLA',
+      'Szkolenia dla zespołu'
     ],
-    accentColor: '#D97706',
+    accentColor: '#0D0F05',
     featured: false
   }
 ];
@@ -406,12 +406,12 @@ function TeamSection() {
 
 function ServicesSection() {
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24" style={{ backgroundColor: '#E4E6DD' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Nasze Rozwiązania</h2>
-            <p className="text-xl text-slate-500">Wybierz plan dopasowany do Twojej firmy</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#0D0F05' }}>Nasze Rozwiązania</h2>
+            <p className="text-xl" style={{ color: '#777870' }}>Wybierz plan dopasowany do Twojej firmy</p>
           </div>
         </FadeIn>
 
@@ -419,7 +419,7 @@ function ServicesSection() {
           {SERVICES.map((service, i) => (
             <FadeIn key={i} delay={i * 0.15}>
               <TiltedCard
-                image={service.image}
+                tierLabel={service.tierLabel}
                 title={service.title}
                 description={service.description}
                 price={service.price}
