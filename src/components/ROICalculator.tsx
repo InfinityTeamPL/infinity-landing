@@ -230,13 +230,10 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
               </div>
             </div>
           </div>
+          <p className="text-xs mt-5 text-center" style={{ color: '#777870' }}>
+            * Kalkulacje szacunkowe. AI z czasem uczy się i optymalizuje — realne wyniki mogą być wyższe.
+          </p>
         </div>
-      </div>
-
-      <div className="mt-8 text-center">
-        <p className="text-sm" style={{ color: '#777870' }}>
-          * Kalkulacje szacunkowe. AI z czasem uczy się i optymalizuje — realne wyniki mogą być wyższe.
-        </p>
       </div>
     </div>
   );

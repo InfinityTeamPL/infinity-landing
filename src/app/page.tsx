@@ -896,7 +896,8 @@ export default function LandingPage() {
           <BenefitsSection />
         </div>
         
-        {/* Video Demo Section */}
+        {/* TODO: włącz Video Demo Section gdy będzie gotowe prawdziwe wideo */}
+        {/*
         <section className="py-24 bg-slate-50">
           <div className="max-w-6xl mx-auto px-6">
             <FadeIn>
@@ -905,11 +906,10 @@ export default function LandingPage() {
                 <p className="text-slate-500">Krótki film prezentujący nasze rozwiązania AI</p>
               </div>
             </FadeIn>
-            
+
             <FadeIn delay={0.2}>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-slate-900">
-                {/* Placeholder for video - using iframe for YouTube embed */}
-                <iframe 
+                <iframe
                   className="absolute inset-0 w-full h-full"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0"
                   title="Infinity Tech Demo"
@@ -920,8 +920,10 @@ export default function LandingPage() {
             </FadeIn>
           </div>
         </section>
+        */}
         
-        <TeamSection />
+        {/* TODO: włącz TeamSection gdy będą gotowe prawdziwe dane zespołu */}
+        {/* <TeamSection /> */}
         
         <div id="uslugi">
           <ServicesSection />
