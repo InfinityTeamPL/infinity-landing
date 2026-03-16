@@ -263,12 +263,12 @@ function HeroSection() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-15" style={{ backgroundColor: '#777870' }} />
       </div>
 
-      <div className="relative z-10 w-full max-w-full px-6 md:px-12 lg:px-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style={{ fontFamily: 'var(--font-geist)', color: '#0D0F05' }}>
-              <SplitText 
-                text="Asystujemy Firmy" 
+      <div className="relative z-10 w-full max-w-full px-6 md:px-12 lg:px-20 py-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="flex flex-col justify-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight" style={{ fontFamily: 'var(--font-geist)', color: '#0D0F05' }}>
+              <SplitText
+                text="Asystujemy Firmy"
                 tag="span"
                 className="block mb-2"
                 duration={1}
@@ -276,42 +276,41 @@ function HeroSection() {
               />
               <ShinyText text="z AI Nowej Generacji" />
             </h1>
-            
+
             <FadeIn delay={0.5}>
-              <p className="text-xl mb-8 max-w-xl" style={{ color: '#333333' }}>
-                Wykorzystujemy potęgę agentów AI OpenCLAW, aby zautomatyzować Twoją firmę 
+              <p className="text-lg mb-7 max-w-lg" style={{ color: '#333333' }}>
+                Wykorzystujemy potęgę agentów AI OpenCLAW, aby zautomatyzować Twoją firmę
                 i pozwolić skupić się na tym, co najważniejsze - rozwoju biznesu.
               </p>
             </FadeIn>
-            
+
             <FadeIn delay={0.7}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Ripple className="px-8 py-4 text-white text-lg bg-[#EC6B2D] hover:bg-[#d45a22] btn-grain">
-                  Rozpocznij Transformację
-                </Ripple>
-                <button className="px-8 py-4 border-2 rounded-full font-semibold text-lg transition-all flex items-center justify-center gap-2" style={{ borderColor: '#777870', color: '#0D0F05', backgroundColor: 'transparent' }}>
+                <a href="#kontakt">
+                  <Ripple className="px-8 py-4 text-white text-lg bg-[#EC6B2D] hover:bg-[#d45a22] btn-grain">
+                    Umów konsultację
+                  </Ripple>
+                </a>
+                <a href="/case-studies" className="px-8 py-4 border-2 rounded-full font-semibold text-lg transition-all flex items-center justify-center gap-2" style={{ borderColor: '#777870', color: '#0D0F05', backgroundColor: 'transparent' }}>
                   Dowiedz się więcej
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </a>
               </div>
             </FadeIn>
-
           </div>
 
-          <div className="relative block flex justify-center items-center">
-            <div className="relative aspect-square" style={{ width: '70%' }}>
+          <div className="flex justify-center items-center">
+            <div className="relative w-full" style={{ aspectRatio: '3/2' }}>
               <Image
                 src="/1inf.png"
                 alt="AI Technology"
                 fill
-                className="object-cover rounded-3xl"
+                className="object-contain rounded-2xl"
               />
             </div>
           </div>
         </div>
       </div>
-
-
     </section>
   );
 }
