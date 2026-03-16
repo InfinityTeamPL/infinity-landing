@@ -266,12 +266,6 @@ function HeroSection() {
       <div className="relative z-10 w-full max-w-full px-6 md:px-12 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <FadeIn direction="down" delay={0.2}>
-              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: '#777870', color: '#E4E6DD' }}>
-                Przyszłość Biznesu
-              </div>
-            </FadeIn>
-            
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style={{ fontFamily: 'var(--font-geist)', color: '#0D0F05' }}>
               <SplitText 
                 text="Asystujemy Firmy" 
@@ -302,20 +296,6 @@ function HeroSection() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.9}>
-              <div className="mt-10 flex items-center gap-6">
-                <div className="flex -space-x-3">
-                  {[1,2,3,4].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-xs font-medium">
-                      {i}
-                    </div>
-                  ))}
-                </div>
-                <div className="text-sm text-slate-600">
-                  <span className="font-semibold text-slate-900">500+</span> zadowolonych firm
-                </div>
-              </div>
-            </FadeIn>
           </div>
 
           <div className="relative block flex justify-center items-center">
@@ -326,14 +306,6 @@ function HeroSection() {
                 fill
                 className="object-cover rounded-3xl"
               />
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/30 to-transparent" />
-              
-              <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/90 backdrop-blur-sm rounded-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium text-slate-700">AI Agent aktywny</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
