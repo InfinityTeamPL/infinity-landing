@@ -56,6 +56,15 @@ import ClickSpark from '@/components/react-bits/ClickSpark';
 import dynamic from 'next/dynamic';
 const StaggeredMenu = dynamic(() => import('@/components/StaggeredMenu'), { ssr: false });
 
+// X (Twitter) icon
+function XIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
 // Dane zespołu
 const TEAM_MEMBERS = [
   {
@@ -285,9 +294,8 @@ function HeroSection() {
       <div className="relative z-10 hidden md:flex items-center md:justify-start md:px-12 lg:px-20 md:pt-6 md:ml-12 lg:ml-14 w-full">
         <div className="liquid-glass rounded-full px-3 py-2 flex items-center gap-2">
           {[
-            { Icon: Twitter, href: '#' },
-            { Icon: Linkedin, href: '#' },
-            { Icon: Instagram, href: '#' },
+            { Icon: XIcon, href: 'https://x.com/InfinityTech_PL' },
+            { Icon: Linkedin, href: 'https://www.linkedin.com/company/infinitytechgroup/?viewAsMember=true' },
           ].map(({ Icon, href }, i) => (
             <a key={i} href={href} className="text-white hover:text-white/80 transition-colors">
               <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:scale-105 transition-transform">
@@ -295,9 +303,6 @@ function HeroSection() {
               </span>
             </a>
           ))}
-          <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-            <ArrowRight className="w-4 h-4 text-white" />
-          </span>
         </div>
       </div>
 
@@ -860,11 +865,11 @@ function Footer() {
               Tworzymy przyszłość biznesu z AI. Automatyzujemy, optymalizujemy, transformujemy.
             </p>
             <div className="flex gap-4">
-              <a href="https://linkedin.com/company/infinitytech" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
+              <a href="https://www.linkedin.com/company/infinitytechgroup/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://x.com/infinitytech_pl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="https://x.com/InfinityTech_PL" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
+                <XIcon className="w-5 h-5" />
               </a>
               <a href="https://youtube.com/@infinitytech" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
                 <Youtube className="w-5 h-5" />
@@ -943,8 +948,8 @@ export default function LandingPage() {
   ];
 
   const socialItems: { label: string; link: string }[] = [
-    { label: 'LinkedIn', link: 'https://linkedin.com' },
-    { label: 'Twitter', link: 'https://twitter.com' },
+    { label: 'LinkedIn', link: 'https://www.linkedin.com/company/infinitytechgroup/?viewAsMember=true' },
+    { label: 'Twitter', link: 'https://x.com/InfinityTech_PL' },
     { label: 'GitHub', link: 'https://github.com' }
   ];
 

@@ -520,7 +520,7 @@ export const StaggeredMenu = ({
         </div>
         <button
           ref={toggleBtnRef}
-          className="sm-toggle"
+          className={`sm-toggle${atTop ? ' sm-toggle-hero' : ' sm-toggle-scroll'}`}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="staggered-menu-panel"
