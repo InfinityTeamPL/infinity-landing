@@ -39,8 +39,12 @@ export default function KalkulatorPage() {
             socialItems={socialItems}
             displaySocials={true}
             displayItemNumbering={true}
-            menuButtonColor="#0B0F2E"
+            menuButtonColor="#ffffff"
             openMenuButtonColor="#ffffff"
+            changeMenuColorOnOpen={true}
+            colors={['#0B0F2E', '#1A2461', '#2E4AAD']}
+            logoUrl="/logo.png"
+            accentColor="#2E4AAD"
           />
         </div>
 
