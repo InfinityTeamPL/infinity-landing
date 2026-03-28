@@ -282,7 +282,7 @@ function HeroSection() {
       <div className="absolute inset-0 bg-[#0B0F2E]/60 mix-blend-multiply z-[1]" />
 
       {/* Top bar — social icons */}
-      <div className="relative z-10 flex items-center px-6 md:px-12 lg:px-20 pt-6">
+      <div className="relative z-10 flex items-center px-6 md:px-12 lg:px-20 pt-6 ml-8 lg:ml-10">
         <div className="liquid-glass rounded-full px-3 py-2 flex items-center gap-2">
           {[
             { Icon: Twitter, href: '#' },
