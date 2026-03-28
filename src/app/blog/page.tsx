@@ -131,7 +131,7 @@ export default function BlogPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 py-1">
               <Image
-                src="/-2147483648_-211442.png"
+                src="/logo.png"
                 alt="Infinity Tech"
                 width={42}
                 height={42}
@@ -373,7 +373,7 @@ export default function BlogPage() {
               <div className="relative rounded-2xl overflow-hidden">
                 <div className="absolute inset-0">
                   <Image
-                    src="/logo.jpg"
+                    src="/logo.png"
                     alt="Background"
                     fill
                     className="object-cover"

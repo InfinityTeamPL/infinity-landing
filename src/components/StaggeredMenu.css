@@ -76,6 +76,11 @@
   width: auto;
   object-fit: contain;
   margin-top: -8px;
+  transition: filter 0.3s ease;
+}
+
+.sm-logo-img.sm-logo-invert {
+  filter: invert(1);
 }
 
 

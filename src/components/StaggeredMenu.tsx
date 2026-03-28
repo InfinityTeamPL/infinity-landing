@@ -442,6 +442,7 @@ export const StaggeredMenu = ({
 
 
   const [hidden, setHidden] = React.useState(false);
+  const [atTop, setAtTop] = React.useState(true);
   React.useEffect(() => {
     let lastY = window.scrollY;
     const handleScroll = () => {
@@ -451,6 +452,7 @@ export const StaggeredMenu = ({
       } else {
         setHidden(false);
       }
+      setAtTop(currentY < window.innerHeight * 0.7);
       lastY = currentY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -510,7 +512,7 @@ export const StaggeredMenu = ({
           <img
             src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
             alt="Logo"
-            className="sm-logo-img"
+            className={`sm-logo-img${atTop ? ' sm-logo-invert' : ''}`}
             draggable={false}
             width={110}
             height={24}

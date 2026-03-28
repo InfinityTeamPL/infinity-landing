@@ -781,7 +781,7 @@ export default function AgentsPage() {
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center gap-3 py-1">
               <Image 
-                src="/-2147483648_-211442.png" 
+                src="/logo.png" 
                 alt="Infinity Tech Logo" 
                 width={42} 
                 height={42}

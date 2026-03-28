@@ -16,7 +16,7 @@ const CASE_STUDIES = [
     id: 'techcorp',
     company: 'TechCorp Polska',
     industry: 'Technologia',
-    logo: '/logo.jpg',
+    logo: '/logo.png',
     coverImage: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
     summary: 'Wdrożenie AI do automatyzacji procesów HR i obsługi klienta w firmie technologicznej z 500 pracownikami.',
     challenge: 'Firma borykała się z wolnym czasem odpowiedzi na aplikacje kandydatów (średnio 5 dni) i niską efektywnością działu HR.',
@@ -36,7 +36,7 @@ const CASE_STUDIES = [
     id: 'mediamax',
     company: 'MediaMax',
     industry: 'Marketing',
-    logo: '/logo.jpg',
+    logo: '/logo.png',
     coverImage: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800',
     summary: 'Optymalizacja kampanii marketingowych i automatyzacja tworzenia treści dla agencji marketingowej.',
     challenge: 'Zespół marketingu spędzał 80% czasu na zadaniach administracyjnych zamiast na strategicznych działaniach.',
@@ -56,7 +56,7 @@ const CASE_STUDIES = [
     id: 'financehub',
     company: 'FinanceHub',
     industry: 'Finanse',
-    logo: '/logo.jpg',
+    logo: '/logo.png',
     coverImage: 'https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg?auto=compress&cs=tinysrgb&w=800',
     summary: 'AI asystent sprzedaży dla firmy fintech obsługującej 100k+ klientów.',
     challenge: 'Długi czas odpowiedzi na zapytania klientów (4+ godziny) i niska konwersja leadów.',
@@ -83,7 +83,7 @@ export default function CaseStudiesPage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 py-1">
               <Image
-                src="/-2147483648_-211442.png"
+                src="/logo.png"
                 alt="Infinity Tech Logo"
                 width={42}
                 height={42}
@@ -95,7 +95,7 @@ export default function CaseStudiesPage() {
             </Link>
             <Link 
               href="/"
-              className="flex items-center gap-2 text-[#1A2461] hover:text-indigo-600 transition-colors"
+              className="flex items-center gap-2 text-[#1A2461] hover:text-[#2E4AAD] transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Powrót do strony głównej</span>
@@ -106,8 +106,8 @@ export default function CaseStudiesPage() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
-        <Aurora colorStops={['#3A29FF', '#FF94B4', '#6366f1']} speed={0.8} blend={0.3} amplitude={1.2} />
-        <Particles quantity={30} color="#6366f1" speed={0.5} />
+        <Aurora colorStops={['#2E4AAD', '#7B9BDB', '#2E4AAD']} speed={0.8} blend={0.3} amplitude={1.2} />
+        <Particles quantity={30} color="#7B9BDB" speed={0.5} />
         
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <FadeIn>
@@ -136,7 +136,7 @@ export default function CaseStudiesPage() {
 
       {/* CTA Section */}
       <section className="py-16 relative overflow-hidden">
-        <AnimatedGradient className="absolute inset-0" colors={['#6366f1', '#a855f7', '#ec4899', '#6366f1']} />
+        <AnimatedGradient className="absolute inset-0" colors={['#0B0F2E', '#2E4AAD', '#1A2461', '#0B0F2E']} />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <FadeIn>
@@ -148,7 +148,7 @@ export default function CaseStudiesPage() {
             </p>
             <Link 
               href="/#kontakt"
-              className="inline-block px-8 py-4 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-slate-100 transition-colors"
+              className="inline-block px-8 py-4 bg-white text-[#2E4AAD] font-semibold rounded-xl hover:bg-[#D6E4FF] transition-colors"
             >
               Umów Konsultację
             </Link>
