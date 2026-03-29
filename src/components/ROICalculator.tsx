@@ -8,9 +8,9 @@ interface ROICalculatorProps {
 }
 
 const PLANS = [
-  { id: 'starter', label: 'Starter', hoursPerEmployee: 6, baseMonthly: 149, perEmployee: 15, color: '#7B9BDB' },
-  { id: 'professional', label: 'Professional', hoursPerEmployee: 14, baseMonthly: 799, perEmployee: 29, color: '#2E4AAD' },
-  { id: 'enterprise', label: 'Enterprise', hoursPerEmployee: 24, baseMonthly: 3999, perEmployee: 49, color: '#0B0F2E' },
+  { id: 'starter', label: 'Starter', savingsPercent: 0.003, baseMonthly: 249, color: '#7B9BDB' },
+  { id: 'standard', label: 'Standard', savingsPercent: 0.005, baseMonthly: 499, color: '#2E4AAD' },
+  { id: 'premium', label: 'Premium', savingsPercent: 0.008, baseMonthly: 799, color: '#0B0F2E' },
 ];
 
 function formatZl(value: number): string {
@@ -32,15 +32,16 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
   const plan = PLANS[planIndex];
 
   const results = useMemo(() => {
-    const hourlyRate = avgSalary / 176;
-    const monthlyHoursSaved = employees * plan.hoursPerEmployee;
-    const monthlySavingsGross = monthlyHoursSaved * hourlyRate;
-    const monthlyCost = plan.baseMonthly + (employees * plan.perEmployee);
+    const monthlyPayroll = employees * avgSalary;
+    const monthlySavingsGross = monthlyPayroll * plan.savingsPercent;
+    const monthlyHoursSaved = Math.round(employees * 176 * plan.savingsPercent);
+    const monthlyCost = plan.baseMonthly;
     const annualCost = monthlyCost * 12;
     const annualSavingsGross = monthlySavingsGross * 12;
     const netAnnualSavings = annualSavingsGross - annualCost;
-    const roiMonths = monthlySavingsGross > monthlyCost
-      ? Math.ceil(monthlyCost / (monthlySavingsGross - monthlyCost))
+    const netMonthlySavings = monthlySavingsGross - monthlyCost;
+    const roiMonths = netMonthlySavings > 0
+      ? Math.ceil(monthlyCost / netMonthlySavings)
       : 99;
     const roiPercent = annualCost > 0 ? Math.round((netAnnualSavings / annualCost) * 100) : 0;
 

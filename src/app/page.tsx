@@ -178,24 +178,20 @@ const SERVICES = [
   }
 ];
 
-// Partnerzy/Technologie
-const PARTNERS = [
-  { name: 'OpenCLAW', icon: Bot, desc: 'AI Agent Framework' },
-  { name: 'ChatGPT', icon: Brain, desc: 'LLM Integration' },
-  { name: 'Claude', icon: Sparkles, desc: 'AI Assistant' },
-  { name: 'Google', icon: Globe, desc: 'Cloud & AI' }
+// Technologie, na których budujemy
+const TECH_STACK = [
+  { name: 'OpenClaw', desc: 'AI Agent Framework' },
+  { name: 'Hetzner', desc: 'Cloud Infrastructure' },
+  { name: 'Stripe', desc: 'Payment Processing' },
+  { name: 'Vercel', desc: 'Hosting & Deploy' },
+  { name: 'MiniMax', desc: 'AI Models' },
 ];
 
-// Nasi klienci - loga firm ktore korzystaja z uslug
-const CLIENTS = [
-  { name: 'PKO BP', color: 'bg-[#1A2461]' },
-  { name: 'Orlen', color: 'bg-[#0B0F2E]' },
-  { name: 'PepsiCo', color: 'bg-[#2E4AAD]' },
-  { name: 'LPP', color: 'bg-[#0B0F2E]' },
-  { name: 'CCC', color: 'bg-[#1A2461]' },
-  { name: 'mBank', color: 'bg-[#2E4AAD]' },
-  { name: 'Play', color: 'bg-[#1A2461]' },
-  { name: 'Orange', color: 'bg-[#7B9BDB]' },
+// Kanały integracji
+const CHANNELS = [
+  'WhatsApp', 'Telegram', 'Discord', 'Slack', 'Signal',
+  'iMessage', 'Microsoft Teams', 'Google Chat', 'Matrix',
+  'WebChat', 'LINE', 'Nostr', 'Zalo', 'Nextcloud Talk', 'Mattermost',
 ];
 
 // Referencje/Testimonials
@@ -236,10 +232,10 @@ const TESTIMONIALS = [
 
 // Stats
 const STATS = [
-  { value: '2700000', suffix: '+', label: 'Firm w Polsce', icon: Building2 },
-  { value: '6500000', suffix: '+', label: 'Pracowników', icon: Users },
-  { value: '1250', suffix: 'h', label: 'Oszczędzone godziny/miesiąc', icon: Clock },
-  { value: '180', suffix: 'mln', label: 'Zaoszczędzonych PLN rocznie', icon: DollarSign },
+  { value: '78', suffix: '%', label: 'firm w Polsce nie korzysta jeszcze z AI', icon: Building2 },
+  { value: '300', suffix: '%', label: 'średni wzrost efektywności z agentami AI', icon: Zap },
+  { value: '2-4', suffix: ' tyg.', label: 'czas pełnego wdrożenia', icon: Clock },
+  { value: '24/7', suffix: '', label: 'autonomiczna praca agentów AI', icon: Bot },
 ];
 
 // Benefits
@@ -370,7 +366,11 @@ function StatsSection() {
               <div className="text-center">
                 <stat.icon className="w-8 h-8 mx-auto mb-3 text-[#2E4AAD]" />
                 <div className="text-3xl md:text-4xl font-bold mb-1">
-                  <AnimatedCounter end={parseInt(stat.value.replace(/[^0-9]/g, ''))} suffix={stat.suffix} />
+                  {/^\d+$/.test(stat.value) ? (
+                    <AnimatedCounter end={parseInt(stat.value)} suffix={stat.suffix} />
+                  ) : (
+                    <span>{stat.value}{stat.suffix}</span>
+                  )}
                 </div>
                 <div className="text-sm text-[#7B9BDB]">{stat.label}</div>
               </div>
@@ -479,27 +479,25 @@ function ServicesSection() {
   );
 }
 
-function PartnersSection() {
-  const allPartners = [...PARTNERS, ...PARTNERS, ...PARTNERS];
-  
+function TechStackSection() {
+  const allTech = [...TECH_STACK, ...TECH_STACK, ...TECH_STACK];
+
   return (
     <section className="py-20 overflow-hidden" style={{ backgroundColor: '#0B0F2E' }}>
       <div className="max-w-6xl mx-auto px-6 mb-12">
         <FadeIn>
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">Technologie, których używamy</h2>
-            <p style={{ color: '#7B9BDB' }}>Współpracujemy z najlepszymi dostawcami AI na rynku</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">Technologie, na których budujemy</h2>
           </div>
         </FadeIn>
       </div>
 
       <div className="w-full">
         <Marquee speed={25} pauseOnHover={true} className="py-4">
-          {allPartners.map((partner, i) => (
+          {allTech.map((tech, i) => (
             <div key={i} className="flex flex-col items-center px-8 mx-4 py-4 rounded-2xl transition-colors min-w-[180px]" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-              <partner.icon className="w-10 h-10 mb-2" style={{ color: '#2E4AAD' }} />
-              <h3 className="font-bold text-white text-sm">{partner.name}</h3>
-              <p className="text-xs" style={{ color: '#7B9BDB' }}>{partner.desc}</p>
+              <h3 className="font-bold text-white text-base">{tech.name}</h3>
+              <p className="text-xs" style={{ color: '#7B9BDB' }}>{tech.desc}</p>
             </div>
           ))}
         </Marquee>
@@ -508,27 +506,26 @@ function PartnersSection() {
   );
 }
 
-// Nasi klienci - sekcja z logami
-function ClientsSection() {
-  const allClients = [...CLIENTS, ...CLIENTS];
-  
+function ChannelsSection() {
+  const allChannels = [...CHANNELS, ...CHANNELS, ...CHANNELS];
+
   return (
     <section className="py-16 overflow-hidden" style={{ backgroundColor: '#D6E4FF' }}>
       <div className="max-w-6xl mx-auto px-6 mb-8">
         <FadeIn>
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Zaufały nam wiodące firmy</h2>
-            <p style={{ color: '#7B9BDB' }}>Doświadczenie w obsłudze firm każdej wielkości</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Integracja z 20+ kanałami</h2>
+            <p style={{ color: '#7B9BDB' }}>Twój agent AI działa tam, gdzie Ty i Twoi klienci</p>
           </div>
         </FadeIn>
       </div>
 
       <div className="w-full">
         <Marquee speed={20} pauseOnHover={true} className="py-4">
-          {allClients.map((client, i) => (
-            <div key={i} className="flex items-center justify-center px-10 mx-6 py-3 rounded-xl transition-all min-w-[160px] border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.15)' }}>
-              <span className="font-bold text-sm" style={{ color: '#0B0F2E' }}>
-                {client.name}
+          {allChannels.map((channel, i) => (
+            <div key={i} className="flex items-center justify-center px-10 mx-4 py-3 rounded-xl transition-all min-w-[160px] border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.15)' }}>
+              <span className="font-semibold text-sm" style={{ color: '#0B0F2E' }}>
+                {channel}
               </span>
             </div>
           ))}
@@ -1021,9 +1018,9 @@ export default function LandingPage() {
           <ServicesSection />
         </div>
         
-        <PartnersSection />
-        
-        <ClientsSection />
+        <TechStackSection />
+
+        <ChannelsSection />
         
         <TestimonialsSection />
         
