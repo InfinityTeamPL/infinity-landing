@@ -194,7 +194,8 @@ const CHANNELS = [
   'WebChat', 'LINE', 'Nostr', 'Zalo', 'Nextcloud Talk', 'Mattermost',
 ];
 
-// Referencje/Testimonials
+// Referencje/Testimonials (wyłączone — do użycia gdy będą prawdziwe referencje)
+/*
 const TESTIMONIALS = [
   {
     name: 'Anna Kowalska',
@@ -227,6 +228,23 @@ const TESTIMONIALS = [
     avatar: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=150',
     quote: 'ROI osiągnęliśmy w 3 miesiące. System sam obsługuje 80% zapytań klientów.',
     result: 'ROI w 3 miesiące'
+  }
+];
+*/
+
+// OpenClaw community quotes
+const OPENCLAW_QUOTES = [
+  {
+    quote: 'After years of AI hype, I thought nothing could faze me. Then I installed OpenClaw. AI as teammate, not tool. The endgame of digital employees is here.',
+    author: '@lycfyi'
+  },
+  {
+    quote: 'The fact that it\'s hackable and hostable on-prem will make sure tech like this DOMINATES conventional SaaS.',
+    author: '@rovensky'
+  },
+  {
+    quote: 'Just shipped my first personal AI assistant. On WhatsApp. Memory moves across agents. Personal AI is getting real.',
+    author: '@christinetyip'
   }
 ];
 
@@ -535,43 +553,51 @@ function ChannelsSection() {
   );
 }
 
-// Sekcja referencji/testimonials
-function TestimonialsSection() {
+// Sekcja OpenClaw social proof
+function OpenClawSection() {
   return (
     <section className="py-24" style={{ backgroundColor: '#D6E4FF' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Co mówią klienci</h2>
-            <p style={{ color: '#7B9BDB' }}>Historie sukcesu naszych partnerów biznesowych</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Budujemy na technologii, której ufa 339 000+ developerów</h2>
+            <p style={{ color: '#7B9BDB' }}>OpenClaw — najszybciej rosnący open-source framework agentów AI na świecie</p>
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {TESTIMONIALS.map((testimonial, i) => (
+        {/* Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {[
+            { value: '339 000+', label: 'GitHub Stars' },
+            { value: '50+', label: 'Integracji z aplikacjami' },
+            { value: '100+', label: 'Community Skills na ClawHub' },
+          ].map((stat, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="rounded-2xl p-6 hover:shadow-lg transition-shadow border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.12)' }}>
-                <div className="flex items-start gap-4 mb-4">
-                  <Image
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    width={56}
-                    height={56}
-                    className="rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-bold" style={{ color: '#0B0F2E' }}>{testimonial.name}</h4>
-                    <p className="text-sm" style={{ color: '#7B9BDB' }}>{testimonial.role} @ {testimonial.company}</p>
-                  </div>
-                </div>
-                <p className="mb-4 italic" style={{ color: '#333' }}>{`"${testimonial.quote}"`}</p>
-                <div className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'rgba(46,74,173,0.12)', color: '#2E4AAD' }}>
-                  {testimonial.result}
-                </div>
+              <div className="rounded-2xl p-6 text-center border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.12)' }}>
+                <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#2E4AAD' }}>{stat.value}</div>
+                <p style={{ color: '#7B9BDB' }}>{stat.label}</p>
               </div>
             </FadeIn>
           ))}
         </div>
+
+        {/* Quotes */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          {OPENCLAW_QUOTES.map((item, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div className="rounded-2xl p-6 hover:shadow-lg transition-shadow border h-full flex flex-col" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.12)' }}>
+                <p className="mb-4 italic flex-1" style={{ color: '#0B0F2E' }}>&ldquo;{item.quote}&rdquo;</p>
+                <p className="text-sm font-semibold" style={{ color: '#2E4AAD' }}>{item.author}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.3}>
+          <p className="text-center text-sm" style={{ color: '#7B9BDB' }}>
+            Infinity Tech jest oficjalnym partnerem wdrożeniowym OpenClaw w Polsce.
+          </p>
+        </FadeIn>
       </div>
     </section>
   );
@@ -735,7 +761,7 @@ function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-[#7B9BDB]">Lokalizacja</p>
-                  <p className="font-medium text-[#0B0F2E]">Warszawa, Polska</p>
+                  <p className="font-medium text-[#0B0F2E]">Zamość, Polska</p>
                 </div>
               </div>
             </div>
@@ -816,7 +842,7 @@ function ContactSection() {
         <div className="mt-12">
           <div className="aspect-video rounded-2xl overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.7888888888887!2d21.0122!3d52.2297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e0d%3A0xc332c2dcd9e3c8!2sWarsaw%2C%20Poland!5e0!3m2!1sen!2sus!4v1635959482000!5m2!1sen!2sus"
+              src="https://maps.google.com/maps?q=Rynek+Wielki+Zamość&z=16&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -1022,7 +1048,7 @@ export default function LandingPage() {
 
         <ChannelsSection />
         
-        <TestimonialsSection />
+        <OpenClawSection />
         
         <TechnologySection />
         
