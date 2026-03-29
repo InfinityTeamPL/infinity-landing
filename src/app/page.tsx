@@ -868,9 +868,11 @@ function CTASection() {
         <FadeIn>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Gotowy na Transformację?</h2>
           <p className="text-xl text-white/80 mb-8">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
-          <Ripple className="px-10 py-5 bg-[#D6E4FF] text-[#0B0F2E] text-lg font-semibold">
-            Umów Bezpłatną Konsultację
-          </Ripple>
+          <a href="#kontakt">
+            <Ripple className="px-10 py-5 bg-[#D6E4FF] text-[#0B0F2E] text-lg font-semibold">
+              Umów Bezpłatną Konsultację
+            </Ripple>
+          </a>
         </FadeIn>
       </div>
     </section>
