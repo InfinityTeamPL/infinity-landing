@@ -446,45 +446,37 @@ export const StaggeredMenu = ({
   React.useEffect(() => {
     let lastY = window.scrollY;
     const checkDark = () => {
-      // Temporarily hide navbar to check element behind it
-      const header = document.querySelector('.staggered-menu-header') as HTMLElement;
-      if (header) header.style.pointerEvents = 'none';
-      const el = document.elementFromPoint(window.innerWidth / 2, 60);
-      if (header) header.style.pointerEvents = '';
+      const checkY = 40;
+      const sections = document.querySelectorAll('section, footer');
+      let dark = false;
 
-      if (el) {
-        let node: Element | null = el;
-        while (node && node !== document.documentElement) {
-          const styles = getComputedStyle(node);
-          const bg = styles.backgroundColor;
-          const bgImage = styles.backgroundImage;
+      for (let i = 0; i < sections.length; i++) {
+        const el = sections[i] as HTMLElement;
+        const rect = el.getBoundingClientRect();
 
-          // Check inline style background too
-          const inlineBg = (node as HTMLElement).style?.backgroundColor || '';
-          const checkColor = inlineBg || bg;
+        if (rect.top <= checkY && rect.bottom > checkY) {
+          const style = el.getAttribute('style') || '';
+          const cls = el.className || '';
+          const bg = getComputedStyle(el).backgroundColor;
 
-          const match = checkColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          // Check inline dark colors
+          if (style.includes('#0B0F2E') || style.includes('#0f1a3c') || style.includes('#1a2a5c') ||
+              style.includes('#0a0e1f') || style.includes('#0f1729') || style.includes('#0B0F2E') ||
+              cls.includes('bg-[#0B0F2E]') || cls.includes('bg-gradient-to-br')) {
+            dark = true; break;
+          }
+
+          // Check computed bg luminance
+          const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
           if (match) {
-            const r = parseInt(match[1]);
-            const g = parseInt(match[2]);
-            const b = parseInt(match[3]);
-            // Skip fully transparent
-            const alphaMatch = checkColor.match(/rgba\(\d+,\s*\d+,\s*\d+,\s*([\d.]+)/);
-            if (alphaMatch && parseFloat(alphaMatch[1]) < 0.1) { node = node.parentElement; continue; }
-            const lum = (r * 299 + g * 587 + b * 114) / 1000;
-            if (lum < 140) { setOnDark(true); return; }
-            if (lum >= 140) { setOnDark(false); return; }
+            const lum = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
+            if (lum < 140) { dark = true; break; }
           }
-
-          // Check for dark gradient backgrounds
-          if (bgImage && bgImage !== 'none' && (bgImage.includes('#0') || bgImage.includes('#1') || bgImage.includes('rgb(0') || bgImage.includes('rgb(1'))) {
-            setOnDark(true); return;
-          }
-
-          node = node.parentElement;
+          break;
         }
       }
-      setOnDark(window.scrollY < window.innerHeight * 0.7);
+
+      setOnDark(dark);
     };
     const handleScroll = () => {
       const currentY = window.scrollY;
