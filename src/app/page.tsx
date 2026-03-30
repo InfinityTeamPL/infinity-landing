@@ -471,9 +471,9 @@ function BenefitsSection() {
     <section className="pt-6 pb-24 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #D6E4FF 0%, #c8d4f0 100%)' }}>
       {/* Animated blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="blob-1 absolute rounded-full" style={{ width: '450px', height: '450px', background: '#4F6AE8', opacity: 0.08, filter: 'blur(100px)', top: '10%', left: '-5%' }} />
-        <div className="blob-2 absolute rounded-full" style={{ width: '350px', height: '350px', background: '#7B5CCC', opacity: 0.06, filter: 'blur(120px)', top: '50%', right: '-3%' }} />
-        <div className="blob-3 absolute rounded-full" style={{ width: '400px', height: '400px', background: '#5B9BD5', opacity: 0.07, filter: 'blur(90px)', bottom: '-10%', left: '30%' }} />
+        <div className="blob-1 absolute rounded-full" style={{ width: '300px', height: '300px', background: '#4F6AE8', opacity: 0.08, filter: 'blur(60px)', top: '10%', left: '-5%' }} />
+        <div className="blob-2 absolute rounded-full" style={{ width: '250px', height: '250px', background: '#7B5CCC', opacity: 0.06, filter: 'blur(60px)', top: '50%', right: '-3%' }} />
+        <div className="blob-3 absolute rounded-full" style={{ width: '280px', height: '280px', background: '#5B9BD5', opacity: 0.07, filter: 'blur(60px)', bottom: '-10%', left: '30%' }} />
       </div>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <FadeIn>
@@ -765,7 +765,7 @@ function OpenClawSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-stretch">
           {/* Milestone 1 — 340k+ */}
           <FadeIn delay={0} className="h-full">
-            <div className="rc-card rc-glow-1 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(79,95,213,0.1)', maxHeight: '180px' }}>
+            <div className="rc-card rc-glow-1 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(79,95,213,0.1)', maxHeight: '180px' }}>
               <div className="flex items-center gap-2 mb-2 relative z-[2]">
                 <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>★</span>
                 <span className="text-white/60 font-medium text-xs">Developerów na GitHubie</span>
@@ -779,7 +779,7 @@ function OpenClawSection() {
 
           {/* Milestone 2 — 500M+ */}
           <FadeIn delay={0.15} className="h-full">
-            <div className="rc-card rc-glow-2 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(59,125,216,0.1)', maxHeight: '180px' }}>
+            <div className="rc-card rc-glow-2 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(59,125,216,0.1)', maxHeight: '180px' }}>
               <div className="flex items-center gap-2 mb-2 relative z-[2]">
                 <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>👁</span>
                 <span className="text-white/60 font-medium text-xs">Wyświetleń w social media</span>
@@ -793,7 +793,7 @@ function OpenClawSection() {
 
           {/* Milestone 3 — 1 Tydzień */}
           <FadeIn delay={0.3} className="h-full">
-            <div className="rc-card rc-glow-3 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(91,79,207,0.1)', maxHeight: '180px' }}>
+            <div className="rc-card rc-glow-3 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(91,79,207,0.1)', maxHeight: '180px' }}>
               <div className="flex items-center gap-2 mb-2 relative z-[2]">
                 <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>📈</span>
                 <span className="text-white/60 font-medium text-xs">Od zera do #1 na świecie</span>
@@ -821,7 +821,7 @@ function OpenClawSection() {
             ];
             return (
               <FadeIn key={i} delay={0.45 + i * 0.15} className="h-full">
-                <div className={`rc-card rc-glow-${i + 4} rounded-[20px] p-6 flex flex-col justify-between overflow-hidden h-full`} style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: `inset 0 0 0 1000px ${overlays[i]}`, minHeight: '240px' }}>
+                <div className={`rc-card rc-glow-${i + 4} rounded-[20px] p-6 flex flex-col justify-between overflow-hidden h-full`} style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: `inset 0 0 0 1000px ${overlays[i]}`, minHeight: '240px' }}>
                   <div className="relative z-[2]">
                     <span className="text-4xl leading-none select-none block mb-3" style={{ color: 'rgba(255,255,255,0.15)' }}>&ldquo;</span>
                     <p className="italic text-[15px] leading-[1.7] text-white/80">&ldquo;{item.quote}&rdquo;</p>

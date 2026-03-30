@@ -11,9 +11,11 @@
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), var(--behind-glow-color) 0%, transparent var(--behind-glow-size));
-  filter: blur(50px) saturate(1.1);
-  opacity: calc(0.8 * var(--card-opacity));
+  filter: blur(30px);
+  opacity: calc(0.6 * var(--card-opacity));
   transition: opacity 200ms ease;
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 .pc-card-wrapper:hover, .pc-card-wrapper.active { --card-opacity: 1; }
