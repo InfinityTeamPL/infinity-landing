@@ -993,16 +993,14 @@ function ContactCTASection() {
   const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
 
   return (
-    <section id="kontakt" className="relative overflow-hidden">
-      <AnimatedGradient className="absolute inset-0" colors={['#0B0F2E', '#2E4AAD', '#1A2461', '#0B0F2E']} />
-      <Aurora colorStops={['#2E4AAD', '#7B9BDB', '#2E4AAD']} speed={1} blend={0.2} amplitude={0.8} />
+    <section id="kontakt" style={{ backgroundColor: '#D6E4FF' }}>
 
-      <div className="relative z-10">
+      <div>
         {/* Header */}
         <div className="text-center pt-20 pb-12 px-6">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Gotowy na Transformację?</h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Gotowy na Transformację?</h2>
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: '#7B9BDB' }}>Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
           </FadeIn>
         </div>
 
@@ -1011,9 +1009,9 @@ function ContactCTASection() {
           <div className="grid lg:grid-cols-2 gap-5 items-stretch">
             {/* Left — Form */}
             <FadeIn delay={0.2} className="h-full">
-              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
-                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                  <p className="text-[13px] uppercase tracking-widest text-white/50">Napisz do nas</p>
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(46,74,173,0.15)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(46,74,173,0.08)' }}>
+                  <p className="text-[13px] uppercase tracking-widest" style={{ color: '#2E4AAD' }}>Napisz do nas</p>
                 </div>
                 <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: '#f8f9fc' }}>
                   <form className="space-y-2">
@@ -1101,9 +1099,9 @@ function ContactCTASection() {
 
             {/* Right — Map */}
             <FadeIn delay={0.4} className="h-full">
-              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
-                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                  <p className="text-[13px] uppercase tracking-widest text-white/50">Gdzie nas znajdziesz</p>
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(46,74,173,0.15)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(46,74,173,0.08)' }}>
+                  <p className="text-[13px] uppercase tracking-widest" style={{ color: '#2E4AAD' }}>Gdzie nas znajdziesz</p>
                 </div>
                 <div className="flex-1">
                   <iframe
