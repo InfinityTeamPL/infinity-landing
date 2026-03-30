@@ -446,17 +446,41 @@ export const StaggeredMenu = ({
   React.useEffect(() => {
     let lastY = window.scrollY;
     const checkDark = () => {
-      const el = document.elementFromPoint(window.innerWidth / 2, 40);
+      // Temporarily hide navbar to check element behind it
+      const header = document.querySelector('.staggered-menu-header') as HTMLElement;
+      if (header) header.style.pointerEvents = 'none';
+      const el = document.elementFromPoint(window.innerWidth / 2, 60);
+      if (header) header.style.pointerEvents = '';
+
       if (el) {
         let node: Element | null = el;
-        while (node && node !== document.body) {
-          const bg = getComputedStyle(node).backgroundColor;
-          const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        while (node && node !== document.documentElement) {
+          const styles = getComputedStyle(node);
+          const bg = styles.backgroundColor;
+          const bgImage = styles.backgroundImage;
+
+          // Check inline style background too
+          const inlineBg = (node as HTMLElement).style?.backgroundColor || '';
+          const checkColor = inlineBg || bg;
+
+          const match = checkColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
           if (match) {
-            const lum = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
-            if (lum < 128) { setOnDark(true); return; }
-            if (lum > 128) { setOnDark(false); return; }
+            const r = parseInt(match[1]);
+            const g = parseInt(match[2]);
+            const b = parseInt(match[3]);
+            // Skip fully transparent
+            const alphaMatch = checkColor.match(/rgba\(\d+,\s*\d+,\s*\d+,\s*([\d.]+)/);
+            if (alphaMatch && parseFloat(alphaMatch[1]) < 0.1) { node = node.parentElement; continue; }
+            const lum = (r * 299 + g * 587 + b * 114) / 1000;
+            if (lum < 140) { setOnDark(true); return; }
+            if (lum >= 140) { setOnDark(false); return; }
           }
+
+          // Check for dark gradient backgrounds
+          if (bgImage && bgImage !== 'none' && (bgImage.includes('#0') || bgImage.includes('#1') || bgImage.includes('rgb(0') || bgImage.includes('rgb(1'))) {
+            setOnDark(true); return;
+          }
+
           node = node.parentElement;
         }
       }
