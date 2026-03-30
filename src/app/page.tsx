@@ -242,15 +242,15 @@ const TESTIMONIALS = [
 // OpenClaw community quotes
 const OPENCLAW_QUOTES = [
   {
-    quote: 'After years of AI hype, I thought nothing could faze me. Then I installed OpenClaw. AI as teammate, not tool. The endgame of digital employees is here.',
+    quote: 'Po latach szumu wokół AI, myślałem że nic mnie już nie zaskoczy. Potem zainstalowałem OpenClaw. AI jako współpracownik, nie narzędzie. To przyszłość cyfrowych pracowników.',
     author: '@lycfyi'
   },
   {
-    quote: 'The fact that it\'s hackable and hostable on-prem will make sure tech like this DOMINATES conventional SaaS.',
+    quote: 'Fakt, że jest hackowalny i można go hostować on-premise sprawi, że ta technologia ZDOMINUJE tradycyjny SaaS.',
     author: '@rovensky'
   },
   {
-    quote: 'Just shipped my first personal AI assistant. On WhatsApp. Memory moves across agents. Personal AI is getting real.',
+    quote: 'Właśnie uruchomiłam swojego pierwszego osobistego asystenta AI. Na WhatsApp. Pamięć przenosi się między agentami. Osobiste AI staje się realne.',
     author: '@christinetyip'
   }
 ];
@@ -357,7 +357,7 @@ function HeroSection() {
       {/* Bottom section — social icons left + quote centered */}
       <div className="relative z-10 px-6 md:px-12 lg:px-20 pb-8">
         {/* Social icons — bottom left */}
-        <div className="liquid-glass flex gap-2 items-center rounded-full px-2 py-1.5 mb-4 md:mb-0 md:absolute md:bottom-8 md:left-[2em] w-fit" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
+        <div className="liquid-glass flex gap-2 items-center rounded-full px-2 py-1.5 mx-auto md:mx-0 mb-5 md:mb-0 md:absolute md:bottom-8 md:left-[2em] w-fit" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
           <a href="https://x.com/InfinityTech_PL" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all">
             <XIcon className="w-4 h-4" />
           </a>
@@ -439,16 +439,14 @@ function BenefitsSection() {
           <FadeIn delay={0} className="md:col-span-2">
             <div className="bento-card relative overflow-hidden rounded-2xl p-8 shadow-md h-full" style={{ minHeight: '220px' }}>
               {/* Animated gears */}
-              <div className="bento-anim">
-                <div className="bento-gear-1 absolute" style={{ width: '80px', height: '80px', right: '0', bottom: '0' }}>
-                  <Settings className="w-full h-full" style={{ color: '#6B8DE3', opacity: 0.35 }} />
-                </div>
-                <div className="bento-gear-2 absolute" style={{ width: '50px', height: '50px', right: '60px', bottom: '40px' }}>
-                  <Settings className="w-full h-full" style={{ color: '#9B7CE8', opacity: 0.4 }} />
-                </div>
-                <div className="bento-gear-3 absolute" style={{ width: '35px', height: '35px', right: '20px', bottom: '70px' }}>
-                  <Settings className="w-full h-full" style={{ color: '#7B9BDB', opacity: 0.45 }} />
-                </div>
+              <div className="absolute top-4 right-4 bento-gear-1" style={{ width: '48px', height: '48px' }}>
+                <Settings className="w-full h-full" style={{ color: '#6B8DE3', opacity: 0.45 }} />
+              </div>
+              <div className="absolute top-4 right-16 bento-gear-2" style={{ width: '32px', height: '32px' }}>
+                <Settings className="w-full h-full" style={{ color: '#9B7CE8', opacity: 0.4 }} />
+              </div>
+              <div className="absolute top-12 right-8 bento-gear-3" style={{ width: '24px', height: '24px' }}>
+                <Settings className="w-full h-full" style={{ color: '#7B9BDB', opacity: 0.45 }} />
               </div>
               <div className="relative z-10">
                 <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
@@ -700,49 +698,96 @@ function TechBentoSection() {
   );
 }
 
-// Sekcja OpenClaw social proof
+// Sekcja OpenClaw social proof — Raycast milestones + quotes
 function OpenClawSection() {
   return (
     <section className="py-24" style={{ backgroundColor: '#D6E4FF' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Budujemy na technologii, której ufa 339 000+ developerów</h2>
-            <p style={{ color: '#7B9BDB' }}>OpenClaw — najszybciej rosnący open-source framework agentów AI na świecie</p>
+          <div className="text-center mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Budujemy na technologii, która zmieniła reguły gry</h2>
+            <p style={{ color: '#7B9BDB' }}>OpenClaw — od weekendowego projektu do #1 na GitHubie w 60 dni</p>
           </div>
         </FadeIn>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12">
-          {[
-            { value: '339 000+', label: 'GitHub Stars' },
-            { value: '50+', label: 'Integracji z aplikacjami' },
-            { value: '100+', label: 'Community Skills na ClawHub' },
-          ].map((stat, i) => (
-            <FadeIn key={i} delay={i * 0.1}>
-              <div className="rounded-2xl p-6 text-center border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.12)' }}>
-                <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#2E4AAD' }}>{stat.value}</div>
-                <p style={{ color: '#7B9BDB' }}>{stat.label}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-stretch">
+          {/* Milestone 1 — 340k+ */}
+          <FadeIn delay={0} className="h-full">
+            <div className="rc-card rc-glow-1 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(79,95,213,0.1)', maxHeight: '180px' }}>
+              <div className="flex items-center gap-2 mb-2 relative z-[2]">
+                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>★</span>
+                <span className="text-white/60 font-medium text-xs">Developerów na GitHubie</span>
               </div>
-            </FadeIn>
-          ))}
+              <div className="flex-1 flex items-center justify-center relative z-[2]">
+                <span className="text-4xl font-extrabold rc-num">340k+</span>
+              </div>
+              <p className="text-xs text-white/40 text-center relative z-[2]">Developerów na GitHubie</p>
+            </div>
+          </FadeIn>
+
+          {/* Milestone 2 — 500M+ */}
+          <FadeIn delay={0.15} className="h-full">
+            <div className="rc-card rc-glow-2 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(59,125,216,0.1)', maxHeight: '180px' }}>
+              <div className="flex items-center gap-2 mb-2 relative z-[2]">
+                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>👁</span>
+                <span className="text-white/60 font-medium text-xs">Wyświetleń w social media</span>
+              </div>
+              <div className="flex-1 flex items-center justify-center relative z-[2]">
+                <span className="text-4xl font-extrabold rc-num">500M+</span>
+              </div>
+              <p className="text-xs text-white/40 text-center relative z-[2]">Wyświetleń w social media</p>
+            </div>
+          </FadeIn>
+
+          {/* Milestone 3 — 1 Tydzień */}
+          <FadeIn delay={0.3} className="h-full">
+            <div className="rc-card rc-glow-3 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(91,79,207,0.1)', maxHeight: '180px' }}>
+              <div className="flex items-center gap-2 mb-2 relative z-[2]">
+                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>📈</span>
+                <span className="text-white/60 font-medium text-xs">Od zera do #1 na świecie</span>
+              </div>
+              <div className="flex-1 flex items-center justify-center relative z-[2]">
+                <span className="text-4xl font-extrabold rc-num">1 Tydzień</span>
+              </div>
+              <p className="text-xs text-white/40 text-center relative z-[2]">Od zera do #1 na świecie</p>
+            </div>
+          </FadeIn>
         </div>
 
-        {/* Quotes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
-          {OPENCLAW_QUOTES.map((item, i) => (
-            <FadeIn key={i} delay={i * 0.1}>
-              <div className="rounded-2xl p-6 hover:shadow-lg transition-shadow border h-full flex flex-col" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.12)' }}>
-                <p className="mb-4 italic flex-1" style={{ color: '#0B0F2E' }}>&ldquo;{item.quote}&rdquo;</p>
-                <p className="text-sm font-semibold" style={{ color: '#2E4AAD' }}>{item.author}</p>
-              </div>
-            </FadeIn>
-          ))}
+        {/* Row 2 — Quotes */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 items-stretch">
+          {OPENCLAW_QUOTES.map((item, i) => {
+            const overlays = [
+              'rgba(72,88,200,0.08)',
+              'rgba(54,112,208,0.08)',
+              'rgba(82,72,204,0.08)',
+            ];
+            const avatars = [
+              'https://i.pravatar.cc/40?img=12',
+              'https://i.pravatar.cc/40?img=33',
+              'https://i.pravatar.cc/40?img=5',
+            ];
+            return (
+              <FadeIn key={i} delay={0.45 + i * 0.15} className="h-full">
+                <div className={`rc-card rc-glow-${i + 4} rounded-[20px] p-6 flex flex-col justify-between overflow-hidden h-full`} style={{ background: 'rgba(15,20,45,0.75)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: `inset 0 0 0 1000px ${overlays[i]}`, minHeight: '240px' }}>
+                  <div className="relative z-[2]">
+                    <span className="text-4xl leading-none select-none block mb-3" style={{ color: 'rgba(255,255,255,0.15)' }}>&ldquo;</span>
+                    <p className="italic text-[15px] leading-[1.7] text-white/80">&ldquo;{item.quote}&rdquo;</p>
+                  </div>
+                  <div className="flex items-center gap-2.5 mt-4 relative z-[2]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={avatars[i]} alt="avatar" width={40} height={40} className="rounded-full flex-shrink-0" style={{ border: '2px solid rgba(255,255,255,0.15)' }} />
+                    <span className="text-sm font-semibold" style={{ color: '#F5EDE4' }}>{item.author}</span>
+                  </div>
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
 
-        <FadeIn delay={0.3}>
-          <p className="text-center text-sm" style={{ color: '#7B9BDB' }}>
-            Infinity Tech jest oficjalnym partnerem wdrożeniowym OpenClaw w Polsce.
+        <FadeIn delay={0.9}>
+          <p className="text-center text-sm" style={{ color: '#6B6B80' }}>
+            🦞 Infinity Tech jest oficjalnym partnerem wdrożeniowym OpenClaw w Polsce.
           </p>
         </FadeIn>
       </div>
@@ -1211,6 +1256,7 @@ export default function LandingPage() {
       <Footer />
       
       <ChatWidget />
+
     </div>
     </ClickSpark>
   );

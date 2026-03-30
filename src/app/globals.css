@@ -101,18 +101,23 @@ body {
 }
 
 @media (max-width: 768px) {
-  .bento-anim {
-    right: 8px;
-    bottom: auto;
-    top: 8px;
+  .bento-card {
+    overflow: hidden !important;
+  }
+
+  .bento-anim,
+  .bento-anim-top {
+    right: 10px !important;
+    bottom: auto !important;
+    top: 10px !important;
     transform: scale(0.5);
     transform-origin: top right;
   }
-  .bento-anim-top {
-    right: 8px;
-    top: 8px;
-    transform: scale(0.5);
-    transform-origin: top right;
+
+  .bento-gear-1,
+  .bento-gear-2,
+  .bento-gear-3 {
+    transform-origin: center;
   }
 }
 
@@ -265,6 +270,66 @@ body {
 .tech-neuron-1 { top: 0; left: 10px; animation-delay: 0s; }
 .tech-neuron-2 { top: 20px; left: 0; animation-delay: 0.5s; }
 .tech-neuron-3 { top: 20px; left: 25px; animation-delay: 1s; }
+
+/* Raycast-style cards */
+.rc-card {
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  z-index: 1;
+}
+
+.rc-card::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  border-radius: 28px;
+  filter: blur(60px);
+  opacity: 0.3;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.rc-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rc-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.rc-card:hover::before {
+  opacity: 0.6;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+/* Glow colors per card */
+.rc-glow-1::before { background: #4F5FD5; animation-delay: 0s; }
+.rc-glow-2::before { background: #3B7DD8; animation-delay: 0.7s; }
+.rc-glow-3::before { background: #5B4FCF; animation-delay: 1.4s; }
+.rc-glow-4::before { background: #4858C8; animation-delay: 2.1s; }
+.rc-glow-5::before { background: #3670D0; animation-delay: 2.8s; }
+.rc-glow-6::before { background: #5248CC; animation-delay: 3.5s; }
+
+/* Stat number gradient */
+.rc-num {
+  background: linear-gradient(180deg, #FFFFFF, #7B9AFF) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
 
 /* Liquid Glass Morphism */
 @layer components {

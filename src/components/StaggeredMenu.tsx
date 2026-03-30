@@ -442,9 +442,26 @@ export const StaggeredMenu = ({
 
 
   const [hidden, setHidden] = React.useState(false);
-  const [atTop, setAtTop] = React.useState(true);
+  const [onDark, setOnDark] = React.useState(true);
   React.useEffect(() => {
     let lastY = window.scrollY;
+    const checkDark = () => {
+      const el = document.elementFromPoint(window.innerWidth / 2, 40);
+      if (el) {
+        let node: Element | null = el;
+        while (node && node !== document.body) {
+          const bg = getComputedStyle(node).backgroundColor;
+          const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          if (match) {
+            const lum = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
+            if (lum < 128) { setOnDark(true); return; }
+            if (lum > 128) { setOnDark(false); return; }
+          }
+          node = node.parentElement;
+        }
+      }
+      setOnDark(window.scrollY < window.innerHeight * 0.7);
+    };
     const handleScroll = () => {
       const currentY = window.scrollY;
       if (currentY > lastY && currentY > 80 && !open) {
@@ -452,9 +469,10 @@ export const StaggeredMenu = ({
       } else {
         setHidden(false);
       }
-      setAtTop(currentY < window.innerHeight * 0.7);
+      checkDark();
       lastY = currentY;
     };
+    checkDark();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [open]);
@@ -512,16 +530,16 @@ export const StaggeredMenu = ({
           <img
             src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
             alt="Logo"
-            className={`sm-logo-img${atTop ? ' sm-logo-invert' : ''}`}
+            className={`sm-logo-img${onDark ? ' sm-logo-invert' : ''}`}
             draggable={false}
             width={110}
             height={24}
           />
-          <span className={`sm-brand-center${atTop ? ' sm-brand-hero' : ' sm-brand-scroll'}`}>INFINITY</span>
+          <span className={`sm-brand-center${onDark ? ' sm-brand-hero' : ' sm-brand-scroll'}`}>INFINITY</span>
         </div>
         <button
           ref={toggleBtnRef}
-          className={`sm-toggle${atTop ? ' sm-toggle-hero' : ' sm-toggle-scroll'}`}
+          className={`sm-toggle${onDark ? ' sm-toggle-hero' : ' sm-toggle-scroll'}`}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="staggered-menu-panel"
