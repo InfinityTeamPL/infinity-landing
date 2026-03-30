@@ -161,6 +161,111 @@ body {
 .bento-bar:nth-child(3) { --bar-height: 45px; animation-delay: 0.4s; }
 .bento-bar:nth-child(4) { --bar-height: 70px; animation-delay: 0.6s; }
 
+/* Tech bento tiles */
+.tech-tile {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-tile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Channel tiles */
+.channel-tile {
+  background: linear-gradient(135deg, #d0d8ed, #bec8e0);
+  border: 1px solid rgba(46, 74, 173, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.channel-tile:hover {
+  transform: scale(1.05);
+  border-color: rgba(46, 74, 173, 0.3);
+  box-shadow: 0 4px 16px rgba(46, 74, 173, 0.12);
+}
+
+/* OpenClaw blob drift */
+@keyframes ocBlobDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 15px) scale(1.1); }
+}
+
+.tech-blob-oc { animation: ocBlobDrift 8s ease-in-out infinite; }
+
+/* Hetzner ping */
+.tech-ping { position: relative; width: 24px; height: 24px; }
+
+.tech-ping-dot {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #2E4AAD;
+}
+
+@keyframes pingRing {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+.tech-ping-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid #2E4AAD;
+  animation: pingRing 2s ease-out infinite;
+}
+
+/* Stripe coins */
+.tech-coins { width: 40px; height: 60px; }
+
+@keyframes coinFloat {
+  0% { transform: translateY(0); opacity: 0.6; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+
+.tech-coin {
+  position: absolute;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  animation: coinFloat 3s ease-out infinite;
+}
+
+.tech-coin-1 { left: 0; bottom: 0; animation-delay: 0s; }
+.tech-coin-2 { left: 14px; bottom: 0; animation-delay: 1s; }
+.tech-coin-3 { left: 28px; bottom: 0; animation-delay: 2s; }
+
+/* Vercel logo spin */
+@keyframes vercelSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.tech-vercel-logo { animation: vercelSpin 10s linear infinite; }
+
+/* MiniMax neurons */
+.tech-neurons { width: 50px; height: 50px; }
+
+@keyframes neuronPulse {
+  0%, 100% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+}
+
+.tech-neuron {
+  position: absolute;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #7B9BDB;
+  animation: neuronPulse 2s ease-in-out infinite;
+}
+
+.tech-neuron-1 { top: 0; left: 10px; animation-delay: 0s; }
+.tech-neuron-2 { top: 20px; left: 0; animation-delay: 0.5s; }
+.tech-neuron-3 { top: 20px; left: 25px; animation-delay: 1s; }
+
 /* Liquid Glass Morphism */
 @layer components {
   .liquid-glass {

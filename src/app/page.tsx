@@ -179,10 +179,26 @@ const TECH_STACK = [
 ];
 
 // Kanały integracji
-const CHANNELS = [
-  'WhatsApp', 'Telegram', 'Discord', 'Slack', 'Signal',
-  'iMessage', 'Microsoft Teams', 'Google Chat', 'Matrix',
-  'WebChat', 'LINE', 'Nostr', 'Zalo', 'Nextcloud Talk', 'Mattermost',
+const CHANNELS: { name: string; icon: string }[] = [
+  { name: 'WhatsApp', icon: 'https://cdn.simpleicons.org/whatsapp' },
+  { name: 'Telegram', icon: 'https://cdn.simpleicons.org/telegram' },
+  { name: 'Slack', icon: '' },
+  { name: 'Discord', icon: 'https://cdn.simpleicons.org/discord' },
+  { name: 'Google Chat', icon: 'https://cdn.simpleicons.org/googlechat' },
+  { name: 'Signal', icon: 'https://cdn.simpleicons.org/signal' },
+  { name: 'iMessage', icon: 'https://cdn.simpleicons.org/imessage' },
+  { name: 'MS Teams', icon: '' },
+  { name: 'Matrix', icon: 'https://cdn.simpleicons.org/matrix' },
+  { name: 'LINE', icon: 'https://cdn.simpleicons.org/line' },
+  { name: 'Mattermost', icon: 'https://cdn.simpleicons.org/mattermost' },
+  { name: 'Nextcloud', icon: 'https://cdn.simpleicons.org/nextcloud' },
+  { name: 'Nostr', icon: '' },
+  { name: 'Twitch', icon: 'https://cdn.simpleicons.org/twitch' },
+  { name: 'Zalo', icon: '' },
+  { name: 'WeChat', icon: 'https://cdn.simpleicons.org/wechat' },
+  { name: 'WebChat', icon: '' },
+  { name: 'IRC', icon: '' },
+  { name: 'Feishu', icon: '' },
 ];
 
 // Referencje/Testimonials (wyłączone — do użycia gdy będą prawdziwe referencje)
@@ -567,57 +583,118 @@ function ServicesSection() {
   );
 }
 
-function TechStackSection() {
-  const allTech = [...TECH_STACK, ...TECH_STACK, ...TECH_STACK];
-
-  return (
-    <section className="py-20 overflow-hidden" style={{ backgroundColor: '#0B0F2E' }}>
-      <div className="max-w-6xl mx-auto px-6 mb-12">
-        <FadeIn>
-          <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">Technologie, na których budujemy</h2>
-          </div>
-        </FadeIn>
-      </div>
-
-      <div className="w-full">
-        <Marquee speed={25} pauseOnHover={true} className="py-4">
-          {allTech.map((tech, i) => (
-            <div key={i} className="flex flex-col items-center px-8 mx-4 py-4 rounded-2xl transition-colors min-w-[180px]" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-              <h3 className="font-bold text-white text-base">{tech.name}</h3>
-              <p className="text-xs" style={{ color: '#7B9BDB' }}>{tech.desc}</p>
-            </div>
-          ))}
-        </Marquee>
-      </div>
-    </section>
-  );
-}
-
-function ChannelsSection() {
+function TechBentoSection() {
   const allChannels = [...CHANNELS, ...CHANNELS, ...CHANNELS];
 
   return (
-    <section className="py-16 overflow-hidden" style={{ backgroundColor: '#D6E4FF' }}>
-      <div className="max-w-6xl mx-auto px-6 mb-8">
+    <section className="py-20" style={{ backgroundColor: '#0B0F2E' }}>
+      <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
-          <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Integracja z 20+ kanałami</h2>
-            <p style={{ color: '#7B9BDB' }}>Twój agent AI działa tam, gdzie Ty i Twoi klienci</p>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">Nasz stack technologiczny</h2>
+            <p style={{ color: '#7B9BDB' }}>Technologie i 23+ kanałów komunikacji</p>
           </div>
         </FadeIn>
-      </div>
 
-      <div className="w-full">
-        <Marquee speed={20} pauseOnHover={true} className="py-4">
-          {allChannels.map((channel, i) => (
-            <div key={i} className="flex items-center justify-center px-10 mx-4 py-3 rounded-xl transition-all min-w-[160px] border" style={{ backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(46,74,173,0.15)' }}>
-              <span className="font-semibold text-sm" style={{ color: '#0B0F2E' }}>
-                {channel}
-              </span>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+          {/* Row 1: OpenClaw (2/3) + Hetzner (1/3) */}
+          <FadeIn delay={0} className="md:col-span-2">
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #0f1729, #1a1f3a)', minHeight: '140px' }}>
+              <div className="tech-blob-oc absolute rounded-full" style={{ width: '200px', height: '200px', background: 'radial-gradient(circle, #4F6AE8, #7B5CCC)', opacity: 0.15, filter: 'blur(60px)', top: '-30px', right: '-30px' }} />
+              <span className="absolute top-5 right-5 text-4xl z-10">🦞</span>
+              <div className="relative z-10 flex flex-col justify-end h-full">
+                <h3 className="text-2xl font-bold text-white mb-1">OpenClaw</h3>
+                <p style={{ color: 'rgba(255,255,255,0.6)' }}>AI Agent Framework</p>
+              </div>
             </div>
-          ))}
-        </Marquee>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: '#e8ecf4', minHeight: '140px' }}>
+              <div className="absolute top-5 right-5 z-10">
+                <div className="tech-ping">
+                  <div className="tech-ping-ring" />
+                  <div className="tech-ping-dot" />
+                </div>
+              </div>
+              <div className="relative z-10 flex flex-col justify-end h-full">
+                <h3 className="text-xl font-extrabold tracking-wide mb-1" style={{ color: '#D50C2D' }}>HETZNER</h3>
+                <p style={{ color: '#7B9BDB' }}>Cloud Infrastructure</p>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Row 2: Stripe + Vercel + MiniMax (1/3 each) */}
+          <FadeIn delay={0.15}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #635BFF, #7A73FF)', minHeight: '140px' }}>
+              <div className="tech-coins absolute pointer-events-none" style={{ right: '20px', top: '20px', width: '40px', height: '50px' }}>
+                <span className="tech-coin tech-coin-1">$</span>
+                <span className="tech-coin tech-coin-2">$</span>
+                <span className="tech-coin tech-coin-3">$</span>
+              </div>
+              <div className="relative z-10 flex flex-col justify-end h-full">
+                <h3 className="text-2xl font-bold text-white mb-1" style={{ letterSpacing: '-0.02em' }}>stripe</h3>
+                <p style={{ color: 'rgba(255,255,255,0.7)' }}>Payments</p>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full flex flex-col justify-between" style={{ background: '#000', minHeight: '140px' }}>
+              <div className="tech-vercel-logo absolute pointer-events-none" style={{ right: '20px', top: '20px', width: '40px', height: '40px' }}>
+                <svg viewBox="0 0 76 65" fill="white" style={{ opacity: 0.15 }}><path d="M37.5 0L75 65H0L37.5 0z" /></svg>
+              </div>
+              <div className="relative z-10 flex flex-col justify-end h-full">
+                <h3 className="text-xl font-bold text-white mb-1">Vercel</h3>
+                <p style={{ color: 'rgba(255,255,255,0.6)' }}>Hosting &amp; Deploy</p>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.25}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #0f1729, #1a2461)', minHeight: '140px' }}>
+              <div className="tech-neurons absolute pointer-events-none" style={{ right: '20px', top: '20px' }}>
+                <div className="tech-neuron tech-neuron-1" />
+                <div className="tech-neuron tech-neuron-2" />
+                <div className="tech-neuron tech-neuron-3" />
+              </div>
+              <div className="relative z-10 flex flex-col justify-end h-full">
+                <h3 className="text-xl font-semibold text-white mb-1">MiniMax</h3>
+                <p style={{ color: 'rgba(255,255,255,0.6)' }}>AI Models</p>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Row 3: Channels (full width) */}
+          <FadeIn delay={0.3} className="md:col-span-3">
+            <div className="tech-tile relative overflow-hidden rounded-2xl py-10" style={{ background: '#f0f4ff' }}>
+              <div className="px-8 mb-6 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#0B0F2E' }}>23+ kanałów komunikacji</h3>
+                <p className="text-base" style={{ color: '#7B9BDB' }}>Twój agent AI działa tam, gdzie Ty i Twoi klienci</p>
+              </div>
+              <Marquee speed={25} pauseOnHover={true} direction="right" className="py-2">
+                {allChannels.map((ch, i) => (
+                  <div key={i} className="channel-tile flex items-center gap-2 px-4 mx-2 py-2.5 rounded-xl min-w-[140px] whitespace-nowrap">
+                    {ch.name === 'Slack' ? (
+                      <svg className="flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="#0B0F2E"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.124 2.521a2.528 2.528 0 0 1 2.52-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.52V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zm-2.521 10.124a2.528 2.528 0 0 1 2.521 2.52A2.528 2.528 0 0 1 15.166 24a2.528 2.528 0 0 1-2.521-2.522v-2.52h2.521zm0-1.271a2.528 2.528 0 0 1-2.521-2.521 2.528 2.528 0 0 1 2.521-2.521h6.312A2.528 2.528 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/></svg>
+                    ) : ch.name === 'MS Teams' ? (
+                      <svg className="flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="#0B0F2E"><path d="M20.625 8.5h-1.5V6.25a1.875 1.875 0 0 0-1.875-1.875h-.375a2.625 2.625 0 1 0-3.75-1.453V4.5H9.75A1.875 1.875 0 0 0 7.875 6.375V13.5a1.875 1.875 0 0 0 1.875 1.875h5.625A1.875 1.875 0 0 0 17.25 13.5v-.75h1.5a1.125 1.125 0 0 0 1.125-1.125v-2A1.125 1.125 0 0 0 20.625 8.5zM17.25 3.375a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25zM6 8.5H2.25A1.125 1.125 0 0 0 1.125 9.625v4.5A1.125 1.125 0 0 0 2.25 15.25h1.5v2.625a.375.375 0 0 0 .638.265L6.75 15.25H7.5V9.625A1.125 1.125 0 0 0 6 8.5z"/></svg>
+                    ) : ch.icon ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img src={ch.icon} alt={ch.name} width={20} height={20} className="flex-shrink-0" />
+                    ) : (
+                      <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0" style={{ backgroundColor: '#4F6AE8' }}>{ch.name.charAt(0)}</span>
+                    )}
+                    <span className="font-medium text-[13px]" style={{ color: '#0B0F2E' }}>{ch.name}</span>
+                  </div>
+                ))}
+              </Marquee>
+            </div>
+          </FadeIn>
+
+        </div>
       </div>
     </section>
   );
@@ -1116,9 +1193,7 @@ export default function LandingPage() {
         {/* TODO: włącz TeamSection gdy będą gotowe prawdziwe dane zespołu */}
         {/* <TeamSection /> */}
         
-        <TechStackSection />
-
-        <ChannelsSection />
+        <TechBentoSection />
         
         <OpenClawSection />
         
