@@ -915,157 +915,138 @@ function FAQSection() {
   );
 }
 
-function ContactSection() {
+function ContactCTASection() {
   const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
 
   return (
-    <section id="kontakt" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#0B0F2E]">Porozmawiajmy o Twoim projekcie</h2>
-            <p className="text-xl text-[#7B9BDB] mb-8">
-              Skontaktuj się z nami, a przygotujemy darmową wycenę w ciągu 24 godzin.
-            </p>
-
-            <div className="space-y-4 mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#D6E4FF] flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-[#2E4AAD]" />
-                </div>
-                <div>
-                  <p className="text-sm text-[#7B9BDB]">Email</p>
-                  <p className="font-medium text-[#0B0F2E]">contact@infinityteam.io</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#D6E4FF] flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-[#2E4AAD]" />
-                </div>
-                <div>
-                  <p className="text-sm text-[#7B9BDB]">Telefon</p>
-                  <p className="font-medium text-[#0B0F2E]">+48 123 456 789</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#D6E4FF] flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-[#2E4AAD]" />
-                </div>
-                <div>
-                  <p className="text-sm text-[#7B9BDB]">Lokalizacja</p>
-                  <p className="font-medium text-[#0B0F2E]">Zamość, Polska</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Trust Badges */}
-            <div className="mt-8 pt-8 border-t border-[#D6E4FF]">
-              <p className="text-sm text-[#7B9BDB] mb-4">Zaufali nam:</p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 px-3 py-2 bg-[#D6E4FF] rounded-lg">
-                  <Shield className="w-5 h-5 text-[#2E4AAD]" />
-                  <span className="text-xs text-[#1A2461]">SSL Secured</span>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-2 bg-[#D6E4FF] rounded-lg">
-                  <Shield className="w-5 h-5 text-[#2E4AAD]" />
-                  <span className="text-xs text-[#1A2461]">RODO/GDPR</span>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-2 bg-[#D6E4FF] rounded-lg">
-                  <Shield className="w-5 h-5 text-[#7B9BDB]" />
-                  <span className="text-xs text-[#1A2461]">ISO 27001</span>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <form className="glass rounded-2xl p-8">
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-[#0B0F2E] mb-2">Imię i nazwisko</label>
-                  <input
-                    type="text"
-                    value={formState.name}
-                    onChange={(e) => setFormState({...formState, name: e.target.value})}
-                    className="w-full px-4 py-3 rounded-xl border border-[#D6E4FF] focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
-                    placeholder="Jan Kowalski"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#0B0F2E] mb-2">Email</label>
-                  <input
-                    type="email"
-                    value={formState.email}
-                    onChange={(e) => setFormState({...formState, email: e.target.value})}
-                    className="w-full px-4 py-3 rounded-xl border border-[#D6E4FF] focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
-                    placeholder="jan@firma.pl"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#0B0F2E] mb-2">Telefon (opcjonalnie)</label>
-                  <input
-                    type="tel"
-                    value={formState.phone}
-                    onChange={(e) => setFormState({...formState, phone: e.target.value})}
-                    className="w-full px-4 py-3 rounded-xl border border-[#D6E4FF] focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
-                    placeholder="+48 000 000 000"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#0B0F2E] mb-2">Wiadomość</label>
-                  <textarea
-                    value={formState.message}
-                    onChange={(e) => setFormState({...formState, message: e.target.value})}
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-[#D6E4FF] focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all resize-none"
-                    placeholder="Opisz swój projekt..."
-                  />
-                </div>
-                    <Ripple className="w-full py-4 bg-[#2E4AAD] text-white text-lg flex items-center justify-center gap-2">
-                  <Send className="w-5 h-5" />
-                  Wyślij wiadomość
-                </Ripple>
-              </div>
-            </form>
-          </FadeIn>
-        </div>
-        
-        {/* Google Maps */}
-        <div className="mt-12">
-          <div className="aspect-video rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              src="https://maps.google.com/maps?q=Rynek+Wielki+Zamość&z=16&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Lokalizacja Infinity Tech"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CTASection() {
-  return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="kontakt" className="relative overflow-hidden">
       <AnimatedGradient className="absolute inset-0" colors={['#0B0F2E', '#2E4AAD', '#1A2461', '#0B0F2E']} />
       <Aurora colorStops={['#2E4AAD', '#7B9BDB', '#2E4AAD']} speed={1} blend={0.2} amplitude={0.8} />
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <FadeIn>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Gotowy na Transformację?</h2>
-          <p className="text-xl text-white/80 mb-8">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
-          <a href="#kontakt">
-            <Ripple className="px-10 py-5 bg-[#D6E4FF] text-[#0B0F2E] text-lg font-semibold">
-              Umów Bezpłatną Konsultację
-            </Ripple>
-          </a>
-        </FadeIn>
+
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="text-center pt-20 pb-12 px-6">
+          <FadeIn>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Gotowy na Transformację?</h2>
+            <p className="text-xl text-white/70 max-w-2xl mx-auto">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
+          </FadeIn>
+        </div>
+
+        {/* Two columns: form + map */}
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pb-16">
+          <div className="grid lg:grid-cols-2 gap-5 items-stretch">
+            {/* Left — Form */}
+            <FadeIn delay={0.2} className="h-full">
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
+                  <p className="text-[13px] uppercase tracking-widest text-white/50">Napisz do nas</p>
+                </div>
+                <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: '#f8f9fc' }}>
+                  <form className="space-y-2">
+                    <div>
+                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Imię i nazwisko</label>
+                      <input
+                        type="text"
+                        value={formState.name}
+                        onChange={(e) => setFormState({...formState, name: e.target.value})}
+                        className="w-full px-3 py-2 rounded-lg border border-[#D6E4FF] bg-white text-[#0B0F2E] text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
+                        placeholder="Jan Kowalski"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Email</label>
+                      <input
+                        type="email"
+                        value={formState.email}
+                        onChange={(e) => setFormState({...formState, email: e.target.value})}
+                        className="w-full px-3 py-2 rounded-lg border border-[#D6E4FF] bg-white text-[#0B0F2E] text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
+                        placeholder="jan@firma.pl"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Telefon (opcjonalnie)</label>
+                      <input
+                        type="tel"
+                        value={formState.phone}
+                        onChange={(e) => setFormState({...formState, phone: e.target.value})}
+                        className="w-full px-3 py-2 rounded-lg border border-[#D6E4FF] bg-white text-[#0B0F2E] text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
+                        placeholder="+48 000 000 000"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Wiadomość</label>
+                      <textarea
+                        value={formState.message}
+                        onChange={(e) => setFormState({...formState, message: e.target.value})}
+                        rows={2}
+                        className="w-full px-4 py-2 rounded-xl border border-[#D6E4FF] bg-white text-[#0B0F2E] focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all resize-none"
+                        style={{ minHeight: '50px', maxHeight: '50px' }}
+                        placeholder="Opisz swój projekt..."
+                      />
+                    </div>
+                    <Ripple className="w-full py-2.5 bg-[#2E4AAD] text-white text-sm font-medium flex items-center justify-center gap-2">
+                      <Send className="w-4 h-4" />
+                      Wyślij wiadomość
+                    </Ripple>
+                  </form>
+
+                  {/* Contact info */}
+                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid #e0e4ea' }}>
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-3">
+                        <Mail className="w-4 h-4 flex-shrink-0" style={{ color: '#7B9BDB' }} />
+                        <span className="text-sm" style={{ color: '#0B0F2E' }}>contact@infinityteam.io</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Phone className="w-4 h-4 flex-shrink-0" style={{ color: '#7B9BDB' }} />
+                        <span className="text-sm" style={{ color: '#0B0F2E' }}>+48 123 456 789</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <MapPin className="w-4 h-4 flex-shrink-0" style={{ color: '#7B9BDB' }} />
+                        <span className="text-sm" style={{ color: '#0B0F2E' }}>Zamość, woj. lubelskie, Polska</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: '#EEF2FF' }}>
+                        <Shield className="w-3.5 h-3.5" style={{ color: '#2E4AAD' }} />
+                        <span className="text-[11px] font-medium" style={{ color: '#2E4AAD' }}>SSL Secured</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: '#EEF2FF' }}>
+                        <Shield className="w-3.5 h-3.5" style={{ color: '#2E4AAD' }} />
+                        <span className="text-[11px] font-medium" style={{ color: '#2E4AAD' }}>RODO/GDPR</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: '#EEF2FF' }}>
+                        <Shield className="w-3.5 h-3.5" style={{ color: '#2E4AAD' }} />
+                        <span className="text-[11px] font-medium" style={{ color: '#2E4AAD' }}>ISO 27001</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right — Map */}
+            <FadeIn delay={0.4} className="h-full">
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
+                  <p className="text-[13px] uppercase tracking-widest text-white/50">Gdzie nas znajdziesz</p>
+                </div>
+                <div className="flex-1">
+                  <iframe
+                    src="https://maps.google.com/maps?ll=50.7167,23.2525&z=16&t=m&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, minHeight: '300px' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Lokalizacja Infinity Tech"
+                  />
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1248,9 +1229,7 @@ export default function LandingPage() {
           <FAQSection />
         </div>
         
-        <ContactSection />
-        
-        <CTASection />
+        <ContactCTASection />
       </main>
 
       <Footer />
