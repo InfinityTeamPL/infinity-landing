@@ -482,6 +482,8 @@ function TeamSection2() {
 function BenefitsSection() {
   return (
     <section className="pt-6 pb-24 relative overflow-hidden" style={{ backgroundColor: '#050B1F' }}>
+      {/* Bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-40 z-[2]" style={{ background: 'linear-gradient(to bottom, transparent 0%, #0A1628 100%)' }} />
       {/* Animated blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="blob-1 absolute rounded-full" style={{ width: '300px', height: '300px', background: '#4F6AE8', opacity: 0.05, filter: 'blur(80px)', top: '10%', left: '-5%' }} />
@@ -1283,7 +1285,7 @@ export default function LandingPage() {
           <BenefitsSection />
         </div>
 
-        <ParticleDivider fromColor="#050B1F" toColor="#0A1628" />
+        <ParticleDivider fromColor="#0A1628" toColor="#0A1628" />
 
         <TechBentoSection />
 
