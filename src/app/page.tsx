@@ -301,7 +301,7 @@ function HeroSection() {
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute left-1/2 -translate-x-1/2 min-w-[250%] min-h-full md:min-w-full md:w-full md:left-0 md:translate-x-0 object-cover z-0 bottom-0 md:top-0 md:bottom-auto"
       >
         <source
           src="/hero-section.mp4"
@@ -312,11 +312,14 @@ function HeroSection() {
       {/* Blue overlay */}
       <div className="absolute inset-0 bg-[#0B0F2E]/60 mix-blend-multiply z-[1]" />
 
+      {/* Bottom fade — blends video into dark section below */}
+      <div className="absolute inset-x-0 bottom-0 h-40 z-[2]" style={{ background: 'linear-gradient(to bottom, transparent 0%, #0B0F2E 100%)' }} />
+
       {/* Centered content */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-3xl mx-auto px-6 py-12 text-center">
         <div className="text-xs sm:text-sm md:text-xl tracking-wider md:tracking-widest uppercase mb-4 px-2 text-[#8BB8E8]" style={{ fontFamily: 'var(--font-geist)' }}>
           <SplitText
-            text="Rewolucja AI już trwa — Twoja konkurencja nie śpi"
+            text="Rewolucja AI już trwa — konkurencja nie śpi"
             tag="span"
             className="inline"
             duration={1}
@@ -853,7 +856,7 @@ function TechnologySection() {
       <Aurora colorStops={['#2E4AAD', '#7B9BDB', '#2E4AAD']} speed={0.8} blend={0.3} amplitude={1.2} />
       <Particles quantity={30} color="#7B9BDB" speed={0.5} />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <FadeIn>
             <div className="inline-block px-4 py-2 rounded-full bg-[#7B9BDB]/20 text-[#D6E4FF] text-sm font-medium mb-4">
               Nasz silnik AI

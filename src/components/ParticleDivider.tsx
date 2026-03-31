@@ -79,7 +79,7 @@ export default function ParticleDivider({
   }, []);
 
   return (
-    <div className="relative w-full" style={{ height: '150px' }}>
+    <div className="relative w-full h-[100px] md:h-[150px]">
       <div
         className="absolute inset-0"
         style={{
