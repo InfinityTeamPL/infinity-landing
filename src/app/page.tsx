@@ -57,6 +57,7 @@ import ROICalculator from '@/components/ROICalculator';
 import ChatWidget from '@/components/ChatWidget';
 import StarBorder from '@/components/StarBorder';
 import ClickSpark from '@/components/react-bits/ClickSpark';
+import ParticleDivider from '@/components/ParticleDivider';
 import dynamic from 'next/dynamic';
 const StaggeredMenu = dynamic(() => import('@/components/StaggeredMenu'), { ssr: false });
 
@@ -301,10 +302,9 @@ function HeroSection() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ filter: 'hue-rotate(120deg) saturate(1.4) brightness(0.7)' }}
       >
         <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4"
+          src="/hero-section.mp4"
           type="video/mp4"
         />
       </video>
@@ -385,28 +385,28 @@ function HeroSection() {
     </section>
 
     {/* Ambient transition */}
-    <div className="h-24 bg-gradient-to-b from-[#0B0F2E] to-white" />
+    <ParticleDivider fromColor="#0B0F2E" toColor="#0A1628" />
     </>
   );
 }
 
 function StatsSection() {
   return (
-    <section className="pt-8 pb-16 bg-white">
+    <section className="pt-8 pb-16" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {STATS.map((stat, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <div className="text-center">
-                <stat.icon className="w-8 h-8 mx-auto mb-3 text-[#2E4AAD]" />
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">
+                <stat.icon className="w-8 h-8 mx-auto mb-3 text-[#7B9BDB]" />
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 text-white">
                   {/^\d+$/.test(stat.value) ? (
                     <AnimatedCounter end={parseInt(stat.value)} suffix={stat.suffix} />
                   ) : (
                     <span>{stat.value}{stat.suffix}</span>
                   )}
                 </div>
-                <div className="text-xs sm:text-sm text-[#7B9BDB]">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-white/50">{stat.label}</div>
               </div>
             </FadeIn>
           ))}
@@ -429,14 +429,14 @@ function TeamSection2() {
   ];
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#D6E4FF' }}>
+    <section className="py-20" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0B0F2E' }}>
-              Nasz <span style={{ color: '#4F6AE8' }}>Zespół</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+              Nasz <span style={{ color: '#7B9BDB' }}>Zespół</span>
             </h2>
-            <p style={{ color: '#7B9BDB' }}>Ludzie, którzy stoją za Infinity Tech</p>
+            <p className="text-white/50">Ludzie, którzy stoją za Infinity Tech</p>
           </div>
         </FadeIn>
 
@@ -468,20 +468,20 @@ function TeamSection2() {
 
 function BenefitsSection() {
   return (
-    <section className="pt-6 pb-24 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #D6E4FF 0%, #c8d4f0 100%)' }}>
+    <section className="pt-6 pb-24 relative overflow-hidden" style={{ backgroundColor: '#050B1F' }}>
       {/* Animated blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="blob-1 absolute rounded-full" style={{ width: '300px', height: '300px', background: '#4F6AE8', opacity: 0.08, filter: 'blur(60px)', top: '10%', left: '-5%' }} />
-        <div className="blob-2 absolute rounded-full" style={{ width: '250px', height: '250px', background: '#7B5CCC', opacity: 0.06, filter: 'blur(60px)', top: '50%', right: '-3%' }} />
-        <div className="blob-3 absolute rounded-full" style={{ width: '280px', height: '280px', background: '#5B9BD5', opacity: 0.07, filter: 'blur(60px)', bottom: '-10%', left: '30%' }} />
+        <div className="blob-1 absolute rounded-full" style={{ width: '300px', height: '300px', background: '#4F6AE8', opacity: 0.05, filter: 'blur(80px)', top: '10%', left: '-5%' }} />
+        <div className="blob-2 absolute rounded-full" style={{ width: '250px', height: '250px', background: '#7B5CCC', opacity: 0.04, filter: 'blur(80px)', top: '50%', right: '-3%' }} />
+        <div className="blob-3 absolute rounded-full" style={{ width: '280px', height: '280px', background: '#5B9BD5', opacity: 0.04, filter: 'blur(80px)', bottom: '-10%', left: '30%' }} />
       </div>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0B0F2E' }}>
-              Dlaczego <span style={{ color: '#4F6AE8' }}>Infinity Tech?</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+              Dlaczego <span style={{ color: '#7B9BDB' }}>Infinity Tech?</span>
             </h2>
-            <p className="text-xl" style={{ color: '#7B9BDB' }}>Dostarczamy rozwiązania dopasowane do Twojej firmy</p>
+            <p className="text-xl text-white/50">Dostarczamy rozwiązania dopasowane do Twojej firmy</p>
           </div>
         </FadeIn>
 
@@ -571,12 +571,12 @@ function BenefitsSection() {
 
 function TeamSection() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#0B0F2E]">Poznaj Nasz Zespół</h2>
-            <p className="text-xl text-[#7B9BDB] max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Poznaj Nasz Zespół</h2>
+            <p className="text-xl text-white/50 max-w-2xl mx-auto">
               Eksperci AI z wieloletnim doświadczeniem w transformacji cyfrowej przedsiębiorstw
             </p>
           </div>
@@ -602,12 +602,12 @@ function TeamSection() {
 
 function ServicesSection() {
   return (
-    <section className="pt-24 pb-6" style={{ backgroundColor: '#D6E4FF' }}>
+    <section className="pt-24 pb-6" style={{ backgroundColor: '#050B1F' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Co <ShinyText text="robimy" /></h2>
-            <p className="text-xl" style={{ color: '#7B9BDB' }}>Cztery filary automatyzacji Twojej firmy</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Co <ShinyText text="robimy" /></h2>
+            <p className="text-xl text-white/50">Cztery filary automatyzacji Twojej firmy</p>
           </div>
         </FadeIn>
 
@@ -637,7 +637,7 @@ function TechBentoSection() {
   const allChannels = [...CHANNELS, ...CHANNELS, ...CHANNELS];
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#0B0F2E' }}>
+    <section className="py-20" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
@@ -662,7 +662,7 @@ function TechBentoSection() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: '#e8ecf4', minHeight: '140px' }}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #0f1729, #1a2040)', minHeight: '140px' }}>
               <div className="absolute top-5 right-5 z-10">
                 <div className="tech-ping">
                   <div className="tech-ping-ring" />
@@ -671,7 +671,7 @@ function TechBentoSection() {
               </div>
               <div className="relative z-10 flex flex-col justify-end h-full">
                 <h3 className="text-xl font-extrabold tracking-wide mb-1" style={{ color: '#D50C2D' }}>HETZNER</h3>
-                <p style={{ color: '#7B9BDB' }}>Cloud Infrastructure</p>
+                <p className="text-white/60">Cloud Infrastructure</p>
               </div>
             </div>
           </FadeIn>
@@ -719,25 +719,25 @@ function TechBentoSection() {
 
           {/* Row 3: Channels (full width) */}
           <FadeIn delay={0.3} className="md:col-span-3">
-            <div className="tech-tile relative overflow-hidden rounded-2xl py-10" style={{ background: '#D6E4FF' }}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl py-10" style={{ background: 'linear-gradient(135deg, #0f1729, #1a1f3a)' }}>
               <div className="px-8 mb-6 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#0B0F2E' }}>23+ kanałów komunikacji</h3>
-                <p className="text-base" style={{ color: '#7B9BDB' }}>Twój agent AI działa tam, gdzie Ty i Twoi klienci</p>
+                <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">23+ kanałów komunikacji</h3>
+                <p className="text-base text-white/60">Twój agent AI działa tam, gdzie Ty i Twoi klienci</p>
               </div>
               <Marquee speed={25} pauseOnHover={true} direction="right" className="py-2">
                 {allChannels.map((ch, i) => (
                   <div key={i} className="flex items-center gap-2 mx-4 whitespace-nowrap">
                     {ch.name === 'Slack' ? (
-                      <svg className="flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="#0B0F2E"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.124 2.521a2.528 2.528 0 0 1 2.52-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.52V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zm-2.521 10.124a2.528 2.528 0 0 1 2.521 2.52A2.528 2.528 0 0 1 15.166 24a2.528 2.528 0 0 1-2.521-2.522v-2.52h2.521zm0-1.271a2.528 2.528 0 0 1-2.521-2.521 2.528 2.528 0 0 1 2.521-2.521h6.312A2.528 2.528 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/></svg>
+                      <svg className="flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="#7B9BDB"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.124 2.521a2.528 2.528 0 0 1 2.52-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.52V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zm-2.521 10.124a2.528 2.528 0 0 1 2.521 2.52A2.528 2.528 0 0 1 15.166 24a2.528 2.528 0 0 1-2.521-2.522v-2.52h2.521zm0-1.271a2.528 2.528 0 0 1-2.521-2.521 2.528 2.528 0 0 1 2.521-2.521h6.312A2.528 2.528 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.521h-6.312z"/></svg>
                     ) : ch.name === 'MS Teams' ? (
-                      <svg className="flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="#0B0F2E"><path d="M20.625 8.5h-1.5V6.25a1.875 1.875 0 0 0-1.875-1.875h-.375a2.625 2.625 0 1 0-3.75-1.453V4.5H9.75A1.875 1.875 0 0 0 7.875 6.375V13.5a1.875 1.875 0 0 0 1.875 1.875h5.625A1.875 1.875 0 0 0 17.25 13.5v-.75h1.5a1.125 1.125 0 0 0 1.125-1.125v-2A1.125 1.125 0 0 0 20.625 8.5zM17.25 3.375a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25zM6 8.5H2.25A1.125 1.125 0 0 0 1.125 9.625v4.5A1.125 1.125 0 0 0 2.25 15.25h1.5v2.625a.375.375 0 0 0 .638.265L6.75 15.25H7.5V9.625A1.125 1.125 0 0 0 6 8.5z"/></svg>
+                      <svg className="flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="#7B9BDB"><path d="M20.625 8.5h-1.5V6.25a1.875 1.875 0 0 0-1.875-1.875h-.375a2.625 2.625 0 1 0-3.75-1.453V4.5H9.75A1.875 1.875 0 0 0 7.875 6.375V13.5a1.875 1.875 0 0 0 1.875 1.875h5.625A1.875 1.875 0 0 0 17.25 13.5v-.75h1.5a1.125 1.125 0 0 0 1.125-1.125v-2A1.125 1.125 0 0 0 20.625 8.5zM17.25 3.375a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25zM6 8.5H2.25A1.125 1.125 0 0 0 1.125 9.625v4.5A1.125 1.125 0 0 0 2.25 15.25h1.5v2.625a.375.375 0 0 0 .638.265L6.75 15.25H7.5V9.625A1.125 1.125 0 0 0 6 8.5z"/></svg>
                     ) : ch.icon ? (
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img src={ch.icon} alt={ch.name} width={18} height={18} className="flex-shrink-0" />
                     ) : (
                       <span className="w-[18px] h-[18px] rounded-full flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0" style={{ backgroundColor: '#4F6AE8' }}>{ch.name.charAt(0)}</span>
                     )}
-                    <span className="font-medium text-sm" style={{ color: '#0B0F2E' }}>{ch.name}</span>
+                    <span className="font-medium text-sm text-white/80">{ch.name}</span>
                   </div>
                 ))}
               </Marquee>
@@ -753,12 +753,12 @@ function TechBentoSection() {
 // Sekcja OpenClaw social proof — Raycast milestones + quotes
 function OpenClawSection() {
   return (
-    <section className="py-24" style={{ backgroundColor: '#D6E4FF' }}>
+    <section className="py-24" style={{ backgroundColor: '#050B1F' }}>
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-14">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Budujemy na technologii, która zmieniła reguły gry</h2>
-            <p style={{ color: '#7B9BDB' }}>OpenClaw — od weekendowego projektu do #1 na GitHubie w 60 dni</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">Budujemy na technologii, która zmieniła reguły gry</h2>
+            <p className="text-white/50">OpenClaw — od weekendowego projektu do #1 na GitHubie w 60 dni</p>
           </div>
         </FadeIn>
 
@@ -838,7 +838,7 @@ function OpenClawSection() {
         </div>
 
         <FadeIn delay={0.9}>
-          <p className="text-center text-sm" style={{ color: '#6B6B80' }}>
+          <p className="text-center text-sm text-white/40">
             🦞 Infinity Tech jest oficjalnym partnerem wdrożeniowym OpenClaw w Polsce.
           </p>
         </FadeIn>
@@ -849,7 +849,7 @@ function OpenClawSection() {
 
 function TechnologySection() {
   return (
-    <section className="py-24 bg-gradient-to-br from-[#0B0F2E] via-[#1A2461] to-[#0B0F2E] text-white relative overflow-hidden">
+    <section className="py-24 text-white relative overflow-hidden" style={{ backgroundColor: '#0A1628' }}>
       <Aurora colorStops={['#2E4AAD', '#7B9BDB', '#2E4AAD']} speed={0.8} blend={0.3} amplitude={1.2} />
       <Particles quantity={30} color="#7B9BDB" speed={0.5} />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -952,7 +952,7 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24" style={{ background: 'linear-gradient(180deg, #0f1a3c, #1a2a5c)' }}>
+    <section className="py-24" style={{ backgroundColor: '#0A1628' }}>
       <div className="max-w-[800px] mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
@@ -993,14 +993,14 @@ function ContactCTASection() {
   const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
 
   return (
-    <section id="kontakt" style={{ backgroundColor: '#D6E4FF' }}>
+    <section id="kontakt" style={{ backgroundColor: '#050B1F' }}>
 
       <div>
         {/* Header */}
         <div className="text-center pt-20 pb-12 px-6">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#0B0F2E' }}>Gotowy na Transformację?</h2>
-            <p className="text-xl max-w-2xl mx-auto" style={{ color: '#7B9BDB' }}>Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Gotowy na Transformację?</h2>
+            <p className="text-xl max-w-2xl mx-auto text-white/50">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
           </FadeIn>
         </div>
 
@@ -1009,49 +1009,49 @@ function ContactCTASection() {
           <div className="grid lg:grid-cols-2 gap-5 items-stretch">
             {/* Left — Form */}
             <FadeIn delay={0.2} className="h-full">
-              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(46,74,173,0.15)' }}>
-                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(46,74,173,0.08)' }}>
-                  <p className="text-[13px] uppercase tracking-widest" style={{ color: '#2E4AAD' }}>Napisz do nas</p>
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(123,155,219,0.15)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(123,155,219,0.08)' }}>
+                  <p className="text-[13px] uppercase tracking-widest text-[#7B9BDB]">Napisz do nas</p>
                 </div>
-                <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: '#f8f9fc' }}>
+                <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: 'rgba(10,22,40,0.8)' }}>
                   <form className="space-y-2">
                     <div>
-                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Imię i nazwisko</label>
+                      <label className="block text-xs font-medium text-white/70 mb-1">Imię i nazwisko</label>
                       <input
                         type="text"
                         value={formState.name}
                         onChange={(e) => setFormState({...formState, name: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-[#D6E4FF] bg-white text-[#0B0F2E] text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
+                        className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30"
                         placeholder="Jan Kowalski"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Email</label>
+                      <label className="block text-xs font-medium text-white/70 mb-1">Email</label>
                       <input
                         type="email"
                         value={formState.email}
                         onChange={(e) => setFormState({...formState, email: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-[#D6E4FF] bg-white text-[#0B0F2E] text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
+                        className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30"
                         placeholder="jan@firma.pl"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Telefon (opcjonalnie)</label>
+                      <label className="block text-xs font-medium text-white/70 mb-1">Telefon (opcjonalnie)</label>
                       <input
                         type="tel"
                         value={formState.phone}
                         onChange={(e) => setFormState({...formState, phone: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-[#D6E4FF] bg-white text-[#0B0F2E] text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all"
+                        className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30"
                         placeholder="+48 000 000 000"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-[#0B0F2E] mb-1">Wiadomość</label>
+                      <label className="block text-xs font-medium text-white/70 mb-1">Wiadomość</label>
                       <textarea
                         value={formState.message}
                         onChange={(e) => setFormState({...formState, message: e.target.value})}
                         rows={2}
-                        className="w-full px-4 py-2 rounded-xl border border-[#D6E4FF] bg-white text-[#0B0F2E] focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB] outline-none transition-all resize-none"
+                        className="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all resize-none placeholder:text-white/30"
                         style={{ minHeight: '50px', maxHeight: '50px' }}
                         placeholder="Opisz swój projekt..."
                       />
@@ -1063,33 +1063,33 @@ function ContactCTASection() {
                   </form>
 
                   {/* Contact info */}
-                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid #e0e4ea' }}>
+                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-3">
-                        <Mail className="w-4 h-4 flex-shrink-0" style={{ color: '#7B9BDB' }} />
-                        <span className="text-sm" style={{ color: '#0B0F2E' }}>contact@infinityteam.io</span>
+                        <Mail className="w-4 h-4 flex-shrink-0 text-[#7B9BDB]" />
+                        <span className="text-sm text-white/70">contact@infinityteam.io</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Phone className="w-4 h-4 flex-shrink-0" style={{ color: '#7B9BDB' }} />
-                        <span className="text-sm" style={{ color: '#0B0F2E' }}>+48 123 456 789</span>
+                        <Phone className="w-4 h-4 flex-shrink-0 text-[#7B9BDB]" />
+                        <span className="text-sm text-white/70">+48 123 456 789</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <MapPin className="w-4 h-4 flex-shrink-0" style={{ color: '#7B9BDB' }} />
-                        <span className="text-sm" style={{ color: '#0B0F2E' }}>Zamość, woj. lubelskie, Polska</span>
+                        <MapPin className="w-4 h-4 flex-shrink-0 text-[#7B9BDB]" />
+                        <span className="text-sm text-white/70">Zamość, woj. lubelskie, Polska</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-3">
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: '#EEF2FF' }}>
-                        <Shield className="w-3.5 h-3.5" style={{ color: '#2E4AAD' }} />
-                        <span className="text-[11px] font-medium" style={{ color: '#2E4AAD' }}>SSL Secured</span>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: 'rgba(46,74,173,0.15)' }}>
+                        <Shield className="w-3.5 h-3.5 text-[#7B9BDB]" />
+                        <span className="text-[11px] font-medium text-[#7B9BDB]">SSL Secured</span>
                       </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: '#EEF2FF' }}>
-                        <Shield className="w-3.5 h-3.5" style={{ color: '#2E4AAD' }} />
-                        <span className="text-[11px] font-medium" style={{ color: '#2E4AAD' }}>RODO/GDPR</span>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: 'rgba(46,74,173,0.15)' }}>
+                        <Shield className="w-3.5 h-3.5 text-[#7B9BDB]" />
+                        <span className="text-[11px] font-medium text-[#7B9BDB]">RODO/GDPR</span>
                       </div>
-                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: '#EEF2FF' }}>
-                        <Shield className="w-3.5 h-3.5" style={{ color: '#2E4AAD' }} />
-                        <span className="text-[11px] font-medium" style={{ color: '#2E4AAD' }}>ISO 27001</span>
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: 'rgba(46,74,173,0.15)' }}>
+                        <Shield className="w-3.5 h-3.5 text-[#7B9BDB]" />
+                        <span className="text-[11px] font-medium text-[#7B9BDB]">ISO 27001</span>
                       </div>
                     </div>
                   </div>
@@ -1099,9 +1099,9 @@ function ContactCTASection() {
 
             {/* Right — Map */}
             <FadeIn delay={0.4} className="h-full">
-              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(46,74,173,0.15)' }}>
-                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(46,74,173,0.08)' }}>
-                  <p className="text-[13px] uppercase tracking-widest" style={{ color: '#2E4AAD' }}>Gdzie nas znajdziesz</p>
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(123,155,219,0.15)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(123,155,219,0.08)' }}>
+                  <p className="text-[13px] uppercase tracking-widest text-[#7B9BDB]">Gdzie nas znajdziesz</p>
                 </div>
                 <div className="flex-1">
                   <iframe
@@ -1126,7 +1126,7 @@ function ContactCTASection() {
 
 function Footer() {
   return (
-    <footer className="py-16 bg-[#0B0F2E] text-white">
+    <footer className="py-16 text-white" style={{ backgroundColor: '#050B1F' }}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div>
@@ -1135,13 +1135,13 @@ function Footer() {
               Tworzymy przyszłość biznesu z AI. Automatyzujemy, optymalizujemy, transformujemy.
             </p>
             <div className="flex gap-3">
-              <a href="https://x.com/InfinityTech_PL" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
+              <a href="https://x.com/InfinityTech_PL" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
                 <XIcon className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/company/infinitytechgroup/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
+              <a href="https://www.linkedin.com/company/infinitytechgroup/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:contact@infinityteam.io" className="w-10 h-10 rounded-full bg-[#1A2461] flex items-center justify-center hover:bg-[#2E4AAD] transition-colors">
+              <a href="mailto:contact@infinityteam.io" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -1181,7 +1181,7 @@ function Footer() {
               <input
                 type="email"
                 placeholder="Twój email"
-                className="flex-1 px-4 py-3 rounded-l-lg bg-[#1A2461] border border-[#1A2461] text-white outline-none focus:border-[#2E4AAD]"
+                className="flex-1 px-4 py-3 rounded-l-lg bg-white/5 border border-white/10 text-white outline-none focus:border-[#2E4AAD]"
               />
               <button className="px-4 py-3 bg-[#2E4AAD] rounded-r-lg hover:bg-[#1A2461] transition-colors">
                 <ArrowRight className="w-5 h-5" />
@@ -1190,7 +1190,7 @@ function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-[#1A2461] flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#7B9BDB] text-sm">© 2026 Infinity Tech. Wszelkie prawa zastrzeżone.</p>
           <div className="flex gap-6 text-sm text-[#7B9BDB]">
             <a href="#" className="hover:text-white transition-colors">Polityka Prywatności</a>
@@ -1225,7 +1225,7 @@ export default function LandingPage() {
 
   return (
     <ClickSpark sparkColor="#7B9BDB" sparkSize={12} sparkRadius={20} sparkCount={8} duration={500}>
-    <div className="min-h-screen bg-white text-[#0B0F2E]">
+    <div className="min-h-screen bg-[#050B1F] text-white">
       {/* Navigation - StaggeredMenu */}
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 50, pointerEvents: 'none' }}>
         <StaggeredMenu
@@ -1251,61 +1251,49 @@ export default function LandingPage() {
         <div id="start">
           <HeroSection />
         </div>
-        
+
         <StatsSection />
+
+        <ParticleDivider fromColor="#0A1628" toColor="#050B1F" />
 
         <div id="uslugi">
           <ServicesSection />
         </div>
 
+        <ParticleDivider fromColor="#050B1F" toColor="#0A1628" />
+
         <TeamSection2 />
+
+        <ParticleDivider fromColor="#0A1628" toColor="#050B1F" />
 
         <div id="o-nas">
           <BenefitsSection />
         </div>
-        
-        {/* TODO: włącz Video Demo Section gdy będzie gotowe prawdziwe wideo */}
-        {/*
-        <section className="py-24 bg-[#D6E4FF]">
-          <div className="max-w-6xl mx-auto px-6">
-            <FadeIn>
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#0B0F2E]">Zobacz jak działamy</h2>
-                <p className="text-[#7B9BDB]">Krótki film prezentujący nasze rozwiązania AI</p>
-              </div>
-            </FadeIn>
 
-            <FadeIn delay={0.2}>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-[#0B0F2E]">
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0"
-                  title="Infinity Tech Demo"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-        */}
-        
-        {/* TODO: włącz TeamSection gdy będą gotowe prawdziwe dane zespołu */}
-        {/* <TeamSection /> */}
-        
+        <ParticleDivider fromColor="#050B1F" toColor="#0A1628" />
+
         <TechBentoSection />
-        
+
+        <ParticleDivider fromColor="#0A1628" toColor="#050B1F" />
+
         <OpenClawSection />
-        
+
+        <ParticleDivider fromColor="#050B1F" toColor="#0A1628" />
+
         <TechnologySection />
-        
+
+        <ParticleDivider fromColor="#0A1628" toColor="#050B1F" />
+
         <ContactCTASection />
+
+        <ParticleDivider fromColor="#050B1F" toColor="#0A1628" />
 
         <div id="faq">
           <FAQSection />
         </div>
       </main>
 
+      <ParticleDivider fromColor="#0A1628" toColor="#050B1F" />
       <Footer />
       
       <ChatWidget />
