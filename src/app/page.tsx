@@ -330,7 +330,7 @@ function HeroSection() {
       <div className="relative z-10 flex flex-col w-full" style={{ height: '100vh' }}>
         {/* Centered content */}
         <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl mx-auto px-6 py-12 text-center">
-          <div className="text-xs sm:text-sm md:text-xl tracking-wider md:tracking-widest uppercase mb-4 px-2 text-[#8BB8E8]" style={{ fontFamily: 'var(--font-geist)' }}>
+          <div className="text-[0.6rem] sm:text-xs md:text-sm lg:text-xl tracking-wider md:tracking-widest uppercase mb-4 px-4 text-[#8BB8E8] whitespace-nowrap" style={{ fontFamily: 'var(--font-geist)' }}>
             <SplitText
               text="Rewolucja AI już trwa — konkurencja nie śpi"
               tag="span"
@@ -1259,10 +1259,7 @@ export default function LandingPage() {
   const menuItems: { label: string; ariaLabel: string; link: string }[] = [
     { label: 'Start', ariaLabel: 'Przejdź do sekcji start', link: '#start' },
     { label: 'O nas', ariaLabel: 'Dowiedz się więcej o nas', link: '#o-nas' },
-    { label: 'Agenci AI', ariaLabel: 'Zobacz naszych agentów AI', link: '/agents' },
     { label: 'Usługi', ariaLabel: 'Zobacz nasze usługi', link: '#uslugi' },
-    { label: 'Blog', ariaLabel: 'Przeczytaj naszego bloga', link: '/blog' },
-    { label: 'Case Studies', ariaLabel: 'Zobacz case studies', link: '/case-studies' },
     { label: 'Kalkulator ROI', ariaLabel: 'Oblicz ROI automatyzacji', link: '/kalkulator' },
     { label: 'FAQ', ariaLabel: 'Częste pytania', link: '#faq' },
     { label: 'Kontakt', ariaLabel: 'Skontaktuj się z nami', link: '#kontakt' }
