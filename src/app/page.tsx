@@ -437,10 +437,10 @@ function TeamSection2() {
   const team = [
     { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior.jpg', bio: 'Wizjoner i strateg z doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
     { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski.png', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Tomasz Pędzierski', title: 'CTO & Security', handle: 'cto', avatar: 'https://i.pravatar.cc/400?img=14', bio: 'Architekt systemów AI z doświadczeniem w cyberbezpieczeństwie.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Artur Seredziuk', title: 'Lead Developer', handle: 'leaddev', avatar: 'https://i.pravatar.cc/400?img=33', bio: 'Full-stack developer specjalizujący się w OpenClaw i integracji API.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Tobias Guanyi Du', title: 'AI Engineer', handle: 'aiengineer', avatar: 'https://i.pravatar.cc/400?img=12', bio: 'Projektuje i trenuje agentów AI, optymalizuje modele językowe pod klienta.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Kevin', title: 'Product Designer', handle: 'designer', avatar: 'https://i.pravatar.cc/400?img=25', bio: 'Tworzy interfejsy dashboardów AI i doświadczenia użytkownika.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Tomasz Pędzierski', title: 'Business Development Manager', handle: 'bizdev', avatar: '/images/tomasz-pedzierski.jpg', bio: 'Zarządza rozwojem biznesu i buduje relacje z klientami enterprise.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Artur Seredziuk', title: 'Sales Manager', handle: 'account', avatar: 'https://i.pravatar.cc/400?img=33', bio: 'Zarządza relacjami z klientami i koordynuje wdrożenia AI.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: 'https://i.pravatar.cc/400?img=12', bio: 'Full-stack developer specjalizujący się w OpenClaw i integracji API.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Kevin', title: 'Marketing & Growth', handle: 'marketing', avatar: 'https://i.pravatar.cc/400?img=25', bio: 'Odpowiada za strategię marketingową i wzrost organiczny.', glow: matteGlow, gradient: matteGradient },
   ];
 
   return (
@@ -878,7 +878,7 @@ function OpenClawSection() {
                   </div>
                   <div className="flex items-center gap-2.5 mt-4 relative z-[2]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={avatars[i]} alt="avatar" width={40} height={40} className="rounded-full flex-shrink-0" style={{ border: '2px solid rgba(255,255,255,0.15)' }} />
+                    <img src={avatars[i]} alt="avatar" width={40} height={40} className="rounded-full flex-shrink-0" style={{ border: '2px solid rgba(255,255,255,0.15)', filter: 'brightness(0.8) saturate(0.3) sepia(0.2) hue-rotate(190deg)' }} />
                     <span className="text-sm font-semibold" style={{ color: '#F5EDE4' }}>{item.author}</span>
                   </div>
                 </div>
