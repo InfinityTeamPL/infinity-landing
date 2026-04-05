@@ -436,11 +436,11 @@ function TeamSection2() {
   const matteGradient = 'linear-gradient(145deg, #0A1628 0%, #152040 100%)';
   const team = [
     { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior.jpg', bio: 'Wizjoner i strateg z doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski.png', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Tomasz Pędzierski', title: 'Business Development Manager', handle: 'bizdev', avatar: '/images/tomasz-pedzierski.jpg', bio: 'Zarządza rozwojem biznesu i buduje relacje z klientami enterprise.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Artur Seredziuk', title: 'Sales Manager', handle: 'account', avatar: '/images/artur-seredziuk.png', bio: 'Zarządza relacjami z klientami i koordynuje wdrożenia AI.', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
-    { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: 'https://i.pravatar.cc/400?img=12', bio: 'Full-stack developer specjalizujący się w OpenClaw i integracji API.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Kevin', title: 'Marketing & Growth', handle: 'marketing', avatar: 'https://i.pravatar.cc/400?img=25', bio: 'Odpowiada za strategię marketingową i wzrost organiczny.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: 'https://i.pravatar.cc/400?img=52', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Tomasz Pędzierski', title: 'Co-Founder', handle: 'bizdev', avatar: '/images/tomasz-pedzierski.jpg', bio: 'Współzałożyciel Infinity Tech, buduje relacje z klientami enterprise i rozwija nowe partnerstwa biznesowe.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Artur Seredziuk', title: 'Co-Founder', handle: 'account', avatar: '/images/artur-seredziuk.png', bio: 'Współzałożyciel Infinity Tech, odpowiada za sprzedaż i pozyskiwanie klientów.', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
+    { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: 'https://i.pravatar.cc/400?img=57', bio: 'Odpowiada za implementację i rozwój techniczny agentów AI.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Kevin Kanak', title: 'Head of European Expansion', handle: 'expansion', avatar: '/images/kevin-kanak.png', bio: 'Odpowiada za ekspansję Infinity Tech na rynki Europy Centralnej.', glow: matteGlow, gradient: matteGradient },
   ];
 
   return (
