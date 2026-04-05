@@ -11,7 +11,7 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
   const sorted = [...processes].sort((a, b) => b.annualSavings - a.annualSavings);
 
   return (
-    <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}>
+    <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="p-5 pb-3">
         <h3 className="text-lg font-bold" style={{ color: '#fff' }}>
           Rozbicie oszczędności per proces

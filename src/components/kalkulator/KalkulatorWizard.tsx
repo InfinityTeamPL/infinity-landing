@@ -164,13 +164,12 @@ export default function KalkulatorWizard() {
       </div>
 
       {/* Nawigacja dolna */}
-      {state.currentStep < 3 && (
-        <div className="flex items-center justify-between mt-10 mb-6">
+      <div className="flex items-center justify-between mt-10 mb-6">
+        {state.currentStep > 0 ? (
           <button
             type="button"
             onClick={() => goTo(state.currentStep - 1)}
-            disabled={state.currentStep === 0}
-            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-6 py-3 rounded-xl text-sm font-semibold transition-all"
             style={{
               backgroundColor: 'rgba(123,155,219,0.1)',
               color: '#fff',
@@ -179,19 +178,21 @@ export default function KalkulatorWizard() {
           >
             Wstecz
           </button>
+        ) : <div />}
 
-          {/* Mini-podsumowanie (kroki 1-2) */}
-          {state.currentStep > 0 && state.currentStep < 3 && enabledCount > 0 && (
-            <div className="hidden md:flex items-center gap-4 text-sm" style={{ color: '#7B9BDB' }}>
-              <span>
-                Szacowane oszczędności:{' '}
-                <strong style={{ color: '#2E4AAD' }}>
-                  {Math.round(results.totalAnnualSavings).toLocaleString('pl-PL')} zł/rok
-                </strong>
-              </span>
-            </div>
-          )}
+        {/* Mini-podsumowanie (kroki 1-2) */}
+        {state.currentStep > 0 && state.currentStep < 3 && enabledCount > 0 && (
+          <div className="hidden md:flex items-center gap-4 text-sm" style={{ color: '#7B9BDB' }}>
+            <span>
+              Szacowane oszczędności:{' '}
+              <strong style={{ color: '#2E4AAD' }}>
+                {Math.round(results.totalAnnualSavings).toLocaleString('pl-PL')} zł/rok
+              </strong>
+            </span>
+          </div>
+        )}
 
+        {state.currentStep < 3 && (
           <button
             type="button"
             onClick={() => goTo(state.currentStep + 1)}
@@ -205,8 +206,8 @@ export default function KalkulatorWizard() {
           >
             {state.currentStep === 2 ? 'Oblicz ROI' : 'Dalej'}
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

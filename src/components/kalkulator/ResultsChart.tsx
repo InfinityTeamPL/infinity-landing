@@ -32,7 +32,7 @@ export default function ResultsChart({ processes }: ResultsChartProps) {
     <div
       ref={ref}
       className="rounded-2xl p-5 md:p-6"
-      style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
+      style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
     >
       <h3 className="text-lg font-bold mb-1" style={{ color: '#fff' }}>
         Obecne koszty vs. po automatyzacji

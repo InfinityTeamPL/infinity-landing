@@ -57,10 +57,11 @@ export default function ProcessConfigStep({
               key={category.id}
               className="rounded-2xl overflow-hidden transition-all"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.8)',
+                background: isExpanded ? 'rgba(10,22,40,0.8)' : 'rgba(10,22,40,0.4)',
+                backdropFilter: 'blur(12px)',
                 border: isExpanded
-                  ? `2px solid ${category.color}30`
-                  : '2px solid rgba(228,230,221,0.3)',
+                  ? `1px solid ${category.color}40`
+                  : '1px solid rgba(255,255,255,0.06)',
               }}
             >
               {/* Nagłówek */}
@@ -131,7 +132,7 @@ export default function ProcessConfigStep({
                             employeeCount: Math.min(500, Math.max(1, Number(e.target.value) || 1)),
                           })
                         }
-                        className="w-20 text-center py-1.5 rounded-lg text-sm font-bold border"
+                        className="w-20 text-center py-1.5 rounded-lg text-sm font-bold border bg-transparent"
                         style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#fff' }}
                       />
                       <button

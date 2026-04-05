@@ -25,9 +25,10 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
       <div
         className="rounded-2xl p-6 md:p-8 space-y-6"
         style={{
-          backgroundColor: 'rgba(255,255,255,0.8)',
-          border: '2px solid rgba(228,230,221,0.3)',
-          boxShadow: '0 4px 30px rgba(0,0,0,0.05)',
+          background: 'rgba(10,22,40,0.6)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255,255,255,0.06)',
+          boxShadow: '0 4px 30px rgba(0,0,0,0.3)',
         }}
       >
         {/* Nazwa firmy */}
@@ -42,7 +43,7 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
             value={profile.companyName}
             onChange={(e) => onUpdate({ companyName: e.target.value })}
             placeholder="np. ABC Sp. z o.o."
-            className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-colors focus:border-[#2E4AAD]"
+            className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-transparent transition-colors focus:border-[#2E4AAD]"
             style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#fff' }}
           />
         </div>
@@ -56,7 +57,7 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
             value={profile.industry}
             onChange={(e) => onUpdate({ industry: e.target.value })}
             className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-transparent transition-colors focus:border-[#2E4AAD]"
-            style={{ borderColor: 'rgba(123,155,219,0.2)', color: profile.industry ? '#0B0F2E' : '#999' }}
+            style={{ borderColor: 'rgba(123,155,219,0.2)', color: profile.industry ? '#fff' : 'rgba(255,255,255,0.4)' }}
           >
             <option value="">Wybierz branżę...</option>
             {INDUSTRIES.map((ind) => (
@@ -104,7 +105,7 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
             value={profile.email}
             onChange={(e) => onUpdate({ email: e.target.value })}
             placeholder="jan@firma.pl"
-            className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-colors focus:border-[#2E4AAD]"
+            className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-transparent transition-colors focus:border-[#2E4AAD]"
             style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#fff' }}
           />
         </div>
