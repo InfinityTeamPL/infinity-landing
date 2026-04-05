@@ -435,20 +435,20 @@ function TeamSection2() {
   const matteGlow = 'rgba(79,106,232,0.3)';
   const matteGradient = 'linear-gradient(145deg, #0A1628 0%, #152040 100%)';
   const team = [
-    { name: 'Imię Nazwisko', title: 'CEO & Founder', handle: 'ceo', avatar: 'https://i.pravatar.cc/400?img=68', bio: 'Wizjoner i strateg z 10-letnim doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Imię Nazwisko', title: 'Business Development', handle: 'bizdev', avatar: 'https://i.pravatar.cc/400?img=52', bio: 'Buduje relacje z klientami enterprise i rozwija partnerstwa strategiczne.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Imię Nazwisko', title: 'CTO & Security', handle: 'cto', avatar: 'https://i.pravatar.cc/400?img=14', bio: 'Architekt systemów AI z certyfikacją ISO 27001 i doświadczeniem w cyberbezpieczeństwie.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Imię Nazwisko', title: 'Lead Developer', handle: 'leaddev', avatar: 'https://i.pravatar.cc/400?img=33', bio: 'Full-stack developer specjalizujący się w OpenClaw i integracji API.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Imię Nazwisko', title: 'AI Engineer', handle: 'aiengineer', avatar: 'https://i.pravatar.cc/400?img=12', bio: 'Projektuje i trenuje agentów AI, optymalizuje modele językowe pod klienta.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Imię Nazwisko', title: 'Product Designer', handle: 'designer', avatar: 'https://i.pravatar.cc/400?img=25', bio: 'Tworzy interfejsy dashboardów AI i doświadczenia użytkownika.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior.jpg', bio: 'Wizjoner i strateg z doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski.png', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Tomasz Pędzierski', title: 'CTO & Security', handle: 'cto', avatar: 'https://i.pravatar.cc/400?img=14', bio: 'Architekt systemów AI z doświadczeniem w cyberbezpieczeństwie.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Artur Seredziuk', title: 'Lead Developer', handle: 'leaddev', avatar: 'https://i.pravatar.cc/400?img=33', bio: 'Full-stack developer specjalizujący się w OpenClaw i integracji API.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Tobias Guanyi Du', title: 'AI Engineer', handle: 'aiengineer', avatar: 'https://i.pravatar.cc/400?img=12', bio: 'Projektuje i trenuje agentów AI, optymalizuje modele językowe pod klienta.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Kevin', title: 'Product Designer', handle: 'designer', avatar: 'https://i.pravatar.cc/400?img=25', bio: 'Tworzy interfejsy dashboardów AI i doświadczenia użytkownika.', glow: matteGlow, gradient: matteGradient },
   ];
 
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-10 items-center">
+      <div className="max-w-[82rem] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-center">
           {/* Left — cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
             {team.map((person, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <ProfileCard

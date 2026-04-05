@@ -88,7 +88,10 @@
 .pc-avatar-content { mix-blend-mode: luminosity; overflow: visible; transform: translateZ(2px); backface-visibility: hidden; }
 
 .pc-avatar-content .avatar {
-  width: 90%;
+  width: 88%;
+  height: 68%;
+  object-fit: cover;
+  object-position: center 20%;
   position: absolute;
   left: 50%;
   transform-origin: 50% 100%;
@@ -98,6 +101,9 @@
   filter: brightness(0.8) saturate(0.3) sepia(0.2) hue-rotate(190deg);
   will-change: transform;
   transition: transform 120ms ease-out;
+  border-radius: 8px 8px 0 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
 }
 
 .pc-user-info {
@@ -142,16 +148,17 @@
   z-index: 5; mix-blend-mode: normal;
 }
 
-.pc-details { width: 100%; position: absolute; top: 0.8em; display: flex; flex-direction: column; }
-.pc-details h3 { font-weight: 600; margin: 0; font-size: min(3.5svh, 1.6em); color: #fff; }
-.pc-details p { font-weight: 600; position: relative; top: -4px; white-space: nowrap; font-size: 12px; margin: 0 auto; width: min-content; color: #7B9BDB; }
+.pc-details { width: 100%; position: absolute; top: 0.6em; display: flex; flex-direction: column; padding: 0 0.6em; z-index: 10; }
+.pc-details h3 { font-weight: 600; margin: 0; font-size: min(2.6svh, 1.05em); color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-details p { font-weight: 600; position: relative; top: -1px; white-space: nowrap; font-size: 10px; margin: 0; color: #7B9BDB; }
 
 .pc-bio {
   display: block;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 400;
-  color: rgba(255,255,255,0.5);
-  -webkit-text-fill-color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+  color: rgba(255,255,255,0.6);
+  -webkit-text-fill-color: rgba(255,255,255,0.6);
   background-image: none;
   text-align: center;
   padding: 0 0.8em;
