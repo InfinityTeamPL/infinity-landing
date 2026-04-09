@@ -169,7 +169,8 @@ const SERVICES = [
     accentColor: '#7B9BDB',
     featured: true,
     badgeText: 'Wkrótce',
-    buttonText: 'Zapisz się na waitlist'
+    buttonText: 'Zapisz się na waitlist',
+    waitlistMode: true
   }
 ];
 
@@ -711,6 +712,7 @@ function ServicesSection() {
                 featured={service.featured}
                 badgeText={(service as any).badgeText}
                 buttonText={(service as any).buttonText}
+                waitlistMode={(service as any).waitlistMode}
               />
             </FadeIn>
           ))}

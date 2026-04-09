@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Send } from 'lucide-react';
 
 interface TiltedCardProps {
   tierLabel?: string;
@@ -15,6 +15,7 @@ interface TiltedCardProps {
   featured?: boolean;
   badgeText?: string;
   buttonText?: string;
+  waitlistMode?: boolean;
 }
 
 export default function TiltedCard({
@@ -28,9 +29,40 @@ export default function TiltedCard({
   featured = false,
   badgeText,
   buttonText,
+  waitlistMode = false,
 }: TiltedCardProps) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
+  const [waitlistStep, setWaitlistStep] = useState<'idle' | 'input' | 'submitting' | 'done' | 'error'>('idle');
+  const [waitlistEmail, setWaitlistEmail] = useState('');
+  const [waitlistError, setWaitlistError] = useState<string | null>(null);
+
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const email = waitlistEmail.trim();
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) return;
+
+    setWaitlistStep('submitting');
+    setWaitlistError(null);
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: `${tierLabel || title} waitlist` }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || 'Nie udało się wysłać zgłoszenia');
+      }
+
+      setWaitlistStep('done');
+    } catch (err) {
+      setWaitlistError(err instanceof Error ? err.message : 'Spróbuj ponownie');
+      setWaitlistStep('error');
+    }
+  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
@@ -138,17 +170,88 @@ export default function TiltedCard({
             )}
           </div>
 
-          <a
-            href="#kontakt"
-            className="mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all"
-            style={{
-              backgroundColor: 'transparent',
-              color: accentColor,
-              border: `2px solid ${accentColor}`,
-            }}
-          >
-            {buttonText || (features && features.length > 0 ? `Wybierz ${title}` : 'Dowiedz się więcej')}
-          </a>
+          {waitlistMode ? (
+            waitlistStep === 'idle' ? (
+              <button
+                type="button"
+                onClick={() => setWaitlistStep('input')}
+                className="mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all hover:brightness-125"
+                style={{
+                  backgroundColor: 'transparent',
+                  color: accentColor,
+                  border: `2px solid ${accentColor}`,
+                }}
+              >
+                {buttonText || 'Zapisz się na waitlist'}
+              </button>
+            ) : waitlistStep === 'input' || waitlistStep === 'submitting' || waitlistStep === 'error' ? (
+              <div className="mt-5">
+                <form
+                  onSubmit={handleWaitlistSubmit}
+                  className="flex items-center gap-2 rounded-full pr-1 pl-4 py-1 transition-all"
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: `2px solid ${accentColor}`,
+                    opacity: waitlistStep === 'submitting' ? 0.7 : 1,
+                  }}
+                >
+                  <input
+                    type="email"
+                    required
+                    autoFocus
+                    disabled={waitlistStep === 'submitting'}
+                    value={waitlistEmail}
+                    onChange={(e) => setWaitlistEmail(e.target.value)}
+                    placeholder="twoj@email.pl"
+                    className="flex-1 bg-transparent text-sm text-white placeholder:text-white/30 outline-none min-w-0 disabled:cursor-not-allowed"
+                  />
+                  <button
+                    type="submit"
+                    disabled={waitlistStep === 'submitting'}
+                    aria-label="Zapisz się"
+                    className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all hover:brightness-125 disabled:cursor-not-allowed"
+                    style={{ backgroundColor: accentColor, color: '#0A1628' }}
+                  >
+                    {waitlistStep === 'submitting' ? (
+                      <span
+                        className="w-4 h-4 rounded-full border-2 border-t-transparent animate-spin"
+                        style={{ borderColor: '#0A1628', borderTopColor: 'transparent' }}
+                      />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
+                </form>
+                {waitlistStep === 'error' && waitlistError && (
+                  <p className="mt-2 text-xs text-center text-red-400">{waitlistError}</p>
+                )}
+              </div>
+            ) : (
+              <div
+                className="mt-5 flex items-center justify-center gap-2 w-full py-3 rounded-full text-center font-semibold text-sm"
+                style={{
+                  backgroundColor: 'transparent',
+                  color: accentColor,
+                  border: `2px solid ${accentColor}`,
+                }}
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Dziękujemy! Odezwiemy się.</span>
+              </div>
+            )
+          ) : (
+            <a
+              href="#kontakt"
+              className="mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all"
+              style={{
+                backgroundColor: 'transparent',
+                color: accentColor,
+                border: `2px solid ${accentColor}`,
+              }}
+            >
+              {buttonText || (features && features.length > 0 ? `Wybierz ${title}` : 'Dowiedz się więcej')}
+            </a>
+          )}
         </div>
       </div>
     </div>
