@@ -690,7 +690,7 @@ function TeamSection() {
 
 function ServicesSection() {
   return (
-    <section className="pt-24 pb-6">
+    <section className="pt-12 md:pt-24 pb-6">
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
@@ -699,9 +699,9 @@ function ServicesSection() {
           </div>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
           {SERVICES.map((service, i) => (
-            <FadeIn key={i} delay={i * 0.15}>
+            <FadeIn key={i} delay={i * 0.15} className="h-full">
               <TiltedCard
                 tierLabel={service.tierLabel}
                 title={service.title}

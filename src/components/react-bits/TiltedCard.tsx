@@ -198,7 +198,7 @@ export default function TiltedCard({
                   <input
                     type="email"
                     required
-                    autoFocus
+                    autoFocus={typeof window !== 'undefined' && window.innerWidth >= 768}
                     disabled={waitlistStep === 'submitting'}
                     value={waitlistEmail}
                     onChange={(e) => setWaitlistEmail(e.target.value)}
