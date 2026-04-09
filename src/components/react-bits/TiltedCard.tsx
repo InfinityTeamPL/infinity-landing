@@ -84,7 +84,19 @@ export default function TiltedCard({
       className={cn('perspective-1000 h-full', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      style={{ position: 'relative' }}
     >
+      {/* Glow behind card */}
+      <div
+        className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(ellipse at 50% 0%, ${accentColor}55 0%, transparent 70%)`,
+          filter: 'blur(18px)',
+          transform: 'translateY(8px) scaleX(0.85)',
+          opacity: rotation.x !== 0 || rotation.y !== 0 ? 0.9 : 0.5,
+          zIndex: 0,
+        }}
+      />
       <div
         className={cn(
           'relative overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
@@ -93,15 +105,23 @@ export default function TiltedCard({
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
-          borderColor: 'rgba(123,155,219,0.12)',
-          backgroundColor: '#0A1628',
+          borderColor: `${accentColor}55`,
+          background: `linear-gradient(160deg, ${accentColor}18 0%, #0A1628 45%, #060d1f 100%)`,
+          backdropFilter: 'blur(12px)',
+          zIndex: 1,
         }}
       >
+
+        {/* Subtle top shine */}
+        <div
+          className="absolute inset-x-0 top-0 h-px pointer-events-none"
+          style={{ background: `linear-gradient(90deg, transparent, ${accentColor}99, transparent)` }}
+        />
 
         {/* Branded header */}
         <div
           className="relative h-14 w-full flex-shrink-0 overflow-hidden"
-          style={{ backgroundColor: accentColor }}
+          style={{ background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}cc 100%)` }}
         >
           {/* Decorative circles */}
           <div
