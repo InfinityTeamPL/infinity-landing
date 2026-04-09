@@ -251,10 +251,10 @@ const TESTIMONIALS = [
 
 // OpenClaw quotes — rotating carousel
 const QUOTE_AVATARS: Record<string, string> = {
-  'Jensen Huang': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jen-Hsun_Huang_2025.jpg/250px-Jen-Hsun_Huang_2025.jpg',
-  'Sam Altman': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Sam_Altman_CropEdit.jpg/250px-Sam_Altman_CropEdit.jpg',
-  'Peter Steinberger': 'https://avatars.githubusercontent.com/steipete',
-  'Mustafa Suleyman': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Mustafa_Suleyman_photo_%28cropped%29.jpg/250px-Mustafa_Suleyman_photo_%28cropped%29.jpg',
+  'Jensen Huang': '/images/jensen-huang.jpg',
+  'Sam Altman': '/images/sam-altman.jpg',
+  'Peter Steinberger': '/images/peter-steinberger.jpg',
+  'Mustafa Suleyman': '/images/mustafa-suleyman.jpg',
 };
 
 const OPENCLAW_QUOTES = [
