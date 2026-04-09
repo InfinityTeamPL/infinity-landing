@@ -90,10 +90,10 @@ export default function TiltedCard({
       <div
         className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
         style={{
-          background: `radial-gradient(ellipse at 50% 0%, ${accentColor}55 0%, transparent 70%)`,
-          filter: 'blur(18px)',
-          transform: 'translateY(8px) scaleX(0.85)',
-          opacity: rotation.x !== 0 || rotation.y !== 0 ? 0.9 : 0.5,
+          background: `radial-gradient(ellipse at 50% 10%, ${accentColor}cc 0%, transparent 65%)`,
+          filter: 'blur(28px)',
+          transform: 'translateY(12px) scaleX(0.9)',
+          opacity: rotation.x !== 0 || rotation.y !== 0 ? 1 : 0.75,
           zIndex: 0,
         }}
       />
@@ -105,17 +105,17 @@ export default function TiltedCard({
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
-          borderColor: `${accentColor}55`,
-          background: `linear-gradient(160deg, ${accentColor}18 0%, #0A1628 45%, #060d1f 100%)`,
+          borderColor: `${accentColor}99`,
+          background: `linear-gradient(160deg, ${accentColor}40 0%, #0d1a35 50%, #060d1f 100%)`,
           backdropFilter: 'blur(12px)',
           zIndex: 1,
         }}
       >
 
-        {/* Subtle top shine */}
+        {/* Top shine */}
         <div
-          className="absolute inset-x-0 top-0 h-px pointer-events-none"
-          style={{ background: `linear-gradient(90deg, transparent, ${accentColor}99, transparent)` }}
+          className="absolute inset-x-0 top-0 h-[2px] pointer-events-none"
+          style={{ background: `linear-gradient(90deg, transparent, ${accentColor}ee, transparent)` }}
         />
 
         {/* Branded header */}
