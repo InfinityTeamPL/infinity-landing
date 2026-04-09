@@ -192,18 +192,39 @@ export default function TiltedCard({
 
           {waitlistMode ? (
             waitlistStep === 'idle' ? (
-              <button
-                type="button"
-                onClick={() => setWaitlistStep('input')}
-                className="mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all hover:brightness-125"
-                style={{
-                  backgroundColor: 'transparent',
-                  color: accentColor,
-                  border: `2px solid ${accentColor}`,
-                }}
-              >
-                {buttonText || 'Zapisz się na waitlist'}
-              </button>
+              <>
+                <style>{`
+                  @keyframes silverShimmer {
+                    0% { background-position: -200% center; }
+                    100% { background-position: 200% center; }
+                  }
+                  .silver-shimmer-text {
+                    background: linear-gradient(90deg, #7a90a8 0%, #b8cfe0 25%, #ffffff 50%, #b8cfe0 75%, #7a90a8 100%);
+                    background-size: 200% auto;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    animation: silverShimmer 2.5s linear infinite;
+                  }
+                  .waitlist-btn:hover .silver-shimmer-text {
+                    animation-duration: 1.2s;
+                  }
+                `}</style>
+                <button
+                  type="button"
+                  onClick={() => setWaitlistStep('input')}
+                  className="waitlist-btn mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.04)',
+                    border: '2px solid rgba(180,200,230,0.5)',
+                    boxShadow: '0 0 12px rgba(180,210,255,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
+                  }}
+                >
+                  <span className="silver-shimmer-text">
+                    {buttonText || 'Zapisz się na waitlist'}
+                  </span>
+                </button>
+              </>
             ) : waitlistStep === 'input' || waitlistStep === 'submitting' || waitlistStep === 'error' ? (
               <div className="mt-5">
                 <form
