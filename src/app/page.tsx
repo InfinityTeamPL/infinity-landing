@@ -1122,6 +1122,30 @@ function FAQSection() {
 
 function ContactCTASection() {
   const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
+  const [submitState, setSubmitState] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (submitState === 'submitting') return;
+    setSubmitState('submitting');
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || 'Nie udało się wysłać wiadomości');
+      }
+      setSubmitState('done');
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Spróbuj ponownie');
+      setSubmitState('error');
+    }
+  };
 
   return (
     <section id="kontakt">
@@ -1145,53 +1169,79 @@ function ContactCTASection() {
                   <p className="text-[13px] uppercase tracking-widest text-[#7B9BDB]">Napisz do nas</p>
                 </div>
                 <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: 'rgba(10,22,40,0.8)' }}>
-                  <form className="space-y-2">
-                    <div>
-                      <label className="block text-xs font-medium text-white/70 mb-1">Imię i nazwisko</label>
-                      <input
-                        type="text"
-                        value={formState.name}
-                        onChange={(e) => setFormState({...formState, name: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30"
-                        placeholder="Jan Kowalski"
-                      />
+                  {submitState === 'done' ? (
+                    <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
+                      <CheckCircle2 className="w-10 h-10 text-[#2E4AAD]" />
+                      <p className="text-white font-semibold text-lg">Wiadomość wysłana!</p>
+                      <p className="text-white/50 text-sm">Odezwiemy się najszybciej jak to możliwe. Sprawdź też skrzynkę email — wysłaliśmy potwierdzenie.</p>
                     </div>
-                    <div>
-                      <label className="block text-xs font-medium text-white/70 mb-1">Email</label>
-                      <input
-                        type="email"
-                        value={formState.email}
-                        onChange={(e) => setFormState({...formState, email: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30"
-                        placeholder="jan@firma.pl"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-white/70 mb-1">Telefon (opcjonalnie)</label>
-                      <input
-                        type="tel"
-                        value={formState.phone}
-                        onChange={(e) => setFormState({...formState, phone: e.target.value})}
-                        className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30"
-                        placeholder="+48 000 000 000"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-white/70 mb-1">Wiadomość</label>
-                      <textarea
-                        value={formState.message}
-                        onChange={(e) => setFormState({...formState, message: e.target.value})}
-                        rows={2}
-                        className="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all resize-none placeholder:text-white/30"
-                        style={{ minHeight: '50px', maxHeight: '50px' }}
-                        placeholder="Opisz swój projekt..."
-                      />
-                    </div>
-                    <Ripple className="w-full py-2.5 bg-[#2E4AAD] text-white text-sm font-medium flex items-center justify-center gap-2">
-                      <Send className="w-4 h-4" />
-                      Wyślij wiadomość
-                    </Ripple>
-                  </form>
+                  ) : (
+                    <form className="space-y-2" onSubmit={handleSubmit}>
+                      <div>
+                        <label className="block text-xs font-medium text-white/70 mb-1">Imię i nazwisko</label>
+                        <input
+                          type="text"
+                          required
+                          disabled={submitState === 'submitting'}
+                          value={formState.name}
+                          onChange={(e) => setFormState({...formState, name: e.target.value})}
+                          className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30 disabled:opacity-60"
+                          placeholder="Jan Kowalski"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-white/70 mb-1">Email</label>
+                        <input
+                          type="email"
+                          required
+                          disabled={submitState === 'submitting'}
+                          value={formState.email}
+                          onChange={(e) => setFormState({...formState, email: e.target.value})}
+                          className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30 disabled:opacity-60"
+                          placeholder="jan@firma.pl"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-white/70 mb-1">Telefon (opcjonalnie)</label>
+                        <input
+                          type="tel"
+                          disabled={submitState === 'submitting'}
+                          value={formState.phone}
+                          onChange={(e) => setFormState({...formState, phone: e.target.value})}
+                          className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30 disabled:opacity-60"
+                          placeholder="+48 000 000 000"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-white/70 mb-1">Wiadomość</label>
+                        <textarea
+                          required
+                          disabled={submitState === 'submitting'}
+                          value={formState.message}
+                          onChange={(e) => setFormState({...formState, message: e.target.value})}
+                          rows={2}
+                          className="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all resize-none placeholder:text-white/30 disabled:opacity-60"
+                          style={{ minHeight: '50px', maxHeight: '50px' }}
+                          placeholder="Opisz swój projekt..."
+                        />
+                      </div>
+                      {submitState === 'error' && submitError && (
+                        <p className="text-xs text-red-400 text-center">{submitError}</p>
+                      )}
+                      <button
+                        type="submit"
+                        disabled={submitState === 'submitting'}
+                        className="w-full py-2.5 bg-[#2E4AAD] hover:bg-[#1A2461] text-white text-sm font-medium flex items-center justify-center gap-2 rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                      >
+                        {submitState === 'submitting' ? (
+                          <span className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                        ) : (
+                          <Send className="w-4 h-4" />
+                        )}
+                        {submitState === 'submitting' ? 'Wysyłanie…' : 'Wyślij wiadomość'}
+                      </button>
+                    </form>
+                  )}
 
                   {/* Contact info */}
                   <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
