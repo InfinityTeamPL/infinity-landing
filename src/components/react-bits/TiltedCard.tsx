@@ -198,26 +198,40 @@ export default function TiltedCard({
                     0% { background-position: -200% center; }
                     100% { background-position: 200% center; }
                   }
+                  @keyframes glowPulse {
+                    0%, 100% { box-shadow: 0 0 14px 2px rgba(180,210,255,0.35), 0 0 30px 4px rgba(140,180,255,0.18), inset 0 1px 0 rgba(255,255,255,0.15); }
+                    50% { box-shadow: 0 0 22px 6px rgba(180,210,255,0.6), 0 0 50px 10px rgba(140,180,255,0.3), inset 0 1px 0 rgba(255,255,255,0.2); }
+                  }
                   .silver-shimmer-text {
-                    background: linear-gradient(90deg, #7a90a8 0%, #b8cfe0 25%, #ffffff 50%, #b8cfe0 75%, #7a90a8 100%);
+                    background: linear-gradient(90deg, #94a8bc 0%, #d0e4f4 20%, #ffffff 50%, #d0e4f4 80%, #94a8bc 100%);
                     background-size: 200% auto;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
-                    animation: silverShimmer 2.5s linear infinite;
+                    animation: silverShimmer 1.8s linear infinite;
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    letter-spacing: 0.03em;
+                  }
+                  .waitlist-btn {
+                    animation: glowPulse 2.2s ease-in-out infinite;
+                  }
+                  .waitlist-btn:hover {
+                    transform: translateY(-1px);
+                    animation: none;
+                    box-shadow: 0 0 30px 8px rgba(180,210,255,0.7), 0 0 60px 16px rgba(140,180,255,0.35), inset 0 1px 0 rgba(255,255,255,0.25) !important;
                   }
                   .waitlist-btn:hover .silver-shimmer-text {
-                    animation-duration: 1.2s;
+                    animation-duration: 0.9s;
                   }
                 `}</style>
                 <button
                   type="button"
                   onClick={() => setWaitlistStep('input')}
-                  className="waitlist-btn mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all"
+                  className="waitlist-btn mt-5 block w-full py-3 rounded-full text-center transition-all"
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    border: '2px solid rgba(180,200,230,0.5)',
-                    boxShadow: '0 0 12px rgba(180,210,255,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
+                    background: 'linear-gradient(135deg, rgba(140,180,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(140,180,255,0.12) 100%)',
+                    border: '1.5px solid rgba(200,225,255,0.7)',
                   }}
                 >
                   <span className="silver-shimmer-text">
