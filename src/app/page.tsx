@@ -136,7 +136,7 @@ const SERVICES = [
   {
     title: 'OpenClaw Wrapper',
     tierLabel: 'WRAPPER',
-    description: 'To nasz główny produkt — gotowy agent AI „pod klucz" dla firm. Wdrażamy w 2-4 tygodnie kompletnego agenta AI, który pracuje autonomicznie 24/7 na dedykowanym serwerze, zintegrowanego z kanałami które już używasz — WhatsApp, Telegram, Slack, Discord i 20+ innych.',
+    description: 'Nasz główny produkt — gotowy agent AI „pod klucz", zbudowany na frameworku OpenClaw. Dopinamy go do kanałów, których już używasz (WhatsApp, Slack, Teams, Telegram, Discord i 23+ innych) i przekazujemy w pełni działający, autonomiczny system 24/7 na dedykowanym serwerze w Polsce.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
@@ -145,7 +145,7 @@ const SERVICES = [
   {
     title: 'Automatyzacja procesów',
     tierLabel: 'AUTOMATYZACJA',
-    description: 'Indywidualne wdrożenia AI pod konkretne procesy Twojej firmy — HR, sprzedaż, obsługa klienta, screening kandydatów, lead generation. Analizujemy Twoje procesy, znajdujemy wąskie gardła i wdrażamy automatyzację, która pracuje za Twój zespół.',
+    description: 'Wyspecjalizowani agenci AI dla działów HR, marketingu i sprzedaży — selekcja CV, onboarding, generowanie treści, kwalifikacja leadów, follow-upy. Przejmują powtarzalną pracę, żeby Twój zespół mógł zająć się tym, co naprawdę wymaga człowieka.',
     price: '',
     features: [],
     accentColor: '#2E4AAD',
@@ -154,7 +154,7 @@ const SERVICES = [
   {
     title: 'AI Consulting',
     tierLabel: 'CONSULTING',
-    description: 'Konsultacje, audyt procesów i strategia AI dla firm, które chcą zacząć ale nie wiedzą od czego. Pokażemy Ci gdzie AI zaoszczędzi Ci czas i pieniądze, oszacujemy ROI i przygotujemy plan wdrożenia krok po kroku.',
+    description: 'Dla firm, które chcą zacząć z AI, ale nie wiedzą od czego. Robimy audyt procesów, mapujemy quick-wins, kalkulujemy realny ROI i przygotowujemy konkretny plan wdrożenia krok po kroku — bez słownictwa „transformacji cyfrowej". Pierwsza konsultacja jest bezpłatna.',
     price: '',
     features: [],
     accentColor: '#4F6AE8',
@@ -163,7 +163,7 @@ const SERVICES = [
   {
     title: 'Desktop App',
     tierLabel: 'DESKTOP APP',
-    description: 'Aplikacja na desktop — wkrótce dostępna. Zapisz się na listę oczekujących, aby otrzymać dostęp jako pierwszy.',
+    description: 'Agent AI prosto na Twoim komputerze — pracuje lokalnie, łączy się z plikami i narzędziami, których używasz na co dzień. Aplikacja jest w przygotowaniu. Zapisz się na waitlist, żeby dostać dostęp w pierwszej fali.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
