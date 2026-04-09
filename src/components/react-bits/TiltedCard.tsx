@@ -106,7 +106,7 @@ export default function TiltedCard({
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
           borderColor: `${accentColor}99`,
-          background: `linear-gradient(160deg, ${accentColor}40 0%, #0d1a35 50%, #060d1f 100%)`,
+          background: `linear-gradient(160deg, ${accentColor}55 0%, #152240 40%, #0e1a30 100%)`,
           backdropFilter: 'blur(12px)',
           zIndex: 1,
         }}
