@@ -8,7 +8,7 @@ export interface NewsItem {
   title: string;
   excerpt: string;
   url: string;
-  source: 'HackerNews' | 'DevTo' | 'Guardian' | 'Arxiv';
+  source: 'TechCrunch' | 'TheVerge' | 'Wired' | 'DevTo' | 'Guardian' | 'Arxiv';
   publishedAt: string;
   image: string;
 }
@@ -21,7 +21,7 @@ interface CacheEntry {
 const CACHE_TTL_MS = 2 * 60 * 60 * 1000; // 2h
 const CACHE_FILE = join(tmpdir(), 'infinity-news-cache.json');
 
-// --- File-based cache (survives Vercel cold starts) ---
+// --- File-based cache ---
 
 function readCache(): CacheEntry | null {
   try {
@@ -39,8 +39,6 @@ function writeCache(entry: CacheEntry) {
   } catch {}
 }
 
-// --- In-memory cache (fast reads within same instance) ---
-
 let memCache: CacheEntry | null = null;
 
 function getCache(): CacheEntry | null {
@@ -55,94 +53,142 @@ function setCache(entry: CacheEntry) {
   writeCache(entry);
 }
 
+// --- RSS parser helper ---
+
+function parseRssItems(xml: string, source: NewsItem['source'], limit: number): Omit<NewsItem, 'excerpt'>[] {
+  const items = xml.match(/<item>([\s\S]*?)<\/item>/g) ?? [];
+  return items.slice(0, limit).map((item, i) => {
+    const title = (item.match(/<title><!\[CDATA\[([\s\S]*?)\]\]>/)?.[1]
+      ?? item.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '').trim();
+    const link = (item.match(/<link><!\[CDATA\[([\s\S]*?)\]\]>/)?.[1]
+      ?? item.match(/<link>([\s\S]*?)<\/link>/)?.[1] ?? '').trim();
+    const pubDate = (item.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1] ?? '').trim();
+
+    // Try to extract image from media:content, media:thumbnail, or enclosure
+    const image = (
+      item.match(/<media:content[^>]+url=["']([^"']+)["']/)?.[1]
+      ?? item.match(/<media:thumbnail[^>]+url=["']([^"']+)["']/)?.[1]
+      ?? item.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image/)?.[1]
+      ?? item.match(/<img[^>]+src=["']([^"']+)["']/)?.[1]
+      ?? ''
+    ).trim();
+
+    return {
+      id: `${source.toLowerCase()}-${i}`,
+      title,
+      url: link,
+      source,
+      publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString(),
+      image,
+    };
+  }).filter(item => item.title && item.url);
+}
+
 // --- API fetchers ---
 
-async function fetchHackerNews(): Promise<Omit<NewsItem, 'excerpt'>[]> {
-  const topIds: number[] = await fetch(
-    'https://hacker-news.firebaseio.com/v0/topstories.json',
-    { next: { revalidate: 0 }, signal: AbortSignal.timeout(8000) }
-  ).then(r => r.json());
-
-  const results: Omit<NewsItem, 'excerpt'>[] = [];
-  const AI_REGEX = /\bai\b|gpt|llm|openai|claude|anthropic|machine learning|neural|mistral|gemini|deepmind|language model/i;
-
-  for (let i = 0; i < Math.min(topIds.length, 200); i += 10) {
-    if (results.length >= 10) break;
-    const batch = await Promise.all(
-      topIds.slice(i, i + 10).map(id =>
-        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`, { signal: AbortSignal.timeout(5000) }).then(r => r.json())
-      )
-    );
-    const aiStories = batch.filter((item: any) =>
-      item?.title && AI_REGEX.test(item.title)
-    );
-    results.push(...aiStories.map((item: any) => ({
-      id: `hn-${item.id}`,
-      title: item.title as string,
-      url: (item.url as string) || `https://news.ycombinator.com/item?id=${item.id}`,
-      source: 'HackerNews' as const,
-      publishedAt: new Date(item.time * 1000).toISOString(),
-      image: '',
-    })));
+async function fetchTechCrunch(): Promise<Omit<NewsItem, 'excerpt'>[]> {
+  try {
+    const xml = await fetch(
+      'https://techcrunch.com/category/artificial-intelligence/feed/',
+      { signal: AbortSignal.timeout(8000) }
+    ).then(r => r.text());
+    return parseRssItems(xml, 'TechCrunch', 8);
+  } catch {
+    return [];
   }
-  return results.slice(0, 10);
+}
+
+async function fetchTheVerge(): Promise<Omit<NewsItem, 'excerpt'>[]> {
+  try {
+    const xml = await fetch(
+      'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml',
+      { signal: AbortSignal.timeout(8000) }
+    ).then(r => r.text());
+    return parseRssItems(xml, 'TheVerge', 6);
+  } catch {
+    return [];
+  }
+}
+
+async function fetchWired(): Promise<Omit<NewsItem, 'excerpt'>[]> {
+  try {
+    const xml = await fetch(
+      'https://www.wired.com/feed/tag/ai/latest/rss',
+      { signal: AbortSignal.timeout(8000) }
+    ).then(r => r.text());
+    return parseRssItems(xml, 'Wired', 6);
+  } catch {
+    return [];
+  }
 }
 
 async function fetchDevTo(): Promise<Omit<NewsItem, 'excerpt'>[]> {
-  const articles: any[] = await fetch(
-    'https://dev.to/api/articles?tag=ai&per_page=8&top=1',
-    { signal: AbortSignal.timeout(8000) }
-  ).then(r => r.json());
+  try {
+    const articles: any[] = await fetch(
+      'https://dev.to/api/articles?tag=ai&per_page=8&top=1',
+      { signal: AbortSignal.timeout(8000) }
+    ).then(r => r.json());
 
-  return articles.map((a: any) => ({
-    id: `devto-${a.id}`,
-    title: a.title as string,
-    url: a.url as string,
-    source: 'DevTo' as const,
-    publishedAt: a.published_at as string,
-    image: (a.cover_image as string) || (a.social_image as string) || '',
-  }));
+    return articles.map((a: any) => ({
+      id: `devto-${a.id}`,
+      title: a.title as string,
+      url: a.url as string,
+      source: 'DevTo' as const,
+      publishedAt: a.published_at as string,
+      image: (a.cover_image as string) || (a.social_image as string) || '',
+    }));
+  } catch {
+    return [];
+  }
 }
 
 async function fetchGuardian(): Promise<Omit<NewsItem, 'excerpt'>[]> {
   const key = process.env.GUARDIAN_API_KEY;
   if (!key) return [];
 
-  const data: any = await fetch(
-    `https://content.guardianapis.com/search?q=artificial+intelligence&api-key=${key}&page-size=8&order-by=newest&show-fields=thumbnail`,
-    { signal: AbortSignal.timeout(8000) }
-  ).then(r => r.json());
+  try {
+    const data: any = await fetch(
+      `https://content.guardianapis.com/search?q=artificial+intelligence&api-key=${key}&page-size=8&order-by=newest&show-fields=thumbnail`,
+      { signal: AbortSignal.timeout(8000) }
+    ).then(r => r.json());
 
-  return (data.response?.results ?? []).map((r: any) => ({
-    id: `guardian-${r.id}`,
-    title: r.webTitle as string,
-    url: r.webUrl as string,
-    source: 'Guardian' as const,
-    publishedAt: r.webPublicationDate as string,
-    image: (r.fields?.thumbnail as string) || '',
-  }));
+    return (data.response?.results ?? []).map((r: any) => ({
+      id: `guardian-${r.id}`,
+      title: r.webTitle as string,
+      url: r.webUrl as string,
+      source: 'Guardian' as const,
+      publishedAt: r.webPublicationDate as string,
+      image: (r.fields?.thumbnail as string) || '',
+    }));
+  } catch {
+    return [];
+  }
 }
 
 async function fetchArxiv(): Promise<Omit<NewsItem, 'excerpt'>[]> {
-  const xml = await fetch(
-    'https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=5',
-    { signal: AbortSignal.timeout(8000) }
-  ).then(r => r.text());
+  try {
+    const xml = await fetch(
+      'https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=5',
+      { signal: AbortSignal.timeout(8000) }
+    ).then(r => r.text());
 
-  const entries = xml.match(/<entry>([\s\S]*?)<\/entry>/g) ?? [];
-  return entries.map((entry, i) => {
-    const title = (entry.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '').trim().replace(/\s+/g, ' ');
-    const id = (entry.match(/<id>([\s\S]*?)<\/id>/)?.[1] ?? '').trim();
-    const published = (entry.match(/<published>([\s\S]*?)<\/published>/)?.[1] ?? '').trim();
-    return {
-      id: `arxiv-${i}`,
-      title,
-      url: id,
-      source: 'Arxiv' as const,
-      publishedAt: published,
-      image: '',
-    };
-  });
+    const entries = xml.match(/<entry>([\s\S]*?)<\/entry>/g) ?? [];
+    return entries.map((entry, i) => {
+      const title = (entry.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '').trim().replace(/\s+/g, ' ');
+      const id = (entry.match(/<id>([\s\S]*?)<\/id>/)?.[1] ?? '').trim();
+      const published = (entry.match(/<published>([\s\S]*?)<\/published>/)?.[1] ?? '').trim();
+      return {
+        id: `arxiv-${i}`,
+        title,
+        url: id,
+        source: 'Arxiv' as const,
+        publishedAt: published,
+        image: '',
+      };
+    });
+  } catch {
+    return [];
+  }
 }
 
 // --- OpenAI translation ---
@@ -193,20 +239,28 @@ ${items.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join(
 // --- Main cache logic ---
 
 async function fetchAndTranslate(): Promise<NewsItem[]> {
-  const [hn, devto, guardian, arxiv] = await Promise.allSettled([
-    fetchHackerNews(),
+  const [techcrunch, verge, wired, devto, guardian, arxiv] = await Promise.allSettled([
+    fetchTechCrunch(),
+    fetchTheVerge(),
+    fetchWired(),
     fetchDevTo(),
     fetchGuardian(),
     fetchArxiv(),
   ]);
 
   const rawItems = [
-    ...(hn.status === 'fulfilled' ? hn.value : []),
+    ...(techcrunch.status === 'fulfilled' ? techcrunch.value : []),
+    ...(verge.status === 'fulfilled' ? verge.value : []),
+    ...(wired.status === 'fulfilled' ? wired.value : []),
     ...(devto.status === 'fulfilled' ? devto.value : []),
     ...(guardian.status === 'fulfilled' ? guardian.value : []),
     ...(arxiv.status === 'fulfilled' ? arxiv.value : []),
   ];
 
+  // Sort by date (newest first)
+  rawItems.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+  // Deduplicate
   const seen = new Set<string>();
   const unique = rawItems.filter(item => {
     const key = item.title.toLowerCase().slice(0, 40);
@@ -215,11 +269,11 @@ async function fetchAndTranslate(): Promise<NewsItem[]> {
     return true;
   });
 
-  // Save raw (English) immediately so next request has data
+  // Save raw immediately
   const rawCached: NewsItem[] = unique.map(item => ({ ...item, excerpt: item.title }));
-  setCache({ data: rawCached, timestamp: Date.now() - CACHE_TTL_MS + 300000 }); // 5min temp TTL
+  setCache({ data: rawCached, timestamp: Date.now() - CACHE_TTL_MS + 300000 });
 
-  // Translate — replaces cache when done
+  // Translate
   const translated = await summarizeWithOpenAI(unique);
   setCache({ data: translated, timestamp: Date.now() });
 
@@ -231,19 +285,16 @@ let refreshing = false;
 export async function getNewsWithCache(): Promise<NewsItem[]> {
   const cached = getCache();
 
-  // Fresh cache — instant return
   if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
     return cached.data;
   }
 
-  // Stale cache — return immediately, refresh in background
   if (cached && !refreshing) {
     refreshing = true;
     fetchAndTranslate().finally(() => { refreshing = false; });
     return cached.data;
   }
 
-  // No cache at all — wait for fetch (only on very first request ever)
   if (!refreshing) {
     refreshing = true;
     try {
@@ -253,6 +304,5 @@ export async function getNewsWithCache(): Promise<NewsItem[]> {
     }
   }
 
-  // Another request while refreshing — return empty
   return [];
 }

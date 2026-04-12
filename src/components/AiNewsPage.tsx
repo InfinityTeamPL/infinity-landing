@@ -4,7 +4,7 @@
 import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import {
-  ExternalLink, TrendingUp, Code, Globe, BookOpen,
+  ExternalLink, Zap, Code, Globe, BookOpen, Cpu, Newspaper, TrendingUp,
   Search, Tag, Mail, Linkedin, Twitter, Youtube,
   ChevronDown,
 } from 'lucide-react';
@@ -15,14 +15,16 @@ import TextType from '@/components/react-bits/TextType';
 import type { NewsItem } from '@/lib/newsCache';
 
 const SOURCE_META = {
-  HackerNews: { label: 'HackerNews', Icon: TrendingUp, color: '#A78BFA' },
-  DevTo:       { label: 'Dev.to',     Icon: Code,        color: '#7B9BDB' },
-  Guardian:    { label: 'Guardian',   Icon: Globe,       color: '#4F6AE8' },
-  Arxiv:       { label: 'Arxiv',      Icon: BookOpen,    color: '#059669' },
+  TechCrunch:  { label: 'TechCrunch', Icon: Zap,         color: '#22C55E' },
+  TheVerge:    { label: 'The Verge',  Icon: Cpu,          color: '#A78BFA' },
+  Wired:       { label: 'Wired',      Icon: Newspaper,    color: '#F59E0B' },
+  DevTo:       { label: 'Dev.to',     Icon: Code,         color: '#7B9BDB' },
+  Guardian:    { label: 'Guardian',   Icon: Globe,        color: '#4F6AE8' },
+  Arxiv:       { label: 'Arxiv',      Icon: BookOpen,     color: '#059669' },
 } as const;
 
-type SourceFilter = 'Wszystkie' | 'HackerNews' | 'DevTo' | 'Guardian' | 'Arxiv';
-const FILTERS: SourceFilter[] = ['Wszystkie', 'HackerNews', 'DevTo', 'Guardian', 'Arxiv'];
+type SourceFilter = 'Wszystkie' | 'TechCrunch' | 'TheVerge' | 'Wired' | 'DevTo' | 'Guardian' | 'Arxiv';
+const FILTERS: SourceFilter[] = ['Wszystkie', 'TechCrunch', 'TheVerge', 'Wired', 'DevTo', 'Guardian', 'Arxiv'];
 
 const INITIAL_COUNT = 12;
 const HERO_INTERVAL_MS = 8000;
@@ -124,7 +126,7 @@ export default function AiNewsPage({ initialNews = [] }: AiNewsPageProps) {
         <TextType
           texts={[
             'Najnowsze wiadomości ze świata sztucznej inteligencji',
-            'Automatyczne newsy z HackerNews, Dev.to, Guardian i Arxiv',
+            'Automatyczne newsy z TechCrunch, The Verge, Wired i więcej',
             'Codziennie świeże treści — przetłumaczone na polski',
           ]}
           speed={40}
