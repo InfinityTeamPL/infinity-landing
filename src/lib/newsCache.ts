@@ -151,7 +151,7 @@ ${items.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join(
   }
 }
 
-async function refreshCache(): Promise<NewsItem[]> {
+async function fetchRawNews(): Promise<Omit<NewsItem, 'excerpt'>[]> {
   const [hn, devto, guardian, arxiv] = await Promise.allSettled([
     fetchHackerNews(),
     fetchDevTo(),
@@ -166,18 +166,29 @@ async function refreshCache(): Promise<NewsItem[]> {
     ...(arxiv.status === 'fulfilled' ? arxiv.value : []),
   ];
 
-  // Deduplicate by first 40 chars of title
   const seen = new Set<string>();
-  const unique = rawItems.filter(item => {
+  return rawItems.filter(item => {
     const key = item.title.toLowerCase().slice(0, 40);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   });
+}
 
-  const withSummaries = await summarizeWithOpenAI(unique);
-  newsCache.set(CACHE_KEY, { data: withSummaries, timestamp: Date.now() });
-  return withSummaries;
+async function refreshCache(): Promise<NewsItem[]> {
+  const unique = await fetchRawNews();
+
+  // Return raw items immediately (English) and translate in background
+  const rawNewsItems: NewsItem[] = unique.map(item => ({ ...item, excerpt: item.title }));
+  newsCache.set(CACHE_KEY, { data: rawNewsItems, timestamp: Date.now() - CACHE_TTL_MS + 300000 }); // expires in 5 min, translations replace it sooner
+
+  // Translate in background — don't block
+  summarizeWithOpenAI(unique).then(translated => {
+    newsCache.set(CACHE_KEY, { data: translated, timestamp: Date.now() });
+    console.log('[newsCache] Translations ready');
+  }).catch(() => {});
+
+  return rawNewsItems;
 }
 
 let refreshing = false;
