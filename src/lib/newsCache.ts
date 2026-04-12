@@ -130,7 +130,6 @@ ${items.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join(
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 3000,
-      timeout: 30000,
     });
     console.log('[newsCache] OpenAI responded successfully');
 
