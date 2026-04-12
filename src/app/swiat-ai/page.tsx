@@ -4,10 +4,11 @@ import Image from 'next/image';
 import { ArrowLeft, Mail, Phone, MapPin, Linkedin, Twitter, Youtube } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import AiNewsPage from '@/components/AiNewsPage';
+import { getNewsWithCache } from '@/lib/newsCache';
 
 const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr: false });
 
-export const revalidate = 7200;
+export const revalidate = 7200; // ISR: rebuild every 2h in background
 
 export const metadata: Metadata = {
   title: 'Świat AI | Infinity Tech',
@@ -19,10 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SwiatAiPage() {
+export default async function SwiatAiPage() {
+  const news = await getNewsWithCache();
+
   return (
     <div className="min-h-screen bg-[#0B0F2E] relative">
-      {/* Animated Floating Lines Background — hidden on mobile (WebGL too heavy) */}
+      {/* Animated Floating Lines Background — hidden on mobile */}
       <div className="fixed inset-0 w-full h-full pointer-events-none hidden md:block" style={{ zIndex: 0 }}>
         <FloatingLines
           enabledWaves={['top', 'middle', 'bottom']}
@@ -39,7 +42,7 @@ export default function SwiatAiPage() {
         />
       </div>
 
-      {/* Navigation — static, stays in hero only */}
+      {/* Navigation */}
       <nav className="relative z-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 md:gap-3">
@@ -53,9 +56,9 @@ export default function SwiatAiPage() {
         </div>
       </nav>
 
-      {/* AI News Content */}
+      {/* AI News Content — pre-rendered with data */}
       <div className="relative z-10">
-        <AiNewsPage />
+        <AiNewsPage initialNews={news} />
       </div>
 
       {/* Footer */}
