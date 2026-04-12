@@ -1,4 +1,7 @@
 import OpenAI from 'openai';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import { tmpdir } from 'os';
 
 export interface NewsItem {
   id: string;
@@ -16,8 +19,43 @@ interface CacheEntry {
 }
 
 const CACHE_TTL_MS = 2 * 60 * 60 * 1000; // 2h
-const CACHE_KEY = 'news-feed';
-const newsCache = new Map<string, CacheEntry>();
+const CACHE_FILE = join(tmpdir(), 'infinity-news-cache.json');
+
+// --- File-based cache (survives Vercel cold starts) ---
+
+function readCache(): CacheEntry | null {
+  try {
+    if (!existsSync(CACHE_FILE)) return null;
+    const raw = readFileSync(CACHE_FILE, 'utf-8');
+    return JSON.parse(raw) as CacheEntry;
+  } catch {
+    return null;
+  }
+}
+
+function writeCache(entry: CacheEntry) {
+  try {
+    writeFileSync(CACHE_FILE, JSON.stringify(entry), 'utf-8');
+  } catch {}
+}
+
+// --- In-memory cache (fast reads within same instance) ---
+
+let memCache: CacheEntry | null = null;
+
+function getCache(): CacheEntry | null {
+  if (memCache) return memCache;
+  const fileCache = readCache();
+  if (fileCache) memCache = fileCache;
+  return memCache;
+}
+
+function setCache(entry: CacheEntry) {
+  memCache = entry;
+  writeCache(entry);
+}
+
+// --- API fetchers ---
 
 async function fetchHackerNews(): Promise<Omit<NewsItem, 'excerpt'>[]> {
   const topIds: number[] = await fetch(
@@ -107,6 +145,8 @@ async function fetchArxiv(): Promise<Omit<NewsItem, 'excerpt'>[]> {
   });
 }
 
+// --- OpenAI translation ---
+
 async function summarizeWithOpenAI(
   items: Omit<NewsItem, 'excerpt'>[]
 ): Promise<NewsItem[]> {
@@ -124,14 +164,13 @@ Tytuły:
 ${items.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join('\n')}`;
 
   try {
-    console.log('[newsCache] Calling OpenAI to translate', items.length, 'items...');
+    console.log('[newsCache] Translating', items.length, 'items...');
     const response = await client.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
       max_tokens: 3000,
     });
-    console.log('[newsCache] OpenAI responded successfully');
 
     const parsed = JSON.parse(response.choices[0].message.content ?? '{}');
     const summaries: { id: string; title_pl: string; excerpt: string }[] = parsed.items ?? [];
@@ -146,12 +185,14 @@ ${items.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join(
       };
     });
   } catch (err) {
-    console.error('[newsCache] OpenAI summarize error:', err);
+    console.error('[newsCache] OpenAI error:', err);
     return items.map(item => ({ ...item, excerpt: item.title }));
   }
 }
 
-async function fetchRawNews(): Promise<Omit<NewsItem, 'excerpt'>[]> {
+// --- Main cache logic ---
+
+async function fetchAndTranslate(): Promise<NewsItem[]> {
   const [hn, devto, guardian, arxiv] = await Promise.allSettled([
     fetchHackerNews(),
     fetchDevTo(),
@@ -167,47 +208,51 @@ async function fetchRawNews(): Promise<Omit<NewsItem, 'excerpt'>[]> {
   ];
 
   const seen = new Set<string>();
-  return rawItems.filter(item => {
+  const unique = rawItems.filter(item => {
     const key = item.title.toLowerCase().slice(0, 40);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   });
-}
 
-async function refreshCache(): Promise<NewsItem[]> {
-  const unique = await fetchRawNews();
+  // Save raw (English) immediately so next request has data
+  const rawCached: NewsItem[] = unique.map(item => ({ ...item, excerpt: item.title }));
+  setCache({ data: rawCached, timestamp: Date.now() - CACHE_TTL_MS + 300000 }); // 5min temp TTL
 
-  // Return raw items immediately (English) and translate in background
-  const rawNewsItems: NewsItem[] = unique.map(item => ({ ...item, excerpt: item.title }));
-  newsCache.set(CACHE_KEY, { data: rawNewsItems, timestamp: Date.now() - CACHE_TTL_MS + 300000 }); // expires in 5 min, translations replace it sooner
+  // Translate — replaces cache when done
+  const translated = await summarizeWithOpenAI(unique);
+  setCache({ data: translated, timestamp: Date.now() });
 
-  // Translate in background — don't block
-  summarizeWithOpenAI(unique).then(translated => {
-    newsCache.set(CACHE_KEY, { data: translated, timestamp: Date.now() });
-    console.log('[newsCache] Translations ready');
-  }).catch(() => {});
-
-  return rawNewsItems;
+  return translated;
 }
 
 let refreshing = false;
 
 export async function getNewsWithCache(): Promise<NewsItem[]> {
-  const cached = newsCache.get(CACHE_KEY);
+  const cached = getCache();
 
-  // Fresh cache — return immediately
+  // Fresh cache — instant return
   if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
     return cached.data;
   }
 
-  // Stale cache exists — return stale data immediately, refresh in background
+  // Stale cache — return immediately, refresh in background
   if (cached && !refreshing) {
     refreshing = true;
-    refreshCache().finally(() => { refreshing = false; });
+    fetchAndTranslate().finally(() => { refreshing = false; });
     return cached.data;
   }
 
-  // No cache at all (cold start) — must wait
-  return refreshCache();
+  // No cache at all — wait for fetch (only on very first request ever)
+  if (!refreshing) {
+    refreshing = true;
+    try {
+      return await fetchAndTranslate();
+    } finally {
+      refreshing = false;
+    }
+  }
+
+  // Another request while refreshing — return empty
+  return [];
 }
