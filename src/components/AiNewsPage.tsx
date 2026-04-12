@@ -125,7 +125,7 @@ export default function AiNewsPage() {
           speed={40}
           deleteSpeed={25}
           pauseDuration={3000}
-          className="text-[#7B9BDB] text-sm md:text-base mb-8 md:mb-10 min-h-[28px] font-mono tracking-wide"
+          className="text-white text-base md:text-lg mb-14 md:mb-20 min-h-[32px] font-mono tracking-wide"
         />
         <div className="flex justify-center gap-1.5 md:gap-3 flex-wrap px-2">
           {Object.entries(SOURCE_META).map(([key, meta]) => {
