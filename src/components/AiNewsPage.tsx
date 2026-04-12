@@ -9,10 +9,11 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import FadeIn from '@/components/react-bits/FadeIn';
+import GlareHover from '@/components/GlareHover';
 import type { NewsItem } from '@/lib/newsCache';
 
 const SOURCE_META = {
-  HackerNews: { label: 'HackerNews', Icon: TrendingUp, color: '#FF6600' },
+  HackerNews: { label: 'HackerNews', Icon: TrendingUp, color: '#A78BFA' },
   DevTo:       { label: 'Dev.to',     Icon: Code,        color: '#7B9BDB' },
   Guardian:    { label: 'Guardian',   Icon: Globe,       color: '#4F6AE8' },
   Arxiv:       { label: 'Arxiv',      Icon: BookOpen,    color: '#059669' },
@@ -127,7 +128,7 @@ export default function AiNewsPage() {
                 href={heroItem.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-[2] bg-gradient-to-br from-[#1A2461]/90 to-[#2E4AAD]/60 p-5 md:p-8 rounded-2xl border border-[#4F6AE8]/40 relative overflow-hidden group"
+                className="flex-[2] bg-[#1A2461]/70 backdrop-blur-2xl p-5 md:p-8 rounded-2xl border border-[#7B9BDB]/20 relative overflow-hidden group shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-[#4F6AE8]/50 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-500"
               >
                 <div className="absolute top-0 right-0 w-40 h-40 bg-[#4F6AE8]/10 rounded-full blur-3xl" />
                 <div className="relative z-10">
@@ -179,7 +180,7 @@ export default function AiNewsPage() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-[#1A2461]/60 p-5 rounded-xl border border-[#2E4AAD]/40 hover:border-[#4F6AE8] hover:bg-[#1A2461] transition-all group flex flex-col justify-between"
+                      className="flex-1 bg-[#1A2461]/70 backdrop-blur-xl p-5 rounded-xl border border-[#7B9BDB]/20 hover:border-[#4F6AE8]/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25)] hover:-translate-y-1 transition-all duration-400 group flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-center gap-2 mb-2">
@@ -260,11 +261,12 @@ export default function AiNewsPage() {
                     const Icon = meta.Icon;
                     return (
                       <FadeIn key={item.id} delay={index * 0.03}>
+                        <GlareHover glareColor="#4F6AE8" glareOpacity={0.12} glareAngle={-30} glareSize={300} transitionDuration={800} className="rounded-2xl h-full">
                         <a
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex flex-col h-full rounded-xl bg-[#1A2461]/40 border border-[#2E4AAD]/30 hover:border-[#4F6AE8] hover:bg-[#1A2461]/70 transition-all duration-300 overflow-hidden"
+                          className="group relative flex flex-col h-full rounded-2xl bg-[#1A2461]/70 backdrop-blur-xl border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-[#4F6AE8]/50 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-400 overflow-hidden"
                         >
                           {/* Cover image or gradient placeholder */}
                           <div
@@ -272,7 +274,7 @@ export default function AiNewsPage() {
                             style={item.image ? {} : { background: `linear-gradient(135deg, ${meta.color}15, ${meta.color}05)` }}
                           >
                             {item.image ? (
-                              <img src={item.image} alt="" className="w-full h-full object-cover" loading="lazy" />
+                              <img src={item.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                             ) : (
                               <Icon className="w-10 h-10 opacity-20" style={{ color: meta.color }} />
                             )}
@@ -300,6 +302,7 @@ export default function AiNewsPage() {
                             </p>
                           </div>
                         </a>
+                        </GlareHover>
                       </FadeIn>
                     );
                   })}
@@ -333,7 +336,7 @@ export default function AiNewsPage() {
           <div className="xl:w-1/4 grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-1 gap-4 md:gap-6">
 
             {/* Popularne */}
-            <div className="bg-[#1A2461]/40 rounded-xl p-5 border border-[#2E4AAD]/30">
+            <div className="bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-5 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)]">
               <div className="flex items-center gap-3 mb-5 pb-4 border-b border-[#2E4AAD]/25">
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#2E4AAD] to-[#4F6AE8] flex items-center justify-center">
                   <TrendingUp className="w-4 h-4 text-white" />
@@ -361,7 +364,7 @@ export default function AiNewsPage() {
             </div>
 
             {/* Newsletter */}
-            <div className="bg-[#1A2461]/40 rounded-xl p-6 border border-[#2E4AAD]/30 text-white">
+            <div className="bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white">
               <div className="w-10 h-10 rounded-lg bg-[#2E4AAD]/40 flex items-center justify-center mb-3">
                 <Mail className="w-5 h-5 text-[#7B9BDB]" />
               </div>
@@ -391,7 +394,7 @@ export default function AiNewsPage() {
             </div>
 
             {/* Obserwuj nas */}
-            <div className="bg-[#1A2461]/40 rounded-xl p-6 border border-[#2E4AAD]/30 text-white text-center">
+            <div className="bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white text-center">
               <h3 className="font-bold text-sm mb-1">Obserwuj nas</h3>
               <p className="text-[#7B9BDB] text-xs mb-4">Dołącz do społeczności AI</p>
               <div className="flex justify-center gap-3">

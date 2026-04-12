@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Mail, Phone, MapPin, Linkedin, Twitter, Youtube } from 'lucide-react';
 import AiNewsPage from '@/components/AiNewsPage';
+import FloatingLines from '@/components/FloatingLines';
 
 export const revalidate = 7200;
 
@@ -18,9 +19,26 @@ export const metadata: Metadata = {
 
 export default function SwiatAiPage() {
   return (
-    <div className="min-h-screen bg-[#0B0F2E]">
+    <div className="min-h-screen bg-[#0B0F2E] relative">
+      {/* Animated Floating Lines Background */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+        <FloatingLines
+          enabledWaves={['top', 'middle', 'bottom']}
+          lineCount={[4, 5, 3]}
+          lineDistance={[4, 5, 6]}
+          bendRadius={5}
+          bendStrength={-0.5}
+          interactive={true}
+          parallax={true}
+          parallaxStrength={0.15}
+          animationSpeed={0.8}
+          linesGradient={['#1A2461', '#2E4AAD', '#4F6AE8', '#7B9BDB', '#2E4AAD']}
+          mixBlendMode="screen"
+        />
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B0F2E]/90 backdrop-blur-lg border-b border-[#1A2461]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-transparent">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image src="/logo.png" alt="Infinity Tech" width={42} height={42} className="object-contain brightness-0 invert" />
@@ -34,10 +52,12 @@ export default function SwiatAiPage() {
       </nav>
 
       {/* AI News Content */}
-      <AiNewsPage />
+      <div className="relative z-10">
+        <AiNewsPage />
+      </div>
 
       {/* Footer */}
-      <footer className="py-16 bg-[#050B1F] border-t border-[#1A2461] text-white">
+      <footer className="relative z-10 py-16 border-t border-[#1A2461]/30 text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
