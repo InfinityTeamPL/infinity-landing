@@ -275,8 +275,6 @@ async function fetchAndTranslate(): Promise<NewsItem[]> {
   return translated;
 }
 
-let refreshing = false;
-
 export async function getNewsWithCache(): Promise<NewsItem[]> {
   const cached = getCache();
 
@@ -284,20 +282,10 @@ export async function getNewsWithCache(): Promise<NewsItem[]> {
     return cached.data;
   }
 
-  if (cached && !refreshing) {
-    refreshing = true;
-    fetchAndTranslate().finally(() => { refreshing = false; });
-    return cached.data;
+  try {
+    return await fetchAndTranslate();
+  } catch (err) {
+    console.error('[newsCache] fetchAndTranslate failed:', err);
+    return cached?.data ?? [];
   }
-
-  if (!refreshing) {
-    refreshing = true;
-    try {
-      return await fetchAndTranslate();
-    } finally {
-      refreshing = false;
-    }
-  }
-
-  return [];
 }
