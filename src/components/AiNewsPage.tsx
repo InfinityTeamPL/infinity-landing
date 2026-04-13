@@ -435,8 +435,8 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
 
             {/* Obserwuj nas */}
             <div className="w-full h-fit bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white text-center">
-              <h3 className="font-bold text-sm mb-1">Obserwuj nas</h3>
-              <p className="text-[#7B9BDB] text-xs mb-4">Dołącz do społeczności AI</p>
+              <h3 className="font-bold text-sm mb-1">Bądźmy w kontakcie</h3>
+              <p className="text-[#7B9BDB] text-xs mb-4">Obserwuj nas lub napisz</p>
               <div className="flex justify-center gap-3">
                 <a href="https://www.linkedin.com/company/infinitytechgroup/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#0B0F2E]/60 border border-[#2E4AAD]/40 flex items-center justify-center hover:border-[#4F6AE8] hover:bg-[#2E4AAD]/20 transition-all">
                   <Linkedin className="w-4 h-4 text-[#7B9BDB]" />
