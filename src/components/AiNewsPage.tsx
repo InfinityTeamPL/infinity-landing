@@ -322,7 +322,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                             style={item.image ? {} : { background: `linear-gradient(135deg, ${meta.color}15, ${meta.color}05)` }}
                           >
                             {item.image ? (
-                              <img src={item.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                              <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                             ) : (
                               <Icon className="w-10 h-10 opacity-20" style={{ color: meta.color }} />
                             )}
