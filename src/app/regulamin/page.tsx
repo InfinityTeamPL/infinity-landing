@@ -31,7 +31,7 @@ export default function TermsPage() {
         />
       </div>
 
-      <nav className="sticky top-0 z-50 bg-[#0B0F2E]/80 backdrop-blur-md border-b border-[#1A2461]/30">
+      <nav className="relative z-20 bg-transparent">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 md:gap-3">
             <Image src="/logo.png" alt="Infinity Tech" width={32} height={32} className="object-contain brightness-0 invert md:w-[42px] md:h-[42px]" />
