@@ -190,7 +190,7 @@ export default function CaseStudiesPage() {
                 <li><a href="/" className="hover:text-white transition-colors">Start</a></li>
                 <li><a href="/#o-nas" className="hover:text-white transition-colors">O nas</a></li>
                 <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="/case-studies" className="hover:text-white transition-colors">Case Studies</a></li>
+                {/* <li><a href="/case-studies" className="hover:text-white transition-colors">Case Studies</a></li> */}
                 <li><a href="/#kontakt" className="hover:text-white transition-colors">Kontakt</a></li>
               </ul>
             </div>

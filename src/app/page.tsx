@@ -406,7 +406,7 @@ function HeroSection() {
                   Umów konsultację
                 </Ripple>
               </a>
-              <a href="/case-studies" className="px-6 py-3 md:px-8 md:py-4 xl:px-10 xl:py-5 border-2 rounded-full font-semibold text-base md:text-lg xl:text-xl transition-all flex items-center justify-center gap-2 border-white/30 text-white hover:bg-white/10">
+              <a href="#o-nas" className="px-6 py-3 md:px-8 md:py-4 xl:px-10 xl:py-5 border-2 rounded-full font-semibold text-base md:text-lg xl:text-xl transition-all flex items-center justify-center gap-2 border-white/30 text-white hover:bg-white/10">
                 Dowiedz się więcej
                 <ArrowRight className="w-5 h-5" />
               </a>
@@ -1347,7 +1347,7 @@ function Footer() {
               <a href="#start" className="hover:text-white transition-colors text-sm">Start</a>
               <a href="/swiat-ai" className="hover:text-white transition-colors text-sm">Świat AI</a>
               <a href="#o-nas" className="hover:text-white transition-colors text-sm">O nas</a>
-              <a href="/case-studies" className="hover:text-white transition-colors text-sm">Case Studies</a>
+              {/* <a href="/case-studies" className="hover:text-white transition-colors text-sm">Case Studies</a> */}
               <a href="#uslugi" className="hover:text-white transition-colors text-sm">Co robimy</a>
               <a href="/kalkulator" className="hover:text-white transition-colors text-sm">Kalkulator ROI</a>
               <a href="#faq" className="hover:text-white transition-colors text-sm">FAQ</a>
