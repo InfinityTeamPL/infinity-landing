@@ -1,7 +1,7 @@
 # Rejestr Czynności Przetwarzania Danych Osobowych
 
 **Administrator danych:** Infinity Tech
-**Siedziba:** ul. Rynek Solny 1 lok. 6, 22-400 Zamość, woj. lubelskie, Polska
+**Siedziba:** ul. Rynek Solny 1 lok. 6, Zamość, woj. lubelskie, Polska
 **KRS:** 0001236454
 **NIP:** 9223090619
 **REGON:** 544554591

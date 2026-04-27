@@ -1190,7 +1190,7 @@ function ContactCTASection() {
                         <MapPin className="w-4 h-4 flex-shrink-0 text-[#7B9BDB] mt-0.5" />
                         <div className="text-sm text-white/70 leading-snug">
                           <div>ul. Rynek Solny 1 lok. 6</div>
-                          <div>22-400 Zamość, woj. lubelskie</div>
+                          <div>Zamość, woj. lubelskie</div>
                         </div>
                       </div>
                     </div>
@@ -1213,7 +1213,7 @@ function ContactCTASection() {
                 </div>
                 <div className="flex-1">
                   <iframe
-                    src="https://maps.google.com/maps?q=Rynek%20Solny%201,%2022-400%20Zamo%C5%9B%C4%87&z=17&t=m&output=embed"
+                    src="https://maps.google.com/maps?q=Rynek%20Solny%201,%20Zamo%C5%9B%C4%87&z=17&t=m&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, minHeight: '300px' }}
