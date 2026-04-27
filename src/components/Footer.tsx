@@ -140,7 +140,16 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#7B9BDB] text-sm">&copy; 2026 Infinity Tech. Wszelkie prawa zastrzeżone.</p>
+          <div className="text-center md:text-left space-y-1">
+            <p className="text-[#7B9BDB] text-sm">&copy; 2026 Infinity Tech. Wszelkie prawa zastrzeżone.</p>
+            <p className="text-[#7B9BDB]/70 text-xs">
+              KRS <span className="font-mono">0001236454</span>
+              <span className="mx-2">·</span>
+              NIP <span className="font-mono">9223090619</span>
+              <span className="mx-2">·</span>
+              REGON <span className="font-mono">544554591</span>
+            </p>
+          </div>
           <div className="flex gap-6 text-sm text-[#7B9BDB]">
             <a href="/polityka-prywatnosci" className="hover:text-white transition-colors">Polityka Prywatności</a>
             <a href="/regulamin" className="hover:text-white transition-colors">Regulamin</a>

@@ -762,8 +762,15 @@ function Footer() {
             <a href="mailto:contact@infinityteam.io" className="hover:text-white">contact@infinityteam.io</a>
           </div>
         </div>
-        <div className="text-center text-[#7B9BDB] text-sm mt-8 pt-8 border-t border-slate-800">
-          © 2026 Infinity Tech. Wszelkie prawa zastrzeżone.
+        <div className="text-center text-[#7B9BDB] mt-8 pt-8 border-t border-slate-800 space-y-1">
+          <p className="text-sm">© 2026 Infinity Tech. Wszelkie prawa zastrzeżone.</p>
+          <p className="text-xs text-[#7B9BDB]/70">
+            KRS <span className="font-mono">0001236454</span>
+            <span className="mx-2">·</span>
+            NIP <span className="font-mono">9223090619</span>
+            <span className="mx-2">·</span>
+            REGON <span className="font-mono">544554591</span>
+          </p>
         </div>
       </div>
     </footer>
