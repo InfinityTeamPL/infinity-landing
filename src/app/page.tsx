@@ -1184,11 +1184,14 @@ function ContactCTASection() {
                       </div>
                       <div className="flex items-center gap-3">
                         <Phone className="w-4 h-4 flex-shrink-0 text-[#7B9BDB]" />
-                        <span className="text-sm text-white/70">+48 123 456 789</span>
+                        <a href="tel:+48735170957" className="text-sm text-white/70 hover:text-white transition-colors">+48 735 170 957</a>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <MapPin className="w-4 h-4 flex-shrink-0 text-[#7B9BDB]" />
-                        <span className="text-sm text-white/70">Zamość, woj. lubelskie, Polska</span>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-4 h-4 flex-shrink-0 text-[#7B9BDB] mt-0.5" />
+                        <div className="text-sm text-white/70 leading-snug">
+                          <div>ul. Rynek Solny 1 lok. 6</div>
+                          <div>22-400 Zamość, woj. lubelskie</div>
+                        </div>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-3">
@@ -1210,7 +1213,7 @@ function ContactCTASection() {
                 </div>
                 <div className="flex-1">
                   <iframe
-                    src="https://maps.google.com/maps?ll=50.7167,23.2525&z=16&t=m&output=embed"
+                    src="https://maps.google.com/maps?q=Rynek%20Solny%201,%2022-400%20Zamo%C5%9B%C4%87&z=17&t=m&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0, minHeight: '300px' }}

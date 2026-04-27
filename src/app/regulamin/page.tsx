@@ -64,9 +64,10 @@ export default function TermsPage() {
             <div className="bg-white/5 rounded-xl p-5 mb-4 border border-white/10 text-sm space-y-1">
               <p className="text-white font-semibold mb-2">Usługodawca:</p>
               <p>Infinity Tech</p>
-              <p>Zamość, woj. lubelskie, Polska <span className="text-[#7B9BDB]">[dokładny adres do uzupełnienia]</span></p>
-              <p>NIP: <span className="text-[#7B9BDB]">[do uzupełnienia]</span></p>
-              <p>REGON: <span className="text-[#7B9BDB]">[do uzupełnienia]</span></p>
+              <p>ul. Rynek Solny 1 lok. 6, 22-400 Zamość, woj. lubelskie, Polska</p>
+              <p>KRS: <span className="text-[#7B9BDB]">0001236454</span></p>
+              <p>NIP: <span className="text-[#7B9BDB]">9223090619</span></p>
+              <p>REGON: <span className="text-[#7B9BDB]">544554591</span></p>
               <p>E-mail: <a href="mailto:contact@infinityteam.io" className="text-[#7B9BDB] underline hover:text-white">contact@infinityteam.io</a></p>
             </div>
             <p>
@@ -405,7 +406,7 @@ export default function TermsPage() {
             </p>
             <div className="bg-white/5 rounded-xl p-5 border border-white/10 text-sm space-y-1">
               <p>E-mail: <a href="mailto:contact@infinityteam.io" className="text-[#7B9BDB] underline hover:text-white">contact@infinityteam.io</a></p>
-              <p>Adres: Zamość, woj. lubelskie, Polska</p>
+              <p>Adres: ul. Rynek Solny 1 lok. 6, 22-400 Zamość, woj. lubelskie, Polska</p>
             </div>
           </section>
 

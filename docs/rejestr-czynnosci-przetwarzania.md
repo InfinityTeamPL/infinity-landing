@@ -1,9 +1,10 @@
 # Rejestr Czynności Przetwarzania Danych Osobowych
 
 **Administrator danych:** Infinity Tech
-**Siedziba:** Zamość, woj. lubelskie, Polska [dokładny adres do uzupełnienia]
-**NIP:** [do uzupełnienia]
-**REGON:** [do uzupełnienia]
+**Siedziba:** ul. Rynek Solny 1 lok. 6, 22-400 Zamość, woj. lubelskie, Polska
+**KRS:** 0001236454
+**NIP:** 9223090619
+**REGON:** 544554591
 **E-mail kontaktowy:** contact@infinityteam.io
 **Inspektor Ochrony Danych:** nie wyznaczono (art. 37 RODO — przetwarzanie nie wymaga powołania IOD)
 
