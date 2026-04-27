@@ -53,7 +53,7 @@ Firma oferuje:
 
 Kluczowe informacje:
 - Email: contact@infinityteam.io
-- Lokalizacja: Zamość, woj. lubelskie, Polska
+- Lokalizacja: ul. Rynek Solny 1 lok. 6, 22-400 Zamość, woj. lubelskie, Polska
 - Język: Polski (odpowiadaj po polsku)
 - Ton: profesjonalny, ale przyjazny
 
