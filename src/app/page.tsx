@@ -1,40 +1,27 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { 
-  ArrowRight, 
+import { handleMailto } from '@/lib/mailto';
+import {
+  ArrowRight,
   CheckCircle2,
-  Menu,
-  X,
-  Cpu,
-  Users,
   Building2,
   Clock,
-  DollarSign,
-  Sparkles,
   Zap,
   Shield,
   BarChart3,
   Bot,
-  Brain,
-  Globe,
   Mail,
   Phone,
+  PhoneCall,
   MapPin,
   Linkedin,
-  Twitter,
-  Github,
   Send,
-  Youtube,
-  Wand2,
-  BookOpen,
-  Instagram,
-  Download,
   Settings,
-  Lightbulb,
-  ChevronDown
+  ChevronDown,
+  Users,
+  Sprout,
+  MessagesSquare
 } from 'lucide-react';
 
 import {
@@ -46,44 +33,20 @@ import {
 import SplitText from '@/components/react-bits/SplitText';
 import FadeIn from '@/components/react-bits/FadeIn';
 import { Ripple } from '@/components/react-bits/Ripple';
-import AnimatedGradient from '@/components/react-bits/AnimatedGradient';
-import Beams from '@/components/react-bits/Beams';
 import Aurora from '@/components/react-bits/Aurora';
 import Particles from '@/components/react-bits/Particles';
-import SpotlightCard from '@/components/react-bits/SpotlightCard';
 import TiltedCard from '@/components/react-bits/TiltedCard';
 import ProfileCard from '@/components/react-bits/ProfileCard';
-import Accordion from '@/components/react-bits/Accordion';
 import ShinyText from '@/components/react-bits/ShinyText';
-import TextType from '@/components/react-bits/TextType';
-import GlowBorder from '@/components/react-bits/GlowBorder';
 import Marquee from '@/components/react-bits/Marquee';
 import AnimatedCounter from '@/components/react-bits/AnimatedCounter';
-import ROICalculator from '@/components/ROICalculator';
 import ChatWidget from '@/components/ChatWidget';
 import Footer from '@/components/Footer';
 import StarBorder from '@/components/StarBorder';
 import ClickSpark from '@/components/react-bits/ClickSpark';
 import dynamic from 'next/dynamic';
 const Background3D = dynamic(() => import('@/components/Background3D'), { ssr: false });
-const HeroGlobe = dynamic(() => import('@/components/HeroGlobe'), { ssr: false });
 const StaggeredMenu = dynamic(() => import('@/components/StaggeredMenu'), { ssr: false });
-
-function handleMailto(e: React.MouseEvent) {
-  e.preventDefault();
-  const email = 'contact@infinityteam.io';
-  const w = window.open(`mailto:${email}`, '_self');
-  // fallback — if mailto didn't trigger, copy to clipboard
-  setTimeout(() => {
-    if (!document.hidden) {
-      navigator.clipboard.writeText(email).then(() => {
-        alert(`Adres email skopiowany do schowka: ${email}`);
-      }).catch(() => {
-        prompt('Skopiuj adres email:', email);
-      });
-    }
-  }, 500);
-}
 
 // X (Twitter) icon
 function XIcon({ className = '' }: { className?: string }) {
@@ -98,7 +61,11 @@ function XIcon({ className = '' }: { className?: string }) {
 const FAQ_ITEMS = [
   {
     question: 'Ile kosztuje wdrożenie rozwiązań AI?',
-    answer: 'Ceny zaczynają się od 5000 PLN dla małych firm. Każde wdrożenie jest wyceniane indywidualnie na podasie potrzeb Twojej organizacji. Oferujemy bezpłatną konsultację, podczas której przygotujemy wycenę.'
+    answer: 'Ceny zaczynają się od 5000 PLN dla małych firm. Każde wdrożenie jest wyceniane indywidualnie na podstawie potrzeb Twojej organizacji. Oferujemy bezpłatną konsultację, podczas której przygotujemy wycenę.'
+  },
+  {
+    question: 'Czy budujecie agentów głosowych (voice AI)?',
+    answer: 'Tak. Tworzymy telefonicznych asystentów AI, którzy odbierają połączenia 24/7 i rozmawiają naturalnym głosem po polsku — udzielają informacji, umawiają terminy, odpowiadają na pytania klientów. Wykorzystujemy m.in. ElevenLabs i potrafimy podpiąć agenta pod Waszą infolinię oraz bazę wiedzy.'
   },
   {
     question: 'Jak długo trwa wdrożenie?',
@@ -106,10 +73,10 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Czy moje dane są bezpieczne?',
-    answer: 'Tak. Wszystkie dane są przechowywane na serwerach w Polsce, zgodnie z RODO. Stosujemy szyfrowanie end-to-end i najwyższe standardy bezpieczeństwa. Jesteśmy certyfikowani w zakresie ISO 27001.'
+    answer: 'Tak. Wszystkie dane są przechowywane na serwerach w Polsce, zgodnie z RODO. Stosujemy szyfrowanie end-to-end i standardy bezpieczeństwa zgodne z normą ISO 27001.'
   },
   {
-    question: 'Jakie firmy obsugujecie?',
+    question: 'Jakie firmy obsługujecie?',
     answer: 'Obsługujemy firmy każdej wielkości - od małych startupów po duże korporacje. Mamy doświadczenie w branżach: finansowej, produkcyjnej, e-commerce, usługowej i IT.'
   },
   {
@@ -125,53 +92,42 @@ const FAQ_ITEMS = [
 // Co robimy — filary
 const SERVICES = [
   {
-    title: 'OpenClaw Wrapper',
-    tierLabel: 'WRAPPER',
-    description: 'Nasz główny produkt — gotowy agent AI „pod klucz", zbudowany na frameworku OpenClaw. Dopinamy go do kanałów, których już używasz (WhatsApp, Slack, Teams, Telegram, Discord i 23+ innych) i przekazujemy w pełni działający, autonomiczny system 24/7 na dedykowanym serwerze w Polsce.',
+    title: 'Agenci głosowi',
+    tierLabel: 'VOICE AI',
+    description: 'Telefoniczni asystenci AI, którzy odbierają połączenia 24/7, rozmawiają naturalnym głosem i realnie załatwiają sprawy — udzielają informacji, umawiają terminy, odpowiadają na pytania klientów. Naturalne, ludzkie brzmienie, pełna obsługa po polsku.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
-    featured: false
+    featured: true,
+    badgeText: 'Nowość'
   },
   {
-    title: 'Automatyzacja procesów',
-    tierLabel: 'AUTOMATYZACJA',
-    description: 'Wyspecjalizowani agenci AI dla działów HR, marketingu i sprzedaży — selekcja CV, onboarding, generowanie treści, kwalifikacja leadów, follow-upy. Przejmują powtarzalną pracę, żeby Twój zespół mógł zająć się tym, co naprawdę wymaga człowieka.',
+    title: 'Agenci wielokanałowi',
+    tierLabel: 'CHAT / OMNICHANNEL',
+    description: 'Agent AI „pod klucz" wpięty w kanały, których już używasz — WhatsApp, Slack, Teams, Telegram, Discord i 23+ innych. W pełni autonomiczny system, który obsługuje klientów i zespół 24/7, na dedykowanym serwerze w Polsce.',
     price: '',
     features: [],
     accentColor: '#2E4AAD',
     featured: false
   },
   {
-    title: 'AI Consulting',
-    tierLabel: 'CONSULTING',
-    description: 'Dla firm, które chcą zacząć z AI, ale nie wiedzą od czego. Robimy audyt procesów, mapujemy quick-wins, kalkulujemy realny ROI i przygotowujemy konkretny plan wdrożenia krok po kroku — bez słownictwa „transformacji cyfrowej". Pierwsza konsultacja jest bezpłatna.',
+    title: 'Automatyzacja procesów',
+    tierLabel: 'AUTOMATYZACJA',
+    description: 'Wyspecjalizowani agenci dla działów HR, kadr i płac, marketingu i sprzedaży — selekcja CV, onboarding, dokumenty kadrowe, pilnowanie terminów, generowanie treści, kwalifikacja leadów i follow-upy. Przejmują powtarzalną pracę, żeby Twój zespół robił to, co wymaga człowieka.',
     price: '',
     features: [],
     accentColor: '#4F6AE8',
     featured: false
   },
   {
-    title: 'Desktop App',
-    tierLabel: 'DESKTOP APP',
-    description: 'Agent AI prosto na Twoim komputerze — pracuje lokalnie, łączy się z plikami i narzędziami, których używasz na co dzień. Aplikacja jest w przygotowaniu. Zapisz się na waitlist, żeby dostać dostęp w pierwszej fali.',
+    title: 'Doradztwo i wdrożenia',
+    tierLabel: 'CONSULTING & CUSTOM',
+    description: 'Audyt procesów, mapa quick-wins i realny ROI — bez słownictwa „transformacji cyfrowej". Projektujemy i budujemy rozwiązania AI szyte na miarę: od pojedynczego agenta po dedykowaną aplikację dla Twojej branży. Pierwsza konsultacja jest bezpłatna.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
-    featured: true,
-    badgeText: 'Wkrótce',
-    buttonText: 'Zapisz się na waitlist',
-    waitlistMode: true
+    featured: false
   }
-];
-
-// Technologie, na których budujemy
-const TECH_STACK = [
-  { name: 'OpenClaw', desc: 'AI Agent Framework' },
-  { name: 'Hetzner', desc: 'Cloud Infrastructure' },
-  { name: 'Stripe', desc: 'Payment Processing' },
-  { name: 'Vercel', desc: 'Hosting & Deploy' },
-  { name: 'MiniMax', desc: 'AI Models' },
 ];
 
 // Kanały integracji — custom SVG paths for icons not in simple-icons
@@ -189,7 +145,7 @@ const CHANNELS: { name: string; path?: string; color?: string }[] = [
   { name: 'Signal', path: siSignal.path, color: '#3B45FD' },
   { name: 'iMessage', path: siImessage.path, color: '#34DA50' },
   { name: 'MS Teams', path: MS_TEAMS_PATH, color: '#6264A7' },
-  { name: 'Matrix', path: siMatrix.path, color: '#FFFFFF' },
+  { name: 'Matrix', path: siMatrix.path, color: '#8A93A8' },
   { name: 'LINE', path: siLine.path, color: '#00C300' },
   { name: 'Mattermost', path: siMattermost.path, color: '#0058CC' },
   { name: 'Nextcloud', path: siNextcloud.path, color: '#0082C9' },
@@ -205,17 +161,17 @@ const QUOTE_AVATARS: Record<string, string> = {
   'Jensen Huang': '/images/jensen-huang.jpg',
   'Sam Altman': '/images/sam-altman.jpg',
   'Peter Steinberger': '/images/peter-steinberger.jpg',
-  'Mustafa Suleyman': '/images/mustafa-suleyman.jpg',
 };
 
+// Cytaty zweryfikowane ze źródłami (keynote GTC 2026, X/CNBC 02.2026, WEF 2023)
 const OPENCLAW_QUOTES = [
   {
     quote: 'OpenClaw to system operacyjny dla osobistego AI. To moment, na który branża czekała — początek nowego renesansu oprogramowania.',
     author: 'Jensen Huang',
-    role: 'CEO NVIDIA'
+    role: 'CEO NVIDIA · keynote GTC 2026'
   },
   {
-    quote: 'Peter Steinberger to geniusz z niesamowitymi pomysłami na przyszłość inteligentnych agentów współpracujących ze sobą.',
+    quote: 'Peter Steinberger to geniusz z mnóstwem niesamowitych pomysłów na przyszłość inteligentnych agentów, którzy współpracują ze sobą, robiąc pożyteczne rzeczy dla ludzi.',
     author: 'Sam Altman',
     role: 'CEO OpenAI'
   },
@@ -230,87 +186,73 @@ const OPENCLAW_QUOTES = [
     role: 'CEO NVIDIA'
   },
   {
-    quote: 'Claude Code i OpenClaw wywołały punkt przełomowy agentów — rozszerzając AI poza generowanie i rozumowanie, w stronę działania.',
-    author: 'Jensen Huang',
-    role: 'CEO NVIDIA'
+    quote: 'Przyszłość będzie ekstremalnie multi-agentowa. OpenClaw będzie dalej żyć jako projekt open source, który OpenAI będzie wspierać.',
+    author: 'Sam Altman',
+    role: 'CEO OpenAI'
   },
   {
-    quote: 'AI nie zastąpi ludzi, ale ludzie korzystający z AI zastąpią tych, którzy tego nie robią.',
-    author: 'Mustafa Suleyman',
-    role: 'CEO Microsoft AI'
+    quote: 'AI nie odbierze ci pracy. Zrobi to ktoś, kto korzysta z AI.',
+    author: 'Richard Baldwin',
+    role: 'Ekonomista · World Economic Forum'
   },
   {
     quote: 'Chcę stworzyć agenta AI, którego nawet moja mama potrafi używać.',
     author: 'Peter Steinberger',
     role: 'Twórca OpenClaw'
   },
-  {
-    quote: 'Kocham ducha wszystkiego, co reprezentuje OpenClaw.',
-    author: 'Sam Altman',
-    role: 'CEO OpenAI'
-  },
 ];
 
 // Stats
 const STATS = [
-  { value: '78', suffix: '%', label: 'firm w Polsce nie korzysta jeszcze z AI', icon: Building2 },
-  { value: '300', suffix: '%', label: 'średni wzrost efektywności z agentami AI', icon: Zap },
+  { value: '92', suffix: '%', label: 'firm w Polsce nie korzysta jeszcze z AI (Eurostat 2025)', icon: Building2 },
+  { value: '300', suffix: '%', label: 'wzrost efektywności możliwy dzięki agentom AI', icon: Zap },
   { value: '2-4', suffix: ' tyg.', label: 'czas pełnego wdrożenia', icon: Clock },
   { value: '24/7', suffix: '', label: 'autonomiczna praca agentów AI', icon: Bot },
 ];
 
-// Benefits
-const BENEFITS = [
-  {
-    icon: Zap,
-    title: 'Szybka Automatyzacja',
-    description: 'Algorytmy AI przejmują monotonne zadania, zwiększając efektywność Twojego zespołu nawet o 300%.'
-  },
-  {
-    icon: Clock,
-    title: 'Szybka Implementacja',
-    description: 'Wdrażamy rozwiązania w tygodnie, nie miesiące. Pierwsze rezultaty widoczne od pierwszego dnia.'
-  },
-  {
-    icon: Shield,
-    title: 'Bezpieczeństwo Danych',
-    description: 'Twoje dane pozostają w Polsce. Gwarantujemy pełną zgodność z RODO i certyfikację ISO.'
-  },
-  {
-    icon: BarChart3,
-    title: 'Mierzalne Wyniki',
-    description: 'Śledź ROI w czasie rzeczywistym. Widoczny wzrost produktywności od pierwszego miesiąca.'
-  }
-];
+// Aktualny motyw — nasłuchuje przełącznika ThemeToggle (event 'themechange')
+function useThemeName() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  useEffect(() => {
+    const read = () =>
+      setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+    read();
+    window.addEventListener('themechange', read);
+    return () => window.removeEventListener('themechange', read);
+  }, []);
+  return theme;
+}
 
 // Główne sekcje
 function HeroSection() {
+  const theme = useThemeName();
+  // W light gra dedykowana duotone'owa wersja wideo (białe niebo, granatowa kula)
+  const videoBase = theme === 'light' ? '/videos/hero-globe-light' : '/videos/hero-globe';
+
   return (
     <>
     <section
-      className="flex flex-col relative overflow-hidden"
+      className="hero-adaptive flex flex-col relative overflow-hidden"
       style={{
         minHeight: 'calc(100vh + 250px)',
         WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black calc(100% - 250px), transparent 100%)',
         maskImage: 'linear-gradient(to bottom, black 0%, black calc(100% - 250px), transparent 100%)',
       }}
     >
-      {/* Rotating globe video — blue-tinted */}
+      {/* Rotating globe video — blue-tinted in dark, dedicated light duotone in light theme */}
       <video
+        key={theme}
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ filter: 'brightness(0.55) saturate(0.15) sepia(1) hue-rotate(190deg)' }}
+        poster={`${videoBase}-poster.jpg`}
+        className="hero-video absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4"
-          type="video/mp4"
-        />
+        <source src={`${videoBase}.mp4`} type="video/mp4" />
       </video>
-      {/* Dark blue overlay for brand color matching */}
-      <div className="absolute inset-0 bg-[#0B0F2E]/50 z-[1]" />
+      {/* Theme-aware overlay for brand color matching */}
+      <div className="hero-overlay absolute inset-0 z-[1]" />
 
       {/* Fog layers at transition zone */}
       <div className="absolute inset-x-0 bottom-0 h-[300px] z-[3] pointer-events-none overflow-hidden">
@@ -322,7 +264,7 @@ function HeroSection() {
       <div className="relative z-10 flex flex-col w-full" style={{ height: '100vh' }}>
         {/* Centered content */}
         <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-6 pt-24 pb-12 text-center">
-          <div className="text-[0.6rem] sm:text-xs md:text-sm lg:text-xl xl:text-2xl 2xl:text-2xl tracking-wider md:tracking-widest uppercase mb-4 px-4 text-[#8BB8E8] whitespace-nowrap" style={{ fontFamily: 'var(--font-geist)' }}>
+          <div className="text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl 2xl:text-2xl tracking-wider md:tracking-widest uppercase mb-4 px-4 text-[#8BB8E8]" style={{ fontFamily: 'var(--font-geist)' }}>
             <SplitText
               text="Rewolucja AI już trwa — konkurencja nie śpi"
               tag="span"
@@ -344,7 +286,7 @@ function HeroSection() {
 
           <FadeIn delay={0.5}>
             <p className="text-base md:text-lg xl:text-xl 2xl:text-2xl mb-7 max-w-lg xl:max-w-2xl mx-auto text-white/80 px-2">
-              Wykorzystaj potęgę agentów AI OpenCLAW, aby zautomatyzować procesy, zwiększyć efektywność i skupić się na tym, co naprawdę napędza rozwój Twojej firmy.
+              Budujemy agentów AI — głosowych i tekstowych — oraz automatyzacje, które przejmują powtarzalną pracę: od obsługi klienta, przez kadry, po sprzedaż. Ty skupiasz się na tym, co naprawdę napędza rozwój firmy.
             </p>
           </FadeIn>
 
@@ -366,7 +308,7 @@ function HeroSection() {
         {/* Bottom section — social icons left + quote centered */}
         <div className="px-6 md:px-12 lg:px-20 pb-8">
         {/* Social icons — bottom left */}
-        <div className="liquid-glass flex gap-2 items-center rounded-full px-2 py-1.5 mx-auto md:mx-0 mb-5 md:mb-0 md:absolute md:bottom-8 md:left-[2em] w-fit" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
+        <div className="liquid-glass flex gap-2 items-center rounded-full px-2 py-1.5 mx-auto md:mx-0 mb-5 md:mb-0 md:absolute md:bottom-8 md:left-[2em] w-fit" style={{ border: '1px solid rgba(var(--ink-rgb),0.15)' }}>
           <a href="https://x.com/InfinityTech_PL" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all">
             <XIcon className="w-4 h-4" />
           </a>
@@ -384,7 +326,7 @@ function HeroSection() {
           </p>
           <div className="flex items-center justify-center gap-4">
             <div className="h-px w-12 bg-white/20" />
-            <span className="text-xs tracking-widest uppercase text-white/50">Infinity Team</span>
+            <span className="text-xs tracking-widest uppercase text-white/50">Infinity Tech</span>
             <div className="h-px w-12 bg-white/20" />
           </div>
         </div>
@@ -413,7 +355,7 @@ function StatsSection() {
                     <span>{stat.value}{stat.suffix}</span>
                   )}
                 </div>
-                <div className="text-xs sm:text-sm text-white/50">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-white/65">{stat.label}</div>
               </div>
             </FadeIn>
           ))}
@@ -425,23 +367,22 @@ function StatsSection() {
 
 function TeamSection2() {
   const matteGlow = 'rgba(79,106,232,0.3)';
-  const matteGradient = 'linear-gradient(145deg, #0A1628 0%, #152040 100%)';
-  const team = [
-    { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior-nobg.png', bio: 'Wizjoner i strateg z doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Artur Seredziuk', title: 'Co-Founder', handle: 'account', avatar: '/images/artur-seredziuk-nobg.png', bio: 'Współzałożyciel Infinity Tech, odpowiada za sprzedaż i pozyskiwanie klientów.', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
-    { name: 'Tomasz Pędzierski', title: 'Co-Founder', handle: 'bizdev', avatar: '/images/tomasz-pedzierski2.png', bio: 'Współzałożyciel Infinity Tech, buduje relacje z klientami enterprise i rozwija nowe partnerstwa biznesowe.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '110%', objectPosition: '50% 8%' } },
-    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski-nobg.png', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '108%', height: '89%' } },
-    { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: '/images/tobias-guanyi-du-nobg.png', bio: 'Odpowiada za implementację i rozwój techniczny agentów AI.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '97%', height: '79%' } },
-    { name: 'Kevin Kanak', title: 'Head of European Expansion', handle: 'expansion', avatar: '/images/kevin-kanak-nobg.png', bio: 'Odpowiada za ekspansję Infinity Tech na rynki Europy Centralnej.', glow: matteGlow, gradient: matteGradient },
+  const matteGradient = 'var(--card-gradient)';
+  const management = [
+    { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior-nobg.webp', bio: 'Wizjoner i strateg z doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
+    { name: 'Artur Seredziuk', title: 'Co-Founder', handle: 'account', avatar: '/images/artur-seredziuk-nobg.webp', bio: 'Współzałożyciel Infinity Tech, odpowiada za sprzedaż i pozyskiwanie klientów.', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
+    { name: 'Tomasz Pędzierski', title: 'Co-Founder', handle: 'bizdev', avatar: '/images/tomasz-pedzierski2.webp', bio: 'Współzałożyciel Infinity Tech, buduje relacje z klientami enterprise i rozwija nowe partnerstwa biznesowe.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '110%', objectPosition: '50% 8%' } },
+    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski-nobg.webp', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '108%', height: '89%' } },
   ];
+  const tobias = { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: '/images/tobias-guanyi-du-nobg.webp', bio: 'Odpowiada za implementację i rozwój techniczny agentów AI.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '97%', height: '79%' } };
 
   return (
     <section className="py-20">
       <div className="max-w-[82rem] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-center">
-          {/* Left — cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-            {team.map((person, i) => (
+          {/* Left — cards: zarząd 2×2, pracownicy niżej. dark-scope = karty zawsze ciemne (holo) w obu motywach */}
+          <div className="dark-scope grid grid-cols-2 gap-4 md:gap-5">
+            {management.map((person, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <ProfileCard
                   name={person.name}
@@ -449,7 +390,7 @@ function TeamSection2() {
                   handle={person.handle}
                   status="Infinity Tech"
                   avatarUrl={person.avatar}
-                  iconUrl="/holo.png"
+                  iconUrl="/holo.webp"
                   showUserInfo={false}
                   enableTilt={true}
                   enableMobileTilt={false}
@@ -462,13 +403,36 @@ function TeamSection2() {
                 />
               </FadeIn>
             ))}
+            <div className="col-span-2 flex justify-center">
+              <div className="w-[calc(50%-0.5rem)] md:w-[calc(50%-0.625rem)]">
+                <FadeIn delay={0.4}>
+                  <ProfileCard
+                    name={tobias.name}
+                    title={tobias.title}
+                    handle={tobias.handle}
+                    status="Infinity Tech"
+                    avatarUrl={tobias.avatar}
+                    iconUrl="/holo.webp"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    behindGlowEnabled={true}
+                    behindGlowColor={tobias.glow}
+                    innerGradient={tobias.gradient}
+                    bio={tobias.bio}
+                    contactText="Kontakt"
+                    avatarStyle={(tobias as any).avatarStyle}
+                  />
+                </FadeIn>
+              </div>
+            </div>
           </div>
 
           {/* Right — motto */}
           <FadeIn delay={0.3}>
             <div className="text-center lg:text-left">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-white">
-                Nasz <span style={{ color: '#7B9BDB' }}>Zespół</span>
+                Nasz <span style={{ color: 'var(--accent-text)' }}>Zespół</span>
               </h2>
               <p className="text-white/50 text-xl mb-7">
                 Ludzie, którzy stoją za Infinity Tech
@@ -523,7 +487,7 @@ function BenefitsSection() {
         <FadeIn>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Dlaczego <span style={{ color: '#7B9BDB' }}>Infinity Tech?</span>
+              Dlaczego <span style={{ color: 'var(--accent-text)' }}>Infinity Tech?</span>
             </h2>
             <p className="text-xl text-white/50">Dostarczamy rozwiązania dopasowane do Twojej firmy</p>
           </div>
@@ -549,7 +513,7 @@ function BenefitsSection() {
                   <Zap className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-white">Szybka Automatyzacja</h3>
-                <p className="text-base leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.7)' }}>Algorytmy AI przejmują monotonne zadania, zwiększając efektywność Twojego zespołu nawet o 300%.</p>
+                <p className="text-base leading-relaxed max-w-md" style={{ color: 'var(--fg-70)' }}>Algorytmy AI przejmują monotonne zadania, zwiększając efektywność Twojego zespołu nawet o 300%.</p>
               </div>
             </div>
           </FadeIn>
@@ -566,7 +530,7 @@ function BenefitsSection() {
                   <Clock className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-white">Szybka Implementacja</h3>
-                <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>Wdrażamy rozwiązania w tygodnie, nie miesiące. Pierwsze rezultaty widoczne od pierwszego dnia.</p>
+                <p className="text-base leading-relaxed" style={{ color: 'var(--fg-70)' }}>Wdrażamy rozwiązania w tygodnie, nie miesiące. Pierwsze rezultaty widoczne od pierwszego dnia.</p>
               </div>
             </div>
           </FadeIn>
@@ -583,7 +547,7 @@ function BenefitsSection() {
                   <Shield className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-white">Bezpieczeństwo Danych</h3>
-                <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>Twoje dane pozostają w Polsce. Gwarantujemy pełną zgodność z RODO i certyfikację ISO.</p>
+                <p className="text-base leading-relaxed" style={{ color: 'var(--fg-70)' }}>Twoje dane pozostają w Polsce. Gwarantujemy pełną zgodność z RODO i standardy bezpieczeństwa zgodne z ISO 27001.</p>
               </div>
             </div>
           </FadeIn>
@@ -602,7 +566,7 @@ function BenefitsSection() {
                   <BarChart3 className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-white">Mierzalne Wyniki</h3>
-                <p className="text-base leading-relaxed max-w-md" style={{ color: 'rgba(255,255,255,0.7)' }}>Śledź ROI w czasie rzeczywistym. Widoczny wzrost produktywności od pierwszego miesiąca.</p>
+                <p className="text-base leading-relaxed max-w-md" style={{ color: 'var(--fg-70)' }}>Śledź ROI w czasie rzeczywistym. Widoczny wzrost produktywności od pierwszego miesiąca.</p>
               </div>
             </div>
           </FadeIn>
@@ -620,7 +584,7 @@ function ServicesSection() {
         <FadeIn>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Co <ShinyText text="robimy" /></h2>
-            <p className="text-xl text-white/50">Cztery filary automatyzacji Twojej firmy</p>
+            <p className="text-xl text-white/50">Cztery filary AI dla Twojej firmy</p>
           </div>
         </FadeIn>
 
@@ -647,6 +611,90 @@ function ServicesSection() {
   );
 }
 
+// Realizacje — anonimizowane, ale prawdziwe wdrożenia (branża + efekt, bez nazw własnych)
+const CASE_STUDIES = [
+  {
+    icon: PhoneCall,
+    sector: 'Transport regionalny',
+    title: 'Asystent głosowy na infolinii',
+    description: 'Agent głosowy AI odbiera telefony pasażerów i podaje rozkłady jazdy oraz informacje 24/7 — po polsku, naturalnym głosem. Biuro obsługi przestało tonąć w powtarzalnych połączeniach.',
+    tags: ['Voice AI', 'Obsługa klienta 24/7'],
+  },
+  {
+    icon: Building2,
+    sector: 'Kadry i płace',
+    title: 'Agentka AI dla działu HR',
+    description: 'Wirtualna specjalistka kadrowa z żywą bazą prawa pracy — odpowiada na pytania pracowników, wypełnia dokumenty kadrowe i pilnuje terminów ZUS/PIT. Baza aktualizowana przy każdej zmianie przepisów.',
+    tags: ['Wertykał HR', 'Baza wiedzy AI'],
+  },
+  {
+    icon: Sprout,
+    sector: 'AgroTech',
+    title: 'Aplikacja AI dla rolnictwa',
+    description: 'Dedykowana aplikacja, która wspiera gospodarstwa w codziennych decyzjach i zarządzaniu — od danych po rekomendacje. Wdrożona produkcyjnie i rozwijana z klientem.',
+    tags: ['Aplikacja na miarę', 'Wdrożenie produkcyjne'],
+  },
+  {
+    icon: MessagesSquare,
+    sector: 'Platforma cyfrowa',
+    title: 'Dopasowanie oparte na AI',
+    description: 'Platforma, w której AI kojarzy strony transakcji na podstawie profilu i realnego dopasowania — zamiast ręcznego przeszukiwania. Od pomysłu do działającego produktu.',
+    tags: ['Custom AI', 'Product od zera'],
+  },
+];
+
+function CaseStudiesSection() {
+  return (
+    <section className="py-16 md:py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <FadeIn>
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+              Co <span style={{ color: 'var(--accent-text)' }}>zbudowaliśmy</span>
+            </h2>
+            <p className="text-xl text-white/50">Realne wdrożenia AI w różnych branżach</p>
+          </div>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          {CASE_STUDIES.map((cs, i) => (
+            <FadeIn key={i} delay={i * 0.1}>
+              <div
+                className="h-full rounded-2xl p-6 md:p-7 transition-all hover:-translate-y-1"
+                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
+                    <cs.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--accent-text)' }}>{cs.sector}</div>
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-2">{cs.title}</h3>
+                    <p className="text-sm leading-relaxed text-white/70">{cs.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {cs.tags.map((tag) => (
+                        <span key={tag} className="text-[11px] font-medium px-2.5 py-1 rounded-md" style={{ background: 'rgba(46,74,173,0.15)', color: 'var(--accent-text)' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.4}>
+          <p className="text-center text-sm text-white/40 mt-8">
+            Nazwy klientów pomijamy ze względu na poufność. Chętnie opowiemy o szczegółach na rozmowie.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function TechBentoSection() {
   const allChannels = [...CHANNELS, ...CHANNELS, ...CHANNELS];
 
@@ -656,7 +704,7 @@ function TechBentoSection() {
         <FadeIn>
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">Nasz stack technologiczny</h2>
-            <p style={{ color: '#7B9BDB' }}>Technologie i 23+ kanałów komunikacji</p>
+            <p style={{ color: 'var(--accent-text)' }}>Technologie i 23+ kanałów komunikacji</p>
           </div>
         </FadeIn>
 
@@ -665,18 +713,18 @@ function TechBentoSection() {
 
           {/* Row 1: OpenClaw (2/3) + Hetzner (1/3) */}
           <FadeIn delay={0} className="md:col-span-2">
-            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #0f1729, #1a1f3a)', minHeight: '140px' }}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'var(--surface-tile)', minHeight: '140px' }}>
               <div className="tech-blob-oc absolute rounded-full" style={{ width: '200px', height: '200px', background: 'radial-gradient(circle, #4F6AE8, #7B5CCC)', opacity: 0.15, filter: 'blur(60px)', top: '-30px', right: '-30px' }} />
               <span className="absolute top-5 right-5 text-4xl z-10">🦞</span>
               <div className="relative z-10 flex flex-col justify-end h-full">
                 <h3 className="text-2xl font-bold text-white mb-1">OpenClaw</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)' }}>AI Agent Framework</p>
+                <p style={{ color: 'var(--fg-60)' }}>AI Agent Framework</p>
               </div>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #0f1729, #1a2040)', minHeight: '140px' }}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'var(--surface-tile)', minHeight: '140px' }}>
               <div className="absolute top-5 right-5 z-10">
                 <div className="tech-ping">
                   <div className="tech-ping-ring" />
@@ -692,7 +740,7 @@ function TechBentoSection() {
 
           {/* Row 2: Stripe + Vercel + MiniMax (1/3 each) */}
           <FadeIn delay={0.15}>
-            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #635BFF, #7A73FF)', minHeight: '140px' }}>
+            <div className="dark-scope tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #635BFF, #7A73FF)', minHeight: '140px' }}>
               <div className="tech-coins absolute pointer-events-none" style={{ right: '20px', top: '20px', width: '40px', height: '50px' }}>
                 <span className="tech-coin tech-coin-1">$</span>
                 <span className="tech-coin tech-coin-2">$</span>
@@ -706,7 +754,7 @@ function TechBentoSection() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full flex flex-col justify-between" style={{ background: '#000', minHeight: '140px' }}>
+            <div className="dark-scope tech-tile relative overflow-hidden rounded-2xl p-6 h-full flex flex-col justify-between" style={{ background: '#000', minHeight: '140px' }}>
               <div className="tech-vercel-logo absolute pointer-events-none" style={{ right: '20px', top: '20px', width: '40px', height: '40px' }}>
                 <svg viewBox="0 0 76 65" fill="white" style={{ opacity: 0.15 }}><path d="M37.5 0L75 65H0L37.5 0z" /></svg>
               </div>
@@ -718,22 +766,22 @@ function TechBentoSection() {
           </FadeIn>
 
           <FadeIn delay={0.25}>
-            <div className="tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #0f1729, #1a2461)', minHeight: '140px' }}>
-              <div className="tech-neurons absolute pointer-events-none" style={{ right: '20px', top: '20px' }}>
-                <div className="tech-neuron tech-neuron-1" />
-                <div className="tech-neuron tech-neuron-2" />
-                <div className="tech-neuron tech-neuron-3" />
+            <div className="dark-scope tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #101014, #1d1d24)', minHeight: '140px' }}>
+              <div className="absolute pointer-events-none" style={{ right: '18px', top: '22px', display: 'flex', alignItems: 'center', gap: '3px' }}>
+                {[10, 18, 26, 15, 22, 12].map((h, i) => (
+                  <span key={i} style={{ width: '3px', height: `${h}px`, borderRadius: '2px', background: 'rgba(255,255,255,0.35)' }} />
+                ))}
               </div>
               <div className="relative z-10 flex flex-col justify-end h-full">
-                <h3 className="text-xl font-semibold text-white mb-1">MiniMax</h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)' }}>AI Models</p>
+                <h3 className="text-xl font-bold text-white mb-1">ElevenLabs</h3>
+                <p style={{ color: 'rgba(255,255,255,0.6)' }}>Voice AI</p>
               </div>
             </div>
           </FadeIn>
 
           {/* Row 3: Channels (full width) */}
           <FadeIn delay={0.3} className="md:col-span-3">
-            <div className="tech-tile relative overflow-hidden rounded-2xl py-10" style={{ background: 'linear-gradient(135deg, #0f1729, #1a1f3a)' }}>
+            <div className="tech-tile relative overflow-hidden rounded-2xl py-10" style={{ background: 'var(--surface-tile)' }}>
               <div className="px-8 mb-6 text-center">
                 <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">23+ kanałów komunikacji</h3>
                 <p className="text-base text-white/60">Twój agent AI działa tam, gdzie Ty i Twoi klienci</p>
@@ -775,45 +823,45 @@ function OpenClawSection() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <FadeIn>
           <div className="text-center mb-8 md:mb-14">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-white">Budujemy na technologii, która zmieniła reguły gry</h2>
-            <p className="text-white/50">OpenClaw — od weekendowego projektu do #1 na GitHubie w 60 dni</p>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-white">Stoimy na ramionach najlepszych technologii open source</h2>
+            <p className="text-white/50">Jedną z nich jest OpenClaw — od weekendowego projektu do #1 na GitHubie w 60 dni</p>
           </div>
         </FadeIn>
 
         {/* Milestones */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 md:mb-10 items-stretch">
           <FadeIn delay={0} className="h-full">
-            <div className="rc-card rc-glow-1 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(79,95,213,0.1)', maxHeight: '160px' }}>
+            <div className="rc-card rc-glow-1 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'var(--surface-1)', border: '1px solid rgba(var(--ink-rgb), 0.08)', boxShadow: 'inset 0 0 0 1000px rgba(79,95,213,0.1)', maxHeight: '160px' }}>
               <div className="flex items-center gap-2 mb-2 relative z-[2]">
-                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>★</span>
-                <span className="text-white/60 font-medium text-xs">Developerów na GitHubie</span>
+                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(var(--ink-rgb), 0.1)', border: '1px solid rgba(var(--ink-rgb), 0.15)' }}>★</span>
+                <span className="text-white/60 font-medium text-xs">Gwiazdek na GitHubie</span>
               </div>
               <div className="flex-1 flex items-center justify-center relative z-[2]">
-                <span className="text-4xl font-extrabold rc-num">340k+</span>
+                <span className="text-4xl font-extrabold rc-num">380k+</span>
               </div>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.15} className="h-full">
-            <div className="rc-card rc-glow-2 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(59,125,216,0.1)', maxHeight: '160px' }}>
+            <div className="rc-card rc-glow-2 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'var(--surface-1)', border: '1px solid rgba(var(--ink-rgb), 0.08)', boxShadow: 'inset 0 0 0 1000px rgba(59,125,216,0.1)', maxHeight: '160px' }}>
               <div className="flex items-center gap-2 mb-2 relative z-[2]">
-                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>👁</span>
-                <span className="text-white/60 font-medium text-xs">Wyświetleń w social media</span>
+                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(var(--ink-rgb), 0.1)', border: '1px solid rgba(var(--ink-rgb), 0.15)' }}>👁</span>
+                <span className="text-white/60 font-medium text-xs">Forków na GitHubie</span>
               </div>
               <div className="flex-1 flex items-center justify-center relative z-[2]">
-                <span className="text-4xl font-extrabold rc-num">500M+</span>
+                <span className="text-4xl font-extrabold rc-num">80k+</span>
               </div>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.3} className="h-full">
-            <div className="rc-card rc-glow-3 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'rgba(15,20,45,0.9)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 0 1000px rgba(91,79,207,0.1)', maxHeight: '160px' }}>
+            <div className="rc-card rc-glow-3 rounded-[20px] p-4 flex flex-col overflow-hidden h-full" style={{ background: 'var(--surface-1)', border: '1px solid rgba(var(--ink-rgb), 0.08)', boxShadow: 'inset 0 0 0 1000px rgba(91,79,207,0.1)', maxHeight: '160px' }}>
               <div className="flex items-center gap-2 mb-2 relative z-[2]">
-                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>📈</span>
-                <span className="text-white/60 font-medium text-xs">Od zera do #1 na świecie</span>
+                <span className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white" style={{ backgroundColor: 'rgba(var(--ink-rgb), 0.1)', border: '1px solid rgba(var(--ink-rgb), 0.15)' }}>📈</span>
+                <span className="text-white/60 font-medium text-xs">Od zera do #1 na GitHubie</span>
               </div>
               <div className="flex-1 flex items-center justify-center relative z-[2]">
-                <span className="text-4xl font-extrabold rc-num">1 Tydzień</span>
+                <span className="text-4xl font-extrabold rc-num">60 dni</span>
               </div>
             </div>
           </FadeIn>
@@ -821,7 +869,7 @@ function OpenClawSection() {
 
         {/* Auto-scrolling quote carousel */}
         <FadeIn delay={0.5}>
-          <div className="relative overflow-hidden rounded-2xl min-h-[200px] md:min-h-[240px]" style={{ background: 'rgba(15,20,45,0.6)', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="relative overflow-hidden rounded-2xl min-h-[200px] md:min-h-[240px]" style={{ background: 'var(--surface-3)', border: '1px solid rgba(var(--ink-rgb), 0.06)' }}>
             {OPENCLAW_QUOTES.map((item, i) => (
               <div
                 key={i}
@@ -832,7 +880,7 @@ function OpenClawSection() {
                   pointerEvents: activeQuote === i ? 'auto' : 'none',
                 }}
               >
-                <span className="text-2xl md:text-4xl leading-none select-none mb-2 md:mb-3" style={{ color: 'rgba(123,155,219,0.3)' }}>&ldquo;</span>
+                <span className="text-2xl md:text-4xl leading-none select-none mb-2 md:mb-3" style={{ color: 'rgba(var(--accent-text-rgb), 0.3)' }}>&ldquo;</span>
                 <p className="italic text-sm md:text-lg leading-relaxed text-white/80 max-w-3xl">
                   &ldquo;{item.quote}&rdquo;
                 </p>
@@ -874,9 +922,10 @@ function OpenClawSection() {
                 <button
                   key={i}
                   onClick={() => setActiveQuote(i)}
+                  aria-label={`Pokaż cytat ${i + 1} z ${OPENCLAW_QUOTES.length}`}
                   className="w-2 h-2 rounded-full transition-all duration-300"
                   style={{
-                    backgroundColor: activeQuote === i ? '#7B9BDB' : 'rgba(255,255,255,0.15)',
+                    backgroundColor: activeQuote === i ? 'var(--accent-text)' : 'rgba(var(--ink-rgb), 0.15)',
                     transform: activeQuote === i ? 'scale(1.3)' : 'scale(1)',
                     boxShadow: activeQuote === i ? '0 0 8px rgba(123,155,219,0.5)' : 'none',
                   }}
@@ -887,8 +936,8 @@ function OpenClawSection() {
         </FadeIn>
 
         <FadeIn delay={0.7}>
-          <p className="text-center text-sm text-white/40 mt-8">
-            Infinity Tech jest oficjalnym partnerem wdrożeniowym OpenClaw w Polsce.
+          <p className="text-center text-sm text-white/60 mt-8">
+            OpenClaw to jeden z frameworków, na których budujemy — obok ElevenLabs (voice AI) i wiodących modeli językowych. Dobieramy technologię do zadania, nie odwrotnie.
           </p>
         </FadeIn>
       </div>
@@ -907,19 +956,19 @@ function TechnologySection() {
             <div className="inline-block px-4 py-2 rounded-full bg-[#7B9BDB]/20 text-[#D6E4FF] text-sm font-medium mb-4">
               Nasz silnik AI
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Technologia OpenCLAW</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Jak działają nasi agenci</h2>
             <p className="text-xl text-slate-300 mb-8">
-              Wykorzystujemy OpenCLAW - otwarty framework agentów AI, który łączy komunikację 
-              z potężnymi modelami językowymi, zapewniając autonomiczne działanie 24/7.
+              Łączymy najlepsze modele językowe, silniki głosowe i otwarte frameworki agentowe
+              w jeden autonomiczny system, który pracuje 24/7 — głosem i tekstem, w kanałach Twoich klientów.
             </p>
-            
+
             <div className="space-y-4">
               {[
-                'Autonomiczne działanie 24/7',
-                'Integracja z 15+ platformami',
-                'Modele: ChatGPT, Claude, Gemini',
-                'Pełna kontrola i bezpieczeństwo',
-                'Self-hosted rozwiązania'
+                'Agenci głosowi i tekstowi 24/7',
+                'Integracja z 23+ kanałami komunikacji',
+                'Modele: ChatGPT, Claude, Gemini + głos (ElevenLabs)',
+                'Własne bazy wiedzy dla Twojej branży',
+                'Self-hosted i dane w Polsce (RODO)'
               ].map((feature, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
@@ -930,13 +979,13 @@ function TechnologySection() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="rounded-3xl overflow-hidden border border-white/10">
+            <div className="dark-scope rounded-3xl overflow-hidden border border-white/10" style={{ background: '#0A1628' }}>
               {/* Terminal header */}
               <div className="flex items-center gap-2 px-4 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}>
                 <div className="w-3 h-3 rounded-full bg-red-500/70" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
                 <div className="w-3 h-3 rounded-full bg-green-500/70" />
-                <span className="ml-3 text-xs text-white/40 font-mono">openclaw-agent.ts</span>
+                <span className="ml-3 text-xs text-white/40 font-mono">ai-agent.ts · demo</span>
               </div>
 
               {/* Terminal body */}
@@ -953,7 +1002,12 @@ function TechnologySection() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span style={{ color: '#2E4AAD' }}>▸</span>
-                  <span className="text-white/50">Integracja: Slack, Teams, CRM...</span>
+                  <span className="text-white/50">Głos: ElevenLabs — PL, naturalny...</span>
+                  <span className="text-green-400">✓</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span style={{ color: '#2E4AAD' }}>▸</span>
+                  <span className="text-white/50">Integracja: telefon, Slack, Teams, CRM...</span>
                   <span className="text-green-400">✓</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -963,7 +1017,7 @@ function TechnologySection() {
                 </div>
 
                 <div className="pt-3 mt-3 border-t border-white/10 space-y-2">
-                  <div className="text-white/30 text-xs">{/* live stats */}</div>
+                  <div className="text-white/30 text-xs">Przykładowa symulacja wdrożenia</div>
                   <div className="flex justify-between">
                     <span className="text-white/50">Obsłużone zapytania</span>
                     <span className="font-bold" style={{ color: '#2E4AAD' }}>12 847</span>
@@ -997,6 +1051,63 @@ function TechnologySection() {
   );
 }
 
+// Teaser kalkulatora ROI — szybki szacunek + CTA do pełnego kalkulatora.
+// Formuły spójne z ROICalculator (plan Standard: 0.5% oszczędności czasu).
+function RoiTeaserSection() {
+  const [employees, setEmployees] = useState(50);
+  const monthlyHours = Math.round(employees * 176 * 0.005);
+  const annualValue = Math.round(employees * 8000 * 0.005 * 12);
+  const fmt = (n: number) => n.toLocaleString('pl-PL');
+
+  return (
+    <section className="py-12 md:py-20">
+      <div className="max-w-4xl mx-auto px-6">
+        <FadeIn>
+          <div className="rounded-3xl p-8 md:p-12 text-center relative overflow-hidden" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">
+              Ile może zaoszczędzić <span style={{ color: 'var(--accent-text)' }}>Twoja firma?</span>
+            </h2>
+            <p className="text-white/60 mb-8">Przesuń suwak i zobacz szybki szacunek dla planu Standard</p>
+
+            <div className="max-w-xl mx-auto mb-8">
+              <div className="flex justify-between text-sm text-white/60 mb-2">
+                <span>Liczba pracowników</span>
+                <span className="font-bold text-white">{employees}</span>
+              </div>
+              <input
+                type="range"
+                min={5}
+                max={500}
+                step={5}
+                value={employees}
+                onChange={(e) => setEmployees(Number(e.target.value))}
+                aria-label="Liczba pracowników"
+                className="w-full accent-[#4F6AE8] cursor-pointer"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
+              <div className="rounded-xl p-4" style={{ background: 'rgba(46,74,173,0.15)' }}>
+                <div className="text-3xl font-extrabold text-white mb-1">{fmt(monthlyHours)} h</div>
+                <div className="text-xs text-white/60">odzyskanych godzin miesięcznie</div>
+              </div>
+              <div className="rounded-xl p-4" style={{ background: 'rgba(46,74,173,0.15)' }}>
+                <div className="text-3xl font-extrabold mb-1" style={{ color: 'var(--accent-text)' }}>{fmt(annualValue)} zł</div>
+                <div className="text-xs text-white/60">wartość odzyskanego czasu rocznie</div>
+              </div>
+            </div>
+
+            <a href="/kalkulator" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white bg-[#2E4AAD] hover:bg-[#1A2461] transition-colors">
+              Oblicz pełne ROI dla swojej firmy
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -1006,7 +1117,7 @@ function FAQSection() {
         <FadeIn>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Częste <span style={{ color: '#7B9AFF' }}>Pytania</span>
+              Częste <span style={{ color: 'var(--accent-text)' }}>Pytania</span>
             </h2>
             <p className="text-xl text-white/50">Odpowiedzi na najczęściej zadawane pytania</p>
           </div>
@@ -1023,10 +1134,10 @@ function FAQSection() {
                   <span className="font-medium text-white pr-4">{item.question}</span>
                   <ChevronDown
                     className={`h-5 w-5 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}
-                    style={{ color: '#7B9AFF' }}
+                    style={{ color: 'var(--accent-text)' }}
                   />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <p className="px-5 pb-5 text-white/70 text-sm leading-relaxed">{item.answer}</p>
                 </div>
               </StarBorder>
@@ -1083,11 +1194,11 @@ function ContactCTASection() {
           <div className="grid lg:grid-cols-2 gap-5 items-stretch">
             {/* Left — Form */}
             <FadeIn delay={0.2} className="h-full">
-              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(123,155,219,0.15)' }}>
-                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(123,155,219,0.08)' }}>
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid var(--border-soft)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(var(--accent-text-rgb), 0.08)' }}>
                   <p className="text-[13px] uppercase tracking-widest text-[#7B9BDB]">Napisz do nas</p>
                 </div>
-                <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: 'rgba(10,22,40,0.8)' }}>
+                <div className="flex-1 p-4 flex flex-col" style={{ backgroundColor: 'var(--surface-2)' }}>
                   {submitState === 'done' ? (
                     <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
                       <CheckCircle2 className="w-10 h-10 text-[#2E4AAD]" />
@@ -1138,9 +1249,9 @@ function ContactCTASection() {
                           disabled={submitState === 'submitting'}
                           value={formState.message}
                           onChange={(e) => setFormState({...formState, message: e.target.value})}
-                          rows={2}
-                          className="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all resize-none placeholder:text-white/30 disabled:opacity-60"
-                          style={{ minHeight: '50px', maxHeight: '50px' }}
+                          rows={4}
+                          className="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all resize-y placeholder:text-white/30 disabled:opacity-60"
+                          style={{ minHeight: '96px' }}
                           placeholder="Opisz swój projekt..."
                         />
                       </div>
@@ -1154,7 +1265,7 @@ function ContactCTASection() {
                           onChange={e => setContactConsent(e.target.checked)}
                           className="mt-0.5 w-4 h-4 rounded accent-[#2E4AAD] flex-shrink-0"
                         />
-                        <span className="text-[10px] leading-tight text-white/40">
+                        <span className="text-[11px] leading-tight text-white/55">
                           Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie. Zapoznałem/am się z{' '}
                           <a href="/polityka-prywatnosci" className="underline hover:text-white/70">Polityką Prywatności</a> i akceptuję{' '}
                           <a href="/regulamin" className="underline hover:text-white/70">Regulamin</a>.
@@ -1176,7 +1287,7 @@ function ContactCTASection() {
                   )}
 
                   {/* Contact info */}
-                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                  <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(var(--ink-rgb), 0.1)' }}>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-3">
                         <Mail className="w-4 h-4 flex-shrink-0 text-[#7B9BDB]" />
@@ -1197,7 +1308,7 @@ function ContactCTASection() {
                     <div className="flex flex-wrap gap-2 mt-3">
                       <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md" style={{ backgroundColor: 'rgba(46,74,173,0.15)' }}>
                         <Shield className="w-3.5 h-3.5 text-[#7B9BDB]" />
-                        <span className="text-[11px] font-medium text-[#7B9BDB]">SSL Secured</span>
+                        <span className="text-[11px] font-medium text-[#7B9BDB]">Połączenie szyfrowane SSL</span>
                       </div>
                     </div>
                   </div>
@@ -1207,8 +1318,8 @@ function ContactCTASection() {
 
             {/* Right — Map */}
             <FadeIn delay={0.4} className="h-full">
-              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid rgba(123,155,219,0.15)' }}>
-                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(123,155,219,0.08)' }}>
+              <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid var(--border-soft)' }}>
+                <div className="px-6 py-3" style={{ backgroundColor: 'rgba(var(--accent-text-rgb), 0.08)' }}>
                   <p className="text-[13px] uppercase tracking-widest text-[#7B9BDB]">Gdzie nas znajdziesz</p>
                 </div>
                 <div className="flex-1">
@@ -1234,11 +1345,10 @@ function ContactCTASection() {
 
 
 export default function LandingPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const menuItems: { label: string; ariaLabel: string; link: string }[] = [
     { label: 'Start', ariaLabel: 'Przejdź do sekcji start', link: '#start' },
     { label: 'Usługi', ariaLabel: 'Zobacz nasze usługi', link: '#uslugi' },
+    { label: 'Realizacje', ariaLabel: 'Zobacz nasze wdrożenia', link: '#realizacje' },
     { label: 'O nas', ariaLabel: 'Dowiedz się więcej o nas', link: '#o-nas' },
     { label: 'Kalkulator ROI', ariaLabel: 'Oblicz ROI automatyzacji', link: '/kalkulator' },
     { label: 'Świat AI', ariaLabel: 'Przejdź do newsów AI', link: '/swiat-ai' },
@@ -1290,6 +1400,10 @@ export default function LandingPage() {
           <ServicesSection />
         </div>
 
+        <div id="realizacje">
+          <CaseStudiesSection />
+        </div>
+
         <TeamSection2 />
 
         <div id="o-nas">
@@ -1301,6 +1415,8 @@ export default function LandingPage() {
         <OpenClawSection />
 
         <TechnologySection />
+
+        <RoiTeaserSection />
 
         <ContactCTASection />
 

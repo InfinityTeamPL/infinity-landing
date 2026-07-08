@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Agenci AI | Infinity Tech',
+  title: 'Agenci AI',
   description: 'Poznaj naszych agentów AI — automatyzacja HR, marketingu i sprzedaży. Inteligentne rozwiązania dopasowane do Twojego biznesu.',
+  alternates: { canonical: '/agents' },
   openGraph: {
     title: 'Agenci AI | Infinity Tech',
     description: 'Poznaj naszych agentów AI — automatyzacja HR, marketingu i sprzedaży.',

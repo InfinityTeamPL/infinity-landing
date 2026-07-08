@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Kalkulator ROI | Infinity Tech',
+  title: 'Kalkulator ROI',
   description: 'Oblicz zwrot z inwestycji w automatyzację AI. Sprawdź, ile Twoja firma może zaoszczędzić z rozwiązaniami Infinity Tech.',
+  alternates: { canonical: '/kalkulator' },
   openGraph: {
     title: 'Kalkulator ROI | Infinity Tech',
     description: 'Oblicz zwrot z inwestycji w automatyzację AI.',

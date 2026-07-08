@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Case Studies | Infinity Tech',
+  title: 'Case Studies',
   description: 'Sprawdź, jak nasze rozwiązania AI pomagają firmom automatyzować procesy i zwiększać efektywność.',
+  alternates: { canonical: '/case-studies' },
   openGraph: {
     title: 'Case Studies | Infinity Tech',
     description: 'Sprawdź, jak nasze rozwiązania AI pomagają firmom.',

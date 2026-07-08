@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Bloom | Infinity Tech',
+  title: 'Bloom',
   description: 'Bloom — kreatywne narzędzie AI od Infinity Tech.',
+  alternates: { canonical: '/bloom' },
   openGraph: {
     title: 'Bloom | Infinity Tech',
     description: 'Bloom — kreatywne narzędzie AI od Infinity Tech.',
