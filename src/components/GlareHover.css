@@ -11,7 +11,7 @@
   background: linear-gradient(
     var(--gh-angle, -30deg),
     hsla(0, 0%, 0%, 0) 60%,
-    var(--gh-rgba, rgba(123, 155, 219, 0.15)) 70%,
+    var(--gh-rgba, var(--border-soft)) 70%,
     hsla(0, 0%, 0%, 0),
     hsla(0, 0%, 0%, 0) 100%
   );

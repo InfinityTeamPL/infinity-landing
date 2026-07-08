@@ -37,7 +37,7 @@ const sourceSerif = Source_Serif_4({
 export default function BloomPage() {
   return (
     <div
-      className={`${poppins.variable} ${sourceSerif.variable} relative min-h-screen overflow-hidden font-display`}
+      className={`${poppins.variable} ${sourceSerif.variable} dark-scope relative min-h-screen overflow-hidden font-display`}
     >
       {/* Video Background — z-0 */}
       <video
@@ -45,12 +45,10 @@ export default function BloomPage() {
         muted
         loop
         playsInline
+        poster="/videos/hero-globe-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4"
-          type="video/mp4"
-        />
+        <source src="/videos/hero-globe.mp4" type="video/mp4" />
       </video>
 
       {/* Content — z-10 */}

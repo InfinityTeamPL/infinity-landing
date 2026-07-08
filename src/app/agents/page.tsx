@@ -176,7 +176,7 @@ function HeroSection() {
         
         <FadeIn delay={0.7}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Ripple className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-lg">
+            <Ripple className="dark-scope px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-lg">
               Poznaj Korzyści
             </Ripple>
             <button className="px-8 py-4 bg-white border-2 border-[#D6E4FF] rounded-full font-semibold text-lg hover:border-indigo-300 transition-all flex items-center justify-center gap-2 text-slate-700">
@@ -215,7 +215,7 @@ function HeroSection() {
 // Stats Overview
 function StatsOverview() {
   return (
-    <section className="py-16 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white">
+    <section className="dark-scope py-16 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-6">
           {Object.entries(AGENT_STATS).map(([key, dept], i) => (
@@ -255,7 +255,7 @@ function HRSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center">
+            <div className="dark-scope w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center">
               <UsersRound className="w-8 h-8 text-white" />
             </div>
             <div>
@@ -383,7 +383,7 @@ function HRSection() {
                   { time: '11:05', event: 'HR dostaje gotowy raport z 5 kandydatami', highlight: true },
                 ].map((step, i) => (
                   <div key={i} className="flex items-start gap-4 relative">
-                    <div className={`w-16 h-16 ${step.color || 'bg-blue-600'} rounded-full flex items-center justify-center text-white font-bold text-xs z-10 flex-shrink-0`}>
+                    <div className={`dark-scope w-16 h-16 ${step.color || 'bg-blue-600'} rounded-full flex items-center justify-center text-white font-bold text-xs z-10 flex-shrink-0`}>
                       {step.time}
                     </div>
                     <div className={`flex-1 rounded-xl p-4 shadow-sm ${step.highlight ? 'bg-white border-2 border-green-300' : 'bg-white'}`}>
@@ -461,7 +461,7 @@ function HRSection() {
         {/* Transformation Table */}
         <FadeIn>
           <div className="mt-8 overflow-hidden rounded-xl border border-blue-200">
-            <div className="bg-blue-600 text-white p-4 text-center">
+            <div className="dark-scope bg-blue-600 text-white p-4 text-center">
               <h4 className="font-bold">TRANSFORMACJA ROLI HR</h4>
             </div>
             <table className="w-full">
@@ -496,7 +496,7 @@ function MarketingSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 bg-pink-600 rounded-2xl flex items-center justify-center">
+            <div className="dark-scope w-14 h-14 bg-pink-600 rounded-2xl flex items-center justify-center">
               <Megaphone className="w-8 h-8 text-white" />
             </div>
             <div>
@@ -569,7 +569,7 @@ function MarketingSection() {
         <FadeIn>
           <div className="mt-8 overflow-hidden rounded-xl border border-purple-200">
             <table className="w-full text-sm">
-              <thead className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+              <thead className="dark-scope bg-gradient-to-r from-purple-600 to-pink-600 text-white">
                 <tr>
                   <th className="text-left p-4">Metryka</th>
                   <th className="text-center p-4">Przed</th>
@@ -593,7 +593,7 @@ function MarketingSection() {
 
         {/* ROI Box */}
         <FadeIn>
-          <div className="mt-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
+          <div className="dark-scope mt-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
             <h4 className="font-bold text-lg mb-4 text-center">Oszczędności dla zespołu 5-osobowego</h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               {[
@@ -622,7 +622,7 @@ function SalesSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center">
+            <div className="dark-scope w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center">
               <Target className="w-8 h-8 text-white" />
             </div>
             <div>
@@ -701,7 +701,7 @@ function SalesSection() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {SALES_FUNCTIONS.map((func, i) => (
               <div key={i} className="bg-green-50 rounded-xl p-4 text-center">
-                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                <div className="dark-scope w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
                   <func.icon className="w-5 h-5 text-white" />
                 </div>
                 <div className="text-sm font-semibold text-slate-700">{func.title}</div>
@@ -717,7 +717,7 @@ function SalesSection() {
 // Summary Section
 function SummarySection() {
   return (
-    <section className="py-24 bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900">
+    <section className="dark-scope py-24 bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-2xl font-bold text-white text-center mb-8">Dlaczego warto działać teraz?</h2>
         <div className="grid md:grid-cols-2 gap-6">
@@ -800,7 +800,7 @@ export default function AgentsPage() {
             <div className="hidden md:flex items-center gap-8">
               <a href="/" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Start</a>
               <a href="/agents" className="text-slate-700 hover:text-indigo-600 transition-colors font-medium">Agenci AI</a>
-              <a href="#kontakt" className="px-5 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors">
+              <a href="#kontakt" className="dark-scope px-5 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-colors">
                 Kontakt
               </a>
             </div>

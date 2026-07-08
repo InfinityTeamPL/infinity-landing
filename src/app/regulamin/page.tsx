@@ -8,8 +8,9 @@ import dynamic from 'next/dynamic';
 const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr: false });
 
 export const metadata: Metadata = {
-  title: 'Regulamin | Infinity Tech',
+  title: 'Regulamin',
   description: 'Regulamin korzystania z serwisu Infinity Tech — warunki świadczenia usług drogą elektroniczną.',
+  alternates: { canonical: '/regulamin' },
 };
 
 export default function TermsPage() {

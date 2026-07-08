@@ -12,10 +12,11 @@ export default function ShinyText({ text, className = '', speed = 5 }: ShinyText
   return (
     <span
       className={cn(
-        'relative inline-block bg-gradient-to-r from-[#2E4AAD] via-[#7B9BDB] to-[#2E4AAD] bg-clip-text text-transparent',
+        'relative inline-block bg-clip-text text-transparent',
         className
       )}
       style={{
+        backgroundImage: 'linear-gradient(to right, #2E4AAD, var(--accent-text), #2E4AAD)',
         backgroundSize: '200% auto',
         animation: `shiny ${speed}s linear infinite`,
       }}

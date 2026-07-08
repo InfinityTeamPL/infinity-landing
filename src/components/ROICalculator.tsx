@@ -77,8 +77,8 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
   return (
     <div className={`mt-16 ${className}`}>
       <div className="text-center mb-10">
-        <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#0B0F2E' }}>Kalkulator ROI</h3>
-        <p style={{ color: '#7B9BDB' }}>Sprawdź ile możesz zaoszczędzić z Infinity Tech</p>
+        <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: 'var(--fg)' }}>Kalkulator ROI</h3>
+        <p style={{ color: 'var(--accent-text)' }}>Sprawdź ile możesz zaoszczędzić z Infinity Tech</p>
       </div>
 
       {/* Plan selector */}
@@ -177,7 +177,7 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
 
         {/* Right: Compound growth chart */}
         <div>
-          <div className="rounded-2xl p-6" style={{ background: 'linear-gradient(135deg, #0B0F2E 0%, #1A2461 100%)' }}>
+          <div className="dark-scope rounded-2xl p-6" style={{ background: 'linear-gradient(135deg, #0B0F2E 0%, #1A2461 100%)' }}>
             <div className="flex items-center gap-2 mb-1">
               <Zap className="w-5 h-5" style={{ color: '#2E4AAD' }} />
               <span className="text-white/70 text-sm font-medium">Skumulowane oszczędności (5 lat)</span>
@@ -219,7 +219,7 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
           </div>
 
           {/* Bottom highlight */}
-          <div className="mt-4 rounded-2xl p-5 text-white" style={{ background: 'linear-gradient(135deg, #2E4AAD 0%, #1A2461 100%)' }}>
+          <div className="dark-scope mt-4 rounded-2xl p-5 text-white" style={{ background: 'linear-gradient(135deg, #2E4AAD 0%, #1A2461 100%)' }}>
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-white/80 text-sm">Roczna oszczędność netto</div>
@@ -231,7 +231,7 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
               </div>
             </div>
           </div>
-          <p className="text-xs mt-5 text-center" style={{ color: '#7B9BDB' }}>
+          <p className="text-xs mt-5 text-center" style={{ color: 'var(--accent-text)' }}>
             * Kalkulacje szacunkowe. AI z czasem uczy się i optymalizuje — realne wyniki mogą być wyższe.
           </p>
         </div>

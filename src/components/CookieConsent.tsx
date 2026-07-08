@@ -22,7 +22,7 @@ export default function CookieConsent() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6">
-      <div className="max-w-4xl mx-auto bg-[#0B0F2E]/95 backdrop-blur-md border border-[#2E4AAD]/40 rounded-2xl p-5 md:p-6 shadow-2xl shadow-black/40">
+      <div className="max-w-4xl mx-auto backdrop-blur-md border border-[#2E4AAD]/40 rounded-2xl p-5 md:p-6 shadow-2xl shadow-black/40" style={{ background: 'var(--surface-1)' }}>
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
           <div className="flex-1 text-sm text-white/80 leading-relaxed">
             <p>

@@ -106,7 +106,7 @@ export default function TiltedCard({
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
           borderColor: `${accentColor}99`,
-          background: `linear-gradient(160deg, ${accentColor}55 0%, #152240 40%, #0e1a30 100%)`,
+          background: `linear-gradient(160deg, ${accentColor}55 0%, rgba(0,0,0,0) 40%), var(--surface-tile)`,
           backdropFilter: 'blur(12px)',
           zIndex: 1,
         }}
@@ -120,7 +120,7 @@ export default function TiltedCard({
 
         {/* Branded header */}
         <div
-          className="relative h-14 w-full flex-shrink-0 overflow-hidden"
+          className="dark-scope relative h-14 w-full flex-shrink-0 overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}cc 100%)` }}
         >
           {/* Decorative circles */}
@@ -158,7 +158,7 @@ export default function TiltedCard({
               <span className="text-3xl font-bold" style={{ color: accentColor }}>
                 {price}
               </span>
-              <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}> zł/miesiąc</span>
+              <span className="text-sm" style={{ color: 'var(--fg-50)' }}> zł/miesiąc</span>
             </div>
           )}
 
@@ -171,14 +171,14 @@ export default function TiltedCard({
           )}
 
           {description && (
-            <p className={`text-sm mb-4 ${!features || features.length === 0 ? 'flex-1 text-base leading-relaxed' : ''}`} style={{ color: 'rgba(255,255,255,0.5)' }}>{description}</p>
+            <p className={`text-sm mb-4 ${!features || features.length === 0 ? 'flex-1 text-base leading-relaxed' : ''}`} style={{ color: 'var(--fg-50)' }}>{description}</p>
           )}
 
           <div className="flex-1">
             {features && features.length > 0 && (
               <ul className="space-y-2.5">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                  <li key={index} className="flex items-start gap-2 text-sm" style={{ color: 'var(--fg-70)' }}>
                     <CheckCircle2
                       className="h-4 w-4 mt-0.5 flex-shrink-0"
                       style={{ color: accentColor }}
@@ -203,7 +203,7 @@ export default function TiltedCard({
                     50% { box-shadow: 0 0 22px 6px rgba(180,210,255,0.6), 0 0 50px 10px rgba(140,180,255,0.3), inset 0 1px 0 rgba(255,255,255,0.2); }
                   }
                   .silver-shimmer-text {
-                    background: linear-gradient(90deg, #94a8bc 0%, #d0e4f4 20%, #ffffff 50%, #d0e4f4 80%, #94a8bc 100%);
+                    background: linear-gradient(90deg, rgba(var(--ink-rgb),0.6) 0%, rgba(var(--ink-rgb),0.85) 20%, rgb(var(--ink-rgb)) 50%, rgba(var(--ink-rgb),0.85) 80%, rgba(var(--ink-rgb),0.6) 100%);
                     background-size: 200% auto;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
@@ -230,7 +230,7 @@ export default function TiltedCard({
                   onClick={() => setWaitlistStep('input')}
                   className="waitlist-btn mt-5 block w-full py-3 rounded-full text-center transition-all"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(140,180,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(140,180,255,0.12) 100%)',
+                    background: 'linear-gradient(135deg, rgba(140,180,255,0.12) 0%, rgba(var(--ink-rgb),0.06) 50%, rgba(140,180,255,0.12) 100%)',
                     border: '1.5px solid rgba(200,225,255,0.7)',
                   }}
                 >

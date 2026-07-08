@@ -38,15 +38,18 @@ function handleMailto(e: React.MouseEvent) {
 }
 
 const SOURCE_META = {
-  TechCrunch:  { label: 'TechCrunch', Icon: Zap,         color: '#7B9BDB' },
-  TheVerge:    { label: 'The Verge',  Icon: Cpu,          color: '#7B9BDB' },
-  Wired:       { label: 'Wired',      Icon: Newspaper,    color: '#7B9BDB' },
-  DevTo:       { label: 'Dev.to',     Icon: Code,         color: '#7B9BDB' },
-  Guardian:    { label: 'Guardian',   Icon: Globe,        color: '#7B9BDB' },
-  Arxiv:       { label: 'Arxiv',      Icon: BookOpen,     color: '#7B9BDB' },
+  TechCrunch:  { label: 'TechCrunch', Icon: Zap,         color: 'var(--accent-text)' },
+  TheVerge:    { label: 'The Verge',  Icon: Cpu,          color: 'var(--accent-text)' },
+  Wired:       { label: 'Wired',      Icon: Newspaper,    color: 'var(--accent-text)' },
+  DevTo:       { label: 'Dev.to',     Icon: Code,         color: 'var(--accent-text)' },
+  Guardian:    { label: 'Guardian',   Icon: Globe,        color: 'var(--accent-text)' },
+  Arxiv:       { label: 'Arxiv',      Icon: BookOpen,     color: 'var(--accent-text)' },
 } as const;
 
-const DEFAULT_META = { label: 'News', Icon: Globe, color: '#7B9BDB' };
+const DEFAULT_META = { label: 'News', Icon: Globe, color: 'var(--accent-text)' };
+
+/* Akcentowe tło/ramka badge'ów źródeł — alpha na bazie tokenu motywu */
+const accentAlpha = (a: number) => `rgba(var(--accent-text-rgb), ${a})`;
 function getMeta(source: string) {
   return (SOURCE_META as any)[source] ?? DEFAULT_META;
 }
@@ -168,9 +171,9 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                 key={key}
                 className="flex items-center gap-1 md:gap-1.5 px-2 md:px-3 py-1 md:py-1.5 rounded-lg text-[9px] md:text-xs font-medium backdrop-blur-sm"
                 style={{
-                  background: `${meta.color}15`,
+                  background: accentAlpha(0.08),
                   color: meta.color,
-                  border: `1px solid ${meta.color}30`,
+                  border: `1px solid ${accentAlpha(0.19)}`,
                 }}
               >
                 <Icon className="w-3 h-3" />
@@ -191,7 +194,8 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                 href={heroItem.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-[2] bg-[#1A2461]/70 backdrop-blur-2xl p-5 md:p-8 rounded-2xl border border-[#7B9BDB]/20 relative overflow-hidden group shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-[#4F6AE8]/50 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-500"
+                className="flex-[2] backdrop-blur-2xl p-5 md:p-8 rounded-2xl border border-[#7B9BDB]/20 relative overflow-hidden group shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-[#4F6AE8]/50 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-500"
+                style={{ background: 'var(--surface-1)' }}
               >
                 <div className="absolute top-0 right-0 w-40 h-40 bg-[#4F6AE8]/10 rounded-full blur-3xl" />
                 <div className="relative z-10">
@@ -199,9 +203,9 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                     <span
                       className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full"
                       style={{
-                        background: `${getMeta(heroItem.source).color}20`,
+                        background: accentAlpha(0.13),
                         color: getMeta(heroItem.source).color,
-                        border: `1px solid ${getMeta(heroItem.source).color}40`,
+                        border: `1px solid ${accentAlpha(0.25)}`,
                       }}
                     >
                       {React.createElement(getMeta(heroItem.source).Icon, { className: 'w-3 h-3' })}
@@ -211,10 +215,10 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                       {new Date(heroItem.publishedAt).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </span>
                   </div>
-                  <h2 className="text-xl md:text-3xl font-bold text-white leading-tight mb-3 md:mb-4 group-hover:text-[#D6E4FF] transition-colors">
+                  <h2 className="text-xl md:text-3xl font-bold text-white leading-tight mb-3 md:mb-4 group-hover:text-[color:var(--fg-80)] transition-colors">
                     {heroItem.title}
                   </h2>
-                  <p className="text-[#B8C9E8] text-sm md:text-base leading-relaxed mb-4 md:mb-6 max-w-2xl">
+                  <p className="text-sm md:text-base leading-relaxed mb-4 md:mb-6 max-w-2xl" style={{ color: 'var(--fg-70)' }}>
                     {heroItem.excerpt}
                   </p>
                   <span className="text-[#4F6AE8] text-sm font-medium group-hover:text-white transition-colors">
@@ -243,13 +247,14 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-[#1A2461]/70 backdrop-blur-xl p-5 rounded-xl border border-[#7B9BDB]/20 hover:border-[#4F6AE8]/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25)] hover:-translate-y-1 transition-all duration-400 group flex flex-col justify-between"
+                      className="flex-1 backdrop-blur-xl p-5 rounded-xl border border-[#7B9BDB]/20 hover:border-[#4F6AE8]/50 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25)] hover:-translate-y-1 transition-all duration-400 group flex flex-col justify-between"
+                      style={{ background: 'var(--surface-1)' }}
                     >
                       <div>
                         <div className="flex items-center gap-2 mb-2">
                           <span
                             className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                            style={{ background: `${meta.color}20`, color: meta.color, border: `1px solid ${meta.color}30` }}
+                            style={{ background: accentAlpha(0.13), color: meta.color, border: `1px solid ${accentAlpha(0.19)}` }}
                           >
                             {meta.label}
                           </span>
@@ -257,7 +262,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                             {new Date(item.publishedAt).toLocaleDateString('pl-PL', { day: 'numeric', month: 'short' })}
                           </span>
                         </div>
-                        <h3 className="text-sm font-bold text-white leading-snug mb-2 group-hover:text-[#D6E4FF] transition-colors line-clamp-2">
+                        <h3 className="text-sm font-bold text-white leading-snug mb-2 group-hover:text-[color:var(--fg-80)] transition-colors line-clamp-2">
                           {item.title}
                         </h3>
                         <p className="text-xs text-[#7B9BDB] leading-relaxed line-clamp-3">{item.excerpt}</p>
@@ -273,7 +278,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
       )}
 
       {/* SEARCH + FILTERS */}
-      <div className="border-y border-[#1A2461] py-3 md:py-4 px-4 md:px-6">
+      <div className="border-y py-3 md:py-4 px-4 md:px-6" style={{ borderColor: 'var(--border-soft)' }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center justify-between">
           <div className="relative w-full md:w-80">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7B9BDB]" />
@@ -282,7 +287,8 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
               placeholder="Szukaj newsów..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#1A2461]/50 border border-[#2E4AAD]/40 text-white text-sm placeholder-[#7B9BDB] focus:border-[#4F6AE8] focus:ring-1 focus:ring-[#4F6AE8] outline-none transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#2E4AAD]/40 text-white text-sm placeholder-[#7B9BDB] focus:border-[#4F6AE8] focus:ring-1 focus:ring-[#4F6AE8] outline-none transition-all"
+              style={{ background: 'var(--surface-2)' }}
             />
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap scrollbar-hide">
@@ -293,9 +299,9 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                 className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                   activeFilter === filter
                     ? 'bg-[#2E4AAD] text-white shadow-lg shadow-[#2E4AAD]/30'
-                    : 'bg-[#1A2461]/50 border border-[#2E4AAD]/40 hover:bg-[#1A2461] hover:border-[#4F6AE8]'
+                    : 'bg-[color:var(--surface-2)] border border-[#2E4AAD]/40 hover:bg-[#1A2461] hover:border-[#4F6AE8]'
                 }`}
-                style={activeFilter === filter ? {} : { color: filter === 'Wszystkie' ? '#D6E4FF' : getMeta(filter).color ?? '#D6E4FF' }}
+                style={activeFilter === filter ? {} : { color: filter === 'Wszystkie' ? 'var(--fg-80)' : getMeta(filter).color ?? 'var(--fg-80)' }}
               >
                 {filter === 'Wszystkie' ? 'Wszystkie' : getMeta(filter).label ?? filter}
               </button>
@@ -329,7 +335,8 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group relative flex flex-col h-full rounded-2xl bg-[#1A2461]/70 backdrop-blur-xl border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-[#4F6AE8]/50 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-400 overflow-hidden"
+                          className="group relative flex flex-col h-full rounded-2xl backdrop-blur-xl border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] hover:border-[#4F6AE8]/50 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_0_24px_rgba(79,106,232,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1 transition-all duration-400 overflow-hidden"
+                          style={{ background: 'var(--surface-1)' }}
                         >
                           {/* Cover image or placeholder graphic */}
                           <div className="h-32 md:h-36 flex items-center justify-center relative overflow-hidden">
@@ -343,7 +350,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                             <div className="absolute top-3 left-3 flex items-center gap-2">
                               <span
                                 className="flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full backdrop-blur-sm"
-                                style={{ background: `${meta.color}30`, color: meta.color, border: `1px solid ${meta.color}40` }}
+                                style={{ background: accentAlpha(0.19), color: meta.color, border: `1px solid ${accentAlpha(0.25)}` }}
                               >
                                 <Icon className="w-3 h-3" />
                                 {meta.label}
@@ -352,7 +359,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                             <ExternalLink className="absolute top-3 right-3 w-3.5 h-3.5 text-[#7B9BDB] opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                           <div className="p-5 flex flex-col flex-1">
-                            <h3 className="text-sm font-bold text-white mb-2 line-clamp-2 group-hover:text-[#D6E4FF] transition-colors">
+                            <h3 className="text-sm font-bold text-white mb-2 line-clamp-2 group-hover:text-[color:var(--fg-80)] transition-colors">
                               {item.title}
                             </h3>
                             <p className="text-xs text-[#7B9BDB] leading-relaxed line-clamp-3 flex-1">
@@ -373,7 +380,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                   <div className="text-center mt-6 md:mt-8">
                     <button
                       onClick={() => setShowAll(true)}
-                      className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#2E4AAD] to-[#4F6AE8] text-white w-full md:w-auto px-8 py-3 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-[#2E4AAD]/40 transition-all"
+                      className="dark-scope inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#2E4AAD] to-[#4F6AE8] text-white w-full md:w-auto px-8 py-3 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-[#2E4AAD]/40 transition-all"
                     >
                       Pokaż więcej newsów <ChevronDown className="w-4 h-4" />
                     </button>
@@ -381,7 +388,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
                 )}
               </>
             ) : (
-              <div className="text-center py-16 bg-[#1A2461]/20 rounded-2xl border border-[#2E4AAD]/30">
+              <div className="text-center py-16 rounded-2xl border border-[#2E4AAD]/30" style={{ background: 'rgba(var(--ink-rgb), 0.04)' }}>
                 <p className="text-[#7B9BDB] text-lg">Nie znaleziono newsów spełniających kryteria.</p>
                 <button
                   onClick={() => { setActiveFilter('Wszystkie'); setSearchQuery(''); }}
@@ -397,9 +404,9 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
           <div className="xl:w-1/4 flex flex-col gap-4 md:gap-6">
 
             {/* Popularne */}
-            <div className="w-full h-fit bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-5 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)]">
+            <div className="w-full h-fit backdrop-blur-xl rounded-2xl p-5 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)]" style={{ background: 'var(--surface-1)' }}>
               <div className="flex items-center gap-2 mb-3 pb-3 border-b border-[#2E4AAD]/25">
-                <div className="w-7 h-7 rounded-md bg-gradient-to-br from-[#2E4AAD] to-[#4F6AE8] flex items-center justify-center">
+                <div className="dark-scope w-7 h-7 rounded-md bg-gradient-to-br from-[#2E4AAD] to-[#4F6AE8] flex items-center justify-center">
                   <TrendingUp className="w-3.5 h-3.5 text-white" />
                 </div>
                 <h3 className="font-bold text-white text-sm">Popularne</h3>
@@ -420,7 +427,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
             </div>
 
             {/* Newsletter */}
-            <div className="w-full h-fit bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white">
+            <div className="w-full h-fit backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white" style={{ background: 'var(--surface-1)' }}>
               <div className="w-10 h-10 rounded-lg bg-[#2E4AAD]/40 flex items-center justify-center mb-3">
                 <Mail className="w-5 h-5 text-[#7B9BDB]" />
               </div>
@@ -462,7 +469,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
             </div>
 
             {/* Obserwuj nas */}
-            <div className="w-full h-fit bg-[#1A2461]/70 backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white text-center">
+            <div className="w-full h-fit backdrop-blur-xl rounded-2xl p-6 border border-[#7B9BDB]/20 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] text-white text-center" style={{ background: 'var(--surface-1)' }}>
               <h3 className="font-bold text-sm mb-1">Bądźmy w kontakcie</h3>
               <p className="text-[#7B9BDB] text-xs mb-4">Obserwuj nas lub napisz</p>
               <div className="flex justify-center gap-3">

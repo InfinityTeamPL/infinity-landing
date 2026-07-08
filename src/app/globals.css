@@ -7,9 +7,71 @@
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ===== THEME TOKENS =====
+   --ink-rgb steruje całą drabinką tekstów/overlayów (biały w dark, granat w light).
+   Klasa .dark-scope przywraca ciemny kontekst (hero na wideo, terminal, kafle brandowe). */
 :root {
+  color-scheme: dark;
   --foreground-rgb: 15, 23, 42;
   --background-rgb: 5, 11, 31;
+  --ink-rgb: 255, 255, 255;
+  --bg-page: #050B1F;
+  --fg: rgb(var(--ink-rgb));
+  --fg-30: rgba(var(--ink-rgb), 0.3);
+  --fg-40: rgba(var(--ink-rgb), 0.4);
+  --fg-50: rgba(var(--ink-rgb), 0.5);
+  --fg-55: rgba(var(--ink-rgb), 0.55);
+  --fg-60: rgba(var(--ink-rgb), 0.6);
+  --fg-65: rgba(var(--ink-rgb), 0.65);
+  --fg-70: rgba(var(--ink-rgb), 0.7);
+  --fg-80: rgba(var(--ink-rgb), 0.8);
+  --accent: #2E4AAD;
+  --accent-strong: #1A2461;
+  --accent-text-rgb: 123, 155, 219;   /* #7B9BDB w dark */
+  --accent-text: rgb(var(--accent-text-rgb));
+  --surface-1: rgba(15, 20, 45, 0.9);
+  --surface-2: rgba(10, 22, 40, 0.8);
+  --surface-3: rgba(15, 20, 45, 0.6);
+  --surface-tile: linear-gradient(135deg, #0f1729, #1a1f3a);
+  --card-gradient: linear-gradient(145deg, #0A1628 0%, #152040 100%);
+  --border-soft: rgba(123, 155, 219, 0.15);
+  --scrollbar-track: #0A1628;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --ink-rgb: 15, 23, 42;
+  --bg-page: #F3F6FC;
+  --accent-text-rgb: 55, 88, 182;     /* ciemniejszy akcent dla kontrastu na jasnym */
+  --surface-1: #ffffff;
+  --surface-2: rgba(255, 255, 255, 0.96);
+  --surface-3: rgba(255, 255, 255, 0.92);
+  --surface-tile: linear-gradient(135deg, #ffffff, #E9EEF9);
+  --card-gradient: linear-gradient(145deg, #ffffff 0%, #E7EDFA 100%);
+  --border-soft: rgba(46, 74, 173, 0.28);
+  --scrollbar-track: #E4E9F4;
+}
+
+.dark-scope {
+  --ink-rgb: 255, 255, 255;
+  --accent-text-rgb: 123, 155, 219;
+  /* pochodne tokeny trzeba przeliczyć ponownie — inaczej dziedziczą wartość z :root */
+  --fg: rgb(var(--ink-rgb));
+  --fg-30: rgba(var(--ink-rgb), 0.3);
+  --fg-40: rgba(var(--ink-rgb), 0.4);
+  --fg-50: rgba(var(--ink-rgb), 0.5);
+  --fg-55: rgba(var(--ink-rgb), 0.55);
+  --fg-60: rgba(var(--ink-rgb), 0.6);
+  --fg-65: rgba(var(--ink-rgb), 0.65);
+  --fg-70: rgba(var(--ink-rgb), 0.7);
+  --fg-80: rgba(var(--ink-rgb), 0.8);
+  --accent-text: rgb(var(--accent-text-rgb));
+  --surface-1: rgba(15, 20, 45, 0.9);
+  --surface-2: rgba(10, 22, 40, 0.8);
+  --surface-3: rgba(15, 20, 45, 0.6);
+  --surface-tile: linear-gradient(135deg, #0f1729, #1a1f3a);
+  --card-gradient: linear-gradient(145deg, #0A1628 0%, #152040 100%);
+  --border-soft: rgba(123, 155, 219, 0.15);
 }
 
 html {
@@ -17,9 +79,29 @@ html {
   overflow-x: hidden;
 }
 
+/* Accessibility: visible focus for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+}
+
+/* Accessibility: respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  color: var(--fg);
+  background: var(--bg-page);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -322,7 +404,7 @@ section {
   position: absolute;
   width: 10px; height: 10px;
   border-radius: 50%;
-  background: #7B9BDB;
+  background: var(--accent-text);
   animation: neuronPulse 2s ease-in-out infinite;
 }
 
@@ -351,7 +433,7 @@ section {
 
 .rc-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(var(--ink-rgb), 0.25);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
@@ -378,12 +460,12 @@ section {
 /* Liquid Glass Morphism */
 @layer components {
   .liquid-glass {
-    background: rgba(255, 255, 255, 0.01);
+    background: rgba(var(--ink-rgb), 0.01);
     background-blend-mode: luminosity;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border: none;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 1px rgba(var(--ink-rgb), 0.1);
     position: relative;
     overflow: hidden;
   }
@@ -396,12 +478,12 @@ section {
     border-radius: inherit;
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.45) 0%,
-      rgba(255, 255, 255, 0.15) 20%,
+      rgba(var(--ink-rgb), 0.45) 0%,
+      rgba(var(--ink-rgb), 0.15) 20%,
       transparent 40%,
       transparent 60%,
-      rgba(255, 255, 255, 0.15) 80%,
-      rgba(255, 255, 255, 0.45) 100%
+      rgba(var(--ink-rgb), 0.15) 80%,
+      rgba(var(--ink-rgb), 0.45) 100%
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -415,14 +497,14 @@ section {
   }
 
   .liquid-glass-strong {
-    background: rgba(255, 255, 255, 0.01);
+    background: rgba(var(--ink-rgb), 0.01);
     background-blend-mode: luminosity;
     backdrop-filter: blur(50px);
     -webkit-backdrop-filter: blur(50px);
     border: none;
     box-shadow:
       4px 4px 4px rgba(0, 0, 0, 0.05),
-      inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      inset 0 1px 1px rgba(var(--ink-rgb), 0.15);
     position: relative;
     overflow: hidden;
   }
@@ -435,12 +517,12 @@ section {
     border-radius: inherit;
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0.2) 20%,
+      rgba(var(--ink-rgb), 0.5) 0%,
+      rgba(var(--ink-rgb), 0.2) 20%,
       transparent 40%,
       transparent 60%,
-      rgba(255, 255, 255, 0.2) 80%,
-      rgba(255, 255, 255, 0.5) 100%
+      rgba(var(--ink-rgb), 0.2) 80%,
+      rgba(var(--ink-rgb), 0.5) 100%
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -491,7 +573,7 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -500,7 +582,7 @@ section {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7B9BDB;
+  background: var(--accent-text);
 }
 
 /* Beams animation */
@@ -604,3 +686,161 @@ section {
     break-inside: avoid;
   }
 }
+
+/* =========================================================
+   THEME REMAPS — utility klasy *-white/* przechodzą na drabinkę
+   --ink-rgb, dzięki czemu działają w dark i light. Elementy, które
+   mają zostać ciemne w obu motywach, dostają klasę .dark-scope.
+   ========================================================= */
+[data-theme] .text-white { color: rgb(var(--ink-rgb)); }
+[data-theme] .text-white\/90 { color: rgba(var(--ink-rgb), 0.9); }
+[data-theme] .text-white\/85 { color: rgba(var(--ink-rgb), 0.85); }
+[data-theme] .text-white\/80 { color: rgba(var(--ink-rgb), 0.8); }
+[data-theme] .text-white\/70 { color: rgba(var(--ink-rgb), 0.7); }
+[data-theme] .text-white\/65 { color: rgba(var(--ink-rgb), 0.65); }
+[data-theme] .text-white\/60 { color: rgba(var(--ink-rgb), 0.6); }
+[data-theme] .text-white\/55 { color: rgba(var(--ink-rgb), 0.55); }
+[data-theme] .text-white\/50 { color: rgba(var(--ink-rgb), 0.5); }
+[data-theme] .text-white\/40 { color: rgba(var(--ink-rgb), 0.4); }
+[data-theme] .text-white\/35 { color: rgba(var(--ink-rgb), 0.35); }
+[data-theme] .text-white\/30 { color: rgba(var(--ink-rgb), 0.3); }
+[data-theme] .text-white\/20 { color: rgba(var(--ink-rgb), 0.2); }
+[data-theme] .hover\:text-white:hover { color: rgb(var(--ink-rgb)); }
+[data-theme] .hover\:text-white\/80:hover { color: rgba(var(--ink-rgb), 0.8); }
+[data-theme] .hover\:text-white\/70:hover { color: rgba(var(--ink-rgb), 0.7); }
+[data-theme] .bg-white\/5 { background-color: rgba(var(--ink-rgb), 0.05); }
+[data-theme] .bg-white\/10 { background-color: rgba(var(--ink-rgb), 0.1); }
+[data-theme] .bg-white\/15 { background-color: rgba(var(--ink-rgb), 0.15); }
+[data-theme] .bg-white\/20 { background-color: rgba(var(--ink-rgb), 0.2); }
+[data-theme] .bg-white\/30 { background-color: rgba(var(--ink-rgb), 0.3); }
+[data-theme] .hover\:bg-white\/10:hover { background-color: rgba(var(--ink-rgb), 0.1); }
+[data-theme] .hover\:bg-white\/20:hover { background-color: rgba(var(--ink-rgb), 0.2); }
+[data-theme] .hover\:bg-white\/\[0\.03\]:hover { background-color: rgba(var(--ink-rgb), 0.03); }
+[data-theme] .border-white { border-color: rgb(var(--ink-rgb)); }
+[data-theme] .border-white\/10 { border-color: rgba(var(--ink-rgb), 0.1); }
+[data-theme] .border-white\/30 { border-color: rgba(var(--ink-rgb), 0.3); }
+[data-theme] .divide-white\/5 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(var(--ink-rgb), 0.05); }
+[data-theme] .placeholder\:text-white\/30::placeholder { color: rgba(var(--ink-rgb), 0.3); }
+
+/* Akcentowy tekst — #7B9BDB czytelny w dark, przyciemniany w light */
+[data-theme] .text-\[\#7B9BDB\] { color: rgb(var(--accent-text-rgb)); }
+[data-theme] .text-\[\#7B9BDB\]\/70 { color: rgba(var(--accent-text-rgb), 0.7); }
+[data-theme='light'] .text-\[\#D6E4FF\] { color: rgb(var(--accent-text-rgb)); }
+[data-theme='light'] .text-slate-300 { color: rgba(var(--ink-rgb), 0.75); }
+[data-theme='light'] .text-\[\#7B9AFF\] { color: rgb(var(--accent-text-rgb)); }
+
+/* Ciemne granatowe tło stron statycznych przechodzi na tło strony */
+[data-theme='light'] .bg-\[\#0B0F2E\] { background-color: var(--bg-page); }
+[data-theme='light'] .bg-\[\#0B0F2E\]\/60 { background-color: rgba(243, 246, 252, 0.6); }
+
+/* Elementy na pełnych akcentowych tłach zawsze mają biały tekst */
+.bg-\[\#2E4AAD\], .bg-\[\#1A2461\], .bg-\[\#1A2461\]\/70, .hover\:bg-\[\#1A2461\]:hover, .btn-grain {
+  --ink-rgb: 255, 255, 255;
+  --accent-text-rgb: 123, 155, 219;
+}
+
+/* Przełącznik motywu — wyśrodkowany w pasku nawigacji */
+.theme-toggle {
+  position: fixed;
+  top: 1.9em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--ink-rgb), 0.08);
+  border: 1px solid rgba(var(--ink-rgb), 0.18);
+  color: rgb(var(--ink-rgb));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover {
+  background: rgba(var(--ink-rgb), 0.16);
+  transform: translateX(-50%) scale(1.06);
+}
+
+/* =========================================================
+   THEME: light overrides klas komponentowych
+   (dark pozostaje 1:1 jak dotychczas — poniżej wyłącznie
+   jasne odpowiedniki ciemnych teł/glow/cieni)
+   ========================================================= */
+
+/* Bento cards — jasny gradient kafla, niebieskawa ramka, łagodniejszy glow */
+[data-theme='light'] .bento-card {
+  background: linear-gradient(135deg, #E9EEF9, #ffffff);
+  border-color: var(--border-soft);
+}
+
+[data-theme='light'] .bento-card:hover {
+  border-color: rgba(46, 74, 173, 0.3);
+  box-shadow: 0 8px 30px rgba(46, 74, 173, 0.12);
+}
+
+[data-theme='light'] .bento-card::after {
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(46, 74, 173, calc(var(--glow-intensity) * 0.35)) 0%,
+    rgba(46, 74, 173, calc(var(--glow-intensity) * 0.15)) 30%,
+    transparent 60%
+  );
+}
+
+/* Tech tiles — łagodniejszy cień hover na jasnym tle */
+[data-theme='light'] .tech-tile:hover {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+/* Raycast-style cards — miększy cień i przygaszone glow za kartą */
+[data-theme='light'] .rc-card:hover {
+  box-shadow: 0 20px 60px rgba(46, 74, 173, 0.15);
+}
+
+[data-theme='light'] .rc-card::before {
+  opacity: 0.12;
+}
+
+[data-theme='light'] .rc-card:hover::before {
+  opacity: 0.3;
+}
+
+/* Stat number gradient — ciemny granat zamiast bieli na jasnym tle */
+[data-theme='light'] .rc-num {
+  background: linear-gradient(180deg, #1A2461, #4F6AE8) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* =========================================================
+   HERO ADAPTIVE — hero podąża za motywem: w dark ciemna wyspa
+   jak dotychczas, w light odwrócone wideo (jasne niebo) +
+   jasna nakładka i granatowy tekst.
+   ========================================================= */
+.hero-adaptive {
+  --ink-rgb: 255, 255, 255;
+  --accent-text-rgb: 123, 155, 219;
+}
+[data-theme='light'] .hero-adaptive {
+  --ink-rgb: 15, 23, 42;
+  --accent-text-rgb: 55, 88, 182;
+}
+.hero-adaptive .hero-video {
+  filter: brightness(0.55) saturate(0.15) sepia(1) hue-rotate(190deg);
+}
+/* w light hero gra dedykowane, natywnie jasne wideo (duotone) — bez filtra */
+[data-theme='light'] .hero-adaptive .hero-video {
+  filter: none;
+}
+.hero-adaptive .hero-overlay {
+  background: rgba(11, 15, 46, 0.5);
+}
+[data-theme='light'] .hero-adaptive .hero-overlay {
+  background: rgba(243, 246, 252, 0.35);
+}
+/* tagline hero — jasnoniebieski w dark, ciemniejszy akcent w light */
+[data-theme='light'] .text-\[\#8BB8E8\] { color: rgb(var(--accent-text-rgb)); }

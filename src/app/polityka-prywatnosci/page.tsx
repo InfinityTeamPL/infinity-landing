@@ -8,8 +8,9 @@ import dynamic from 'next/dynamic';
 const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr: false });
 
 export const metadata: Metadata = {
-  title: 'Polityka Prywatności | Infinity Tech',
+  title: 'Polityka Prywatności',
   description: 'Polityka prywatności serwisu Infinity Tech — informacje o przetwarzaniu danych osobowych zgodnie z RODO.',
+  alternates: { canonical: '/polityka-prywatnosci' },
 };
 
 export default function PrivacyPolicyPage() {

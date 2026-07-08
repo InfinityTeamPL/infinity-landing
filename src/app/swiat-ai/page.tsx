@@ -12,8 +12,9 @@ const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr:
 export const revalidate = 7200; // ISR: rebuild every 2h in background
 
 export const metadata: Metadata = {
-  title: 'Świat AI | Infinity Tech',
+  title: 'Świat AI',
   description: 'Najnowsze wiadomości ze świata sztucznej inteligencji. Automatyczny feed z HackerNews, Dev.to, The Guardian i Arxiv.',
+  alternates: { canonical: '/swiat-ai' },
   openGraph: {
     title: 'Świat AI | Infinity Tech',
     description: 'Najnowsze wiadomości ze świata AI — automatycznie, po polsku.',

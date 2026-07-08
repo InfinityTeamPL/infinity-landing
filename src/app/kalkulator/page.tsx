@@ -71,7 +71,7 @@ export default function KalkulatorPage() {
 
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
               Kalkulator ROI{' '}
-              <span style={{ color: '#7B9BDB' }}>Automatyzacji AI</span>
+              <span style={{ color: 'var(--accent-text)' }}>Automatyzacji AI</span>
             </h1>
 
             <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto mb-8">

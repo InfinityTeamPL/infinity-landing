@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Linkedin, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { handleMailto } from '@/lib/mailto';
 
 function XIcon({ className = '' }: { className?: string }) {
   return (
@@ -9,21 +10,6 @@ function XIcon({ className = '' }: { className?: string }) {
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   );
-}
-
-function handleMailto(e: React.MouseEvent) {
-  e.preventDefault();
-  const email = 'contact@infinityteam.io';
-  window.open(`mailto:${email}`, '_self');
-  setTimeout(() => {
-    if (!document.hidden) {
-      navigator.clipboard.writeText(email).then(() => {
-        alert(`Adres email skopiowany do schowka: ${email}`);
-      }).catch(() => {
-        prompt('Skopiuj adres email:', email);
-      });
-    }
-  }, 500);
 }
 
 export default function Footer() {

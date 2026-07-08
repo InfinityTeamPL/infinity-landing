@@ -4,3 +4,21 @@
   position: relative;
   overflow: hidden;
 }
+
+/* Motyw light: canvas WebGL rysuje jasne akcentowe linie na czarnym tle
+   i polega na mix-blend-mode: screen, które znika na jasnych tłach.
+   Inwersja canvasu (hue-rotate(180deg) zachowuje niebieski odcień) plus
+   multiply sprawiają, że linie stają się ciemnoniebieskie i widoczne na
+   jasnym tle. Dark pozostaje 1:1 (reguła działa tylko pod [data-theme='light']).
+   !important jest potrzebne, bo mixBlendMode jest ustawiany inline w TSX. */
+[data-theme='light'] .floating-lines-container {
+  mix-blend-mode: multiply !important;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Wewnątrz .dark-scope tło pozostaje ciemne w obu motywach —
+   przywracamy oryginalne mieszanie. */
+[data-theme='light'] .dark-scope .floating-lines-container {
+  mix-blend-mode: screen !important;
+  filter: none;
+}

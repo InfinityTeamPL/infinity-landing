@@ -95,9 +95,9 @@ export default function ChatWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 md:w-96 h-[500px] rounded-3xl flex flex-col overflow-hidden" style={{ background: 'rgba(11, 15, 46, 0.85)', backdropFilter: 'blur(50px)', WebkitBackdropFilter: 'blur(50px)', boxShadow: '0 25px 60px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1)' }}>
+        <div className="fixed bottom-24 right-6 z-50 w-80 md:w-96 h-[500px] rounded-3xl flex flex-col overflow-hidden" style={{ background: 'var(--surface-1)', backdropFilter: 'blur(50px)', WebkitBackdropFilter: 'blur(50px)', boxShadow: '0 25px 60px rgba(0,0,0,0.3), inset 0 1px 1px rgba(var(--ink-rgb),0.1)' }}>
           {/* Header */}
-          <div className="p-4 text-white" style={{ background: 'rgba(46, 74, 173, 0.15)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="p-4 text-white" style={{ background: 'rgba(46, 74, 173, 0.15)', borderBottom: '1px solid rgba(var(--ink-rgb),0.1)' }}>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                 <Bot className="w-5 h-5" />
@@ -123,7 +123,7 @@ export default function ChatWidget() {
                       ? 'bg-[#2E4AAD] text-white'
                       : 'text-white/90'
                   }`}
-                  style={message.role === 'assistant' ? { background: 'rgba(255,255,255,0.08)' } : undefined}
+                  style={message.role === 'assistant' ? { background: 'rgba(var(--ink-rgb),0.08)' } : undefined}
                 >
                   <p className="text-sm">{message.content}</p>
                 </div>
@@ -131,7 +131,7 @@ export default function ChatWidget() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl px-4 py-2" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                <div className="rounded-2xl px-4 py-2" style={{ background: 'rgba(var(--ink-rgb),0.08)' }}>
                   <Loader2 className="w-5 h-5 animate-spin text-[#7B9BDB]" />
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function ChatWidget() {
           </div>
 
           {/* Input */}
-          <div className="p-4" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="p-4" style={{ borderTop: '1px solid rgba(var(--ink-rgb),0.1)' }}>
             <div className="flex gap-2">
               <input
                 type="text"
@@ -148,8 +148,8 @@ export default function ChatWidget() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Napisz wiadomość..."
-                className="flex-1 px-4 py-2 rounded-full text-sm text-white placeholder-white/40 focus:outline-none"
-                style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}
+                className="flex-1 px-4 py-2 rounded-full text-sm text-white placeholder:text-white/30 focus:outline-none"
+                style={{ background: 'rgba(var(--ink-rgb),0.08)', border: '1px solid rgba(var(--ink-rgb),0.1)' }}
                 disabled={isLoading}
               />
               <button

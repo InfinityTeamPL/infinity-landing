@@ -1,5 +1,6 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { handleMailto } from '@/lib/mailto';
 import './StaggeredMenu.css';
 
 interface MenuItem {
@@ -448,6 +449,8 @@ export const StaggeredMenu = ({
     const checkDark = () => {
       const checkY = 40;
       const sections = document.querySelectorAll('section, footer');
+      // Przezroczyste tła sekcji przepuszczają tło strony — ono zależy od motywu
+      const themeIsLight = document.documentElement.getAttribute('data-theme') === 'light';
       let dark = false;
 
       for (let i = 0; i < sections.length; i++) {
@@ -459,6 +462,11 @@ export const StaggeredMenu = ({
           const cls = el.className || '';
           const bg = getComputedStyle(el).backgroundColor;
 
+          // Sekcje oznaczone .dark-scope są ciemne w OBU motywach
+          if (cls.includes('dark-scope')) {
+            dark = true; break;
+          }
+
           // Check inline dark colors
           if (style.includes('#0B0F2E') || style.includes('#0f1a3c') || style.includes('#1a2a5c') ||
               style.includes('#0a0e1f') || style.includes('#0f1729') || style.includes('#0B0F2E') ||
@@ -467,8 +475,13 @@ export const StaggeredMenu = ({
           }
 
           // Check computed bg luminance
-          const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
           if (match) {
+            const alpha = match[4] === undefined ? 1 : parseFloat(match[4]);
+            if (alpha < 0.5) {
+              // Tło (prawie) przezroczyste → decyduje tło strony wg motywu
+              dark = !themeIsLight; break;
+            }
             const lum = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
             if (lum < 140) { dark = true; break; }
           }
@@ -490,7 +503,11 @@ export const StaggeredMenu = ({
     };
     checkDark();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('themechange', checkDark);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('themechange', checkDark);
+    };
   }, [open]);
 
   React.useEffect(() => {
@@ -525,7 +542,7 @@ export const StaggeredMenu = ({
       data-position={position}
       data-open={open || undefined}
     >
-      <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
+      <div ref={preLayersRef} className="sm-prelayers dark-scope" aria-hidden="true">
         {(() => {
           const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
           let arr = [...raw];
@@ -580,7 +597,7 @@ export const StaggeredMenu = ({
 
 
 
-      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
+      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel dark-scope" aria-hidden={!open}>
         <div className="sm-panel-inner">
           <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
             {items && items.length ? (
@@ -609,20 +626,7 @@ export const StaggeredMenu = ({
                       href={s.link}
                       target={s.link.startsWith('mailto:') ? undefined : '_blank'}
                       rel={s.link.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                      onClick={s.link.startsWith('mailto:') ? (e: React.MouseEvent) => {
-                        e.preventDefault();
-                        const email = s.link.replace('mailto:', '');
-                        window.open(s.link, '_self');
-                        setTimeout(() => {
-                          if (!document.hidden) {
-                            navigator.clipboard.writeText(email).then(() => {
-                              alert(`Adres email skopiowany do schowka: ${email}`);
-                            }).catch(() => {
-                              prompt('Skopiuj adres email:', email);
-                            });
-                          }
-                        }, 500);
-                      } : undefined}
+                      onClick={s.link.startsWith('mailto:') ? handleMailto : undefined}
                       className="sm-socials-link"
                     >
                       {s.label}
