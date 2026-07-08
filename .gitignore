@@ -45,3 +45,6 @@ next-env.d.ts
 .claude/
 .aidesigner/*
 !.aidesigner/.gitkeep
+
+# Local parking for unused assets (kept out of the repo)
+_unused-assets/
