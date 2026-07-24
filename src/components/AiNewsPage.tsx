@@ -144,14 +144,16 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
     <>
       {/* HEADER */}
       <div className="text-center pt-6 md:pt-10 pb-8 md:pb-12 px-4 md:px-6">
-        <BlurText
-          text="Świat AI"
-          delay={150}
-          animateBy="letters"
-          direction="top"
-          className="text-3xl md:text-5xl font-extrabold text-white mb-2 md:mb-3 tracking-tight"
-          stepDuration={0.3}
-        />
+        <h1>
+          <BlurText
+            text="Świat AI"
+            delay={150}
+            animateBy="letters"
+            direction="top"
+            className="text-3xl md:text-5xl font-extrabold text-white mb-2 md:mb-3 tracking-tight"
+            stepDuration={0.3}
+          />
+        </h1>
         <TextType
           texts={[
             'Najnowsze wiadomości ze świata sztucznej inteligencji',

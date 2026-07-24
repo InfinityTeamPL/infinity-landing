@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import Link from 'next/link';
 import { handleMailto } from '@/lib/mailto';
 import {
   ArrowRight,
@@ -256,8 +257,8 @@ function HeroSection() {
 
       {/* Fog layers at transition zone */}
       <div className="absolute inset-x-0 bottom-0 h-[300px] z-[3] pointer-events-none overflow-hidden">
-        <div className="absolute w-[120%] h-[300px] left-[-10%]" style={{ background: 'radial-gradient(ellipse at center, rgba(46,74,173,0.15) 0%, transparent 70%)', filter: 'blur(40px)', animation: 'fogDrift1 20s infinite alternate ease-in-out' }} />
-        <div className="absolute w-[80%] h-[200px] right-[-10%] top-[20px]" style={{ background: 'radial-gradient(ellipse at center, rgba(123,155,219,0.1) 0%, transparent 60%)', filter: 'blur(40px)', animation: 'fogDrift2 25s infinite alternate-reverse ease-in-out' }} />
+        <div className="absolute w-[120%] h-[300px] left-[-10%]" style={{ background: 'radial-gradient(ellipse at center, rgba(46,74,173,0.15) 0%, transparent 70%)', filter: 'blur(40px)', animation: 'fogDrift1 20s infinite alternate ease-in-out', opacity: 'var(--fog-opacity, 1)' }} />
+        <div className="absolute w-[80%] h-[200px] right-[-10%] top-[20px]" style={{ background: 'radial-gradient(ellipse at center, rgba(123,155,219,0.1) 0%, transparent 60%)', filter: 'blur(40px)', animation: 'fogDrift2 25s infinite alternate-reverse ease-in-out', opacity: 'var(--fog-opacity, 1)' }} />
       </div>
 
       {/* All hero content pinned to first 100vh */}
@@ -297,7 +298,7 @@ function HeroSection() {
                   Umów konsultację
                 </Ripple>
               </a>
-              <a href="#o-nas" className="px-6 py-3 md:px-8 md:py-4 xl:px-10 xl:py-5 border-2 rounded-full font-semibold text-base md:text-lg xl:text-xl transition-all flex items-center justify-center gap-2 border-white/30 text-white hover:bg-white/10">
+              <a href="#o-nas" className="px-6 py-3 md:px-8 md:py-4 xl:px-10 xl:py-5 font-semibold text-base md:text-lg xl:text-xl transition-all flex items-center justify-center gap-2 hover:underline underline-offset-4 hover:opacity-80" style={{ color: 'var(--accent-text)' }}>
                 Dowiedz się więcej
                 <ArrowRight className="w-5 h-5" />
               </a>
@@ -366,6 +367,7 @@ function StatsSection() {
 }
 
 function TeamSection2() {
+  // Karty zespołu są zawsze ciemne z pełnym holo — stała poświata jak w oryginale
   const matteGlow = 'rgba(79,106,232,0.3)';
   const matteGradient = 'var(--card-gradient)';
   const management = [
@@ -380,7 +382,8 @@ function TeamSection2() {
     <section className="py-20">
       <div className="max-w-[82rem] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-center">
-          {/* Left — cards: zarząd 2×2, pracownicy niżej. dark-scope = karty zawsze ciemne (holo) w obu motywach */}
+          {/* Left — cards: zarząd 2×2, pracownicy niżej. dark-scope = karty zawsze ciemne
+              ze świecącym hologramem, także w light (decyzja usera) */}
           <div className="dark-scope grid grid-cols-2 gap-4 md:gap-5">
             {management.map((person, i) => (
               <FadeIn key={i} delay={i * 0.1}>
@@ -583,7 +586,7 @@ function ServicesSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Co <ShinyText text="robimy" /></h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Agenci AI i automatyzacja procesów — co <ShinyText text="robimy" /></h2>
             <p className="text-xl text-white/50">Cztery filary AI dla Twojej firmy</p>
           </div>
         </FadeIn>
@@ -606,6 +609,21 @@ function ServicesSection() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.6}>
+          <p className="text-center text-sm mt-8" style={{ color: 'var(--accent-text)' }}>
+            Poznaj szczegóły:{' '}
+            <Link href="/uslugi/agent-glosowy-ai" className="hover:underline underline-offset-4">Agent głosowy AI</Link>
+            {' · '}
+            <Link href="/uslugi/chatbot-ai" className="hover:underline underline-offset-4">Chatbot AI dla firm</Link>
+            {' · '}
+            <Link href="/uslugi/automatyzacja-procesow-ai" className="hover:underline underline-offset-4">Automatyzacja procesów AI</Link>
+            {' · '}
+            <Link href="/uslugi/automatyzacja-hr" className="hover:underline underline-offset-4">Automatyzacja HR i kadr</Link>
+            {' · '}
+            <Link href="/cennik" className="hover:underline underline-offset-4">Cennik</Link>
+          </p>
+        </FadeIn>
       </div>
     </section>
   );
@@ -703,7 +721,7 @@ function TechBentoSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">Nasz stack technologiczny</h2>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">Technologie: OpenClaw, ElevenLabs i 23+ kanałów komunikacji</h2>
             <p style={{ color: 'var(--accent-text)' }}>Technologie i 23+ kanałów komunikacji</p>
           </div>
         </FadeIn>
@@ -979,7 +997,7 @@ function TechnologySection() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="dark-scope rounded-3xl overflow-hidden border border-white/10" style={{ background: '#0A1628' }}>
+            <div className="dark-scope rounded-3xl overflow-hidden border border-white/10" style={{ background: '#0A1628', boxShadow: 'var(--shadow-card, none)' }}>
               {/* Terminal header */}
               <div className="flex items-center gap-2 px-4 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}>
                 <div className="w-3 h-3 rounded-full bg-red-500/70" />
@@ -1184,7 +1202,7 @@ function ContactCTASection() {
         {/* Header */}
         <div className="text-center pt-20 pb-12 px-6">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Gotowy na Transformację?</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Wdrożenie AI w Twojej firmie zaczyna się od rozmowy</h2>
             <p className="text-xl max-w-2xl mx-auto text-white/50">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
           </FadeIn>
         </div>
@@ -1427,6 +1445,24 @@ export default function LandingPage() {
       </main>
 
       <ChatWidget />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ_ITEMS.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: item.answer,
+              },
+            })),
+          }),
+        }}
+      />
 
     </div>
     </ClickSpark>

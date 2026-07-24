@@ -11,10 +11,10 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jet
 export const metadata: Metadata = {
   metadataBase: new URL('https://infinityteam.io'),
   title: {
-    default: "Infinity Tech — Agenci AI dla biznesu",
+    default: "Agenci AI dla firm — voicebot, chatbot, automatyzacja | Infinity Tech",
     template: "%s | Infinity Tech",
   },
-  description: "Budujemy agentów AI — głosowych i tekstowych — oraz automatyzacje procesów dla firm. Voice AI, obsługa klienta 24/7, kadry, sprzedaż i wdrożenia szyte na miarę. Dane w Polsce, zgodność z RODO.",
+  description: "Agenci AI dla firm: voiceboty, chatboty 24/7 i automatyzacja procesów. Wdrożenia szyte na miarę, dane w Polsce, RODO. Pierwsza konsultacja bezpłatna.",
   keywords: ["AI", "sztuczna inteligencja", "agenci AI", "agenci głosowi", "voice AI", "automatyzacja", "asystent głosowy", "biznes", "obsługa klienta AI", "HR", "kadry i płace", "marketing", "sprzedaż"],
   authors: [{ name: "Infinity Tech" }],
   creator: "Infinity Tech",
@@ -89,15 +89,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl" data-theme="dark" suppressHydrationWarning style={{ '--font-geist': GeistSans.style.fontFamily, '--font-jakarta': plusJakarta.style.fontFamily, '--font-jetbrains': jetbrainsMono.style.fontFamily } as React.CSSProperties}>
+    <html lang="pl" data-theme="light" suppressHydrationWarning style={{ '--font-geist': GeistSans.style.fontFamily, '--font-jakarta': plusJakarta.style.fontFamily, '--font-jetbrains': jetbrainsMono.style.fontFamily } as React.CSSProperties}>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();",
+              "(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();",
           }}
         />
-        <meta name="theme-color" content="#050B1F" />
+        <meta name="theme-color" content="#F5F5F7" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script

@@ -36,7 +36,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-16 text-white">
+    <footer className="py-16 text-white" style={{ borderTop: '1px solid var(--border-soft)' }}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div>
@@ -63,9 +63,14 @@ export default function Footer() {
               <a href="/#start" className="hover:text-white transition-colors text-sm">Start</a>
               <a href="/swiat-ai" className="hover:text-white transition-colors text-sm">Świat AI</a>
               <a href="/#o-nas" className="hover:text-white transition-colors text-sm">O nas</a>
-              {/* <a href="/case-studies" className="hover:text-white transition-colors text-sm">Case Studies</a> */}
-              {/* <a href="/agents" className="hover:text-white transition-colors text-sm">Agenci AI</a> */}
+              <a href="/case-studies" className="hover:text-white transition-colors text-sm">Realizacje</a>
+              <a href="/blog" className="hover:text-white transition-colors text-sm">Blog</a>
               <a href="/#uslugi" className="hover:text-white transition-colors text-sm">Co robimy</a>
+              <a href="/uslugi/agent-glosowy-ai" className="hover:text-white transition-colors text-sm">Agent głosowy AI</a>
+              <a href="/uslugi/chatbot-ai" className="hover:text-white transition-colors text-sm">Chatbot AI</a>
+              <a href="/uslugi/automatyzacja-procesow-ai" className="hover:text-white transition-colors text-sm">Automatyzacja AI</a>
+              <a href="/cennik" className="hover:text-white transition-colors text-sm">Cennik</a>
+              <a href="/openclaw" className="hover:text-white transition-colors text-sm">OpenClaw</a>
               <a href="/kalkulator" className="hover:text-white transition-colors text-sm">Kalkulator ROI</a>
               <a href="/#faq" className="hover:text-white transition-colors text-sm">FAQ</a>
               <a href="/#kontakt" className="hover:text-white transition-colors text-sm">Kontakt</a>
@@ -96,9 +101,10 @@ export default function Footer() {
                     type="submit"
                     disabled={newsletterStep === 'submitting' || !newsletterConsent}
                     className="px-4 py-3 bg-[#2E4AAD] rounded-r-lg hover:bg-[#1A2461] transition-colors disabled:opacity-60"
+                    style={{ color: '#fff' }}
                   >
                     {newsletterStep === 'submitting' ? (
-                      <span className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin block" />
+                      <span className="w-5 h-5 rounded-full border-2 animate-spin block" style={{ borderColor: '#fff', borderTopColor: 'transparent' }} />
                     ) : (
                       <ArrowRight className="w-5 h-5" />
                     )}
