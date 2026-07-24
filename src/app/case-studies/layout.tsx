@@ -1,12 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Case Studies',
-  description: 'Sprawdź, jak nasze rozwiązania AI pomagają firmom automatyzować procesy i zwiększać efektywność.',
+  title: 'Realizacje — wdrożenia agentów AI',
+  description:
+    'Cztery realne wdrożenia agentów AI: voicebot dla przewoźnika autobusowego, automatyzacja kadr i płac, aplikacja dla rolnictwa, platforma dla inwestorów.',
   alternates: { canonical: '/case-studies' },
   openGraph: {
-    title: 'Case Studies | Infinity Tech',
-    description: 'Sprawdź, jak nasze rozwiązania AI pomagają firmom.',
+    title: 'Realizacje — wdrożenia agentów AI | Infinity Tech',
+    description:
+      'Prawdziwe, anonimowe wdrożenia agentów AI w polskich firmach — bez zmyślonych metryk. Voice AI, automatyzacja HR, aplikacje na miarę.',
     type: 'website',
   },
 };
