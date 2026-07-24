@@ -542,7 +542,7 @@ export const StaggeredMenu = ({
       data-position={position}
       data-open={open || undefined}
     >
-      <div ref={preLayersRef} className="sm-prelayers dark-scope" aria-hidden="true">
+      <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
         {(() => {
           const raw = colors && colors.length ? colors.slice(0, 4) : ['#1e1e22', '#35353c'];
           let arr = [...raw];
@@ -597,7 +597,7 @@ export const StaggeredMenu = ({
 
 
 
-      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel dark-scope" aria-hidden={!open}>
+      <aside id="staggered-menu-panel" ref={panelRef} className="staggered-menu-panel" aria-hidden={!open}>
         <div className="sm-panel-inner">
           <ul className="sm-panel-list" role="list" data-numbering={displayItemNumbering || undefined}>
             {items && items.length ? (

@@ -41,6 +41,20 @@
   overflow: hidden;
 }
 
+/* Apple Clear — light theme: gwiezdna ramka przygaszona do subtelnego
+   szaro-granatowego szumu; animacja zostaje, ale nie krzyczy.
+   Dark bez zmian. */
+[data-theme='light'] .border-gradient-bottom,
+[data-theme='light'] .border-gradient-top {
+  opacity: 0.22;
+  filter: saturate(0.5) brightness(0.85);
+}
+
+[data-theme='light'] .star-border-container:hover .border-gradient-bottom,
+[data-theme='light'] .star-border-container:hover .border-gradient-top {
+  opacity: 0.32;
+}
+
 @keyframes star-movement-bottom {
   0% { right: -250%; }
   100% { right: 100%; }

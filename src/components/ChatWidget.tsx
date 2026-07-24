@@ -82,10 +82,49 @@ export default function ChatWidget() {
 
   return (
     <>
+      {/* Style theme-aware: dark = dotychczasowe wartości (default),
+          light = frosted white po Apple'owsku */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .cw-window {
+          background: var(--surface-1);
+          backdrop-filter: blur(50px);
+          -webkit-backdrop-filter: blur(50px);
+          box-shadow: 0 25px 60px rgba(0,0,0,0.3), inset 0 1px 1px rgba(var(--ink-rgb),0.1);
+        }
+        .cw-bubble-assistant {
+          background: rgba(var(--ink-rgb),0.08);
+        }
+        .cw-input {
+          background: rgba(var(--ink-rgb),0.08);
+          border: 1px solid rgba(var(--ink-rgb),0.1);
+        }
+        [data-theme="light"] .cw-window.cw-window {
+          background: rgba(255,255,255,0.85);
+          backdrop-filter: blur(28px) saturate(1.7);
+          -webkit-backdrop-filter: blur(28px) saturate(1.7);
+          box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--border-soft);
+        }
+        [data-theme="light"] .cw-bubble-assistant.cw-bubble-assistant {
+          background: #F5F5F7;
+        }
+        [data-theme="light"] .cw-input.cw-input {
+          background: #ffffff;
+          border-color: var(--border-soft);
+        }
+        [data-theme="light"] .cw-fab.cw-fab {
+          background: #ffffff;
+          color: #2E4AAD;
+          box-shadow: 0 0 0 1px var(--border-soft), var(--shadow-card);
+        }
+        [data-theme="light"] .cw-fab.cw-fab::before {
+          display: none;
+        }
+      ` }} />
+
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full liquid-glass-strong text-white hover:scale-105 active:scale-95 transition-all flex items-center justify-center ${
+        className={`cw-fab fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full liquid-glass-strong text-white hover:scale-105 active:scale-95 transition-all flex items-center justify-center ${
           isOpen ? 'rotate-90' : ''
         }`}
         aria-label="Otwórz czat"
@@ -95,7 +134,7 @@ export default function ChatWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 md:w-96 h-[500px] rounded-3xl flex flex-col overflow-hidden" style={{ background: 'var(--surface-1)', backdropFilter: 'blur(50px)', WebkitBackdropFilter: 'blur(50px)', boxShadow: '0 25px 60px rgba(0,0,0,0.3), inset 0 1px 1px rgba(var(--ink-rgb),0.1)' }}>
+        <div className="cw-window fixed bottom-24 right-6 z-50 w-80 md:w-96 h-[500px] rounded-3xl flex flex-col overflow-hidden">
           {/* Header */}
           <div className="p-4 text-white" style={{ background: 'rgba(46, 74, 173, 0.15)', borderBottom: '1px solid rgba(var(--ink-rgb),0.1)' }}>
             <div className="flex items-center gap-3">
@@ -121,9 +160,9 @@ export default function ChatWidget() {
                   className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                     message.role === 'user'
                       ? 'bg-[#2E4AAD] text-white'
-                      : 'text-white/90'
+                      : 'cw-bubble-assistant text-white/90'
                   }`}
-                  style={message.role === 'assistant' ? { background: 'rgba(var(--ink-rgb),0.08)' } : undefined}
+                  style={message.role === 'user' ? { color: '#fff' } : undefined}
                 >
                   <p className="text-sm">{message.content}</p>
                 </div>
@@ -131,7 +170,7 @@ export default function ChatWidget() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl px-4 py-2" style={{ background: 'rgba(var(--ink-rgb),0.08)' }}>
+                <div className="cw-bubble-assistant rounded-2xl px-4 py-2">
                   <Loader2 className="w-5 h-5 animate-spin text-[#7B9BDB]" />
                 </div>
               </div>
@@ -148,14 +187,14 @@ export default function ChatWidget() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Napisz wiadomość..."
-                className="flex-1 px-4 py-2 rounded-full text-sm text-white placeholder:text-white/30 focus:outline-none"
-                style={{ background: 'rgba(var(--ink-rgb),0.08)', border: '1px solid rgba(var(--ink-rgb),0.1)' }}
+                className="cw-input flex-1 px-4 py-2 rounded-full text-sm text-white placeholder:text-white/30 focus:outline-none"
                 disabled={isLoading}
               />
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
                 className="w-10 h-10 rounded-full bg-[#2E4AAD] text-white flex items-center justify-center hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                style={{ color: '#fff' }}
               >
                 <Send className="w-4 h-4" />
               </button>

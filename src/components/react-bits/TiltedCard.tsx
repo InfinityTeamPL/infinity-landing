@@ -81,14 +81,40 @@ export default function TiltedCard({
   return (
     <div
       ref={cardRef}
-      className={cn('perspective-1000 h-full', className)}
+      className={cn('tc-wrap perspective-1000 h-full', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ position: 'relative' }}
     >
+      {/* Apple Clear light theme: biała karta, hairline, cienie z tokenów.
+          Dark bez zmian — wszystko pod [data-theme="light"]. */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        [data-theme="light"] .tc-glow { opacity: 0 !important; }
+        [data-theme="light"] .tc-topshine { opacity: 0; }
+        [data-theme="light"] .tc-wrap { transition: transform 0.3s ease; }
+        [data-theme="light"] .tc-wrap:hover { transform: translateY(-4px); }
+        [data-theme="light"] .tc-card {
+          background: var(--card-gradient) !important;
+          border-color: var(--border-soft) !important;
+          box-shadow: var(--shadow-card);
+          transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+        }
+        [data-theme="light"] .tc-wrap:hover .tc-card {
+          box-shadow: var(--shadow-card-hover);
+        }
+        [data-theme="light"] .waitlist-btn {
+          animation: none;
+          background: var(--surface-1) !important;
+          border-color: rgba(var(--ink-rgb), 0.15) !important;
+          box-shadow: var(--shadow-card);
+        }
+        [data-theme="light"] .waitlist-btn:hover {
+          box-shadow: var(--shadow-card-hover) !important;
+        }
+      ` }} />
       {/* Glow behind card */}
       <div
-        className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
+        className="tc-glow absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
         style={{
           background: `radial-gradient(ellipse at 50% 10%, ${accentColor}cc 0%, transparent 65%)`,
           filter: 'blur(28px)',
@@ -99,7 +125,7 @@ export default function TiltedCard({
       />
       <div
         className={cn(
-          'relative overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
+          'tc-card relative overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
           'border'
         )}
         style={{
@@ -114,7 +140,7 @@ export default function TiltedCard({
 
         {/* Top shine */}
         <div
-          className="absolute inset-x-0 top-0 h-[2px] pointer-events-none"
+          className="tc-topshine absolute inset-x-0 top-0 h-[2px] pointer-events-none"
           style={{ background: `linear-gradient(90deg, transparent, ${accentColor}ee, transparent)` }}
         />
 
@@ -193,7 +219,7 @@ export default function TiltedCard({
           {waitlistMode ? (
             waitlistStep === 'idle' ? (
               <>
-                <style>{`
+                <style dangerouslySetInnerHTML={{ __html: `
                   @keyframes silverShimmer {
                     0% { background-position: -200% center; }
                     100% { background-position: 200% center; }
@@ -224,7 +250,7 @@ export default function TiltedCard({
                   .waitlist-btn:hover .silver-shimmer-text {
                     animation-duration: 0.9s;
                   }
-                `}</style>
+                ` }} />
                 <button
                   type="button"
                   onClick={() => setWaitlistStep('input')}
