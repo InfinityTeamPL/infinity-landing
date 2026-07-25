@@ -193,13 +193,20 @@ async function fetchArxiv(): Promise<Omit<NewsItem, 'excerpt'>[]> {
 
 // --- OpenAI translation ---
 
-async function summarizeWithOpenAI(
-  items: Omit<NewsItem, 'excerpt'>[]
-): Promise<NewsItem[]> {
-  if (!items.length) return [];
+type Summary = { id: string; title_pl: string; excerpt: string };
 
-  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Ile artykułów tłumaczymy w jednym żądaniu. Jedna paczka to ~10 pozycji ×
+// ~120 tokenów odpowiedzi, więc z zapasem mieści się w limicie i JSON się nie urywa.
+const TRANSLATE_BATCH_SIZE = 10;
+const TRANSLATE_MAX_TOKENS = 4000;
+// Twardy limit na całe tłumaczenie. Build ani render strony nie mogą wisieć,
+// gdy OpenAI zwalnia albo ogranicza ruch — po tym czasie lecą oryginalne tytuły.
+const TRANSLATE_TIMEOUT_MS = 45_000;
 
+async function translateBatch(
+  client: OpenAI,
+  batch: Omit<NewsItem, 'excerpt'>[]
+): Promise<Summary[]> {
   const prompt = `Dla każdego poniższego tytułu artykułu o AI/technologii:
 1. Przetłumacz tytuł na język polski (naturalnie, nie dosłownie)
 2. Napisz krótkie polskie streszczenie (2-3 zdania)
@@ -207,31 +214,72 @@ async function summarizeWithOpenAI(
 Odpowiedz w formacie JSON: {"items": [{"id": "...", "title_pl": "...", "excerpt": "..."}]}
 
 Tytuły:
-${items.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join('\n')}`;
+${batch.map(i => `{"id": "${i.id}", "title": ${JSON.stringify(i.title)}}`).join('\n')}`;
 
-  try {
-    const response = await client.chat.completions.create({
+  const response = await client.chat.completions.create(
+    {
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' },
-      max_tokens: 3000,
-    });
+      max_tokens: TRANSLATE_MAX_TOKENS,
+    },
+    // Bez ponawiania: przy awarii wolimy oddać oryginalny tytuł niż przeciągać build
+    { timeout: TRANSLATE_TIMEOUT_MS, maxRetries: 0 }
+  );
 
-    const parsed = JSON.parse(response.choices[0].message.content ?? '{}');
-    const summaries: { id: string; title_pl: string; excerpt: string }[] = parsed.items ?? [];
-
-    return items.map(item => {
-      const s = summaries.find(s => s.id === item.id);
-      return {
-        ...item,
-        title: s?.title_pl || item.title,
-        excerpt: s?.excerpt || item.title,
-      };
-    });
-  } catch (err) {
-    console.error('[newsCache] OpenAI error:', err);
-    return items.map(item => ({ ...item, excerpt: item.title }));
+  // Ucięta odpowiedź dawała wcześniej "Unterminated string in JSON" i cichy
+  // fallback na angielskie tytuły — teraz wykrywamy to wprost.
+  if (response.choices[0].finish_reason === 'length') {
+    throw new Error('Odpowiedź OpenAI ucięta limitem tokenów — zmniejsz TRANSLATE_BATCH_SIZE');
   }
+
+  const parsed = JSON.parse(response.choices[0].message.content ?? '{}');
+  return (parsed.items ?? []) as Summary[];
+}
+
+async function summarizeWithOpenAI(
+  items: Omit<NewsItem, 'excerpt'>[]
+): Promise<NewsItem[]> {
+  if (!items.length) return [];
+
+  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+  const batches: Omit<NewsItem, 'excerpt'>[][] = [];
+  for (let i = 0; i < items.length; i += TRANSLATE_BATCH_SIZE) {
+    batches.push(items.slice(i, i + TRANSLATE_BATCH_SIZE));
+  }
+
+  // Paczki idą równolegle, ale całość ma budżet czasowy — po jego przekroczeniu
+  // oddajemy to, co zdążyło się przetłumaczyć, zamiast blokować build.
+  const budget = new Promise<'timeout'>(resolve =>
+    setTimeout(() => resolve('timeout'), TRANSLATE_TIMEOUT_MS)
+  );
+  const work = Promise.allSettled(batches.map(b => translateBatch(client, b)));
+  const outcome = await Promise.race([work, budget]);
+
+  const summaries: Summary[] = [];
+  if (outcome === 'timeout') {
+    console.error(
+      `[newsCache] tłumaczenie przekroczyło ${TRANSLATE_TIMEOUT_MS} ms — oddaję oryginalne tytuły`
+    );
+  } else {
+    outcome.forEach((r, i) => {
+      if (r.status === 'fulfilled') {
+        summaries.push(...r.value);
+      } else {
+        console.error(`[newsCache] paczka ${i + 1}/${batches.length} nieprzetłumaczona:`, r.reason);
+      }
+    });
+  }
+
+  return items.map(item => {
+    const s = summaries.find(s => s.id === item.id);
+    return {
+      ...item,
+      title: s?.title_pl || item.title,
+      excerpt: s?.excerpt || item.title,
+    };
+  });
 }
 
 // --- Main cache logic ---
