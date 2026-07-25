@@ -66,6 +66,7 @@ export default function Footer() {
               <a href="/case-studies" className="hover:text-white transition-colors text-sm">Realizacje</a>
               <a href="/blog" className="hover:text-white transition-colors text-sm">Blog</a>
               <a href="/uslugi" className="hover:text-white transition-colors text-sm">Usługi</a>
+              <a href="/branze" className="hover:text-white transition-colors text-sm">Branże</a>
               <a href="/uslugi/agent-glosowy-ai" className="hover:text-white transition-colors text-sm">Agent głosowy AI</a>
               <a href="/uslugi/chatbot-ai" className="hover:text-white transition-colors text-sm">Chatbot AI</a>
               <a href="/uslugi/automatyzacja-procesow-ai" className="hover:text-white transition-colors text-sm">Automatyzacja AI</a>

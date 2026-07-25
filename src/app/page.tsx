@@ -934,30 +934,31 @@ function TechnologySection() {
                   <span className="text-green-400">✓</span>
                 </div>
 
-                <div className="pt-3 mt-3 border-t border-white/10 space-y-2">
-                  <div className="text-white/30 text-xs">Przykładowa symulacja wdrożenia</div>
-                  <div className="flex justify-between">
-                    <span className="text-white/50">Obsłużone zapytania</span>
-                    <span className="font-bold" style={{ color: '#2E4AAD' }}>12 847</span>
+                {/* Ślad prawdziwej rozmowy z publicznego dema PKS Gryfice */}
+                <div className="pt-3 mt-3 border-t border-white/10 space-y-2.5">
+                  <div className="text-white/30 text-xs">Przebieg rozmowy — demo PKS Gryfice</div>
+                  <div>
+                    <span className="text-white/40">pasażer › </span>
+                    <span className="text-white/70">&bdquo;O której jest autobus z Gryfic do Pobierowa?&rdquo;</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/50">Średni czas odpowiedzi</span>
-                    <span className="font-bold" style={{ color: '#2E4AAD' }}>1.2s</span>
+                  <div>
+                    <span className="text-white/40">agent  › </span>
+                    <span className="text-white/50">wyszukuje w rozkładzie (6 przystanków, 276 odjazdów)</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/50">Zadowolenie klientów</span>
-                    <span className="font-bold" style={{ color: '#2E4AAD' }}>97.3%</span>
+                  <div>
+                    <span className="text-white/40">agent  › </span>
+                    <span className="text-white/70">podaje godziny i dni kursowania</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/50">Uptime</span>
-                    <span className="font-bold text-green-400">99.99%</span>
+                  <div>
+                    <span className="text-white/40">agent  › </span>
+                    <span className="text-white/70">cytuje źródło rozkładu — bez zgadywania</span>
                   </div>
                 </div>
 
                 <div className="pt-3 mt-2 border-t border-white/10">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-green-400 text-xs">Agent działa — wszystkie systemy operacyjne</span>
+                    <span className="text-green-400 text-xs">Możesz to sprawdzić sam — demo jest publiczne</span>
                   </div>
                 </div>
               </div>

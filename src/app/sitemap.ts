@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/uslugi/automatyzacja-hr`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/cennik`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/openclaw`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/branze`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/branze/voicebot-dla-przychodni`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/branze/ai-w-rekrutacji`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },

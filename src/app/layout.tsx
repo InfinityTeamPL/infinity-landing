@@ -83,7 +83,42 @@ const organizationJsonLd = {
   sameAs: [
     'https://x.com/InfinityTech_PL',
     'https://www.linkedin.com/company/infinitytechgroup/',
+    'https://clawlabs.pro',
   ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'contact@infinityteam.io',
+    telephone: '+48 735 170 957',
+    availableLanguage: ['pl', 'en'],
+    areaServed: 'PL',
+  },
+  knowsAbout: [
+    'agenci AI',
+    'agent głosowy AI',
+    'voicebot',
+    'chatbot AI',
+    'automatyzacja procesów',
+    'OpenClaw',
+    'automatyzacja HR i kadr',
+  ],
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Agent głosowy AI', url: 'https://infinityteam.io/uslugi/agent-glosowy-ai' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Chatbot AI dla firm', url: 'https://infinityteam.io/uslugi/chatbot-ai' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatyzacja procesów AI', url: 'https://infinityteam.io/uslugi/automatyzacja-procesow-ai' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatyzacja HR i kadr', url: 'https://infinityteam.io/uslugi/automatyzacja-hr' } },
+  ],
+};
+
+// WebSite — pomaga Google zrozumieć strukturę serwisu i wyświetlić nazwę marki
+const webSiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Infinity Tech',
+  alternateName: 'Infinity Tech Group',
+  url: 'https://infinityteam.io',
+  inLanguage: 'pl-PL',
+  publisher: { '@type': 'Organization', name: 'Infinity Tech', url: 'https://infinityteam.io' },
 };
 
 export default function RootLayout({
@@ -106,6 +141,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
         />
       </head>
       <body className={`antialiased ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
