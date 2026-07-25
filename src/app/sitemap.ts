@@ -43,7 +43,7 @@ const ENTRIES: Entry[] = [
   { path: '/blog/agent-ai-a-chatbot', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
   { path: '/blog/ile-kosztuje-chatbot-ai', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
   { path: '/blog/jak-wdrozyc-ai-w-firmie', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
-  { path: '/agents', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.6 },
+  // /agents celowo pominięte — 301 na /uslugi (patrz next.config.js)
 
   // Feed newsowy — jedyna strona, która faktycznie zmienia się codziennie (ISR co 2h)
   { path: '/swiat-ai', lastModified: REBUILD, changeFrequency: 'daily', priority: 0.9 },

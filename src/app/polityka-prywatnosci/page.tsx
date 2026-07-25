@@ -5,7 +5,8 @@ import { ArrowLeft } from 'lucide-react';
 import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
 
-const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr: false });
+// Tło: siatka CSS jak w reszcie serwisu (zamiast shadera WebGL — patrz /regulamin)
+const Background3D = dynamic(() => import('@/components/Background3D'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Polityka Prywatności',
@@ -15,27 +16,13 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-[#0B0F2E] text-white relative">
-      <div className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
-        <FloatingLines
-          enabledWaves={['top', 'middle', 'bottom']}
-          lineCount={[4, 5, 3]}
-          lineDistance={[4, 5, 6]}
-          bendRadius={5}
-          bendStrength={-0.5}
-          interactive={true}
-          parallax={true}
-          parallaxStrength={0.15}
-          animationSpeed={0.8}
-          linesGradient={['#1A2461', '#2E4AAD', '#4F6AE8', '#7B9BDB', '#2E4AAD']}
-          mixBlendMode="screen"
-        />
-      </div>
+    <div className="min-h-screen relative" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
+      <Background3D />
 
       <nav className="relative z-20 bg-transparent">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 md:gap-3">
-            <Image src="/logo.png" alt="Infinity Tech" width={32} height={32} className="object-contain brightness-0 invert md:w-[42px] md:h-[42px]" />
+            <Image src="/logo.png" alt="Infinity Tech" width={32} height={32} className="object-contain site-logo md:w-[42px] md:h-[42px]" />
             <span className="text-lg md:text-2xl font-bold text-white">INFINITY TECH</span>
           </Link>
           <Link href="/" className="flex items-center gap-2 text-[#7B9BDB] hover:text-white transition-colors">

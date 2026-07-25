@@ -24,6 +24,17 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // /agents dublowało tematy stron usługowych i nie było nigdzie linkowane —
+      // 301 przenosi jego moc na hub usług. Plik strony zostaje w repo na wypadek powrotu.
+      {
+        source: '/agents',
+        destination: '/uslugi',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

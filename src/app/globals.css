@@ -900,3 +900,12 @@ section {
   -webkit-mask-image: radial-gradient(ellipse 130% 95% at 50% 45%, black 55%, transparent 100%);
   mask-image: radial-gradient(ellipse 130% 95% at 50% 45%, black 55%, transparent 100%);
 }
+
+/* Logo w nagłówku podstron — białe tylko w ciemnym motywie.
+   Wcześniej zaszyte 'brightness-0 invert' czyniło je niewidocznym na jasnym tle. */
+.site-logo {
+  filter: none;
+}
+[data-theme='dark'] .site-logo {
+  filter: brightness(0) invert(1);
+}

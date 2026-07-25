@@ -7,7 +7,8 @@ import dynamic from 'next/dynamic';
 import AiNewsPage from '@/components/AiNewsPage';
 import { getNewsWithCache } from '@/lib/newsCache';
 
-const FloatingLines = dynamic(() => import('@/components/FloatingLines'), { ssr: false });
+// Tło: siatka CSS jak w reszcie serwisu (zamiast shadera WebGL — patrz /regulamin)
+const Background3D = dynamic(() => import('@/components/Background3D'), { ssr: false });
 
 export const revalidate = 7200; // ISR: rebuild every 2h in background
 
@@ -26,29 +27,14 @@ export default async function SwiatAiPage() {
   const news = await getNewsWithCache();
 
   return (
-    <div className="min-h-screen bg-[#0B0F2E] relative">
-      {/* Animated Floating Lines Background */}
-      <div className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
-        <FloatingLines
-          enabledWaves={['top', 'middle', 'bottom']}
-          lineCount={[4, 5, 3]}
-          lineDistance={[4, 5, 6]}
-          bendRadius={5}
-          bendStrength={-0.5}
-          interactive={true}
-          parallax={true}
-          parallaxStrength={0.15}
-          animationSpeed={0.8}
-          linesGradient={['#1A2461', '#2E4AAD', '#4F6AE8', '#7B9BDB', '#2E4AAD']}
-          mixBlendMode="screen"
-        />
-      </div>
+    <div className="min-h-screen relative" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
+      <Background3D />
 
       {/* Navigation */}
       <nav className="relative z-20 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 md:gap-3">
-            <Image src="/logo.png" alt="Infinity Tech" width={32} height={32} className="object-contain brightness-0 invert md:w-[42px] md:h-[42px]" />
+            <Image src="/logo.png" alt="Infinity Tech" width={32} height={32} className="object-contain site-logo md:w-[42px] md:h-[42px]" />
             <span className="text-lg md:text-2xl font-bold text-white">INFINITY TECH</span>
           </Link>
           <Link href="/" className="flex items-center gap-2 text-[#7B9BDB] hover:text-white transition-colors">
