@@ -874,33 +874,9 @@ section {
   box-shadow: var(--shadow-card);
 }
 
-/* =========================================================
-   HERO ADAPTIVE — hero podąża za motywem: w dark ciemna wyspa
-   jak dotychczas, w light odwrócone wideo (jasne niebo) +
-   jasna nakładka i granatowy tekst.
-   ========================================================= */
-.hero-adaptive {
-  --ink-rgb: 255, 255, 255;
-  --accent-text-rgb: 123, 155, 219;
-}
-[data-theme='light'] .hero-adaptive {
-  --ink-rgb: 29, 29, 31;
-  --accent-text-rgb: 46, 74, 173;
-}
-.hero-adaptive .hero-video {
-  filter: brightness(0.55) saturate(0.15) sepia(1) hue-rotate(190deg);
-}
-/* w light hero gra dedykowane, natywnie jasne wideo (duotone) — bez filtra */
-[data-theme='light'] .hero-adaptive .hero-video {
-  filter: none;
-}
-.hero-adaptive .hero-overlay {
-  background: rgba(11, 15, 46, 0.5);
-}
-[data-theme='light'] .hero-adaptive .hero-overlay {
-  background: rgba(245, 245, 247, 0.35);
-}
-/* tagline hero — jasnoniebieski w dark, ciemniejszy akcent w light */
+/* Hero jest w pełni theme-aware (wideo z kulą usunięte 2026-07-25 —
+   pierwszym wrażeniem jest AgentDemoCard, „agent w akcji").
+   Tagline: jasnoniebieski w dark, ciemniejszy akcent w light. */
 [data-theme='light'] .text-\[\#8BB8E8\] { color: rgb(var(--accent-text-rgb)); }
 
 /* =========================================================

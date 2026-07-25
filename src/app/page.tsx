@@ -42,6 +42,7 @@ import ShinyText from '@/components/react-bits/ShinyText';
 import Marquee from '@/components/react-bits/Marquee';
 import AnimatedCounter from '@/components/react-bits/AnimatedCounter';
 import ChatWidget from '@/components/ChatWidget';
+import AgentDemoCard from '@/components/AgentDemoCard';
 import Footer from '@/components/Footer';
 import StarBorder from '@/components/StarBorder';
 import ClickSpark from '@/components/react-bits/ClickSpark';
@@ -211,60 +212,15 @@ const STATS = [
   { value: '24/7', suffix: '', label: 'autonomiczna praca agentów AI', icon: Bot },
 ];
 
-// Aktualny motyw — nasłuchuje przełącznika ThemeToggle (event 'themechange')
-function useThemeName() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  useEffect(() => {
-    const read = () =>
-      setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
-    read();
-    window.addEventListener('themechange', read);
-    return () => window.removeEventListener('themechange', read);
-  }, []);
-  return theme;
-}
-
 // Główne sekcje
 function HeroSection() {
-  const theme = useThemeName();
-  // W light gra dedykowana duotone'owa wersja wideo (białe niebo, granatowa kula)
-  const videoBase = theme === 'light' ? '/videos/hero-globe-light' : '/videos/hero-globe';
-
   return (
     <>
-    <section
-      className="hero-adaptive flex flex-col relative overflow-hidden"
-      style={{
-        minHeight: 'calc(100vh + 250px)',
-        WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black calc(100% - 250px), transparent 100%)',
-        maskImage: 'linear-gradient(to bottom, black 0%, black calc(100% - 250px), transparent 100%)',
-      }}
-    >
-      {/* Rotating globe video — blue-tinted in dark, dedicated light duotone in light theme */}
-      <video
-        key={theme}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={`${videoBase}-poster.jpg`}
-        className="hero-video absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src={`${videoBase}.mp4`} type="video/mp4" />
-      </video>
-      {/* Theme-aware overlay for brand color matching */}
-      <div className="hero-overlay absolute inset-0 z-[1]" />
-
-      {/* Fog layers at transition zone */}
-      <div className="absolute inset-x-0 bottom-0 h-[300px] z-[3] pointer-events-none overflow-hidden">
-        <div className="absolute w-[120%] h-[300px] left-[-10%]" style={{ background: 'radial-gradient(ellipse at center, rgba(46,74,173,0.15) 0%, transparent 70%)', filter: 'blur(40px)', animation: 'fogDrift1 20s infinite alternate ease-in-out', opacity: 'var(--fog-opacity, 1)' }} />
-        <div className="absolute w-[80%] h-[200px] right-[-10%] top-[20px]" style={{ background: 'radial-gradient(ellipse at center, rgba(123,155,219,0.1) 0%, transparent 60%)', filter: 'blur(40px)', animation: 'fogDrift2 25s infinite alternate-reverse ease-in-out', opacity: 'var(--fog-opacity, 1)' }} />
-      </div>
-
-      {/* All hero content pinned to first 100vh */}
-      <div className="relative z-10 flex flex-col w-full" style={{ height: '100vh' }}>
+    <section className="flex flex-col relative overflow-hidden" style={{ minHeight: '100vh' }}>
+      {/* Content — siatka Vercel z tła strony prześwituje, zero wideo */}
+      <div className="relative z-10 flex flex-col w-full min-h-screen">
         {/* Centered content */}
-        <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-6 pt-24 pb-12 text-center">
+        <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-6 pt-28 pb-10 text-center">
           <div className="text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl 2xl:text-2xl tracking-wider md:tracking-widest uppercase mb-4 px-4 text-[#8BB8E8]" style={{ fontFamily: 'var(--font-geist)' }}>
             <SplitText
               text="Rewolucja AI już trwa — konkurencja nie śpi"
@@ -292,7 +248,7 @@ function HeroSection() {
           </FadeIn>
 
           <FadeIn delay={0.7}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <a href="#kontakt" className="w-full sm:w-auto">
                 <Ripple className="w-full px-6 py-3 md:px-8 md:py-4 xl:px-10 xl:py-5 text-white text-base md:text-lg xl:text-xl bg-[#2E4AAD] hover:bg-[#1A2461] btn-grain border-2 border-[#2E4AAD]">
                   Umów konsultację
@@ -303,6 +259,11 @@ function HeroSection() {
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
+          </FadeIn>
+
+          {/* Agent w akcji — pierwsze wrażenie: produkt robiący robotę */}
+          <FadeIn delay={0.9} className="w-full">
+            <AgentDemoCard />
           </FadeIn>
         </div>
 
@@ -342,7 +303,7 @@ function HeroSection() {
 
 function StatsSection() {
   return (
-    <section className="pt-8 pb-16 -mt-[250px] relative z-[5]">
+    <section className="pt-8 pb-16 relative z-[5]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {STATS.map((stat, i) => (
