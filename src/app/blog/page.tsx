@@ -18,6 +18,34 @@ export const metadata: Metadata = {
 // Rejestr artykułów — przy dodawaniu wpisu dopisz go tu i w sitemap.ts
 const POSTS = [
   {
+    slug: 'ile-kosztuje-voicebot',
+    title: 'Ile kosztuje voicebot? Cennik agenta głosowego 2026',
+    description:
+      'Z czego składa się cena voicebota, ile kosztuje wdrożenie i utrzymanie w Polsce oraz kiedy telefonia i minuty rozmów podbijają rachunek.',
+    date: '2026-07-26',
+  },
+  {
+    slug: 'voicebot-czy-chatbot',
+    title: 'Voicebot czy chatbot — co wybrać dla swojej firmy?',
+    description:
+      'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każde z rozwiązań sprawdza się lepiej. Z przykładami z branż.',
+    date: '2026-07-26',
+  },
+  {
+    slug: 'voicebot-a-ivr',
+    title: 'Voicebot a IVR — czym się różnią i co daje zmiana?',
+    description:
+      'Klasyczne „wciśnij jeden" kontra agent, który rozumie swobodną mowę. Różnice w obsłudze, kosztach i tym, co realnie zmienia się dla dzwoniącego.',
+    date: '2026-07-26',
+  },
+  {
+    slug: 'agent-ai-czy-nowy-pracownik',
+    title: 'Agent AI czy nowy pracownik — jak policzyć, co się opłaca',
+    description:
+      'Uczciwe porównanie kosztów: co realnie kosztuje etat, co agent AI, czego AI nie zrobi i kiedy zatrudnienie człowieka jest po prostu lepsze.',
+    date: '2026-07-26',
+  },
+  {
     slug: 'agent-ai-a-chatbot',
     title: 'Agent AI a chatbot — czym się różnią i co wybrać dla firmy?',
     description:

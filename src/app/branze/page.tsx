@@ -29,29 +29,29 @@ const WITH_PAGE = [
     title: 'Rekrutacja i agencje pracy',
     lead: 'Selekcja CV według Waszych kryteriów, wstępny screening i umawianie rozmów. Decyzje zostają po stronie rekrutera — AI zdejmuje z niego przeklikiwanie i telefony.',
   },
-];
-
-// Branże, w których pracujemy — bez dedykowanej strony (jeszcze)
-const OTHER = [
   {
     icon: Bus,
+    href: '/branze/voicebot-dla-transportu',
     title: 'Transport i przewozy',
-    lead: 'Infolinia z rozkładami jazdy, statusami kursów i reklamacjami. Publiczne demo na danych PKS Gryfice pokazuje, jak to brzmi w praktyce.',
+    lead: 'Infolinia z rozkładami jazdy, statusami kursów i reklamacjami. Publiczne demo na danych rozkładowych PKS Gryfice pokazuje, jak to brzmi w praktyce.',
   },
   {
     icon: Store,
+    href: '/branze/voicebot-dla-salonow',
     title: 'Salony, warsztaty i usługi',
-    lead: 'Recepcja, która rezerwuje terminy do kalendarza i wysyła przypomnienia, żeby ograniczyć nieodwołane wizyty.',
+    lead: 'Recepcja, która odbiera telefon, gdy pracownik ma ręce zajęte klientem. Rezerwuje terminy, przekłada wizyty i przypomina o nich dzień wcześniej.',
   },
   {
     icon: Building2,
+    href: '/branze/ai-dla-administracji',
     title: 'Administracja i urzędy',
-    lead: 'Infolinia bez kolejki: statusy spraw, wymagane dokumenty, kierowanie do właściwego wydziału.',
+    lead: 'Infolinia bez kolejki: statusy spraw, wymagane dokumenty, kierowanie do właściwego wydziału. Dane obywateli zostają na serwerach w Polsce.',
   },
   {
     icon: Scale,
+    href: '/uslugi/automatyzacja-hr',
     title: 'Kadry, płace i biura rachunkowe',
-    lead: 'Agent, który zna Kodeks pracy, cytuje przepisy, generuje dokumenty i pilnuje terminów ZUS i PIT.',
+    lead: 'Agent, który zna Kodeks pracy, cytuje konkretny artykuł i pokazuje źródło. Generuje dokumenty kadrowe i pilnuje terminów ZUS oraz PIT.',
   },
 ];
 
@@ -199,22 +199,6 @@ export default function BranzeHub() {
           ))}
         </div>
 
-        <h2 className="text-2xl font-bold mb-5" style={{ letterSpacing: '-0.012em' }}>
-          Pozostałe branże, w których wdrażamy
-        </h2>
-        <div className="grid md:grid-cols-2 gap-x-10 gap-y-7 mb-12">
-          {OTHER.map((s) => (
-            <div key={s.title} style={{ borderTop: '1px solid var(--border-soft)' }} className="pt-5">
-              <div className="flex items-start gap-3">
-                <s.icon className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: 'var(--accent-text)' }} />
-                <div>
-                  <h3 className="font-semibold mb-1.5">{s.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-70)' }}>{s.lead}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
