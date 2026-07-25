@@ -1,30 +1,63 @@
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://infinityteam.io';
+/* Daty publikacji/aktualizacji są STAŁE, nie new Date().
+   Przy `new Date()` każdy deploy zgłaszałby Google, że zmieniły się wszystkie
+   strony naraz — sygnał, któremu wyszukiwarka szybko przestaje ufać.
+   Zmieniając treść strony, zaktualizuj tu jej datę ręcznie. */
+const base = 'https://infinityteam.io';
 
-  return [
-    { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${base}/swiat-ai`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
-    { url: `${base}/kalkulator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/uslugi`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${base}/uslugi/agent-glosowy-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/uslugi/chatbot-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/uslugi/automatyzacja-procesow-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/uslugi/automatyzacja-hr`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/cennik`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/openclaw`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/branze`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${base}/branze/voicebot-dla-przychodni`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/branze/ai-w-rekrutacji`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/slownik`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${base}/blog/agent-ai-a-chatbot`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/blog/ile-kosztuje-chatbot-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/blog/jak-wdrozyc-ai-w-firmie`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/agents`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/polityka-prywatnosci`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${base}/regulamin`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
-  ];
+// Data ostatniej dużej przebudowy serwisu
+const REBUILD = '2026-07-25';
+
+type Entry = {
+  path: string;
+  lastModified: string;
+  changeFrequency: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  priority: number;
+};
+
+const ENTRIES: Entry[] = [
+  { path: '', lastModified: REBUILD, changeFrequency: 'weekly', priority: 1 },
+
+  // Usługi
+  { path: '/uslugi', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/uslugi/agent-glosowy-ai', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/uslugi/chatbot-ai', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/uslugi/automatyzacja-procesow-ai', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/uslugi/automatyzacja-hr', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+
+  // Branże
+  { path: '/branze', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/branze/voicebot-dla-przychodni', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/branze/ai-w-rekrutacji', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+
+  // Decyzyjne
+  { path: '/cennik', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/kalkulator', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/case-studies', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/openclaw', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+
+  // Treści
+  { path: '/slownik', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/blog', lastModified: REBUILD, changeFrequency: 'weekly', priority: 0.7 },
+  { path: '/blog/agent-ai-a-chatbot', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
+  { path: '/blog/ile-kosztuje-chatbot-ai', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
+  { path: '/blog/jak-wdrozyc-ai-w-firmie', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
+  { path: '/agents', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.6 },
+
+  // Feed newsowy — jedyna strona, która faktycznie zmienia się codziennie (ISR co 2h)
+  { path: '/swiat-ai', lastModified: REBUILD, changeFrequency: 'daily', priority: 0.9 },
+
+  // Formalne
+  { path: '/polityka-prywatnosci', lastModified: REBUILD, changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/regulamin', lastModified: REBUILD, changeFrequency: 'yearly', priority: 0.3 },
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return ENTRIES.map((e) => ({
+    url: `${base}${e.path}`,
+    lastModified: new Date(`${e.lastModified}T00:00:00Z`),
+    changeFrequency: e.changeFrequency,
+    priority: e.priority,
+  }));
 }

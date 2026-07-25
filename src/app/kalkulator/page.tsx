@@ -75,27 +75,27 @@ export default function KalkulatorPage() {
             </h1>
 
             <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto mb-8">
-              Sprawdź ile czasu i pieniędzy możesz zaoszczędzić automatyzując procesy w Twojej firmie.
-              Obliczenia na podstawie rzeczywistych danych polskiego rynku pracy (marzec 2026).
+              Policz, ile godzin i pieniędzy pochłania dziś powtarzalna praca w Twojej firmie — i ile z tego
+              realnie da się odzyskać. Szacunek opieramy na danych o kosztach pracy w Polsce (GUS, ZUS).
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-[#7B9BDB]" />
+                <Clock className="w-5 h-5 text-[#7B9BDB]" />
                 <span className="text-white/60 text-sm">
-                  <strong className="text-white">240–300%</strong> typowy ROI
+                  <strong className="text-white">2 minuty</strong> na wypełnienie
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-[#7B9BDB]" />
+                <TrendingUp className="w-5 h-5 text-[#7B9BDB]" />
                 <span className="text-white/60 text-sm">
-                  <strong className="text-white">3–6 mies.</strong> zwrot inwestycji
+                  Wynik <strong className="text-white">w złotówkach i godzinach</strong>
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="w-5 h-5 text-[#7B9BDB]" />
                 <span className="text-white/60 text-sm">
-                  <strong className="text-white">50%</strong> ulga podatkowa
+                  <strong className="text-white">Bez zapisu</strong> i bez e-maila
                 </span>
               </div>
             </div>
@@ -105,6 +105,85 @@ export default function KalkulatorPage() {
         {/* Wizard */}
         <section className="py-8 md:py-12 relative" style={{ zIndex: 1 }}>
           <KalkulatorWizard />
+        </section>
+
+        {/* Treść wyjaśniająca — także pod SEO (zapytania o koszty i zwrot z automatyzacji) */}
+        <section className="relative print:hidden" style={{ zIndex: 1 }}>
+          <div className="max-w-3xl mx-auto px-4 py-12 md:py-16 space-y-10">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Jak liczymy zwrot z automatyzacji</h2>
+              <p className="leading-relaxed mb-4" style={{ color: 'var(--fg-70)' }}>
+                Punktem wyjścia jest koszt godziny pracy w Twojej firmie — nie samo wynagrodzenie brutto, ale pełny
+                koszt pracodawcy razem ze składkami. Mnożymy go przez liczbę godzin, które dziś idą na powtarzalne
+                zadania: odbieranie tych samych telefonów, przepisywanie danych między systemami, wypełnianie
+                dokumentów według stałego wzoru.
+              </p>
+              <p className="leading-relaxed" style={{ color: 'var(--fg-70)' }}>
+                Od tej kwoty odejmujemy koszt wdrożenia i miesięcznego utrzymania agenta. To, co zostaje, jest
+                oszczędnością — ale traktuj ją jako szacunek, a nie obietnicę. Rzeczywisty wynik zależy od tego, jak
+                uporządkowane są Wasze dane i ile wyjątków ma proces.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Czego nie uwzględnia kalkulator</h2>
+              <p className="leading-relaxed mb-4" style={{ color: 'var(--fg-70)' }}>
+                Uczciwie: kilku rzeczy nie da się sensownie policzyć w formularzu. Nie wyceniamy tu wartości
+                połączeń odebranych po godzinach, których dziś w ogóle nie obsługujecie, ani tego, że pracownik
+                przestaje wykonywać zadanie, którego szczerze nie znosi. W drugą stronę — nie liczymy też czasu,
+                który Wasz zespół poświęci na wdrożenie i testy.
+              </p>
+              <p className="leading-relaxed" style={{ color: 'var(--fg-70)' }}>
+                Dlatego wynik z kalkulatora traktujemy jako punkt startu do rozmowy, a nie jako ofertę. Na audycie
+                liczymy to na Waszych realnych danych.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Co przygotować przed rozmową</h2>
+              <ul className="space-y-2.5">
+                {[
+                  'Ile telefonów, e-maili albo zgłoszeń przychodzi dziennie i w jakich godzinach',
+                  'Kto się nimi dziś zajmuje i ile mniej więcej czasu to zajmuje',
+                  'Jakie pytania powtarzają się najczęściej',
+                  'Z jakich systemów korzystacie (CRM, kalendarz, system kadrowy, telefonia)',
+                  'Gdzie jest granica, za którą sprawę musi przejąć człowiek',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3" style={{ color: 'var(--fg-70)' }}>
+                    <span
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2.5"
+                      style={{ background: 'var(--accent-text)' }}
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl p-7" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
+              <h2 className="text-xl font-bold mb-3">Wynik wygląda obiecująco?</h2>
+              <p className="leading-relaxed mb-5" style={{ color: 'var(--fg-70)' }}>
+                Umów bezpłatną rozmowę — przejdziemy przez Wasz proces i policzymy to samo na prawdziwych liczbach.
+                Jeśli wyjdzie, że automatyzacja się nie opłaca, powiemy to wprost.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/#kontakt"
+                  className="px-6 py-3 rounded-full font-semibold bg-[#2E4AAD] hover:bg-[#1A2461] transition-colors"
+                  style={{ color: '#fff' }}
+                >
+                  Umów bezpłatną konsultację
+                </Link>
+                <Link
+                  href="/cennik"
+                  className="px-6 py-3 rounded-full font-semibold"
+                  style={{ color: 'var(--accent-text)', border: '1px solid var(--border-soft)' }}
+                >
+                  Zobacz orientacyjne koszty
+                </Link>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Footer */}

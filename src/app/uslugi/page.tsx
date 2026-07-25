@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, PhoneCall, MessagesSquare, Workflow, Wrench } from 'lucide-react';
+import { ArrowRight, PhoneCall, MessagesSquare, Workflow, Wrench, ChevronDown, Check, Minus } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Usługi AI dla firm — agenci, chatboty, automatyzacja',
   description:
-    'Cztery obszary, w których pracujemy: agenci głosowi, chatboty wielokanałowe, automatyzacja procesów i wdrożenia na miarę. Zobacz zakres i orientacyjne koszty.',
+    'Agenci głosowi, chatboty, automatyzacja procesów i kadr. Sprawdź, która usługa pasuje do Twojej firmy, ile kosztuje wdrożenie i od czego zacząć.',
   alternates: { canonical: '/uslugi' },
   openGraph: {
     title: 'Usługi AI dla firm — Infinity Tech',
@@ -46,6 +46,80 @@ const SERVICES = [
   },
 ];
 
+const CHOICE = [
+  {
+    title: 'Agent głosowy AI',
+    href: '/uslugi/agent-glosowy-ai',
+    yes: 'Telefon dzwoni cały dzień i w kółko o to samo: godziny otwarcia, wolne terminy, status sprawy. Klienci nie mogą się dodzwonić po 16:00 albo czekają w kolejce w poniedziałkowy poranek.',
+    no: 'Odbieracie pięć telefonów dziennie i każdy dotyczy czegoś innego. Przy takim wolumenie wdrożenie się nie zwróci — powiemy to wprost na pierwszej rozmowie.',
+  },
+  {
+    title: 'Chatbot AI dla firm',
+    href: '/uslugi/chatbot-ai',
+    yes: 'Klienci piszą kilkoma kanałami naraz — czat na stronie, WhatsApp, Messenger, mail — a odpowiedzi na większość pytań już gdzieś macie spisane. Działa też do środka: pytania pracowników na Slacku czy w Teams.',
+    no: 'Wiedza siedzi w głowach ludzi, a rozmowy to głównie negocjacje. Najpierw warto spisać procedury, dopiero potem podpinać agenta.',
+  },
+  {
+    title: 'Automatyzacja procesów AI',
+    href: '/uslugi/automatyzacja-procesow-ai',
+    yes: 'Ktoś w firmie przepisuje dane z maila do systemu, składa co tydzień ten sam raport albo ręcznie pilnuje terminów. Proces da się opisać krok po kroku i ma jasne reguły.',
+    no: 'Proces zmienia się co miesiąc, dwie osoby robią go inaczej albo wraca raz na kwartał. Automatyzacja utrwali wtedy bałagan zamiast go usunąć.',
+  },
+  {
+    title: 'Automatyzacja HR i kadr',
+    href: '/uslugi/automatyzacja-hr',
+    yes: 'Na rekrutację spływa kilkadziesiąt CV, onboarding wygląda za każdym razem tak samo, a kadry pilnują dokumentów i terminów ZUS/PIT. Ten obszar znamy najlepiej — zbudowaliśmy w nim Superkadrową, kadrową AI cytującą Kodeks pracy.',
+    no: 'Zespół liczy kilka osób, rekrutacja zdarza się raz w roku, a papiery prowadzi zewnętrzne biuro rachunkowe. Arkusz i kalendarz nadal wystarczą.',
+  },
+];
+
+const START_CRITERIA = [
+  {
+    label: 'Powtarzalny',
+    text: 'Ktoś robi to samo co tydzień według tego samego schematu. Jednorazowe zadania zostawiamy ludziom.',
+  },
+  {
+    label: 'Wysokowolumenowy',
+    text: 'Dzieje się często. Sto telefonów tygodniowo daje efekt widoczny w pierwszym miesiącu, dziesięć — nie.',
+  },
+  {
+    label: 'Regułowy',
+    text: 'Da się opisać, kiedy odpowiedź brzmi tak, a kiedy nie. Tam, gdzie potrzebna jest decyzja, zostawiamy człowieka w pętli.',
+  },
+  {
+    label: 'Mierzalny',
+    text: 'Wiadomo, co sprawdzamy po wdrożeniu: liczbę nieodebranych połączeń, czas odpowiedzi, liczbę zgłoszeń załatwionych bez pracownika.',
+  },
+];
+
+const FAQ = [
+  {
+    question: 'Czy trzeba mieć własny dział IT?',
+    answer:
+      'Nie. Konfigurację, integracje i utrzymanie bierzemy na siebie. Po Waszej stronie potrzebna jest jedna osoba, która zna proces i odpowie na pytania merytoryczne — zwykle kierownik rejestracji, szef biura obsługi albo kadrowa. Jeśli dział IT jest, ustalamy z nim dostępy i zasady bezpieczeństwa, ale nie musi nic programować.',
+  },
+  {
+    question: 'Czy można zacząć od jednego procesu?',
+    answer:
+      'Tak i właśnie to zalecamy. Jeden proces wdraża się szybciej, taniej i widać po nim efekt, zanim podejmiecie decyzję o kolejnych. Dopiero gdy pierwszy agent działa i wiadomo, ile realnie oszczędza, ma sens dokładanie kolejnych kanałów i zadań. Start od wszystkiego naraz zwykle kończy się przeciąganiem projektu.',
+  },
+  {
+    question: 'Co z RODO i naszymi danymi?',
+    answer:
+      'Dane trzymamy na serwerach w Polsce i Unii Europejskiej, a wdrożenia projektujemy zgodnie z RODO, według standardów zgodnych z ISO 27001. Przed startem ustalamy, jakie dane agent w ogóle widzi, jak długo są przechowywane i kto ma do nich dostęp — zakres ograniczamy do tego, co jest potrzebne do obsłużenia sprawy.',
+  },
+  {
+    question: 'Jak długo trwa wdrożenie?',
+    answer:
+      'Mniejsze wdrożenia zajmują 2–4 tygodnie od pierwszej rozmowy do startu produkcyjnego. Większe projekty, z integracjami do systemów wewnętrznych i wieloma kanałami, to 1–3 miesiące. Najwięcej czasu pochłania zwykle nie technologia, tylko zebranie i uporządkowanie wiedzy, na której agent ma pracować.',
+  },
+  {
+    question: 'Co jeśli agent sobie nie poradzi?',
+    answer:
+      'Agent ma wyznaczone granice. Kiedy pytanie wychodzi poza jego wiedzę albo rozmowa robi się trudna, mówi o tym wprost i przekazuje sprawę człowiekowi razem z podsumowaniem tego, co już ustalił. Klient nie zaczyna od zera. Takie sytuacje przeglądamy w ramach utrzymania i uzupełniamy bazę wiedzy tam, gdzie widać luki.',
+  },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -64,6 +138,14 @@ const jsonLd = {
         position: i + 1,
         name: s.title,
         url: `https://infinityteam.io${s.href}`,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: FAQ.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
       })),
     },
   ],
@@ -122,7 +204,124 @@ export default function UslugiHub() {
           ))}
         </div>
 
-        <section className="mt-12 rounded-2xl p-7" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
+        {/* Którą usługę wybrać — lista porównawcza */}
+        <section className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
+            Którą usługę wybrać?
+          </h2>
+          <p className="leading-relaxed mb-7 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Najczęściej decyduje skala. To samo rozwiązanie, które w jednym miejscu zwraca się w trzy miesiące,
+            w innym jest wydatkiem bez pokrycia. Poniżej krótko: kiedy która usługa się sprawdza, a kiedy lepiej
+            odpuścić.
+          </p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {CHOICE.map((c) => (
+              <div
+                key={c.title}
+                className="rounded-2xl p-6"
+                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)', boxShadow: 'var(--shadow-card, none)' }}
+              >
+                <h3 className="text-lg font-bold mb-4">
+                  <Link href={c.href} className="hover:underline" style={{ color: 'var(--accent-text)' }}>
+                    {c.title}
+                  </Link>
+                </h3>
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 text-sm font-semibold mb-1.5">
+                    <Check className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--accent-text)' }} />
+                    Dobry wybór, gdy
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-70)' }}>{c.yes}</p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 text-sm font-semibold mb-1.5">
+                    <Minus className="w-4 h-4 flex-shrink-0" style={{ color: 'var(--fg-60)' }} />
+                    Raczej nie, gdy
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-60)' }}>{c.no}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Od czego zaczynamy */}
+        <section className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
+            Od czego zwykle zaczynamy
+          </h2>
+          <p className="leading-relaxed mb-4 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Od jednego procesu. Nie od strategii AI dla całej firmy i nie od pięciu agentów naraz. Wybieramy razem
+            miejsce, w którym najwięcej czasu idzie na powtarzalną robotę, uruchamiamy tam agenta i po kilku tygodniach
+            sprawdzamy liczby. Jeśli działa, rozszerzamy zakres. Jeśli nie — ryzykowaliście jeden proces, a nie budżet
+            na rok.
+          </p>
+          <p className="leading-relaxed mb-7 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Pierwszy proces wybieramy według czterech kryteriów:
+          </p>
+          <ul className="space-y-3">
+            {START_CRITERIA.map((c) => (
+              <li
+                key={c.label}
+                className="rounded-2xl px-5 py-4"
+                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
+              >
+                <span className="font-semibold">{c.label}.</span>{' '}
+                <span style={{ color: 'var(--fg-70)' }}>{c.text}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="leading-relaxed mt-6 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Jeśli proces nie spełnia trzech z czterech, szukamy lepszego kandydata. Czasem po takiej rozmowie wychodzi,
+            że automatyzacja nie jest teraz potrzebna — mówimy to od razu.
+          </p>
+        </section>
+
+        {/* Koszty */}
+        <section className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
+            Ile to kosztuje
+          </h2>
+          <p className="leading-relaxed mb-4 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Wdrożenie zaczyna się od 5 000 zł netto — tyle kosztuje mały, dobrze zamknięty zakres, na przykład agent
+            na stronie z bazą wiedzy o ofercie. Większe projekty z integracjami do systemów wewnętrznych wyceniamy
+            indywidualnie, po rozpoznaniu zakresu. Do tego dochodzi utrzymanie: Starter 249 zł, Standard 499 zł albo
+            Premium 799 zł miesięcznie, zależnie od skali i tego, ile rozwoju agent potrzebuje po starcie.
+          </p>
+          <p className="leading-relaxed max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Czas realizacji to 2–4 tygodnie przy mniejszych wdrożeniach i 1–3 miesiące przy większych. Pierwsza
+            konsultacja jest bezpłatna i kończy się konkretną wyceną, nie prezentacją. Rozbicie na pakiety znajdziesz
+            w{' '}
+            <Link href="/cennik" className="font-semibold hover:underline" style={{ color: 'var(--accent-text)' }}>
+              cenniku wdrożeń AI
+            </Link>
+            .
+          </p>
+        </section>
+
+        {/* FAQ — <details>: pełna treść w HTML, zero JS */}
+        <section className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ letterSpacing: '-0.012em' }}>
+            Częste pytania o nasze usługi
+          </h2>
+          <div className="space-y-3">
+            {FAQ.map((f) => (
+              <details
+                key={f.question}
+                className="group rounded-2xl overflow-hidden"
+                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
+              >
+                <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-medium list-none [&::-webkit-details-marker]:hidden">
+                  {f.question}
+                  <ChevronDown className="w-5 h-5 flex-shrink-0 transition-transform group-open:rotate-180" style={{ color: 'var(--accent-text)' }} />
+                </summary>
+                <p className="px-5 pb-5 leading-relaxed" style={{ color: 'var(--fg-70)' }}>{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-16 rounded-2xl p-7" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
           <h2 className="text-xl font-bold mb-3">Nie wiesz, od czego zacząć?</h2>
           <p className="leading-relaxed mb-5" style={{ color: 'var(--fg-70)' }}>
             Najczęściej tak właśnie wygląda pierwsza rozmowa. Przechodzimy przez Wasze procesy, wskazujemy te, które
