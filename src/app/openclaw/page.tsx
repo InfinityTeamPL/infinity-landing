@@ -61,6 +61,21 @@ const content: SeoLandingContent = {
         'Nasza rekomendacja jest prosta: jeżeli agent ma wykonywać procesy — obsługiwać telefon, pilnować terminów, pracować na dokumentach, łączyć się z wewnętrznymi systemami — OpenClaw daje więcej możliwości przy niższym koszcie w dłuższym horyzoncie. Na bezpłatnej konsultacji mówimy wprost, czy w Twoim przypadku to się opłaca.',
       ],
     },
+    {
+      heading: 'ClawLabs — nasza platforma managed OpenClaw',
+      paragraphs: [
+        'Nie każda firma potrzebuje wdrożenia szytego na miarę. Dla tych, którzy chcą mieć własnego agenta OpenClaw od razu, zbudowaliśmy ClawLabs (clawlabs.pro) — platformę managed hostingu agentów AI, produkt Infinity Tech Group sp. z o.o. Zakładasz konto i agent startuje w około 60 sekund — bez konfigurowania serwera i bez wiedzy DevOps, a mimo to na infrastrukturze, którą kontrolujesz.',
+        'Każdy agent działa na dedykowanym VPS-ie, w izolowanym kontenerze — Twoja instancja nie dzieli środowiska z innymi klientami. Infrastruktura stoi w chmurze EU (Hetzner, standardy ISO 27001/SOC 2), a dla firm z ostrzejszymi wymaganiami dostępna jest instalacja on-premise, na Twoich serwerach.',
+      ],
+      bullets: [
+        'Start agenta w około 60 sekund od założenia konta',
+        'Dedykowany VPS i izolowany kontener dla każdego agenta',
+        '13 kanałów komunikacji i ponad 35 modeli AI: Claude, GPT, Gemini, modele lokalne',
+        'BYOK — podłączasz własne klucze API, przechowywane w postaci zaszyfrowanej (AES-256-GCM)',
+        'Chmura EU (Hetzner, ISO 27001/SOC 2) albo on-premise',
+        'Cloud od 399 zł/mies. (Premium; Pro 799 zł, Ultra Pro 1999 zł), 5 dni triala, płatności Stripe i polska faktura VAT',
+      ],
+    },
   ],
   howTo: {
     title: 'Jak wygląda wdrożenie OpenClaw krok po kroku',
@@ -160,6 +175,11 @@ const content: SeoLandingContent = {
         'OpenClaw to open-source\'owy framework do budowy autonomicznych agentów AI, stworzony przez Petera Steinbergera. Agent zbudowany na OpenClaw nie tylko odpowiada na pytania — wykonuje zadania: obsługuje wiadomości na ponad 23 kanałach, korzysta z narzędzi i integruje się z systemami firmy. Projekt zdobył ponad 380 tysięcy gwiazdek na GitHubie i w 60 dni stał się najpopularniejszym repozytorium w serwisie.',
     },
     {
+      question: 'Czym różni się OpenClaw od ClawLabs?',
+      answer:
+        'OpenClaw to open-source\'owy framework agentów AI — kod, który każdy może pobrać i uruchomić samodzielnie. ClawLabs to nasza platforma (produkt Infinity Tech Group sp. z o.o.), która hostuje OpenClaw za Ciebie: agent startuje w około 60 sekund na dedykowanym VPS-ie, w izolowanym kontenerze, bez konfigurowania serwera. Dostajesz 13 kanałów komunikacji, ponad 35 modeli AI i możliwość podłączenia własnych kluczy API (BYOK), w chmurze EU albo on-premise. Plany Cloud zaczynają się od 399 zł miesięcznie, a każdy można sprawdzić w ramach 5 dni triala.',
+    },
+    {
       question: 'Czy oprogramowanie open source jest bezpieczne dla firmy?',
       answer:
         'Tak — pod warunkiem poprawnej konfiguracji. Kod OpenClaw jest publiczny, więc weryfikują go tysiące programistów, a błędy wychodzą na jaw szybciej niż w zamkniętych produktach. Przy wdrożeniu ograniczamy uprawnienia agenta, izolujemy go od systemów, do których nie powinien mieć dostępu, i pracujemy według standardów zgodnych z ISO 27001. Instalacja na własnym serwerze oznacza, że dane nie wychodzą poza kontrolowaną infrastrukturę.',
@@ -198,6 +218,8 @@ const content: SeoLandingContent = {
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
+    { label: 'ClawLabs — hosting agentów OpenClaw', href: 'https://clawlabs.pro' },
+    { label: 'Janina — kadrowa AI na OpenClaw', href: 'https://superkadrowa.vercel.app' },
   ],
 };
 

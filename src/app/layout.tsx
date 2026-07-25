@@ -61,8 +61,11 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
   name: 'Infinity Tech',
+  legalName: 'Infinity Tech Group sp. z o.o.',
+  priceRange: 'od 5 000 zł',
+  areaServed: 'PL',
   url: 'https://infinityteam.io',
   logo: 'https://infinityteam.io/logo.png',
   email: 'contact@infinityteam.io',

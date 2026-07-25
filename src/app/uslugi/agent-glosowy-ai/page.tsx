@@ -58,10 +58,20 @@ const content: SeoLandingContent = {
       ],
     },
     {
-      heading: 'Realizacja: voicebot dla przewoźnika autobusowego',
+      heading: 'Przykład z transportu: asystent z rozkładami jazdy',
       paragraphs: [
-        'Dla regionalnego przewoźnika autobusowego wdrożyliśmy agenta głosowego, który przez telefon podaje rozkłady jazdy — 24 godziny na dobę, 7 dni w tygodniu. Pasażer dzwoni, mówi skąd i dokąd chce jechać, a agent podaje najbliższe odjazdy i odpowiada na dodatkowe pytania o trasę.',
-        'Wcześniej te połączenia trafiały do biura przewoźnika, które pracuje w standardowych godzinach — po ich zakończeniu pasażerowie zostawali bez informacji, a w godzinach szczytu linia bywała zajęta. Teraz agent odbiera każde połączenie od razu, niezależnie od pory i liczby dzwoniących jednocześnie, a pracownicy biura zajmują się sprawami, które faktycznie wymagają człowieka.',
+        'Na danych rozkładowych PKS Gryfice zbudowaliśmy działającego głosowego asystenta AI, który podaje godziny odjazdów — 24 godziny na dobę, 7 dni w tygodniu. Pasażer mówi, skąd i dokąd chce jechać, a asystent podaje godziny odjazdów i dni kursowania. System zna rozkłady z 6 przystanków w Gryficach — łącznie 276 odjazdów — i przy każdej odpowiedzi cytuje źródło rozkładu, z którego korzysta, więc nie zmyśla godzin ani połączeń. Całość działa na technologii ElevenLabs Conversational AI — tej samej, na której opieramy wdrożenia telefoniczne.',
+        'Publiczną wersję demonstracyjną tego asystenta możesz przetestować samodzielnie w przeglądarce: wciskasz przycisk mikrofonu, pytasz głosem o autobus i słuchasz odpowiedzi — bez logowania i instalacji. Link do dema znajdziesz w sekcji „Zobacz także" na dole strony. To dobry sposób, żeby przed rozmową z nami usłyszeć, jak naprawdę brzmi i rozumuje agent głosowy po polsku.',
+      ],
+    },
+    {
+      heading: 'Przetestuj na żywo',
+      paragraphs: [
+        'Nie musisz wierzyć nam na słowo — przygotowaliśmy publiczne dema agentów głosowych, które uruchomisz w przeglądarce w kilka sekund, bez logowania i bez instalowania czegokolwiek. Klikasz przycisk mikrofonu, zadajesz pytanie własnymi słowami i słuchasz odpowiedzi. Bezpośrednie linki do obu dem znajdziesz w sekcji „Zobacz także" na dole strony.',
+      ],
+      bullets: [
+        'Demo PKS Gryfice (pks-gryfice-demo.vercel.app) — asystent rozkładów jazdy: zna 6 przystanków w Gryficach i 276 odjazdów, podaje godziny i dni kursowania, zawsze cytuje źródło rozkładu',
+        'Demo 5 asystentów branżowych (asystenci-glosowi.vercel.app) — Tomek prowadzi infolinię przewoźnika 24/7, Ewa rejestruje pacjentów, Zofia kwalifikuje leady i umawia prezentacje nieruchomości, Ola obsługuje recepcję salonu i warsztatu, a Kuba odpowiada na pytania jak infolinia urzędu',
       ],
     },
     {
@@ -106,29 +116,29 @@ const content: SeoLandingContent = {
           'Odbiera telefony do biura, informuje o ofercie i godzinach pracy, łączy z właściwym działem i zapisuje temat rozmowy, gdy nikt nie może odebrać.',
       },
       {
+        title: 'Transport i przewozy',
+        description:
+          'Infolinia przewoźnika czynna 24/7: podaje rozkłady jazdy, godziny odjazdów i dni kursowania — zawsze na podstawie aktualnego rozkładu, obsługując wielu dzwoniących jednocześnie.',
+      },
+      {
         title: 'Przychodnie i gabinety',
         description:
-          'Umawia, przekłada i odwołuje wizyty bez angażowania rejestracji, informuje o przygotowaniu do badań i dostępnych terminach — również po godzinach.',
+          'Rejestracja pacjentów przez telefon: umawia, przekłada i odwołuje wizyty bez angażowania rejestracji, informuje o przygotowaniu do badań i dostępnych terminach — również po godzinach.',
       },
       {
-        title: 'Rezerwacje w restauracjach i salonach',
+        title: 'Biura nieruchomości',
         description:
-          'Przyjmuje rezerwacje stolików i terminów usług przez telefon, sprawdza dostępność w kalendarzu i potwierdza szczegóły z klientem.',
+          'Kwalifikuje leady z ogłoszeń: pyta o budżet, lokalizację i oczekiwania, a zainteresowanym klientom umawia prezentacje nieruchomości z agentem.',
       },
       {
-        title: 'Infolinia informacyjna',
+        title: 'Salony i warsztaty',
         description:
-          'Podaje rozkłady, ceny, statusy spraw i odpowiedzi na najczęstsze pytania — obsługując wielu dzwoniących jednocześnie, bez kolejki.',
+          'Recepcja salonu beauty lub warsztatu: przyjmuje rezerwacje terminów usług, sprawdza dostępność w kalendarzu i potwierdza szczegóły z klientem.',
       },
       {
-        title: 'Przypomnienia o płatnościach',
+        title: 'Urzędy i administracja',
         description:
-          'Dzwoni z uprzejmym przypomnieniem o zbliżającym się lub zaległym terminie płatności i przekazuje sprawę pracownikowi, gdy klient chce ustalić szczegóły.',
-      },
-      {
-        title: 'Rekrutacja i wstępna selekcja',
-        description:
-          'Przeprowadza krótkie rozmowy wstępne z kandydatami: pyta o dostępność, oczekiwania i doświadczenie, a wyniki zapisuje dla działu HR.',
+          'Infolinia urzędu: informuje o godzinach pracy, wymaganych dokumentach i sposobie załatwienia sprawy, odciążając pracowników od powtarzalnych pytań mieszkańców.',
       },
     ],
   },
@@ -196,6 +206,8 @@ const content: SeoLandingContent = {
     sub: 'Pierwsza konsultacja jest bezpłatna. Przeanalizujemy, które rozmowy w Twojej firmie może przejąć voicebot, i przedstawimy konkretną wycenę.',
   },
   related: [
+    { label: 'Demo: PKS Gryfice — zapytaj o autobus', href: 'https://pks-gryfice-demo.vercel.app/' },
+    { label: 'Demo: 5 asystentów branżowych', href: 'https://asystenci-glosowi.vercel.app' },
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },

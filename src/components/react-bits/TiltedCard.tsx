@@ -16,6 +16,8 @@ interface TiltedCardProps {
   badgeText?: string;
   buttonText?: string;
   waitlistMode?: boolean;
+  /** Link "Dowiedz się więcej" — np. dedykowany landing usługi */
+  href?: string;
 }
 
 export default function TiltedCard({
@@ -30,6 +32,7 @@ export default function TiltedCard({
   badgeText,
   buttonText,
   waitlistMode = false,
+  href,
 }: TiltedCardProps) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
@@ -86,19 +89,10 @@ export default function TiltedCard({
       onMouseLeave={handleMouseLeave}
       style={{ position: 'relative' }}
     >
-      {/* Apple Clear light theme: biała karta, hairline, cienie z tokenów.
-          Dark bez zmian — wszystko pod [data-theme="light"]. */}
+      {/* Czysty wygląd: hairline + tokeny w obu motywach; delikatny lift na hover */}
       <style dangerouslySetInnerHTML={{ __html: `
-        [data-theme="light"] .tc-glow { opacity: 0 !important; }
-        [data-theme="light"] .tc-topshine { opacity: 0; }
-        [data-theme="light"] .tc-wrap { transition: transform 0.3s ease; }
-        [data-theme="light"] .tc-wrap:hover { transform: translateY(-4px); }
-        [data-theme="light"] .tc-card {
-          background: var(--card-gradient) !important;
-          border-color: var(--border-soft) !important;
-          box-shadow: var(--shadow-card);
-          transition: transform 0.3s ease-out, box-shadow 0.3s ease;
-        }
+        .tc-wrap { transition: transform 0.3s ease; }
+        .tc-wrap:hover { transform: translateY(-4px); }
         [data-theme="light"] .tc-wrap:hover .tc-card {
           box-shadow: var(--shadow-card-hover);
         }
@@ -108,77 +102,31 @@ export default function TiltedCard({
           border-color: rgba(var(--ink-rgb), 0.15) !important;
           box-shadow: var(--shadow-card);
         }
-        [data-theme="light"] .waitlist-btn:hover {
-          box-shadow: var(--shadow-card-hover) !important;
-        }
       ` }} />
-      {/* Glow behind card */}
-      <div
-        className="tc-glow absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(ellipse at 50% 10%, ${accentColor}cc 0%, transparent 65%)`,
-          filter: 'blur(28px)',
-          transform: 'translateY(12px) scaleX(0.9)',
-          opacity: rotation.x !== 0 || rotation.y !== 0 ? 1 : 0.75,
-          zIndex: 0,
-        }}
-      />
       <div
         className={cn(
-          'tc-card relative overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 ease-out h-full flex flex-col',
+          'tc-card relative overflow-hidden rounded-2xl transition-transform duration-300 ease-out h-full flex flex-col',
           'border'
         )}
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           transformStyle: 'preserve-3d',
-          borderColor: `${accentColor}99`,
-          background: `linear-gradient(160deg, ${accentColor}55 0%, rgba(0,0,0,0) 40%), var(--surface-tile)`,
-          backdropFilter: 'blur(12px)',
+          borderColor: 'var(--border-soft)',
+          background: 'var(--surface-tile)',
+          boxShadow: 'var(--shadow-card, none)',
           zIndex: 1,
         }}
       >
-
-        {/* Top shine */}
-        <div
-          className="tc-topshine absolute inset-x-0 top-0 h-[2px] pointer-events-none"
-          style={{ background: `linear-gradient(90deg, transparent, ${accentColor}ee, transparent)` }}
-        />
-
-        {/* Branded header */}
-        <div
-          className="dark-scope relative h-14 w-full flex-shrink-0 overflow-hidden"
-          style={{ background: `linear-gradient(135deg, ${accentColor} 0%, ${accentColor}cc 100%)` }}
-        >
-          {/* Decorative circles */}
-          <div
-            className="absolute -right-8 -top-8 w-32 h-32 rounded-full opacity-10"
-            style={{ backgroundColor: '#fff' }}
-          />
-          <div
-            className="absolute -right-2 -bottom-10 w-24 h-24 rounded-full opacity-[0.07]"
-            style={{ backgroundColor: '#fff' }}
-          />
-          <div
-            className="absolute left-1/2 -bottom-6 w-40 h-16 rounded-full opacity-[0.05]"
-            style={{ backgroundColor: '#fff' }}
-          />
-
-          {/* Content: logo left, label right */}
-          <div className="relative z-10 h-full flex items-center justify-between px-6">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo.png"
-              alt="Logo"
-              className="h-6 w-auto"
-              style={{ filter: accentColor === '#0B0F2E' ? 'brightness(0) invert(1)' : undefined, opacity: 0.9 }}
-            />
-            <span className="text-white font-semibold text-sm tracking-widest uppercase">
-              {tierLabel || title.toUpperCase()}
+        <div className="p-6 flex-1 flex flex-col">
+          {/* Eyebrow — dyskretna etykieta kategorii */}
+          {tierLabel && (
+            <span
+              className="text-[11px] font-semibold tracking-[0.14em] uppercase mb-3"
+              style={{ color: 'var(--accent-text)' }}
+            >
+              {tierLabel}
             </span>
-          </div>
-        </div>
-
-        <div className="p-5 flex-1 flex flex-col">
+          )}
           {price && (
             <div className="mb-3">
               <span className="text-3xl font-bold" style={{ color: accentColor }}>
@@ -188,7 +136,7 @@ export default function TiltedCard({
             </div>
           )}
 
-          <h3 className="text-lg font-bold mb-1 text-white">{title}</h3>
+          <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
 
           {featured && badgeText && (
             <span className="inline-block w-fit px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-white mb-2" style={{ backgroundColor: accentColor }}>
@@ -322,15 +270,12 @@ export default function TiltedCard({
             )
           ) : (
             <a
-              href="#kontakt"
-              className="mt-5 block w-full py-3 rounded-full text-center font-semibold text-sm transition-all"
-              style={{
-                backgroundColor: 'transparent',
-                color: accentColor,
-                border: `2px solid ${accentColor}`,
-              }}
+              href={href || '#kontakt'}
+              className="mt-5 inline-flex items-center gap-1.5 font-semibold text-sm transition-opacity hover:opacity-70 w-fit"
+              style={{ color: 'var(--accent-text)' }}
             >
               {buttonText || (features && features.length > 0 ? `Wybierz ${title}` : 'Dowiedz się więcej')}
+              <span aria-hidden="true">→</span>
             </a>
           )}
         </div>

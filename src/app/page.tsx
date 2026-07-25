@@ -42,7 +42,6 @@ import ShinyText from '@/components/react-bits/ShinyText';
 import Marquee from '@/components/react-bits/Marquee';
 import AnimatedCounter from '@/components/react-bits/AnimatedCounter';
 import ChatWidget from '@/components/ChatWidget';
-import AgentDemoCard from '@/components/AgentDemoCard';
 import Footer from '@/components/Footer';
 import StarBorder from '@/components/StarBorder';
 import ClickSpark from '@/components/react-bits/ClickSpark';
@@ -101,7 +100,8 @@ const SERVICES = [
     features: [],
     accentColor: '#7B9BDB',
     featured: true,
-    badgeText: 'Nowość'
+    badgeText: 'Nowość',
+    href: '/uslugi/agent-glosowy-ai'
   },
   {
     title: 'Agenci wielokanałowi',
@@ -110,7 +110,8 @@ const SERVICES = [
     price: '',
     features: [],
     accentColor: '#2E4AAD',
-    featured: false
+    featured: false,
+    href: '/uslugi/chatbot-ai'
   },
   {
     title: 'Automatyzacja procesów',
@@ -119,7 +120,8 @@ const SERVICES = [
     price: '',
     features: [],
     accentColor: '#4F6AE8',
-    featured: false
+    featured: false,
+    href: '/uslugi/automatyzacja-procesow-ai'
   },
   {
     title: 'Doradztwo i wdrożenia',
@@ -128,7 +130,8 @@ const SERVICES = [
     price: '',
     features: [],
     accentColor: '#7B9BDB',
-    featured: false
+    featured: false,
+    href: '/cennik'
   }
 ];
 
@@ -223,7 +226,7 @@ function HeroSection() {
         <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-6 pt-28 pb-10 text-center">
           <div className="text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl 2xl:text-2xl tracking-wider md:tracking-widest uppercase mb-4 px-4 text-[#8BB8E8]" style={{ fontFamily: 'var(--font-geist)' }}>
             <SplitText
-              text="Rewolucja AI już trwa — konkurencja nie śpi"
+              text="Budujemy w Polsce · wdrażamy w prawdziwych firmach"
               tag="span"
               className="inline"
               duration={1}
@@ -248,7 +251,7 @@ function HeroSection() {
           </FadeIn>
 
           <FadeIn delay={0.7}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#kontakt" className="w-full sm:w-auto">
                 <Ripple className="w-full px-6 py-3 md:px-8 md:py-4 xl:px-10 xl:py-5 text-white text-base md:text-lg xl:text-xl bg-[#2E4AAD] hover:bg-[#1A2461] btn-grain border-2 border-[#2E4AAD]">
                   Umów konsultację
@@ -259,11 +262,6 @@ function HeroSection() {
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
-          </FadeIn>
-
-          {/* Agent w akcji — pierwsze wrażenie: produkt robiący robotę */}
-          <FadeIn delay={0.9} className="w-full">
-            <AgentDemoCard />
           </FadeIn>
         </div>
 
@@ -282,7 +280,7 @@ function HeroSection() {
           </a>
         </div>
         <div className="text-center space-y-2">
-          <p className="text-xs tracking-widest uppercase text-white/50">Innowacyjne Rozwiązania</p>
+          <p className="text-xs tracking-widest uppercase text-white/50">Zamość · Polska</p>
           <p className="text-white text-sm sm:text-base lg:text-lg leading-relaxed">
             &ldquo;Automatyzujemy procesy, aby Twój biznes mógł <span className="italic text-white/80">rosnąć bez granic.</span>&rdquo;
           </p>
@@ -328,26 +326,35 @@ function StatsSection() {
 }
 
 function TeamSection2() {
-  // Karty zespołu są zawsze ciemne z pełnym holo — stała poświata jak w oryginale
+  // Karty zespołu są zawsze ciemne z pełnym holo — stała poświata jak w oryginale.
+  // Układ: jeden rząd małych kart, imię i stanowisko podpisane POD kartą.
   const matteGlow = 'rgba(79,106,232,0.3)';
   const matteGradient = 'var(--card-gradient)';
-  const management = [
-    { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior-nobg.webp', bio: 'Wizjoner i strateg z doświadczeniem w AI i transformacji cyfrowej.', glow: matteGlow, gradient: matteGradient },
-    { name: 'Artur Seredziuk', title: 'Co-Founder', handle: 'account', avatar: '/images/artur-seredziuk-nobg.webp', bio: 'Współzałożyciel Infinity Tech, odpowiada za sprzedaż i pozyskiwanie klientów.', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
-    { name: 'Tomasz Pędzierski', title: 'Co-Founder', handle: 'bizdev', avatar: '/images/tomasz-pedzierski2.webp', bio: 'Współzałożyciel Infinity Tech, buduje relacje z klientami enterprise i rozwija nowe partnerstwa biznesowe.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '110%', objectPosition: '50% 8%' } },
-    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski-nobg.webp', bio: 'Współzałożyciel Infinity Tech, odpowiada za strategię i rozwój firmy.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '108%', height: '89%' } },
+  const team = [
+    { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior-nobg.webp', glow: matteGlow, gradient: matteGradient },
+    { name: 'Artur Seredziuk', title: 'Co-Founder', handle: 'account', avatar: '/images/artur-seredziuk-nobg.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
+    { name: 'Tomasz Pędzierski', title: 'Co-Founder', handle: 'bizdev', avatar: '/images/tomasz-pedzierski2.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '110%', objectPosition: '50% 8%' } },
+    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski-nobg.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '108%', height: '89%' } },
+    { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: '/images/tobias-guanyi-du-nobg.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '97%', height: '79%' } },
   ];
-  const tobias = { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: '/images/tobias-guanyi-du-nobg.webp', bio: 'Odpowiada za implementację i rozwój techniczny agentów AI.', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '97%', height: '79%' } };
 
   return (
     <section className="py-20">
-      <div className="max-w-[82rem] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-center">
-          {/* Left — cards: zarząd 2×2, pracownicy niżej. dark-scope = karty zawsze ciemne
-              ze świecącym hologramem, także w light (decyzja usera) */}
-          <div className="dark-scope grid grid-cols-2 gap-4 md:gap-5">
-            {management.map((person, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+      <div className="max-w-6xl mx-auto px-6">
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+              Nasz <span style={{ color: 'var(--accent-text)' }}>Zespół</span>
+            </h2>
+            <p className="text-xl text-white/50">Ludzie, którzy stoją za Infinity Tech</p>
+          </div>
+        </FadeIn>
+
+        {/* Jeden rząd 5 małych kart; na mobile zawija się 2-2-1 */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 justify-items-center">
+          {team.map((person, i) => (
+            <FadeIn key={i} delay={i * 0.08} className="w-full max-w-[200px]">
+              <div className="dark-scope">
                 <ProfileCard
                   name={person.name}
                   title={person.title}
@@ -356,58 +363,30 @@ function TeamSection2() {
                   avatarUrl={person.avatar}
                   iconUrl="/holo.webp"
                   showUserInfo={false}
+                  showDetails={false}
                   enableTilt={true}
                   enableMobileTilt={false}
                   behindGlowEnabled={true}
                   behindGlowColor={person.glow}
                   innerGradient={person.gradient}
-                  bio={person.bio}
-                  contactText="Kontakt"
                   avatarStyle={(person as any).avatarStyle}
                 />
-              </FadeIn>
-            ))}
-            <div className="col-span-2 flex justify-center">
-              <div className="w-[calc(50%-0.5rem)] md:w-[calc(50%-0.625rem)]">
-                <FadeIn delay={0.4}>
-                  <ProfileCard
-                    name={tobias.name}
-                    title={tobias.title}
-                    handle={tobias.handle}
-                    status="Infinity Tech"
-                    avatarUrl={tobias.avatar}
-                    iconUrl="/holo.webp"
-                    showUserInfo={false}
-                    enableTilt={true}
-                    enableMobileTilt={false}
-                    behindGlowEnabled={true}
-                    behindGlowColor={tobias.glow}
-                    innerGradient={tobias.gradient}
-                    bio={tobias.bio}
-                    contactText="Kontakt"
-                    avatarStyle={(tobias as any).avatarStyle}
-                  />
-                </FadeIn>
               </div>
-            </div>
-          </div>
-
-          {/* Right — motto */}
-          <FadeIn delay={0.3}>
-            <div className="text-center lg:text-left">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-white">
-                Nasz <span style={{ color: 'var(--accent-text)' }}>Zespół</span>
-              </h2>
-              <p className="text-white/50 text-xl mb-7">
-                Ludzie, którzy stoją za Infinity Tech
-              </p>
-              <div className="h-px w-20 bg-[#7B9BDB]/30 mx-auto lg:mx-0 mb-7" />
-              <p className="text-white/70 text-lg leading-relaxed">
-                Łączymy ekspertyzę w AI, inżynierii oprogramowania i strategii biznesowej. Każdy z nas wnosi unikalne doświadczenie, ale łączy nas jedna misja — automatyzować firmy tak, by mogły rosnąć bez granic.
-              </p>
-            </div>
-          </FadeIn>
+              {/* Podpis pod kartą */}
+              <div className="text-center mt-3">
+                <p className="font-semibold text-sm text-white leading-tight">{person.name}</p>
+                <p className="text-xs mt-0.5" style={{ color: 'var(--accent-text)' }}>{person.title}</p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
+
+        <FadeIn delay={0.4}>
+          <p className="text-center text-white/60 max-w-2xl mx-auto mt-10 leading-relaxed">
+            Łączymy ekspertyzę w AI, inżynierii oprogramowania i strategii biznesowej — a łączy nas jedna misja:
+            automatyzować firmy tak, by mogły rosnąć bez granic.
+          </p>
+        </FadeIn>
       </div>
     </section>
   );
@@ -547,8 +526,8 @@ function ServicesSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Agenci AI i automatyzacja procesów — co <ShinyText text="robimy" /></h2>
-            <p className="text-xl text-white/50">Cztery filary AI dla Twojej firmy</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Co <ShinyText text="robimy" /></h2>
+            <p className="text-xl text-white/50">Agenci głosowi, chatboty i automatyzacja procesów dla firm</p>
           </div>
         </FadeIn>
 
@@ -566,45 +545,45 @@ function ServicesSection() {
                 badgeText={(service as any).badgeText}
                 buttonText={(service as any).buttonText}
                 waitlistMode={(service as any).waitlistMode}
+                href={(service as any).href}
               />
             </FadeIn>
           ))}
         </div>
 
-        <FadeIn delay={0.6}>
-          <p className="text-center text-sm mt-8" style={{ color: 'var(--accent-text)' }}>
-            Poznaj szczegóły:{' '}
-            <Link href="/uslugi/agent-glosowy-ai" className="hover:underline underline-offset-4">Agent głosowy AI</Link>
-            {' · '}
-            <Link href="/uslugi/chatbot-ai" className="hover:underline underline-offset-4">Chatbot AI dla firm</Link>
-            {' · '}
-            <Link href="/uslugi/automatyzacja-procesow-ai" className="hover:underline underline-offset-4">Automatyzacja procesów AI</Link>
-            {' · '}
-            <Link href="/uslugi/automatyzacja-hr" className="hover:underline underline-offset-4">Automatyzacja HR i kadr</Link>
-            {' · '}
-            <Link href="/cennik" className="hover:underline underline-offset-4">Cennik</Link>
-          </p>
-        </FadeIn>
       </div>
     </section>
   );
 }
 
-// Realizacje — anonimizowane, ale prawdziwe wdrożenia (branża + efekt, bez nazw własnych)
+// Realizacje — prawdziwe produkty i wdrożenia; tam gdzie mamy publiczne demo, linkujemy wprost
 const CASE_STUDIES = [
   {
     icon: PhoneCall,
-    sector: 'Transport regionalny',
-    title: 'Asystent głosowy na infolinii',
-    description: 'Agent głosowy AI odbiera telefony pasażerów i podaje rozkłady jazdy oraz informacje 24/7 — po polsku, naturalnym głosem. Biuro obsługi przestało tonąć w powtarzalnych połączeniach.',
-    tags: ['Voice AI', 'Obsługa klienta 24/7'],
+    sector: 'Transport — demo na danych PKS Gryfice',
+    title: 'Asystent głosowy z rozkładem jazdy',
+    description: 'Głosowy agent AI, który odpowiada pasażerom na pytania o odjazdy z 6 przystanków (276 kursów): kierunki, godziny, dni kursowania. Zawsze cytuje źródło rozkładu i nie zmyśla godzin. Możesz z nim porozmawiać w przeglądarce.',
+    tags: ['Voice AI', 'ElevenLabs', 'Demo publiczne'],
+    link: 'https://pks-gryfice-demo.vercel.app/',
+    linkLabel: 'Porozmawiaj z demo',
   },
   {
     icon: Building2,
-    sector: 'Kadry i płace',
-    title: 'Agentka AI dla działu HR',
-    description: 'Wirtualna specjalistka kadrowa z żywą bazą prawa pracy — odpowiada na pytania pracowników, wypełnia dokumenty kadrowe i pilnuje terminów ZUS/PIT. Baza aktualizowana przy każdej zmianie przepisów.',
-    tags: ['Wertykał HR', 'Baza wiedzy AI'],
+    sector: 'Kadry i płace — Superkadrowa',
+    title: 'Janina: wirtualna kadrowa AI',
+    description: 'Zna Kodeks pracy i odpowiada głosem lub na czacie — z cytatem konkretnego artykułu. Baza: 40+ aktów prawnych, 900+ dokumentów, orzecznictwo SN i wzory pism. Generuje dokumenty kadrowe i pilnuje terminów ZUS/PIT.',
+    tags: ['Wertykał HR', 'Baza prawa pracy', 'Demo głosowe'],
+    link: 'https://superkadrowa.vercel.app',
+    linkLabel: 'Zobacz Superkadrową',
+  },
+  {
+    icon: MessagesSquare,
+    sector: 'Platforma — ClawLabs',
+    title: 'Agenci AI w chmurze, gotowi w ~60 sekund',
+    description: 'Nasza platforma managed hostingu agentów na frameworku OpenClaw: dedykowany, izolowany serwer per agent, 13 kanałów komunikacji, 35+ modeli AI do wyboru i własne klucze API. W chmurze EU albo on-premise.',
+    tags: ['Produkt SaaS', 'OpenClaw', 'Hosting EU'],
+    link: 'https://clawlabs.pro',
+    linkLabel: 'Odwiedź clawlabs.pro',
   },
   {
     icon: Sprout,
@@ -612,13 +591,6 @@ const CASE_STUDIES = [
     title: 'Aplikacja AI dla rolnictwa',
     description: 'Dedykowana aplikacja, która wspiera gospodarstwa w codziennych decyzjach i zarządzaniu — od danych po rekomendacje. Wdrożona produkcyjnie i rozwijana z klientem.',
     tags: ['Aplikacja na miarę', 'Wdrożenie produkcyjne'],
-  },
-  {
-    icon: MessagesSquare,
-    sector: 'Platforma cyfrowa',
-    title: 'Dopasowanie oparte na AI',
-    description: 'Platforma, w której AI kojarzy strony transakcji na podstawie profilu i realnego dopasowania — zamiast ręcznego przeszukiwania. Od pomysłu do działającego produktu.',
-    tags: ['Custom AI', 'Product od zera'],
   },
 ];
 
@@ -657,6 +629,18 @@ function CaseStudiesSection() {
                         </span>
                       ))}
                     </div>
+                    {(cs as any).link && (
+                      <a
+                        href={(cs as any).link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold transition-opacity hover:opacity-70"
+                        style={{ color: 'var(--accent-text)' }}
+                      >
+                        {(cs as any).linkLabel}
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -666,7 +650,7 @@ function CaseStudiesSection() {
 
         <FadeIn delay={0.4}>
           <p className="text-center text-sm text-white/40 mt-8">
-            Nazwy klientów pomijamy ze względu na poufność. Chętnie opowiemy o szczegółach na rozmowie.
+            Część wdrożeń realizujemy pod NDA — o szczegółach chętnie opowiemy na rozmowie.
           </p>
         </FadeIn>
       </div>

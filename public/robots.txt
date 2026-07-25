@@ -1,4 +1,27 @@
+# infinityteam.io — wszyscy mile widziani, API i panele wyłączone z indeksu
+
 User-agent: *
+Allow: /
+Disallow: /api/
+
+# Wyszukiwarki — pełny dostęp
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawlery AI — celowo dozwolone: chcemy być cytowani w odpowiedziach AI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://infinityteam.io/sitemap.xml

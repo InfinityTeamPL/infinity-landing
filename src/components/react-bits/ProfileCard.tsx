@@ -36,6 +36,8 @@ interface ProfileCardProps {
   status?: string;
   contactText?: string;
   showUserInfo?: boolean;
+  /** Ukryj imię/rolę wewnątrz karty (podpis renderowany na zewnątrz) */
+  showDetails?: boolean;
   onContactClick?: () => void;
   avatarStyle?: React.CSSProperties;
   // Legacy props for backward compatibility
@@ -64,6 +66,7 @@ const ProfileCardComponent = ({
   status = 'Online',
   contactText = 'Kontakt',
   showUserInfo = true,
+  showDetails = true,
   onContactClick,
   avatarStyle,
   bio,
@@ -223,11 +226,13 @@ const ProfileCardComponent = ({
               )}
             </div>
             <div className="pc-content">
+              {showDetails && (
               <div className="pc-details">
                 <h3>{name}</h3>
                 <p>{title}</p>
                 {bio && <span className="pc-bio">{bio}</span>}
               </div>
+              )}
             </div>
           </div>
         </section>

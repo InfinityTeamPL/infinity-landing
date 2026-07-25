@@ -3,12 +3,12 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Realizacje — wdrożenia agentów AI',
   description:
-    'Cztery realne wdrożenia agentów AI: voicebot dla przewoźnika autobusowego, automatyzacja kadr i płac, aplikacja dla rolnictwa, platforma dla inwestorów.',
+    'Realne wdrożenia agentów AI z publicznymi demami: głosowy asystent rozkładów PKS Gryfice, wirtualna kadrowa Superkadrowa (Janina), platforma ClawLabs — plus aplikacje na miarę pod NDA.',
   alternates: { canonical: '/case-studies' },
   openGraph: {
     title: 'Realizacje — wdrożenia agentów AI | Infinity Tech',
     description:
-      'Prawdziwe, anonimowe wdrożenia agentów AI w polskich firmach — bez zmyślonych metryk. Voice AI, automatyzacja HR, aplikacje na miarę.',
+      'Wdrożenia agentów AI, które możesz przetestować samodzielnie: demo PKS Gryfice, Superkadrowa (Janina), platforma ClawLabs. Bez zmyślonych metryk.',
     type: 'website',
   },
 };

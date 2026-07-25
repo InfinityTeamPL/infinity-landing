@@ -38,7 +38,7 @@ export default function Footer() {
   return (
     <footer className="py-16 text-white" style={{ borderTop: '1px solid var(--border-soft)' }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="text-2xl font-bold gradient-text mb-4">Infinity Tech</div>
             <p className="text-[#7B9BDB] mb-6">
@@ -74,6 +74,16 @@ export default function Footer() {
               <a href="/kalkulator" className="hover:text-white transition-colors text-sm">Kalkulator ROI</a>
               <a href="/#faq" className="hover:text-white transition-colors text-sm">FAQ</a>
               <a href="/#kontakt" className="hover:text-white transition-colors text-sm">Kontakt</a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4 text-white/90">Nasze produkty</h4>
+            <div className="flex flex-col gap-2 text-[#7B9BDB]">
+              <a href="https://clawlabs.pro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">ClawLabs — platforma agentów AI</a>
+              <a href="https://superkadrowa.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Superkadrowa — kadrowa AI</a>
+              <a href="https://asystenci-glosowi.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Demo: asystenci głosowi</a>
+              <a href="https://pks-gryfice-demo.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Demo: PKS Gryfice</a>
             </div>
           </div>
 
