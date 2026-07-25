@@ -10,7 +10,6 @@ import {
   Clock,
   Zap,
   Shield,
-  BarChart3,
   Bot,
   Mail,
   Phone,
@@ -18,7 +17,6 @@ import {
   MapPin,
   Linkedin,
   Send,
-  Settings,
   ChevronDown,
   Users,
   Sprout,
@@ -210,8 +208,8 @@ const OPENCLAW_QUOTES = [
 // Stats
 const STATS = [
   { value: '92', suffix: '%', label: 'firm w Polsce nie korzysta jeszcze z AI (Eurostat 2025)', icon: Building2 },
-  { value: '300', suffix: '%', label: 'wzrost efektywności możliwy dzięki agentom AI', icon: Zap },
-  { value: '2-4', suffix: ' tyg.', label: 'czas pełnego wdrożenia', icon: Clock },
+  { value: '4', suffix: '', label: 'własne produkty i wdrożenia na produkcji', icon: Zap },
+  { value: '2-4', suffix: ' tyg.', label: 'do pierwszego działającego agenta', icon: Clock },
   { value: '24/7', suffix: '', label: 'autonomiczna praca agentów AI', icon: Bot },
 ];
 
@@ -430,89 +428,48 @@ function BenefitsSection() {
         <FadeIn>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Dlaczego <span style={{ color: 'var(--accent-text)' }}>Infinity Tech?</span>
+              Dlaczego <span style={{ color: 'var(--accent-text)' }}>my?</span>
             </h2>
-            <p className="text-xl text-white/50">Dostarczamy rozwiązania dopasowane do Twojej firmy</p>
+            <p className="text-xl text-white/50">Sześć rzeczy, które odróżniają nas od agencji obok</p>
           </div>
         </FadeIn>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Row 1 */}
-          <FadeIn delay={0} className="md:col-span-2">
-            <div className="bento-card relative overflow-hidden rounded-2xl p-8 shadow-md h-full" style={{ minHeight: '220px' }}>
-              {/* Animated gears */}
-              <div className="absolute top-4 right-4 bento-gear-1" style={{ width: '48px', height: '48px' }}>
-                <Settings className="w-full h-full" style={{ color: '#6B8DE3', opacity: 0.45 }} />
+        {/* Wyróżniki — konkrety, nie obietnice. Bez dekoracyjnych ikon. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9 max-w-4xl mx-auto">
+          {[
+            {
+              title: 'Sami tego używamy',
+              body: 'Nie sprzedajemy cudzego oprogramowania. Zbudowaliśmy własną platformę ClawLabs i wirtualną kadrową Janinę — te same narzędzia, które wdrażamy u klientów, działają u nas na produkcji.',
+            },
+            {
+              title: 'Rozmawiasz z osobą, która to zbuduje',
+              body: 'Nie ma warstwy handlowców i „opiekunów projektu”. Na pierwszej rozmowie jest ktoś, kto rozumie Twój proces i potem faktycznie pisze ten kod.',
+            },
+            {
+              title: 'Twoje dane zostają w Europie',
+              body: 'Hosting w Polsce lub w chmurze EU, izolowana instancja dla każdego klienta, zgodność z RODO. Nic nie ląduje w cudzych modelach — możesz też przynieść własne klucze API.',
+            },
+            {
+              title: 'Wycena po audycie, nie z cennika',
+              body: 'Zaczynamy od mapy procesów i policzenia, co realnie się zwróci. Jeśli automatyzacja nie ma sensu, powiemy to wprost — pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.',
+            },
+            {
+              title: 'Bez uwiązania na lata',
+              body: 'Budujemy na otwartym frameworku OpenClaw. Kod i konfiguracja są Twoje, agenta możesz hostować u siebie. Rezygnacja nie oznacza utraty tego, za co zapłaciłeś.',
+            },
+            {
+              title: 'Wdrożenie w tygodniach',
+              body: 'Pierwszy działający agent zwykle w 2–4 tygodnie dla mniejszego zakresu, 1–3 miesiące przy większych integracjach. Zaczynamy od jednego procesu, nie od rewolucji w całej firmie.',
+            },
+          ].map((item, i) => (
+            <FadeIn key={i} delay={i * 0.07}>
+              <div style={{ borderTop: '1px solid var(--border-soft)' }} className="pt-5">
+                <h3 className="text-lg font-semibold mb-2 text-white">{item.title}</h3>
+                <p className="leading-relaxed" style={{ color: 'var(--fg-70)' }}>{item.body}</p>
               </div>
-              <div className="absolute top-4 right-16 bento-gear-2" style={{ width: '32px', height: '32px' }}>
-                <Settings className="w-full h-full" style={{ color: '#9B7CE8', opacity: 0.4 }} />
-              </div>
-              <div className="absolute top-12 right-8 bento-gear-3" style={{ width: '24px', height: '24px' }}>
-                <Settings className="w-full h-full" style={{ color: '#7B9BDB', opacity: 0.45 }} />
-              </div>
-              <div className="relative z-10">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
-                  <Zap className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mb-3 text-xl font-bold text-white">Szybka Automatyzacja</h3>
-                <p className="text-base leading-relaxed max-w-md" style={{ color: 'var(--fg-70)' }}>Algorytmy AI przejmują monotonne zadania, zwiększając efektywność Twojego zespołu nawet o 300%.</p>
-              </div>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div className="bento-card relative overflow-hidden rounded-2xl p-8 shadow-md h-full" style={{ minHeight: '220px' }}>
-              {/* Animated clock */}
-              <div className="bento-anim-top" style={{ width: '70px', height: '70px' }}>
-                <div className="rounded-full border-2 w-full h-full" style={{ borderColor: 'rgba(107,141,227,0.3)' }} />
-                <div className="bento-clock-hand absolute top-1/2 left-1/2" style={{ width: '2px', height: '28px', background: '#6B8DE3', opacity: 0.5, transformOrigin: 'bottom center', marginLeft: '-1px', marginTop: '-28px' }} />
-              </div>
-              <div className="relative z-10">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
-                  <Clock className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mb-3 text-xl font-bold text-white">Szybka Implementacja</h3>
-                <p className="text-base leading-relaxed" style={{ color: 'var(--fg-70)' }}>Wdrażamy rozwiązania w tygodnie, nie miesiące. Pierwsze rezultaty widoczne od pierwszego dnia.</p>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Row 2 */}
-          <FadeIn delay={0.3}>
-            <div className="bento-card relative overflow-hidden rounded-2xl p-8 shadow-md h-full" style={{ minHeight: '220px' }}>
-              {/* Animated shield */}
-              <div className="bento-anim-top bento-shield">
-                <Shield className="w-16 h-16" style={{ color: '#6B8DE3', opacity: 0.4 }} />
-              </div>
-              <div className="relative z-10">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
-                  <Shield className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mb-3 text-xl font-bold text-white">Bezpieczeństwo Danych</h3>
-                <p className="text-base leading-relaxed" style={{ color: 'var(--fg-70)' }}>Twoje dane pozostają w Polsce. Gwarantujemy pełną zgodność z RODO i standardy bezpieczeństwa zgodne z ISO 27001.</p>
-              </div>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.45} className="md:col-span-2">
-            <div className="bento-card relative overflow-hidden rounded-2xl p-8 shadow-md h-full" style={{ minHeight: '220px' }}>
-              {/* Animated bar chart */}
-              <div className="bento-anim flex items-end gap-2" style={{ height: '80px' }}>
-                <div className="bento-bar rounded-t" style={{ width: '14px', background: 'linear-gradient(180deg, #6B8DE3, #9B7CE8)', opacity: 0.35 }} />
-                <div className="bento-bar rounded-t" style={{ width: '14px', background: 'linear-gradient(180deg, #6B8DE3, #9B7CE8)', opacity: 0.4 }} />
-                <div className="bento-bar rounded-t" style={{ width: '14px', background: 'linear-gradient(180deg, #6B8DE3, #9B7CE8)', opacity: 0.45 }} />
-                <div className="bento-bar rounded-t" style={{ width: '14px', background: 'linear-gradient(180deg, #7B9BDB, #9B7CE8)', opacity: 0.5 }} />
-              </div>
-              <div className="relative z-10">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
-                  <BarChart3 className="h-7 w-7 text-white" />
-                </div>
-                <h3 className="mb-3 text-xl font-bold text-white">Mierzalne Wyniki</h3>
-                <p className="text-base leading-relaxed max-w-md" style={{ color: 'var(--fg-70)' }}>Śledź ROI w czasie rzeczywistym. Widoczny wzrost produktywności od pierwszego miesiąca.</p>
-              </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          ))}
         </div>
 
       </div>
@@ -615,9 +572,7 @@ function CaseStudiesSection() {
                 style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: 'linear-gradient(135deg, #4F6AE8, #7B5CCC)' }}>
-                    <cs.icon className="h-6 w-6 text-white" />
-                  </div>
+                  <cs.icon className="h-6 w-6 flex-shrink-0 mt-1" style={{ color: 'var(--accent-text)' }} />
                   <div>
                     <div className="text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--accent-text)' }}>{cs.sector}</div>
                     <h3 className="text-lg md:text-xl font-bold text-white mb-2">{cs.title}</h3>

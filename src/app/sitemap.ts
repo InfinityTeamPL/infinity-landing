@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/swiat-ai`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: `${base}/kalkulator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/uslugi`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/uslugi/agent-glosowy-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/uslugi/chatbot-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/uslugi/automatyzacja-procesow-ai`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
