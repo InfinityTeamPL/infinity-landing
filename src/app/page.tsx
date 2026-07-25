@@ -1068,6 +1068,83 @@ function FAQSection() {
   );
 }
 
+// Jak wygląda współpraca — konkretne kroki z tym, co robi klient i co dostaje
+const PROCESS_STEPS = [
+  {
+    label: 'Rozmowa',
+    time: '45 minut, bezpłatnie',
+    what: 'Opowiadasz, co zżera Wam czas. Pytamy o liczby: ile telefonów dziennie, ile dokumentów w miesiącu, kto to dziś robi. Bez prezentacji i bez slajdów.',
+    get: 'Wstępna opinia, czy AI ma tu sens — także jeśli odpowiedź brzmi „nie”.',
+  },
+  {
+    label: 'Audyt procesu',
+    time: '3–5 dni roboczych',
+    what: 'Rozkładamy wybrany proces na kroki i sprawdzamy, co da się przejąć, a co musi zostać przy człowieku. Zaglądamy do systemów, z którymi agent ma się integrować.',
+    get: 'Mapa procesu, wskazanie quick-winów i wyliczenie zwrotu z inwestycji.',
+  },
+  {
+    label: 'Wycena i zakres',
+    time: '2–3 dni',
+    what: 'Dostajesz konkretną ofertę: co budujemy, w jakiej kolejności, ile to kosztuje i ile trwa. Zaczynamy od jednego procesu, nie od całej firmy naraz.',
+    get: 'Oferta z widełkami i harmonogramem — bez ukrytych kosztów utrzymania.',
+  },
+  {
+    label: 'Budowa i testy',
+    time: '2–4 tygodnie',
+    what: 'Budujemy agenta na Waszych danych i pokazujemy działającą wersję, zanim trafi do klientów. Wy testujecie i mówicie, co poprawić.',
+    get: 'Działający agent w środowisku testowym plus scenariusze rozmów do akceptacji.',
+  },
+  {
+    label: 'Uruchomienie i opieka',
+    time: 'na bieżąco',
+    what: 'Wypuszczamy agenta na produkcję — najczęściej najpierw na części ruchu. Monitorujemy rozmowy, poprawiamy odpowiedzi i rozszerzamy zakres.',
+    get: 'Wsparcie w abonamencie (od 249 zł/mies.) i raport z tego, co agent faktycznie załatwił.',
+  },
+];
+
+function ProcessSection() {
+  return (
+    <section className="py-16 md:py-24">
+      <div className="max-w-4xl mx-auto px-6">
+        <FadeIn>
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+              Jak wygląda <span style={{ color: 'var(--accent-text)' }}>współpraca</span>
+            </h2>
+            <p className="text-xl text-white/50">Od pierwszej rozmowy do działającego agenta — bez niespodzianek</p>
+          </div>
+        </FadeIn>
+
+        <ol className="space-y-0">
+          {PROCESS_STEPS.map((step, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <li
+                className="grid md:grid-cols-[auto_1fr] gap-x-6 gap-y-2 py-7"
+                style={{ borderTop: '1px solid var(--border-soft)' }}
+              >
+                <div className="flex md:flex-col items-baseline md:items-start gap-3 md:gap-1 md:w-32">
+                  <span className="text-2xl font-bold tabular-nums" style={{ color: 'var(--accent-text)' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-xs uppercase tracking-widest text-white/40">{step.time}</span>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2 text-white">{step.label}</h3>
+                  <p className="leading-relaxed mb-2.5" style={{ color: 'var(--fg-70)' }}>{step.what}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-55)' }}>
+                    <span className="font-medium" style={{ color: 'var(--accent-text)' }}>Dostajesz: </span>
+                    {step.get}
+                  </p>
+                </div>
+              </li>
+            </FadeIn>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function ContactCTASection() {
   const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
   const [contactConsent, setContactConsent] = useState(false);
@@ -1268,7 +1345,9 @@ export default function LandingPage() {
     { label: 'Start', ariaLabel: 'Przejdź do sekcji start', link: '#start' },
     { label: 'Usługi', ariaLabel: 'Zobacz nasze usługi', link: '#uslugi' },
     { label: 'Realizacje', ariaLabel: 'Zobacz nasze wdrożenia', link: '#realizacje' },
+    { label: 'Współpraca', ariaLabel: 'Zobacz, jak wygląda współpraca', link: '#wspolpraca' },
     { label: 'O nas', ariaLabel: 'Dowiedz się więcej o nas', link: '#o-nas' },
+    { label: 'Cennik', ariaLabel: 'Zobacz orientacyjne koszty wdrożenia', link: '/cennik' },
     { label: 'Kalkulator ROI', ariaLabel: 'Oblicz ROI automatyzacji', link: '/kalkulator' },
     { label: 'Świat AI', ariaLabel: 'Przejdź do newsów AI', link: '/swiat-ai' },
     { label: 'Kontakt', ariaLabel: 'Skontaktuj się z nami', link: '#kontakt' },
@@ -1336,6 +1415,10 @@ export default function LandingPage() {
         <TechnologySection />
 
         <RoiTeaserSection />
+
+        <div id="wspolpraca">
+          <ProcessSection />
+        </div>
 
         <ContactCTASection />
 
