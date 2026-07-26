@@ -18,38 +18,38 @@ const content: SeoLandingContent = {
   path: '/branze/ai-w-rekrutacji',
   breadcrumbLabel: 'AI w rekrutacji',
   h1: 'AI w rekrutacji — selekcja CV i wstępne rozmowy bez kolejek',
-  lead: 'AI w rekrutacji to zestaw agentów, które przejmują powtarzalną część procesu: selekcję CV według ustalonych kryteriów, wstępny screening telefoniczny, umawianie rozmów i bieżącą komunikację z kandydatami. Rekruter dostaje uporządkowaną krótką listę zamiast stosu zgłoszeń — a każdą decyzję o kandydacie podejmuje człowiek, nie algorytm.',
-  serviceName: 'AI w rekrutacji — automatyzacja selekcji CV i screeningu',
+  lead: 'AI w rekrutacji to zestaw agentów, które przejmują powtarzalną część procesu: selekcję CV według ustalonych kryteriów, wstępny screening telefoniczny, umawianie rozmów i bieżącą komunikację z kandydatami. Rekruter dostaje uporządkowaną krótką listę zamiast stosu zgłoszeń, a każdą decyzję o kandydacie podejmuje człowiek, nie algorytm.',
+  serviceName: 'AI w rekrutacji: automatyzacja selekcji CV i screeningu',
   serviceDescription:
     'Wdrożenie AI do rekrutacji: automatyczna selekcja CV według kryteriów klienta, voicebot rekrutacyjny do wstępnych rozmów, umawianie spotkań i komunikacja z kandydatami. Dane kandydatów na serwerach w Polsce, zgodnie z RODO. Decyzje podejmuje człowiek.',
   sections: [
     {
       heading: 'Co automatyzujemy w procesie rekrutacji',
       paragraphs: [
-        'Największy koszt rekrutacji nie siedzi w rozmowach finałowych, tylko we wszystkim, co dzieje się wcześniej: przeglądaniu setek CV, wykonywaniu dziesiątek podobnych telefonów, żonglowaniu kalendarzami i odpisywaniu kandydatom na te same pytania. To praca powtarzalna, oparta na jasnych regułach — czyli dokładnie taka, którą warto oddać agentom AI.',
+        'Największy koszt rekrutacji nie siedzi w rozmowach finałowych, tylko we wszystkim, co dzieje się wcześniej: przeglądaniu setek CV, wykonywaniu dziesiątek podobnych telefonów, żonglowaniu kalendarzami i odpisywaniu kandydatom na te same pytania. Nikt w zespole tego nie lubi. To praca powtarzalna i oparta na jasnych regułach, czyli dokładnie taka, którą warto oddać agentom AI.',
         'Automatyzacja rekrutacji w naszym wydaniu obejmuje cztery obszary, które można wdrożyć razem albo osobno:',
       ],
       bullets: [
-        'Selekcja CV według kryteriów — agent czyta każde zgłoszenie i ocenia je względem wymagań ustalonych z Tobą: doświadczenie, uprawnienia, lokalizacja, dyspozycyjność, znajomość języków. Wynik to posortowana lista z uzasadnieniem przy każdym kandydacie.',
-        'Wstępny screening głosowy — voicebot rekrutacyjny dzwoni do kandydatów lub odbiera ich telefony, zadaje ustalone pytania (dostępność, oczekiwania finansowe, uprawnienia) i spisuje odpowiedzi w ustrukturyzowanej formie.',
-        'Umawianie rozmów — agent proponuje kandydatom terminy zgodne z kalendarzem rekrutera, potwierdza spotkania i wysyła przypomnienia, ograniczając liczbę nieodbytych rozmów.',
-        'Komunikacja z kandydatami — statusy rekrutacji, odpowiedzi na częste pytania i informacja zwrotna po zakończeniu procesu, także poza godzinami pracy zespołu HR.',
+        'Agent czyta każde zgłoszenie i ocenia je względem wymagań ustalonych z Tobą: doświadczenie, uprawnienia, lokalizacja, dyspozycyjność, znajomość języków. Wynik to posortowana lista z uzasadnieniem przy każdym kandydacie.',
+        'Voicebot rekrutacyjny dzwoni do kandydatów albo odbiera ich telefony, zadaje ustalone pytania (dostępność, oczekiwania finansowe, uprawnienia) i spisuje odpowiedzi w ustrukturyzowanej formie.',
+        'Agent proponuje kandydatom terminy zgodne z kalendarzem rekrutera, potwierdza spotkania i wysyła przypomnienia. Dzięki temu mniej rozmów przepada.',
+        'Kandydaci dostają statusy rekrutacji, odpowiedzi na częste pytania i informację zwrotną po zakończeniu procesu, także poza godzinami pracy zespołu HR.',
       ],
     },
     {
-      heading: 'Voicebot rekrutacyjny — wstępne rozmowy bez czekania w kolejce',
+      heading: 'Voicebot rekrutacyjny: wstępne rozmowy bez czekania w kolejce',
       paragraphs: [
-        'W rekrutacjach wysokowolumenowych najtrudniejszy jest pierwszy kontakt: kandydaci aplikują wieczorami i w weekendy, a rekruter oddzwania w godzinach pracy — często wtedy, gdy kandydat sam jest w pracy i nie może rozmawiać. Efekt to dni opóźnienia, a w tym czasie najlepsi kandydaci przyjmują oferty gdzie indziej.',
-        'Voicebot rekrutacyjny skraca ten etap do minut. Dzwoni lub odbiera telefon od razu po wpłynięciu aplikacji, prowadzi krótką rozmowę naturalnym polskim głosem (technologia ElevenLabs) i zbiera odpowiedzi na pytania kwalifikacyjne. Kandydat może rozmawiać o 21:00 albo w niedzielę — wtedy, kiedy jemu pasuje. Rekruter rano zastaje komplet uporządkowanych notatek zamiast listy numerów do obdzwonienia.',
-        'Screening prowadzimy też kanałami tekstowymi — czat na stronie, WhatsApp, Telegram i inne komunikatory — jeśli taka forma lepiej pasuje do profilu kandydatów. Agenci tekstowi działają w ponad 20 kanałach, więc dopasowujemy kanał do ludzi, a nie odwrotnie.',
+        'W rekrutacjach wysokowolumenowych najtrudniejszy jest pierwszy kontakt: kandydaci aplikują wieczorami i w weekendy, a rekruter oddzwania w godzinach pracy, często dokładnie wtedy, gdy kandydat sam jest w pracy i nie może rozmawiać. Efekt to dni opóźnienia, a w tym czasie najlepsi kandydaci przyjmują oferty gdzie indziej.',
+        'Voicebot rekrutacyjny skraca ten etap do minut. Dzwoni lub odbiera telefon od razu po wpłynięciu aplikacji, prowadzi krótką rozmowę naturalnym polskim głosem (technologia ElevenLabs) i zbiera odpowiedzi na pytania kwalifikacyjne. Kandydat może rozmawiać o 21:00 albo w niedzielę, kiedy jemu pasuje. Rekruter rano zastaje komplet uporządkowanych notatek zamiast listy numerów do obdzwonienia.',
+        'Screening prowadzimy też kanałami tekstowymi (czat na stronie, WhatsApp, Telegram i inne komunikatory), jeśli taka forma lepiej pasuje do profilu kandydatów. Agenci tekstowi działają w ponad 20 kanałach, więc dopasowujemy kanał do ludzi, a nie odwrotnie.',
       ],
     },
     {
-      heading: 'Człowiek podejmuje decyzje — AI tylko wspiera',
+      heading: 'Człowiek podejmuje decyzje, AI tylko wspiera',
       paragraphs: [
-        'To fundament etyczny i prawny każdego naszego wdrożenia w HR. Agent AI nie odrzuca kandydatów i nie decyduje, kto dostanie pracę — porządkuje zgłoszenia, streszcza rozmowy i rekomenduje, kogo warto zaprosić dalej, zawsze z uzasadnieniem, które rekruter może zweryfikować i podważyć. Ostateczna ocena każdego kandydata należy do człowieka.',
-        'Takie ustawienie procesu to nie tylko kwestia kultury — RODO ogranicza podejmowanie wobec ludzi decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu danych, a zatrudnienie jest podręcznikowym przykładem sytuacji, w której nadzór człowieka musi być realny. Dlatego projektujemy przepływ tak, by rekomendacje agenta były przejrzyste: widać, jakie kryteria spełnia kandydat, a jakich nie, i na jakiej podstawie powstała rekomendacja.',
-        'Kryteria selekcji ustalamy wspólnie i spisujemy wprost — agent ocenia kompetencje i wymagania stanowiska, a nie cechy, które mogłyby prowadzić do dyskryminacji. Ty wiesz dokładnie, według czego sortowane są zgłoszenia, i możesz te reguły w każdej chwili zmienić.',
+        'To fundament etyczny i prawny każdego naszego wdrożenia w HR. Agent AI nie odrzuca kandydatów i nie decyduje, kto dostanie pracę. Porządkuje zgłoszenia, streszcza rozmowy i rekomenduje, kogo warto zaprosić dalej, zawsze z uzasadnieniem, które rekruter może zweryfikować i podważyć. Ostateczna ocena każdego kandydata należy do człowieka.',
+        'Poza kulturą pracy stoi za tym konkretny przepis. RODO ogranicza podejmowanie wobec ludzi decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu danych, a zatrudnienie jest podręcznikowym przykładem sytuacji, w której nadzór człowieka musi być realny. Dlatego projektujemy przepływ tak, by rekomendacje agenta były przejrzyste: widać, jakie kryteria spełnia kandydat, a jakich nie, i na jakiej podstawie powstała rekomendacja.',
+        'Kryteria selekcji ustalamy wspólnie i spisujemy wprost. Agent ocenia kompetencje i wymagania stanowiska, a nie cechy, które mogłyby prowadzić do dyskryminacji. Ty wiesz dokładnie, według czego sortowane są zgłoszenia, i możesz te reguły w każdej chwili zmienić. W praktyce najwięcej pracy jest właśnie tutaj, bo wymagania z ogłoszenia rzadko są spisane na tyle precyzyjnie, żeby dało się je od razu przełożyć na reguły.',
       ],
     },
     {
@@ -57,7 +57,7 @@ const content: SeoLandingContent = {
       paragraphs: [
         'CV i nagrania rozmów rekrutacyjnych to dane osobowe, często wrażliwe. Wszystkie dane kandydatów przetwarzane przez naszych agentów przechowujemy na serwerach zlokalizowanych w Polsce, w pełnej zgodności z RODO i według standardów zgodnych z ISO 27001. Z pracodawcą lub agencją podpisujemy umowę powierzenia przetwarzania danych.',
         'Retencję ustawiamy zgodnie z polityką klienta: dane kandydatów z zakończonych rekrutacji są usuwane po zdefiniowanym okresie, a zgody na przyszłe procesy obsługujemy oddzielnie. Kandydat na początku rozmowy z voicebotem dowiaduje się, że rozmawia z asystentem automatycznym i w jakim celu zbierane są odpowiedzi.',
-        'W automatyzacji HR mamy praktyczne doświadczenie: zbudowaliśmy m.in. agentkę AI dla obszaru kadr i płac, która korzysta z bazy aktualnego polskiego prawa pracy, pilnuje terminów ZUS i PIT oraz wypełnia dokumenty kadrowe. Ta sama dyscyplina — praca na źródłach, kontrola człowieka nad wynikiem — obowiązuje w naszych wdrożeniach rekrutacyjnych.',
+        'W automatyzacji HR mamy praktyczne doświadczenie: zbudowaliśmy m.in. agentkę AI dla obszaru kadr i płac, która korzysta z bazy aktualnego polskiego prawa pracy, pilnuje terminów ZUS i PIT oraz wypełnia dokumenty kadrowe. Ta sama dyscyplina, czyli praca na źródłach i kontrola człowieka nad wynikiem, obowiązuje w naszych wdrożeniach rekrutacyjnych.',
       ],
     },
   ],
@@ -78,7 +78,7 @@ const content: SeoLandingContent = {
       },
       {
         name: 'Pilotaż na jednej rekrutacji',
-        text: 'Uruchamiamy automatyzację na wybranym procesie i porównujemy wyniki z pracą ręczną: jakość selekcji, czas odpowiedzi kandydatom, liczba umówionych rozmów. Korygujemy kryteria i scenariusze na podstawie rzeczywistych zgłoszeń.',
+        text: 'Uruchamiamy automatyzację na wybranym procesie i porównujemy wyniki z pracą ręczną: jakość selekcji, czas odpowiedzi kandydatom, liczba umówionych rozmów. Tu zwykle wychodzi, czy kryteria zostały spisane dość precyzyjnie. Korygujemy je i poprawiamy scenariusze na podstawie rzeczywistych zgłoszeń.',
       },
       {
         name: 'Uruchomienie produkcyjne i optymalizacja',
@@ -102,7 +102,7 @@ const content: SeoLandingContent = {
       {
         title: 'Rekrutacja sezonowa',
         description:
-          'Spiętrzenie zgłoszeń w krótkim oknie czasowym — bez powiększania zespołu HR. Agenci obsługują szczyt aplikacji, umawiają rozmowy falami i informują kandydatów o statusie na bieżąco.',
+          'Spiętrzenie zgłoszeń w krótkim oknie czasowym, bez powiększania zespołu HR. Agenci obsługują szczyt aplikacji, umawiają rozmowy falami i informują kandydatów o statusie na bieżąco.',
       },
       {
         title: 'Rekrutacja IT',
@@ -113,7 +113,7 @@ const content: SeoLandingContent = {
   },
   pricing: {
     title: 'Ile kosztuje AI w rekrutacji',
-    note: 'Ceny netto. Zakres wdrożenia ustalamy po bezpłatnej konsultacji — od selekcji CV po pełny proces ze screeningiem głosowym.',
+    note: 'Ceny netto. Zakres wdrożenia ustalamy po bezpłatnej konsultacji: od selekcji CV po pełny proces ze screeningiem głosowym.',
     rows: [
       {
         name: 'Wdrożenie',
@@ -142,22 +142,22 @@ const content: SeoLandingContent = {
     {
       question: 'Ile kosztuje wdrożenie AI do rekrutacji?',
       answer:
-        'Wdrożenie zaczyna się od 5 000 zł netto przy małym zakresie — np. automatyczna selekcja CV z jednego źródła aplikacji albo voicebot screeningowy dla jednego typu stanowisk. Pełny proces z integracją ATS, screeningiem głosowym i komunikacją z kandydatami wyceniamy indywidualnie. Utrzymanie to 249–799 zł netto miesięcznie, zależnie od pakietu. Pierwsza konsultacja jest bezpłatna.',
+        'Wdrożenie zaczyna się od 5 000 zł netto przy małym zakresie, np. automatyczna selekcja CV z jednego źródła aplikacji albo voicebot screeningowy dla jednego typu stanowisk. Pełny proces z integracją ATS, screeningiem głosowym i komunikacją z kandydatami wyceniamy indywidualnie. Utrzymanie to 249–799 zł netto miesięcznie, zależnie od pakietu. Pierwsza konsultacja jest bezpłatna.',
     },
     {
       question: 'Czy dane kandydatów są przetwarzane zgodnie z RODO?',
       answer:
-        'Tak. CV, nagrania rozmów i notatki ze screeningu przechowujemy na serwerach w Polsce, w pełnej zgodności z RODO i według standardów zgodnych z ISO 27001. Podpisujemy umowę powierzenia przetwarzania danych, a okresy przechowywania konfigurujemy według Twojej polityki — dane z zakończonych rekrutacji są usuwane po zdefiniowanym czasie. Kandydaci są informowani, że rozmawiają z asystentem automatycznym.',
+        'Tak. CV, nagrania rozmów i notatki ze screeningu przechowujemy na serwerach w Polsce, w pełnej zgodności z RODO i według standardów zgodnych z ISO 27001. Podpisujemy umowę powierzenia przetwarzania danych, a okresy przechowywania konfigurujemy według Twojej polityki, więc dane z zakończonych rekrutacji są usuwane po zdefiniowanym czasie. Kandydaci są informowani, że rozmawiają z asystentem automatycznym.',
     },
     {
       question: 'Czy AI odrzuca kandydatów?',
       answer:
-        'Nie — i to celowa decyzja projektowa, nie ograniczenie techniczne. Agent porządkuje zgłoszenia, ocenia dopasowanie do spisanych kryteriów i rekomenduje kolejność, zawsze z uzasadnieniem możliwym do zweryfikowania. Decyzję o każdym kandydacie podejmuje rekruter. RODO ogranicza w pełni zautomatyzowane decyzje wobec ludzi, dlatego nadzór człowieka jest wpisany w architekturę procesu, a nie dodany na końcu.',
+        'Nie, i nie chodzi o brak możliwości technicznych, tylko o świadomą decyzję projektową. Agent porządkuje zgłoszenia, ocenia dopasowanie do spisanych kryteriów i rekomenduje kolejność, zawsze z uzasadnieniem możliwym do zweryfikowania. Decyzję o każdym kandydacie podejmuje rekruter. RODO ogranicza w pełni zautomatyzowane decyzje wobec ludzi, dlatego nadzór człowieka jest wpisany w architekturę procesu, a nie dodany na końcu.',
     },
     {
       question: 'Jak kandydaci reagują na voicebota rekrutacyjnego?',
       answer:
-        'Bot na początku rozmowy przedstawia się jako asystent automatyczny, więc kandydat wie, z kim rozmawia. W praktyce największą różnicę robi czas: kontakt następuje w minutach od aplikacji, a rozmowa może odbyć się wieczorem lub w weekend, gdy kandydatowi wygodnie. Naturalny polski głos (technologia ElevenLabs) sprawia, że rozmowa przebiega płynnie, a kto woli, może odpowiedzieć na te same pytania na czacie.',
+        'Bot na początku rozmowy przedstawia się jako asystent automatyczny, więc kandydat wie, z kim rozmawia. W praktyce największą różnicę robi czas: kontakt następuje w minutach od aplikacji, a rozmowa może odbyć się wieczorem lub w weekend, gdy kandydatowi wygodnie. Naturalny polski głos (technologia ElevenLabs) sprawia, że rozmowa przebiega płynnie, a kto woli, może odpowiedzieć na te same pytania na czacie. Część kandydatów i tak wolałaby od razu człowieka, zwłaszcza przy wyższych stanowiskach, i dlatego przy takich rolach zwykle odradzamy screening głosowy.',
     },
     {
       question: 'Czy zintegrujecie agentów z naszym ATS?',
@@ -167,12 +167,12 @@ const content: SeoLandingContent = {
     {
       question: 'Ile trwa wdrożenie automatyzacji rekrutacji?',
       answer:
-        'Mały zakres — selekcja CV lub voicebot screeningowy dla jednego typu stanowisk — uruchamiamy w 2–4 tygodnie, łącznie z pilotażem na rzeczywistej rekrutacji. Pełny proces z integracją ATS, wieloma stanowiskami i komunikacją wielokanałową to zwykle 1–3 miesiące. Zawsze zaczynamy od pilotażu, żeby zweryfikować jakość na Waszych realnych zgłoszeniach przed startem produkcyjnym.',
+        'Mały zakres, czyli selekcja CV albo voicebot screeningowy dla jednego typu stanowisk, uruchamiamy w 2–4 tygodnie, łącznie z pilotażem na rzeczywistej rekrutacji. Pełny proces z integracją ATS, wieloma stanowiskami i komunikacją wielokanałową to zwykle 1–3 miesiące. Zawsze zaczynamy od pilotażu, żeby zweryfikować jakość na Waszych realnych zgłoszeniach przed startem produkcyjnym.',
     },
   ],
   cta: {
     heading: 'Policz, ile godzin zjada Wam selekcja CV',
-    sub: 'Umów bezpłatną konsultację — przejdziemy przez Twój proces rekrutacji i pokażemy, które etapy można zautomatyzować bez utraty kontroli nad decyzjami.',
+    sub: 'Umów bezpłatną konsultację. Przejdziemy przez Twój proces rekrutacji i pokażemy, które etapy można zautomatyzować bez utraty kontroli nad decyzjami.',
   },
   related: [
     { label: 'Automatyzacja HR i kadr', href: '/uslugi/automatyzacja-hr' },

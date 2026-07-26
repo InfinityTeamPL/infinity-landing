@@ -19,45 +19,45 @@ const content: SeoLandingContent = {
   breadcrumbLabel: 'Voicebot dla przychodni',
   h1: 'Voicebot dla przychodni — rejestracja telefoniczna, która zawsze odbiera',
   lead: 'Voicebot dla przychodni to agent głosowy AI, który odbiera telefon rejestracji przez całą dobę: umawia, przekłada i odwołuje wizyty, przypomina o terminach i odpowiada na pytania o godziny przyjęć. Mówi naturalną polszczyzną (technologia ElevenLabs), obsługuje wielu dzwoniących jednocześnie, a dane pacjentów przetwarza na serwerach w Polsce, zgodnie z RODO.',
-  serviceName: 'Voicebot dla przychodni — rejestracja telefoniczna AI',
+  serviceName: 'Voicebot dla przychodni: rejestracja telefoniczna AI',
   serviceDescription:
     'Wdrożenie agenta głosowego AI dla placówek medycznych: całodobowa rejestracja telefoniczna, umawianie i odwoływanie wizyt, przypomnienia, integracja z terminarzem. Dane pacjentów na serwerach w Polsce, zgodnie z RODO.',
   sections: [
     {
       heading: 'Dlaczego rejestracja telefoniczna to wąskie gardło przychodni',
       paragraphs: [
-        'W większości placówek telefon dzwoni najmocniej między 8:00 a 10:00 — dokładnie wtedy, gdy rejestratorki obsługują kolejkę przy okienku. Pacjent słyszy sygnał zajętości albo czeka na linii i w końcu się rozłącza. Część z tych osób zadzwoni do innej przychodni, część odłoży wizytę, a grafik lekarza zostaje z wolnymi okienkami, których nikt nie zdążył zapełnić.',
-        'Drugi problem to godziny. Pacjenci przypominają sobie o wizycie wieczorem, w weekend albo w święta — gdy rejestracja nie pracuje. Chcą też odwoływać wizyty po godzinach, a skoro nie mogą, po prostu nie przychodzą. Nieodwołana wizyta to strata podwójna: lekarz czeka, a inny pacjent nie dostał tego terminu.',
-        'Rejestracja telefoniczna AI rozwiązuje oba problemy naraz: odbiera każde połączenie od razu, niezależnie od pory i liczby dzwoniących jednocześnie, a personel rejestracji może skupić się na pacjentach, którzy stoją przed okienkiem.',
+        'W większości placówek telefon dzwoni najmocniej między 8:00 a 10:00, dokładnie wtedy, gdy rejestratorki obsługują kolejkę przy okienku. Pacjent słyszy sygnał zajętości albo czeka na linii i w końcu się rozłącza. Część z tych osób zadzwoni do innej przychodni, część odłoży wizytę. A grafik lekarza zostaje z wolnymi okienkami, których nikt nie zdążył zapełnić. Nieodebranych połączeń zwykle nikt nie liczy, więc ta strata jest po prostu niewidoczna.',
+        'Drugi problem to godziny. Pacjenci przypominają sobie o wizycie wieczorem, w weekend albo w święta, czyli wtedy, gdy rejestracja nie pracuje. Chcą też odwoływać wizyty po godzinach, a skoro nie mogą, po prostu nie przychodzą. Nieodwołana wizyta to strata podwójna: lekarz czeka, a inny pacjent nie dostał tego terminu.',
+        'Rejestracja telefoniczna AI zdejmuje oba problemy naraz. Odbiera każde połączenie od razu, niezależnie od pory i od tego, ilu pacjentów dzwoni w tej samej minucie, a personel rejestracji może zająć się ludźmi, którzy stoją przed okienkiem.',
       ],
     },
     {
       heading: 'Co potrafi voicebot dla przychodni',
       paragraphs: [
-        'Voicebot prowadzi normalną rozmowę telefoniczną — pacjent mówi, czego potrzebuje, a agent głosowy AI dopytuje o szczegóły i załatwia sprawę. Głos oparty na technologii ElevenLabs brzmi naturalnie po polsku, bez „robotycznego" tonu znanego ze starych automatów IVR i tonowego wybierania cyfr.',
+        'Voicebot prowadzi normalną rozmowę telefoniczną. Pacjent mówi, czego potrzebuje, a agent głosowy AI dopytuje o szczegóły i załatwia sprawę. Głos oparty na technologii ElevenLabs brzmi naturalnie po polsku, bez „robotycznego" tonu znanego ze starych automatów IVR i tonowego wybierania cyfr.',
       ],
       bullets: [
-        'Umawianie wizyt — sprawdza wolne terminy w terminarzu, proponuje najbliższe i zapisuje pacjenta do wybranego lekarza lub poradni.',
-        'Przekładanie i odwoływanie wizyt — także w nocy i w weekendy, dzięki czemu zwolnione terminy wracają do puli.',
-        'Przypomnienia o wizytach — telefoniczne lub SMS, co realnie ogranicza liczbę pacjentów, którzy nie przychodzą bez odwołania.',
-        'Odpowiedzi na częste pytania — godziny przyjęć, adres i dojazd, przygotowanie do badań, zasady wystawiania recept i skierowań.',
-        'Obsługa wielu połączeń jednocześnie — nikt nie słyszy sygnału zajętości ani muzyki na czekanie.',
-        'Przekazanie rozmowy do rejestracji — gdy sprawa wykracza poza kompetencje bota albo pacjent poprosi o człowieka.',
+        'Sprawdza wolne terminy w terminarzu, proponuje pacjentowi najbliższe i zapisuje go do wybranego lekarza lub poradni.',
+        'Przekłada i odwołuje wizyty także w nocy i w weekendy, dzięki czemu zwolnione terminy wracają do puli.',
+        'Przypomina o wizytach telefonicznie albo SMS-em. To akurat widać najszybciej z całej listy, bo część pacjentów po prostu zapomina, a przypomniana wizyta zostaje odwołana zamiast przepaść.',
+        'Odpowiada na częste pytania: godziny przyjęć, adres i dojazd, przygotowanie do badań, zasady wystawiania recept i skierowań.',
+        'Obsługuje wiele połączeń naraz, więc nikt nie słyszy sygnału zajętości ani muzyki na czekanie.',
+        'Przekazuje rozmowę do rejestracji, gdy sprawa wykracza poza jego kompetencje albo pacjent poprosi o człowieka.',
       ],
     },
     {
       heading: 'AI do umawiania wizyt a system gabinetowy',
       paragraphs: [
-        'AI do umawiania wizyt jest tak użyteczne, jak dostęp do aktualnego grafiku. Dlatego voicebota integrujemy z terminarzem placówki — systemem gabinetowym, z którego korzysta rejestracja, albo kalendarzem online. Bot widzi wolne terminy w czasie rzeczywistym, a każda umówiona, przełożona lub odwołana wizyta od razu pojawia się w systemie, który zna personel.',
-        'Zakres integracji ustalamy na etapie analizy: sprawdzamy, jaki system działa w placówce, jakie udostępnia interfejsy i jakie reguły zapisów obowiązują (np. które wizyty wymagają skierowania, ile trwa wizyta danego typu, którzy lekarze przyjmują nowych pacjentów). Scenariusze rozmów budujemy pod konkretną placówkę, a nie z jednego uniwersalnego szablonu — bo inne pytania padają w POZ, a inne w klinice stomatologicznej.',
+        'AI do umawiania wizyt jest tyle warte, ile jego dostęp do aktualnego grafiku. Bez tego reszta nie ma sensu. Dlatego voicebota integrujemy z terminarzem placówki: systemem gabinetowym, z którego korzysta rejestracja, albo kalendarzem online. Bot widzi wolne terminy w czasie rzeczywistym, a każda umówiona, przełożona lub odwołana wizyta od razu pojawia się w systemie, który zna personel.',
+        'Zakres integracji ustalamy na etapie analizy: sprawdzamy, jaki system działa w placówce, jakie udostępnia interfejsy i jakie reguły zapisów obowiązują (np. które wizyty wymagają skierowania, ile trwa wizyta danego typu, którzy lekarze przyjmują nowych pacjentów). Scenariusze rozmów budujemy pod konkretną placówkę, a nie z jednego uniwersalnego szablonu. Inne pytania padają w POZ, a zupełnie inne w klinice stomatologicznej.',
       ],
     },
     {
-      heading: 'Dane medyczne i RODO — gdzie trafiają dane pacjentów',
+      heading: 'Dane medyczne i RODO: gdzie trafiają dane pacjentów',
       paragraphs: [
-        'W placówce medycznej to pytanie musi paść przed każdym innym. Dane pacjentów przetwarzane przez voicebota — nagrania rozmów, imiona i nazwiska, numery telefonów, informacje o wizytach — przechowujemy na serwerach zlokalizowanych w Polsce. Przetwarzanie jest w pełni zgodne z RODO, a wdrożenie prowadzimy według standardów zgodnych z ISO 27001.',
+        'W placówce medycznej to pytanie musi paść przed każdym innym. Dane pacjentów przetwarzane przez voicebota (nagrania rozmów, imiona i nazwiska, numery telefonów, informacje o wizytach) przechowujemy na serwerach zlokalizowanych w Polsce. Przetwarzanie jest w pełni zgodne z RODO, a wdrożenie prowadzimy według standardów zgodnych z ISO 27001.',
         'Z placówką podpisujemy umowę powierzenia przetwarzania danych, która precyzuje zakres, cel i czas przetwarzania. Stosujemy zasadę minimalizacji: bot zbiera tylko te dane, które są niezbędne do umówienia wizyty, a okres przechowywania nagrań ustalamy wspólnie z administratorem danych. Na życzenie konfigurujemy automatyczne usuwanie nagrań po zdefiniowanym czasie.',
-        'Mamy doświadczenie w agentach głosowych działających na publicznej infolinii: wdrożyliśmy m.in. agenta głosowego dla regionalnego przewoźnika autobusowego, który przez telefon całodobowo podaje rozkłady jazdy. Ta sama architektura — telefonia, rozpoznawanie mowy, naturalny polski głos — pracuje w voicebocie dla przychodni.',
+        'Mamy doświadczenie w agentach głosowych na publicznej infolinii: zbudowaliśmy m.in. agenta dla regionalnego przewoźnika autobusowego, który przez telefon całodobowo podaje rozkłady jazdy. Ta sama architektura, czyli telefonia, rozpoznawanie mowy i naturalny polski głos, pracuje w voicebocie dla przychodni.',
       ],
     },
   ],
@@ -78,7 +78,7 @@ const content: SeoLandingContent = {
       },
       {
         name: 'Testy pilotażowe',
-        text: 'Uruchamiamy bota na części ruchu, np. tylko po godzinach pracy rejestracji. Analizujemy rzeczywiste rozmowy, poprawiamy scenariusze i dopiero potem rozszerzamy działanie na cały ruch telefoniczny.',
+        text: 'Uruchamiamy bota na części ruchu, np. tylko po godzinach pracy rejestracji. Zwykle właśnie wtedy wychodzą pytania, których nikt nie przewidział przy stole. Analizujemy rzeczywiste rozmowy, poprawiamy scenariusze i dopiero potem rozszerzamy działanie na cały ruch telefoniczny.',
       },
       {
         name: 'Uruchomienie i stała opieka',
@@ -118,7 +118,7 @@ const content: SeoLandingContent = {
   },
   pricing: {
     title: 'Ile kosztuje voicebot dla przychodni',
-    note: 'Ceny netto. Ostateczna wycena zależy od zakresu integracji i liczby scenariuszy — pierwsza konsultacja jest bezpłatna.',
+    note: 'Ceny netto. Ostateczna wycena zależy od zakresu integracji i liczby scenariuszy. Pierwsza konsultacja jest bezpłatna.',
     rows: [
       {
         name: 'Wdrożenie',
@@ -147,37 +147,37 @@ const content: SeoLandingContent = {
     {
       question: 'Ile kosztuje voicebot dla przychodni?',
       answer:
-        'Wdrożenie zaczyna się od 5 000 zł netto przy małym zakresie — pojedynczy numer, podstawowe scenariusze, integracja z terminarzem. Większe placówki i bardziej złożone integracje wyceniamy indywidualnie. Do tego dochodzi miesięczne utrzymanie: 249, 499 lub 799 zł netto, zależnie od pakietu. Pierwsza konsultacja i wycena są bezpłatne.',
+        'Wdrożenie zaczyna się od 5 000 zł netto przy małym zakresie (pojedynczy numer, podstawowe scenariusze, integracja z terminarzem). Większe placówki i bardziej złożone integracje wyceniamy indywidualnie. Do tego dochodzi miesięczne utrzymanie: 249, 499 lub 799 zł netto, zależnie od pakietu. Pierwsza konsultacja i wycena są bezpłatne.',
     },
     {
       question: 'Czy dane pacjentów są bezpieczne i zgodne z RODO?',
       answer:
-        'Tak. Wszystkie dane przetwarzane przez voicebota — nagrania, dane kontaktowe, informacje o wizytach — przechowujemy na serwerach w Polsce, w pełnej zgodności z RODO i według standardów zgodnych z ISO 27001. Z placówką podpisujemy umowę powierzenia przetwarzania danych, stosujemy minimalizację zbieranych informacji i konfigurujemy okres przechowywania nagrań według wytycznych administratora danych.',
+        'Tak. Wszystkie dane przetwarzane przez voicebota, czyli nagrania, dane kontaktowe i informacje o wizytach, przechowujemy na serwerach w Polsce, w pełnej zgodności z RODO i według standardów zgodnych z ISO 27001. Z placówką podpisujemy umowę powierzenia przetwarzania danych, stosujemy minimalizację zbieranych informacji i konfigurujemy okres przechowywania nagrań według wytycznych administratora danych.',
     },
     {
       question: 'Czy voicebot zintegruje się z naszym systemem gabinetowym?',
       answer:
-        'W większości przypadków tak. Na etapie analizy sprawdzamy, z jakiego systemu korzysta placówka i jakie udostępnia interfejsy. Jeśli system ma API, bot pracuje bezpośrednio na jego terminarzu. Gdy integracja bezpośrednia nie jest możliwa, proponujemy rozwiązanie pośrednie, np. kalendarz synchronizowany z grafikiem — konkretny wariant dobieramy podczas bezpłatnej konsultacji.',
+        'W większości przypadków tak. Na etapie analizy sprawdzamy, z jakiego systemu korzysta placówka i jakie udostępnia interfejsy. Jeśli system ma API, bot pracuje bezpośrednio na jego terminarzu. Gdy integracja bezpośrednia nie jest możliwa, proponujemy wariant pośredni, np. kalendarz synchronizowany z grafikiem. Który to będzie, ustalamy podczas bezpłatnej konsultacji.',
     },
     {
       question: 'Co jeśli pacjent chce rozmawiać z człowiekiem?',
       answer:
-        'Zostaje przełączony — to żelazna zasada każdego naszego wdrożenia. Voicebot rozpoznaje prośbę o rozmowę z rejestracją i przekazuje połączenie do personelu w godzinach pracy, a poza nimi przyjmuje zgłoszenie i zapisuje prośbę o oddzwonienie. Bot obsługuje sprawy proste i powtarzalne, dzięki czemu rejestratorki mają czas na te trudniejsze.',
+        'Zostaje przełączony. To żelazna zasada każdego naszego wdrożenia. Voicebot rozpoznaje prośbę o rozmowę z rejestracją i przekazuje połączenie do personelu w godzinach pracy, a poza nimi przyjmuje zgłoszenie i zapisuje prośbę o oddzwonienie. Bot obsługuje sprawy proste i powtarzalne, dzięki czemu rejestratorki mają czas na te trudniejsze.',
     },
     {
       question: 'Ile trwa wdrożenie voicebota w przychodni?',
       answer:
-        'Typowe wdrożenie dla pojedynczej placówki zamyka się w 2–4 tygodniach: analiza, scenariusze rozmów, integracja z terminarzem, testy pilotażowe i start. Przy większych podmiotach — kilka lokalizacji, rozbudowane integracje z systemem gabinetowym — realny horyzont to 1–3 miesiące. Harmonogram ustalamy na początku i pilnujemy go etapami.',
+        'Typowe wdrożenie dla pojedynczej placówki zamyka się w 2–4 tygodniach: analiza, scenariusze rozmów, integracja z terminarzem, testy pilotażowe i start. Przy większych podmiotach, gdzie dochodzi kilka lokalizacji i rozbudowane integracje z systemem gabinetowym, realny horyzont to 1–3 miesiące. Harmonogram ustalamy na początku i pilnujemy go etapami. Bywa różnie: jeśli wąskim gardłem okazuje się dostęp do systemu gabinetowego, termin potrafi się przesunąć i lepiej wiedzieć o tym od razu.',
     },
     {
       question: 'Czy pacjenci zorientują się, że rozmawiają z AI?',
       answer:
-        'Bot na początku rozmowy przedstawia się jako asystent automatyczny — pacjent od razu wie, z kim rozmawia, co jest też dobrą praktyką prawną. Głos oparty na technologii ElevenLabs brzmi naturalnie po polsku, więc rozmowa przebiega płynnie: bez wybierania cyfr na klawiaturze i bez sztywnych komunikatów znanych ze starych automatów.',
+        'Bot na początku rozmowy przedstawia się jako asystent automatyczny, więc pacjent od razu wie, z kim rozmawia. To także dobra praktyka prawna. Głos oparty na technologii ElevenLabs brzmi naturalnie po polsku, więc rozmowa przebiega płynnie: bez wybierania cyfr na klawiaturze i bez sztywnych komunikatów znanych ze starych automatów.',
     },
   ],
   cta: {
     heading: 'Sprawdź, ile połączeń traci Twoja rejestracja',
-    sub: 'Umów bezpłatną konsultację — przeanalizujemy ruch telefoniczny placówki i pokażemy, jak wyglądałby voicebot dopasowany do Waszego terminarza.',
+    sub: 'Umów bezpłatną konsultację. Przeanalizujemy ruch telefoniczny placówki i pokażemy, jak wyglądałby voicebot dopasowany do Waszego terminarza.',
   },
   related: [
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },

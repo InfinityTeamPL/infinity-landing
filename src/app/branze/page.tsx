@@ -15,19 +15,19 @@ export const metadata: Metadata = {
   },
 };
 
-// Branże z dedykowaną stroną
+// Branże z własną stroną
 const WITH_PAGE = [
   {
     icon: Stethoscope,
     href: '/branze/voicebot-dla-przychodni',
     title: 'Przychodnie i gabinety',
-    lead: 'Rejestracja, która odbiera każde połączenie — także po godzinach. Agent umawia, przekłada i odwołuje wizyty, przypomina o terminach i odpowiada na pytania o przygotowanie do badań.',
+    lead: 'Rejestracja, która odbiera każde połączenie, także po godzinach. Agent umawia, przekłada i odwołuje wizyty, przypomina o terminach i odpowiada na pytania o przygotowanie do badań.',
   },
   {
     icon: Users,
     href: '/branze/ai-w-rekrutacji',
     title: 'Rekrutacja i agencje pracy',
-    lead: 'Selekcja CV według Waszych kryteriów, wstępny screening i umawianie rozmów. Decyzje zostają po stronie rekrutera — AI zdejmuje z niego przeklikiwanie i telefony.',
+    lead: 'Selekcja CV według Waszych kryteriów, wstępny screening i umawianie rozmów. Decyzje zostają po stronie rekrutera. AI zdejmuje z niego przeklikiwanie i telefony.',
   },
   {
     icon: Bus,
@@ -59,11 +59,11 @@ const WITH_PAGE = [
 const PATTERNS = [
   {
     title: 'Powtarzalne pytania',
-    text: 'Jeśli ktoś codziennie tłumaczy to samo — godziny otwarcia, status zamówienia, jakie dokumenty przynieść — wystarczy spisać te odpowiedzi raz.',
+    text: 'Jeśli ktoś codziennie tłumaczy to samo (godziny otwarcia, status zamówienia, jakie dokumenty przynieść), wystarczy spisać te odpowiedzi raz.',
   },
   {
     title: 'Telefon jako wąskie gardło',
-    text: 'Dwie osoby przy słuchawkach nie obsłużą trzeciego dzwoniącego. Agent prowadzi kilka rozmów naraz, więc nikt nie słyszy sygnału zajętości.',
+    text: 'Dwie osoby przy słuchawkach nie obsłużą trzeciego dzwoniącego. Agent prowadzi kilka rozmów naraz, więc nikt nie słyszy sygnału zajętości. To akurat działa bardzo przewidywalnie.',
   },
   {
     title: 'Dane rozproszone po systemach',
@@ -79,15 +79,15 @@ const PATTERNS = [
   },
 ];
 
-// Uczciwe granice — czego agent nie zrobi
+// Uczciwe granice: czego agent nie zrobi
 const LIMITS = [
   {
     title: 'Nie zastąpi eksperta w nietypowej sprawie',
-    text: 'Agent jest dobry w tym, co się powtarza. Kiedy pacjent opisuje objawy spoza wszystkich scenariuszy albo klient dzwoni z nietypową reklamacją, rozmowa idzie do człowieka. Prośba o pracownika musi działać zawsze — to warunek każdego naszego wdrożenia.',
+    text: 'Agent jest dobry w tym, co się powtarza. Kiedy pacjent opisuje objawy spoza wszystkich scenariuszy albo klient dzwoni z nietypową reklamacją, rozmowa idzie do człowieka. Prośba o pracownika musi działać zawsze. To warunek każdego naszego wdrożenia.',
   },
   {
     title: 'Nie podejmuje decyzji ze skutkiem prawnym ani finansowym',
-    text: 'Agent przygotuje dokument, wskaże przepis i policzy termin, ale podpis i decyzja kadrowa zostają po stronie człowieka. Dlatego Superkadrowa cytuje konkretny artykuł Kodeksu pracy i pokazuje źródło — żeby dało się to sprawdzić w minutę.',
+    text: 'Agent przygotuje dokument, wskaże przepis i policzy termin, ale podpis i decyzja kadrowa zostają po stronie człowieka. Dlatego Superkadrowa cytuje konkretny artykuł Kodeksu pracy i pokazuje źródło, żeby dało się to sprawdzić w minutę.',
   },
   {
     title: 'Potrzebuje uporządkowanych danych',
@@ -99,7 +99,7 @@ const FAQ = [
   {
     question: 'Czy AI zadziała w mojej niszy?',
     answer:
-      'Nie znamy każdej branży, ale znamy procesy — a te powtarzają się niezależnie od tego, czy sprzedajecie części do maszyn rolniczych, czy prowadzicie gabinet. Jeśli ktoś u Was odbiera te same telefony albo przepisuje dane między systemami, jest o czym rozmawiać. Na bezpłatnej konsultacji przechodzimy przez jeden proces i mówimy, czy to się spina.',
+      'Nie znamy każdej branży, ale znamy procesy, a te powtarzają się niezależnie od tego, czy sprzedajecie części do maszyn rolniczych, czy prowadzicie gabinet. Jeśli ktoś u Was odbiera te same telefony albo przepisuje dane między systemami, jest o czym rozmawiać. Na bezpłatnej konsultacji przechodzimy przez jeden proces i mówimy, czy to się spina.',
   },
   {
     question: 'Ile trzeba danych na start?',
@@ -109,12 +109,12 @@ const FAQ = [
   {
     question: 'Czy pacjenci i klienci akceptują rozmowę z AI?',
     answer:
-      'Akceptują, jeśli sprawa zostaje załatwiona i jeśli od razu wiedzą, z kim rozmawiają. Nasi agenci przedstawiają się na starcie jako asystent automatyczny — to uczciwe wobec dzwoniącego i bezpieczniejsze prawnie. Prośba o człowieka zawsze działa. Dziesięć minut w kolejce na infolinii irytuje bardziej niż bot, który odbiera po drugim sygnale.',
+      'Akceptują, jeśli sprawa zostaje załatwiona i jeśli od razu wiedzą, z kim rozmawiają. Nasi agenci przedstawiają się na starcie jako asystent automatyczny. To uczciwe wobec dzwoniącego i bezpieczniejsze prawnie. Prośba o człowieka zawsze działa. Dziesięć minut w kolejce na infolinii irytuje bardziej niż bot, który odbiera po drugim sygnale.',
   },
   {
     question: 'Co z językiem polskim, gwarą i skrótami branżowymi?',
     answer:
-      'Polszczyzna jest u nas domyślna, nie dodatkiem — głosy budujemy na ElevenLabs, z odmianą i normalną intonacją. Ze skrótami bywa różnie: L4, PIT-11 czy nazwy przystanków agent rozpozna, jeśli dostanie ich listę, dlatego w testach zbieramy słownictwo Waszych klientów, łącznie z wersjami potocznymi. Silny akcent albo głośnik w aucie potrafią sprawić kłopot — wtedy agent dopyta zamiast zgadywać.',
+      'Polszczyzna jest u nas domyślna, nie dodatkiem. Głosy budujemy na ElevenLabs, z odmianą i normalną intonacją. Ze skrótami bywa różnie: L4, PIT-11 czy nazwy przystanków agent rozpozna, jeśli dostanie ich listę, dlatego w testach zbieramy słownictwo Waszych klientów, łącznie z wersjami potocznymi. Silny akcent albo głośnik w aucie potrafią sprawić kłopot. Wtedy agent dopyta zamiast zgadywać.',
   },
   {
     question: 'Czy da się zacząć od pilotażu?',
@@ -177,7 +177,7 @@ export default function BranzeHub() {
         </h1>
         <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-12 max-w-3xl">
           Technologia jest ta sama, ale sensowne zastosowanie wygląda inaczej w przychodni, a inaczej w firmie
-          transportowej. Poniżej branże, w których pracujemy najczęściej — wraz z tym, co agent faktycznie w nich robi.
+          transportowej. Poniżej branże, w których pracujemy najczęściej, wraz z tym, co agent faktycznie w nich robi.
         </p>
 
         <div className="grid md:grid-cols-2 gap-5 mb-12">
@@ -245,7 +245,7 @@ export default function BranzeHub() {
           </h2>
           <p className="leading-relaxed mb-4 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
             Zamiast opisywać, jak to brzmi, wolimy pokazać. Demo głosowe zbudowaliśmy na publicznych danych
-            rozkładowych PKS Gryfice — to nasza prezentacja, a nie wdrożenie u przewoźnika. Agent zna 6 przystanków i
+            rozkładowych PKS Gryfice. To nasza prezentacja, a nie wdrożenie u przewoźnika. Agent zna 6 przystanków i
             276 odjazdów, a przy każdej odpowiedzi podaje źródło, z którego wziął godzinę. To ważniejsze, niż się
             wydaje: agenta, który pokazuje dane, można sprawdzić. Adres: pks-gryfice-demo.vercel.app.
           </p>
@@ -306,7 +306,7 @@ export default function BranzeHub() {
         <section className="rounded-2xl p-7" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
           <h2 className="text-xl font-bold mb-3">Nie ma tu Twojej branży?</h2>
           <p className="leading-relaxed mb-5" style={{ color: 'var(--fg-70)' }}>
-            To nie problem — wzorce się powtarzają. Jeśli w firmie ktoś odbiera te same telefony albo przepisuje dane
+            To nie problem, wzorce się powtarzają. Jeśli w firmie ktoś odbiera te same telefony albo przepisuje dane
             między systemami, jest co automatyzować. Opowiedz nam o swoim procesie, a powiemy, czy to ma sens.
           </p>
           <Link

@@ -26,8 +26,8 @@ const content: SeoLandingContent = {
     {
       heading: 'Realizacja: agentka AI kadrowo-płacowa',
       paragraphs: [
-        'Automatyzację kadr AI najlepiej pokazać na przykładzie. Dla jednego z klientów — realizacje opisujemy anonimowo — zbudowaliśmy agentkę AI kadrowo-płacową z bazą aktualnego polskiego prawa pracy. Agentka pilnuje terminów ZUS i PIT, wypełnia dokumenty kadrowe i odpowiada na pytania zespołu, a specjalistka kadrowa zatwierdza jej pracę, zamiast wykonywać ją ręcznie od zera.',
-        'Kluczowa jest baza wiedzy: agentka korzysta z aktualizowanej bazy przepisów prawa pracy, więc jej odpowiedzi odwołują się do obowiązującego stanu prawnego, a nie do wiedzy modelu zamrożonej w momencie treningu. Gdy przepisy się zmieniają, aktualizujemy bazę w ramach utrzymania.',
+        'Automatyzację kadr AI najlepiej pokazać na przykładzie. Dla jednego z klientów (realizacje opisujemy anonimowo) zbudowaliśmy agentkę AI kadrowo-płacową z bazą aktualnego polskiego prawa pracy. Agentka pilnuje terminów ZUS i PIT, wypełnia dokumenty kadrowe i odpowiada na pytania zespołu, a specjalistka kadrowa zatwierdza jej pracę, zamiast wykonywać ją ręcznie od zera.',
+        'Wszystko stoi na bazie wiedzy. Agentka korzysta z aktualizowanej bazy przepisów prawa pracy, więc jej odpowiedzi odwołują się do obowiązującego stanu prawnego, a nie do wiedzy modelu zamrożonej w momencie treningu. Gdy przepisy się zmieniają, aktualizujemy bazę w ramach utrzymania.',
       ],
     },
     {
@@ -36,25 +36,25 @@ const content: SeoLandingContent = {
         'Dział HR to jedno z najlepszych miejsc na start automatyzacji: dużo powtarzalnych zadań, jasne reguły i terminy, których nie wolno przegapić. Najczęściej automatyzujemy:',
       ],
       bullets: [
-        'Selekcję CV — agent porównuje zgłoszenia z wymaganiami stanowiska i przygotowuje krótką listę kandydatów z uzasadnieniem; decyzję podejmuje rekruter.',
-        'Onboarding — nowy pracownik dostaje dokumenty, dostępy i plan pierwszych dni według ustalonej ścieżki, a agent pilnuje, czy każdy krok się wydarzył.',
-        'FAQ pracowników — pytania o urlopy, zaświadczenia czy benefity obsługuje agent dostępny na czacie 24/7, w kanałach, z których zespół już korzysta.',
-        'Umowy i aneksy — agent przygotowuje dokumenty na podstawie danych z systemu; kadry sprawdzają i podpisują, zamiast wypełniać od zera.',
-        'Terminy — ZUS, PIT, badania okresowe, kończące się umowy: agent pilnuje kalendarza i przypomina z wyprzedzeniem.',
+        'Selekcję CV. Agent porównuje zgłoszenia z wymaganiami stanowiska i układa krótką listę kandydatów z uzasadnieniem. Decyzję podejmuje rekruter.',
+        'Przy onboardingu nowy pracownik dostaje dokumenty, dostępy i plan pierwszych dni według ustalonej ścieżki, a agent pilnuje, czy każdy krok się wydarzył.',
+        'Odpowiedzi na pytania pracowników o urlopy, zaświadczenia czy benefity. Obsługuje je agent dostępny na czacie 24/7, w kanałach, z których zespół już korzysta.',
+        'Umowy i aneksy przygotowane na podstawie danych z systemu. Kadry sprawdzają i podpisują, zamiast wypełniać od zera.',
+        'Pilnowanie terminów: ZUS, PIT, badania okresowe, kończące się umowy. Agent trzyma kalendarz i przypomina z wyprzedzeniem.',
       ],
     },
     {
-      heading: 'AI w HR a dane pracowników — RODO i bezpieczeństwo',
+      heading: 'AI w HR a dane pracowników: RODO i bezpieczeństwo',
       paragraphs: [
         'Dane kadrowe to jedne z najwrażliwszych informacji w firmie, dlatego bezpieczeństwo traktujemy jako warunek wstępny, a nie dodatek. Dane naszych klientów przetwarzamy na serwerach w Polsce, w pełnej zgodności z RODO, a nasze standardy bezpieczeństwa są zgodne z ISO 27001.',
-        'Przed wdrożeniem ustalamy, do jakich danych agent ma dostęp i w jakim celu, ograniczamy zakres do minimum niezbędnego dla procesu i podpisujemy umowę powierzenia przetwarzania danych. Dział HR widzi, co agent robi z danymi — każda operacja zostawia ślad, który można sprawdzić.',
+        'Przed wdrożeniem ustalamy, do jakich danych agent ma dostęp i w jakim celu, ograniczamy zakres do minimum niezbędnego dla procesu i podpisujemy umowę powierzenia przetwarzania danych. Dział HR widzi, co agent robi z danymi. Każda operacja zostawia ślad, który można sprawdzić.',
       ],
     },
     {
       heading: 'Od czego zacząć automatyzację kadr',
       paragraphs: [
-        'Nie trzeba automatyzować wszystkiego naraz. Zwykle zaczynamy od jednego procesu, który dziś boli najbardziej — najczęściej to FAQ pracowników albo pilnowanie terminów, bo dają szybki, widoczny efekt przy niskim ryzyku. Dopiero potem dokładamy kolejne obszary: dokumenty, selekcję CV, onboarding.',
-        'Takie podejście ma dwie zalety: dział kadr uczy się pracy z agentem na bezpiecznym zakresie, a firma widzi zwrot z inwestycji, zanim zdecyduje o rozszerzeniu. Małe wdrożenie zamykamy w 2–4 tygodnie; rozbudowa na kolejne procesy to zwykle 1–3 miesiące.',
+        'Nie trzeba automatyzować wszystkiego naraz. Zwykle zaczynamy od jednego procesu, który dziś boli najbardziej. Najczęściej to FAQ pracowników albo pilnowanie terminów, bo dają szybki, widoczny efekt przy niskim ryzyku. Dopiero potem dokładamy kolejne obszary: dokumenty, selekcję CV, onboarding.',
+        'Takie podejście ma dwie zalety: dział kadr uczy się pracy z agentem na bezpiecznym zakresie, a firma widzi zwrot z inwestycji, zanim zdecyduje o rozszerzeniu. Małe wdrożenie zamykamy w 2–4 tygodnie, rozbudowa na kolejne procesy to zwykle 1–3 miesiące. Ile dokładnie czasu odzyska dział kadr, trudno przewidzieć z góry. Za dużo zależy od tego, jak dziś wygląda obieg dokumentów i w ilu miejscach te same dane są przepisywane ręcznie.',
       ],
     },
   ],
@@ -75,11 +75,11 @@ const content: SeoLandingContent = {
       },
       {
         name: 'Integracja z systemami',
-        text: 'Łączymy agenta z systemem kadrowo-płacowym, kalendarzem i kanałami komunikacji, z których korzysta zespół — przez API lub pracę na eksportach danych.',
+        text: 'Łączymy agenta z systemem kadrowo-płacowym, kalendarzem i kanałami komunikacji, z których korzysta zespół, przez API albo pracę na eksportach danych.',
       },
       {
         name: 'Skalowanie i utrzymanie',
-        text: 'Rozszerzamy automatyzację na kolejne procesy HR i utrzymujemy ją w abonamencie — łącznie z aktualizacją bazy prawa pracy.',
+        text: 'Rozszerzamy automatyzację na kolejne procesy HR i utrzymujemy ją w abonamencie, razem z aktualizacją bazy prawa pracy.',
       },
     ],
   },
@@ -89,17 +89,17 @@ const content: SeoLandingContent = {
       {
         title: 'Selekcja CV',
         description:
-          'Wstępna ocena zgłoszeń względem wymagań stanowiska i krótka lista dla rekrutera — z uzasadnieniem, nie z czarną skrzynką.',
+          'Wstępna ocena zgłoszeń względem wymagań stanowiska i krótka lista dla rekrutera, zawsze z uzasadnieniem, nie z czarną skrzynką.',
       },
       {
         title: 'Onboarding pracownika',
         description:
-          'Dokumenty, dostępy, szkolenia wstępne i plan pierwszych tygodni — według ścieżki, której krok po kroku pilnuje agent.',
+          'Dokumenty, dostępy, szkolenia wstępne i plan pierwszych tygodni według ścieżki, której krok po kroku pilnuje agent.',
       },
       {
         title: 'FAQ kadrowe',
         description:
-          'Odpowiedzi na pytania o urlopy, zwolnienia, zaświadczenia i benefity — na czacie, 24/7, bez odrywania kadr od pracy.',
+          'Odpowiedzi na pytania o urlopy, zwolnienia, zaświadczenia i benefity. Na czacie, 24/7, bez odrywania kadr od pracy.',
       },
       {
         title: 'Dokumenty kadrowe',
@@ -109,7 +109,7 @@ const content: SeoLandingContent = {
       {
         title: 'Pilnowanie terminów',
         description:
-          'ZUS, PIT, badania okresowe, kończące się umowy — przypomnienia z wyprzedzeniem, zanim termin stanie się problemem.',
+          'ZUS, PIT, badania okresowe, kończące się umowy: przypomnienia z wyprzedzeniem, zanim termin stanie się problemem.',
       },
       {
         title: 'Raporty HR',
@@ -120,7 +120,7 @@ const content: SeoLandingContent = {
   },
   pricing: {
     title: 'Ile kosztuje automatyzacja HR',
-    note: 'Wdrożenie wyceniamy po audycie procesów kadrowych — od 5 000 zł netto za mały zakres po wyceny indywidualne. Utrzymanie rozliczamy w abonamencie.',
+    note: 'Wdrożenie wyceniamy po audycie procesów kadrowych: od 5 000 zł netto za mały zakres po wyceny indywidualne. Utrzymanie rozliczamy w abonamencie.',
     rows: [
       {
         name: 'Wdrożenie',
@@ -140,7 +140,7 @@ const content: SeoLandingContent = {
       {
         name: 'Premium',
         price: '799 zł/mies.',
-        description: 'Najszerszy zakres opieki i rozwoju — szczegóły dopasowujemy do skali wdrożenia.',
+        description: 'Najszerszy zakres opieki i rozwoju, szczegóły dopasowujemy do skali wdrożenia.',
       },
     ],
   },
@@ -153,17 +153,17 @@ const content: SeoLandingContent = {
     {
       question: 'Czy powierzenie danych pracowników AI jest zgodne z RODO?',
       answer:
-        'Tak, pod warunkiem właściwej konfiguracji — i to bierzemy na siebie. Dane przetwarzamy na serwerach w Polsce, w pełnej zgodności z RODO, a nasze standardy bezpieczeństwa są zgodne z ISO 27001. Ograniczamy dostęp agenta do minimum niezbędnego dla procesu i podpisujemy umowę powierzenia przetwarzania danych.',
+        'Tak, pod warunkiem właściwej konfiguracji, a to bierzemy na siebie. Dane przetwarzamy na serwerach w Polsce, w pełnej zgodności z RODO, a nasze standardy bezpieczeństwa są zgodne z ISO 27001. Ograniczamy dostęp agenta do minimum niezbędnego dla procesu i podpisujemy umowę powierzenia przetwarzania danych.',
     },
     {
       question: 'Skąd agent AI zna aktualne polskie prawo pracy?',
       answer:
-        'Agent nie opiera się na wiedzy modelu z momentu treningu, tylko na dołączonej bazie przepisów prawa pracy, którą aktualizujemy w ramach utrzymania. Dzięki temu odpowiedzi odwołują się do obowiązującego stanu prawnego. W sprawach spornych lub nietypowych agent nie decyduje sam — przekazuje temat specjaliście kadrowemu.',
+        'Agent nie opiera się na wiedzy modelu z momentu treningu, tylko na dołączonej bazie przepisów prawa pracy, którą aktualizujemy w ramach utrzymania. Dzięki temu odpowiedzi odwołują się do obowiązującego stanu prawnego. W sprawach spornych lub nietypowych agent nie decyduje sam, tylko przekazuje temat specjaliście kadrowemu.',
     },
     {
       question: 'Czy zintegrujecie AI z naszym systemem kadrowo-płacowym?',
       answer:
-        'Tak — każde wdrożenie szyjemy na miarę, więc integracja z Twoim systemem kadrowo-płacowym jest częścią projektu. Łączymy się przez API, a gdy system go nie udostępnia, pracujemy na eksportach i imporcie danych. Zakres integracji, także z kalendarzem i komunikatorami zespołu, ustalamy na audycie.',
+        'Tak, każde wdrożenie szyjemy na miarę, więc integracja z Twoim systemem kadrowo-płacowym jest częścią projektu. Łączymy się przez API, a gdy system go nie udostępnia, pracujemy na eksportach i imporcie danych. Zakres integracji, także z kalendarzem i komunikatorami zespołu, ustalamy na audycie.',
     },
     {
       question: 'Czy AI zastąpi nasz dział kadr?',
@@ -173,7 +173,7 @@ const content: SeoLandingContent = {
     {
       question: 'Jak szybko zobaczymy efekty automatyzacji HR?',
       answer:
-        'Pierwszy proces — pilot z człowiekiem w pętli — wdrażamy w 2–4 tygodnie, więc efekty widać już w pierwszym miesiącu. Rozszerzenie automatyzacji na kolejne obszary kadr trwa zwykle 1–3 miesiące, zależnie od liczby procesów i systemów do zintegrowania.',
+        'Pierwszy proces, czyli pilot z człowiekiem w pętli, wdrażamy w 2–4 tygodnie, więc efekty widać już w pierwszym miesiącu. Rozszerzenie automatyzacji na kolejne obszary kadr trwa zwykle 1–3 miesiące, zależnie od liczby procesów i systemów do zintegrowania.',
     },
   ],
   cta: {

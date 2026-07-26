@@ -100,7 +100,7 @@ export default function BlogIndex() {
           Blog — agenci AI i automatyzacja w praktyce
         </h1>
         <p className="text-lg text-white/70 leading-relaxed mb-12 max-w-2xl">
-          Konkretna wiedza z wdrożeń: ile co kosztuje, co działa, czego unikać. Piszemy tak, jak rozmawiamy z klientami —
+          Konkretna wiedza z wdrożeń: ile co kosztuje, co działa, czego unikać. Piszemy tak, jak rozmawiamy z klientami,
           bez marketingowej waty.
         </p>
 

@@ -27,70 +27,70 @@ const TERMS: Term[] = [
   {
     term: 'Agent AI',
     definition:
-      'Program oparty na modelu językowym, który nie tylko odpowiada na pytania, ale też wykonuje zadania: wyszukuje dane, wypełnia formularze, umawia terminy, wysyła wiadomości. Od zwykłego chatbota różni go to, że ma dostęp do narzędzi i może działać w Waszych systemach.',
+      'Program oparty na modelu językowym, który poza odpowiadaniem na pytania wykonuje też zadania: wyszukuje dane, wypełnia formularze, umawia terminy, wysyła wiadomości. Od zwykłego chatbota różni go dostęp do narzędzi i to, że potrafi działać w Waszych systemach.',
     href: '/blog/agent-ai-a-chatbot',
-    hrefLabel: 'Agent AI a chatbot — czym się różnią',
+    hrefLabel: 'Agent AI a chatbot: czym się różnią',
   },
   {
     term: 'Agent głosowy (voicebot)',
     definition:
-      'Agent AI, który rozmawia głosem przez telefon lub przeglądarkę. Rozumie swobodną mowę — nie wymaga wciskania klawiszy jak stara automatyczna infolinia — i potrafi w trakcie rozmowy sprawdzić dane oraz wykonać akcję, na przykład zarezerwować termin.',
+      'Agent AI, który rozmawia głosem przez telefon lub przeglądarkę. Rozumie swobodną mowę, więc nie trzeba wciskać klawiszy jak na starej automatycznej infolinii. W trakcie rozmowy potrafi też sprawdzić dane i wykonać akcję, na przykład zarezerwować termin.',
     href: '/uslugi/agent-glosowy-ai',
-    hrefLabel: 'Agent głosowy AI — jak wdrażamy',
+    hrefLabel: 'Jak wdrażamy agenta głosowego AI',
   },
   {
     term: 'LLM (duży model językowy)',
     definition:
-      'Silnik, który stoi za rozumieniem i generowaniem tekstu — na przykład GPT, Claude czy Gemini. Sam w sobie nie zna Waszej firmy: wiedzę o niej trzeba mu dostarczyć osobno.',
+      'Silnik, który stoi za rozumieniem i generowaniem tekstu, na przykład GPT, Claude czy Gemini. Sam w sobie nie zna Waszej firmy: wiedzę o niej trzeba mu dostarczyć osobno.',
   },
   {
     term: 'RAG (odpytywanie własnej bazy wiedzy)',
     definition:
-      'Metoda, w której agent najpierw wyszukuje odpowiedź w Waszych dokumentach, a dopiero potem formułuje odpowiedź na ich podstawie. Dzięki temu opiera się na faktach z firmy, a nie na ogólnej wiedzy modelu, i może wskazać źródło.',
+      'Metoda, w której agent najpierw szuka w Waszych dokumentach, a odpowiada dopiero na podstawie tego, co znalazł. Dzięki temu opiera się na faktach z firmy, a nie na ogólnej wiedzy modelu, i może wskazać źródło.',
   },
   {
     term: 'Halucynacja',
     definition:
-      'Sytuacja, w której model podaje nieprawdziwą informację brzmiącą wiarygodnie. Ogranicza się ją, każąc agentowi opierać odpowiedzi na konkretnych dokumentach, cytować źródło i mówić „nie wiem”, gdy danych brakuje.',
+      'Sytuacja, w której model podaje nieprawdziwą informację brzmiącą wiarygodnie. Do zera tego nie da się sprowadzić, ale da się mocno ograniczyć: każąc agentowi opierać odpowiedzi na konkretnych dokumentach, cytować źródło i mówić „nie wiem”, gdy danych brakuje.',
   },
   {
     term: 'Człowiek w pętli',
     definition:
-      'Zasada, że decyzje o istotnych skutkach zatwierdza człowiek, a agent je tylko przygotowuje. Przykładowo AI rekomenduje kandydatów do rozmowy, ale nikogo samodzielnie nie odrzuca.',
+      'Decyzje o istotnych skutkach zatwierdza człowiek, a agent je tylko przygotowuje. Przykładowo AI rekomenduje kandydatów do rozmowy, ale nikogo samodzielnie nie odrzuca.',
   },
   {
     term: 'BYOK (własne klucze API)',
     definition:
-      'Model rozliczenia, w którym korzystacie z własnego konta u dostawcy modelu, a firma wdrożeniowa pobiera opłatę tylko za hosting i utrzymanie. Zużycie modelu płacicie bezpośrednio — bez marży pośrednika.',
+      'Korzystacie z własnego konta u dostawcy modelu, a firma wdrożeniowa pobiera opłatę tylko za hosting i utrzymanie. Za zużycie modelu płacicie bezpośrednio, bez marży pośrednika.',
   },
   {
     term: 'Self-hosting (wdrożenie on-premise)',
     definition:
-      'Uruchomienie agenta na Waszej infrastrukturze lub dedykowanym serwerze, zamiast we współdzielonej chmurze dostawcy. Częsty wymóg tam, gdzie przetwarza się dane wrażliwe — w medycynie, kadrach czy finansach.',
+      'Uruchomienie agenta na Waszej infrastrukturze albo na serwerze przypisanym tylko do Was, zamiast we współdzielonej chmurze dostawcy. Częsty wymóg tam, gdzie przetwarza się dane wrażliwe: w medycynie, kadrach czy finansach.',
   },
   {
     term: 'Omnichannel (wielokanałowość)',
     definition:
-      'Jeden agent obsługujący wiele kanałów naraz — WhatsApp, Slack, Teams, czat na stronie — z tą samą wiedzą i historią rozmowy, zamiast osobnego bota w każdym miejscu.',
+      'Jeden agent obsługujący wiele kanałów naraz (WhatsApp, Slack, Teams, czat na stronie), z tą samą wiedzą i historią rozmowy, zamiast osobnego bota w każdym miejscu.',
     href: '/uslugi/chatbot-ai',
     hrefLabel: 'Chatbot AI dla firm',
   },
   {
     term: 'OpenClaw',
     definition:
-      'Otwarty framework do budowy agentów AI, jeden z najszybciej rosnących projektów open source. Ponieważ jest otwarty, kod i konfigurację można hostować samodzielnie — nie ma uzależnienia od jednego dostawcy.',
+      'Otwarty framework do budowy agentów AI, jeden z najszybciej rosnących projektów open source. Ponieważ jest otwarty, kod i konfigurację można hostować samodzielnie. Nie ma uzależnienia od jednego dostawcy.',
     href: '/openclaw',
-    hrefLabel: 'OpenClaw Polska — wdrożenia',
+    hrefLabel: 'OpenClaw Polska i nasze wdrożenia',
   },
   {
     term: 'Integracja',
     definition:
-      'Połączenie agenta z systemem, którego już używacie — CRM, ERP, kalendarzem, systemem kadrowym czy telefonią. To zwykle ta część wdrożenia, która najbardziej wpływa na koszt i czas.',
+      'Połączenie agenta z systemem, którego już używacie: CRM, ERP, kalendarzem, systemem kadrowym czy telefonią. To zwykle ta część wdrożenia, która najbardziej wpływa na koszt i czas. I ta, którą najtrudniej wycenić przed rozmową z Waszym działem IT.',
   },
   {
     term: 'Fine-tuning a prompt',
     definition:
-      'Dwa sposoby dostosowania modelu. Prompt to instrukcja opisująca zadanie i sposób odpowiadania — tani i szybki do zmiany. Fine-tuning to douczanie modelu na własnych danych; kosztowniejsze i rzadko potrzebne, gdy wystarczy dobra baza wiedzy.',
+      'Dwa sposoby dostosowania modelu. Prompt to instrukcja opisująca zadanie i sposób odpowiadania, tania i szybka do zmiany. Fine-tuning to douczanie modelu na własnych danych; kosztowniejsze i rzadko potrzebne, gdy wystarczy dobra baza wiedzy.',
   },
 ];
 
@@ -150,7 +150,7 @@ export default function SlownikPage() {
         </h1>
         <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-12">
           Żargon wokół AI potrafi utrudnić rozmowę o rzeczach prostych. Zebraliśmy pojęcia, które najczęściej padają na
-          spotkaniach z klientami — wyjaśnione tak, jak tłumaczymy je na co dzień.
+          spotkaniach z klientami, i wyjaśniliśmy je tak, jak tłumaczymy je na co dzień.
         </p>
 
         <dl className="space-y-0">
@@ -182,8 +182,8 @@ export default function SlownikPage() {
         >
           <h2 className="text-xl font-bold mb-3">Brakuje jakiegoś pojęcia?</h2>
           <p className="leading-relaxed mb-5" style={{ color: 'var(--fg-70)' }}>
-            Napisz — dopiszemy je do słownika. A jeśli wolisz przejść od słów do konkretu, umów bezpłatną rozmowę i
-            zapytaj wprost o swój przypadek.
+            Napisz, to je dopiszemy. A jeśli wolisz przejść od słów do konkretu, umów bezpłatną rozmowę i zapytaj
+            wprost o swój przypadek.
           </p>
           <Link
             href="/#kontakt"
