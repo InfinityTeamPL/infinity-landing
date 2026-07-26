@@ -158,7 +158,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
           texts={[
             'Najnowsze wiadomości ze świata sztucznej inteligencji',
             'Automatyczne newsy z TechCrunch, The Verge, Wired i więcej',
-            'Codziennie świeże treści — przetłumaczone na polski',
+            'Codziennie świeże treści, przetłumaczone na polski',
           ]}
           speed={40}
           deleteSpeed={25}

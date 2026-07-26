@@ -82,8 +82,8 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-white/90">Nasze produkty</h4>
             <div className="flex flex-col gap-2 text-[#7B9BDB]">
-              <a href="https://clawlabs.pro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">ClawLabs — platforma agentów AI</a>
-              <a href="https://superkadrowa.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Superkadrowa — kadrowa AI</a>
+              <a href="https://clawlabs.pro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">ClawLabs: platforma agentów AI</a>
+              <a href="https://superkadrowa.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Superkadrowa, kadrowa AI</a>
               <a href="https://asystenci-glosowi.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Demo: asystenci głosowi</a>
               <a href="https://pks-gryfice-demo.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Demo: PKS Gryfice</a>
             </div>

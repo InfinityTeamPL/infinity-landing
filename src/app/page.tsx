@@ -64,7 +64,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Czy budujecie agentów głosowych (voice AI)?',
-    answer: 'Tak. Tworzymy telefonicznych asystentów AI, którzy odbierają połączenia 24/7 i rozmawiają naturalnym głosem po polsku — udzielają informacji, umawiają terminy, odpowiadają na pytania klientów. Wykorzystujemy m.in. ElevenLabs i potrafimy podpiąć agenta pod Waszą infolinię oraz bazę wiedzy.'
+    answer: 'Tak. Tworzymy telefonicznych asystentów AI, którzy odbierają połączenia 24/7 i rozmawiają naturalnym głosem po polsku. Udzielają informacji, umawiają terminy i odpowiadają na pytania klientów. Wykorzystujemy m.in. ElevenLabs i potrafimy podpiąć agenta pod Waszą infolinię oraz bazę wiedzy.'
   },
   {
     question: 'Jak długo trwa wdrożenie?',
@@ -88,12 +88,12 @@ const FAQ_ITEMS = [
   }
 ];
 
-// Co robimy — filary
+// Co robimy: filary
 const SERVICES = [
   {
     title: 'Agenci głosowi',
     tierLabel: 'VOICE AI',
-    description: 'Telefoniczni asystenci AI, którzy odbierają połączenia 24/7, rozmawiają naturalnym głosem i realnie załatwiają sprawy — udzielają informacji, umawiają terminy, odpowiadają na pytania klientów. Naturalne, ludzkie brzmienie, pełna obsługa po polsku.',
+    description: 'Telefoniczni asystenci AI, którzy odbierają połączenia 24/7, rozmawiają naturalnym głosem i realnie załatwiają sprawy. Udzielają informacji, umawiają terminy, odpowiadają na pytania klientów. Naturalne, ludzkie brzmienie, pełna obsługa po polsku.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
@@ -104,7 +104,7 @@ const SERVICES = [
   {
     title: 'Agenci wielokanałowi',
     tierLabel: 'CHAT / OMNICHANNEL',
-    description: 'Agent AI „pod klucz" wpięty w kanały, których już używasz — WhatsApp, Slack, Teams, Telegram, Discord i 23+ innych. W pełni autonomiczny system, który obsługuje klientów i zespół 24/7, na dedykowanym serwerze w Polsce.',
+    description: 'Agent AI „pod klucz" wpięty w kanały, których już używasz: WhatsApp, Slack, Teams, Telegram, Discord i 23+ innych. W pełni autonomiczny system, który obsługuje klientów i zespół 24/7, na dedykowanym serwerze w Polsce.',
     price: '',
     features: [],
     accentColor: '#2E4AAD',
@@ -114,7 +114,7 @@ const SERVICES = [
   {
     title: 'Automatyzacja procesów',
     tierLabel: 'AUTOMATYZACJA',
-    description: 'Wyspecjalizowani agenci dla działów HR, kadr i płac, marketingu i sprzedaży — selekcja CV, onboarding, dokumenty kadrowe, pilnowanie terminów, generowanie treści, kwalifikacja leadów i follow-upy. Przejmują powtarzalną pracę, żeby Twój zespół robił to, co wymaga człowieka.',
+    description: 'Wyspecjalizowani agenci dla działów HR, kadr i płac, marketingu i sprzedaży. Selekcja CV, onboarding, dokumenty kadrowe, pilnowanie terminów, generowanie treści, kwalifikacja leadów i follow-upy. Przejmują powtarzalną pracę, żeby Twój zespół robił to, co wymaga człowieka.',
     price: '',
     features: [],
     accentColor: '#4F6AE8',
@@ -124,7 +124,7 @@ const SERVICES = [
   {
     title: 'Doradztwo i wdrożenia',
     tierLabel: 'CONSULTING & CUSTOM',
-    description: 'Audyt procesów, mapa quick-wins i realny ROI — bez słownictwa „transformacji cyfrowej". Projektujemy i budujemy rozwiązania AI szyte na miarę: od pojedynczego agenta po dedykowaną aplikację dla Twojej branży. Pierwsza konsultacja jest bezpłatna.',
+    description: 'Audyt procesów, mapa quick-wins i realny ROI. Bez słownictwa „transformacji cyfrowej". Projektujemy i budujemy rozwiązania AI szyte na miarę: od pojedynczego agenta po dedykowaną aplikację dla Twojej branży. Pierwsza konsultacja jest bezpłatna.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
@@ -133,7 +133,7 @@ const SERVICES = [
   }
 ];
 
-// Kanały integracji — custom SVG paths for icons not in simple-icons
+// Kanały integracji: custom SVG paths for icons not in simple-icons
 const SLACK_PATH = 'M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.124 2.521a2.528 2.528 0 0 1 2.52-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.52V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.166 0a2.528 2.528 0 0 1 2.521 2.522v6.312zm-2.521 10.124a2.528 2.528 0 0 1 2.521 2.52A2.528 2.528 0 0 1 15.166 24a2.528 2.528 0 0 1-2.521-2.522v-2.52h2.521zm0-1.271a2.528 2.528 0 0 1-2.521-2.521 2.528 2.528 0 0 1 2.521-2.521h6.312A2.528 2.528 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.521h-6.312z';
 const MS_TEAMS_PATH = 'M20.47 7.37a2.26 2.26 0 1 0 0-4.52 2.26 2.26 0 0 0 0 4.52zm1.1 1.09h-4.6a1.09 1.09 0 0 0-1.09 1.09v5.46a3.4 3.4 0 0 0 3.4 3.4h.38a3.4 3.4 0 0 0 3.4-3.4V9.55a1.09 1.09 0 0 0-1.09-1.09h-.4zM13 6.25a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5zm-1.5 2.37h7A1.38 1.38 0 0 1 19.88 10v6.63A4.88 4.88 0 0 1 15 21.5h-2A4.88 4.88 0 0 1 8.12 16.63V10A1.38 1.38 0 0 1 9.5 8.62h2zm-5.25-1a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5zM2.09 9.1A1.09 1.09 0 0 0 1 10.19v4.56a3.16 3.16 0 0 0 3.16 3.16A3.12 3.12 0 0 0 6.65 17a5.85 5.85 0 0 1-.53-2.46V9.1z';
 const NOSTR_PATH = 'M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.611 16.708c-1.182.295-2.2-.05-3.058-.72-.14-.11-.271-.232-.406-.348-.018.018-.036.032-.053.05l-.002.001c-.698.736-1.544.982-2.525.827-1.168-.184-1.937-.895-2.338-2.001a4.078 4.078 0 0 1-.165-.629c-.018-.117-.005-.181.147-.195.703-.063 1.405-.142 2.108-.21.077-.007.121.019.138.098.122.558.368 1.044.912 1.313.353.174.706.148 1.009-.103.343-.284.37-.664.115-1.013-.174-.239-.412-.41-.665-.562-.608-.367-1.248-.678-1.848-1.055-1.031-.648-1.536-1.568-1.386-2.808.167-1.378 1.063-2.21 2.323-2.598.16-.05.324-.085.49-.108.028-.004.073.004.082-.044h3.1c.005.039.046.037.073.043 1.168.233 1.882.934 2.258 2.043.054.157.09.32.123.482.016.08-.008.12-.097.128-.698.058-1.395.127-2.093.192-.079.007-.116-.025-.134-.103-.11-.472-.326-.887-.797-1.108-.337-.159-.673-.138-.967.08-.37.275-.406.668-.132 1.033.174.232.406.4.654.547.612.363 1.256.673 1.858 1.049 1.116.696 1.58 1.713 1.367 3.01-.21 1.273-1.025 2.082-2.238 2.484z';
@@ -159,7 +159,7 @@ const CHANNELS: { name: string; path?: string; color?: string }[] = [
   { name: 'Feishu', path: FEISHU_PATH, color: '#3370FF' },
 ];
 
-// OpenClaw quotes — rotating carousel
+// OpenClaw quotes, rotating carousel
 const QUOTE_AVATARS: Record<string, string> = {
   'Jensen Huang': '/images/jensen-huang.jpg',
   'Sam Altman': '/images/sam-altman.jpg',
@@ -218,7 +218,7 @@ function HeroSection() {
   return (
     <>
     <section className="flex flex-col relative overflow-hidden" style={{ minHeight: '100vh' }}>
-      {/* Content — siatka Vercel z tła strony prześwituje, zero wideo */}
+      {/* Content: siatka Vercel z tła strony prześwituje, zero wideo */}
       <div className="relative z-10 flex flex-col w-full min-h-screen">
         {/* Centered content */}
         <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-6 pt-28 pb-10 text-center">
@@ -244,7 +244,7 @@ function HeroSection() {
 
           <FadeIn delay={0.5}>
             <p className="text-base md:text-lg xl:text-xl 2xl:text-2xl mb-7 max-w-lg xl:max-w-2xl mx-auto text-white/80 px-2">
-              Budujemy agentów AI — głosowych i tekstowych — oraz automatyzacje, które przejmują powtarzalną pracę: od obsługi klienta, przez kadry, po sprzedaż. Ty skupiasz się na tym, co naprawdę napędza rozwój firmy.
+              Budujemy agentów AI, głosowych i tekstowych, oraz automatyzacje, które przejmują powtarzalną pracę: od obsługi klienta, przez kadry, po sprzedaż. Ty skupiasz się na tym, co naprawdę napędza rozwój firmy.
             </p>
           </FadeIn>
 
@@ -263,9 +263,9 @@ function HeroSection() {
           </FadeIn>
         </div>
 
-        {/* Bottom section — social icons left + quote centered */}
+        {/* Bottom section: social icons left + quote centered */}
         <div className="px-6 md:px-12 lg:px-20 pb-8">
-        {/* Social icons — bottom left */}
+        {/* Social icons, bottom left */}
         <div className="liquid-glass flex gap-2 items-center rounded-full px-2 py-1.5 mx-auto md:mx-0 mb-5 md:mb-0 md:absolute md:bottom-8 md:left-[2em] w-fit" style={{ border: '1px solid rgba(var(--ink-rgb),0.15)' }}>
           <a href="https://x.com/InfinityTech_PL" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 hover:scale-105 transition-all">
             <XIcon className="w-4 h-4" />
@@ -324,7 +324,7 @@ function StatsSection() {
 }
 
 function TeamSection2() {
-  // Karty zespołu są zawsze ciemne z pełnym holo — stała poświata jak w oryginale.
+  // Karty zespołu są zawsze ciemne z pełnym holo, stała poświata jak w oryginale.
   // Układ: jeden rząd małych kart, imię i stanowisko podpisane POD kartą.
   const matteGlow = 'rgba(79,106,232,0.3)';
   const matteGradient = 'var(--card-gradient)';
@@ -381,7 +381,7 @@ function TeamSection2() {
 
         <FadeIn delay={0.4}>
           <p className="text-center text-white/60 max-w-2xl mx-auto mt-10 leading-relaxed">
-            Łączymy ekspertyzę w AI, inżynierii oprogramowania i strategii biznesowej — a łączy nas jedna misja:
+            Łączymy ekspertyzę w AI, inżynierii oprogramowania i strategii biznesowej, a wszystkich nas trzyma razem jedna misja:
             automatyzować firmy tak, by mogły rosnąć bez granic.
           </p>
         </FadeIn>
@@ -417,7 +417,7 @@ function BenefitsSection() {
 
   return (
     <section ref={sectionRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="pt-6 pb-24 relative overflow-hidden">
-      {/* Bottom fade — disabled for transparent bg */}
+      {/* Bottom fade: disabled for transparent bg */}
       {/* Animated blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="blob-1 absolute rounded-full" style={{ width: '300px', height: '300px', background: '#4F6AE8', opacity: 0.05, filter: 'blur(80px)', top: '10%', left: '-5%' }} />
@@ -435,12 +435,12 @@ function BenefitsSection() {
         </FadeIn>
 
         {/* Bento Grid */}
-        {/* Wyróżniki — konkrety, nie obietnice. Bez dekoracyjnych ikon. */}
+        {/* Wyróżniki: konkrety, nie obietnice. Bez dekoracyjnych ikon. */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9 max-w-4xl mx-auto">
           {[
             {
               title: 'Sami tego używamy',
-              body: 'Nie sprzedajemy cudzego oprogramowania. Zbudowaliśmy własną platformę ClawLabs i wirtualną kadrową Janinę — te same narzędzia, które wdrażamy u klientów, działają u nas na produkcji.',
+              body: 'Nie sprzedajemy cudzego oprogramowania. Zbudowaliśmy własną platformę ClawLabs i wirtualną kadrową Janinę. Te same narzędzia, które wdrażamy u klientów, działają u nas na produkcji.',
             },
             {
               title: 'Rozmawiasz z osobą, która to zbuduje',
@@ -448,11 +448,11 @@ function BenefitsSection() {
             },
             {
               title: 'Twoje dane zostają w Europie',
-              body: 'Hosting w Polsce lub w chmurze EU, izolowana instancja dla każdego klienta, zgodność z RODO. Nic nie ląduje w cudzych modelach — możesz też przynieść własne klucze API.',
+              body: 'Hosting w Polsce lub w chmurze EU, izolowana instancja dla każdego klienta, zgodność z RODO. Nic nie ląduje w cudzych modelach, a klucze API możesz przynieść własne.',
             },
             {
               title: 'Wycena po audycie, nie z cennika',
-              body: 'Zaczynamy od mapy procesów i policzenia, co realnie się zwróci. Jeśli automatyzacja nie ma sensu, powiemy to wprost — pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.',
+              body: 'Zaczynamy od mapy procesów i policzenia, co realnie się zwróci. Jeśli automatyzacja nie ma sensu, powiemy to wprost. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.',
             },
             {
               title: 'Bez uwiązania na lata',
@@ -543,11 +543,11 @@ function ServicesSection() {
   );
 }
 
-// Realizacje — prawdziwe produkty i wdrożenia; tam gdzie mamy publiczne demo, linkujemy wprost
+// Realizacje: prawdziwe produkty i wdrożenia; tam gdzie mamy publiczne demo, linkujemy wprost
 const CASE_STUDIES = [
   {
     icon: PhoneCall,
-    sector: 'Transport — demo na danych PKS Gryfice',
+    sector: 'Transport · demo na danych PKS Gryfice',
     title: 'Asystent głosowy z rozkładem jazdy',
     description: 'Głosowy agent AI, który odpowiada pasażerom na pytania o odjazdy z 6 przystanków (276 kursów): kierunki, godziny, dni kursowania. Zawsze cytuje źródło rozkładu i nie zmyśla godzin. Możesz z nim porozmawiać w przeglądarce.',
     tags: ['Voice AI', 'ElevenLabs', 'Demo publiczne'],
@@ -556,16 +556,16 @@ const CASE_STUDIES = [
   },
   {
     icon: Building2,
-    sector: 'Kadry i płace — Superkadrowa',
+    sector: 'Kadry i płace · Superkadrowa',
     title: 'Janina: wirtualna kadrowa AI',
-    description: 'Zna Kodeks pracy i odpowiada głosem lub na czacie — z cytatem konkretnego artykułu. Baza: 40+ aktów prawnych, 900+ dokumentów, orzecznictwo SN i wzory pism. Generuje dokumenty kadrowe i pilnuje terminów ZUS/PIT.',
+    description: 'Zna Kodeks pracy i odpowiada głosem lub na czacie, zawsze z cytatem konkretnego artykułu. Baza: 40+ aktów prawnych, 900+ dokumentów, orzecznictwo SN i wzory pism. Generuje dokumenty kadrowe i pilnuje terminów ZUS/PIT.',
     tags: ['Wertykał HR', 'Baza prawa pracy', 'Demo głosowe'],
     link: 'https://superkadrowa.vercel.app',
     linkLabel: 'Zobacz Superkadrową',
   },
   {
     icon: MessagesSquare,
-    sector: 'Platforma — ClawLabs',
+    sector: 'Platforma · ClawLabs',
     title: 'Agenci AI w chmurze, gotowi w ~60 sekund',
     description: 'Nasza platforma managed hostingu agentów na frameworku OpenClaw: dedykowany, izolowany serwer per agent, 13 kanałów komunikacji, 35+ modeli AI do wyboru i własne klucze API. W chmurze EU albo on-premise.',
     tags: ['Produkt SaaS', 'OpenClaw', 'Hosting EU'],
@@ -576,7 +576,7 @@ const CASE_STUDIES = [
     icon: Sprout,
     sector: 'AgroTech',
     title: 'Aplikacja AI dla rolnictwa',
-    description: 'Dedykowana aplikacja, która wspiera gospodarstwa w codziennych decyzjach i zarządzaniu — od danych po rekomendacje. Wdrożona produkcyjnie i rozwijana z klientem.',
+    description: 'Dedykowana aplikacja, która wspiera gospodarstwa w codziennych decyzjach i zarządzaniu, od danych po rekomendacje. Wdrożona produkcyjnie i rozwijana z klientem.',
     tags: ['Aplikacja na miarę', 'Wdrożenie produkcyjne'],
   },
 ];
@@ -635,7 +635,7 @@ function CaseStudiesSection() {
 
         <FadeIn delay={0.4}>
           <p className="text-center text-sm text-white/40 mt-8">
-            Część wdrożeń realizujemy pod NDA — o szczegółach chętnie opowiemy na rozmowie.
+            Część wdrożeń realizujemy pod NDA. O szczegółach chętnie opowiemy na rozmowie.
           </p>
         </FadeIn>
       </div>
@@ -755,7 +755,7 @@ function TechBentoSection() {
   );
 }
 
-// Sekcja OpenClaw social proof — milestones + scrolling quotes
+// Sekcja OpenClaw social proof: milestones + scrolling quotes
 function OpenClawSection() {
   const [activeQuote, setActiveQuote] = useState(0);
 
@@ -772,7 +772,7 @@ function OpenClawSection() {
         <FadeIn>
           <div className="text-center mb-8 md:mb-14">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-white">Stoimy na ramionach najlepszych technologii open source</h2>
-            <p className="text-white/50">Jedną z nich jest OpenClaw — od weekendowego projektu do #1 na GitHubie w 60 dni</p>
+            <p className="text-white/50">Jedną z nich jest OpenClaw: od weekendowego projektu do #1 na GitHubie w 60 dni</p>
           </div>
         </FadeIn>
 
@@ -885,7 +885,7 @@ function OpenClawSection() {
 
         <FadeIn delay={0.7}>
           <p className="text-center text-sm text-white/60 mt-8">
-            OpenClaw to jeden z frameworków, na których budujemy — obok ElevenLabs (voice AI) i wiodących modeli językowych. Dobieramy technologię do zadania, nie odwrotnie.
+            OpenClaw to jeden z frameworków, na których budujemy, obok ElevenLabs (voice AI) i wiodących modeli językowych. Dobieramy technologię do zadania, nie odwrotnie.
           </p>
         </FadeIn>
       </div>
@@ -907,7 +907,7 @@ function TechnologySection() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Jak działają nasi agenci</h2>
             <p className="text-xl text-slate-300 mb-8">
               Łączymy najlepsze modele językowe, silniki głosowe i otwarte frameworki agentowe
-              w jeden autonomiczny system, który pracuje 24/7 — głosem i tekstem, w kanałach Twoich klientów.
+              w jeden autonomiczny system, który pracuje 24/7 głosem i tekstem, w kanałach Twoich klientów.
             </p>
 
             <div className="space-y-4">
@@ -950,7 +950,7 @@ function TechnologySection() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span style={{ color: '#2E4AAD' }}>▸</span>
-                  <span className="text-white/50">Głos: ElevenLabs — PL, naturalny...</span>
+                  <span className="text-white/50">Głos: ElevenLabs (PL, naturalny)...</span>
                   <span className="text-green-400">✓</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -960,13 +960,13 @@ function TechnologySection() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span style={{ color: '#2E4AAD' }}>▸</span>
-                  <span className="text-white/50">Agent aktywny — tryb 24/7</span>
+                  <span className="text-white/50">Agent aktywny, tryb 24/7</span>
                   <span className="text-green-400">✓</span>
                 </div>
 
                 {/* Ślad prawdziwej rozmowy z publicznego dema PKS Gryfice */}
                 <div className="pt-3 mt-3 border-t border-white/10 space-y-2.5">
-                  <div className="text-white/30 text-xs">Przebieg rozmowy — demo PKS Gryfice</div>
+                  <div className="text-white/30 text-xs">Przebieg rozmowy · demo PKS Gryfice</div>
                   <div>
                     <span className="text-white/40">pasażer › </span>
                     <span className="text-white/70">&bdquo;O której jest autobus z Gryfic do Pobierowa?&rdquo;</span>
@@ -981,14 +981,14 @@ function TechnologySection() {
                   </div>
                   <div>
                     <span className="text-white/40">agent  › </span>
-                    <span className="text-white/70">cytuje źródło rozkładu — bez zgadywania</span>
+                    <span className="text-white/70">cytuje źródło rozkładu, bez zgadywania</span>
                   </div>
                 </div>
 
                 <div className="pt-3 mt-2 border-t border-white/10">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-green-400 text-xs">Możesz to sprawdzić sam — demo jest publiczne</span>
+                    <span className="text-green-400 text-xs">Demo jest publiczne. Sprawdź sam</span>
                   </div>
                 </div>
               </div>
@@ -1000,7 +1000,7 @@ function TechnologySection() {
   );
 }
 
-// Teaser kalkulatora ROI — szybki szacunek + CTA do pełnego kalkulatora.
+// Teaser kalkulatora ROI: szybki szacunek + CTA do pełnego kalkulatora.
 // Formuły spójne z ROICalculator (plan Standard: 0.5% oszczędności czasu).
 function RoiTeaserSection() {
   const [employees, setEmployees] = useState(50);
@@ -1098,13 +1098,13 @@ function FAQSection() {
   );
 }
 
-// Jak wygląda współpraca — konkretne kroki z tym, co robi klient i co dostaje
+// Jak wygląda współpraca: konkretne kroki z tym, co robi klient i co dostaje
 const PROCESS_STEPS = [
   {
     label: 'Rozmowa',
     time: '45 minut, bezpłatnie',
     what: 'Opowiadasz, co zżera Wam czas. Pytamy o liczby: ile telefonów dziennie, ile dokumentów w miesiącu, kto to dziś robi. Bez prezentacji i bez slajdów.',
-    get: 'Wstępna opinia, czy AI ma tu sens — także jeśli odpowiedź brzmi „nie”.',
+    get: 'Wstępna opinia, czy AI ma tu sens. Także jeśli odpowiedź brzmi „nie”.',
   },
   {
     label: 'Audyt procesu',
@@ -1116,7 +1116,7 @@ const PROCESS_STEPS = [
     label: 'Wycena i zakres',
     time: '2–3 dni',
     what: 'Dostajesz konkretną ofertę: co budujemy, w jakiej kolejności, ile to kosztuje i ile trwa. Zaczynamy od jednego procesu, nie od całej firmy naraz.',
-    get: 'Oferta z widełkami i harmonogramem — bez ukrytych kosztów utrzymania.',
+    get: 'Oferta z widełkami, harmonogramem i jawnymi kosztami utrzymania.',
   },
   {
     label: 'Budowa i testy',
@@ -1127,7 +1127,7 @@ const PROCESS_STEPS = [
   {
     label: 'Uruchomienie i opieka',
     time: 'na bieżąco',
-    what: 'Wypuszczamy agenta na produkcję — najczęściej najpierw na części ruchu. Monitorujemy rozmowy, poprawiamy odpowiedzi i rozszerzamy zakres.',
+    what: 'Wypuszczamy agenta na produkcję. Najczęściej najpierw na części ruchu. Monitorujemy rozmowy, poprawiamy odpowiedzi i rozszerzamy zakres.',
     get: 'Wsparcie w abonamencie (od 249 zł/mies.) i raport z tego, co agent faktycznie załatwił.',
   },
 ];
@@ -1141,7 +1141,7 @@ function ProcessSection() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Jak wygląda <span style={{ color: 'var(--accent-text)' }}>współpraca</span>
             </h2>
-            <p className="text-xl text-white/50">Od pierwszej rozmowy do działającego agenta — bez niespodzianek</p>
+            <p className="text-xl text-white/50">Od pierwszej rozmowy do działającego agenta, bez niespodzianek</p>
           </div>
         </FadeIn>
 
@@ -1218,7 +1218,7 @@ function ContactCTASection() {
         {/* Two columns: form + map */}
         <div className="max-w-7xl mx-auto px-6 md:px-10 pb-16">
           <div className="grid lg:grid-cols-2 gap-5 items-stretch">
-            {/* Left — Form */}
+            {/* Left: Form */}
             <FadeIn delay={0.2} className="h-full">
               <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid var(--border-soft)' }}>
                 <div className="px-6 py-3" style={{ backgroundColor: 'rgba(var(--accent-text-rgb), 0.08)' }}>
@@ -1229,7 +1229,7 @@ function ContactCTASection() {
                     <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
                       <CheckCircle2 className="w-10 h-10 text-[#2E4AAD]" />
                       <p className="text-white font-semibold text-lg">Wiadomość wysłana!</p>
-                      <p className="text-white/50 text-sm">Odezwiemy się najszybciej jak to możliwe. Sprawdź też skrzynkę email — wysłaliśmy potwierdzenie.</p>
+                      <p className="text-white/50 text-sm">Odezwiemy się najszybciej jak to możliwe. Sprawdź też skrzynkę email, bo wysłaliśmy potwierdzenie.</p>
                     </div>
                   ) : (
                     <form className="space-y-2" onSubmit={handleSubmit}>
@@ -1342,7 +1342,7 @@ function ContactCTASection() {
               </div>
             </FadeIn>
 
-            {/* Right — Map */}
+            {/* Right: Map */}
             <FadeIn delay={0.4} className="h-full">
               <div className="rounded-2xl overflow-hidden h-full flex flex-col" style={{ border: '1px solid var(--border-soft)' }}>
                 <div className="px-6 py-3" style={{ backgroundColor: 'rgba(var(--accent-text-rgb), 0.08)' }}>

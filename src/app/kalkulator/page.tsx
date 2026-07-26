@@ -75,7 +75,7 @@ export default function KalkulatorPage() {
             </h1>
 
             <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto mb-8">
-              Policz, ile godzin i pieniędzy pochłania dziś powtarzalna praca w Twojej firmie — i ile z tego
+              Policz, ile godzin i pieniędzy pochłania dziś powtarzalna praca w Twojej firmie. I ile z tego
               realnie da się odzyskać. Szacunek opieramy na danych o kosztach pracy w Polsce (GUS, ZUS).
             </p>
 
@@ -113,14 +113,14 @@ export default function KalkulatorPage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Jak liczymy zwrot z automatyzacji</h2>
               <p className="leading-relaxed mb-4" style={{ color: 'var(--fg-70)' }}>
-                Punktem wyjścia jest koszt godziny pracy w Twojej firmie — nie samo wynagrodzenie brutto, ale pełny
+                Punktem wyjścia jest koszt godziny pracy w Twojej firmie. Nie samo wynagrodzenie brutto, tylko pełny
                 koszt pracodawcy razem ze składkami. Mnożymy go przez liczbę godzin, które dziś idą na powtarzalne
                 zadania: odbieranie tych samych telefonów, przepisywanie danych między systemami, wypełnianie
                 dokumentów według stałego wzoru.
               </p>
               <p className="leading-relaxed" style={{ color: 'var(--fg-70)' }}>
                 Od tej kwoty odejmujemy koszt wdrożenia i miesięcznego utrzymania agenta. To, co zostaje, jest
-                oszczędnością — ale traktuj ją jako szacunek, a nie obietnicę. Rzeczywisty wynik zależy od tego, jak
+                oszczędnością, ale traktuj ją jako szacunek, a nie obietnicę. Rzeczywisty wynik zależy od tego, jak
                 uporządkowane są Wasze dane i ile wyjątków ma proces.
               </p>
             </div>
@@ -130,8 +130,8 @@ export default function KalkulatorPage() {
               <p className="leading-relaxed mb-4" style={{ color: 'var(--fg-70)' }}>
                 Uczciwie: kilku rzeczy nie da się sensownie policzyć w formularzu. Nie wyceniamy tu wartości
                 połączeń odebranych po godzinach, których dziś w ogóle nie obsługujecie, ani tego, że pracownik
-                przestaje wykonywać zadanie, którego szczerze nie znosi. W drugą stronę — nie liczymy też czasu,
-                który Wasz zespół poświęci na wdrożenie i testy.
+                przestaje wykonywać zadanie, którego szczerze nie znosi. W drugą stronę działa to tak samo: nie
+                liczymy czasu, który Wasz zespół poświęci na wdrożenie i testy.
               </p>
               <p className="leading-relaxed" style={{ color: 'var(--fg-70)' }}>
                 Dlatego wynik z kalkulatora traktujemy jako punkt startu do rozmowy, a nie jako ofertę. Na audycie
@@ -163,7 +163,7 @@ export default function KalkulatorPage() {
             <div className="rounded-2xl p-7" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
               <h2 className="text-xl font-bold mb-3">Wynik wygląda obiecująco?</h2>
               <p className="leading-relaxed mb-5" style={{ color: 'var(--fg-70)' }}>
-                Umów bezpłatną rozmowę — przejdziemy przez Wasz proces i policzymy to samo na prawdziwych liczbach.
+                Umów bezpłatną rozmowę. Przejdziemy przez Wasz proces i policzymy to samo na prawdziwych liczbach.
                 Jeśli wyjdzie, że automatyzacja się nie opłaca, powiemy to wprost.
               </p>
               <div className="flex flex-wrap gap-3">

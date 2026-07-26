@@ -31,15 +31,15 @@ const REALIZACJE: Realizacja[] = [
     id: 'pks-gryfice',
     icon: Mic,
     sector: 'Transport autobusowy',
-    client: 'Demo publiczne — asystent na rozkładach PKS Gryfice',
+    client: 'Demo publiczne: asystent na rozkładach PKS Gryfice',
     badge: 'Demo publiczne',
-    title: 'PKS Gryfice — głosowy asystent AI z rozkładami jazdy',
+    title: 'Głosowy asystent AI z rozkładami jazdy PKS Gryfice',
     problem:
       'Pytania o rozkłady jazdy trafiają do biura przewoźnika, które pracuje w standardowych godzinach. Po ich zakończeniu pasażerowie zostają bez informacji, a w godzinach szczytu linia bywa zajęta.',
     solution:
-      'Głosowy asystent AI działający w przeglądarce w trybie push-to-talk (stack: ElevenLabs Conversational AI). Zna rozkłady z 6 przystanków w Gryficach — łącznie 276 odjazdów. Podaje godziny i dni kursowania, a przy każdej odpowiedzi cytuje źródło rozkładu i nie zmyśla, gdy czegoś nie wie.',
+      'Głosowy asystent AI działający w przeglądarce w trybie push-to-talk (stack: ElevenLabs Conversational AI). Zna rozkłady z 6 przystanków w Gryficach, łącznie 276 odjazdów. Podaje godziny i dni kursowania, a przy każdej odpowiedzi cytuje źródło rozkładu i nie zmyśla, gdy czegoś nie wie.',
     result:
-      'Demo jest publiczne — wystarczy wejść na stronę, przytrzymać przycisk i zapytać o kurs własnymi słowami. Odpowiedź głosem przychodzi w kilka sekund, bez czekania na połączenie z biurem i bez drzewka „wciśnij 1".',
+      'Demo jest publiczne. Wystarczy wejść na stronę, przytrzymać przycisk i zapytać o kurs własnymi słowami. Odpowiedź głosem przychodzi w kilka sekund, bez czekania na połączenie z biurem i bez drzewka „wciśnij 1".',
     demo: { label: 'Zobacz demo', href: 'https://pks-gryfice-demo.vercel.app/' },
     related: { label: 'Zobacz usługę: Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
   },
@@ -47,15 +47,15 @@ const REALIZACJE: Realizacja[] = [
     id: 'superkadrowa-janina',
     icon: Building2,
     sector: 'Kadry i płace',
-    client: 'Superkadrowa — produkt własny, działa na naszej platformie ClawLabs',
+    client: 'Superkadrowa: produkt własny na naszej platformie ClawLabs',
     badge: 'Na produkcji',
-    title: 'Superkadrowa (Janina) — wirtualna kadrowa AI z polskim prawem pracy',
+    title: 'Superkadrowa (Janina): wirtualna kadrowa AI z polskim prawem pracy',
     problem:
       'Kadry i płace to ciągłe pilnowanie terminów ZUS i PIT, zmieniające się przepisy i powtarzalne dokumenty. Sprawdzanie każdej zmiany w prawie zajmuje czas, a pomyłka w terminie kosztuje.',
     solution:
-      'Janina — wirtualna kadrowa AI, która rozmawia głosem lub na czacie po polsku, cytuje konkretne artykuły Kodeksu pracy i weryfikuje, czy przepis jest aktualny. Jej baza to 40+ aktów prawnych, 900+ dokumentów, 13 opracowań orzecznictwa Sądu Najwyższego, 17 wzorów dokumentów i 100+ zestawów danych GUS. Generuje dokumenty do druku (świadectwa, wypowiedzenia, wnioski) i pilnuje kalendarza terminów ZUS, PIT i PFRON.',
+      'Janina to wirtualna kadrowa AI, która rozmawia głosem lub na czacie po polsku, cytuje konkretne artykuły Kodeksu pracy i weryfikuje, czy przepis jest aktualny. Jej baza to 40+ aktów prawnych, 900+ dokumentów, 13 opracowań orzecznictwa Sądu Najwyższego, 17 wzorów dokumentów i 100+ zestawów danych GUS. Generuje dokumenty do druku (świadectwa, wypowiedzenia, wnioski) i pilnuje kalendarza terminów ZUS, PIT i PFRON.',
     result:
-      'Każda firma dostaje dedykowaną instancję na serwerze w UE. Demo głosowe działa bez logowania — z Janiną można porozmawiać od razu po wejściu na stronę.',
+      'Każda firma dostaje dedykowaną instancję na serwerze w UE. Demo głosowe działa bez logowania. Z Janiną można porozmawiać od razu po wejściu na stronę.',
     demo: { label: 'Zobacz demo', href: 'https://superkadrowa.vercel.app' },
     related: { label: 'Zobacz usługę: Automatyzacja HR', href: '/uslugi/automatyzacja-hr' },
   },
@@ -67,25 +67,25 @@ const REALIZACJE: Realizacja[] = [
     badge: 'Na produkcji',
     title: 'Aplikacja AI do zarządzania gospodarstwem rolnym',
     problem:
-      'Zarządzanie gospodarstwem to wiele decyzji naraz, a gotowe narzędzia rzadko przystają do realiów konkretnego gospodarstwa — dane są rozproszone, a część rzeczy trzyma się w zeszycie i w głowie.',
+      'Zarządzanie gospodarstwem to wiele decyzji naraz, a gotowe narzędzia rzadko przystają do realiów konkretnego gospodarstwa. Dane są rozproszone, a część rzeczy trzyma się w zeszycie i w głowie.',
     solution:
-      'Dedykowana aplikacja AI zbudowana na miarę, która wspiera codzienne decyzje i zarządzanie gospodarstwem — od zebranych w jednym miejscu danych po podpowiedzi w bieżącej pracy.',
+      'Dedykowana aplikacja AI zbudowana na miarę, która wspiera codzienne decyzje i zarządzanie gospodarstwem: od zebranych w jednym miejscu danych po podpowiedzi w bieżącej pracy.',
     result:
-      'Aplikacja działa produkcyjnie i jest rozwijana wspólnie z klientem — zakres rośnie w miarę tego, jak sprawdza się w codziennej pracy gospodarstwa.',
+      'Aplikacja działa produkcyjnie i jest rozwijana wspólnie z klientem, a zakres rośnie w miarę tego, jak sprawdza się w codziennej pracy gospodarstwa.',
     demo: null,
     related: { label: 'Zobacz usługę: Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
   },
   {
     id: 'clawlabs',
     icon: Server,
-    sector: 'SaaS — hosting agentów AI',
-    client: 'ClawLabs — produkt własny Infinity Tech Group sp. z o.o.',
+    sector: 'SaaS, hosting agentów AI',
+    client: 'ClawLabs: produkt własny Infinity Tech Group sp. z o.o.',
     badge: 'Na produkcji',
-    title: 'ClawLabs — platforma managed hostingu agentów AI',
+    title: 'ClawLabs, platforma managed hostingu agentów AI',
     problem:
-      'Firmy chcą korzystać z agentów AI zbudowanych na open-source OpenClaw, ale samodzielne utrzymanie to serwery, aktualizacje, bezpieczeństwo kluczy API i integracje z kanałami komunikacji — praca na cały zespół.',
+      'Firmy chcą korzystać z agentów AI zbudowanych na open-source OpenClaw, ale samodzielne utrzymanie to serwery, aktualizacje, bezpieczeństwo kluczy API i integracje z kanałami komunikacji. Praca na cały zespół.',
     solution:
-      'ClawLabs to managed hosting agentów AI: agent startuje w ok. 60 sekund, każdy na dedykowanym VPS-ie w izolowanym kontenerze. Do dyspozycji 13 kanałów komunikacji, 35+ modeli AI (Claude, GPT, Gemini, modele lokalne) i BYOK — własne klucze API szyfrowane AES-256-GCM. Do wyboru chmura w UE (Hetzner, ISO 27001/SOC 2) albo instalacja on-premise.',
+      'ClawLabs to managed hosting agentów AI: agent startuje w ok. 60 sekund, każdy na dedykowanym VPS-ie w izolowanym kontenerze. Do dyspozycji 13 kanałów komunikacji, 35+ modeli AI (Claude, GPT, Gemini, modele lokalne) i BYOK, czyli własne klucze API szyfrowane AES-256-GCM. Do wyboru chmura w UE (Hetzner, ISO 27001/SOC 2) albo instalacja on-premise.',
     result:
       'Platforma działa komercyjnie: plany Cloud od 399 zł/mies. (Premium), Pro za 799 zł i Ultra Pro za 1999 zł, z 5-dniowym okresem próbnym, płatnościami Stripe i polską fakturą VAT. Na ClawLabs działa m.in. Superkadrowa.',
     demo: { label: 'Zobacz stronę', href: 'https://clawlabs.pro' },
@@ -113,7 +113,7 @@ const jsonLd = {
     },
     {
       '@type': 'ItemList',
-      name: 'Realizacje — wdrożenia agentów AI',
+      name: 'Realizacje: wdrożenia agentów AI',
       itemListElement: REALIZACJE.map((r, i) => ({
         '@type': 'ListItem',
         position: i + 1,
@@ -152,12 +152,12 @@ export default function CaseStudiesPage() {
 
       <main className="max-w-4xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-6" style={{ letterSpacing: '-0.022em' }}>
-          Realizacje — wdrożenia agentów AI, które działają na produkcji
+          Realizacje: wdrożenia agentów AI, które działają na produkcji
         </h1>
         <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-3xl">
-          Cztery prawdziwe realizacje — trzy z nich możesz kliknąć i przetestować samodzielnie:
+          Cztery prawdziwe realizacje. Trzy z nich możesz kliknąć i przetestować samodzielnie:
           głosowego asystenta z rozkładami PKS Gryfice, wirtualną kadrową Superkadrową (Janinę)
-          i naszą platformę ClawLabs. Bez wymyślonych procentów — konkret: jaki był problem,
+          i naszą platformę ClawLabs. Zero wymyślonych procentów. Piszemy, jaki był problem,
           co dokładnie zbudowaliśmy i co się zmieniło w codziennej pracy.
         </p>
 
@@ -262,11 +262,11 @@ export default function CaseStudiesPage() {
             Dema publiczne i NDA
           </h2>
           <p className="text-white/70 leading-relaxed mb-4">
-            Część naszych projektów ma publiczne dema — wtedy nie musisz wierzyć nam na słowo:
+            Część naszych projektów ma publiczne dema, więc nie musisz wierzyć nam na słowo:
             linkujemy wprost i możesz przetestować je samodzielnie, jak asystenta PKS Gryfice,
             Superkadrową czy platformę ClawLabs. Udostępniamy też demo pięciu branżowych
             asystentów głosowych (transport, medycyna, nieruchomości, usługi i rezerwacje,
-            administracja) —{' '}
+            administracja):{' '}
             <a
               href="https://asystenci-glosowi.vercel.app"
               target="_blank"
@@ -279,9 +279,9 @@ export default function CaseStudiesPage() {
             .
           </p>
           <p className="text-white/70 leading-relaxed">
-            Pozostałe wdrożenia realizujemy pod NDA — wtedy opisujemy uczciwie branżę, zakres prac
+            Pozostałe wdrożenia realizujemy pod NDA. Wtedy opisujemy uczciwie branżę, zakres prac
             i użyte technologie, bez nazwy firmy. Nie publikujemy zmyślonych statystyk: jeśli nie
-            możemy czegoś rzetelnie policzyć, opisujemy efekt słowami — tak, jak wygląda w praktyce.
+            możemy czegoś rzetelnie policzyć, opisujemy efekt słowami, tak jak wygląda w praktyce.
             Szczegóły konkretnych wdrożeń omawiamy na bezpłatnej rozmowie.
           </p>
         </section>
@@ -313,7 +313,7 @@ export default function CaseStudiesPage() {
           </h2>
           <p className="text-white/60 mb-7 max-w-xl mx-auto">
             Opowiedz nam, co zabiera Twojemu zespołowi najwięcej czasu. Pierwsza konsultacja jest
-            bezpłatna — po niej dostaniesz konkretną wycenę, wdrożenia zaczynają się od 5 000 zł netto.
+            bezpłatna. Po niej dostaniesz konkretną wycenę, a wdrożenia zaczynają się od 5 000 zł netto.
           </p>
           <Link
             href="/#kontakt"

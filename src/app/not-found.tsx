@@ -29,7 +29,7 @@ export default function NotFound() {
         </h1>
         <p className="text-lg leading-relaxed mb-12" style={{ color: 'var(--fg-70)' }}>
           Adres mógł się zmienić albo w linku wkradła się literówka. Poniżej miejsca, do których najczęściej
-          prowadzą nasze strony — coś z tego pewnie jest tym, czego szukasz.
+          prowadzą nasze strony, coś z tego pewnie jest tym, czego szukasz.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
@@ -64,7 +64,7 @@ export default function NotFound() {
             <Link href="/#kontakt" className="underline underline-offset-4" style={{ color: 'var(--accent-text)' }}>
               napisz do nas
             </Link>
-            , jeśli trafiłeś tu z naszego linku — poprawimy go.
+            , jeśli trafiłeś tu z naszego linku. Poprawimy go.
           </span>
         </div>
       </main>
