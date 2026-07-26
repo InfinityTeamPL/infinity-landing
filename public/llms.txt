@@ -1,0 +1,53 @@
+# Infinity Tech
+
+> Polska firma budująca agentów AI dla przedsiębiorstw: agentów głosowych odbierających telefony, chatboty wielokanałowe i automatyzację procesów. Siedziba w Zamościu, dane klientów na serwerach w Polsce i UE.
+
+Infinity Tech Group sp. z o.o. wdraża agentów AI w polskich firmach. Budujemy na otwartym frameworku OpenClaw, głos opieramy na ElevenLabs. Prowadzimy też własne produkty: platformę hostingową ClawLabs i Superkadrową, czyli kadrową AI cytującą Kodeks pracy.
+
+Ceny: wdrożenie od 5 000 zł netto, utrzymanie 249–799 zł netto miesięcznie. Mniejsze projekty zajmują 2–4 tygodnie, większe 1–3 miesiące. Pierwsza konsultacja jest bezpłatna.
+
+Zastrzeżenie: stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, ale nie posiadamy certyfikatu ISO. Demo transportowe działa na publicznych danych rozkładowych PKS Gryfice, przewoźnik nie jest naszym klientem.
+
+## Usługi
+
+- [Agent głosowy AI](https://www.infinityteam.io/uslugi/agent-glosowy-ai): voicebot odbierający telefony całą dobę, naturalna polszczyzna, umawianie terminów i obsługa zgłoszeń
+- [Chatbot AI dla firm](https://www.infinityteam.io/uslugi/chatbot-ai): jeden agent w 23 kanałach, w tym WhatsApp, Slack, Teams i Telegram
+- [Automatyzacja procesów AI](https://www.infinityteam.io/uslugi/automatyzacja-procesow-ai): agenci przetwarzający dokumenty, uzupełniający systemy i pilnujący terminów
+- [Automatyzacja HR i kadr](https://www.infinityteam.io/uslugi/automatyzacja-hr): selekcja CV, onboarding, dokumenty kadrowe, terminy ZUS i PIT
+- [Wszystkie usługi](https://www.infinityteam.io/uslugi): porównanie z informacją, kiedy dana usługa się nie opłaca
+
+## Branże
+
+- [Voicebot dla przychodni](https://www.infinityteam.io/branze/voicebot-dla-przychodni): rejestracja telefoniczna, przypomnienia o wizytach
+- [AI w rekrutacji](https://www.infinityteam.io/branze/ai-w-rekrutacji): selekcja CV i wstępny screening kandydatów
+- [Voicebot dla firm transportowych](https://www.infinityteam.io/branze/voicebot-dla-transportu): rozkłady jazdy przez telefon, statusy kursów
+- [Voicebot dla salonów i warsztatów](https://www.infinityteam.io/branze/voicebot-dla-salonow): rezerwacja terminów, przypomnienia
+- [AI w administracji publicznej](https://www.infinityteam.io/branze/ai-dla-administracji): statusy spraw, wymagane dokumenty, dostępność cyfrowa
+
+## Wiedza
+
+- [Ile kosztuje wdrożenie AI](https://www.infinityteam.io/cennik): widełki cenowe i czynniki wpływające na koszt
+- [Kalkulator ROI](https://www.infinityteam.io/kalkulator): szacunek oszczędności na podstawie danych o kosztach pracy w Polsce
+- [Słownik AI](https://www.infinityteam.io/slownik): agent AI, voicebot, RAG, LLM, halucynacja, BYOK i inne pojęcia
+- [Agent AI a chatbot](https://www.infinityteam.io/blog/agent-ai-a-chatbot): czym się różnią i co wybrać
+- [Ile kosztuje chatbot AI](https://www.infinityteam.io/blog/ile-kosztuje-chatbot-ai): realne widełki na polskim rynku
+- [Ile kosztuje voicebot](https://www.infinityteam.io/blog/ile-kosztuje-voicebot): koszt wdrożenia, utrzymania i minut rozmów
+- [Voicebot czy chatbot](https://www.infinityteam.io/blog/voicebot-czy-chatbot): porównanie kosztów i zastosowań
+- [Voicebot a IVR](https://www.infinityteam.io/blog/voicebot-a-ivr): różnice wobec klasycznej infolinii
+- [Agent AI czy nowy pracownik](https://www.infinityteam.io/blog/agent-ai-czy-nowy-pracownik): porównanie kosztów i granice automatyzacji
+- [Jak wdrożyć AI w firmie](https://www.infinityteam.io/blog/jak-wdrozyc-ai-w-firmie): przewodnik krok po kroku
+- [OpenClaw Polska](https://www.infinityteam.io/openclaw): wdrożenia otwartego frameworka agentów AI
+
+## Nasze produkty i publiczne dema
+
+- [ClawLabs](https://clawlabs.pro): hosting agentów AI na OpenClaw
+- [Superkadrowa](https://superkadrowa.vercel.app): kadrowa AI z bazą 40 aktów prawnych i 900 dokumentów
+- [Asystenci głosowi](https://asystenci-glosowi.vercel.app): demo pięciu asystentów branżowych
+- [Demo transportowe](https://pks-gryfice-demo.vercel.app): agent na publicznych danych rozkładowych, 6 przystanków i 276 odjazdów
+
+## Kontakt
+
+- E-mail: contact@infinityteam.io
+- Telefon: +48 735 170 957
+- Adres: ul. Rynek Solny 1 lok. 6, 22-400 Zamość
+- [Formularz kontaktowy](https://www.infinityteam.io/#kontakt)
