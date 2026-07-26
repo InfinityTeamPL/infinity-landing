@@ -33,6 +33,9 @@ const ENTRIES: Entry[] = [
   { path: '/branze/voicebot-dla-transportu', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
   { path: '/branze/voicebot-dla-salonow', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
   { path: '/branze/ai-dla-administracji', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/branze/chatbot-dla-sklepu-internetowego', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/branze/voicebot-dla-gastronomii', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/branze/ai-dla-kancelarii', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
 
   // Decyzyjne
   { path: '/cennik', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },

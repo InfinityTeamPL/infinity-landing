@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDown, ExternalLink } from 'lucide-react';
+import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDown, ExternalLink, ShoppingCart, UtensilsCrossed, Gavel } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'AI dla branż — gdzie agenci sprawdzają się najlepiej',
   description:
-    'Przychodnie, rekrutacja, transport, usługi, administracja. Gdzie agenci AI naprawdę pomagają, czego nie zrobią i jak zacząć od pilotażu.',
+    'Przychodnie, e-commerce, gastronomia, transport, kancelarie, administracja. Gdzie agenci AI pomagają, czego nie zrobią i jak zacząć od pilotażu.',
   alternates: { canonical: '/branze' },
   openGraph: {
     title: 'AI dla branż — Infinity Tech',
@@ -46,6 +46,24 @@ const WITH_PAGE = [
     href: '/branze/ai-dla-administracji',
     title: 'Administracja i urzędy',
     lead: 'Infolinia bez kolejki: statusy spraw, wymagane dokumenty, kierowanie do właściwego wydziału. Dane obywateli zostają na serwerach w Polsce.',
+  },
+  {
+    icon: ShoppingCart,
+    href: '/branze/chatbot-dla-sklepu-internetowego',
+    title: 'Sklepy internetowe i e-commerce',
+    lead: 'Odpowiedzi na „gdzie jest moja paczka" o drugiej w nocy, zwroty, dostępność wariantów i pytania przed zakupem. Jeden agent na czacie, w Messengerze i na WhatsAppie.',
+  },
+  {
+    icon: UtensilsCrossed,
+    href: '/branze/voicebot-dla-gastronomii',
+    title: 'Restauracje i gastronomia',
+    lead: 'Telefon dzwoni w piątek o dziewiętnastej, czyli wtedy, gdy nikt nie ma go jak odebrać. Agent przyjmuje rezerwacje, odpowiada o menu i potwierdza terminy.',
+  },
+  {
+    icon: Gavel,
+    href: '/branze/ai-dla-kancelarii',
+    title: 'Kancelarie prawne',
+    lead: 'Sekretariat odciążony z powtarzalnych pytań i przeszukiwanie własnego archiwum pism z podaniem źródła. Agent nie udziela porad prawnych i nie zastępuje prawnika.',
   },
   {
     icon: Scale,

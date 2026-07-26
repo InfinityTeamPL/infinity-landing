@@ -23,6 +23,9 @@ Zastrzeżenie: stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, al
 - [Voicebot dla firm transportowych](https://www.infinityteam.io/branze/voicebot-dla-transportu): rozkłady jazdy przez telefon, statusy kursów
 - [Voicebot dla salonów i warsztatów](https://www.infinityteam.io/branze/voicebot-dla-salonow): rezerwacja terminów, przypomnienia
 - [AI w administracji publicznej](https://www.infinityteam.io/branze/ai-dla-administracji): statusy spraw, wymagane dokumenty, dostępność cyfrowa
+- [Chatbot dla sklepu internetowego](https://www.infinityteam.io/branze/chatbot-dla-sklepu-internetowego): status przesyłki, zwroty, pytania przed zakupem, obsługa w wielu kanałach
+- [Voicebot dla restauracji](https://www.infinityteam.io/branze/voicebot-dla-gastronomii): rezerwacje stolików przez telefon, pytania o menu, potwierdzanie terminów
+- [AI dla kancelarii prawnych](https://www.infinityteam.io/branze/ai-dla-kancelarii): odciążenie sekretariatu i przeszukiwanie archiwum pism z cytowaniem źródła, bez udzielania porad prawnych
 
 ## Wiedza
 

@@ -523,6 +523,9 @@ function ServicesSection() {
                 { label: 'Voicebot dla salonów', href: '/branze/voicebot-dla-salonow' },
                 { label: 'AI w rekrutacji', href: '/branze/ai-w-rekrutacji' },
                 { label: 'AI w administracji', href: '/branze/ai-dla-administracji' },
+                { label: 'Chatbot dla sklepu internetowego', href: '/branze/chatbot-dla-sklepu-internetowego' },
+                { label: 'Voicebot dla restauracji', href: '/branze/voicebot-dla-gastronomii' },
+                { label: 'AI dla kancelarii', href: '/branze/ai-dla-kancelarii' },
                 { label: 'Wszystkie branże', href: '/branze' },
               ].map((l) => (
                 <Link

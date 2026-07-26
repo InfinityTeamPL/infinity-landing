@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Słownik AI — pojęcia wyjaśnione po ludzku',
   description:
-    'Agent AI, voicebot, chatbot, RAG, halucynacja, LLM, token, AI Act. Trzydzieści pojęć wyjaśnionych bez żargonu, dla osób, które wdrażają AI w firmie, a nie piszą kodu.',
+    'Agent AI, voicebot, chatbot, RAG, halucynacja, LLM, token, AI Act. Trzydzieści pojęć bez żargonu, dla osób wdrażających AI w firmie, a nie piszących kod.',
   alternates: { canonical: '/slownik' },
   openGraph: {
     title: 'Słownik AI — pojęcia wyjaśnione po ludzku | Infinity Tech',
