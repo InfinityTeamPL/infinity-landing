@@ -25,3 +25,5 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.infinityteam.io/sitemap.xml
+
+# Mapa serwisu dla systemów AI: https://www.infinityteam.io/llms.txt
