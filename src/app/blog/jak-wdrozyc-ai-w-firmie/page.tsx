@@ -4,12 +4,12 @@ import BlogArticle, { BlogArticleContent } from '@/components/BlogArticle';
 export const metadata: Metadata = {
   title: 'Jak wdrożyć AI w firmie — przewodnik krok po kroku',
   description:
-    'Od audytu procesów po działającego agenta: sprawdzona kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
+    'Od audytu procesów po działającego agenta: kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
   alternates: { canonical: '/blog/jak-wdrozyc-ai-w-firmie' },
   openGraph: {
     title: 'Jak wdrożyć AI w firmie — przewodnik krok po kroku',
     description:
-      'Od audytu procesów po działającego agenta: sprawdzona kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
+      'Od audytu procesów po działającego agenta: kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
     type: 'article',
   },
 };
@@ -18,7 +18,7 @@ const content: BlogArticleContent = {
   path: '/blog/jak-wdrozyc-ai-w-firmie',
   title: 'Jak wdrożyć AI w firmie — przewodnik krok po kroku',
   description:
-    'Od audytu procesów po działającego agenta: sprawdzona kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
+    'Od audytu procesów po działającego agenta: kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
   datePublished: '2026-07-25',
   sections: [
     {

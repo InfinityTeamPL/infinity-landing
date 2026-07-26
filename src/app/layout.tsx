@@ -11,8 +11,11 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jet
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.infinityteam.io'),
   title: {
-    default: "Agenci AI dla firm — voicebot, chatbot, automatyzacja | Infinity Tech",
-    template: "%s | Infinity Tech",
+    default: "Agenci AI dla firm: voicebot, chatbot, automatyzacja",
+    // Bez sufiksu marki. "| Infinity Tech" to 16 znaków z ~60, które Google
+    // pokazuje — przy polskich frazach ucinało to ogon tytułu i markę naraz.
+    // Nazwę serwisu Google bierze z WebSite JSON-LD niżej w tym pliku.
+    template: "%s",
   },
   description: "Agenci AI dla firm: voiceboty, chatboty 24/7 i automatyzacja procesów. Wdrożenia szyte na miarę, dane w Polsce, RODO. Pierwsza konsultacja bezpłatna.",
   keywords: ["AI", "sztuczna inteligencja", "agenci AI", "agenci głosowi", "voice AI", "automatyzacja", "asystent głosowy", "biznes", "obsługa klienta AI", "HR", "kadry i płace", "marketing", "sprzedaż"],
@@ -80,10 +83,21 @@ const organizationJsonLd = {
     addressRegion: 'lubelskie',
     addressCountry: 'PL',
   },
+  // Numery rejestrowe: weryfikowalne w KRS i VIES, więc mocno potwierdzają,
+  // że za serwisem stoi realny podmiot. Te same, co w stopce.
+  vatID: 'PL9223090619',
+  taxID: '9223090619',
+  identifier: [
+    { '@type': 'PropertyValue', propertyID: 'KRS', value: '0001236454' },
+    { '@type': 'PropertyValue', propertyID: 'NIP', value: '9223090619' },
+    { '@type': 'PropertyValue', propertyID: 'REGON', value: '544554591' },
+  ],
   sameAs: [
     'https://x.com/InfinityTech_PL',
     'https://www.linkedin.com/company/infinitytechgroup/',
     'https://clawlabs.pro',
+    'https://superkadrowa.vercel.app',
+    'https://asystenci-glosowi.vercel.app',
   ],
   contactPoint: {
     '@type': 'ContactPoint',

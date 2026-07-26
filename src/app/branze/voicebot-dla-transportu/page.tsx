@@ -4,7 +4,7 @@ import SeoLanding, { SeoLandingContent } from '@/components/SeoLanding';
 export const metadata: Metadata = {
   title: 'Voicebot dla firm transportowych — infolinia AI',
   description:
-    'Voicebot dla firm transportowych: agent głosowy AI podaje rozkłady jazdy przez telefon całą dobę, informuje o utrudnieniach i przyjmuje reklamacje. Zobacz nasze demo.',
+    'Voicebot dla firm transportowych: rozkłady jazdy przez telefon 24/7, utrudnienia i reklamacje. Publiczne demo, wdrożenie od 5 000 zł netto.',
   alternates: { canonical: '/branze/voicebot-dla-transportu' },
   openGraph: {
     title: 'Voicebot dla firm transportowych — infolinia AI',

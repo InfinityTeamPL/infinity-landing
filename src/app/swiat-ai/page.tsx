@@ -13,8 +13,8 @@ const Background3D = dynamic(() => import('@/components/Background3D'), { ssr: f
 export const revalidate = 7200; // ISR: rebuild every 2h in background
 
 export const metadata: Metadata = {
-  title: 'Świat AI',
-  description: 'Najnowsze wiadomości ze świata sztucznej inteligencji. Automatyczny feed z HackerNews, Dev.to, The Guardian i Arxiv.',
+  title: 'Świat AI: wiadomości o sztucznej inteligencji po polsku',
+  description: 'Najnowsze wiadomości ze świata sztucznej inteligencji, tłumaczone na polski. Codziennie odświeżany feed z HackerNews, Dev.to, The Guardian i Arxiv.',
   alternates: { canonical: '/swiat-ai' },
   openGraph: {
     title: 'Świat AI | Infinity Tech',

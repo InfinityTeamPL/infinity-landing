@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Realizacje — wdrożenia agentów AI',
   description:
-    'Realne wdrożenia agentów AI z publicznymi demami: głosowy asystent rozkładów PKS Gryfice, wirtualna kadrowa Superkadrowa (Janina), platforma ClawLabs — plus aplikacje na miarę pod NDA.',
+    'Wdrożenia agentów AI z publicznymi demami: asystent rozkładów PKS Gryfice, kadrowa AI Janina, platforma ClawLabs. Plus aplikacje pod NDA.',
   alternates: { canonical: '/case-studies' },
   openGraph: {
     title: 'Realizacje — wdrożenia agentów AI | Infinity Tech',
