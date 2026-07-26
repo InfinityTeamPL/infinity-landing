@@ -508,6 +508,36 @@ function ServicesSection() {
           ))}
         </div>
 
+        {/* Wejścia do stron szczegółowych. Bez tego /uslugi/automatyzacja-hr
+            i strony branżowe wiszą tylko pod hubami, daleko od strony głównej. */}
+        <FadeIn delay={0.3}>
+          <div className="mt-12 pt-8" style={{ borderTop: '1px solid var(--border-soft)' }}>
+            <p className="text-sm mb-4" style={{ color: 'var(--fg-55)' }}>
+              Szukasz czegoś konkretnego?
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+              {[
+                { label: 'Automatyzacja HR i kadr', href: '/uslugi/automatyzacja-hr' },
+                { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },
+                { label: 'Voicebot dla transportu', href: '/branze/voicebot-dla-transportu' },
+                { label: 'Voicebot dla salonów', href: '/branze/voicebot-dla-salonow' },
+                { label: 'AI w rekrutacji', href: '/branze/ai-w-rekrutacji' },
+                { label: 'AI w administracji', href: '/branze/ai-dla-administracji' },
+                { label: 'Wszystkie branże', href: '/branze' },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="transition-opacity hover:opacity-70"
+                  style={{ color: 'var(--accent-text)' }}
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+
       </div>
     </section>
   );
