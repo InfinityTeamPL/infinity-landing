@@ -24,4 +24,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://infinityteam.io/sitemap.xml
+Sitemap: https://www.infinityteam.io/sitemap.xml

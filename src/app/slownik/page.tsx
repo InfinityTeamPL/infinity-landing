@@ -100,20 +100,20 @@ const jsonLd = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://infinityteam.io' },
-        { '@type': 'ListItem', position: 2, name: 'Słownik AI', item: 'https://infinityteam.io/slownik' },
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.infinityteam.io' },
+        { '@type': 'ListItem', position: 2, name: 'Słownik AI', item: 'https://www.infinityteam.io/slownik' },
       ],
     },
     {
       '@type': 'DefinedTermSet',
       name: 'Słownik pojęć AI',
-      url: 'https://infinityteam.io/slownik',
+      url: 'https://www.infinityteam.io/slownik',
       inLanguage: 'pl-PL',
       hasDefinedTerm: TERMS.map((t) => ({
         '@type': 'DefinedTerm',
         name: t.term,
         description: t.definition,
-        inDefinedTermSet: 'https://infinityteam.io/slownik',
+        inDefinedTermSet: 'https://www.infinityteam.io/slownik',
       })),
     },
     {

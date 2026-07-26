@@ -4,7 +4,7 @@ import { MetadataRoute } from 'next';
    Przy `new Date()` każdy deploy zgłaszałby Google, że zmieniły się wszystkie
    strony naraz — sygnał, któremu wyszukiwarka szybko przestaje ufać.
    Zmieniając treść strony, zaktualizuj tu jej datę ręcznie. */
-const base = 'https://infinityteam.io';
+const base = 'https://www.infinityteam.io';
 
 // Data ostatniej dużej przebudowy serwisu
 const REBUILD = '2026-07-25';

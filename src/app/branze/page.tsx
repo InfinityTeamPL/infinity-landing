@@ -129,8 +129,8 @@ const jsonLd = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://infinityteam.io' },
-        { '@type': 'ListItem', position: 2, name: 'Branże', item: 'https://infinityteam.io/branze' },
+        { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://www.infinityteam.io' },
+        { '@type': 'ListItem', position: 2, name: 'Branże', item: 'https://www.infinityteam.io/branze' },
       ],
     },
     {
@@ -140,7 +140,7 @@ const jsonLd = {
         '@type': 'ListItem',
         position: i + 1,
         name: s.title,
-        url: `https://infinityteam.io${s.href}`,
+        url: `https://www.infinityteam.io${s.href}`,
       })),
     },
     {

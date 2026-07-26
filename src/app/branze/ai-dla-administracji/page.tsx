@@ -18,8 +18,8 @@ const content: SeoLandingContent = {
   path: '/branze/ai-dla-administracji',
   breadcrumbLabel: 'AI dla administracji',
   h1: 'AI w administracji publicznej — infolinia urzędu, która odbiera za pierwszym razem',
-  lead: 'AI w administracji publicznej to najczęściej agent głosowy, który odbiera infolinię urzędu przez całą dobę: sprawdza status sprawy, wymienia dokumenty potrzebne do wniosku, kieruje do właściwego wydziału i podaje terminy oraz opłaty. Mówi naturalną polszczyzną, obsługuje wiele połączeń naraz, a dane obywateli przetwarza na serwerach w Polsce, zgodnie z RODO.',
-  serviceName: 'AI w administracji publicznej — voicebot dla urzędu',
+  lead: 'AI w administracji publicznej to najczęściej agent głosowy, który odbiera infolinię urzędu przez całą dobę: sprawdza status sprawy, wymienia dokumenty potrzebne do wniosku, kieruje do właściwego wydziału i podaje terminy oraz opłaty. Mówi naturalną polszczyzną i obsługuje wiele połączeń naraz. Dane obywateli przetwarza na serwerach w Polsce, zgodnie z RODO.',
+  serviceName: 'AI w administracji publicznej: voicebot dla urzędu',
   serviceDescription:
     'Wdrożenie agenta głosowego i chatbota dla urzędów oraz jednostek samorządu: całodobowa infolinia, informacja o statusie sprawy i wymaganych dokumentach, kierowanie do właściwego wydziału. Dane obywateli na serwerach w Polsce, zgodnie z RODO, z możliwością self-hostingu.',
   sections: [
@@ -27,50 +27,51 @@ const content: SeoLandingContent = {
       heading: 'Dlaczego infolinie urzędów są przeciążone',
       paragraphs: [
         'Centrala urzędu ma zwykle kilka linii i kilka osób, które je obsługują. Ruch nie rozkłada się równo: telefon urywa się w poniedziałek rano, w ostatnim tygodniu terminu podatkowego i zawsze wtedy, gdy w mediach pojawi się informacja o nowym świadczeniu albo zmianie przepisów. W takich dniach dzwoniący słyszy sygnał zajętości, a nie odpowiedź.',
-        'Druga rzecz to charakter pytań. Ogromna część połączeń dotyczy spraw powtarzalnych: co trzeba przynieść do wniosku o dowód, w którym pokoju składa się deklarację, ile wynosi opłata skarbowa, do kiedy trzeba zapłacić podatek od nieruchomości, czy sprawa jest już gotowa do odbioru. To pytania, na które odpowiedź jest jednoznaczna i wynika wprost z przepisu albo z systemu obiegu dokumentów. Urzędnik odpowiada na nie po raz kolejny tego dnia, zamiast prowadzić postępowanie.',
-        'Trzecia rzecz to godziny. Urząd pracuje najczęściej do 15:30 albo 16:00, czyli dokładnie wtedy, gdy mieszkaniec też jest w pracy. Jeden dzień z dyżurem do 17:00 nie rozwiązuje problemu, bo generuje własny szczyt. Infolinia urzędu AI odbiera każde połączenie od razu, o dowolnej porze i niezależnie od tego, ile osób dzwoni w tej samej sekundzie. Sprawy proste zamyka od ręki, a trudniejsze kieruje tam, gdzie faktycznie mają być rozpatrzone.',
+        'Druga rzecz to charakter pytań. Ogromna część połączeń dotyczy spraw powtarzalnych: co trzeba przynieść do wniosku o dowód, w którym pokoju składa się deklarację, ile wynosi opłata skarbowa, do kiedy zapłacić podatek od nieruchomości, czy sprawa jest już gotowa do odbioru. Odpowiedź jest jednoznaczna, bo wynika wprost z przepisu albo z systemu obiegu dokumentów. I urzędnik podaje ją po raz kolejny tego dnia, zamiast prowadzić postępowanie.',
+        'Trzecia rzecz to godziny. Urząd pracuje najczęściej do 15:30 albo 16:00, czyli dokładnie wtedy, gdy mieszkaniec też jest w pracy. Jeden dzień z dyżurem do 17:00 niczego nie ratuje, bo generuje własny szczyt. Infolinia urzędu AI odbiera każde połączenie od razu, o dowolnej porze i niezależnie od tego, ile osób dzwoni w tej samej sekundzie. Sprawy proste zamyka od ręki, trudniejsze kieruje tam, gdzie faktycznie mają być rozpatrzone.',
+        'Ile z tego ruchu agent realnie zdejmie, bywa bardzo różnie. W jednym urzędzie trzy te same pytania to grubo ponad połowa połączeń, w innym ruch jest rozproszony i zostaje może jedna trzecia. Bez zajrzenia w bilingi i w to, o co ludzie naprawdę pytają, każda liczba podana z góry jest zgadywaniem.',
       ],
     },
     {
       heading: 'Co voicebot dla urzędu załatwia bez udziału urzędnika',
       paragraphs: [
-        'Agent głosowy prowadzi zwykłą rozmowę: interesant mówi, z czym dzwoni, a bot dopytuje o brakujące szczegóły i podaje konkretną odpowiedź. Nie jest to stare menu IVR z wybieraniem cyfr, tylko rozmowa naturalną polszczyzną (technologia ElevenLabs). Każda odpowiedź opiera się na treściach, które urząd sam zatwierdził: kartach usług, regulaminach, uchwałach i informacjach z BIP. Tam, gdzie ma to znaczenie, agent podaje podstawę prawną i mówi wprost, skąd wziął informację.',
+        'Agent głosowy prowadzi zwykłą rozmowę: interesant mówi, z czym dzwoni, a bot dopytuje o brakujące szczegóły i podaje konkretną odpowiedź. Żadnego wybierania cyfr jak w starym menu IVR. Rozmowa idzie naturalną polszczyzną, na silniku ElevenLabs. Każda odpowiedź opiera się na treściach, które urząd sam zatwierdził: kartach usług, regulaminach, uchwałach i informacjach z BIP. Tam, gdzie ma to znaczenie, agent podaje podstawę prawną i mówi wprost, skąd wziął informację.',
       ],
       bullets: [
-        'Status sprawy — po numerze sprawy albo innym identyfikatorze bot sprawdza etap postępowania i informuje, czy dokument jest gotowy do odbioru.',
-        'Wykaz wymaganych dokumentów — co dołączyć do konkretnego wniosku, w ilu egzemplarzach, kto musi podpisać, jakie są wyjątki.',
-        'Właściwy wydział i godziny — do którego pokoju i w jakich godzinach zgłosić się z daną sprawą, gdzie złożyć pismo, kiedy urząd pracuje dłużej.',
-        'Terminy i opłaty — ustawowy termin załatwienia sprawy, terminy płatności rat podatku, wysokość opłaty skarbowej i numer rachunku.',
-        'Obsługa poza godzinami pracy — wieczorem, w weekend i w święta bot odpowiada na pytania informacyjne, a sprawy wymagające urzędnika zapisuje jako prośbę o kontakt.',
-        'Przekazanie do człowieka — na każde żądanie dzwoniącego i zawsze, gdy sprawa wykracza poza informację ogólną.',
+        'Status sprawy: po numerze sprawy albo innym identyfikatorze bot sprawdza etap postępowania i informuje, czy dokument jest gotowy do odbioru.',
+        'Wykaz wymaganych dokumentów. Co dołączyć do konkretnego wniosku, w ilu egzemplarzach, kto musi podpisać, jakie są wyjątki.',
+        'Właściwy wydział i godziny. Do którego pokoju i w jakich godzinach zgłosić się z daną sprawą, gdzie złożyć pismo, kiedy urząd pracuje dłużej.',
+        'Terminy i opłaty: ustawowy termin załatwienia sprawy, terminy płatności rat podatku, wysokość opłaty skarbowej i numer rachunku.',
+        'Obsługa poza godzinami pracy. Wieczorem, w weekend i w święta bot odpowiada na pytania informacyjne, a sprawy wymagające urzędnika zapisuje jako prośbę o kontakt.',
+        'Przekazanie do człowieka na każde żądanie dzwoniącego i zawsze wtedy, gdy sprawa wykracza poza informację ogólną.',
       ],
     },
     {
-      heading: 'Dane obywateli i RODO — gdzie trafiają nagrania rozmów',
+      heading: 'Gdzie trafiają nagrania rozmów i dane obywateli',
       paragraphs: [
-        'W urzędzie to pytanie musi paść pierwsze, jeszcze przed rozmową o funkcjach. Rozmowa z infolinią to dane osobowe: numer telefonu, imię i nazwisko, numer sprawy, czasem informacja o sytuacji rodzinnej albo majątkowej. Dane obywateli przetwarzane przez agenta przechowujemy na serwerach zlokalizowanych w Polsce lub w Unii Europejskiej, zgodnie z RODO, a całe wdrożenie prowadzimy według standardów zgodnych z ISO 27001.',
-        'Dla jednostek sektora publicznego istotny jest jeszcze jeden wariant: self-hosting. Framework OpenClaw, na którym budujemy agentów, jest oprogramowaniem open source, więc całość może działać na infrastrukturze urzędu albo w wybranej przez urząd serwerowni. Kod jest jawny, można go zaudytować, a instytucja nie jest zamknięta w jednym dostawcy. To argument, który zwykle rozstrzyga rozmowę z inspektorem ochrony danych i z działem IT.',
+        'W urzędzie to pytanie musi paść pierwsze, jeszcze przed rozmową o funkcjach. Rozmowa z infolinią to dane osobowe: numer telefonu, imię i nazwisko, numer sprawy, czasem informacja o sytuacji rodzinnej albo majątkowej. Dane obywateli przetwarzane przez agenta przechowujemy na serwerach zlokalizowanych w Polsce lub w Unii Europejskiej, zgodnie z RODO. Całe wdrożenie prowadzimy według standardów zgodnych z ISO 27001.',
+        'Dla jednostek sektora publicznego istotny jest jeszcze jeden wariant: self-hosting. Framework OpenClaw, na którym budujemy agentów, jest oprogramowaniem open source, więc całość może działać na infrastrukturze urzędu albo w wybranej przez urząd serwerowni. Kod jest jawny, można go zaudytować, a instytucja nie jest zamknięta u jednego dostawcy. To argument, który zwykle rozstrzyga rozmowę z inspektorem ochrony danych i z działem IT.',
         'Praktyka jest prosta: minimalizacja i jasne zasady retencji. Agent zbiera tylko dane niezbędne do udzielenia informacji, okres przechowywania nagrań ustala administrator danych, a usuwanie po zdefiniowanym czasie konfigurujemy automatycznie. Podpisujemy umowę powierzenia przetwarzania, opisujemy zakres i cel przetwarzania, a na etapie analizy pomagamy przygotować materiał pod ocenę skutków dla ochrony danych, jeśli urząd uzna ją za konieczną.',
       ],
     },
     {
-      heading: 'Dostępność cyfrowa — telefon jest kanałem dla tych, którym e-usługi nie wychodzą',
+      heading: 'Dostępność cyfrowa, czyli telefon dla tych, którym e-usługi nie wychodzą',
       paragraphs: [
-        'Sektor publiczny ma obowiązki dostępności, których nie ma biznes: strony i aplikacje muszą spełniać wymagania WCAG, a usługa ma być realnie osiągalna dla osób z niepełnosprawnościami. Wdrożenie agenta nie zwalnia z niczego — nie zastępuje dostępnego serwisu i nie jest alternatywą dla poprawy strony. Ale dokłada kanał, który dla części mieszkańców jest najprostszy z możliwych.',
-        'Telefon nie wymaga profilu zaufanego, logowania, aktualnej przeglądarki ani czytania małego druku na ekranie. Osoba starsza, osoba słabowidząca, ktoś bez smartfona albo ktoś, kto po prostu utknął w formularzu, może zadzwonić i zapytać własnymi słowami. Agent głosowy odpowiada głosem, w tempie rozmowy, i może powtórzyć to samo trzy razy bez zniecierpliwienia. Chatbot obsługujemy równolegle na stronie urzędu i w kanałach tekstowych, żeby ta sama wiedza była dostępna także dla osób, które wolą pisać niż mówić.',
+        'Sektor publiczny ma obowiązki dostępności, których nie ma biznes: strony i aplikacje muszą spełniać wymagania WCAG, a usługa ma być realnie osiągalna dla osób z niepełnosprawnościami. Wdrożenie agenta nie zwalnia z niczego. Nie zastępuje dostępnego serwisu i nie jest alternatywą dla poprawy strony. Dokłada za to kanał, który dla części mieszkańców jest najprostszy z możliwych.',
+        'Telefon nie wymaga profilu zaufanego, logowania, aktualnej przeglądarki ani czytania małego druku na ekranie. Osoba starsza, osoba słabowidząca, ktoś bez smartfona albo ktoś, kto po prostu utknął w formularzu, może zadzwonić i zapytać własnymi słowami. Agent odpowiada głosem, w tempie rozmowy. I powtórzy to samo trzy razy bez zniecierpliwienia. Równolegle stawiamy chatbota na stronie urzędu i w kanałach tekstowych, żeby ta sama wiedza była dostępna także dla osób, które wolą pisać niż mówić.',
       ],
     },
     {
       heading: 'Kiedy AI w administracji publicznej się nie sprawdza',
       paragraphs: [
-        'Trzeba to powiedzieć wprost, bo w sektorze publicznym granica przebiega ostrzej niż gdzie indziej. Agent nie wydaje decyzji administracyjnych, nie interpretuje przepisu w indywidualnej sprawie, nie ocenia dowodów i nie rozstrzyga wątpliwości na czyjąś korzyść. To zawsze należy do urzędnika, bo za tym stoi odpowiedzialność, tryb odwoławczy i konkretna podstawa prawna. Agent informuje o procedurze i o stanie sprawy — na tym jego rola się kończy.',
-        'Są też sytuacje, w których wdrożenie po prostu się nie opłaca. Jeśli urząd odbiera kilkanaście telefonów dziennie i nikt nie czeka na linii, koszt wdrożenia nie zwróci się w rozsądnym czasie — lepiej uporządkować karty usług w BIP. Jeśli informacje o procedurach są rozproszone, sprzeczne i nikt ich od lat nie aktualizował, najpierw trzeba je uporządkować, bo agent powtórzy błąd szybciej i częściej niż człowiek. I jeśli w urzędzie nie ma osoby, która weźmie odpowiedzialność za treści i będzie je aktualizować przy zmianie przepisów, wdrożenie zestarzeje się w kilka miesięcy.',
+        'Trzeba to powiedzieć wprost, bo w sektorze publicznym granica przebiega ostrzej niż gdzie indziej. Agent nie wydaje decyzji administracyjnych, nie interpretuje przepisu w indywidualnej sprawie, nie ocenia dowodów i nie rozstrzyga wątpliwości na czyjąś korzyść. To zawsze należy do urzędnika, bo za tym stoi odpowiedzialność, tryb odwoławczy i konkretna podstawa prawna. Agent informuje o procedurze i o stanie sprawy. Na tym jego rola się kończy.',
+        'Są też sytuacje, w których wdrożenie po prostu się nie opłaca. Jeśli urząd odbiera kilkanaście telefonów dziennie i nikt nie czeka na linii, koszt nie ma z czego się zwrócić. Lepiej wtedy uporządkować karty usług w BIP. Jeśli informacje o procedurach są rozproszone, sprzeczne i nikt ich od lat nie ruszał, też najpierw porządek, bo agent powtórzy błąd szybciej i częściej niż człowiek. Ta część projektu jest najmniej wdzięczna i nikt jej nie lubi, ale bez niej reszta nie ma sensu. I jeszcze jedno: jeśli w urzędzie nie ma osoby, która weźmie odpowiedzialność za treści i będzie je aktualizować przy zmianie przepisów, wdrożenie zestarzeje się w kilka miesięcy.',
       ],
       bullets: [
-        'Sprawy wymagające decyzji administracyjnej, uznania albo interpretacji przepisu — zawsze do urzędnika.',
-        'Mały ruch telefoniczny bez kolejek na linii — koszt wdrożenia nie ma z czego się zwrócić.',
-        'Nieaktualne lub sprzeczne karty usług — najpierw porządek w treściach, potem automatyzacja.',
-        'Brak właściciela treści po stronie urzędu — nikt nie zaktualizuje odpowiedzi po zmianie przepisów.',
+        'Sprawy wymagające decyzji administracyjnej, uznania albo interpretacji przepisu. Zawsze do urzędnika.',
+        'Mały ruch telefoniczny, bez kolejek na linii: koszt wdrożenia nie ma z czego się zwrócić.',
+        'Nieaktualne lub sprzeczne karty usług. Najpierw porządek w treściach, potem automatyzacja.',
+        'Brak właściciela treści po stronie urzędu, czyli nikt nie zaktualizuje odpowiedzi po zmianie przepisów.',
       ],
     },
   ],
@@ -83,7 +84,7 @@ const content: SeoLandingContent = {
       },
       {
         name: 'Uporządkowanie bazy wiedzy',
-        text: 'Zbieramy karty usług, treści z BIP, regulaminy i wykazy dokumentów, a następnie oznaczamy, który zapis wynika z jakiego aktu prawnego. Urząd zatwierdza treści przed uruchomieniem — agent odpowiada wyłącznie na ich podstawie.',
+        text: 'Zbieramy karty usług, treści z BIP, regulaminy i wykazy dokumentów, a potem oznaczamy, który zapis wynika z jakiego aktu prawnego. Urząd zatwierdza treści przed uruchomieniem. Agent odpowiada wyłącznie na ich podstawie.',
       },
       {
         name: 'Ustalenie granic i ścieżek przekazania',
@@ -95,7 +96,7 @@ const content: SeoLandingContent = {
       },
       {
         name: 'Uruchomienie i utrzymanie',
-        text: 'Po starcie monitorujemy jakość rozmów i aktualizujemy treści przy każdej zmianie przepisów, stawek lub godzin pracy. Urząd dostaje raport z tematów, które pojawiają się najczęściej — to często materiał do poprawy samych procedur.',
+        text: 'Po starcie monitorujemy jakość rozmów i aktualizujemy treści przy każdej zmianie przepisów, stawek lub godzin pracy. Urząd dostaje raport z tematów, które wracają najczęściej. To zwykle materiał do poprawy samych procedur.',
       },
     ],
   },
@@ -120,7 +121,7 @@ const content: SeoLandingContent = {
       {
         title: 'Terminy i opłaty',
         description:
-          'Ustawowy termin załatwienia sprawy, terminy rat podatku, wysokość opłaty skarbowej i numer rachunku — informacje jednoznaczne, o które pyta najwięcej osób.',
+          'Ustawowy termin załatwienia sprawy, terminy rat podatku, wysokość opłaty skarbowej i numer rachunku. Same informacje jednoznaczne, a pyta o nie najwięcej osób.',
       },
       {
         title: 'Obsługa poza godzinami pracy urzędu',
@@ -136,7 +137,7 @@ const content: SeoLandingContent = {
   },
   pricing: {
     title: 'Ile kosztuje wdrożenie AI w urzędzie',
-    note: 'Ceny netto. Zakres i wycenę przygotowujemy tak, aby dały się wprost przenieść do opisu przedmiotu zamówienia — pierwsza konsultacja jest bezpłatna.',
+    note: 'Ceny netto. Zakres i wycenę przygotowujemy tak, aby dały się wprost przenieść do opisu przedmiotu zamówienia. Pierwsza konsultacja jest bezpłatna.',
     rows: [
       {
         name: 'Wdrożenie',
@@ -170,7 +171,7 @@ const content: SeoLandingContent = {
     {
       question: 'Gdzie trafiają dane obywateli i czy jest to zgodne z RODO?',
       answer:
-        'Dane przetwarzane przez agenta — nagrania, numery telefonów, numery spraw — przechowujemy na serwerach w Polsce lub w Unii Europejskiej, zgodnie z RODO i według standardów zgodnych z ISO 27001. Podpisujemy umowę powierzenia przetwarzania, stosujemy minimalizację danych i konfigurujemy automatyczne usuwanie nagrań po okresie ustalonym z administratorem danych. Możliwy jest też pełny self-hosting na infrastrukturze urzędu.',
+        'Dane przetwarzane przez agenta, czyli nagrania, numery telefonów i numery spraw, przechowujemy na serwerach w Polsce lub w Unii Europejskiej, zgodnie z RODO i według standardów zgodnych z ISO 27001. Podpisujemy umowę powierzenia przetwarzania, stosujemy minimalizację danych i konfigurujemy automatyczne usuwanie nagrań po okresie ustalonym z administratorem danych. A jeśli to nie wystarczy, zostaje pełny self-hosting na infrastrukturze urzędu.',
     },
     {
       question: 'Czy agent może wydać decyzję albo zinterpretować przepis?',
@@ -185,17 +186,17 @@ const content: SeoLandingContent = {
     {
       question: 'Jak wdrożenie ma się do zamówień publicznych?',
       answer:
-        'Zakres, kamienie milowe i pozycje cenowe przygotowujemy w formie, którą można wprost przenieść do opisu przedmiotu zamówienia. Na etapie bezpłatnej konsultacji przygotowujemy też szacunek wartości i listę wymagań technicznych, w tym lokalizację danych oraz wariant self-hostingu. O trybie postępowania decyduje oczywiście sam urząd wraz ze swoim działem zamówień.',
+        'Zakres, kamienie milowe i pozycje cenowe przygotowujemy w formie, którą można wprost przenieść do opisu przedmiotu zamówienia. Na etapie bezpłatnej konsultacji dorzucamy szacunek wartości i listę wymagań technicznych, w tym lokalizację danych oraz wariant self-hostingu. O trybie postępowania decyduje oczywiście sam urząd ze swoim działem zamówień. My tego nie rozstrzygamy.',
     },
     {
       question: 'Czy agent głosowy faktycznie radzi sobie z publicznymi danymi?',
       answer:
-        'Mamy publiczne demo, które można przetestować bez umawiania spotkania: agent na stronie pks-gryfice-demo.vercel.app odpowiada na pytania o rozkłady jazdy regionalnego przewoźnika, obsługuje 6 przystanków i 276 odjazdów, a każdą odpowiedź opiera na publicznych danych rozkładowych i podaje źródło. To nasze demo, nie wdrożenie u klienta — przewoźnik nie jest naszym klientem.',
+        'Mamy publiczne demo, które można przetestować bez umawiania spotkania: agent na stronie pks-gryfice-demo.vercel.app odpowiada na pytania o rozkłady jazdy regionalnego przewoźnika, obsługuje 6 przystanków i 276 odjazdów, a każdą odpowiedź opiera na publicznych danych rozkładowych i podaje źródło. To nasze demo, nie wdrożenie u klienta. Przewoźnik nam tej pracy nie zlecał.',
     },
   ],
   cta: {
     heading: 'Sprawdź, ile połączeń nie odbiera dziś Wasza centrala',
-    sub: 'Umów bezpłatną konsultację — przejrzymy ruch na infolinii, wskażemy pytania, które agent zamknie samodzielnie, i te, które muszą zostać u urzędnika.',
+    sub: 'Umów bezpłatną konsultację. Przejrzymy ruch na infolinii, wskażemy pytania, które agent zamknie samodzielnie, i te, które muszą zostać u urzędnika.',
   },
   related: [
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },

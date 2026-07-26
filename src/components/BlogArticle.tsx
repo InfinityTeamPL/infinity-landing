@@ -27,7 +27,7 @@ export interface BlogArticleContent {
   ctaSub: string;
 }
 
-const BASE = 'https://infinityteam.io';
+const BASE = 'https://www.infinityteam.io';
 
 function buildJsonLd(c: BlogArticleContent) {
   const graph: object[] = [

@@ -58,7 +58,7 @@ export interface SeoLandingContent {
   related?: { label: string; href: string }[];
 }
 
-const BASE = 'https://infinityteam.io';
+const BASE = 'https://www.infinityteam.io';
 
 function buildJsonLd(c: SeoLandingContent) {
   const graph: object[] = [

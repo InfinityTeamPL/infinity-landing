@@ -72,13 +72,13 @@ const blogJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
   name: 'Blog Infinity Tech',
-  url: 'https://infinityteam.io/blog',
+  url: 'https://www.infinityteam.io/blog',
   inLanguage: 'pl-PL',
-  publisher: { '@type': 'Organization', name: 'Infinity Tech', url: 'https://infinityteam.io' },
+  publisher: { '@type': 'Organization', name: 'Infinity Tech', url: 'https://www.infinityteam.io' },
   blogPost: POSTS.map((p) => ({
     '@type': 'BlogPosting',
     headline: p.title,
-    url: `https://infinityteam.io/blog/${p.slug}`,
+    url: `https://www.infinityteam.io/blog/${p.slug}`,
     datePublished: p.date,
   })),
 };

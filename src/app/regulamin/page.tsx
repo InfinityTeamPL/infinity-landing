@@ -45,7 +45,7 @@ export default function TermsPage() {
             <p className="mb-4">
               Niniejszy Regulamin określa zasady i warunki korzystania z serwisu internetowego
               dostępnego pod adresem{' '}
-              <a href="https://infinityteam.io" className="text-[#7B9BDB] underline hover:text-white">infinityteam.io</a>{' '}
+              <a href="https://www.infinityteam.io" className="text-[#7B9BDB] underline hover:text-white">infinityteam.io</a>{' '}
               (dalej: &bdquo;Serwis&rdquo;). Regulamin stanowi regulamin świadczenia usług drogą
               elektroniczną w rozumieniu art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu
               usług drogą elektroniczną (Dz.U. 2002 nr 144, poz. 1204 ze zm.).

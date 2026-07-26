@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
    zero zmyślonych metryk. Style w 100% na tokenach motywu (light + dark).
    ========================================================= */
 
-const BASE = 'https://infinityteam.io';
+const BASE = 'https://www.infinityteam.io';
 
 type Realizacja = {
   id: string;

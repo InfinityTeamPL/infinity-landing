@@ -9,7 +9,7 @@ const plusJakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-ja
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', weight: ['400', '700'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://infinityteam.io'),
+  metadataBase: new URL('https://www.infinityteam.io'),
   title: {
     default: "Agenci AI dla firm — voicebot, chatbot, automatyzacja | Infinity Tech",
     template: "%s | Infinity Tech",
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pl_PL",
-    url: "https://infinityteam.io",
+    url: "https://www.infinityteam.io",
     siteName: "Infinity Tech",
     title: "Infinity Tech — Agenci AI dla biznesu",
     description: "Budujemy agentów AI — głosowych i tekstowych — oraz automatyzacje procesów dla firm. Voice AI, obsługa klienta 24/7, kadry, sprzedaż i wdrożenia szyte na miarę. Dane w Polsce, zgodność z RODO.",
     images: [
       {
-        url: "https://infinityteam.io/og.png",
+        url: "https://www.infinityteam.io/og.png",
         width: 1200,
         height: 630,
         alt: "Infinity Tech - AI dla Twojego Biznesu",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Infinity Tech — Agenci AI dla biznesu",
     description: "Agenci AI — głosowi i tekstowi — oraz automatyzacje procesów dla Twojej firmy.",
-    images: ["https://infinityteam.io/og.png"],
+    images: ["https://www.infinityteam.io/og.png"],
     creator: "@InfinityTech_PL",
   },
 };
@@ -66,8 +66,8 @@ const organizationJsonLd = {
   legalName: 'Infinity Tech Group sp. z o.o.',
   priceRange: 'od 5 000 zł',
   areaServed: 'PL',
-  url: 'https://infinityteam.io',
-  logo: 'https://infinityteam.io/logo.png',
+  url: 'https://www.infinityteam.io',
+  logo: 'https://www.infinityteam.io/logo.png',
   email: 'contact@infinityteam.io',
   telephone: '+48 735 170 957',
   description:
@@ -103,10 +103,10 @@ const organizationJsonLd = {
     'automatyzacja HR i kadr',
   ],
   makesOffer: [
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Agent głosowy AI', url: 'https://infinityteam.io/uslugi/agent-glosowy-ai' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Chatbot AI dla firm', url: 'https://infinityteam.io/uslugi/chatbot-ai' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatyzacja procesów AI', url: 'https://infinityteam.io/uslugi/automatyzacja-procesow-ai' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatyzacja HR i kadr', url: 'https://infinityteam.io/uslugi/automatyzacja-hr' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Agent głosowy AI', url: 'https://www.infinityteam.io/uslugi/agent-glosowy-ai' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Chatbot AI dla firm', url: 'https://www.infinityteam.io/uslugi/chatbot-ai' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatyzacja procesów AI', url: 'https://www.infinityteam.io/uslugi/automatyzacja-procesow-ai' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatyzacja HR i kadr', url: 'https://www.infinityteam.io/uslugi/automatyzacja-hr' } },
   ],
 };
 
@@ -116,9 +116,9 @@ const webSiteJsonLd = {
   '@type': 'WebSite',
   name: 'Infinity Tech',
   alternateName: 'Infinity Tech Group',
-  url: 'https://infinityteam.io',
+  url: 'https://www.infinityteam.io',
   inLanguage: 'pl-PL',
-  publisher: { '@type': 'Organization', name: 'Infinity Tech', url: 'https://infinityteam.io' },
+  publisher: { '@type': 'Organization', name: 'Infinity Tech', url: 'https://www.infinityteam.io' },
 };
 
 export default function RootLayout({
