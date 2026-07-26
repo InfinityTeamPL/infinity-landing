@@ -18,6 +18,13 @@ export const metadata: Metadata = {
 // Rejestr artykułów — przy dodawaniu wpisu dopisz go tu i w sitemap.ts
 const POSTS = [
   {
+    slug: 'ai-act-chatboty-obowiazki',
+    title: 'AI Act a chatboty: co obowiązuje od 2 sierpnia 2026',
+    description:
+      'Od 2 sierpnia chatbot i voicebot muszą informować, że rozmówca ma do czynienia z maszyną. Co trzeba zrobić i czego przesunięcie terminów nie objęło.',
+    date: '2026-07-26',
+  },
+  {
     slug: 'ile-kosztuje-voicebot',
     title: 'Ile kosztuje voicebot? Cennik agenta głosowego 2026',
     description:

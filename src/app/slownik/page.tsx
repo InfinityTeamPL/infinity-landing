@@ -225,7 +225,9 @@ const TERMS: Term[] = [
     group: 'Prawo i bezpieczeństwo',
     term: 'AI Act',
     definition:
-      'Unijne rozporządzenie porządkujące stosowanie AI. Weszło w życie w 2024 roku, a poszczególne obowiązki zaczynają obowiązywać etapami. Dzieli zastosowania według ryzyka: część jest zakazana, część uznana za wysokiego ryzyka i obwarowana wymogami, reszta podlega głównie obowiązkowi poinformowania rozmówcy, że ma do czynienia z automatem. Typowy voicebot obsługowy mieści się zwykle w tej ostatniej grupie, ale przy rekrutacji bywa inaczej.',
+      'Unijne rozporządzenie porządkujące stosowanie AI, wchodzące etapami. Dzieli zastosowania według ryzyka: część jest zakazana, część uznana za wysokiego ryzyka i obwarowana wymogami, reszta podlega głównie obowiązkowi poinformowania rozmówcy, że ma do czynienia z automatem. Ten ostatni wymóg obowiązuje od 2 sierpnia 2026 i dotyczy chatbotów oraz voicebotów. Rekrutacja to osobny przypadek, bo zatrudnienie zaliczono do wysokiego ryzyka, z terminem przesuniętym na grudzień 2027.',
+    href: '/blog/ai-act-chatboty-obowiazki',
+    hrefLabel: 'Co obowiązuje od 2 sierpnia 2026',
   },
   {
     group: 'Prawo i bezpieczeństwo',

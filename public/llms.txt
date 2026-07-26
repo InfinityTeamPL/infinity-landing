@@ -39,6 +39,7 @@ Zastrzeżenie: stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, al
 - [Voicebot a IVR](https://www.infinityteam.io/blog/voicebot-a-ivr): różnice wobec klasycznej infolinii
 - [Agent AI czy nowy pracownik](https://www.infinityteam.io/blog/agent-ai-czy-nowy-pracownik): porównanie kosztów i granice automatyzacji
 - [Jak wdrożyć AI w firmie](https://www.infinityteam.io/blog/jak-wdrozyc-ai-w-firmie): przewodnik krok po kroku
+- [AI Act a chatboty](https://www.infinityteam.io/blog/ai-act-chatboty-obowiazki): obowiązek informowania, że rozmówca ma do czynienia z automatem, obowiązuje od 2 sierpnia 2026
 - [OpenClaw Polska](https://www.infinityteam.io/openclaw): wdrożenia otwartego frameworka agentów AI
 
 ## Nasze produkty i publiczne dema

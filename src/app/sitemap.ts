@@ -53,6 +53,8 @@ const ENTRIES: Entry[] = [
   { path: '/blog/voicebot-czy-chatbot', lastModified: '2026-07-26', changeFrequency: 'yearly', priority: 0.6 },
   { path: '/blog/voicebot-a-ivr', lastModified: '2026-07-26', changeFrequency: 'yearly', priority: 0.6 },
   { path: '/blog/agent-ai-czy-nowy-pracownik', lastModified: '2026-07-26', changeFrequency: 'yearly', priority: 0.6 },
+  // Termin z art. 50 AI Act (2.08.2026) sprawia, że ten wpis jest chodliwy TERAZ, stąd wyższy priorytet
+  { path: '/blog/ai-act-chatboty-obowiazki', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
   // /agents celowo pominięte — 301 na /uslugi (patrz next.config.js)
 
   // Feed newsowy — jedyna strona, która faktycznie zmienia się codziennie (ISR co 2h)
