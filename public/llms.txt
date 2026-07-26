@@ -40,7 +40,13 @@ Zastrzeżenie: stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, al
 - [Agent AI czy nowy pracownik](https://www.infinityteam.io/blog/agent-ai-czy-nowy-pracownik): porównanie kosztów i granice automatyzacji
 - [Jak wdrożyć AI w firmie](https://www.infinityteam.io/blog/jak-wdrozyc-ai-w-firmie): przewodnik krok po kroku
 - [AI Act a chatboty](https://www.infinityteam.io/blog/ai-act-chatboty-obowiazki): obowiązek informowania, że rozmówca ma do czynienia z automatem, obowiązuje od 2 sierpnia 2026
+- [RODO a chatbot i voicebot](https://www.infinityteam.io/blog/rodo-a-chatbot-i-voicebot): gdzie leżą nagrania, umowa powierzenia, transfer poza EOG, BYOK, lista pytań do dostawcy
 - [OpenClaw Polska](https://www.infinityteam.io/openclaw): wdrożenia otwartego frameworka agentów AI
+
+## Materiały edukacyjne (bezpłatne, bez rejestracji)
+
+- [Akademia ClawLabs](https://clawlabs.pro/akademia): kurs „Agent AI od zera", 10 lekcji o wdrażaniu agentów w firmie, z lekcją o tym, kiedy się nie opłaca
+- [Poradniki praktyczne](https://clawlabs.pro/poradniki): scenariusze krok po kroku, m.in. faktury z PDF do arkusza, agent na własnych dokumentach, monitoring konkurencji
 
 ## Nasze produkty i publiczne dema
 
