@@ -208,6 +208,7 @@ const content: SeoLandingContent = {
     { label: 'Branże', href: '/branze' },
     { label: 'Voicebot dla salonu', href: '/branze/voicebot-dla-salonow' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
+    { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },
     { label: 'Ile kosztuje voicebot', href: '/blog/ile-kosztuje-voicebot' },
     { label: 'Voicebot a IVR', href: '/blog/voicebot-a-ivr' },
   ],

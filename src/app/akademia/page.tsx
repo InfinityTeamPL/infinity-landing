@@ -151,6 +151,36 @@ export default function AkademiaIndex() {
           className="mt-4 rounded-2xl p-7"
           style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
         >
+          <h2 className="text-xl font-bold mb-3">Jak to wygląda w Twojej branży</h2>
+          <p className="text-[16px] text-white/70 leading-[1.75] mb-5">
+            Kurs jest ogólny, bo zasady są wspólne. Konkretne scenariusze, typowe pytania klientów
+            i rachunek opłacalności rozpisaliśmy osobno dla każdej branży.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-[15px]">
+            {[
+              { label: 'Przychodnie i gabinety', href: '/branze/voicebot-dla-przychodni' },
+              { label: 'Transport i przewoźnicy', href: '/branze/voicebot-dla-transportu' },
+              { label: 'Salony i warsztaty', href: '/branze/voicebot-dla-salonow' },
+              { label: 'Restauracje', href: '/branze/voicebot-dla-gastronomii' },
+              { label: 'Administracja publiczna', href: '/branze/ai-dla-administracji' },
+              { label: 'Wszystkie branże', href: '/branze' },
+            ].map((b) => (
+              <Link
+                key={b.href}
+                href={b.href}
+                className="hover:underline"
+                style={{ color: 'var(--accent-text)' }}
+              >
+                {b.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="mt-4 rounded-2xl p-7"
+          style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
+        >
           <h2 className="text-xl font-bold mb-3">Szukasz kursu o agentach tekstowych?</h2>
           <p className="text-[16px] text-white/70 leading-[1.75]">
             Ten kurs dotyczy telefonu. Jeśli interesuje Cię budowanie agentów tekstowych na własną rękę,

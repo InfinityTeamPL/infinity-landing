@@ -182,6 +182,7 @@ const content: SeoLandingContent = {
   related: [
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
+    { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },
   ],
 };
 

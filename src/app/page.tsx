@@ -527,6 +527,7 @@ function ServicesSection() {
                 { label: 'Voicebot dla restauracji', href: '/branze/voicebot-dla-gastronomii' },
                 { label: 'AI dla kancelarii', href: '/branze/ai-dla-kancelarii' },
                 { label: 'Wszystkie branże', href: '/branze' },
+                { label: 'Akademia Głosowa: bezpłatny kurs', href: '/akademia' },
               ].map((l) => (
                 <Link
                   key={l.href}

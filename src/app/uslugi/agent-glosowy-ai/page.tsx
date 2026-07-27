@@ -212,6 +212,7 @@ const content: SeoLandingContent = {
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
+    { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },
   ],
 };
 
