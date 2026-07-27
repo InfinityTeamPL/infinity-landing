@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { LESSONS } from '@/lib/akademia';
 
 /* Daty publikacji/aktualizacji są STAŁE, nie new Date().
    Przy `new Date()` każdy deploy zgłaszałby Google, że zmieniły się wszystkie
@@ -44,6 +45,13 @@ const ENTRIES: Entry[] = [
   { path: '/openclaw', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
 
   // Treści
+  { path: '/akademia', lastModified: '2026-07-27', changeFrequency: 'weekly', priority: 0.85 },
+  ...LESSONS.map((l) => ({
+    path: `/akademia/${l.slug}`,
+    lastModified: '2026-07-27',
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  })),
   { path: '/slownik', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog', lastModified: REBUILD, changeFrequency: 'weekly', priority: 0.7 },
   { path: '/blog/agent-ai-a-chatbot', lastModified: '2026-07-25', changeFrequency: 'yearly', priority: 0.6 },
@@ -55,6 +63,7 @@ const ENTRIES: Entry[] = [
   { path: '/blog/agent-ai-czy-nowy-pracownik', lastModified: '2026-07-26', changeFrequency: 'yearly', priority: 0.6 },
   // Termin z art. 50 AI Act (2.08.2026) sprawia, że ten wpis jest chodliwy TERAZ, stąd wyższy priorytet
   { path: '/blog/ai-act-chatboty-obowiazki', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/blog/rodo-a-chatbot-i-voicebot', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.7 },
   // /agents celowo pominięte — 301 na /uslugi (patrz next.config.js)
 
   // Feed newsowy — jedyna strona, która faktycznie zmienia się codziennie (ISR co 2h)
