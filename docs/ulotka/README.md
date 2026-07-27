@@ -8,7 +8,14 @@ etapy współpracy i statystyki ze strony głównej, realizacje z sekcji „Co z
 | Plik | Do czego |
 |---|---|
 | `ulotka-infinity-tech.pdf` | gotowy do druku, 2 strony A4 (210 × 297 mm) |
-| `ulotka-infinity-tech.html` | źródło, samowystarczalne: fonty Geist i kody QR siedzą w środku pliku |
+| `ulotka-infinity-tech.html` | źródło A4 |
+| `ulotka-infinity-tech-a5.pdf` | gotowy do druku, 2 strony A5 (148 × 210 mm) |
+| `ulotka-infinity-tech-a5.html` | źródło A5 |
+
+Oba HTML-e są samowystarczalne: fonty Geist i kody QR siedzą w środku pliku.
+
+A5 to nie pomniejszony A4, tylko osobny skład. Wersja na targi i do ręki, A4 na spotkanie
+i do wysyłki mailem.
 
 ## Co jest na której stronie
 
@@ -23,9 +30,25 @@ QR do kalkulatora ROI i drobny druk (ceny netto, brak certyfikatu ISO, status de
 Kody QR prowadzą do `pks-gryfice-demo.vercel.app` (przód) i `infinityteam.io/kalkulator` (tył).
 Oba zostały sprawdzone czytnikiem po wyrenderowaniu.
 
+## Co jest na A5
+
+Połowa powierzchni, więc treść jest przycięta do tego, co realnie pomaga podjąć decyzję.
+
+**Przód.** Ten sam nagłówek i obietnica 2–4 tygodni, cztery liczby, cztery obszary usług
+w jednym zdaniu każdy, pas zaufania (dane w Polsce, ElevenLabs, OpenClaw, 23 kanały),
+telefon i QR do dema głosowego.
+
+**Tył.** Cztery powody, żeby wybrać nas, a nie kogoś innego (rozmawiasz z osobą, która to
+zbuduje; dane w Polsce; bez uwiązania; wycena po audycie). Pod spodem cennik w ramce,
+pięć etapów współpracy jako pasek z czasami, trzy działające produkty z adresami,
+kontakt, QR do kalkulatora i drobny druk.
+
+Z A4 wypadły: zapis rozmowy z dema (na przód A5 nie ma miejsca, QR zostaje), opisy etapów
+współpracy (zostały same nazwy i czasy), czwarta realizacja i dane REGON.
+
 ## Druk
 
-- A4, dwustronnie, odbicie po **dłuższej krawędzi**
+- A4 albo A5, dwustronnie, odbicie po **dłuższej krawędzi**
 - papier 250–300 g, mat albo soft touch; przód ma dużo granatu, na błysku będą odciski palców
 - projekt ma własne marginesy 13–14 mm i nie wymaga spadów. Jeśli drukarnia prosi o spady 3 mm,
   wyeksportuj PDF z opcją „scale to fit” wyłączoną, a spad dołóż w preflightcie drukarni
