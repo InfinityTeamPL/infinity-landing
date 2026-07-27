@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     title: 'Bloom | Infinity Tech',
     description: 'Bloom — kreatywne narzędzie AI od Infinity Tech.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

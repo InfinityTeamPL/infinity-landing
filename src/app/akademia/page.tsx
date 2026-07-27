@@ -19,6 +19,7 @@ export const metadata: Metadata = {
       'Kurs dla firm, które rozważają voicebota. Konkretnie, z sekcjami o tym, kiedy się nie opłaca.',
     url: `${BASE}/akademia`,
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

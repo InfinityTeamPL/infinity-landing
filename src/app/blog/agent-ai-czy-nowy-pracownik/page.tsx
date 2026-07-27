@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Uczciwe porównanie kosztów: co realnie kosztuje etat, co agent AI, czego AI nie zrobi i kiedy zatrudnienie człowieka jest po prostu lepsze.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

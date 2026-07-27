@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     title: 'Agenci AI | Infinity Tech',
     description: 'Poznaj naszych agentów AI — automatyzacja HR, marketingu i sprzedaży.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

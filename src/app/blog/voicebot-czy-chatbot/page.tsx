@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każde z rozwiązań sprawdza się lepiej. Z przykładami z branż.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

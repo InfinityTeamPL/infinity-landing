@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Automatyzacja rekrutacji: selekcja CV według Twoich kryteriów, wstępne rozmowy głosowe i komunikacja z kandydatami. AI wspiera, człowiek decyduje.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

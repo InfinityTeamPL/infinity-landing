@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'AI dla branż — Infinity Tech',
     description: 'Agenci głosowi i automatyzacja w przychodniach, rekrutacji, transporcie i usługach.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

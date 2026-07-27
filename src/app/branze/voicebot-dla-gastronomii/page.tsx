@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Agent głosowy dla gastronomii: rezerwacja stolika przez telefon, automatyczne przyjmowanie zamówień telefonicznych, potwierdzanie rezerwacji. Dane na serwerach w Polsce, zgodnie z RODO.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

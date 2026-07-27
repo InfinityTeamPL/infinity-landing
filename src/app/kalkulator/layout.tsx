@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     title: 'Kalkulator ROI | Infinity Tech',
     description: 'Oblicz zwrot z inwestycji w automatyzację AI.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

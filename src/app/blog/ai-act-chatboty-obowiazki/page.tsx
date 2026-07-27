@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Obowiązek przejrzystości z artykułu 50 AI Act wchodzi 2 sierpnia 2026 i nie został przesunięty. Co to znaczy dla firmy, która ma chatbota albo voicebota.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 
@@ -151,6 +152,7 @@ const content: BlogArticleContent = {
     },
   ],
   related: [
+    { label: 'RODO a chatbot i voicebot: gdzie trafiają dane z rozmów', href: '/blog/rodo-a-chatbot-i-voicebot' },
     { label: 'Słownik AI: AI Act, RODO, halucynacja i reszta pojęć', href: '/slownik' },
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },

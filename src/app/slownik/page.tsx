@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Słownik AI — pojęcia wyjaśnione po ludzku | Infinity Tech',
     description: 'Agent AI, voicebot, RAG, LLM i reszta żargonu — wytłumaczone zrozumiale.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 
@@ -234,6 +235,8 @@ const TERMS: Term[] = [
     term: 'RODO a agenci AI',
     definition:
       'Agent przetwarzający dane osobowe podlega tym samym zasadom, co każdy inny system: podstawa prawna, minimalizacja danych, umowa powierzenia z dostawcą, informacja dla osoby, której dane dotyczą. W praktyce najczęściej rozstrzyga to, gdzie fizycznie stoi serwer i czy treść rozmów nie zasila uczenia cudzych modeli.',
+    href: '/blog/rodo-a-chatbot-i-voicebot',
+    hrefLabel: 'Gdzie trafiają dane z rozmów',
   },
 ];
 

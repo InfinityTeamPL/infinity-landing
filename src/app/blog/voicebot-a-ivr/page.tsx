@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Klasyczne „wciśnij jeden" kontra agent, który rozumie swobodną mowę. Różnice w obsłudze, kosztach i tym, co realnie zmienia się dla dzwoniącego.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

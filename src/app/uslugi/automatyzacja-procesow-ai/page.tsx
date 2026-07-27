@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Agenci AI, którzy wykonują powtarzalne zadania za Twój zespół: dokumenty, raporty, e-maile, CRM. Wdrożenie od 5 000 zł netto.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

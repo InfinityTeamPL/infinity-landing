@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Chatbot odpowiada, agent AI działa. Wyjaśniamy różnicę bez żargonu: kiedy wystarczy prosty bot, a kiedy potrzebujesz agenta, który sam wykonuje zadania.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

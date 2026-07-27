@@ -27,6 +27,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       description: lesson.metaDescription,
       url: `${BASE}/akademia/${lesson.slug}`,
       type: 'article',
+      images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
     },
   };
 }

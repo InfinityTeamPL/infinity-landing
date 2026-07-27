@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       'Wdrożenia agentów AI, które możesz przetestować samodzielnie: demo PKS Gryfice, Superkadrowa (Janina), platforma ClawLabs. Bez zmyślonych metryk.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

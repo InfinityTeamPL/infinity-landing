@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Voicebot dla firm z naturalną polską mową (ElevenLabs). Odbiera połączenia, umawia terminy, przekierowuje do człowieka. Pierwsza konsultacja bezpłatna.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

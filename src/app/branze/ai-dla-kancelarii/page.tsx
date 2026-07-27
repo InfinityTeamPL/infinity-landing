@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Agent AI w kancelarii i biurze rachunkowym: odbiera powtarzalne pytania, przeszukuje archiwum pism, przygotowuje szkice z wzorca. Nie udziela porad prawnych. Dane na serwerach w Polsce.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

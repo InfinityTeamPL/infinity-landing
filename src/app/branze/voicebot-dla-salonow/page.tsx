@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'AI do umawiania wizyt odbiera każde połączenie, także po godzinach. Rezerwacja terminów przez telefon, przypomnienia i odwołania bez odrywania się od klienta.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

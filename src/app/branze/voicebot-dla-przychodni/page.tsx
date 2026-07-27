@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'AI do umawiania wizyt odbiera każdy telefon 24/7: umawia, odwołuje i przypomina o wizytach. Dane pacjentów na serwerach w Polsce, zgodnie z RODO.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

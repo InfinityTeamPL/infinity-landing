@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Agent AI dla e-commerce: status zamówienia i przesyłki, zwroty, pytania przedzakupowe, szczyty sprzedażowe. Ponad 23 kanały, dane na serwerach w Polsce.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

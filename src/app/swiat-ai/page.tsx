@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     title: 'Świat AI | Infinity Tech',
     description: 'Najnowsze wiadomości ze świata AI — automatycznie, po polsku.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

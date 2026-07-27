@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Wielokanałowy chatbot AI z wiedzą firmową: strona www, WhatsApp, Slack, Teams, Telegram, Discord. Wdrożenie od 5 000 zł netto, pierwsza konsultacja bezpłatna.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

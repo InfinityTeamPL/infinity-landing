@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Blog Infinity Tech — agenci AI i automatyzacja w praktyce',
     description: 'Koszty wdrożeń AI, porównania, przewodniki krok po kroku.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 
@@ -22,6 +23,13 @@ const POSTS = [
     title: 'AI Act a chatboty: co obowiązuje od 2 sierpnia 2026',
     description:
       'Od 2 sierpnia chatbot i voicebot muszą informować, że rozmówca ma do czynienia z maszyną. Co trzeba zrobić i czego przesunięcie terminów nie objęło.',
+    date: '2026-07-26',
+  },
+  {
+    slug: 'rodo-a-chatbot-i-voicebot',
+    title: 'RODO a chatbot i voicebot: gdzie trafiają dane z rozmów',
+    description:
+      'Kto odpowiada za dane z rozmowy z agentem AI, gdzie leżą nagrania i co sprawdzić w umowie powierzenia. Z listą pytań do dostawcy.',
     date: '2026-07-26',
   },
   {

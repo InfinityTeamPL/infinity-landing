@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Od audytu procesów po działającego agenta: kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

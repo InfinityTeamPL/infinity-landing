@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Z czego składa się cena voicebota, ile kosztuje wdrożenie i utrzymanie w Polsce oraz kiedy telefonia i minuty rozmów podbijają rachunek.',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

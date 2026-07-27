@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Usługi AI dla firm — Infinity Tech',
     description: 'Agenci głosowi, chatboty, automatyzacja procesów i wdrożenia szyte na miarę.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

@@ -54,7 +54,7 @@ export const LESSONS: Lesson[] = [
         h2: 'Trzy etapy jednej wypowiedzi',
         paragraphs: [
           'Gdy klient mówi „chciałbym przełożyć wizytę na czwartek”, system wykonuje trzy osobne operacje. Najpierw zamienia dźwięk na tekst. Potem model językowy odczytuje intencję i decyduje, co zrobić. Na końcu odpowiedź wraca zamieniona z powrotem na mowę.',
-          'To rozdzielenie ma praktyczne znaczenie, bo każdy etap psuje się inaczej. Zła jakość połączenia uderza w pierwszy, źle opisane zadanie w drugi, a nienaturalna barwa głosu w trzeci. Kiedy klient mówi, że „bot go nie rozumie”, w połowie przypadków chodzi o coś zupełnie innego niż rozumienie.',
+          'To rozdzielenie ma praktyczne znaczenie, bo każdy etap psuje się inaczej. Zła jakość połączenia uderza w pierwszy, źle opisane zadanie w drugi, a nienaturalna barwa głosu w trzeci. Kiedy klient mówi, że „bot go nie rozumie”, warto najpierw ustalić, o który etap chodzi, bo winowajcą bywa coś zupełnie innego niż rozumienie.',
         ],
       },
       {
@@ -112,7 +112,7 @@ export const LESSONS: Lesson[] = [
         h2: 'Policzcie, zanim zapytacie o wycenę',
         paragraphs: [
           'Potrzebne są trzy liczby i da się je zebrać w tydzień. Ile połączeń przychodzi dziennie. Ile z nich zostaje nieodebranych. Ile trwa średnia rozmowa.',
-          'Trzecia liczba zaskakuje najczęściej. Firmy zwykle zakładają, że rozmowa trwa dwie minuty, a po sprawdzeniu wychodzi cztery, bo w tych minutach mieści się też szukanie informacji i przepraszanie za czekanie.',
+          'Trzecia liczba zaskakuje najczęściej, bo z pamięci podaje się zwykle sam czas mówienia. Zmierzcie pełną długość połączenia, razem z szukaniem informacji i przepraszaniem za czekanie. Różnica między tym, co ludzie szacują, a tym, co pokazuje billing, potrafi zmienić cały rachunek.',
         ],
       },
       {
@@ -129,7 +129,7 @@ export const LESSONS: Lesson[] = [
       {
         h2: 'Kiedy voicebot się nie opłaca',
         paragraphs: [
-          'Powiemy to wprost, bo częściej odradzamy, niż się spodziewacie. Przy kilku telefonach dziennie koszt wdrożenia i utrzymania nie zwróci się w rozsądnym czasie, a Wy dołożycie sobie system do pilnowania.',
+          'Powiemy to wprost, bo częściej odradzamy, niż się spodziewacie. Przy kilku telefonach dziennie rachunek z końca tej lekcji wychodzi w okolicach dwóch, trzech godzin miesięcznie, czyli daleko poniżej progu opłacalności. Koszt wdrożenia i utrzymania się nie zwróci, a Wy dołożycie sobie system do pilnowania.',
           'Druga sytuacja to firma, w której każda rozmowa jest inna. Jeśli po trzech dniach notowania okaże się, że w dwudziestu telefonach było dwadzieścia różnych spraw, to nie ma czego automatyzować. Nie ma tam wzorca, jest doradztwo.',
           'Trzecia, najbardziej podstępna: firma, której klienci dzwonią właśnie dlatego, że chcą usłyszeć konkretną osobę. Automat odbiera wtedy przewagę, za którą ludzie płacą.',
         ],
@@ -137,8 +137,9 @@ export const LESSONS: Lesson[] = [
       {
         h2: 'Prosty test opłacalności',
         paragraphs: [
-          'Weźcie liczbę połączeń dziennie, pomnóżcie przez udział pytań z pierwszego kubełka i przez średni czas rozmowy. Wyjdzie liczba godzin miesięcznie, które voicebot mógłby przejąć.',
-          'Jeśli wynik to mniej niż kilkanaście godzin, odłóżcie temat i wróćcie, gdy urośnie ruch. Jeśli wychodzi kilkadziesiąt, rozmowa o wdrożeniu ma sens. My zresztą liczymy to samo na pierwszym spotkaniu i mówimy, gdy wynik nie wychodzi.',
+          'Rachunek ma cztery kroki i warto zrobić je po kolei, bo pomylenie minut z godzinami potrafi przestawić wynik o kilka razy. Najpierw mnożycie liczbę połączeń dziennie przez udział pytań z pierwszego kubełka. Wychodzi liczba rozmów dziennie, które agent mógłby przejąć. Mnożycie ją przez średni czas rozmowy w minutach, dzielicie przez sześćdziesiąt i mnożycie przez liczbę dni roboczych w miesiącu, czyli mniej więcej dwadzieścia jeden.',
+          'Na liczbach: przy trzydziestu telefonach dziennie, z czego połowa to pytania powtarzalne, i przy rozmowie trwającej cztery minuty wychodzi piętnaście rozmów dziennie razy cztery minuty, czyli godzina dziennie. Po przemnożeniu przez dni robocze daje to około dwudziestu jeden godzin miesięcznie.',
+          'Gdzie postawić próg. Poniżej mniej więcej dziesięciu godzin miesięcznie rzadko widzimy sensowny zwrot, bo sama konfiguracja i późniejsze poprawki zjadają tę oszczędność. Powyżej trzydziestu rozmowa o wdrożeniu robi się konkretna. Między jednym a drugim decyduje to, ile z tych połączeń dziś w ogóle przepada. To samo liczymy na pierwszym spotkaniu i mówimy wprost, gdy wynik nie wychodzi.',
         ],
       },
     ],
@@ -146,7 +147,7 @@ export const LESSONS: Lesson[] = [
       'Trzy liczby na start: połączenia dziennie, nieodebrane, średni czas rozmowy.',
       'Posortujcie pytania na powtarzalne, wymagające decyzji i takie, które musi wziąć człowiek.',
       'Przy kilku telefonach dziennie albo przy braku powtarzalności voicebot się nie opłaca.',
-      'Policzcie godziny do przejęcia. Kilkanaście miesięcznie to za mało, żeby zaczynać.',
+      'Policzcie godziny miesięcznie: rozmowy dziennie razy minuty, podzielone przez 60, razy 21 dni roboczych. Poniżej dziesięciu godzin rzadko warto zaczynać.',
     ],
     faq: [
       {
@@ -198,7 +199,7 @@ export const LESSONS: Lesson[] = [
       h2: "Zdanie, które gasi większość problemów",
       paragraphs: [
         "Brzmi banalnie: jeżeli nie masz pewności, powiedz, że sprawdzisz, i przekaż dalej. Jedna reguła załatwia zaskakująco dużo, bo daje agentowi gotowe wyjście w każdej niejasnej sytuacji. Zamiast produkować odpowiedź na siłę, ma ruch, który zawsze jest dopuszczalny.",
-        "Ważne jest to, jak ta reguła brzmi w słuchawce. „Nie wiem” zostawia rozmówcę z niczym i kończy rozmowę źle. „Sprawdzę to i połączę Pana z osobą, która zna szczegóły” brzmi jak normalna obsługa. Ta sama informacja, zupełnie inne wrażenie.",
+        "Ważne jest to, jak ta reguła brzmi w słuchawce. „Nie wiem” zostawia rozmówcę z niczym i kończy rozmowę źle. „Sprawdzę to i przełączę do osoby, która zna szczegóły” brzmi jak normalna obsługa. Ta sama informacja, zupełnie inne wrażenie.",
         "Do tego dochodzi drugie zdanie, o którym łatwo zapomnieć. Agent nie obiecuje rzeczy, których nie kontroluje: żadnych terminów realizacji, rabatów ani zapewnień, że na pewno się uda. Może przyjąć zgłoszenie i powiedzieć, kiedy ktoś oddzwoni. Tyle wystarczy, a każde słowo ponad to wraca do firmy w formie pretensji.",
       ],
     },
@@ -256,8 +257,8 @@ export const LESSONS: Lesson[] = [
     {
       h2: "Pierwsze dziesięć sekund",
       paragraphs: [
-        "Powitanie ma zrobić dwie rzeczy: powiedzieć, gdzie się dodzwoniłem i kto mówi, a potem oddać głos rozmówcy. Nic więcej. Każde dodatkowe zdanie o wartościach firmy albo o podnoszeniu jakości obsługi kosztuje sekundy, w których człowiek zaczyna się niecierpliwić.",
-        "Informacja o tym, że po drugiej stronie jest asystent AI, musi paść. Wynika to z unijnych przepisów o AI, a termin ich stosowania przypada na 2 sierpnia 2026. Da się to zmieścić bez zgrzytu: „Dzień dobry, tu asystent głosowy przychodni Zdrowie, rozmawia Pan z AI. W czym mogę pomóc?”. Cztery sekundy i temat zamknięty.",
+        "Powitanie ma zmieścić cztery rzeczy, i to szybko. Gdzie się dodzwoniłem. Że odbiera asystent AI. Że rozmowa jest nagrywana, o ile faktycznie jest. Jak poprosić o człowieka. Potem głos wraca do rozmówcy. Zdania o wartościach firmy albo o podnoszeniu jakości obsługi kosztują sekundy, w których człowiek zaczyna się niecierpliwić.",
+        "Cztery elementy brzmią jak dużo, a mieszczą się w jednym oddechu: „Dzień dobry, tu asystentka AI przychodni Zdrowie, rozmowa jest nagrywana. W każdej chwili mogę połączyć z rejestracją. W czym mogę pomóc?”. Skąd bierze się obowiązek nazwania rzeczy po imieniu, rozkładamy w lekcji siódmej. Tutaj liczy się wykonanie: w powitaniu ma paść „asystent AI” albo „asystentka AI”, bez owijania w bawełnę i bez form typu „rozmawia Pan”, bo tego samego nagrania słucha każdy, kto zadzwoni.",
         "Po powitaniu idzie jedno pytanie otwarte, a potem cisza. Ta cisza jest ważniejsza, niż się wydaje. Systemy, które za szybko wchodzą rozmówcy w słowo, psują pierwsze wrażenie mocniej niż sztucznie brzmiąca barwa głosu.",
       ],
     },
@@ -286,18 +287,18 @@ export const LESSONS: Lesson[] = [
     ],
     takeaways: [
     "Menu każe rozmówcy dopasować się do firmy. Rozmowa robi odwrotnie i dlatego wygrywa przy sprawach, których nie da się zamknąć w liście.",
-    "Powitanie krótkie, z informacją o AI, potem jedno pytanie otwarte i cisza na odpowiedź.",
+    "Powitanie krótkie, ale pełne: kto odbiera, że to asystent AI, nagrywanie jeśli nagrywacie i droga do człowieka. Potem jedno pytanie otwarte i cisza na odpowiedź.",
     "Zawężaj pytania w miarę rozmowy, a przed zapisem czegokolwiek powtórz ustalenia i poproś o potwierdzenie.",
     "Przy dwóch powtarzalnych sprawach albo w hałasie zwykłe menu bywa lepszym wyborem niż rozmowa.",
     ],
     faq: [
     {
       q: "Czy voicebot musi informować, że jest sztuczną inteligencją?",
-      a: "Tak. Obowiązek informowania rozmówcy, że rozmawia z AI, wynika z unijnych przepisów o AI, a termin ich stosowania to 2 sierpnia 2026. W praktyce lepiej ustawić to od razu, bo zdanie i tak trzeba będzie dopisać. Przy okazji ludzie, którzy wiedzą, z kim mówią, formułują prośby prościej.",
+      a: "Tak. Obowiązek wynika z unijnych przepisów o AI, a termin ich stosowania to 2 sierpnia 2026. Zakres, papiery i to, kto za co odpowiada, rozkładamy w lekcji siódmej i tam odsyłamy po szczegóły. Z punktu widzenia scenariusza sprawa jest prosta: w pierwszym zdaniu powitania pada „asystent AI” albo „asystentka AI” i temat zamknięty.",
     },
     {
       q: "Jak długie powinno być powitanie?",
-      a: "Kilka sekund. Ma zmieścić nazwę firmy, informację o asystencie AI i pytanie otwarte. Wszystko, co poza tym, rozmówca i tak przestaje słuchać, bo czeka na moment, w którym będzie mógł powiedzieć, po co dzwoni.",
+      a: "Kilka sekund, mimo że elementów jest cztery: nazwa firmy, informacja o asystencie AI, nagrywanie jeśli nagrywacie i sposób poproszenia o człowieka. Na końcu pytanie otwarte. Wszystko, co poza tym, rozmówca i tak przestaje słuchać, bo czeka na moment, w którym będzie mógł powiedzieć, po co dzwoni.",
     },
     {
       q: "Czy da się połączyć rozmowę z klawiaturą telefonu?",
@@ -343,8 +344,8 @@ export const LESSONS: Lesson[] = [
     {
       h2: "Imię, przedstawienie się i spójność z marką",
       paragraphs: [
-        "Imię pomaga, bo daje rozmówcy sposób mówienia o asystencie i porządkuje rozmowę. Ma też drugą stronę. Ludzkie imię podane bez wyjaśnienia sugeruje pracownika, a tego chcemy uniknąć. Bezpieczny układ to imię plus rola, na przykład „Ola, asystentka głosowa salonu”.",
-        "Informacja, że rozmówca rozmawia z AI, nie jest kwestią stylu. Unijne przepisy o AI nakładają obowiązek poinformowania, a termin ich stosowania to 2 sierpnia 2026. Praktyczny efekt bywa całkiem dobry: ludzie, którzy wiedzą, że mówią do maszyny, formułują prośby prościej i rzadziej irytują się drobnym potknięciem.",
+        "Imię pomaga, bo daje rozmówcy sposób mówienia o asystencie i porządkuje rozmowę. Ma też drugą stronę. Ludzkie imię podane bez wyjaśnienia sugeruje pracownika, a tego chcemy uniknąć. Bezpieczny układ to imię plus rola nazwana wprost, na przykład „Ola, asystentka AI salonu”. Nie „asystentka głosowa”, nie „wirtualna recepcja”, tylko AI, bo tylko to słowo rozmówca zrozumie od razu.",
+        "Informacja, że rozmówca rozmawia z AI, nie jest kwestią stylu ani uprzejmości. Obowiązek i jego zakres opisujemy w lekcji siódmej, tutaj interesuje nas wyłącznie brzmienie. Praktyczny efekt bywa całkiem dobry: ludzie, którzy wiedzą, że mówią do maszyny, formułują prośby prościej i rzadziej irytują się drobnym potknięciem.",
         "Spójność z marką to część mniej techniczna, za to widoczna od pierwszej sekundy. Jeśli firma pisze do klientów luźno i po imieniu, sztywny asystent brzmi obco. Jeśli komunikacja jest formalna, wesoły głos podważa jej wiarygodność. Zwykle prosimy o dwa nagrania rozmów z recepcji albo o kilka maili wysyłanych do klientów i z tego układamy ton.",
       ],
     },
@@ -360,7 +361,7 @@ export const LESSONS: Lesson[] = [
     takeaways: [
     "Barwa głosu ustawia oczekiwania co do kompetencji, zanim padnie pierwsza odpowiedź. Dobieraj ją do branży i do stanu, w jakim dzwonią ludzie.",
     "Tempo nieco wolniejsze niż w zwykłej rozmowie, wyraźna pauza po pytaniu, cyfry czytane grupami.",
-    "Imię plus rola i jasna informacja o AI. Obowiązek wynika z unijnych przepisów, termin stosowania to 2 sierpnia 2026.",
+    "Imię plus rola nazwana wprost: „asystentka AI”, nie „asystentka głosowa”. Skąd bierze się ten obowiązek, tłumaczy lekcja siódma.",
     "Bardzo naturalny głos przy prostym bocie działa przeciwko tobie. Neutralna barwa mniej obiecuje i mniej rozczarowuje.",
     ],
     faq: [
@@ -370,7 +371,7 @@ export const LESSONS: Lesson[] = [
     },
     {
       q: "Czy asystent może nosić imię pracownika z recepcji?",
-      a: "Odradzamy. Rozmówca może uznać, że rozmawia z tą osobą, a to kłóci się z obowiązkiem informowania o AI. Lepiej wybrać imię neutralne i zawsze dodawać rolę, żeby od pierwszego zdania było jasne, kto jest po drugiej stronie.",
+      a: "Odradzamy. Rozmówca może uznać, że rozmawia z tą osobą, a to kłóci się z obowiązkiem informowania o AI, który opisujemy w lekcji siódmej. Lepiej wybrać imię neutralne i zawsze dokleić do niego rolę ze słowem AI, na przykład „Ola, asystentka AI salonu”. Wtedy od pierwszego zdania jest jasne, kto jest po drugiej stronie.",
     },
     {
       q: "Ile trwa dobranie głosu i czy to osobny koszt?",
@@ -468,12 +469,12 @@ export const LESSONS: Lesson[] = [
       h2: "Rozmówca ma wiedzieć, z kim rozmawia",
       paragraphs: [
         "Unijne przepisy o AI wprowadzają obowiązek poinformowania człowieka, że rozmawia z systemem sztucznej inteligencji. Termin stosowania to 2 sierpnia 2026. W praktyce zamyka to drogę pomysłom, w których agent udaje pracownika i nikt się do tego nie przyznaje.",
-        "Wykonanie jest banalne. Wystarczy pierwsze zdanie powitania: „Dzień dobry, tu automatyczny asystent przychodni Zdrowie”. Nikt nie wymaga czytania regulaminu przez pół minuty. Wymagane jest to, żeby informacja padła na początku i była zrozumiała dla osoby, która dzwoni w biegu, z ulicy, z dzieckiem na ręku.",
+        "Wykonanie jest banalne. Wystarczy pierwsze zdanie powitania: „Dzień dobry, tu asystent AI przychodni Zdrowie”. Nikt nie wymaga czytania regulaminu przez pół minuty. Wymagane jest to, żeby informacja padła na początku i była zrozumiała dla osoby, która dzwoni w biegu, z ulicy, z dzieckiem na ręku. Samo „automatyczny asystent” bywa odbierane jako zapowiedź starej infolinii, więc lepiej powiedzieć wprost, że rozmówcą jest asystent AI. Całe powitanie ma cztery elementy, te same, które w lekcji czwartej mieszczą się w jednym oddechu.",
         "Właściciele firm często boją się, że ludzie zaczną się rozłączać. Z tego, co obserwujemy przy odbiorach, część rozmówców faktycznie od razu prosi o człowieka. To w porządku i agent powinien umieć takie przełączenie wykonać bez dyskusji. Ukrywanie natury systemu i tak wychodzi po dwóch pytaniach, tylko wtedy klient czuje się oszukany zamiast poinformowany.",
       ],
       list: [
-        "Że po drugiej stronie jest system automatyczny",
-        "W czyim imieniu ten system odbiera albo dzwoni",
+        "W czyim imieniu asystent odbiera albo dzwoni",
+        "Że po drugiej stronie jest asystent AI, powiedziane tymi słowami",
         "Że rozmowa jest nagrywana, o ile faktycznie jest",
         "Jak poprosić o człowieka, jednym prostym zdaniem",
       ],
@@ -539,30 +540,30 @@ export const LESSONS: Lesson[] = [
     number: 8,
     title: "Jak sprawdzić, czy voicebot naprawdę pomaga",
     metaTitle: "Jak mierzyć voicebota - metryki i odsłuchy",
-    metaDescription: "Co zmierzyć przed startem voicebota, na co patrzeć po uruchomieniu i dlaczego odsetek odebranych połączeń niczego nie mówi. Plus sygnały do wycofania.",
-    lead: "Voicebot bez pomiaru zamienia się w rozmowę o wrażeniach. Pokazuję, co zebrać przed startem, co oglądać potem i po czym poznać, że lepiej się wycofać.",
+    metaDescription: "Na co patrzeć po uruchomieniu voicebota, jak liczyć sprawy załatwione bez człowieka i dlaczego odsetek odebranych połączeń niczego nie mówi. Plus sygnały do wycofania.",
+    lead: "Voicebot bez pomiaru zamienia się w rozmowę o wrażeniach. Punkt odniesienia macie z lekcji drugiej, tu pokazuję, co oglądać po starcie i po czym poznać, że lepiej się wycofać.",
     minutes: 8,
     sections: [
     {
-      h2: "Zmierzcie stan sprzed startu, bo drugi raz go nie zobaczycie",
+      h2: "Punktem odniesienia są liczby zebrane przed startem",
       paragraphs: [
-        "Zanim agent odbierze pierwsze połączenie, zbierzcie cztery liczby. Ile telefonów tygodniowo wpada na główny numer i o których godzinach. Ile z nich nikt nie odbiera. Ile trwa średnia rozmowa. Które dwa albo trzy pytania powtarzają się najczęściej. Do pierwszych trzech wystarczy billing od operatora, do czwartej dwa tygodnie kartki przy telefonie w recepcji.",
+        "Audyt macie z lekcji drugiej: połączenia dziennie, nieodebrane, średni czas rozmowy i trzy dni notowania, z czym ludzie dzwonią. To jest stan zero i nie ma sensu mierzyć go po raz drugi w innej formie. Dwa różne zdjęcia sprzed startu blokują potem decyzję równie skutecznie jak brak zdjęcia, bo na spotkaniu każdy wybiera to, które pasuje mu do tezy. Reszta tej lekcji dotyczy już tego, co widać dopiero po uruchomieniu.",
         "Po uruchomieniu tego stanu już nie odtworzycie i to jest cały problem. Ruch się zmienia. Ludzie, którzy wcześniej rezygnowali po czwartym sygnale, teraz się dodzwaniają, więc liczba obsłużonych spraw rośnie z powodu, który nie ma nic wspólnego z jakością agenta. Bez punktu odniesienia zostaje porównywanie nowych danych z pamięcią, a pamięć jest łaskawa dla decyzji, które sami podjęliśmy.",
-        "Powiem szczerze: sporo firm startuje bez tego pomiaru, także u nas. Potem, po trzech miesiącach, pada pytanie „czy to się opłaciło” i nie ma z czym zestawić odpowiedzi. Zostaje wrażenie recepcji, że jest spokojniej. Bywa, że to dobry sygnał, tylko nikt nie zbuduje na nim decyzji o rozszerzeniu wdrożenia na drugi oddział.",
+        "Powiem szczerze: sporo firm startuje bez tych liczb, także u nas. Potem, po trzech miesiącach, pada pytanie „czy to się opłaciło” i nie ma z czym zestawić odpowiedzi. Zostaje wrażenie recepcji, że jest spokojniej. Bywa, że to dobry sygnał, tylko nikt nie zbuduje na nim decyzji o rozszerzeniu wdrożenia na drugi oddział.",
       ],
     },
     {
       h2: "Co oglądać po uruchomieniu",
       paragraphs: [
-        "Po starcie liczy się jedno pytanie: ile spraw zostało załatwionych do końca bez udziału człowieka. Wokół niego układa się reszta. Warto rozbić to na kilka pozycji, bo sama średnia potrafi ukryć problem, który powtarza się codziennie o tej samej porze.",
-        "Osobno warto pilnować metryki, która nic nie mówi, a świetnie wygląda w raporcie. „Odebranych 100 procent połączeń” mierzy tyle, że system istnieje i się nie wywrócił. Automat zawsze odbierze. W tej samej rodzinie jest liczba obsłużonych rozmów podana bez informacji, ile z nich skończyło się czymkolwiek konkretnym.",
+        "Po starcie liczy się jedno pytanie: ile spraw zostało załatwionych do końca bez udziału człowieka. Zanim ktokolwiek wpisze to do raportu, ustalcie kryterium i już go nie ruszajcie. Nasze brzmi tak: sprawa jest załatwiona, gdy rozmowa skończyła się bez przekazania do konsultanta i tego samego dnia nikt z tego numeru nie oddzwonił w tej samej sprawie. Bez drugiego warunku liczycie rozmowy, które się po prostu urwały. Resztę rozbijcie na pozycje, bo średnia potrafi ukryć problem wracający codziennie o tej samej porze.",
+        "Teraz metryka, przy której trzeba uważać, bo świetnie wygląda w raporcie i nie znaczy nic. „Odebranych 100 procent połączeń” mierzy tyle, że system istnieje i się nie wywrócił. Automat zawsze odbierze. W tej samej rodzinie jest liczba obsłużonych rozmów podana bez informacji, ile z nich skończyło się czymkolwiek konkretnym.",
         "Eskalacja do człowieka nie jest porażką. Agent, który po dwóch nieudanych próbach zrozumienia przełącza rozmowę dalej, zachowuje się poprawnie. Niepokoić powinny dwie inne rzeczy: eskalacja przy pytaniu, które agent miał obsługiwać od pierwszego dnia, oraz cicha porażka, czyli rozmówca odkłada słuchawkę, a statystyka zapisuje rozmowę jako zakończoną.",
       ],
       list: [
-        "Rozmowy domknięte bez przełączenia, liczone tylko wtedy, gdy sprawa faktycznie została załatwiona",
+        "Rozmowy domknięte bez przekazania do człowieka i bez oddzwonienia z tego samego numeru w tej samej sprawie jeszcze tego samego dnia",
         "Eskalacje z podziałem na powód: agent nie zrozumiał, zabrakło danych w systemie, rozmówca od razu poprosił o człowieka, sprawa wykraczała poza zakres",
         "Rozłączenia w pierwszych kilkunastu sekundach, bo to zwykle reakcja na samo powitanie",
-        "Sprawy powracające, czyli ten sam numer dzwoniący drugi raz w tej samej sprawie w ciągu doby",
+        "Sprawy powracające, czyli druga strona tego samego kryterium: ten sam numer wraca z tą samą sprawą jeszcze tego samego dnia",
       ],
     },
     {
@@ -577,14 +578,14 @@ export const LESSONS: Lesson[] = [
       h2: "Sygnały, że trzeba się wycofać",
       paragraphs: [
         "Wycofanie się jest normalną opcją i lepiej mieć ją z tyłu głowy od początku. Pierwszy sygnał: odsetek eskalacji nie spada po dwóch albo trzech rundach poprawek, mimo że każda runda miała konkretny powód. Drugi: klienci zaczynają narzekać wprost, nie w ankiecie, tylko w rozmowie z pracownikiem. Trzeci jest najcichszy, bo pracownicy po prostu zaczynają obchodzić system i podawać znajomym bezpośredni numer.",
-        "Druga kategoria wygląda inaczej. Agent działa poprawnie, tylko nie ma czego obsługiwać. Kilkanaście połączeń tygodniowo, każde w innej sprawie, żadnego powtarzalnego wzorca. Przy wdrożeniu od 5 000 zł netto i stałym utrzymaniu taka matematyka się nie domknie. Lepiej powiedzieć to sobie w trzecim miesiącu niż w trzecim roku.",
+        "Druga kategoria wygląda inaczej. Agent działa poprawnie, tylko nie ma czego obsługiwać. Ruchu jak na lekarstwo, każde połączenie w innej sprawie, żadnego powtarzalnego wzorca. Przeliczcie to jeszcze raz rachunkiem z lekcji drugiej, tym od godzin miesięcznie. Jeśli przy wdrożeniu od 5 000 zł netto i stałym utrzymaniu matematyka się nie domyka, lepiej powiedzieć to sobie w trzecim miesiącu niż w trzecim roku.",
         "Rzadko trzeba wyłączać wszystko. Zwykle sensowniejsze jest cofnięcie się o krok: zostawić agenta na wieczory i weekendy, a dzień oddać ludziom. Albo zawęzić go do jednej sprawy, w której radzi sobie dobrze, choćby do samego umawiania wizyt. Wąski agent, który działa, jest wart więcej niż szeroki, którego wszyscy omijają.",
       ],
     },
     ],
     takeaways: [
-    "Przed startem zbierzcie liczbę połączeń, nieodebrane, średni czas rozmowy i najczęstsze pytania. Po uruchomieniu tego stanu nie odtworzycie.",
-    "Odsetek odebranych połączeń niczego nie mówi. Liczy się, ile spraw zamknięto bez człowieka i co poszło nie tak w pozostałych.",
+    "Punktem odniesienia są liczby z audytu w lekcji drugiej. Nie zbierajcie ich drugi raz w innej formie, bo po starcie i tak nie odtworzycie stanu sprzed.",
+    "Odsetek odebranych połączeń niczego nie mówi. Liczy się sprawa zamknięta bez przekazania i bez oddzwonienia tego samego dnia, plus to, co poszło nie tak w pozostałych.",
     "Dziesięć odsłuchanych rozmów tygodniowo pokazuje więcej niż tabela z liczbami, zwłaszcza gdy słucha ktoś z pierwszej linii.",
     "Brak poprawy po kilku rundach zmian to sygnał do zawężenia zakresu albo wyłączenia agenta, a nie do dokładania funkcji.",
     ],
@@ -599,7 +600,7 @@ export const LESSONS: Lesson[] = [
     },
     {
       q: "Czy da się przeliczyć efekt na złotówki?",
-      a: "Da się oszacować, jeśli wiecie, ile czasu zespół spędzał wcześniej na powtarzalnych rozmowach. Wystarczy przemnożyć ten czas przez koszt godziny pracy. Bez danych sprzed wdrożenia zostaje szacunek na wyczucie i właśnie dlatego pomiar przed startem tak się opłaca.",
+      a: "Da się oszacować, jeśli wiecie, ile czasu zespół spędzał wcześniej na powtarzalnych rozmowach. Wystarczy przemnożyć ten czas przez koszt godziny pracy. Bez danych sprzed wdrożenia zostaje szacunek na wyczucie i właśnie dlatego audyt z lekcji drugiej tak się opłaca.",
     },
     ],
     related: [
@@ -649,7 +650,7 @@ export const LESSONS: Lesson[] = [
       h2: "Pierwszy tydzień i granice tego podejścia",
       paragraphs: [
         "Po starcie kusi, żeby poprawiać scenariusz po każdej nieudanej rozmowie. Radzimy odwrotnie. Przez pierwszy tydzień głównie słuchać, notować i zbierać. Zmiany wprowadzane na gorąco, po jednym telefonie, potrafią zepsuć ścieżki, które do tej pory działały bez zarzutu.",
-        "Konkret z praktyki: zawsze pojawia się grupa pytań, których nikt nie przewidział przy projektowaniu. W przychodni to pytania o parking i o to, czy trzeba przyjść na czczo. W transporcie o to, czy do autobusu można wnieść rower. Takich rzeczy nie wymyśli się przy stole, one wychodzą z nagrań.",
+        "Zawsze pojawia się grupa pytań, których nikt nie przewidział przy projektowaniu. W przychodni bywa to parking albo to, czy trzeba przyjść na czczo. W transporcie pytanie, czy do autobusu można wnieść rower. Takich rzeczy nie wymyśli się przy stole, one wychodzą z nagrań, i to jest główny powód, dla którego warto ich słuchać przez pierwszy tydzień.",
         "Uczciwie o cenie tego podejścia. Wdrożenie trwa dłużej, bo między etapami czeka się na dane, a nie na programistów, i firma, która chciała mieć temat z głowy w dwa tygodnie, musi się z tym pogodzić. Jest też pułapka w samych wynikach. Nocne rozmowy są krótsze i bardziej rzeczowe niż te z poniedziałkowego szczytu, więc dobre liczby z pierwszego etapu niczego nie gwarantują w drugim. To argument za tym, żeby drugiego etapu nie przeskakiwać, nawet jeśli wszystko wygląda świetnie.",
       ],
       list: [
@@ -669,11 +670,11 @@ export const LESSONS: Lesson[] = [
     faq: [
     {
       q: "Jak długo powinien trwać pierwszy etap?",
-      a: "Liczy się go w tygodniach, nie w dniach. Chodzi o to, żeby uzbierać na tyle rozmów, by zobaczyć powtarzalne wzorce zamiast przypadków. Przy mniejszych wdrożeniach, które realizujemy w 2 do 4 tygodni, pierwszy etap to zwykle kilkanaście dni normalnego ruchu wieczornego i weekendowego. Przy większych projektach, gdzie całość zajmuje od miesiąca do trzech, etapy są odpowiednio dłuższe.",
+      a: "Liczy się go w tygodniach, nie w dniach. Chodzi o to, żeby uzbierać na tyle rozmów, by zobaczyć powtarzalne wzorce zamiast przypadków. Warto rozdzielić dwie rzeczy, bo łatwo je pomylić: budowa i uruchomienie agenta zajmują u nas 2 do 4 tygodni przy mniejszych wdrożeniach, a etapowanie ruchu zaczyna się dopiero po starcie i biegnie równolegle z normalną pracą firmy. Pierwszy etap to zwykle kilkanaście dni ruchu wieczornego i weekendowego, więc pełne przejście przez wszystkie etapy trwa dłużej niż samo wdrożenie i nie ma powodu, żeby to przyspieszać.",
     },
     {
       q: "Czy klientom przeszkadza, że raz odbiera bot, a raz człowiek?",
-      a: "W praktyce rzadko. Ludzie są przyzwyczajeni, że po godzinach obsługa wygląda inaczej niż w środku dnia. Ważniejsze jest, żeby bot na wstępie powiedział, że jest automatem, i żeby dało się poprosić o kontakt z człowiekiem następnego dnia. Od 2 sierpnia 2026 informowanie rozmówcy, że rozmawia z AI, wynika wprost z unijnych przepisów.",
+      a: "W praktyce rzadko. Ludzie są przyzwyczajeni, że po godzinach obsługa wygląda inaczej niż w środku dnia. Ważniejsze jest, żeby bot na wstępie powiedział, że jest asystentem AI, i żeby dało się poprosić o kontakt z człowiekiem następnego dnia. Od 2 sierpnia 2026 informowanie rozmówcy, że rozmawia z AI, wynika wprost z unijnych przepisów.",
     },
     {
       q: "Co jeśli po pierwszym etapie widać, że bot sobie nie radzi?",
@@ -710,24 +711,24 @@ export const LESSONS: Lesson[] = [
     {
       h2: "Błędy, które wychodzą dopiero po miesiącu",
       paragraphs: [
-        "Pierwszy z nich to udawanie człowieka. Kusi, bo głos brzmi naturalnie, a skoro nikt nie pyta, to część firm uznaje, że nie trzeba mówić. Kłopot zaczyna się, gdy rozmówca zorientuje się sam, a orientuje się prawie zawsze. Poczucie, że ktoś próbował go nabrać, zostaje na dłużej niż irytacja automatem. Do tego od 2 sierpnia 2026 obowiązek poinformowania, że rozmowa jest prowadzona ze sztuczną inteligencją, wynika z unijnych przepisów o AI. Jedno zdanie na początku załatwia sprawę.",
-        "Drugi błąd to mierzenie liczby obsłużonych rozmów. Wygląda dobrze w raporcie i nie mówi prawie nic. Bot może odebrać tysiąc połączeń i w połowie z nich niczego nie załatwić, bo ludzie oddzwonili później do biura. Patrz na sprawy zamknięte bez udziału zespołu, na odsetek próśb o człowieka i na to, ile telefonów wraca w ciągu doby. Te liczby bywają nieprzyjemne i są prawdziwe.",
-        "Trzeci jest cichy: po pierwszym miesiącu nikt już nie odsłuchuje rozmów. Wdrożenie działa, więc przestaje kogokolwiek obchodzić, a firma się zmienia. Nowa usługa, inne godziny, podniesiony cennik. Bot mówi po staremu jeszcze przez pół roku. Kwartalny przegląd kilkunastu nagrań wystarczy, żeby to wyłapać.",
+        "Pierwszy z nich to udawanie człowieka. Kusi, bo głos brzmi naturalnie, a skoro nikt nie pyta, to część firm uznaje, że nie trzeba mówić. Kłopot zaczyna się, gdy rozmówca zorientuje się sam. Przy krótkiej sprawie może nie poznać, ale im dłuższa rozmowa, tym większa szansa, że pozna. Poczucie, że ktoś próbował go nabrać, zostaje na dłużej niż irytacja automatem. Do tego dochodzi obowiązek z unijnych przepisów, który rozkładamy na części w lekcji siódmej. Wykonanie mieści się w jednym zdaniu powitania, w którym pada „asystent AI” albo „asystentka AI”. Nie „asystent głosowy”, nie „wirtualna obsługa”.",
+        "Drugi błąd to mierzenie liczby obsłużonych rozmów. Wygląda dobrze w raporcie i nie mówi prawie nic. Bot może odebrać tysiąc połączeń i w połowie z nich niczego nie załatwić, bo ludzie oddzwonili później do biura. Patrz na sprawy zamknięte bez przekazania do człowieka, na odsetek próśb o konsultanta i na to, ile numerów wraca z tą samą sprawą tego samego dnia. Kryterium rozpisaliśmy w lekcji ósmej. Te liczby bywają nieprzyjemne i są prawdziwe.",
+        "Trzeci jest cichy: po pierwszym miesiącu nikt już nie odsłuchuje rozmów. Wdrożenie działa, więc przestaje kogokolwiek obchodzić, a firma się zmienia. Nowa usługa, inne godziny, podniesiony cennik. Bot mówi po staremu jeszcze przez pół roku. Ratuje przed tym rytm z lekcji ósmej: w pierwszym miesiącu próbka nagrań co tydzień, potem co dwa tygodnie, bez przerw na kwartał.",
       ],
     },
     {
       h2: "Błędy po stronie firmy, nie technologii",
       paragraphs: [
         "Brak właściciela projektu. Voicebot bez jednej osoby odpowiedzialnej po stronie zamawiającego rozmywa się między działami. Pytania od nas trafiają na skrzynkę, na którą patrzy pięć osób i żadna nie czuje się zobowiązana odpowiedzieć. Wdrożenia, które szły najciężej, wyglądały dokładnie tak. Wystarczy jedna osoba z decyzyjnością i godziną tygodniowo.",
-        "Automatyzowanie rozmów, które wymagają empatii. Odwołanie wizyty, sprawdzenie godziny odjazdu, umówienie przeglądu, potwierdzenie rezerwacji: to zadania dla bota. Informacja o wyniku badania, reklamacja po nieudanej usłudze, telefon od kogoś roztrzęsionego: to zadania dla człowieka. Technicznie voicebot poradzi sobie z każdą z tych rozmów. Nie o technikę tu chodzi.",
-        "Zdarza się też błąd odwrotny, rzadszy i kosztowny. Firma kupuje voicebota, a stare menu tonowe zostawia jako pierwszą warstwę. Dzwoniący przechodzi przez cztery poziomy wyboru cyframi, żeby dotrzeć do automatu, z którym mógł od razu po prostu porozmawiać. Jeśli wdrażasz bota, IVR w większości przypadków powinien zniknąć.",
+        "Automatyzowanie rozmów, które wymagają empatii. Odwołanie wizyty, sprawdzenie godziny odjazdu, umówienie przeglądu, potwierdzenie rezerwacji: to zadania dla bota. Informacja o wyniku badania, reklamacja po nieudanej usłudze, telefon od kogoś roztrzęsionego: to zadania dla człowieka. Agent potrafi wypowiedzieć zdanie w każdej z tych sytuacji, ale to nie znaczy, że powinien ją prowadzić. Przy wynikach badań dochodzi jeszcze to, że są danymi o zdrowiu, więc rozmowa o nich wymaga zupełnie innej podstawy prawnej niż odwołanie wizyty.",
+        "Zdarza się też błąd odwrotny, rzadszy i kosztowny. Firma kupuje voicebota, a stare menu tonowe zostawia jako pierwszą warstwę. Dzwoniący przechodzi przez cztery poziomy wyboru cyframi, żeby dotrzeć do automatu, z którym mógł od razu po prostu porozmawiać. Błędem jest tu piętro nad rozmową, a nie menu samo w sobie. Tam, gdzie sprawy są dwie i wracają co tydzień albo gdzie w tle huczy hala, wybór cyfrą bywa szybszy od mówienia i zostawiamy go świadomie, o czym piszemy w lekcji czwartej. Ta sama pomyłka ma wersję lustrzaną: voicebot, który czyta listę opcji i każe wybierać, czyli menu w przebraniu.",
       ],
     },
     {
       h2: "Kiedy najlepszą decyzją jest nie wdrażać",
       paragraphs: [
         "Ta lekcja zamyka kurs, więc powiemy rzecz, której zwykle nie mówi firma sprzedająca wdrożenia. Voicebot nie ma sensu wszędzie i wcale nie tak rzadko go odradzamy.",
-        "Jeśli odbieracie kilkanaście telefonów dziennie i nikt nie czeka w kolejce, wdrożenie od 5 000 zł netto plus utrzymanie od 249 zł netto miesięcznie nie zwróci się w rozsądnym czasie. Jeśli każda rozmowa jest inna i opiera się na wiedzy, której nie da się spisać, bot będzie przeszkadzał obu stronom. Jeśli w firmie nie ma nikogo, kto się tym zajmie, lepiej poczekać, aż taka osoba się znajdzie.",
+        "Zróbcie rachunek z lekcji drugiej, ten od godzin miesięcznie. Jeśli wychodzi poniżej progu dziesięciu godzin i nikt nie czeka w kolejce, wdrożenie od 5 000 zł netto plus utrzymanie od 249 zł netto miesięcznie nie zwróci się w rozsądnym czasie. Jeśli każda rozmowa jest inna i opiera się na wiedzy, której nie da się spisać, bot będzie przeszkadzał obu stronom. Jeśli w firmie nie ma nikogo, kto się tym zajmie, lepiej poczekać, aż taka osoba się znajdzie.",
         "Jeżeli po dziesięciu lekcjach wyszło Ci, że u Ciebie to się nie opłaca, kurs zadziałał tak, jak miał zadziałać. Lepiej stracić kilka godzin na czytanie niż kilkanaście tysięcy na system, który będzie się kurzył. A jeśli wyszło odwrotnie, pierwsza konsultacja jest bezpłatna i można na niej zadać dokładnie te pytania, które nasunęły się po drodze.",
       ],
     },
@@ -735,7 +736,7 @@ export const LESSONS: Lesson[] = [
     takeaways: [
     "Ścieżka do człowieka jest warunkiem uruchomienia, a nie dodatkiem. Bot, który nie oddaje rozmowy, kosztuje klientów.",
     "Uporządkuj dane, które bot ma czytać, zanim odbierze pierwsze połączenie. To zwykle dłuższa część pracy niż budowa bota.",
-    "Mierz sprawy zamknięte bez udziału zespołu i telefony powracające w ciągu doby, a nie liczbę odebranych połączeń.",
+    "Mierz sprawy zamknięte bez przekazania do człowieka i numery wracające tego samego dnia, a nie liczbę odebranych połączeń.",
     "Wniosek, że voicebot u Ciebie się nie opłaca, jest pełnoprawnym efektem tego kursu.",
     ],
     faq: [
@@ -745,7 +746,7 @@ export const LESSONS: Lesson[] = [
     },
     {
       q: "Czy naprawdę trzeba mówić, że to AI, skoro rozmówcy i tak słyszą?",
-      a: "Tak. Poza tym, że to zwykła uczciwość wobec dzwoniącego, od 2 sierpnia 2026 obowiązek informowania o kontakcie ze sztuczną inteligencją wynika z unijnych przepisów. W praktyce to jedno zdanie na początku rozmowy. Nie spotkaliśmy się z tym, żeby ktoś się na nie skarżył.",
+      a: "Tak. Poza tym, że to zwykła uczciwość wobec dzwoniącego, od 2 sierpnia 2026 obowiązek wynika z unijnych przepisów, które opisujemy w lekcji siódmej. W praktyce to jedno zdanie na początku rozmowy ze słowami „asystent AI”. Nie spotkaliśmy się z tym, żeby ktoś się na nie skarżył.",
     },
     {
       q: "Ile trwa naprawienie źle uruchomionego voicebota?",

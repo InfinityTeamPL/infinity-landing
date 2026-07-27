@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Od czego zależy cena chatbota AI, jakie są realne widełki na polskim rynku i za co faktycznie płacisz. Konkretne kwoty, bez „to zależy".',
     type: 'article',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

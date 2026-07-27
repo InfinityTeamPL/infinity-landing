@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Agent głosowy w transporcie: rozkłady jazdy przez telefon 24/7, statusy kursów, reklamacje. Publiczne demo na danych rozkładowych, dane na serwerach w Polsce.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 

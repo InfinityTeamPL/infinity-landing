@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       'Agenci AI dla działu HR: selekcja CV, onboarding, dokumenty kadrowe i pilnowanie terminów ZUS/PIT. Dane w Polsce, zgodność z RODO.',
     type: 'website',
+    images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
 };
 
