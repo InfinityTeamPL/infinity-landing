@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { LESSONS, TOTAL_MINUTES } from '@/lib/akademia';
+import { LESSONS, TOTAL_MINUTES, readingMinutes } from '@/lib/akademia';
 
 const BASE = 'https://www.infinityteam.io';
 
@@ -123,7 +123,7 @@ export default function AkademiaIndex() {
                   <span className="block text-sm text-white/60 leading-relaxed mb-3">{l.lead}</span>
                   <span className="inline-flex items-center gap-1.5 text-xs text-white/40">
                     <Clock className="w-3.5 h-3.5" />
-                    {l.minutes} min
+                    {readingMinutes(l)} min
                   </span>
                 </span>
               </Link>

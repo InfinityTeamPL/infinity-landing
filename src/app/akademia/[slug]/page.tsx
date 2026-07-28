@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, Check, Clock } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { LESSONS, getLesson, getNeighbours } from '@/lib/akademia';
+import { LESSONS, getLesson, getNeighbours, readingMinutes } from '@/lib/akademia';
 
 const BASE = 'https://www.infinityteam.io';
 
@@ -52,7 +52,7 @@ function buildJsonLd(slug: string) {
       inLanguage: 'pl-PL',
       learningResourceType: 'Lekcja',
       educationalLevel: 'Poziom podstawowy',
-      timeRequired: `PT${lesson.minutes}M`,
+      timeRequired: `PT${readingMinutes(lesson)}M`,
       isAccessibleForFree: true,
       teaches: lesson.takeaways,
       isPartOf: {
@@ -108,7 +108,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs text-white/50">
             <Clock className="w-3.5 h-3.5" />
-            {lesson.minutes} min czytania
+            {readingMinutes(lesson)} min czytania
           </span>
         </div>
 

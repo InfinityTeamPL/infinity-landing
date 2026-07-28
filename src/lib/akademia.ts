@@ -29,8 +29,12 @@ export interface Lesson {
   metaDescription: string;
   /** Zajawka pod H1 i na kafelku w hubie. */
   lead: string;
-  /** Szacowany czas czytania w minutach. */
-  minutes: number;
+  /**
+   * Pole historyczne. Czasu czytania NIE bierzemy już stąd, tylko liczymy
+   * z treści przez readingMinutes(). Ręcznie wpisywane wartości rozjechały
+   * się z rzeczywistością: lekcja na 480 słów i ta na 1086 miały obie „8 min".
+   */
+  minutes?: number;
   sections: LessonSection[];
   /** Podsumowanie na końcu lekcji. */
   takeaways: string[];
@@ -47,8 +51,7 @@ export const LESSONS: Lesson[] = [
     metaTitle: 'Jak działa voicebot — rozmowa telefoniczna z AI krok po kroku',
     metaDescription:
       'Co się dzieje między słowem klienta a odpowiedzią voicebota: rozpoznanie mowy, model językowy, synteza głosu. Wyjaśniamy, skąd bierze się opóźnienie i co je psuje.',
-    lead: 'Różnica między infolinią sprzed dekady a dzisiejszym voicebotem nie polega na lepszym lektorze. Polega na tym, że po drodze ktoś w ogóle rozumie, co mówisz.',
-    minutes: 7,
+    lead: 'Różnica między infolinią sprzed dekady a dzisiejszym voicebotem nie polega na lepszym lektorze. Polega na tym, że po drodze ktoś w ogóle rozumie, co mówicie.',
     sections: [
       {
         h2: 'Trzy etapy jednej wypowiedzi',
@@ -69,7 +72,7 @@ export const LESSONS: Lesson[] = [
         h2: 'Czego ten łańcuch nie naprawi',
         paragraphs: [
           'Voicebot rozumie mowę i formułuje odpowiedzi, ale nie wie nic o Waszej firmie, dopóki mu tego nie damy. Godziny otwarcia, dostępne terminy, status zamówienia: to wszystko musi przyjść z systemu, który już macie.',
-          'Jeśli te dane są rozproszone albo nieaktualne, voicebot będzie je powtarzał z równie dużą pewnością siebie jak te prawidłowe. Uporządkowanie źródła jest częścią wdrożenia, i to zwykle tą, która zajmuje najwięcej czasu.',
+          'Jeśli te dane są rozproszone albo nieaktualne, voicebot będzie je powtarzał z równie dużą pewnością siebie jak te prawidłowe. Uporządkowanie źródła jest częścią wdrożenia, i to zwykle tą, która zajmuje najwięcej czasu. Sam łańcuch ma zresztą własne słabe punkty, bo każdy z trzech etapów gubi się na czymś innym.',
         ],
         list: [
           'Rozpoznanie mowy radzi sobie z polszczyzną dobrze, gorzej z gwarą, mocnym akcentem i rozmową z głośnika w samochodzie.',
@@ -106,7 +109,6 @@ export const LESSONS: Lesson[] = [
     metaDescription:
       'Zanim wydacie złotówkę: jak policzyć połączenia, rozpoznać pytania powtarzalne i sprawdzić, czy voicebot zdejmie realny ciężar. Z listą sytuacji, w których nie warto.',
     lead: 'Najdroższy voicebot to ten, który obsługuje pięć telefonów dziennie. Ta lekcja jest o tym, jak sprawdzić skalę, zanim ktokolwiek zacznie coś budować.',
-    minutes: 8,
     sections: [
       {
         h2: 'Policzcie, zanim zapytacie o wycenę',
@@ -171,14 +173,12 @@ export const LESSONS: Lesson[] = [
     metaTitle: "Granice voicebota - co robić, gdy nie zna odpowiedzi",
     metaDescription: "Jak ustawić granice voicebota, żeby nie zgadywał. Twarde progi przekazania do człowieka, zdanie ratunkowe i co robić, gdy przekazanie zawodzi.",
     lead: "Najgorsza rzecz, jaką potrafi zrobić agent głosowy, to odpowiedzieć spokojnym, pewnym tonem na pytanie, którego nie rozumie. Granice trzeba mu wypisać, zanim odbierze pierwszy telefon.",
-    minutes: 8,
     sections: [
     {
       h2: "Agent bez granic nie milczy. Zgaduje",
       paragraphs: [
         "System głosowy jest zbudowany po to, żeby produkować sensownie brzmiącą wypowiedź. Jeśli nikt mu nie powiedział, czego ma nie robić, i tak coś powie. W kanale tekstowym ktoś ma szansę to wychwycić, bo widzi zdanie na ekranie i może porównać je z cennikiem albo z regulaminem. Przez telefon takiej szansy nie ma. Słowo pada raz, brzmi rzeczowo, a rozmówca zapisuje je w głowie jako ustalenie z firmą.",
-        "Widać to najlepiej przy pytaniach z pogranicza. Klient pyta o rzecz, która w bazie wiedzy istnieje w połowie: cena jest, ale nie dla wariantu, o który pyta. Agent bez opisanych granic sklei brakującą część z tego, co wygląda podobnie, i poda kwotę. Potem ktoś z zespołu tłumaczy przez kwadrans, dlaczego liczba z telefonu nie zgadza się z fakturą.",
-        "Koszt takiej sytuacji jest bardzo prozaiczny. Godziny pracy zespołu, jeden zdenerwowany klient i cicha decyzja właściciela, żeby wyłączyć bota na tydzień.",
+        "Widać to najlepiej przy pytaniach z pogranicza. Klient pyta o rzecz, która w bazie wiedzy istnieje w połowie: cena jest, ale nie dla wariantu, o który pyta. Agent bez opisanych granic sklei brakującą część z tego, co wygląda podobnie, i poda kwotę. Potem ktoś z zespołu tłumaczy przez kwadrans, dlaczego liczba z telefonu nie zgadza się z fakturą. Koszt takiej sytuacji jest bardzo prozaiczny: godziny pracy zespołu, jeden zdenerwowany klient i cicha decyzja właściciela, żeby wyłączyć bota na tydzień.",
       ],
     },
     {
@@ -186,7 +186,7 @@ export const LESSONS: Lesson[] = [
       paragraphs: [
         "Granice opisuje się prościej, niż większość osób zakłada. Nie trzeba przewidzieć wszystkich pytań świata ani budować drzewa na dwadzieścia gałęzi. Wystarczy wskazać sytuacje, w których agent kończy swoją część i przełącza rozmowę, bez negocjacji i bez próby ratowania sprawy na własną rękę.",
         "Trzy pierwsze progi są oczywiste dla każdego, kto przez tydzień posłuchał nagrań z infolinii. Czwarty ludzie zwykle pomijają, a to on ratuje najwięcej rozmów. Cierpliwość spada gwałtownie po drugiej prośbie o powtórzenie i wtedy nie ma sensu iść po trzecią.",
-        "Progi zapisujemy w dokumencie. Ustalenie na spotkaniu wyparuje po dwóch tygodniach. Prosimy klienta o jedną kartkę: co agent robi sam, czego nie dotyka nigdy, kto odbiera rozmowę po przekazaniu i w jakich godzinach. Ta kartka waży w projekcie więcej niż większość ustawień technicznych.",
+        "Progi zapisujemy w dokumencie. Ustalenie na spotkaniu wyparuje po dwóch tygodniach. Prosimy klienta o jedną kartkę: co agent robi sam, czego nie dotyka nigdy, kto odbiera rozmowę po przekazaniu i w jakich godzinach. Ta kartka waży w projekcie więcej niż większość ustawień technicznych. Cztery pozycje wracają na niej w każdym wdrożeniu, niezależnie od branży.",
       ],
       list: [
         "Rozmówca prosi o człowieka. Jedna prośba wystarczy, bez dopytywania o powód i bez oferowania jeszcze jednej próby.",
@@ -198,7 +198,7 @@ export const LESSONS: Lesson[] = [
     {
       h2: "Zdanie, które gasi większość problemów",
       paragraphs: [
-        "Brzmi banalnie: jeżeli nie masz pewności, powiedz, że sprawdzisz, i przekaż dalej. Jedna reguła załatwia zaskakująco dużo, bo daje agentowi gotowe wyjście w każdej niejasnej sytuacji. Zamiast produkować odpowiedź na siłę, ma ruch, który zawsze jest dopuszczalny.",
+        "Brzmi banalnie: jeżeli agent nie ma pewności, mówi, że sprawdzi, i przekazuje rozmowę dalej. Jedna reguła załatwia zaskakująco dużo, bo daje agentowi gotowe wyjście w każdej niejasnej sytuacji. Zamiast produkować odpowiedź na siłę, ma ruch, który zawsze jest dopuszczalny.",
         "Ważne jest to, jak ta reguła brzmi w słuchawce. „Nie wiem” zostawia rozmówcę z niczym i kończy rozmowę źle. „Sprawdzę to i przełączę do osoby, która zna szczegóły” brzmi jak normalna obsługa. Ta sama informacja, zupełnie inne wrażenie.",
         "Do tego dochodzi drugie zdanie, o którym łatwo zapomnieć. Agent nie obiecuje rzeczy, których nie kontroluje: żadnych terminów realizacji, rabatów ani zapewnień, że na pewno się uda. Może przyjąć zgłoszenie i powiedzieć, kiedy ktoś oddzwoni. Tyle wystarczy, a każde słowo ponad to wraca do firmy w formie pretensji.",
       ],
@@ -214,7 +214,7 @@ export const LESSONS: Lesson[] = [
     ],
     takeaways: [
     "Agent bez opisanych granic nie przyzna się do niewiedzy. Wygeneruje odpowiedź, która brzmi pewnie i bywa nieprawdziwa.",
-    "Ustal cztery twarde progi przekazania: prośba rozmówcy, skarga, sprawa pieniężna, druga nieudana próba zrozumienia.",
+    "Ustalcie cztery twarde progi przekazania: prośba rozmówcy, skarga, sprawa pieniężna, druga nieudana próba zrozumienia.",
     "Reguła „sprawdzę i przekażę dalej” rozwiązuje większość niejasnych sytuacji, o ile agent nie obiecuje przy tym terminów.",
     "Przekazanie bez kontekstu jest gorsze niż brak bota. Klient opowiada swoją sprawę drugi raz i zwykle już nie wraca.",
     ],
@@ -244,7 +244,6 @@ export const LESSONS: Lesson[] = [
     metaTitle: "Scenariusz rozmowy voicebota - nie rób drugiego IVR",
     metaDescription: "Jak zaprojektować scenariusz rozmowy z voicebotem: powitanie, pytania otwarte, potwierdzanie ustaleń. I kiedy zwykłe menu wyborów sprawdza się lepiej.",
     lead: "IVR irytuje ludzi nie dlatego, że jest automatem. Irytuje, bo każe rozmówcy przetłumaczyć własną sprawę na cztery cyfry, które ktoś wymyślił dwa lata temu.",
-    minutes: 8,
     sections: [
     {
       h2: "Menu wyborów kontra rozmowa",
@@ -258,7 +257,8 @@ export const LESSONS: Lesson[] = [
       h2: "Pierwsze dziesięć sekund",
       paragraphs: [
         "Powitanie ma zmieścić cztery rzeczy, i to szybko. Gdzie się dodzwoniłem. Że odbiera asystent AI. Że rozmowa jest nagrywana, o ile faktycznie jest. Jak poprosić o człowieka. Potem głos wraca do rozmówcy. Zdania o wartościach firmy albo o podnoszeniu jakości obsługi kosztują sekundy, w których człowiek zaczyna się niecierpliwić.",
-        "Cztery elementy brzmią jak dużo, a mieszczą się w jednym oddechu: „Dzień dobry, tu asystentka AI przychodni Zdrowie, rozmowa jest nagrywana. W każdej chwili mogę połączyć z rejestracją. W czym mogę pomóc?”. Skąd bierze się obowiązek nazwania rzeczy po imieniu, rozkładamy w lekcji siódmej. Tutaj liczy się wykonanie: w powitaniu ma paść „asystent AI” albo „asystentka AI”, bez owijania w bawełnę i bez form typu „rozmawia Pan”, bo tego samego nagrania słucha każdy, kto zadzwoni.",
+        "Cztery elementy brzmią jak dużo, a mieszczą się w jednym oddechu: „Dzień dobry, tu asystentka AI przychodni Zdrowie, rozmowa jest nagrywana. W każdej chwili mogę połączyć z rejestracją. W czym mogę pomóc?”.",
+        "Skąd bierze się obowiązek nazwania rzeczy po imieniu, rozkładamy w lekcji siódmej. Tutaj liczy się wykonanie: w powitaniu ma paść „asystent AI” albo „asystentka AI”, bez owijania w bawełnę i bez form typu „rozmawia Pan”, bo tego samego nagrania słucha każdy, kto zadzwoni.",
         "Po powitaniu idzie jedno pytanie otwarte, a potem cisza. Ta cisza jest ważniejsza, niż się wydaje. Systemy, które za szybko wchodzą rozmówcy w słowo, psują pierwsze wrażenie mocniej niż sztucznie brzmiąca barwa głosu.",
       ],
     },
@@ -267,13 +267,13 @@ export const LESSONS: Lesson[] = [
       paragraphs: [
         "„W czym mogę pomóc” jest dobre na start i słabe w środku rozmowy. Kiedy wiadomo już, że chodzi o rezerwację, pytanie musi się zawęzić. Zbyt szerokie pytanie w połowie rozmowy daje odpowiedź, której nie da się zamienić na dane w systemie, a agent zaczyna dopytywać i rozmowa się rozłazi. Zasada jest prosta: im bliżej końca, tym węższe pytanie i tym mniej miejsca na dowolność.",
         "Przed każdą akcją, która zostawia ślad w systemie, agent powtarza ustalenia. Termin, imię, numer telefonu, czasem adres. Jedno zdanie spokojnym tempem i pytanie o potwierdzenie. Kosztuje pięć sekund rozmowy, oszczędza telefon reklamacyjny w przyszłym tygodniu.",
-        "Potwierdzanie ma jeszcze jedną funkcję, mniej oczywistą. Daje rozmówcy moment na poprawienie przekręconego nazwiska albo pomylonej cyfry. Rozpoznawanie mowy najczęściej myli się właśnie przy nazwiskach i długich ciągach cyfr, zwłaszcza gdy ktoś dzwoni z ulicy albo z auta.",
+        "Potwierdzanie ma jeszcze jedną funkcję, mniej oczywistą. Daje rozmówcy moment na poprawienie przekręconego nazwiska albo pomylonej cyfry. Rozpoznawanie mowy najczęściej myli się właśnie przy nazwiskach i długich ciągach cyfr, zwłaszcza gdy ktoś dzwoni z ulicy albo z auta. W scenariuszu obie te rzeczy, zawężanie pytania i potwierdzanie ustaleń, sprowadzają się do kilku prostych zamian w treści.",
       ],
       list: [
-        "Zamiast „jakie ma Pan preferencje” zapytaj „na kiedy mam szukać terminu”.",
-        "Zamiast „proszę podać dane” pytaj po kolei: najpierw imię i nazwisko, potem numer telefonu.",
-        "Zamiast „kiedy Pani pasuje” zaproponuj dwa konkretne terminy i poproś o wybór.",
-        "Zamiast „czy coś jeszcze” zapytaj wprost „czy mam zapisać to zgłoszenie”.",
+        "Zamiast „jakie ma Pan preferencje” zapytajcie „na kiedy mam szukać terminu”.",
+        "Zamiast „proszę podać dane” pytajcie po kolei: najpierw imię i nazwisko, potem numer telefonu.",
+        "Zamiast „kiedy Pani pasuje” zaproponujcie dwa konkretne terminy i poproście o wybór.",
+        "Zamiast „czy coś jeszcze” zapytajcie wprost „czy mam zapisać to zgłoszenie”.",
       ],
     },
     {
@@ -288,7 +288,7 @@ export const LESSONS: Lesson[] = [
     takeaways: [
     "Menu każe rozmówcy dopasować się do firmy. Rozmowa robi odwrotnie i dlatego wygrywa przy sprawach, których nie da się zamknąć w liście.",
     "Powitanie krótkie, ale pełne: kto odbiera, że to asystent AI, nagrywanie jeśli nagrywacie i droga do człowieka. Potem jedno pytanie otwarte i cisza na odpowiedź.",
-    "Zawężaj pytania w miarę rozmowy, a przed zapisem czegokolwiek powtórz ustalenia i poproś o potwierdzenie.",
+    "Zawężajcie pytania w miarę rozmowy, a przed zapisem czegokolwiek powtórzcie ustalenia i poproście o potwierdzenie.",
     "Przy dwóch powtarzalnych sprawach albo w hałasie zwykłe menu bywa lepszym wyborem niż rozmowa.",
     ],
     faq: [
@@ -317,7 +317,6 @@ export const LESSONS: Lesson[] = [
     metaTitle: "Głos voicebota - barwa, tempo i imię asystenta",
     metaDescription: "Jak dobrać barwę głosu i tempo mówienia voicebota, czy nadawać mu imię oraz dlaczego zbyt ludzki głos przy prostym bocie rozczarowuje rozmówcę.",
     lead: "Barwa głosu decyduje o tym, czy rozmówca potraktuje asystenta poważnie, zanim usłyszy pierwszą konkretną odpowiedź. To ustawienie, przy którym najczęściej widzimy decyzje podjęte przypadkiem.",
-    minutes: 8,
     sections: [
     {
       h2: "Barwa głosu ustawia oczekiwania",
@@ -330,15 +329,13 @@ export const LESSONS: Lesson[] = [
     {
       h2: "Tempo, pauzy i to, co słychać w słuchawce",
       paragraphs: [
-        "Tempo ustawia się nieco wolniej niż w zwykłej rozmowie. Rozmówca nie widzi twarzy, często jest w ruchu, czasem słabo słyszy. Zbyt szybki asystent zmusza do proszenia o powtórzenie, a każde powtórzenie zbliża rozmowę do progu przekazania do człowieka.",
-        "Pauzy bywają ważniejsze od samego tempa. Po pytaniu musi zostać cisza, w której człowiek zdąży zebrać myśli. Dłuższą odpowiedź lepiej rozbić na dwa oddechy, zamiast wyrzucać ją jednym ciągiem.",
-        "Osobna sprawa to opóźnienie. Między końcem zdania rozmówcy a początkiem odpowiedzi zawsze coś upływa. Gdy ta przerwa rośnie, ludzie mówią „halo?” i wchodzą agentowi w słowo. Krótkie potwierdzenie w rodzaju „już sprawdzam” potrafi tę dziurę zasypać, o ile nie pada po każdej wypowiedzi, bo wtedy zaczyna brzmieć jak tik.",
+        "Tempo ustawia się nieco wolniej niż w zwykłej rozmowie. Rozmówca nie widzi twarzy, często jest w ruchu, czasem słabo słyszy. Zbyt szybki asystent zmusza do proszenia o powtórzenie, a każde powtórzenie zbliża rozmowę do progu przekazania do człowieka. Pauzy bywają przy tym ważniejsze od samego tempa. Po pytaniu musi zostać cisza, w której człowiek zdąży zebrać myśli, a dłuższą odpowiedź lepiej rozbić na dwa oddechy, zamiast wyrzucać ją jednym ciągiem.",
+        "Osobna sprawa to opóźnienie. Między końcem zdania rozmówcy a początkiem odpowiedzi zawsze coś upływa. Gdy ta przerwa rośnie, ludzie mówią „halo?” i wchodzą agentowi w słowo. Krótkie potwierdzenie w rodzaju „już sprawdzam” potrafi tę dziurę zasypać, o ile nie pada po każdej wypowiedzi, bo wtedy zaczyna brzmieć jak tik. Żadnej z tych rzeczy nie ocenicie w panelu, trzeba je przećwiczyć na słuchawce.",
       ],
       list: [
-        "Numery telefonów i kwoty czytaj wolniej niż resztę zdania, w grupach po dwie albo trzy cyfry.",
-        "Po pytaniu zostaw ciszę zamiast dopowiadać podpowiedzi, kiedy rozmówca się zastanawia.",
-        "Testuj nagrania na głośniku telefonu w hałaśliwym pomieszczeniu, bo tak dzwoni duża część ludzi.",
-        "Sprawdź, jak asystent brzmi przy złym zasięgu, kiedy dźwięk się rwie i tempo zaczyna przeszkadzać.",
+        "Numery telefonów i kwoty czytajcie wolniej niż resztę zdania, w grupach po dwie albo trzy cyfry.",
+        "Po pytaniu zostawcie ciszę zamiast dopowiadać podpowiedzi, kiedy rozmówca się zastanawia.",
+        "Nagrania testujcie tak, jak dzwonią ludzie: z głośnika telefonu, w hałaśliwym pomieszczeniu i przy słabym zasięgu, kiedy dźwięk się rwie.",
       ],
     },
     {
@@ -359,10 +356,10 @@ export const LESSONS: Lesson[] = [
     },
     ],
     takeaways: [
-    "Barwa głosu ustawia oczekiwania co do kompetencji, zanim padnie pierwsza odpowiedź. Dobieraj ją do branży i do stanu, w jakim dzwonią ludzie.",
+    "Barwa głosu ustawia oczekiwania co do kompetencji, zanim padnie pierwsza odpowiedź. Dobierajcie ją do branży i do stanu, w jakim dzwonią ludzie.",
     "Tempo nieco wolniejsze niż w zwykłej rozmowie, wyraźna pauza po pytaniu, cyfry czytane grupami.",
     "Imię plus rola nazwana wprost: „asystentka AI”, nie „asystentka głosowa”. Skąd bierze się ten obowiązek, tłumaczy lekcja siódma.",
-    "Bardzo naturalny głos przy prostym bocie działa przeciwko tobie. Neutralna barwa mniej obiecuje i mniej rozczarowuje.",
+    "Bardzo naturalny głos przy prostym bocie działa przeciwko Wam. Neutralna barwa mniej obiecuje i mniej rozczarowuje.",
     ],
     faq: [
     {
@@ -388,9 +385,8 @@ export const LESSONS: Lesson[] = [
     number: 6,
     title: "Skąd voicebot bierze prawdę o Waszej firmie",
     metaTitle: "Skąd voicebot bierze dane o firmie - lekcja 6",
-    metaDescription: "Agent głosowy nie zna Waszej firmy. Sprawdź, z jakich systemów bierze dane, dlaczego jedno źródło prawdy wygrywa z liczbą integracji i kiedy to zawodzi.",
+    metaDescription: "Agent głosowy nie zna Waszej firmy. Sprawdźcie, z jakich systemów bierze dane, dlaczego jedno źródło prawdy wygrywa z liczbą integracji i kiedy to zawodzi.",
     lead: "Voicebot w dniu uruchomienia nie wie o Was nic. Każda cena, godzina i dostępność musi przyjść z konkretnego systemu, w momencie rozmowy.",
-    minutes: 7,
     sections: [
     {
       h2: "Agent zna tylko to, co mu podacie",
@@ -403,8 +399,9 @@ export const LESSONS: Lesson[] = [
     {
       h2: "Jedno źródło prawdy bije liczbę integracji",
       paragraphs: [
-        "W zapytaniach ofertowych prawie zawsze pada pytanie, z iloma systemami się integrujemy. Rozumiem, skąd się bierze, ale prowadzi w złą stronę. Ważniejsze jest inne: który system rozstrzyga spór, kiedy dwa pokazują co innego.",
-        "Prosty przypadek z warsztatu samochodowego. Na stronie wisi PDF z cennikiem, przegląd za 180 zł. W systemie warsztatowym od czerwca jest inna, wyższa stawka, bo ceny poszły w górę. Agent czyta PDF, bo ktoś uznał, że to najszybsza droga do informacji o cenach. Klient przyjeżdża i przy kasie słyszy inną kwotę. Formalnie racja jest po stronie warsztatu. Praktycznie klient ma w głowie nagranie rozmowy i poczucie, że go wpuszczono w maliny. Jedna taka rozbieżność potrafi skasować efekt kilkudziesięciu poprawnie obsłużonych połączeń.",
+        "W zapytaniach ofertowych prawie zawsze pada pytanie, z iloma systemami się integrujemy. Rozumiemy, skąd się bierze, ale prowadzi w złą stronę. Ważniejsze jest inne: który system rozstrzyga spór, kiedy dwa pokazują co innego.",
+        "Prosty przypadek z warsztatu samochodowego. Na stronie wisi PDF z cennikiem, przegląd za 180 zł. W systemie warsztatowym od czerwca jest inna, wyższa stawka, bo ceny poszły w górę. Agent czyta PDF, bo ktoś uznał, że to najszybsza droga do informacji o cenach.",
+        "Klient przyjeżdża i przy kasie słyszy inną kwotę. Formalnie racja jest po stronie warsztatu. Praktycznie ma w głowie nagranie rozmowy i poczucie, że go wpuszczono w maliny. Jedna taka rozbieżność potrafi skasować efekt kilkudziesięciu poprawnie obsłużonych połączeń.",
         "Mniej integracji bywa lepsze. Dwie dobrze wybrane, kalendarz i baza klientów, dają więcej pożytku niż pięć, które podważają się nawzajem. Zanim ruszy wdrożenie, warto rozstrzygnąć kilka rzeczy na kartce.",
       ],
       list: [
@@ -463,14 +460,13 @@ export const LESSONS: Lesson[] = [
     metaTitle: "Voicebot a prawo: AI, nagrywanie - lekcja 7",
     metaDescription: "Obowiązek informowania, że rozmówcą jest AI, zasady nagrywania rozmów i dane osobowe w telefonie. Co ustawić przed startem voicebota, bez straszenia.",
     lead: "Trzy rzeczy trzeba ustawić przed uruchomieniem voicebota: informację o AI, zasady nagrywania i papiery na dane osobowe. Nic z tego nie jest trudne, o ile nie zostawicie tego na koniec.",
-    minutes: 8,
     sections: [
     {
       h2: "Rozmówca ma wiedzieć, z kim rozmawia",
       paragraphs: [
         "Unijne przepisy o AI wprowadzają obowiązek poinformowania człowieka, że rozmawia z systemem sztucznej inteligencji. Termin stosowania to 2 sierpnia 2026. W praktyce zamyka to drogę pomysłom, w których agent udaje pracownika i nikt się do tego nie przyznaje.",
-        "Wykonanie jest banalne. Wystarczy pierwsze zdanie powitania: „Dzień dobry, tu asystent AI przychodni Zdrowie”. Nikt nie wymaga czytania regulaminu przez pół minuty. Wymagane jest to, żeby informacja padła na początku i była zrozumiała dla osoby, która dzwoni w biegu, z ulicy, z dzieckiem na ręku. Samo „automatyczny asystent” bywa odbierane jako zapowiedź starej infolinii, więc lepiej powiedzieć wprost, że rozmówcą jest asystent AI. Całe powitanie ma cztery elementy, te same, które w lekcji czwartej mieszczą się w jednym oddechu.",
-        "Właściciele firm często boją się, że ludzie zaczną się rozłączać. Z tego, co obserwujemy przy odbiorach, część rozmówców faktycznie od razu prosi o człowieka. To w porządku i agent powinien umieć takie przełączenie wykonać bez dyskusji. Ukrywanie natury systemu i tak wychodzi po dwóch pytaniach, tylko wtedy klient czuje się oszukany zamiast poinformowany.",
+        "Wykonanie jest banalne. Wystarczy pierwsze zdanie powitania: „Dzień dobry, tu asystent AI przychodni Zdrowie”. Nikt nie wymaga czytania regulaminu przez pół minuty. Wymagane jest to, żeby informacja padła na początku i była zrozumiała dla osoby, która dzwoni w biegu, z ulicy, z dzieckiem na ręku. Samo „automatyczny asystent” bywa odbierane jako zapowiedź starej infolinii, więc lepiej powiedzieć wprost, że rozmówcą jest asystent AI.",
+        "Właściciele firm często boją się, że ludzie zaczną się rozłączać. Z tego, co obserwujemy przy odbiorach, część rozmówców faktycznie od razu prosi o człowieka. To w porządku i agent powinien umieć takie przełączenie wykonać bez dyskusji. Ukrywanie natury systemu i tak wychodzi po dwóch pytaniach, tylko wtedy klient czuje się oszukany zamiast poinformowany. Niezależnie od reakcji rozmówcy powitanie ma zmieścić te same cztery elementy, które w lekcji czwartej mieszczą się w jednym oddechu.",
       ],
       list: [
         "W czyim imieniu asystent odbiera albo dzwoni",
@@ -491,13 +487,14 @@ export const LESSONS: Lesson[] = [
       h2: "Dane osobowe i papiery, które trzeba mieć",
       paragraphs: [
         "W rozmowie telefonicznej padają dane osobowe, nawet jeśli nikt tego tak nie nazywa. Imię i nazwisko, numer telefonu, adres, numer zamówienia, czasem PESEL. W przychodni prawie zawsze pojawia się informacja o stanie zdrowia, a to kategoria wymagająca ostrożniejszego traktowania niż nazwisko i telefon.",
-        "Administratorem tych danych jest Wasza firma. Dostawca voicebota przetwarza je na Wasze zlecenie i dlatego potrzebna jest umowa powierzenia. Nie podpisujcie jej w ciemno. Powinniście z niej wyczytać, jakie dane obejmuje, w jakim celu, jak długo są trzymane i kto jeszcze ma z nimi styczność.",
-        "Hosting utrzymujemy w Polsce albo w chmurze UE, zgodnie z RODO. Głos opieramy na ElevenLabs, więc ten dostawca występuje w łańcuchu jako podprocesor i nie ma sensu tego chować pod dywan. Stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, natomiast certyfikatu ISO nie posiadamy i nie będziemy tego przedstawiać inaczej. Jeśli ktoś na rynku obiecuje Wam certyfikat, poproście o numer i jednostkę certyfikującą.",
+        "Administratorem tych danych jest Wasza firma. Dostawca voicebota przetwarza je na Wasze zlecenie i dlatego potrzebna jest umowa powierzenia. Nie podpisujcie jej w ciemno.",
+        "Hosting utrzymujemy w Polsce albo w chmurze UE, zgodnie z RODO. Głos opieramy na ElevenLabs, więc ten dostawca występuje w łańcuchu jako podprocesor i nie ma sensu tego chować pod dywan. Stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, natomiast certyfikatu ISO nie posiadamy i nie będziemy tego przedstawiać inaczej. Jeśli ktoś na rynku obiecuje Wam certyfikat, poproście o numer i jednostkę certyfikującą. Przed podpisem przejdźcie umowę punkt po punkcie i sprawdźcie, czy stoi w niej wszystko, co stać powinno.",
       ],
       list: [
         "Zakres danych, które trafiają do systemu, i cel ich przetwarzania",
         "Lista podprocesorów: dostawca głosu, telefonia, hosting",
         "Okres przechowywania nagrań oraz transkrypcji",
+        "Co dzieje się z nagraniami i transkrypcjami po zakończeniu współpracy",
         "Sposób zgłaszania naruszeń i czas reakcji dostawcy",
       ],
     },
@@ -506,7 +503,7 @@ export const LESSONS: Lesson[] = [
       paragraphs: [
         "To nie jest porada prawna. Piszemy z perspektywy firmy, która wdraża agentów głosowych, a nie kancelarii. Przy wątpliwościach pytajcie własnego prawnika albo inspektora ochrony danych, bo tylko oni znają Wasz kontekst, dotychczasowe klauzule i zgody, które już zbieracie.",
         "Są sytuacje, w których samodzielna ocena jest ryzykowna. Dane o zdrowiu. Windykacja. Rekrutacja. Połączenia wychodzące do osób, które nie zostawiły zgody na kontakt telefoniczny. W tej ostatniej sprawie wchodzą jeszcze przepisy telekomunikacyjne i te o marketingu bezpośrednim, więc samo RODO nie wystarczy jako punkt odniesienia.",
-        "Nie chcę tym straszyć, bo skala problemu bywa wyolbrzymiana. Typowe wdrożenie na infolinii przychodzącej wymaga czterech rzeczy: poprawionego powitania, informacji o nagrywaniu, umowy powierzenia i decyzji o retencji. To praca na jedno popołudnie, o ile ktoś się nią zajmie. Robi się z tego problem dopiero wtedy, gdy wszyscy o niej zapomną i przypomną sobie po pierwszej skardze.",
+        "Nie chcemy tym straszyć, bo skala problemu bywa wyolbrzymiana. Typowe wdrożenie na infolinii przychodzącej wymaga czterech rzeczy: poprawionego powitania, informacji o nagrywaniu, umowy powierzenia i decyzji o retencji. To praca na jedno popołudnie, o ile ktoś się nią zajmie. Robi się z tego problem dopiero wtedy, gdy wszyscy o niej zapomną i przypomną sobie po pierwszej skardze.",
       ],
     },
     ],
@@ -541,15 +538,14 @@ export const LESSONS: Lesson[] = [
     title: "Jak sprawdzić, czy voicebot naprawdę pomaga",
     metaTitle: "Jak mierzyć voicebota - metryki i odsłuchy",
     metaDescription: "Na co patrzeć po uruchomieniu voicebota, jak liczyć sprawy załatwione bez człowieka i dlaczego odsetek odebranych połączeń niczego nie mówi. Plus sygnały do wycofania.",
-    lead: "Voicebot bez pomiaru zamienia się w rozmowę o wrażeniach. Punkt odniesienia macie z lekcji drugiej, tu pokazuję, co oglądać po starcie i po czym poznać, że lepiej się wycofać.",
-    minutes: 8,
+    lead: "Voicebot bez pomiaru zamienia się w rozmowę o wrażeniach. Punkt odniesienia macie z lekcji drugiej, tu pokazujemy, co oglądać po starcie i po czym poznać, że lepiej się wycofać.",
     sections: [
     {
       h2: "Punktem odniesienia są liczby zebrane przed startem",
       paragraphs: [
         "Audyt macie z lekcji drugiej: połączenia dziennie, nieodebrane, średni czas rozmowy i trzy dni notowania, z czym ludzie dzwonią. To jest stan zero i nie ma sensu mierzyć go po raz drugi w innej formie. Dwa różne zdjęcia sprzed startu blokują potem decyzję równie skutecznie jak brak zdjęcia, bo na spotkaniu każdy wybiera to, które pasuje mu do tezy. Reszta tej lekcji dotyczy już tego, co widać dopiero po uruchomieniu.",
         "Po uruchomieniu tego stanu już nie odtworzycie i to jest cały problem. Ruch się zmienia. Ludzie, którzy wcześniej rezygnowali po czwartym sygnale, teraz się dodzwaniają, więc liczba obsłużonych spraw rośnie z powodu, który nie ma nic wspólnego z jakością agenta. Bez punktu odniesienia zostaje porównywanie nowych danych z pamięcią, a pamięć jest łaskawa dla decyzji, które sami podjęliśmy.",
-        "Powiem szczerze: sporo firm startuje bez tych liczb, także u nas. Potem, po trzech miesiącach, pada pytanie „czy to się opłaciło” i nie ma z czym zestawić odpowiedzi. Zostaje wrażenie recepcji, że jest spokojniej. Bywa, że to dobry sygnał, tylko nikt nie zbuduje na nim decyzji o rozszerzeniu wdrożenia na drugi oddział.",
+        "Powiemy szczerze: sporo firm startuje bez tych liczb, także u nas. Potem, po trzech miesiącach, pada pytanie „czy to się opłaciło” i nie ma z czym zestawić odpowiedzi. Zostaje wrażenie recepcji, że jest spokojniej. Bywa, że to dobry sygnał, tylko nikt nie zbuduje na nim decyzji o rozszerzeniu wdrożenia na drugi oddział.",
       ],
     },
     {
@@ -557,13 +553,12 @@ export const LESSONS: Lesson[] = [
       paragraphs: [
         "Po starcie liczy się jedno pytanie: ile spraw zostało załatwionych do końca bez udziału człowieka. Zanim ktokolwiek wpisze to do raportu, ustalcie kryterium i już go nie ruszajcie. Nasze brzmi tak: sprawa jest załatwiona, gdy rozmowa skończyła się bez przekazania do konsultanta i tego samego dnia nikt z tego numeru nie oddzwonił w tej samej sprawie. Bez drugiego warunku liczycie rozmowy, które się po prostu urwały. Resztę rozbijcie na pozycje, bo średnia potrafi ukryć problem wracający codziennie o tej samej porze.",
         "Teraz metryka, przy której trzeba uważać, bo świetnie wygląda w raporcie i nie znaczy nic. „Odebranych 100 procent połączeń” mierzy tyle, że system istnieje i się nie wywrócił. Automat zawsze odbierze. W tej samej rodzinie jest liczba obsłużonych rozmów podana bez informacji, ile z nich skończyło się czymkolwiek konkretnym.",
-        "Eskalacja do człowieka nie jest porażką. Agent, który po dwóch nieudanych próbach zrozumienia przełącza rozmowę dalej, zachowuje się poprawnie. Niepokoić powinny dwie inne rzeczy: eskalacja przy pytaniu, które agent miał obsługiwać od pierwszego dnia, oraz cicha porażka, czyli rozmówca odkłada słuchawkę, a statystyka zapisuje rozmowę jako zakończoną.",
+        "Eskalacja do człowieka nie jest porażką. Agent, który po dwóch nieudanych próbach zrozumienia przełącza rozmowę dalej, zachowuje się poprawnie. Niepokoić powinny dwie inne rzeczy: eskalacja przy pytaniu, które agent miał obsługiwać od pierwszego dnia, oraz cicha porażka, czyli rozmówca odkłada słuchawkę, a statystyka zapisuje rozmowę jako zakończoną. Dlatego w panelu oglądamy co tydzień te same pozycje.",
       ],
       list: [
         "Rozmowy domknięte bez przekazania do człowieka i bez oddzwonienia z tego samego numeru w tej samej sprawie jeszcze tego samego dnia",
         "Eskalacje z podziałem na powód: agent nie zrozumiał, zabrakło danych w systemie, rozmówca od razu poprosił o człowieka, sprawa wykraczała poza zakres",
         "Rozłączenia w pierwszych kilkunastu sekundach, bo to zwykle reakcja na samo powitanie",
-        "Sprawy powracające, czyli druga strona tego samego kryterium: ten sam numer wraca z tą samą sprawą jeszcze tego samego dnia",
       ],
     },
     {
@@ -615,7 +610,6 @@ export const LESSONS: Lesson[] = [
     metaTitle: "Wdrożenie voicebota etapami - jak zacząć bez ryzyka",
     metaDescription: "Jak uruchomić voicebota etapami: najpierw poza godzinami pracy, potem część ruchu, na końcu całość. Plan wycofania i pierwszy tydzień odsłuchu rozmów.",
     lead: "Największe ryzyko przy uruchamianiu voicebota nie leży w technologii. Leży w tym, że ktoś przełącza całą infolinię naraz i w poniedziałek rano zbiera skargi.",
-    minutes: 8,
     sections: [
     {
       h2: "Poniedziałek o ósmej to najgorszy moment na start",
@@ -651,7 +645,7 @@ export const LESSONS: Lesson[] = [
       paragraphs: [
         "Po starcie kusi, żeby poprawiać scenariusz po każdej nieudanej rozmowie. Radzimy odwrotnie. Przez pierwszy tydzień głównie słuchać, notować i zbierać. Zmiany wprowadzane na gorąco, po jednym telefonie, potrafią zepsuć ścieżki, które do tej pory działały bez zarzutu.",
         "Zawsze pojawia się grupa pytań, których nikt nie przewidział przy projektowaniu. W przychodni bywa to parking albo to, czy trzeba przyjść na czczo. W transporcie pytanie, czy do autobusu można wnieść rower. Takich rzeczy nie wymyśli się przy stole, one wychodzą z nagrań, i to jest główny powód, dla którego warto ich słuchać przez pierwszy tydzień.",
-        "Uczciwie o cenie tego podejścia. Wdrożenie trwa dłużej, bo między etapami czeka się na dane, a nie na programistów, i firma, która chciała mieć temat z głowy w dwa tygodnie, musi się z tym pogodzić. Jest też pułapka w samych wynikach. Nocne rozmowy są krótsze i bardziej rzeczowe niż te z poniedziałkowego szczytu, więc dobre liczby z pierwszego etapu niczego nie gwarantują w drugim. To argument za tym, żeby drugiego etapu nie przeskakiwać, nawet jeśli wszystko wygląda świetnie.",
+        "Uczciwie o cenie tego podejścia. Wdrożenie trwa dłużej, bo między etapami czeka się na dane, a nie na programistów, i firma, która chciała mieć temat z głowy w dwa tygodnie, musi się z tym pogodzić. Jest też pułapka w samych wynikach. Nocne rozmowy są krótsze i bardziej rzeczowe niż te z poniedziałkowego szczytu, więc dobre liczby z pierwszego etapu niczego nie gwarantują w drugim. To argument za tym, żeby drugiego etapu nie przeskakiwać, nawet jeśli wszystko wygląda świetnie. Notatnik z pierwszego tygodnia wygląda przy każdym etapie tak samo.",
       ],
       list: [
         "Pytania, które padły, a nie ma ich w scenariuszu.",
@@ -662,9 +656,9 @@ export const LESSONS: Lesson[] = [
     },
     ],
     takeaways: [
-    "Zaczynaj od godzin, w których alternatywą dla bota jest nieodebrany telefon. Ryzyko jest wtedy najmniejsze, a korzyść widać od razu.",
-    "Plan wycofania ustal przed startem i przetestuj go na sucho, razem z listą osób, które mogą go uruchomić.",
-    "Przez pierwszy tydzień odsłuchuj rozmowy i notuj nieprzewidziane pytania, zamiast przerabiać scenariusz po każdym telefonie.",
+    "Zaczynajcie od godzin, w których alternatywą dla bota jest nieodebrany telefon. Ryzyko jest wtedy najmniejsze, a korzyść widać od razu.",
+    "Plan wycofania ustalcie przed startem i przetestujcie go na sucho, razem z listą osób, które mogą go uruchomić.",
+    "Przez pierwszy tydzień odsłuchujcie rozmowy i notujcie nieprzewidziane pytania, zamiast przerabiać scenariusz po każdym telefonie.",
     "Zatrzymanie się na drugim etapie na stałe jest normalnym wynikiem wdrożenia, nie jego porażką.",
     ],
     faq: [
@@ -693,26 +687,25 @@ export const LESSONS: Lesson[] = [
     metaTitle: "Błędy przy wdrażaniu voicebotów - czego unikać",
     metaDescription: "Brak ścieżki do człowieka, start na całym ruchu, bałagan w danych, ukrywanie że to AI. Błędy, które psują wdrożenia voicebotów i co robić zamiast nich.",
     lead: "Ostatnia lekcja kursu. Zebraliśmy błędy, które realnie kosztują firmy klientów i pieniądze, a przy każdym piszemy, co zrobić zamiast.",
-    minutes: 8,
     sections: [
     {
       h2: "Błędy, które widać od pierwszego dnia",
       paragraphs: [
         "Ta grupa błędów ma wspólną cechę. Daje o sobie znać natychmiast i psuje wrażenie u pierwszych kilkuset rozmówców. Naprawić się je da, tylko opinia zdąży się rozejść.",
-        "Najdroższy z tej czwórki jest pierwszy. Bot, który nie umie oddać rozmowy człowiekowi, zamienia drobną niedogodność w utraconego klienta, i to bez żadnego sygnału ostrzegawczego. Prawie nikt nie dzwoni po to, żeby złożyć skargę na automat. Ludzie po prostu przestają dzwonić. Traktujemy ścieżkę do konsultanta jako warunek uruchomienia i sprawdzamy ją przed każdym startem.",
+        "Najdroższy z nich dotyczy przekazania rozmowy. Bot, który nie umie oddać jej człowiekowi, zamienia drobną niedogodność w utraconego klienta, i to bez żadnego sygnału ostrzegawczego. Prawie nikt nie dzwoni po to, żeby złożyć skargę na automat. Ludzie po prostu przestają dzwonić. Dlatego ścieżkę do konsultanta traktujemy jako warunek uruchomienia i sprawdzamy ją przed każdym startem. Poniżej ten błąd i trzy kolejne z tej samej grupy, przy każdym od razu to, co robić zamiast.",
       ],
       list: [
-        "Brak ścieżki do człowieka. Rozmówca, który nie może przerwać bota i poprosić o konsultanta, rozłącza się i dzwoni gdzie indziej. Powiedz na wejściu, że w każdej chwili można poprosić o człowieka, i zadbaj, żeby po przełączeniu nikt nie musiał podawać swoich danych drugi raz.",
-        "Przełączenie całego ruchu w jeden dzień. Wszystkie braki scenariusza wychodzą naraz i na największej możliwej próbce. Zacznij od godzin, w których alternatywą jest nieodebrany telefon, i dokładaj ruch stopniowo.",
-        "Start na nieuporządkowanych danych. Jeśli cennik istnieje w trzech wersjach, a grafik w zeszycie, bot będzie powtarzał ten bałagan setki razy dziennie. Uporządkuj to, co ma czytać, zanim odbierze pierwsze połączenie. Ta praca zwykle zajmuje więcej czasu niż budowa samego bota.",
-        "Brak testu na własnym numerze. Zadzwoń sam, z ulicy, przy włączonym radiu, tak jak dzwonią klienci. Większość wpadek słychać w pierwszych piętnastu sekundach.",
+        "Brak ścieżki do człowieka. Rozmówca, który nie może przerwać bota i poprosić o konsultanta, rozłącza się i dzwoni gdzie indziej. Powiedzcie na wejściu, że w każdej chwili można poprosić o człowieka, i zadbajcie, żeby po przełączeniu nikt nie musiał podawać swoich danych drugi raz.",
+        "Przełączenie całego ruchu w jeden dzień. Wszystkie braki scenariusza wychodzą naraz i na największej możliwej próbce. Zacznijcie od godzin, w których alternatywą jest nieodebrany telefon, i dokładajcie ruch stopniowo.",
+        "Start na nieuporządkowanych danych. Jeśli cennik istnieje w trzech wersjach, a grafik w zeszycie, bot będzie powtarzał ten bałagan setki razy dziennie. Uporządkujcie to, co ma czytać, zanim odbierze pierwsze połączenie. Ta praca zwykle zajmuje więcej czasu niż budowa samego bota.",
+        "Brak testu na własnym numerze. Zadzwońcie sami, z ulicy, przy włączonym radiu, tak jak dzwonią klienci. Większość wpadek słychać w pierwszych piętnastu sekundach.",
       ],
     },
     {
       h2: "Błędy, które wychodzą dopiero po miesiącu",
       paragraphs: [
         "Pierwszy z nich to udawanie człowieka. Kusi, bo głos brzmi naturalnie, a skoro nikt nie pyta, to część firm uznaje, że nie trzeba mówić. Kłopot zaczyna się, gdy rozmówca zorientuje się sam. Przy krótkiej sprawie może nie poznać, ale im dłuższa rozmowa, tym większa szansa, że pozna. Poczucie, że ktoś próbował go nabrać, zostaje na dłużej niż irytacja automatem. Do tego dochodzi obowiązek z unijnych przepisów, który rozkładamy na części w lekcji siódmej. Wykonanie mieści się w jednym zdaniu powitania, w którym pada „asystent AI” albo „asystentka AI”. Nie „asystent głosowy”, nie „wirtualna obsługa”.",
-        "Drugi błąd to mierzenie liczby obsłużonych rozmów. Wygląda dobrze w raporcie i nie mówi prawie nic. Bot może odebrać tysiąc połączeń i w połowie z nich niczego nie załatwić, bo ludzie oddzwonili później do biura. Patrz na sprawy zamknięte bez przekazania do człowieka, na odsetek próśb o konsultanta i na to, ile numerów wraca z tą samą sprawą tego samego dnia. Kryterium rozpisaliśmy w lekcji ósmej. Te liczby bywają nieprzyjemne i są prawdziwe.",
+        "Drugi błąd to mierzenie liczby obsłużonych rozmów. Wygląda dobrze w raporcie i nie mówi prawie nic. Bot może odebrać tysiąc połączeń i w połowie z nich niczego nie załatwić, bo ludzie oddzwonili później do biura. Patrzcie na sprawy zamknięte bez przekazania do człowieka, na odsetek próśb o konsultanta i na to, ile numerów wraca z tą samą sprawą tego samego dnia. Kryterium rozpisaliśmy w lekcji ósmej. Te liczby bywają nieprzyjemne i są prawdziwe.",
         "Trzeci jest cichy: po pierwszym miesiącu nikt już nie odsłuchuje rozmów. Wdrożenie działa, więc przestaje kogokolwiek obchodzić, a firma się zmienia. Nowa usługa, inne godziny, podniesiony cennik. Bot mówi po staremu jeszcze przez pół roku. Ratuje przed tym rytm z lekcji ósmej: w pierwszym miesiącu próbka nagrań co tydzień, potem co dwa tygodnie, bez przerw na kwartał.",
       ],
     },
@@ -729,15 +722,15 @@ export const LESSONS: Lesson[] = [
       paragraphs: [
         "Ta lekcja zamyka kurs, więc powiemy rzecz, której zwykle nie mówi firma sprzedająca wdrożenia. Voicebot nie ma sensu wszędzie i wcale nie tak rzadko go odradzamy.",
         "Zróbcie rachunek z lekcji drugiej, ten od godzin miesięcznie. Jeśli wychodzi poniżej progu dziesięciu godzin i nikt nie czeka w kolejce, wdrożenie od 5 000 zł netto plus utrzymanie od 249 zł netto miesięcznie nie zwróci się w rozsądnym czasie. Jeśli każda rozmowa jest inna i opiera się na wiedzy, której nie da się spisać, bot będzie przeszkadzał obu stronom. Jeśli w firmie nie ma nikogo, kto się tym zajmie, lepiej poczekać, aż taka osoba się znajdzie.",
-        "Jeżeli po dziesięciu lekcjach wyszło Ci, że u Ciebie to się nie opłaca, kurs zadziałał tak, jak miał zadziałać. Lepiej stracić kilka godzin na czytanie niż kilkanaście tysięcy na system, który będzie się kurzył. A jeśli wyszło odwrotnie, pierwsza konsultacja jest bezpłatna i można na niej zadać dokładnie te pytania, które nasunęły się po drodze.",
+        "Jeżeli po dziesięciu lekcjach wyszło Wam, że u Was to się nie opłaca, kurs zadziałał tak, jak miał zadziałać. Lepiej stracić kilka godzin na czytanie niż kilkanaście tysięcy na system, który będzie się kurzył. A jeśli wyszło odwrotnie, pierwsza konsultacja jest bezpłatna i można na niej zadać dokładnie te pytania, które nasunęły się po drodze.",
       ],
     },
     ],
     takeaways: [
     "Ścieżka do człowieka jest warunkiem uruchomienia, a nie dodatkiem. Bot, który nie oddaje rozmowy, kosztuje klientów.",
-    "Uporządkuj dane, które bot ma czytać, zanim odbierze pierwsze połączenie. To zwykle dłuższa część pracy niż budowa bota.",
-    "Mierz sprawy zamknięte bez przekazania do człowieka i numery wracające tego samego dnia, a nie liczbę odebranych połączeń.",
-    "Wniosek, że voicebot u Ciebie się nie opłaca, jest pełnoprawnym efektem tego kursu.",
+    "Uporządkujcie dane, które bot ma czytać, zanim odbierze pierwsze połączenie. To zwykle dłuższa część pracy niż budowa bota.",
+    "Mierzcie sprawy zamknięte bez przekazania do człowieka i numery wracające tego samego dnia, a nie liczbę odebranych połączeń.",
+    "Wniosek, że voicebot u Was się nie opłaca, jest pełnoprawnym efektem tego kursu.",
     ],
     faq: [
     {
@@ -773,4 +766,24 @@ export function getNeighbours(slug: string): { prev?: Lesson; next?: Lesson } {
   return { prev: LESSONS[i - 1], next: LESSONS[i + 1] };
 }
 
-export const TOTAL_MINUTES = () => LESSONS.reduce((s, l) => s + l.minutes, 0);
+/**
+ * Czas czytania liczony z treści, a nie wpisywany ręcznie.
+ * 190 słów na minutę to ostrożne tempo dla polskiej prozy biznesowej
+ * (polskie słowa są dłuższe niż angielskie, więc typowe 250 zawyżałoby).
+ * Liczymy wszystko, co czytelnik faktycznie czyta: zajawkę, nagłówki,
+ * akapity, listy, wnioski i FAQ.
+ */
+const SLOW_NA_MINUTE = 190;
+
+export function readingMinutes(l: Lesson): number {
+  const tekst = [
+    l.lead,
+    ...l.sections.flatMap((s) => [s.h2, ...s.paragraphs, ...(s.list ?? [])]),
+    ...l.takeaways,
+    ...(l.faq ?? []).flatMap((f) => [f.q, f.a]),
+  ].join(' ');
+  const slow = tekst.split(/\s+/).filter(Boolean).length;
+  return Math.max(2, Math.round(slow / SLOW_NA_MINUTE));
+}
+
+export const TOTAL_MINUTES = () => LESSONS.reduce((s, l) => s + readingMinutes(l), 0);
