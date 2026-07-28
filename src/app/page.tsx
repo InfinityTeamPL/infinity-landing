@@ -528,6 +528,7 @@ function ServicesSection() {
                 { label: 'Voicebot dla restauracji', href: '/branze/voicebot-dla-gastronomii' },
                 { label: 'AI dla kancelarii', href: '/branze/ai-dla-kancelarii' },
                 { label: 'Voicebot dla biur nieruchomości', href: '/branze/voicebot-dla-nieruchomosci' },
+                { label: 'Voicebot dla hotelu', href: '/branze/voicebot-dla-hotelu' },
                 { label: 'Wszystkie branże', href: '/branze' },
                 { label: 'Akademia Głosowa: bezpłatny kurs', href: '/akademia' },
               ].map((l) => (

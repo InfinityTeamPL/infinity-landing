@@ -208,6 +208,7 @@ const content: SeoLandingContent = {
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Branże', href: '/branze' },
     { label: 'Voicebot dla salonu', href: '/branze/voicebot-dla-salonow' },
+    { label: 'Voicebot dla hotelu', href: '/branze/voicebot-dla-hotelu' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
     { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },
     { label: 'Scenariusz rozmowy w restauracji', href: '/akademia/scenariusz-gastronomia' },
