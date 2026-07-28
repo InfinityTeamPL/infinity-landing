@@ -146,7 +146,19 @@ export default function KalkulatorWizard() {
   };
 
   return (
-    <div ref={containerRef} className="w-full max-w-7xl mx-auto px-4 md:px-6">
+    /*
+      Kreator jest zbudowany z granatowych kart z półprzezroczystym tłem
+      (rgba(10,22,40,·)). Na jasnej stronie te tła kompozytowały się do
+      szarości, a tokeny tekstu szły za motywem strony i robiły się ciemne —
+      stąd napisy nieczytelne albo wręcz niewidoczne. Klasa dark-scope
+      przywraca tu jasną drabinkę tekstu, a własne ciemne tło sprawia, że
+      przezroczyste karty mają się na czym oprzeć w obu motywach.
+    */
+    <div
+      ref={containerRef}
+      className="dark-scope w-full max-w-7xl mx-auto px-4 md:px-6 py-8 rounded-3xl"
+      style={{ background: '#050B1F' }}
+    >
       <ProgressBar
         currentStep={state.currentStep}
         onStepClick={(step) => goTo(step)}
@@ -172,7 +184,7 @@ export default function KalkulatorWizard() {
             className="px-6 py-3 rounded-xl text-sm font-semibold transition-all"
             style={{
               backgroundColor: 'rgba(123,155,219,0.1)',
-              color: '#fff',
+              color: 'var(--fg)',
               border: '1px solid rgba(123,155,219,0.2)',
             }}
           >
@@ -182,10 +194,10 @@ export default function KalkulatorWizard() {
 
         {/* Mini-podsumowanie (kroki 1-2) */}
         {state.currentStep > 0 && state.currentStep < 3 && enabledCount > 0 && (
-          <div className="hidden md:flex items-center gap-4 text-sm" style={{ color: '#7B9BDB' }}>
+          <div className="hidden md:flex items-center gap-4 text-sm" style={{ color: 'var(--accent-text)' }}>
             <span>
               Szacowane oszczędności:{' '}
-              <strong style={{ color: '#2E4AAD' }}>
+              <strong style={{ color: 'var(--accent-text)' }}>
                 {Math.round(results.totalAnnualSavings).toLocaleString('pl-PL')} zł/rok
               </strong>
             </span>
@@ -200,7 +212,10 @@ export default function KalkulatorWizard() {
             className="px-8 py-3 rounded-xl text-sm font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             style={{
               backgroundColor: canGoNext() ? '#2E4AAD' : '#ccc',
-              color: '#fff',
+              /* Kolor idzie za własnym tłem przycisku, nie za motywem strony:
+                 biel na granacie daje 7,4:1, ciemny atrament na szarości 10,5:1.
+                 var(--fg) dawałby ciemny napis na granacie, czyli 2,16:1. */
+              color: canGoNext() ? '#fff' : '#1D1D1F',
               boxShadow: canGoNext() ? '0 4px 20px rgba(46,74,173,0.3)' : 'none',
             }}
           >

@@ -13,7 +13,7 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
   return (
     <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="p-5 pb-3">
-        <h3 className="text-lg font-bold" style={{ color: '#fff' }}>
+        <h3 className="text-lg font-bold" style={{ color: 'var(--fg)' }}>
           Rozbicie oszczędności per proces
         </h3>
       </div>
@@ -23,19 +23,19 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
         <table className="w-full text-sm">
           <thead>
             <tr style={{ borderBottom: '2px solid rgba(123,155,219,0.2)' }}>
-              <th className="text-left px-5 py-3 font-semibold" style={{ color: '#7B9BDB' }}>
+              <th className="text-left px-5 py-3 font-semibold" style={{ color: 'var(--accent-text)' }}>
                 Proces
               </th>
-              <th className="text-center px-3 py-3 font-semibold" style={{ color: '#7B9BDB' }}>
+              <th className="text-center px-3 py-3 font-semibold" style={{ color: 'var(--accent-text)' }}>
                 Pracownicy
               </th>
-              <th className="text-center px-3 py-3 font-semibold" style={{ color: '#7B9BDB' }}>
+              <th className="text-center px-3 py-3 font-semibold" style={{ color: 'var(--accent-text)' }}>
                 Godz. zaoszcz./mies.
               </th>
-              <th className="text-center px-3 py-3 font-semibold" style={{ color: '#7B9BDB' }}>
+              <th className="text-center px-3 py-3 font-semibold" style={{ color: 'var(--accent-text)' }}>
                 % automatyzacji
               </th>
-              <th className="text-right px-5 py-3 font-semibold" style={{ color: '#7B9BDB' }}>
+              <th className="text-right px-5 py-3 font-semibold" style={{ color: 'var(--accent-text)' }}>
                 Oszczędności/rok
               </th>
             </tr>
@@ -53,15 +53,15 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
                       className="w-3 h-3 rounded-full flex-shrink-0"
                       style={{ backgroundColor: proc.categoryColor }}
                     />
-                    <span className="font-medium" style={{ color: '#fff' }}>
+                    <span className="font-medium" style={{ color: 'var(--fg)' }}>
                       {proc.categoryName}
                     </span>
                   </div>
                 </td>
-                <td className="text-center px-3 py-3" style={{ color: '#fff' }}>
+                <td className="text-center px-3 py-3" style={{ color: 'var(--fg)' }}>
                   {proc.employeeCount}
                 </td>
-                <td className="text-center px-3 py-3" style={{ color: '#fff' }}>
+                <td className="text-center px-3 py-3" style={{ color: 'var(--fg)' }}>
                   {formatHours(proc.automatedHours)}h
                 </td>
                 <td className="text-center px-3 py-3">
@@ -80,7 +80,7 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
                     </span>
                   </div>
                 </td>
-                <td className="text-right px-5 py-3 font-bold" style={{ color: '#2E4AAD' }}>
+                <td className="text-right px-5 py-3 font-bold" style={{ color: 'var(--accent-text)' }}>
                   {formatZl(proc.annualSavings)} zł
                 </td>
               </tr>
@@ -88,17 +88,17 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
           </tbody>
           <tfoot>
             <tr style={{ borderTop: '2px solid rgba(123,155,219,0.2)' }}>
-              <td className="px-5 py-3 font-bold" style={{ color: '#fff' }}>
+              <td className="px-5 py-3 font-bold" style={{ color: 'var(--fg)' }}>
                 Razem
               </td>
-              <td className="text-center px-3 py-3 font-bold" style={{ color: '#fff' }}>
+              <td className="text-center px-3 py-3 font-bold" style={{ color: 'var(--fg)' }}>
                 {sorted.reduce((s, p) => s + p.employeeCount, 0)}
               </td>
-              <td className="text-center px-3 py-3 font-bold" style={{ color: '#fff' }}>
+              <td className="text-center px-3 py-3 font-bold" style={{ color: 'var(--fg)' }}>
                 {formatHours(sorted.reduce((s, p) => s + p.automatedHours, 0))}h
               </td>
               <td />
-              <td className="text-right px-5 py-3 font-bold text-lg" style={{ color: '#2E4AAD' }}>
+              <td className="text-right px-5 py-3 font-bold text-lg" style={{ color: 'var(--accent-text)' }}>
                 {formatZl(sorted.reduce((s, p) => s + p.annualSavings, 0))} zł
               </td>
             </tr>
@@ -120,15 +120,15 @@ export default function SavingsBreakdownTable({ processes }: SavingsBreakdownTab
                   className="w-2.5 h-2.5 rounded-full"
                   style={{ backgroundColor: proc.categoryColor }}
                 />
-                <span className="font-bold text-sm" style={{ color: '#fff' }}>
+                <span className="font-bold text-sm" style={{ color: 'var(--fg)' }}>
                   {proc.categoryName}
                 </span>
               </div>
-              <span className="font-bold text-sm" style={{ color: '#2E4AAD' }}>
+              <span className="font-bold text-sm" style={{ color: 'var(--accent-text)' }}>
                 {formatZl(proc.annualSavings)} zł/rok
               </span>
             </div>
-            <div className="flex items-center gap-4 text-xs" style={{ color: '#7B9BDB' }}>
+            <div className="flex items-center gap-4 text-xs" style={{ color: 'var(--accent-text)' }}>
               <span>{proc.employeeCount} os.</span>
               <span>{formatHours(proc.automatedHours)}h/mies.</span>
               <span>{proc.automationPercentage}% auto</span>

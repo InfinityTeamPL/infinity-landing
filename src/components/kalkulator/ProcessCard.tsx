@@ -7,6 +7,7 @@ import {
   FileText, Server, Truck, Scale, BarChart3, Cpu,
 } from 'lucide-react';
 import type { ProcessCategory } from '@/lib/kalkulator/types';
+import { wariantyMotywu } from '@/lib/kontrast';
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   Wallet, UsersRound, Headset, TrendingUp, Megaphone,
@@ -23,6 +24,7 @@ interface ProcessCardProps {
 export default function ProcessCard({ category, enabled, onToggle, index = 0 }: ProcessCardProps) {
   const IconComponent = ICON_MAP[category.icon] || Cpu;
   const [pulse, setPulse] = useState(false);
+  const czytelny = wariantyMotywu(category.color);
 
   const handleClick = () => {
     setPulse(true);
@@ -118,7 +120,7 @@ export default function ProcessCard({ category, enabled, onToggle, index = 0 }: 
         <h3 className="text-[14px] font-bold text-white leading-tight mb-1 transition-colors">
           {category.name}
         </h3>
-        <p className="text-[11px] leading-relaxed text-white/35 line-clamp-2">
+        <p className="text-[11px] leading-relaxed text-white/60 line-clamp-2">
           {category.description}
         </p>
       </div>
@@ -132,14 +134,22 @@ export default function ProcessCard({ category, enabled, onToggle, index = 0 }: 
             border: `1px solid ${category.color}${enabled ? '30' : '12'}`,
           }}
         >
+          {/* Kolor kategorii jest za słaby jako tekst — w motywie jasnym albo
+              ciemnym, zależnie od odcienia. Podajemy oba czytelne warianty,
+              a wyboru dokonuje arkusz (reguły .metryka-kategorii).
+              Stan wyłączony sygnalizuje tło i ramka wyżej, więc nie
+              wygaszamy tu dodatkowo napisu — to zbijało kontrast poniżej progu. */}
           <span
-            className="text-[10px] font-bold tracking-wide uppercase transition-opacity duration-300"
-            style={{ color: category.color, opacity: enabled ? 1 : 0.7 }}
+            className="metryka-kategorii text-[10px] font-bold tracking-wide uppercase transition-colors duration-300"
+            style={{
+              ['--kat-jasny' as string]: czytelny.jasny,
+              ['--kat-ciemny' as string]: czytelny.ciemny,
+            } as React.CSSProperties}
           >
             {category.keyMetric.label}: {category.keyMetric.value}
           </span>
         </div>
-        <span className="text-[10px] text-white/20 font-medium">
+        <span className="text-[10px] text-white/60 font-medium">
           Śr. pensja: {category.avgMonthlySalary.toLocaleString('pl-PL')} zł / m-c
         </span>
       </div>

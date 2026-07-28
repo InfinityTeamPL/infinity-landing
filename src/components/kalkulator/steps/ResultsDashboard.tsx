@@ -20,12 +20,12 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
     <div className="space-y-8" id="kalkulator-results">
       {/* Nagłówek */}
       <div className="text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#fff' }}>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: 'var(--fg)' }}>
           {companyProfile.companyName
             ? `Raport ROI dla ${companyProfile.companyName}`
             : 'Twój raport ROI automatyzacji'}
         </h2>
-        <p className="text-sm" style={{ color: '#7B9BDB' }}>
+        <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
           Na podstawie rzeczywistych danych rynku polskiego (marzec 2026) i wybranych procesów
         </p>
       </div>
@@ -53,7 +53,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
         className="rounded-2xl p-5 md:p-6"
         style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
       >
-        <h3 className="text-lg font-bold mb-4" style={{ color: '#fff' }}>
+        <h3 className="text-lg font-bold mb-4" style={{ color: 'var(--fg)' }}>
           Redukcja błędów dzięki AI
         </h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -64,14 +64,14 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
                   className="w-2.5 h-2.5 rounded-full"
                   style={{ backgroundColor: proc.categoryColor }}
                 />
-                <span className="text-sm font-medium" style={{ color: '#fff' }}>
+                <span className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
                   {proc.categoryName}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 {/* Przed */}
                 <div className="flex-1">
-                  <div className="text-xs mb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>Błędy (ludzie)</div>
+                  <div className="text-xs mb-1" style={{ color: 'var(--fg-60)' }}>Błędy (ludzie)</div>
                   <div className="h-3 rounded-full bg-white/10 overflow-hidden">
                     <div
                       className="h-full rounded-full"
@@ -90,7 +90,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
                 <ArrowRight className="w-4 h-4 flex-shrink-0 mt-3" style={{ color: '#ccc' }} />
                 {/* Po */}
                 <div className="flex-1">
-                  <div className="text-xs mb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>Błędy (AI)</div>
+                  <div className="text-xs mb-1" style={{ color: 'var(--fg-60)' }}>Błędy (AI)</div>
                   <div className="h-3 rounded-full bg-white/10 overflow-hidden">
                     <div
                       className="h-full rounded-full"
@@ -124,22 +124,22 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
             className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
             style={{ backgroundColor: 'rgba(46,74,173,0.15)' }}
           >
-            <Shield className="w-6 h-6" style={{ color: '#2E4AAD' }} />
+            <Shield className="w-6 h-6" style={{ color: 'var(--accent-text)' }} />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-bold mb-1" style={{ color: '#fff' }}>
+            <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--fg)' }}>
               Ulga podatkowa na robotyzację — 50% odliczenia
             </h3>
-            <p className="text-sm" style={{ color: '#7B9BDB' }}>
+            <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
               Na podstawie ustawy obowiązującej w latach 2022–2026, możesz odliczyć 50% kosztów
               wdrożenia automatyzacji od podstawy opodatkowania.
             </p>
           </div>
           <div className="text-right flex-shrink-0">
-            <div className="text-2xl font-bold" style={{ color: '#2E4AAD' }}>
+            <div className="text-2xl font-bold" style={{ color: 'var(--accent-text)' }}>
               {formatZl(results.taxRelief)} zł
             </div>
-            <div className="text-xs" style={{ color: '#7B9BDB' }}>
+            <div className="text-xs" style={{ color: 'var(--accent-text)' }}>
               szacowana ulga
             </div>
           </div>
@@ -148,7 +148,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
 
       {/* Podsumowanie + CTA */}
       <div
-        className="rounded-2xl p-6 md:p-8 text-center"
+        className="dark-scope rounded-2xl p-6 md:p-8 text-center"
         style={{
           background: 'linear-gradient(135deg, #0B0F2E 0%, #1A2461 100%)',
         }}
@@ -156,7 +156,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
         <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
           Łączna roczna oszczędność netto
         </h3>
-        <div className="text-4xl md:text-5xl font-bold mb-1" style={{ color: '#2E4AAD' }}>
+        <div className="text-4xl md:text-5xl font-bold mb-1" style={{ color: 'var(--accent-text)' }}>
           {formatZl(results.totalAnnualSavings)} zł
         </div>
         <p className="text-sm text-white/50 mb-6">
@@ -170,7 +170,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
             className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-all hover:scale-105"
             style={{
               backgroundColor: '#2E4AAD',
-              color: '#fff',
+              color: 'var(--fg)',
               boxShadow: '0 4px 20px rgba(46,74,173,0.3)',
             }}
           >
@@ -181,7 +181,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
       </div>
 
       {/* Disclaimer */}
-      <p className="text-xs text-center" style={{ color: 'rgba(255,255,255,0.4)' }}>
+      <p className="text-xs text-center" style={{ color: 'var(--fg-60)' }}>
         * Kalkulacje szacunkowe na podstawie średnich rynkowych dla Polski (marzec 2026).
         Dane: GUS, ZUS, Eurostat, badania branżowe. Koszt pracodawcy uwzględnia ZUS (20,48%).
         Realne wyniki mogą się różnić w zależności od specyfiki firmy. AI z czasem uczy się i optymalizuje — wyniki mogą być wyższe.

@@ -24,10 +24,10 @@ export default function RangeSlider({
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <label className="text-sm font-medium" style={{ color: '#fff' }}>
+        <label className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
           {label}
         </label>
-        <span className="text-sm font-bold" style={{ color: '#2E4AAD' }}>
+        <span className="text-sm font-bold" style={{ color: 'var(--accent-text)' }}>
           {value.toLocaleString('pl-PL')}{suffix}
         </span>
       </div>
@@ -45,7 +45,7 @@ export default function RangeSlider({
             accentColor: '#2E4AAD',
           }}
         />
-        <div className="flex justify-between text-xs mt-1" style={{ color: '#7B9BDB' }}>
+        <div className="flex justify-between text-xs mt-1" style={{ color: 'var(--accent-text)' }}>
           <span>{min.toLocaleString('pl-PL')}{suffix}</span>
           <span>{max.toLocaleString('pl-PL')}{suffix}</span>
         </div>

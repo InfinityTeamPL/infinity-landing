@@ -224,7 +224,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
               className="flex-1 rounded-xl px-5 py-4 transition-transform hover:-translate-y-0.5"
               style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
             >
-              <span className="block text-xs uppercase tracking-widest mb-1.5 text-white/40">Poprzednia</span>
+              <span className="block text-xs uppercase tracking-widest mb-1.5 text-white/60">Poprzednia</span>
               <span className="block text-[15px] font-semibold leading-snug">{prev.title}</span>
             </Link>
           ) : (
@@ -236,7 +236,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
               className="flex-1 rounded-xl px-5 py-4 transition-transform hover:-translate-y-0.5 sm:text-right"
               style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
             >
-              <span className="block text-xs uppercase tracking-widest mb-1.5 text-white/40">Następna</span>
+              <span className="block text-xs uppercase tracking-widest mb-1.5 text-white/60">Następna</span>
               <span className="block text-[15px] font-semibold leading-snug">{next.title}</span>
             </Link>
           )}

@@ -138,7 +138,7 @@ export default function AkademiaIndex() {
                         <span className="block text-sm text-white/60 leading-relaxed mb-3">
                           {l.lead}
                         </span>
-                        <span className="inline-flex items-center gap-1.5 text-xs text-white/40">
+                        <span className="inline-flex items-center gap-1.5 text-xs text-white/60">
                           <Clock className="w-3.5 h-3.5" />
                           {readingMinutes(l)} min
                         </span>

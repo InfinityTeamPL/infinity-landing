@@ -16,15 +16,36 @@
   --background-rgb: 5, 11, 31;
   --ink-rgb: 255, 255, 255;
   --bg-page: #050B1F;
+
+  /* DRABINKA PRZEZROCZYSTOŚCI TEKSTU.
+     Trzyma się w osobnych zmiennych, bo ta sama alfa daje w obu motywach
+     zupełnie inny kontrast: jasny tekst na ciemnym tle blaknie wolniej niż
+     ciemny na jasnym. Przy 50% mamy 5,31:1 w ciemnym i tylko 3,21:1 w jasnym,
+     czyli poniżej progu 4,5:1 z WCAG 1.4.3. Dlatego motyw jasny nadpisuje
+     poniższe wartości własnymi, a .dark-scope przywraca te ciemne.
+     Wartości dotyczą wyłącznie tekstu — tła i obramowania mają własne, stałe. */
+  --a-90: 0.9;
+  --a-85: 0.85;
+  --a-80: 0.8;
+  --a-70: 0.7;
+  --a-65: 0.65;
+  --a-60: 0.6;
+  --a-55: 0.55;
+  --a-50: 0.5;
+  --a-40: 0.4;
+  --a-35: 0.35;
+  --a-30: 0.3;
+  --a-20: 0.2;
+
   --fg: rgb(var(--ink-rgb));
-  --fg-30: rgba(var(--ink-rgb), 0.3);
-  --fg-40: rgba(var(--ink-rgb), 0.4);
-  --fg-50: rgba(var(--ink-rgb), 0.5);
-  --fg-55: rgba(var(--ink-rgb), 0.55);
-  --fg-60: rgba(var(--ink-rgb), 0.6);
-  --fg-65: rgba(var(--ink-rgb), 0.65);
-  --fg-70: rgba(var(--ink-rgb), 0.7);
-  --fg-80: rgba(var(--ink-rgb), 0.8);
+  --fg-30: rgba(var(--ink-rgb), var(--a-30));
+  --fg-40: rgba(var(--ink-rgb), var(--a-40));
+  --fg-50: rgba(var(--ink-rgb), var(--a-50));
+  --fg-55: rgba(var(--ink-rgb), var(--a-55));
+  --fg-60: rgba(var(--ink-rgb), var(--a-60));
+  --fg-65: rgba(var(--ink-rgb), var(--a-65));
+  --fg-70: rgba(var(--ink-rgb), var(--a-70));
+  --fg-80: rgba(var(--ink-rgb), var(--a-80));
   --accent: #2E4AAD;
   --accent-strong: #1A2461;
   --accent-text-rgb: 123, 155, 219;   /* #7B9BDB w dark */
@@ -45,6 +66,26 @@
   color-scheme: light;
   --ink-rgb: 29, 29, 31;              /* #1D1D1F */
   --bg-page: #F5F5F7;
+
+  /* Własna drabinka alfy — patrz komentarz przy :root.
+     Stopnie od 50 w górę muszą przechodzić próg 4,5:1 na tle #F5F5F7,
+     a to zaczyna się dopiero przy alfie ~0,62. Cała skala jest więc
+     przesunięta w górę, żeby zachować kolejność stopni. Zmierzone
+     kontrasty: 50 → 4,6:1, 55 → 5,0:1, 60 → 5,4:1, 70 → 6,8:1.
+     Stopnie 20–40 zostają poniżej progu, bo służą do rzeczy
+     dekoracyjnych; tekst treściowy nigdy nie powinien ich używać. */
+  --a-90: 0.94;
+  --a-85: 0.90;
+  --a-80: 0.85;
+  --a-70: 0.78;
+  --a-65: 0.73;
+  --a-60: 0.69;
+  --a-55: 0.655;
+  --a-50: 0.62;
+  --a-40: 0.55;
+  --a-35: 0.50;
+  --a-30: 0.45;
+  --a-20: 0.32;
   --accent-text-rgb: 46, 74, 173;     /* brand navy #2E4AAD na bieli */
   --surface-1: #ffffff;
   --surface-2: #ffffff;
@@ -62,16 +103,33 @@
 .dark-scope {
   --ink-rgb: 255, 255, 255;
   --accent-text-rgb: 123, 155, 219;
+
+  /* Ciemna wyspa na jasnej stronie wraca do skali ciemnej. Bez tego
+     odziedziczyłaby przesuniętą drabinkę motywu jasnego i biały tekst
+     zrobiłby się na tych kafelkach niepotrzebnie kontrastowy. */
+  --a-90: 0.9;
+  --a-85: 0.85;
+  --a-80: 0.8;
+  --a-70: 0.7;
+  --a-65: 0.65;
+  --a-60: 0.6;
+  --a-55: 0.55;
+  --a-50: 0.5;
+  --a-40: 0.4;
+  --a-35: 0.35;
+  --a-30: 0.3;
+  --a-20: 0.2;
+
   /* pochodne tokeny trzeba przeliczyć ponownie — inaczej dziedziczą wartość z :root */
   --fg: rgb(var(--ink-rgb));
-  --fg-30: rgba(var(--ink-rgb), 0.3);
-  --fg-40: rgba(var(--ink-rgb), 0.4);
-  --fg-50: rgba(var(--ink-rgb), 0.5);
-  --fg-55: rgba(var(--ink-rgb), 0.55);
-  --fg-60: rgba(var(--ink-rgb), 0.6);
-  --fg-65: rgba(var(--ink-rgb), 0.65);
-  --fg-70: rgba(var(--ink-rgb), 0.7);
-  --fg-80: rgba(var(--ink-rgb), 0.8);
+  --fg-30: rgba(var(--ink-rgb), var(--a-30));
+  --fg-40: rgba(var(--ink-rgb), var(--a-40));
+  --fg-50: rgba(var(--ink-rgb), var(--a-50));
+  --fg-55: rgba(var(--ink-rgb), var(--a-55));
+  --fg-60: rgba(var(--ink-rgb), var(--a-60));
+  --fg-65: rgba(var(--ink-rgb), var(--a-65));
+  --fg-70: rgba(var(--ink-rgb), var(--a-70));
+  --fg-80: rgba(var(--ink-rgb), var(--a-80));
   --accent-text: rgb(var(--accent-text-rgb));
   --surface-1: rgba(15, 20, 45, 0.9);
   --surface-2: rgba(10, 22, 40, 0.8);
@@ -700,21 +758,21 @@ section {
    mają zostać ciemne w obu motywach, dostają klasę .dark-scope.
    ========================================================= */
 [data-theme] .text-white { color: rgb(var(--ink-rgb)); }
-[data-theme] .text-white\/90 { color: rgba(var(--ink-rgb), 0.9); }
-[data-theme] .text-white\/85 { color: rgba(var(--ink-rgb), 0.85); }
-[data-theme] .text-white\/80 { color: rgba(var(--ink-rgb), 0.8); }
-[data-theme] .text-white\/70 { color: rgba(var(--ink-rgb), 0.7); }
-[data-theme] .text-white\/65 { color: rgba(var(--ink-rgb), 0.65); }
-[data-theme] .text-white\/60 { color: rgba(var(--ink-rgb), 0.6); }
-[data-theme] .text-white\/55 { color: rgba(var(--ink-rgb), 0.55); }
-[data-theme] .text-white\/50 { color: rgba(var(--ink-rgb), 0.5); }
-[data-theme] .text-white\/40 { color: rgba(var(--ink-rgb), 0.4); }
-[data-theme] .text-white\/35 { color: rgba(var(--ink-rgb), 0.35); }
-[data-theme] .text-white\/30 { color: rgba(var(--ink-rgb), 0.3); }
-[data-theme] .text-white\/20 { color: rgba(var(--ink-rgb), 0.2); }
+[data-theme] .text-white\/90 { color: rgba(var(--ink-rgb), var(--a-90)); }
+[data-theme] .text-white\/85 { color: rgba(var(--ink-rgb), var(--a-85)); }
+[data-theme] .text-white\/80 { color: rgba(var(--ink-rgb), var(--a-80)); }
+[data-theme] .text-white\/70 { color: rgba(var(--ink-rgb), var(--a-70)); }
+[data-theme] .text-white\/65 { color: rgba(var(--ink-rgb), var(--a-65)); }
+[data-theme] .text-white\/60 { color: rgba(var(--ink-rgb), var(--a-60)); }
+[data-theme] .text-white\/55 { color: rgba(var(--ink-rgb), var(--a-55)); }
+[data-theme] .text-white\/50 { color: rgba(var(--ink-rgb), var(--a-50)); }
+[data-theme] .text-white\/40 { color: rgba(var(--ink-rgb), var(--a-40)); }
+[data-theme] .text-white\/35 { color: rgba(var(--ink-rgb), var(--a-35)); }
+[data-theme] .text-white\/30 { color: rgba(var(--ink-rgb), var(--a-30)); }
+[data-theme] .text-white\/20 { color: rgba(var(--ink-rgb), var(--a-20)); }
 [data-theme] .hover\:text-white:hover { color: rgb(var(--ink-rgb)); }
-[data-theme] .hover\:text-white\/80:hover { color: rgba(var(--ink-rgb), 0.8); }
-[data-theme] .hover\:text-white\/70:hover { color: rgba(var(--ink-rgb), 0.7); }
+[data-theme] .hover\:text-white\/80:hover { color: rgba(var(--ink-rgb), var(--a-80)); }
+[data-theme] .hover\:text-white\/70:hover { color: rgba(var(--ink-rgb), var(--a-70)); }
 [data-theme] .bg-white\/5 { background-color: rgba(var(--ink-rgb), 0.05); }
 [data-theme] .bg-white\/10 { background-color: rgba(var(--ink-rgb), 0.1); }
 [data-theme] .bg-white\/15 { background-color: rgba(var(--ink-rgb), 0.15); }
@@ -727,14 +785,33 @@ section {
 [data-theme] .border-white\/10 { border-color: rgba(var(--ink-rgb), 0.1); }
 [data-theme] .border-white\/30 { border-color: rgba(var(--ink-rgb), 0.3); }
 [data-theme] .divide-white\/5 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(var(--ink-rgb), 0.05); }
-[data-theme] .placeholder\:text-white\/30::placeholder { color: rgba(var(--ink-rgb), 0.3); }
+[data-theme] .placeholder\:text-white\/30::placeholder { color: rgba(var(--ink-rgb), var(--a-30)); }
 
 /* Akcentowy tekst — #7B9BDB czytelny w dark, przyciemniany w light */
 [data-theme] .text-\[\#7B9BDB\] { color: rgb(var(--accent-text-rgb)); }
-[data-theme] .text-\[\#7B9BDB\]\/70 { color: rgba(var(--accent-text-rgb), 0.7); }
+/* #2E4AAD to kolor wypełnień (przyciski, ramki), nie tekstu. Jako tekst
+   działa na jasnym tle (7,15:1), ale na ciemnym daje 2,33:1. Przepinamy go
+   na token akcentu, który w każdym motywie jest po właściwej stronie. */
+[data-theme] .text-\[\#2E4AAD\] { color: rgb(var(--accent-text-rgb)); }
+/* To samo dotyczy jaśniejszego wariantu marki: jako tekst na ciemnej
+   powierzchni daje 3,94:1, więc też idzie na token akcentu. */
+[data-theme] .text-\[\#4F6AE8\] { color: rgb(var(--accent-text-rgb)); }
+/* 0,7 nie wystarcza w żadnym motywie dla drobnego tekstu: 3,62:1 na jasnym
+   i 3,97:1 na ciemnym, a tak złożone są numery KRS, NIP i REGON w stopce.
+   Przy 0,85 wychodzi odpowiednio 5,01:1 i 5,31:1. */
+[data-theme] .text-\[\#7B9BDB\]\/70 { color: rgba(var(--accent-text-rgb), 0.85); }
 [data-theme='light'] .text-\[\#D6E4FF\] { color: rgb(var(--accent-text-rgb)); }
 [data-theme='light'] .text-slate-300 { color: rgba(var(--ink-rgb), 0.75); }
 [data-theme='light'] .text-\[\#7B9AFF\] { color: rgb(var(--accent-text-rgb)); }
+
+/* Metryka kategorii w kalkulatorze. Kolor kategorii bywa nieczytelny jako
+   tekst — raz na jasnym tle, raz na ciemnym — więc komponent podaje oba
+   warianty jako zmienne inline (src/lib/kontrast.ts), a tutaj wybieramy.
+   Wariant jasny jest domyślny, żeby kolor istniał również w tej krótkiej
+   chwili, zanim skrypt inicjalizujący ustawi data-theme. */
+.metryka-kategorii { color: var(--kat-jasny); }
+[data-theme='dark'] .metryka-kategorii { color: var(--kat-ciemny); }
+.dark-scope .metryka-kategorii { color: var(--kat-ciemny); }
 
 /* Ciemne granatowe tło stron statycznych przechodzi na tło strony */
 [data-theme='light'] .bg-\[\#0B0F2E\] { background-color: var(--bg-page); }

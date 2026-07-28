@@ -170,6 +170,8 @@ export default function KalkulatorPage() {
                 <Link
                   href="/#kontakt"
                   className="px-6 py-3 rounded-full font-semibold bg-[#2E4AAD] hover:bg-[#1A2461] transition-colors"
+                  /* Przycisk ma własne granatowe tło w obu motywach, więc napis
+                     zostaje biały — var(--fg) dałby tu ciemny atrament, 2,16:1. */
                   style={{ color: '#fff' }}
                 >
                   Umów bezpłatną konsultację
@@ -188,7 +190,7 @@ export default function KalkulatorPage() {
 
         {/* Footer */}
         <footer className="text-center py-8 print:hidden relative" style={{ zIndex: 1, borderTop: '1px solid rgba(123,155,219,0.1)' }}>
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/60">
             &copy; {new Date().getFullYear()} Infinity Tech. Dane: GUS, ZUS, Eurostat, badania branżowe PL 2026.
           </p>
           <div className="flex items-center justify-center gap-4 mt-3">

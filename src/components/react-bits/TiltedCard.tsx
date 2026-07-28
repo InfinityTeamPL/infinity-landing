@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { CheckCircle2, Send } from 'lucide-react';
+import { napisNaTle } from '@/lib/kontrast';
 
 interface TiltedCardProps {
   tierLabel?: string;
@@ -139,7 +140,7 @@ export default function TiltedCard({
           <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
 
           {featured && badgeText && (
-            <span className="inline-block w-fit px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-white mb-2" style={{ backgroundColor: accentColor }}>
+            <span className="inline-block w-fit px-2.5 py-0.5 rounded-full text-[10px] font-semibold mb-2" style={{ backgroundColor: accentColor, color: napisNaTle(accentColor) }}>
               {badgeText}
             </span>
           )}
