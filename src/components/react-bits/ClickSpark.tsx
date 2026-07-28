@@ -13,6 +13,26 @@ interface ClickSparkProps {
   children: React.ReactNode;
 }
 
+/**
+ * Iskry przy kliknięciu.
+ *
+ * Dwie rzeczy, które trzeba tu rozumieć, bo poprzednia wersja kosztowała
+ * bardzo dużo przy zerowym zysku wizualnym:
+ *
+ * 1. Canvas jest przypięty do OKNA (position: fixed), nie do rodzica.
+ *    Wcześniej dostawał wymiary elementu nadrzędnego, a ten opakowuje całą
+ *    stronę. Zmierzona wysokość bufora na stronie głównej: 33 363 px, czyli
+ *    tyle, ile liczy sobie cały dokument. Przy typowej szerokości okna
+ *    wychodzi z tego kilkadziesiąt megapikseli i rząd wielkości 100 MB
+ *    pamięci. Iskry i tak pojawiają się wyłącznie w miejscu kliknięcia,
+ *    więc bufor wielkości okna wystarcza w zupełności.
+ *
+ * 2. Pętla animacji chodzi tylko wtedy, gdy jest co rysować. Wcześniej
+ *    requestAnimationFrame wywoływał się bezwarunkowo, więc przeglądarka
+ *    czyściła ten olbrzymi bufor 60 razy na sekundę przez cały czas wizyty,
+ *    także gdy użytkownik w nic nie kliknął. Teraz pętla startuje przy
+ *    kliknięciu i sama się zatrzymuje, gdy ostatnia iskra wygaśnie.
+ */
 const ClickSpark = ({
   sparkColor = '#fff',
   sparkSize = 10,
@@ -25,72 +45,85 @@ const ClickSpark = ({
 }: ClickSparkProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sparksRef = useRef<{ x: number; y: number; angle: number; startTime: number }[]>([]);
-  const startTimeRef = useRef<number | null>(null);
+  const klatkaRef = useRef<number | null>(null);
 
+  // Rozmiar bufora równy oknu, nie dokumentowi.
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const parent = canvas.parentElement;
-    if (!parent) return;
 
-    let resizeTimeout: ReturnType<typeof setTimeout>;
-
-    const resizeCanvas = () => {
-      const { width, height } = parent.getBoundingClientRect();
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width;
-        canvas.height = height;
+    let opoznienie: ReturnType<typeof setTimeout>;
+    const dopasuj = () => {
+      // Rozmiar bufora bierzemy z RZECZYWISTEGO pudełka canvasu, nie
+      // z window.innerWidth. Na urządzeniach mobilnych 100vw i innerWidth
+      // potrafią się różnić (pasek przewijania, chowające się paski
+      // przeglądarki), a rozjazd tych dwóch wartości przesuwałby iskry
+      // względem miejsca kliknięcia.
+      const { width, height } = canvas.getBoundingClientRect();
+      const w = Math.round(width);
+      const h = Math.round(height);
+      if (w > 0 && h > 0 && (canvas.width !== w || canvas.height !== h)) {
+        canvas.width = w;
+        canvas.height = h;
       }
     };
+    const przyZmianie = () => {
+      clearTimeout(opoznienie);
+      opoznienie = setTimeout(dopasuj, 100);
+    };
 
-    const ro = new ResizeObserver(() => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resizeCanvas, 100);
-    });
-    ro.observe(parent);
-    resizeCanvas();
-
+    dopasuj();
+    window.addEventListener('resize', przyZmianie);
     return () => {
-      ro.disconnect();
-      clearTimeout(resizeTimeout);
+      window.removeEventListener('resize', przyZmianie);
+      clearTimeout(opoznienie);
     };
   }, []);
 
   const easeFunc = useCallback(
     (t: number) => {
       switch (easing) {
-        case 'linear': return t;
-        case 'ease-in': return t * t;
-        case 'ease-in-out': return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        default: return t * (2 - t);
+        case 'linear':
+          return t;
+        case 'ease-in':
+          return t * t;
+        case 'ease-in-out':
+          return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        default:
+          return t * (2 - t);
       }
     },
-    [easing]
+    [easing],
   );
 
+  // Zatrzymanie pętli przy odmontowaniu — sama pętla startuje dopiero z kliknięcia.
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d')!;
-    let animationId: number;
+    return () => {
+      if (klatkaRef.current !== null) cancelAnimationFrame(klatkaRef.current);
+    };
+  }, []);
 
-    const draw = (timestamp: number) => {
-      if (!startTimeRef.current) startTimeRef.current = timestamp;
+  const rysuj = useCallback(
+    (czas: number) => {
+      const canvas = canvasRef.current;
+      const ctx = canvas?.getContext('2d');
+      if (!canvas || !ctx) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      sparksRef.current = sparksRef.current.filter(spark => {
-        const elapsed = timestamp - spark.startTime;
-        if (elapsed >= duration) return false;
+      sparksRef.current = sparksRef.current.filter((iskra) => {
+        const uplynelo = czas - iskra.startTime;
+        if (uplynelo >= duration) return false;
 
-        const progress = elapsed / duration;
-        const eased = easeFunc(progress);
-        const distance = eased * sparkRadius * extraScale;
-        const lineLength = sparkSize * (1 - eased);
+        const postep = uplynelo / duration;
+        const wygladzony = easeFunc(postep);
+        const odleglosc = wygladzony * sparkRadius * extraScale;
+        const dlugosc = sparkSize * (1 - wygladzony);
 
-        const x1 = spark.x + distance * Math.cos(spark.angle);
-        const y1 = spark.y + distance * Math.sin(spark.angle);
-        const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
-        const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+        const x1 = iskra.x + odleglosc * Math.cos(iskra.angle);
+        const y1 = iskra.y + odleglosc * Math.sin(iskra.angle);
+        const x2 = iskra.x + (odleglosc + dlugosc) * Math.cos(iskra.angle);
+        const y2 = iskra.y + (odleglosc + dlugosc) * Math.sin(iskra.angle);
 
         ctx.strokeStyle = sparkColor;
         ctx.lineWidth = 2;
@@ -102,29 +135,38 @@ const ClickSpark = ({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
-    };
-
-    animationId = requestAnimationFrame(draw);
-    return () => cancelAnimationFrame(animationId);
-  }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
+      // Nie ma iskier — nie ma po co budzić przeglądarki w kolejnej klatce.
+      if (sparksRef.current.length === 0) {
+        klatkaRef.current = null;
+        return;
+      }
+      klatkaRef.current = requestAnimationFrame(rysuj);
+    },
+    [duration, easeFunc, extraScale, sparkColor, sparkRadius, sparkSize],
+  );
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const now = performance.now();
+    if (!canvasRef.current) return;
+    // Użytkownicy z ograniczonym ruchem nie dostają efektu w ogóle.
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Canvas pokrywa okno, więc współrzędne kliknięcia są już właściwe.
+    const x = e.clientX;
+    const y = e.clientY;
+    const teraz = performance.now();
 
     sparksRef.current.push(
       ...Array.from({ length: sparkCount }, (_, i) => ({
         x,
         y,
         angle: (2 * Math.PI * i) / sparkCount,
-        startTime: now,
-      }))
+        startTime: teraz,
+      })),
     );
+
+    if (klatkaRef.current === null) {
+      klatkaRef.current = requestAnimationFrame(rysuj);
+    }
   };
 
   return (
@@ -132,13 +174,13 @@ const ClickSpark = ({
       <canvas
         ref={canvasRef}
         style={{
-          width: '100%',
-          height: '100%',
           display: 'block',
           userSelect: 'none',
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           left: 0,
+          width: '100vw',
+          height: '100vh',
           pointerEvents: 'none',
           zIndex: 9999,
         }}

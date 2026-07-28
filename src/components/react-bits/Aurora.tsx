@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useCzyAnimowac } from '@/lib/useCzyAnimowac';
 
 interface AuroraProps {
   className?: string;
@@ -18,10 +19,14 @@ export default function Aurora({
   amplitude = 1,
 }: AuroraProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { wWidoku, ograniczonyRuch } = useCzyAnimowac(canvasRef);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // Poza kadrem nie ma po co nic robić — nikt tego nie zobaczy.
+    if (!wWidoku) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -73,6 +78,10 @@ export default function Aurora({
         ctx.fillRect(0, waveY - 200 * amplitude, canvas.width, 400 * amplitude);
       }
       
+      // Przy prośbie o ograniczenie ruchu rysujemy jedną klatkę i kończymy.
+      // Wcześniej efekt nie ruszał wcale, więc tacy użytkownicy widzieli
+      // pustą sekcję zamiast statycznego tła.
+      if (ograniczonyRuch) return;
       animationId = requestAnimationFrame(draw);
     };
 
@@ -84,7 +93,7 @@ export default function Aurora({
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationId);
     };
-  }, [colorStops, speed, blend, amplitude]);
+  }, [colorStops, speed, blend, amplitude, wWidoku, ograniczonyRuch]);
 
   return (
     <canvas
