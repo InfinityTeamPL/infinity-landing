@@ -826,7 +826,10 @@ section {
 [data-theme] .border-white\/10 { border-color: rgba(var(--ink-rgb), 0.1); }
 [data-theme] .border-white\/30 { border-color: rgba(var(--ink-rgb), 0.3); }
 [data-theme] .divide-white\/5 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(var(--ink-rgb), 0.05); }
-[data-theme] .placeholder\:text-white\/30::placeholder { color: rgba(var(--ink-rgb), var(--a-30)); }
+/* Tekst zastępczy w polach też jest tekstem i podlega progowi kontrastu.
+   Stopień 30 jest w tej drabince dekoracyjny (2,4:1 w ciemnym, 2,8:1
+   w jasnym), więc mimo nazwy klasy renderujemy go na stopniu 55. */
+[data-theme] .placeholder\:text-white\/30::placeholder { color: rgba(var(--ink-rgb), var(--a-55)); }
 
 /* Akcentowy tekst — #7B9BDB czytelny w dark, przyciemniany w light */
 [data-theme] .text-\[\#7B9BDB\] { color: rgb(var(--accent-text-rgb)); }
