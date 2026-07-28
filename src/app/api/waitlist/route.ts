@@ -26,7 +26,7 @@ export async function POST(request: Request) {
   try {
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
     if (!rateLimit(ip, 5, 60_000)) {
-      return NextResponse.json({ error: 'Zbyt wiele zapytań. Spróbuj ponownie za chwilę.' }, { status: 429 });
+      return NextResponse.json({ error: 'Za dużo prób z tego adresu. Odczekaj minutę i wyślij jeszcze raz.' }, { status: 429 });
     }
 
     const payload = await request.json();
@@ -43,12 +43,12 @@ export async function POST(request: Request) {
       email.length > LIMITY.email
     ) {
       return NextResponse.json(
-        { error: 'Nieprawidłowy adres email' },
+        { error: 'Ten adres e-mail nie wygląda poprawnie. Sprawdź go, bo na niego napiszemy.' },
         { status: 400 }
       );
     }
     if (typeof source === 'string' && source.length > LIMITY.zrodlo) {
-      return NextResponse.json({ error: 'Nieprawidłowe źródło zapisu' }, { status: 400 });
+      return NextResponse.json({ error: 'Nieprawidłowe źródło zapisu.' }, { status: 400 });
     }
 
     const cleanEmail = email.trim();
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
       // dawało fałszywe potwierdzenie zapisu, a adres nigdzie nie trafiał.
       console.error('[waitlist] RESEND_API_KEY missing — zapis NIE został dostarczony');
       return NextResponse.json(
-        { error: 'Nie możemy teraz zapisać zgłoszenia. Napisz na contact@infinityteam.io, dopiszemy Cię ręcznie.' },
+        { error: 'Zapis nam w tej chwili nie działa. Napisz na contact@infinityteam.io, dopiszemy Cię ręcznie.' },
         { status: 503 },
       );
     }
@@ -93,16 +93,22 @@ export async function POST(request: Request) {
           <img src="https://www.infinityteam.io/infinity-logo.png" alt="Infinity Tech" width="48" height="48" style="display: block; border-radius: 10px; flex-shrink: 0;" />
           <div>
             <h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 700;">Infinity Tech</h1>
-            <p style="margin: 4px 0 0; color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">Desktop App — Waitlist</p>
+            <p style="margin: 4px 0 0; color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">Waitlista Desktop App</p>
           </div>
         </div>
         <div style="padding: 32px;">
-          <h2 style="margin: 0 0 12px; color: #ffffff; font-size: 20px;">Jesteś na liście!</h2>
+          <h2 style="margin: 0 0 12px; color: #ffffff; font-size: 20px;">Jesteś na liście</h2>
           <p style="margin: 0 0 16px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
-            Dziękujemy za zainteresowanie naszą aplikacją Desktop AI. Pracujemy nad nią intensywnie — będziesz jedną z pierwszych osób, które dostaną dostęp.
+            Zapisaliśmy Twój adres. Kiedy aplikacja będzie na tyle gotowa, żeby dało się jej używać na co dzień, napiszemy właśnie tutaj.
           </p>
-          <p style="margin: 0 0 24px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
-            Gdy aplikacja będzie gotowa, odezwiemy się bezpośrednio na ten adres email.
+          <p style="margin: 0 0 16px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
+            Uczciwie: daty premiery nie mamy i nie chcemy jej zmyślać. Nie będziemy też zasypywać Cię mailami po drodze. Jeden mail, wtedy gdy będzie co pokazać.
+          </p>
+          <p style="margin: 0 0 16px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
+            Nie chcesz czekać? Część rzeczy działa już dziś. Agentów głosowych i automatyzacje wdrażamy normalnie, na projekt, a pierwsza rozmowa nic nie kosztuje. Wystarczy napisać na contact@infinityteam.io.
+          </p>
+          <p style="margin: 0 0 24px; color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.6;">
+            Chcesz zejść z listy? Napisz na contact@infinityteam.io, wystarczy jedno słowo, usuniemy adres.
           </p>
           <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 8px;">
             <p style="margin: 0; color: rgba(255,255,255,0.4); font-size: 12px;">
@@ -124,14 +130,14 @@ export async function POST(request: Request) {
       sendEmail(apiKey, {
         from,
         to: [cleanEmail],
-        subject: 'Jesteś na liście — Infinity Tech Desktop App',
+        subject: 'Jesteś na liście (Infinity Tech Desktop App)',
         html: confirmationHtml,
       }),
     ]);
 
     if (!notification.ok) {
       return NextResponse.json(
-        { error: 'Nie udało się wysłać zgłoszenia' },
+        { error: 'Nie udało się zapisać zgłoszenia. Spróbuj jeszcze raz albo napisz na contact@infinityteam.io.' },
         { status: 502 }
       );
     }
@@ -144,7 +150,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error('[waitlist] unexpected error', err);
     return NextResponse.json(
-      { error: 'Wystąpił błąd serwera' },
+      { error: 'Coś się u nas wysypało. Spróbuj za chwilę albo napisz na contact@infinityteam.io.' },
       { status: 500 }
     );
   }

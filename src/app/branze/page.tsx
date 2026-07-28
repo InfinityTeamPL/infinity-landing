@@ -4,12 +4,12 @@ import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDo
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'AI dla branż — gdzie agenci sprawdzają się najlepiej',
+  title: 'AI dla branż: gdzie agenci sprawdzają się najlepiej',
   description:
     'Przychodnie, e-commerce, gastronomia, transport, kancelarie, administracja. Gdzie agenci AI pomagają, czego nie zrobią i jak zacząć od pilotażu.',
   alternates: { canonical: '/branze' },
   openGraph: {
-    title: 'AI dla branż — Infinity Tech',
+    title: 'AI dla branż w Infinity Tech',
     description: 'Agenci głosowi i automatyzacja w przychodniach, rekrutacji, transporcie i usługach.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
@@ -34,7 +34,7 @@ const WITH_PAGE = [
     icon: Bus,
     href: '/branze/voicebot-dla-transportu',
     title: 'Transport i przewozy',
-    lead: 'Infolinia z rozkładami jazdy, statusami kursów i reklamacjami. Publiczne demo na danych rozkładowych PKS Gryfice pokazuje, jak to brzmi w praktyce.',
+    lead: 'Infolinia z rozkładami jazdy, statusami kursów i reklamacjami. Nasze demo na publicznych danych rozkładowych PKS Gryfice pokazuje, jak to brzmi.',
   },
   {
     icon: Store,
@@ -124,6 +124,34 @@ const LIMITS = [
     title: 'Potrzebuje uporządkowanych danych',
     text: 'Jeśli cennik krąży po firmie w trzech wersjach, a grafik istnieje głównie w głowie kierownika, agent nie ma z czego korzystać. Bywa, że pierwszy etap wdrożenia to zwykłe poukładanie informacji.',
   },
+  {
+    title: 'Nie nadąży za danymi, których nikt nie aktualizuje',
+    text: 'Agent mówi to, co ma w źródle. Jeśli godziny zmieniają się w piątek po południu, a plik z godzinami raz na dwa tygodnie, dzwoniący usłyszy nieaktualną informację i będzie miał rację, mając pretensje. Dlatego przy wdrożeniu pytamy nie o to, czy dane istnieją, tylko kto je zmienia i jak szybko. To pytanie bywa niewygodne, bo odpowiedź często brzmi „nikt konkretny".',
+  },
+  {
+    title: 'Nie naprawi procesu, który i tak nie działa',
+    text: 'Jeśli ludzie dzwonią głównie dlatego, że nie mogą niczego znaleźć na stronie, agent odbierze te telefony i problem zniknie z widoku, ale nie z firmy. Czasem najtańszą poprawką jest przepisanie jednego akapitu w cenniku. Mówimy o tym na konsultacji, choć nie zarabiamy na tym ani złotówki.',
+  },
+];
+
+// Co warto mieć przed pierwszą rozmową z nami
+const PREP = [
+  {
+    title: 'Ile tych telefonów naprawdę jest',
+    text: 'Wystarczy raport z centrali albo tydzień liczenia kreską na kartce. Bez tej liczby rozmowa o tym, czy wdrożenie się zwróci, jest zgadywanką po obu stronach. Nasza też.',
+  },
+  {
+    title: 'Pięć pytań, które słyszycie najczęściej',
+    text: 'Nie trzeba ankiety ani analizy. Zwykle wystarczy zapytać osobę, która odbiera telefon, co ją najbardziej męczy. Odpowiedź pada w kilkanaście sekund i bywa trafniejsza niż niejeden raport.',
+  },
+  {
+    title: 'Miejsce, w którym leżą aktualne dane',
+    text: 'Cennik, godziny, grafik, lista usług. Format ma mniejsze znaczenie, niż się wydaje. Ważniejsze jest to, kto ma prawo te dane zmienić i czy robi to tego samego dnia.',
+  },
+  {
+    title: 'Zgoda na to, że część rozmów pójdzie do człowieka',
+    text: 'Agent, który nie oddaje nic, nie istnieje. Trzeba więc z góry ustalić, kto przejmuje przekazane sprawy i w jakim czasie. Najgorszy wariant to skrzynka, do której nikt nie zagląda.',
+  },
 ];
 
 const FAQ = [
@@ -150,7 +178,17 @@ const FAQ = [
   {
     question: 'Czy da się zacząć od pilotażu?',
     answer:
-      'Tak i zwykle tak właśnie robimy. Najczęstszy wariant to agent na części ruchu: po godzinach pracy biura albo na jednym numerze i jednym typie sprawy. Po kilku tygodniach w nagraniach widać, co działa, a co trzeba przepisać. Małe wdrożenie zamyka się w 2–4 tygodniach, większe w 1–3 miesiącach; ceny startują od 5 000 zł netto plus utrzymanie od 249 zł miesięcznie.',
+      'Tak i zwykle tak właśnie robimy. Najczęstszy wariant to agent na części ruchu: po godzinach pracy biura albo na jednym numerze i jednym typie sprawy. Po kilku tygodniach w nagraniach widać, co działa, a co trzeba przepisać. Małe wdrożenie zamyka się w 2 do 4 tygodni, większe w 1 do 3 miesięcy. Ceny startują od 5 000 zł netto plus utrzymanie od 249 zł miesięcznie.',
+  },
+  {
+    question: 'Co się dzieje, gdy agent czegoś nie wie?',
+    answer:
+      'Mówi, że nie wie, i przekazuje sprawę dalej. To nie awaria, tylko ustawienie. Agent odpowiada z podpiętego źródła, a nie z ogólnej wiedzy modelu, więc poza tym źródłem woli zamilknąć niż zgadywać. Najlepiej słychać to w naszym demie na danych rozkładowych PKS Gryfice, gdzie przy każdej odpowiedzi widać, skąd wzięła się godzina. Uczciwie: przez pierwsze tygodnie agent odsyła do człowieka częściej, niż byśmy chcieli. Wtedy siadamy do nagrań i dopisujemy brakujące odpowiedzi.',
+  },
+  {
+    question: 'Czy nie uzależnimy się od Was na zawsze?',
+    answer:
+      'Agentów budujemy na OpenClaw, frameworku open source. Nie jesteśmy jego oficjalnym partnerem, po prostu na nim pracujemy, a dla Was liczy się to, że kod da się zaudytować, a wdrożenie przenieść. Model językowy może działać na Waszych kluczach API, więc rachunek i historia zapytań zostają po Waszej stronie. Platformę ClawLabs udostępniamy również w wariancie self-hosted. Wolelibyśmy oczywiście, żebyście zostali. Tylko że przewagę chcemy budować na robocie, a nie na tym, że nie da się od nas wyjść.',
   },
 ];
 
@@ -208,7 +246,8 @@ export default function BranzeHub() {
         </h1>
         <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-12 max-w-3xl">
           Technologia jest ta sama, ale sensowne zastosowanie wygląda inaczej w przychodni, a inaczej w firmie
-          transportowej. Poniżej branże, w których pracujemy najczęściej, wraz z tym, co agent faktycznie w nich robi.
+          transportowej. Poniżej branże, w których pracujemy najczęściej, razem z tym, co agent w nich faktycznie robi.
+          I z tym, czego nie zrobi.
         </p>
 
         <div className="grid md:grid-cols-2 gap-5 mb-12">
@@ -272,13 +311,33 @@ export default function BranzeHub() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
+            Co warto mieć przed pierwszą rozmową z nami
+          </h2>
+          <p className="leading-relaxed mb-6 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Nic z tego nie jest wymagane, konsultacja jest bezpłatna i nikt nie odeśle Was z listą zadań domowych.
+            Ale gdy te cztery rzeczy są pod ręką, zamiast godziny ogólników wychodzi konkretna odpowiedź, czy to
+            się u Was spina.
+          </p>
+          <div className="space-y-5">
+            {PREP.map((p) => (
+              <div key={p.title} className="pl-4" style={{ borderLeft: '2px solid var(--border-soft)' }}>
+                <h3 className="font-semibold mb-1.5">{p.title}</h3>
+                <p className="text-sm leading-relaxed max-w-3xl" style={{ color: 'var(--fg-70)' }}>{p.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
             Przykłady z naszych dem
           </h2>
           <p className="leading-relaxed mb-4 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
-            Zamiast opisywać, jak to brzmi, wolimy pokazać. Demo głosowe zbudowaliśmy na publicznych danych
-            rozkładowych PKS Gryfice. To nasza prezentacja, a nie wdrożenie u przewoźnika. Agent zna 6 przystanków i
-            276 odjazdów, a przy każdej odpowiedzi podaje źródło, z którego wziął godzinę. To ważniejsze, niż się
-            wydaje: agenta, który pokazuje dane, można sprawdzić. Adres: pks-gryfice-demo.vercel.app.
+            Zamiast opisywać, jak to brzmi, wolimy pokazać. Demo głosowe zbudowaliśmy sami, na publicznie dostępnych
+            danych rozkładowych PKS Gryfice. To nasza prezentacja techniczna. PKS Gryfice nie jest naszym klientem i
+            nie będziemy tego sugerować. Agent zna 6 przystanków i 276 odjazdów, a przy każdej odpowiedzi podaje
+            źródło, z którego wziął godzinę. To ważniejsze, niż się wydaje: agenta, który pokazuje dane, można
+            sprawdzić. Adres: pks-gryfice-demo.vercel.app.
           </p>
           <p className="leading-relaxed mb-5 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
             Drugie demo to pięcioro asystentów z różnych branż: Tomek obsługuje transport, Ewa medycynę, Zofia

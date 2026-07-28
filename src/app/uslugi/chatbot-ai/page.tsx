@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import SeoLanding, { SeoLandingContent } from '@/components/SeoLanding';
 
 export const metadata: Metadata = {
-  title: 'Chatbot AI dla firm — wdrożenie, 23+ kanałów komunikacji',
+  title: 'Chatbot AI dla firm. Wdrożenie i 23+ kanałów komunikacji',
   description:
     'Chatbot AI dla firm: jeden agent na stronie www i w 23+ kanałach, WhatsApp, Teams, Slack. Wdrożenie od 5 000 zł netto. Umów bezpłatną konsultację.',
   alternates: { canonical: '/uslugi/chatbot-ai' },
   openGraph: {
-    title: 'Chatbot AI dla firm — jeden agent, 23+ kanałów komunikacji',
+    title: 'Chatbot AI dla firm, jeden agent w 23+ kanałach',
     description:
       'Wielokanałowy chatbot AI z wiedzą firmową: strona www, WhatsApp, Slack, Teams, Telegram, Discord. Wdrożenie od 5 000 zł netto, pierwsza konsultacja bezpłatna.',
     type: 'website',
@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 const content: SeoLandingContent = {
   path: '/uslugi/chatbot-ai',
   breadcrumbLabel: 'Chatbot AI dla firm',
-  h1: 'Chatbot AI dla firm — jeden agent, 23+ kanałów komunikacji',
+  h1: 'Chatbot AI dla firm, jeden agent w 23+ kanałach',
   lead:
     'Chatbot AI dla firm to agent tekstowy oparty na dużych modelach językowych, który rozumie pytania klientów, odpowiada na podstawie wiedzy firmowej i działa jednocześnie na stronie www oraz w ponad 23 kanałach, od WhatsAppa po Teams. W Infinity Tech wdrażamy takie agenty od 5 000 zł netto, z bezpłatną pierwszą konsultacją.',
   sections: [
     {
-      heading: 'Agent AI a chatbot regułowy: na czym polega różnica',
+      heading: 'Czym agent AI różni się od chatbota regułowego',
       paragraphs: [
-        'Klasyczny chatbot regułowy działa jak drzewko decyzyjne: rozpoznaje słowa kluczowe i odpowiada z góry zapisanym skryptem. Wystarczy, że klient sformułuje pytanie inaczej, niż przewidział autor scenariusza, i rozmowa kończy się komunikatem „nie rozumiem”. Dla firmy oznacza to zirytowanych klientów i zgłoszenia, które i tak wracają do ludzi.',
-        'Agent AI do obsługi klienta działa inaczej. Opiera się na dużym modelu językowym, więc rozumie sens wypowiedzi, a nie tylko słowa kluczowe. Poradzi sobie z literówkami, potocznym językiem i pytaniami wielowątkowymi. Zamiast sztywnego skryptu dostaje wiedzę firmową i jasno wyznaczone granice, w których ma się poruszać. Efekt: naturalna rozmowa, ale pod kontrolą.',
+        'Klasyczny chatbot regułowy działa jak drzewko decyzyjne. Wyłapuje umówione zwroty i odpowiada gotowym skryptem. Wystarczy, że klient napisze pytanie inaczej, niż przewidział autor scenariusza, i rozmowa kończy się komunikatem „nie rozumiem”. Każdy to zna z własnych zakupów w internecie. Dla firmy oznacza to zirytowanych klientów i zgłoszenia, które i tak wracają do ludzi.',
+        'Agent AI działa inaczej. Pod spodem pracuje duży model językowy, więc łapie sens wypowiedzi zamiast dopasowywać ją do listy fraz. Poradzi sobie z literówkami, potocznym językiem i pytaniem, w którym klient upchnął trzy sprawy naraz. Zamiast sztywnego skryptu dostaje wiedzę firmową i granice, w których wolno mu się poruszać. Rozmowa brzmi naturalnie, ale jest prowadzona pod kontrolą.',
       ],
       bullets: [
         'Chatbot regułowy odpowiada tylko na pytania przewidziane w scenariuszu',
-        'Agent AI rozumie kontekst i intencję, także pytania zadane „po ludzku”',
+        'Agent AI łapie intencję, także wtedy gdy klient pisze po swojemu',
         'Pamięta przebieg rozmowy, więc nie każe klientowi powtarzać danych',
         'Wykonuje działania: sprawdzi status zamówienia, umówi termin, założy zgłoszenie',
       ],
@@ -38,8 +38,9 @@ const content: SeoLandingContent = {
     {
       heading: 'Chatbot wielokanałowy, czyli jedna wiedza we wszystkich kanałach',
       paragraphs: [
-        'Klienci piszą tam, gdzie im wygodnie: jedni na czacie na stronie, inni na WhatsAppie, a zespół wewnętrzny siedzi na Slacku albo w Teams. Utrzymywanie osobnego bota w każdym kanale to podwójna praca i niespójne odpowiedzi. Dlatego budujemy jednego agenta i podpinamy go do ponad 23 kanałów komunikacji (m.in. WhatsApp, Slack, Microsoft Teams, Telegram, Discord) oraz na stronę www jako klasyczny chatbot.',
-        'Agenta budujemy na OpenClaw, otwartym frameworku agentów AI, który zdobył ponad 380 tysięcy gwiazdek na GitHubie i w 60 dni od premiery stał się najpopularniejszym projektem serwisu. Dla Ciebie oznacza to jedną bazę wiedzy i jeden zestaw reguł dla wszystkich kanałów: klient dostaje tę samą odpowiedź niezależnie od tego, gdzie napisze. Nowy kanał dodajesz bez budowania bota od zera.',
+        'Klienci piszą tam, gdzie im wygodnie. Jedni na czacie na stronie, inni na WhatsAppie, a zespół wewnętrzny siedzi na Slacku albo w Teams. Utrzymywanie osobnego bota w każdym kanale to podwójna praca i, prędzej czy później, dwie różne odpowiedzi na to samo pytanie. Dlatego budujemy jednego agenta i podpinamy go do ponad 23 kanałów komunikacji (m.in. WhatsApp, Slack, Microsoft Teams, Telegram, Discord) oraz na stronę www jako klasyczny chatbot.',
+        'Agenta budujemy na OpenClaw, otwartym frameworku agentów AI, który zdobył ponad 380 tysięcy gwiazdek na GitHubie i w 60 dni od premiery stał się najpopularniejszym projektem serwisu. Nie jesteśmy jego oficjalnym partnerem, po prostu na nim pracujemy. Dla Ciebie oznacza to jedną bazę wiedzy i jeden zestaw reguł dla wszystkich kanałów: klient dostaje tę samą odpowiedź niezależnie od tego, gdzie napisze. Nowy kanał dokładasz bez budowania bota od zera.',
+        'Wielokanałowość ma jeden mniej oczywisty skutek uboczny. Każdy kanał ma własne ograniczenia, na przykład WhatsApp trzyma reguły dotyczące tego, kiedy firma może odezwać się pierwsza, a formatowanie odpowiedzi wygląda inaczej w Teams niż na czacie na stronie. To nie blokuje wdrożenia, ale wymaga decyzji na starcie, które kanały naprawdę są potrzebne. Zwykle wychodzi, że dwa lub trzy, a nie dwadzieścia.',
       ],
     },
     {
@@ -47,13 +48,34 @@ const content: SeoLandingContent = {
       paragraphs: [
         'Chatbot AI jest tak dobry, jak wiedza, na której pracuje. Dlatego przed startem zasilamy agenta Twoimi materiałami: cennikami, regulaminami, opisami produktów i usług, procedurami reklamacji, odpowiedziami na najczęstsze pytania. Agent odpowiada na podstawie tych źródeł, a nie ogólnej wiedzy modelu. Mówi więc o Twojej ofercie, Twoich terminach i Twoich zasadach. Bywa zresztą, że najdłużej trwa nie budowa agenta, tylko dotarcie do aktualnej wersji cennika.',
         'Gdy oferta się zmienia, aktualizujesz dokument w bazie wiedzy i agent od razu odpowiada po nowemu, bez przeklikiwania scenariuszy. A gdy pytanie wykracza poza przekazane źródła, agent mówi o tym wprost i kieruje rozmowę do pracownika, zamiast improwizować. To najprostszy sposób ograniczania halucynacji. Do zera ich nie sprowadza, ale sensownie przygotowana baza wiedzy robi tu największą różnicę.',
+        'Żeby to zadziałało, potrzebujemy od Ciebie kilku konkretów. Nic egzotycznego, zwykle wszystko już gdzieś jest, tylko rozrzucone po dyskach i skrzynkach:',
+      ],
+      bullets: [
+        'Aktualny cennik albo zasady wyceny, ze wskazaniem, co wolno podać klientowi, a co jest do rozmowy z handlowcem',
+        'Trzydzieści najczęstszych pytań z ostatnich miesięcy, najlepiej wprost z maili i czatu, razem z odpowiedziami, których zespół dziś udziela',
+        'Regulaminy, warunki dostawy, procedurę reklamacji i zwrotu w wersji, która naprawdę obowiązuje',
+        'Jedną osobę po Twojej stronie, która ma prawo powiedzieć „ta odpowiedź jest zła, poprawcie ją”',
       ],
     },
     {
       heading: 'Agent AI do obsługi klienta, z człowiekiem w tle',
       paragraphs: [
-        'Dobre wdrożenie chatbota AI nie polega na tym, żeby maszyna obsłużyła wszystko. Chodzi o to, żeby przejęła rozmowy powtarzalne, a trudne oddała ludziom w odpowiednim momencie. Nasz agent rozpoznaje sytuacje wymagające eskalacji: skomplikowaną reklamację, zdenerwowanego klienta albo wprost wyrażoną prośbę o kontakt z człowiekiem.',
+        'W dobrym wdrożeniu chatbota chodzi o to, żeby maszyna przejęła rozmowy powtarzalne i oddała trudne ludziom w odpowiednim momencie. Agent rozpoznaje sytuacje wymagające eskalacji: skomplikowaną reklamację, zdenerwowanego klienta albo wprost wyrażoną prośbę o kontakt z człowiekiem.',
         'Przekazanie nie oznacza startu od zera. Pracownik dostaje podsumowanie dotychczasowej rozmowy i zebrane dane, więc klient nie musi drugi raz opisywać sprawy. Z kolei statystyki rozmów pokazują, o co klienci pytają najczęściej i gdzie w bazie wiedzy są luki. To gotowa lista poprawek dla obsługi i marketingu.',
+        'Warto ustalić jedną rzecz jeszcze przed startem: co się dzieje z rozmową, którą agent oddał o drugiej w nocy. Jeśli nikt jej wtedy nie odbierze, klient dostaje informację, kiedy dostanie odpowiedź, a sprawa ląduje w kolejce na rano. Brzmi banalnie, ale to najczęstsza rzecz, o której firmy zapominają, a klienci pamiętają.',
+      ],
+    },
+    {
+      heading: 'Kiedy chatbot AI się nie opłaca',
+      paragraphs: [
+        'Nie w każdej firmie to ma sens i wolimy powiedzieć to przed wyceną, a nie po wdrożeniu. Kilka sytuacji, w których zwykle odradzamy start:',
+      ],
+      bullets: [
+        'Ruch jest mały. Przy kilkunastu wiadomościach tygodniowo obsługa ręczna wyjdzie taniej niż wdrożenie i abonament.',
+        'Wiedza siedzi w głowach ludzi. Agent nie ma z czego odpowiadać, więc najpierw trzeba spisać procedury, a to praca po Twojej stronie.',
+        'Rozmowy to głównie negocjacje albo doradztwo, w którym każda odpowiedź jest inna. Agent może najwyżej zebrać dane i umówić rozmowę z człowiekiem.',
+        'Odpowiedzi niosą ryzyko prawne lub zdrowotne. Przy poradach medycznych czy prawnych agent zbiera sprawę i przekazuje ją specjaliście, nie wypowiada się w meritum.',
+        'Szczyt trwa dwa tygodnie w roku. Sezonowa górka rzadko uzasadnia stały koszt utrzymania, choć czasem da się zamknąć wąski zakres na ten jeden okres.',
       ],
     },
   ],
@@ -148,7 +170,7 @@ const content: SeoLandingContent = {
     {
       question: 'Jak długo trwa wdrożenie chatbota AI?',
       answer:
-        'W małych firmach zwykle 2–4 tygodnie od konsultacji do startu produkcyjnego. Przy większych organizacjach, wielu kanałach i integracjach z systemami wewnętrznymi trzeba liczyć od 1 do 3 miesięcy. Najwięcej czasu zajmuje uporządkowanie bazy wiedzy i testy odpowiedzi, dlatego warto wcześnie zebrać dokumenty, cenniki i procedury, z których agent ma korzystać.',
+        'W małych firmach zwykle od 2 do 4 tygodni, licząc od konsultacji do startu produkcyjnego. Przy większych organizacjach, wielu kanałach i integracjach z systemami wewnętrznymi trzeba liczyć od 1 do 3 miesięcy. Najwięcej czasu zajmuje uporządkowanie bazy wiedzy i testy odpowiedzi, dlatego warto wcześnie zebrać dokumenty, cenniki i procedury, z których agent ma korzystać.',
     },
     {
       question: 'Czy chatbot AI jest zgodny z RODO?',
@@ -168,7 +190,17 @@ const content: SeoLandingContent = {
     {
       question: 'Z jakimi systemami można zintegrować chatbota AI?',
       answer:
-        'Standardowo podpinamy kanały komunikacji: stronę www, WhatsApp, Slack, Teams, Telegram czy Discord, łącznie ponad 23 kanały. Po stronie systemów firmowych integrujemy agenta m.in. z CRM, helpdeskiem, sklepem internetowym czy kalendarzem, dzięki czemu sprawdza statusy zamówień, zakłada zgłoszenia i umawia terminy. Zakres integracji ustalamy podczas bezpłatnej konsultacji.',
+        'Standardowo podpinamy kanały komunikacji: stronę www, WhatsApp, Slack, Teams, Telegram czy Discord, łącznie ponad 23 kanały. Po stronie systemów firmowych integrujemy agenta m.in. z CRM, helpdeskiem, sklepem internetowym czy kalendarzem, dzięki czemu sprawdza statusy zamówień, zakłada zgłoszenia i umawia terminy. Jeśli system nie udostępnia API, pracujemy na eksportach danych, tylko wtedy agent widzi stan sprzed ostatniej synchronizacji, a nie stan bieżący. Zakres integracji ustalamy podczas bezpłatnej konsultacji.',
+    },
+    {
+      question: 'Czy klienci nie wolą rozmawiać z człowiekiem?',
+      answer:
+        'Część woli i to jest w porządku. Agent przedstawia się na starcie, a prośba o konsultanta działa w każdym momencie rozmowy, bez przechodzenia przez menu. Z obserwacji rozmów wynika, że przy prostych sprawach, jak status zamówienia czy godziny otwarcia, ludzie wolą dostać odpowiedź od razu, a o człowieka proszą przy sprawach nietypowych i przy reklamacjach. Właśnie tam ich kierujemy.',
+    },
+    {
+      question: 'Czy musimy mieć gotową bazę wiedzy przed startem?',
+      answer:
+        'Nie musi być gotowa, ale musi istnieć. Zwykle wystarczy cennik, regulamin, warunki dostawy i lista pytań, które najczęściej wracają na skrzynce. Uporządkowanie tego bierzemy na siebie. Nie zbudujemy natomiast wiedzy, której nigdzie nie ma. Jeśli zasady rabatów zna wyłącznie właściciel i za każdym razem decyduje inaczej, agent tego nie odgadnie i lepiej ten obszar zostawić poza jego zakresem.',
     },
   ],
   cta: {

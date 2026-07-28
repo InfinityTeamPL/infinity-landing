@@ -26,7 +26,7 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
             : 'Twój raport ROI automatyzacji'}
         </h2>
         <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
-          Na podstawie rzeczywistych danych rynku polskiego (marzec 2026) i wybranych procesów
+          Szacunek na podstawie średnich rynkowych dla Polski (marzec 2026) i procesów, które zaznaczyłeś
         </p>
       </div>
 
@@ -53,9 +53,15 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
         className="rounded-2xl p-5 md:p-6"
         style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
       >
-        <h3 className="text-lg font-bold mb-4" style={{ color: 'var(--fg)' }}>
+        <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--fg)' }}>
           Redukcja błędów dzięki AI
         </h3>
+        <p className="text-sm mb-4 leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Te odsetki to średnie dla danego typu zadania, nie pomiar w Twojej firmie. Różnica jest
+          największa tam, gdzie chodzi o przepisywanie danych z jednego miejsca w drugie. Przy
+          sprawach nietypowych, reklamacji z awanturą, wyjątku w umowie, agent nadal powinien
+          oddawać decyzję człowiekowi.
+        </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {results.processes.map((proc) => (
             <div key={proc.categoryId} className="space-y-2">
@@ -128,11 +134,11 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
           </div>
           <div className="flex-1">
             <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--fg)' }}>
-              Ulga podatkowa na robotyzację — 50% odliczenia
+              Ulga na robotyzację (50% odliczenia)
             </h3>
             <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
-              Na podstawie ustawy obowiązującej w latach 2022–2026, możesz odliczyć 50% kosztów
-              wdrożenia automatyzacji od podstawy opodatkowania.
+              Ustawa obowiązuje od 2022 do 2026 roku i pozwala odliczyć od podstawy opodatkowania
+              połowę kosztów wdrożenia.
             </p>
           </div>
           <div className="text-right flex-shrink-0">
@@ -144,6 +150,57 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
             </div>
           </div>
         </div>
+        <p className="text-xs mt-4 leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Kwota obok to arytmetyka, nie decyzja urzędu skarbowego. Przepis celuje przede wszystkim
+          w roboty przemysłowe i oprogramowanie potrzebne do ich uruchomienia, więc to, czy wdrożenie
+          samego agenta AI się kwalifikuje, przesądzi Twoja księgowość. Zapytaj o to, zanim wpiszesz
+          tę pozycję do budżetu.
+        </p>
+      </div>
+
+      {/* Zastrzeżenia do liczb */}
+      <div
+        className="rounded-2xl p-5 md:p-6 space-y-4"
+        style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
+      >
+        <h3 className="text-lg font-bold" style={{ color: 'var(--fg)' }}>
+          Zanim potraktujesz to jako budżet
+        </h3>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Koszt wdrożenia w tabeli wyżej to nie oferta, tylko reguła kciuka: 2,5 razy miesięczna
+          oszczędność, nie mniej niż 5 000 zł netto. Prawdziwa wycena zależy głównie od tego, ile
+          systemów trzeba ze sobą połączyć i czy dane są już w jednym miejscu, czy dopiero trzeba je
+          pozbierać.
+        </p>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Wykres pięcioletni zakłada, że oszczędność rośnie o 15% rocznie. To założenie, nie pomiar.
+          Bierze się z tego, że modele tanieją, a raz wdrożony agent z czasem obsługuje więcej
+          przypadków. Równie dobrze może wyjść płasko, jeśli po pierwszym roku nikt nie będzie go
+          rozwijał. Pięcioletnich danych z wdrożeń AI nikt na razie nie ma, więc to prognoza, a nie
+          historia.
+        </p>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Kalkulator nie powie Ci, kiedy to się nie opłaca, więc powiemy my. Nie ma sensu
+          automatyzować procesu, który zajmuje kilka godzin w miesiącu, bo samo wdrożenie zje całą
+          oszczędność. Nie ma też sensu, jeśli każda sprawa wygląda inaczej i nie da się z niej
+          wyciągnąć schematu, albo jeśli dane siedzą na papierze i w głowie jednej osoby. W tym
+          ostatnim przypadku najpierw trzeba uporządkować proces. AI dokładamy dopiero potem.
+        </p>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Czego tu nie ma, a w budżecie będzie: utrzymanie po wdrożeniu, czyli 249, 499 albo 799 zł
+          netto miesięcznie zależnie od pakietu, plus koszt zapytań do modelu u dostawcy. Do tego
+          czas Twojego zespołu na testy i poprawki w pierwszych tygodniach, którego nikt nigdy nie
+          wpisuje do arkusza. Osobna sprawa: zaoszczędzone godziny nie zamieniają się same w
+          gotówkę. Jeśli nikt nie odchodzi z firmy, korzyść polega na tym, że te same osoby robią
+          coś innego. Warto z góry wiedzieć, co konkretnie.
+        </p>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg-60)' }}>
+          Co warto mieć przed rozmową: dostęp do systemu, w którym proces naprawdę żyje (CRM,
+          skrzynka, arkusz), i kilkanaście prawdziwych przykładów spraw, koniecznie razem z tymi
+          nietypowymi. Potrzebna jest też jedna osoba, która może zdecydować, co agent załatwia sam,
+          a co odsyła do człowieka. Ten ostatni punkt pomija się najczęściej i to przez niego
+          wdrożenia się przeciągają.
+        </p>
       </div>
 
       {/* Podsumowanie + CTA */}
@@ -183,8 +240,9 @@ export default function ResultsDashboard({ results, companyProfile }: ResultsDas
       {/* Disclaimer */}
       <p className="text-xs text-center" style={{ color: 'var(--fg-60)' }}>
         * Kalkulacje szacunkowe na podstawie średnich rynkowych dla Polski (marzec 2026).
-        Dane: GUS, ZUS, Eurostat, badania branżowe. Koszt pracodawcy uwzględnia ZUS (20,48%).
-        Realne wyniki mogą się różnić w zależności od specyfiki firmy. AI z czasem uczy się i optymalizuje — wyniki mogą być wyższe.
+        Dane: GUS, ZUS, Eurostat, badania branżowe. Koszt pracodawcy uwzględnia ZUS (20,48%),
+        miesiąc liczymy jako 168 godzin pracy. U Ciebie wyjdzie inaczej, bo liczby zależą od tego,
+        jak proces wygląda naprawdę. To punkt wyjścia do rozmowy, nie obietnica.
       </p>
     </div>
   );

@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import BlogArticle, { BlogArticleContent } from '@/components/BlogArticle';
 
 export const metadata: Metadata = {
-  title: 'Voicebot czy chatbot — co wybrać dla swojej firmy?',
+  title: 'Voicebot czy chatbot? Co wybrać dla swojej firmy',
   description:
-    'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każde z rozwiązań sprawdza się lepiej. Z przykładami z branż.',
+    'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których lepiej wypada głos, a w których tekst. Z przykładami z branż.',
   alternates: { canonical: '/blog/voicebot-czy-chatbot' },
   openGraph: {
-    title: 'Voicebot czy chatbot — co wybrać dla swojej firmy?',
+    title: 'Voicebot czy chatbot? Co wybrać dla swojej firmy',
     description:
-      'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każde z rozwiązań sprawdza się lepiej. Z przykładami z branż.',
+      'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których lepiej wypada głos, a w których tekst. Z przykładami z branż.',
     type: 'article',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
@@ -17,16 +17,16 @@ export const metadata: Metadata = {
 
 const content: BlogArticleContent = {
   path: '/blog/voicebot-czy-chatbot',
-  title: 'Voicebot czy chatbot — co wybrać dla swojej firmy?',
+  title: 'Voicebot czy chatbot? Co wybrać dla swojej firmy',
   description:
-    'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każde z rozwiązań sprawdza się lepiej. Z przykładami z branż.',
+    'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których lepiej wypada głos, a w których tekst. Z przykładami z branż.',
   datePublished: '2026-07-26',
   sections: [
     {
       paragraphs: [
         'Pytanie „voicebot czy chatbot" brzmi jak wybór między dwiema technologiami. W praktyce to wybór między dwoma sposobami, w jakie klienci już dziś próbują się z Wami skontaktować. Jedni dzwonią, drudzy piszą. Zwykle jedni i drudzy naraz, tylko w różnych proporcjach. I to te proporcje powinny zdecydować, a nie moda na głosowe AI.',
         'Od razu zdejmijmy z tego ciężar ostatecznej decyzji. Wybór nie jest na zawsze. Pod spodem siedzi ta sama baza wiedzy o firmie i te same integracje, zmienia się tylko interfejs: raz jest nim telefon, raz okno czatu. Firmy, które zaczynają od jednego kanału, po kilku miesiącach zwykle dokładają drugi. Wychodzi taniej niż budowanie obu naraz od zera.',
-        'Na start i tak trzeba wybrać jeden, bo równoległe wdrażanie dwóch kanałów wydłuża projekt i rozmywa odpowiedzialność za wynik. Poniżej pokazujemy, jak różnice między chatbotem a voicebotem przekładają się na koszt, czas wdrożenia i typ obsłużonych spraw. No i kiedy który wygrywa. Z przykładami z branż i z akapitem o tym, kiedy nie ma sensu żaden.',
+        'Na start i tak trzeba wybrać jeden, bo równoległe wdrażanie dwóch kanałów wydłuża projekt i rozmywa odpowiedzialność za wynik. Poniżej pokazujemy, jak różnice między chatbotem a voicebotem przekładają się na koszt, czas wdrożenia i typ obsłużonych spraw. No i kiedy który wygrywa. Jest też osobny kawałek o tym, gdzie głos się wykłada, oraz akapit o firmach, w których nie opłaca się żaden z nich.',
       ],
     },
     {
@@ -39,13 +39,13 @@ const content: BlogArticleContent = {
       ],
     },
     {
-      heading: 'Chatbot a voicebot: różnice, które realnie decydują',
+      heading: 'Chatbot a voicebot, czyli różnice, które naprawdę decydują',
       paragraphs: [
         'Poniżej zestawienie w kategoriach, o które klienci pytają najczęściej. Wdrożenie obu zaczyna się u nas od 5 000 zł netto, więc różnica nie leży w cenie startowej, tylko w tym, co dzieje się później.',
       ],
       bullets: [
         'Koszt bieżący. Chatbot generuje głównie abonament utrzymaniowy, od 249 do 799 zł netto miesięcznie. Voicebot ma dodatkowo koszt zmienny: numer i minuty u operatora telefonii oraz przetwarzanie rozliczane od czasu rozmowy. Ten rachunek płacicie operatorowi bezpośrednio i rośnie razem z ruchem.',
-        'Czas wdrożenia. Oba mieszczą się w 2–4 tygodniach przy mniejszym zakresie i 1–3 miesiącach przy większym. Voicebot zwykle ląduje w górnej części tych widełek, bo dochodzi konfiguracja telefonii i strojenie rozmowy: tempa, przerw, reakcji na przerwanie w pół zdania.',
+        'Czas wdrożenia. Oba mieszczą się w 2 do 4 tygodni przy mniejszym zakresie i w 1 do 3 miesięcy przy większym. Voicebot zwykle ląduje w górnej części tych widełek, bo dochodzi konfiguracja telefonii i strojenie rozmowy: tempa, przerw, reakcji na przerwanie w pół zdania.',
         'Typ spraw. Czat lepiej radzi sobie z długimi odpowiedziami, listami, linkami i wszystkim, co klient chce przeczytać ponownie. Głos wygrywa przy sprawach krótkich i konkretnych: jedna informacja, jedna decyzja, koniec rozmowy.',
         'Dostępność. Oba działają całą dobę, tylko inaczej. Chatbot obsłuży pięćdziesiąt rozmów jednocześnie i żadna nie czeka w kolejce. Voicebot też odbiera równolegle, ale klient dowiaduje się o tym dopiero po podniesieniu słuchawki. Dla wielu osób sam fakt, że ktoś odebrał o dwudziestej drugiej, jest ważniejszy niż to, kto odebrał.',
         'Trudność utrzymania. Chatbota poprawia się szybciej, bo widać całą transkrypcję i łatwo znaleźć miejsce, w którym rozmowa poszła nie tam. Przy voicebocie dochodzi warstwa rozpoznawania mowy. Hałas w tle, gwara, nazwy własne i literowanie nazwisk to realne problemy, które trzeba przetestować na żywych połączeniach. Tego akurat nie da się odhaczyć przy biurku.',
@@ -71,6 +71,17 @@ const content: BlogArticleContent = {
       ],
     },
     {
+      heading: 'Gdzie głos się wykłada',
+      paragraphs: [
+        'Tego akapitu nie ma w prezentacjach sprzedażowych agentów głosowych, a przesądza o powodzeniu częściej niż cokolwiek innego. Głos nie przegrywa z tekstem na całej linii. Przegrywa w konkretnych, powtarzalnych sytuacjach, które da się wypisać z góry i sprawdzić u siebie w piętnaście minut.',
+        'Najczęstsza: ciągi znaków. Adres e-mail, numer zamówienia z literami, numer rachunku, VIN, kod rabatowy. Przez telefon trzeba je literować, a na słabym połączeniu „b" i „p" brzmią prawie identycznie, podobnie „m" i „n". Nawet gdy agent zrozumie za pierwszym razem, i tak wypada potwierdzić, więc rozmowa się wydłuża i tak czy inaczej kończy się SMS-em z podsumowaniem. W czacie klient wkleja to jednym ruchem. Jeśli taki ciąg pada u Was w każdej rozmowie, to praktycznie przesądza sprawę na korzyść tekstu.',
+        'Potem nazwy własne. Rozpoznawanie mowy dobrze radzi sobie z całymi zdaniami, gorzej z pojedynczym słowem spoza słownika. Nazwy leków, oznaczenia części zamiennych, nazwisko z „rz" w środku, miejscowość, o której nikt poza powiatem nie słyszał. Dlatego w voicebotach zawsze projektujemy potwierdzenie zamiast ślepego zapisania tego, co agent usłyszał. Kosztuje kilka sekund rozmowy, oszczędza telefon od zdenerwowanego klienta następnego dnia.',
+        'Dalej akustyka. Warsztat, hala, ulica, zestaw głośnomówiący w jadącym aucie. Tego nie da się naprawić żadnym promptem. Da się ustawić agenta tak, żeby po dwóch nieudanych próbach przestał się dopytywać i przełączył rozmowę do człowieka albo odesłał SMS-a z linkiem. Testujemy to na żywych połączeniach przed startem, nie na czystych nagraniach, bo przy biurku i na dobrym łączu wszystko zawsze brzmi świetnie.',
+        'O tej mało kto myśli, a jest najbardziej bolesna: klienci, którzy nie mogą albo nie chcą mówić. Osoba niesłysząca lub z wadą wymowy jest z kanału głosowego po prostu wykluczona. Ktoś w pociągu, w biurze pełnym ludzi albo w poczekalni nie powie na głos, jaki wynik badania odbiera ani ile zalega z ratą. Sprawy wstydliwe i wrażliwe idą tekstem, niezależnie od tego, jak dobry jest agent.',
+        'I na koniec wracanie do sprawy. Czat ma wątek, klient otwiera go po dwóch dniach i widzi, na czym stanęło. Telefon zaczyna się od zera, chyba że agent ma dostęp do notatek z poprzedniej rozmowy, a to trzeba dobudować osobno. No i koszt. Tę samą odpowiedź czyta się szybciej, niż da się jej wysłuchać, a przez telefon płacicie operatorowi za każdą minutę. Przy długich, opisowych odpowiedziach głos wypada drożej i nikt tego nie obejdzie.',
+      ],
+    },
+    {
       heading: 'Kiedy żadne z nich nie ma sensu',
       paragraphs: [
         'Uczciwie: bywają firmy, w których ani voicebot, ani chatbot się nie zwróci. Lepiej usłyszeć to na bezpłatnej konsultacji niż po podpisaniu umowy.',
@@ -79,9 +90,16 @@ const content: BlogArticleContent = {
       ],
     },
     {
+      heading: 'Co trzeba mieć gotowe, zanim zaczniemy',
+      paragraphs: [
+        'Niezależnie od tego, który kanał wybierzecie, trzy rzeczy muszą przyjść z Waszej strony i nikt ich za Was nie wymyśli. Wyciąg pytań z ostatniego miesiąca, najchętniej surowy: zrzut z maili, notatki z telefonów, historia czatu. Trzydzieści do pięćdziesięciu najczęstszych spraw w zupełności wystarczy na start. Aktualny cennik i procedura reklamacji w jednym pliku, wcześniej uzgodnione wewnątrz, bo agent powtórzy klientowi dokładnie to, co dostanie. I jedna osoba, która rozstrzyga, gdy dwa działy mają inne zdanie na temat tej samej odpowiedzi. Ten ostatni punkt wygląda błaho, a wywraca najwięcej terminów.',
+        'Do tego lista spraw, których agent nie tyka. Na piśmie, przed startem, nie po pierwszej wpadce. Przy voicebocie dochodzą jeszcze dwie decyzje. Czy bierzecie nowy numer, czy przepinacie istniejący (przepięcie jest wygodniejsze dla klientów, ale wymaga ustaleń z operatorem). I jak brzmi powitanie, w którym agent mówi wprost, że jest asystentem AI. To drugie nie podlega u nas negocjacji.',
+      ],
+    },
+    {
       heading: 'Dlaczego często warto oba i od którego zacząć',
       paragraphs: [
-        'W większości firm, z którymi rozmawiamy, docelowa odpowiedź brzmi „oba", tylko nie naraz. Klienci nie dzielą się na dzwoniących i piszących. Ten sam człowiek zadzwoni, gdy coś się pali, a napisze, gdy chce w spokoju porównać oferty. Sensowne pytanie brzmi więc nie „który z nich", ale „od którego zacząć".',
+        'W większości firm, z którymi rozmawiamy, docelowa odpowiedź brzmi „oba", tylko nie naraz. Klienci nie dzielą się na dzwoniących i piszących. Ten sam człowiek zadzwoni, gdy coś się pali, a napisze, gdy chce w spokoju porównać oferty. Sensowne pytanie dotyczy więc kolejności, a nie wyboru raz na zawsze.',
         'Zaczynajcie od kanału, w którym dziś tracicie najwięcej. Jeśli w firmie leżą nieodebrane telefony po godzinach i w szczycie, zaczynajcie od głosu. Jeśli wiadomości z WhatsAppa i Messengera czekają po kilka godzin, a strona nie ma czatu, zaczynajcie od tekstu. Kryterium jest strata, nie atrakcyjność technologii. Agent głosowy brzmi ciekawiej na spotkaniu zarządu, co nie znaczy, że u Was przyniesie więcej.',
         'Dokładanie drugiego kanału jest wyraźnie tańsze niż pierwszego, bo baza wiedzy, integracje i logika rozmowy już istnieją. Dochodzi głównie nowy interfejs i testy. Oba kanały mogą korzystać z tej samej wiedzy, więc zmiana w cenniku aktualizuje się w jednym miejscu, a nie w dwóch. Dane w obu przypadkach trzymamy na serwerach w Polsce i Unii Europejskiej, zgodnie z RODO i w oparciu o standardy zgodne z ISO 27001.',
         'Jeśli nie potraficie rozstrzygnąć, w którym kanale tracicie więcej, to zwykle znak, że nikt tego jeszcze nie policzył. Na bezpłatnej konsultacji przechodzimy przez to razem, a wstępny rachunek możecie zrobić sami w kalkulatorze pod adresem /kalkulator.',
@@ -97,7 +115,7 @@ const content: BlogArticleContent = {
     {
       question: 'Co wdraża się szybciej?',
       answer:
-        'Zwykle chatbot. Oba mieszczą się w 2–4 tygodniach przy mniejszym zakresie i w 1–3 miesiącach przy większym, ale voicebot częściej ląduje w górnej części tych widełek. Dochodzi konfiguracja telefonii, testy na realnych połączeniach oraz strojenie rozmowy: tempa, pauz i reakcji, gdy rozmówca przerywa agentowi w pół zdania. Przy głosie trudno to z góry przewidzieć, bo dużo zależy od jakości połączeń u Waszych klientów.',
+        'Zwykle chatbot. Oba mieszczą się w 2 do 4 tygodni przy mniejszym zakresie i w 1 do 3 miesięcy przy większym, ale voicebot częściej ląduje w górnej części tych widełek. Dochodzi konfiguracja telefonii, testy na realnych połączeniach oraz strojenie rozmowy: tempa, pauz i reakcji, gdy rozmówca przerywa agentowi w pół zdania. Przy głosie trudno to z góry przewidzieć, bo dużo zależy od jakości połączeń u Waszych klientów.',
     },
     {
       question: 'Czy voicebot i chatbot mogą dzielić tę samą wiedzę?',
@@ -108,6 +126,16 @@ const content: BlogArticleContent = {
       question: 'Od którego zacząć, jeśli budżet starcza na jedno?',
       answer:
         'Od kanału, w którym dziś tracicie najwięcej. Policzcie przez dwa dni, ile telefonów zostaje nieodebranych i ile wiadomości czeka dłużej niż godzinę. Jeśli przepadają połączenia po godzinach, zaczynajcie od głosu. Jeśli zalegają wiadomości z WhatsAppa i Messengera, zaczynajcie od tekstu. Drugi kanał dołożycie później taniej, bo baza wiedzy i integracje będą już gotowe.',
+    },
+    {
+      question: 'Czy agent głosowy poradzi sobie, gdy klient dzwoni z hałasu?',
+      answer:
+        'Częściowo i lepiej powiedzieć to wprost. Przy porządnym połączeniu rozpoznawanie mowy jest bardzo dobre, przy zestawie głośnomówiącym w jadącym aucie albo w hali produkcyjnej potrafi się mylić. Ustawiamy wtedy prosty schemat: agent prosi o powtórzenie raz, a przy drugiej nieudanej próbie przekazuje rozmowę człowiekowi albo wysyła SMS-a z linkiem. Testy robimy na żywych połączeniach, nie na czystych nagraniach, bo w warunkach biurowych wychodzi zawsze ładnie.',
+    },
+    {
+      question: 'Czy przez telefon klient poda numer zamówienia albo adres e-mail?',
+      answer:
+        'Poda, tylko że to najsłabszy punkt kanału głosowego. Ciągi liter i cyfr trzeba literować, a potem potwierdzać, przez co rozmowa się wydłuża i rośnie ryzyko pomyłki. Dlatego przy takich danych agent zawsze powtarza to, co usłyszał, prosi o potwierdzenie, a po rozmowie wysyła SMS lub mail z podsumowaniem. Jeśli u Was taki ciąg pada w każdej rozmowie, kanał tekstowy będzie po prostu wygodniejszy dla obu stron.',
     },
     {
       question: 'Czy klienci akceptują rozmowę z agentem AI?',

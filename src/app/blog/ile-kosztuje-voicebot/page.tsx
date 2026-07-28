@@ -25,8 +25,8 @@ const content: BlogArticleContent = {
     {
       paragraphs: [
         'Pytanie „ile kosztuje voicebot" pada zwykle w pierwszych trzech minutach rozmowy. Czasem zanim w ogóle ustalimy, co ten voicebot miałby właściwie robić. To zrozumiałe. Zanim ktokolwiek zacznie się zastanawiać nad scenariuszami rozmów, chce wiedzieć, czy w ogóle mieści się w budżecie.',
-        'Problem polega na tym, że uczciwa odpowiedź brzmi „zależy", a to nikomu nie pomaga. Więc rozbijemy tę cenę na części. Cena voicebota to nie jedna liczba, tylko trzy osobne strumienie: jednorazowe wdrożenie, miesięczne utrzymanie oraz koszty zmienne, czyli telefonia i czas rozmów. Ten trzeci najczęściej znika z ofert konkurencji. A potrafi zaskoczyć po pierwszym pełnym miesiącu pracy agenta.',
-        'Poniżej pokazujemy nasze widełki wprost i tłumaczymy, co je przesuwa w górę. Piszemy też, kiedy koszt agenta głosowego się nie zwróci. Bo nie zawsze się zwraca, a lepiej usłyszeć to przed wdrożeniem niż po nim.',
+        'Problem polega na tym, że uczciwa odpowiedź brzmi „zależy", a to nikomu nie pomaga. Więc rozbijemy tę cenę na części. To nie jedna liczba, tylko kilka osobnych strumieni: jednorazowe wdrożenie, miesięczne utrzymanie, integracje liczone zależnie od zakresu i koszty zmienne, czyli telefonia razem z czasem rozmów. Ten ostatni najczęściej znika z ofert konkurencji. A potrafi zaskoczyć po pierwszym pełnym miesiącu pracy agenta.',
+        'Poniżej pokazujemy nasze widełki wprost i tłumaczymy, co je przesuwa w górę. Piszemy też, czego agent głosowy nie zrobi i kiedy jego koszt się nie zwróci. Bo nie zawsze się zwraca, a lepiej usłyszeć to przed wdrożeniem niż po nim.',
       ],
     },
     {
@@ -56,7 +56,7 @@ const content: BlogArticleContent = {
       paragraphs: [
         'Wdrożenie voicebota zaczyna się u nas od 5 000 zł netto. W tym zakresie mieści się agent obsługujący jeden dobrze zdefiniowany proces na jednym numerze: odbieranie połączeń, odpowiadanie na powtarzalne pytania z Waszej bazy wiedzy, przekazanie trudniejszej sprawy do człowieka. Większe projekty (wiele numerów, kilka scenariuszy, integracje z systemami) wyceniamy indywidualnie, po bezpłatnym audycie.',
         'Utrzymanie to trzy pakiety: Starter 249 zł netto miesięcznie, Standard 499 zł netto i Premium 799 zł netto. Starter to monitoring i drobne poprawki. Standard dokłada szybszy czas reakcji oraz regularne zmiany w scenariuszach. Premium to wsparcie non-stop i priorytetowa obsługa zgłoszeń. Przy agencie pracującym całą dobę zwykle właśnie ten pakiet ma sens, bo awaria o drugiej w nocy nie może czekać do poniedziałku.',
-        'Czas realizacji: mniejsze wdrożenie zamykamy w 2–4 tygodnie, większe w 1–3 miesiące. Pierwsza konsultacja i audyt procesów są bezpłatne i to na nich pada konkretna kwota, nie wcześniej. Wszystkie podane ceny są cenami netto i nie obejmują opisanego wyżej rachunku od operatora telefonii.',
+        'Czas realizacji. Mniejsze wdrożenie zamykamy w 2 do 4 tygodni, większe w miesiąc do trzech. Pierwsza konsultacja i audyt procesów są bezpłatne i to na nich pada konkretna kwota, nie wcześniej. Wszystkie podane ceny są netto i nie obejmują opisanego wyżej rachunku od operatora telefonii.',
         'Jeśli chcesz najpierw usłyszeć, o czym w ogóle mówimy, mamy publiczne dema. Pod adresem asystenci-glosowi.vercel.app stoi pięciu asystentów branżowych: transport, medycyna, nieruchomości, usługi i administracja. Z kolei pks-gryfice-demo.vercel.app to agent podający rozkłady jazdy na podstawie publicznych danych rozkładowych: sześć przystanków, 276 odjazdów, z podaniem źródła. Zaznaczamy wprost: PKS Gryfice nie jest naszym klientem. To nasze własne demo zbudowane na ich publicznie dostępnych danych.',
       ],
     },
@@ -67,20 +67,53 @@ const content: BlogArticleContent = {
       ],
       bullets: [
         'Liczba scenariuszy. Agent odpowiadający na pytania o godziny otwarcia to jeden scenariusz. Agent, który umawia wizytę, przekłada ją, odwołuje i jeszcze przyjmuje reklamację, to cztery osobne ścieżki, każda z własnymi wyjątkami i każda do przetestowania.',
-        'Integracje z systemami: kalendarz, rezerwacje, CRM, baza zamówień. Im starszy i mniej otwarty system, tym więcej pracy. Zdarza się, że integracja kosztuje więcej niż sam agent, bo trzeba obejść brak sensownego API. Tego akurat nie lubimy robić i mówimy o tym na wycenie.',
+        'Integracje z systemami, czyli kalendarz, rezerwacje, CRM albo baza zamówień. Im starszy i mniej otwarty system, tym więcej pracy. Zdarza się, że integracja kosztuje więcej niż sam agent, bo trzeba obejść brak sensownego API. Tego akurat nie lubimy robić i mówimy o tym na wycenie.',
         'Wiele numerów i oddziałów. Inny scenariusz dla centrali, inny dla oddziału, inne godziny pracy, inne osoby do przełączenia rozmowy. Każdy numer to osobna konfiguracja i osobna runda testów.',
         'Rozmowy wychodzące. Agent, który sam dzwoni (przypomnienia o wizycie, potwierdzenia, odzyskiwanie porzuconych zapytań), wymaga dodatkowej zgodności prawnej i ostrożniejszego strojenia niż agent tylko odbierający.',
         'Stan bazy wiedzy. Uporządkowane FAQ i procedury skracają wdrożenie. Wiedza rozproszona po mailach i w głowach trzech pracowników najpierw musi zostać zebrana, a to jest praca, którą ktoś musi wykonać i opłacić.',
       ],
     },
     {
+      heading: 'Czego agent głosowy nie zrobi',
+      paragraphs: [
+        'Ta część rzadko trafia do ofert, a decyduje o tym, czy wdrożenie kogokolwiek ucieszy. Agent dobrze zamyka rozmowy krótkie i powtarzalne. Poda godziny otwarcia i dojazd, sprawdzi wolny termin i go zarezerwuje, przyjmie zgłoszenie i przekaże je dalej, potwierdzi wizytę, powie, na jakim etapie jest sprawa. Odbierze przy tym kilka połączeń jednocześnie, ile dokładnie zależy od konfiguracji u operatora, i o drugiej w nocy pracuje tak samo jak w piątek po południu. Tyle po stronie plusów.',
+        'Czego nie zrobi:',
+      ],
+      bullets: [
+        'Nie poradzi sobie z rozmową, w której nie wiadomo, o co chodzi. Ktoś, kto zaczyna od „dzwonię w sprawie tego, co ostatnio", potrzebuje człowieka pamiętającego kontekst spoza systemu.',
+        'Nie zrozumie wszystkiego przy hałasie. Rozmowa z ulicy, z auta albo z hali produkcyjnej to gorsze rozpoznanie mowy i więcej dopytywania. Dotyczy to każdej technologii mowy, nie tylko naszej.',
+        'Nazwiska, adresy i numery bywają problemem. Nietypowe nazwisko podane szybko trzeba potwierdzić, czasem przeliterować. Da się to obejść w scenariuszu, ale wydłuża rozmowę, a długość rozmowy to koszt.',
+        'Nie przejmie sytuacji, w której trzeba komuś powiedzieć rzecz trudną albo świadomie odejść od procedury. Agent ma tam rozpoznać ton i przełączyć na człowieka, nie negocjować.',
+      ],
+    },
+    {
+      paragraphs: [
+        'Zdanie, które powtarzamy na każdej konsultacji: dobry agent głosowy to taki, który wie, kiedy przestać. Scenariusz ma opisaną ścieżkę wyjścia do człowieka, a jeśli po dwóch próbach agent nadal nie rozumie rozmówcy, przełącza rozmowę zamiast dopytywać po raz trzeci. Nic tak nie psuje wrażenia jak automat, który się nie poddaje.',
+      ],
+    },
+    {
+      heading: 'Co przygotować przed wdrożeniem',
+      paragraphs: [
+        'Wycena idzie szybciej, a wdrożenie taniej, jeśli te rzeczy są gotowe przed startem. Zwykle to nie technologia opóźnia uruchomienie, tylko czekanie na materiały.',
+      ],
+      bullets: [
+        'Nagrania albo notatki z prawdziwych rozmów. Kilkadziesiąt sztuk wystarczy, żeby zobaczyć, o co klienci pytają naprawdę i jakimi słowami. Bez tego piszemy scenariusz na wyczucie.',
+        'Kto dziś odbiera telefon, w jakich godzinach i co robi z rozmową po jej zakończeniu. Ta ostatnia część zwykle okazuje się najdłuższa.',
+        'Dostęp do kalendarza albo systemu rezerwacji, do którego agent ma zapisywać, oraz zgodę jego dostawcy na integrację.',
+        'Listę spraw, których agent nie ma ruszać, i numer albo osobę, do której ma je przekazać.',
+        'Aktualny cennik i zasady, spisane w jednym miejscu i zatwierdzone przez jedną osobę.',
+        'Decyzję o numerze. Nowy czy przekierowanie istniejącego, całą dobę czy tylko poza godzinami pracy biura.',
+      ],
+    },
+    {
       heading: 'Kiedy voicebot się nie opłaca',
       paragraphs: [
         'Teraz część, której nie znajdziecie w typowej ofercie. Voicebot bywa złą inwestycją. Lepiej to wiedzieć na etapie konsultacji, kiedy kosztuje to tylko godzinę rozmowy.',
-        'Pierwszy przypadek: mały wolumen. Jeśli telefon dzwoni kilka razy dziennie i nikt w firmie nie ma z tym problemu, agent głosowy nie ma czego przejąć. Koszt wdrożenia i utrzymania rozłoży się wtedy na kilkadziesiąt rozmów miesięcznie, a oszczędność czasu będzie niemierzalna. Przy takim ruchu tańsze i skuteczniejsze bywa zwykłe przekierowanie na komórkę albo prosty formularz na stronie.',
-        'Drugi: rozmowy, które nie są powtarzalne. Jeśli każde połączenie to negocjacja, ustalanie nietypowych warunków albo rozmowa wymagająca wyczucia i empatii, agent nie ma tam czego automatyzować. Może najwyżej odsiać kilka pytań o adres i godziny otwarcia. To za mało, żeby uzasadnić wdrożenie.',
-        'Trzeci: firma bez uporządkowanej wiedzy. Agent odpowiada tylko tym, czego go nauczymy. Jeśli w firmie nie ma zgody co do tego, jak brzmi aktualny cennik i jaka jest procedura reklamacji, voicebot te sprzeczności wyciągnie na wierzch i powie klientowi rzecz nieaktualną. Najpierw porządek, potem automatyzacja.',
-        'Czwarty: silna sezonowość przy niskiej średniej. Jeśli szczyt trwa sześć tygodni w roku, a przez pozostałe dziesięć miesięcy telefon milczy, roczny koszt utrzymania trzeba porównać z kosztem sezonowego wsparcia. Czasem wychodzi na korzyść agenta, czasem nie. To trzeba policzyć, a nie założyć.',
+        'Mały wolumen. Jeśli telefon dzwoni kilka razy dziennie i nikt w firmie nie ma z tym problemu, agent nie ma czego przejąć. Koszt wdrożenia i utrzymania rozłoży się wtedy na kilkadziesiąt rozmów miesięcznie, a oszczędność czasu zniknie w szumie. Przy takim ruchu tańsze i skuteczniejsze bywa zwykłe przekierowanie na komórkę albo prosty formularz na stronie.',
+        'Rozmowy, które nie są powtarzalne. Jeśli każde połączenie to negocjacja, ustalanie nietypowych warunków albo rozmowa wymagająca wyczucia, agent nie ma tam czego automatyzować. Odsieje najwyżej kilka pytań o adres i godziny otwarcia. Za mało, żeby uzasadnić wdrożenie.',
+        'Firma bez uporządkowanej wiedzy. Agent odpowiada tylko tym, czego go nauczymy. Jeśli w środku nie ma zgody co do tego, jak brzmi aktualny cennik i jaka jest procedura reklamacji, voicebot wyciągnie te sprzeczności na wierzch i powie klientowi rzecz nieaktualną. Najpierw porządek, potem automatyzacja.',
+        'Silna sezonowość przy niskiej średniej. Jeśli szczyt trwa sześć tygodni w roku, a przez pozostałe dziesięć miesięcy telefon milczy, roczny koszt utrzymania trzeba porównać z kosztem sezonowego wsparcia. Czasem wychodzi na korzyść agenta, czasem nie. To trzeba policzyć, a nie założyć.',
+        'Jest jeszcze przypadek graniczny, który nie przekreśla wdrożenia, tylko zmienia jego zakres. Jeśli klienci dzwonią głównie po to, żeby usłyszeć konkretną osobę, bo tak wygląda ich relacja z firmą, agent ma sens wyłącznie poza godzinami pracy tej osoby. W dzień odbiera człowiek, wieczorem i w weekend agent. Sporo firm tak właśnie zaczyna i to zwykle najtańszy wariant startu.',
       ],
     },
     {
@@ -106,7 +139,17 @@ const content: BlogArticleContent = {
     {
       question: 'Czy da się zacząć od pilotażu zamiast pełnego wdrożenia?',
       answer:
-        'Tak i zwykle właśnie tak zaczynamy. Wybieramy jeden proces, który dziś boli najbardziej, najczęściej nieodebrane telefony po godzinach, i uruchamiamy agenta w tym jednym zakresie. Mniejsze wdrożenie trwa 2–4 tygodnie i zaczyna się od 5 000 zł netto. Dopiero gdy pilotaż sprawdzi się na realnych rozmowach, dokładamy kolejne scenariusze i integracje.',
+        'Tak i zwykle właśnie tak zaczynamy. Wybieramy jeden proces, który dziś boli najbardziej, najczęściej nieodebrane telefony po godzinach, i uruchamiamy agenta w tym jednym zakresie. Mniejsze wdrożenie trwa od 2 do 4 tygodni i zaczyna się od 5 000 zł netto. Dopiero gdy pilotaż sprawdzi się na realnych rozmowach, dokładamy kolejne scenariusze i integracje.',
+    },
+    {
+      question: 'Nasi klienci nie znoszą rozmów z automatem. Co wtedy?',
+      answer:
+        'Nie znoszą automatów, które każą wciskać jedynkę i nie rozumieją słów. Agent głosowy działa inaczej, ale nie ma sensu udawać, że nikt się nie zniechęci. Część osób poprosi o człowieka i to jest w porządku. Dlatego w powitaniu mówimy wprost, że rozmówca rozmawia z asystentem AI, a wyjście do człowieka jest dostępne od pierwszej sekundy, po jednym zdaniu, a nie po trzech poziomach menu. Sensem wdrożenia jest odebranie tych połączeń, które dziś nie są odbierane w ogóle.',
+    },
+    {
+      question: 'Czy agent poradzi sobie z polską mową?',
+      answer:
+        'Po polsku brzmi naturalnie, głos budujemy na ElevenLabs. Trudniej robi się przy hałasie w tle, przy bardzo szybkim mówieniu i przy nietypowych nazwiskach albo adresach, które trzeba potwierdzić lub przeliterować. To ograniczenie każdej technologii mowy, nie tylko naszej. Sprawdzamy je na Waszych realnych rozmowach jeszcze przed uruchomieniem, a scenariusz piszemy tak, żeby po dwóch nieudanych próbach agent przełączał na człowieka zamiast dopytywać dalej.',
     },
     {
       question: 'Co z numerem telefonu, trzeba brać nowy?',
@@ -116,7 +159,7 @@ const content: BlogArticleContent = {
     {
       question: 'Co z RODO przy nagrywaniu rozmów z agentem?',
       answer:
-        'Dane przetwarzamy na serwerach w Polsce i Unii Europejskiej, zgodnie z RODO i w oparciu o standardy zgodne z ISO 27001. Rozmówca musi zostać poinformowany, że rozmawia z asystentem AI, oraz o nagrywaniu i celu przetwarzania. Wpisujemy to w scenariusz powitania. Zakres zbieranych danych, czas ich przechowywania i podstawę prawną ustalamy razem przed uruchomieniem agenta.',
+        'Dane przetwarzamy na serwerach w Polsce i Unii Europejskiej, zgodnie z RODO i według standardów bezpieczeństwa zgodnych z normą ISO 27001. Samego certyfikatu ISO nie posiadamy i mówimy o tym otwarcie, bo część przetargów tego wymaga. Rozmówca musi zostać poinformowany, że rozmawia z asystentem AI, oraz o nagrywaniu i celu przetwarzania. Wpisujemy to w scenariusz powitania. Zakres zbieranych danych, czas przechowywania i podstawę prawną ustalamy razem przed uruchomieniem agenta.',
     },
   ],
   related: [

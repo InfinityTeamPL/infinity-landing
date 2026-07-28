@@ -4,12 +4,12 @@ import { ArrowRight, PhoneCall, MessagesSquare, Workflow, Wrench, ChevronDown, C
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Usługi AI dla firm — agenci, chatboty, automatyzacja',
+  title: 'Usługi AI dla firm. Agenci, chatboty, automatyzacja',
   description:
     'Agenci głosowi, chatboty, automatyzacja procesów i kadr. Sprawdź, która usługa pasuje do Twojej firmy, ile kosztuje wdrożenie i od czego zacząć.',
   alternates: { canonical: '/uslugi' },
   openGraph: {
-    title: 'Usługi AI dla firm — Infinity Tech',
+    title: 'Usługi AI dla firm w Infinity Tech',
     description: 'Agenci głosowi, chatboty, automatyzacja procesów i wdrożenia szyte na miarę.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
@@ -21,7 +21,7 @@ const SERVICES = [
     icon: PhoneCall,
     href: '/uslugi/agent-glosowy-ai',
     title: 'Agent głosowy AI',
-    lead: 'Odbiera telefony przez całą dobę, rozmawia naturalną polszczyzną i realnie załatwia sprawy. Podaje informacje, umawia terminy, przyjmuje zgłoszenia.',
+    lead: 'Odbiera telefony przez całą dobę i rozmawia naturalną polszczyzną. Podaje informacje, umawia terminy, przyjmuje zgłoszenia, a trudniejsze sprawy przekazuje człowiekowi.',
     bullets: ['Infolinia bez kolejek', 'Rejestracja i rezerwacje', 'Naturalny głos (ElevenLabs)'],
   },
   {
@@ -35,7 +35,7 @@ const SERVICES = [
     icon: Workflow,
     href: '/uslugi/automatyzacja-procesow-ai',
     title: 'Automatyzacja procesów AI',
-    lead: 'Agenci, którzy wykonują pracę, a nie tylko odpowiadają: przetwarzają dokumenty, uzupełniają systemy, przygotowują raporty i pilnują terminów.',
+    lead: 'Agenci, którzy wykonują robotę zamiast odpowiadać na pytania. Przetwarzają dokumenty, uzupełniają systemy, składają raporty i pilnują terminów.',
     bullets: ['Dokumenty i raporty', 'Integracje z CRM/ERP', 'Człowiek w pętli decyzji'],
   },
   {
@@ -75,22 +75,17 @@ const CHOICE = [
 ];
 
 const START_CRITERIA = [
-  {
-    label: 'Powtarzalny',
-    text: 'Ktoś robi to samo co tydzień według tego samego schematu. Jednorazowe zadania zostawiamy ludziom.',
-  },
-  {
-    label: 'Wysokowolumenowy',
-    text: 'Dzieje się często. Sto telefonów tygodniowo daje efekt widoczny w pierwszym miesiącu. Dziesięć już nie.',
-  },
-  {
-    label: 'Regułowy',
-    text: 'Da się opisać, kiedy odpowiedź brzmi tak, a kiedy nie. Tam, gdzie potrzebna jest decyzja, zostawiamy człowieka w pętli.',
-  },
-  {
-    label: 'Mierzalny',
-    text: 'Wiadomo, co sprawdzamy po wdrożeniu: liczbę nieodebranych połączeń, czas odpowiedzi, liczbę zgłoszeń załatwionych bez pracownika.',
-  },
+  'Ktoś robi to samo co tydzień, według tego samego schematu. Zadania, które zdarzają się raz, zostawiamy ludziom.',
+  'Dzieje się często. Sto telefonów tygodniowo daje efekt widoczny w pierwszym miesiącu, dziesięć telefonów już nie.',
+  'Da się opisać, kiedy odpowiedź brzmi tak, a kiedy nie. Tam, gdzie trzeba zdecydować, w pętli zostaje człowiek.',
+  'Wiadomo, co sprawdzamy po wdrożeniu: liczbę nieodebranych połączeń, czas odpowiedzi, liczbę spraw załatwionych bez pracownika.',
+];
+
+const AGENT_LIMITS = [
+  'Nie negocjuje. Rabaty, warunki umowy i ustępstwa zostają po stronie handlowca.',
+  'Nie podejmuje decyzji ze skutkiem prawnym albo finansowym. Nie uznaje reklamacji, nie zatwierdza wypłaty, nie rozwiązuje umowy.',
+  'Nie zgadnie tego, czego nie ma w Waszych dokumentach. Jeśli cennik istnieje wyłącznie w głowie właściciela, agent go nie odtworzy.',
+  'Nie ciągnie rozmowy na siłę, gdy ktoś jest zdenerwowany albo sprawa jest wyjątkowa. Ma się wtedy wycofać i przekazać ją człowiekowi.',
 ];
 
 const FAQ = [
@@ -102,7 +97,7 @@ const FAQ = [
   {
     question: 'Czy można zacząć od jednego procesu?',
     answer:
-      'Tak i właśnie to zalecamy. Jeden proces wdraża się szybciej, taniej i widać po nim efekt, zanim podejmiecie decyzję o kolejnych. Dopiero gdy pierwszy agent działa i wiadomo, ile realnie oszczędza, ma sens dokładanie kolejnych kanałów i zadań. Start od wszystkiego naraz zwykle kończy się przeciąganiem projektu.',
+      'Tak i właśnie to doradzamy. Jeden proces wdraża się szybciej i widać po nim efekt, zanim podejmiecie decyzję o kolejnych. Dopiero gdy pierwszy agent działa i wiadomo, ile realnie oszczędza, ma sens dokładanie kanałów i zadań. Start od wszystkiego naraz zwykle kończy się przeciąganiem projektu.',
   },
   {
     question: 'Co z RODO i naszymi danymi?',
@@ -112,12 +107,22 @@ const FAQ = [
   {
     question: 'Jak długo trwa wdrożenie?',
     answer:
-      'Mniejsze wdrożenia zajmują 2–4 tygodnie od pierwszej rozmowy do startu produkcyjnego. Większe projekty, z integracjami do systemów wewnętrznych i wieloma kanałami, to 1–3 miesiące. Najwięcej czasu pochłania zwykle nie technologia, tylko zebranie i uporządkowanie wiedzy, na której agent ma pracować.',
+      'Mniejsze wdrożenia zajmują od 2 do 4 tygodni, licząc od pierwszej rozmowy do startu produkcyjnego. Większe projekty, z integracjami do systemów wewnętrznych i wieloma kanałami, to od miesiąca do trzech. Najwięcej czasu pochłania zwykle nie technologia, tylko zebranie i uporządkowanie wiedzy, na której agent ma pracować.',
   },
   {
     question: 'Co jeśli agent sobie nie poradzi?',
     answer:
       'Agent ma wyznaczone granice. Kiedy pytanie wychodzi poza jego wiedzę albo rozmowa robi się trudna, mówi o tym wprost i przekazuje sprawę człowiekowi razem z podsumowaniem tego, co już ustalił. Klient nie zaczyna od zera. Takie sytuacje przeglądamy w ramach utrzymania i uzupełniamy bazę wiedzy tam, gdzie widać luki.',
+  },
+  {
+    question: 'Czy klienci zorientują się, że piszą albo rozmawiają z botem?',
+    answer:
+      'Tak i tak ma być. Agent przedstawia się na starcie, a prośba o człowieka działa w każdym momencie rozmowy. Ukrywanie tego kończy się źle, bo klient i tak wyczuje, a przy okazji straci zaufanie do firmy. Groźniejsza jest sytuacja odwrotna: bot, który udaje, że wie wszystko, zamiast przyznać, że czegoś nie znajdzie.',
+  },
+  {
+    question: 'Ile na tym zaoszczędzimy?',
+    answer:
+      'Nie podamy procentu przed wdrożeniem, bo byłby zmyślony. Robimy to inaczej. Przed startem spisujemy stan wyjściowy: ile zgłoszeń miesięcznie, jaka część z nich to te same pytania, ile trwa odpowiedź. Po kilku tygodniach porównujemy te same liczby. Własny rachunek możecie zrobić wcześniej w kalkulatorze ROI, tylko traktujcie go jako szacunek na Waszych założeniach, nie jako obietnicę.',
   },
 ];
 
@@ -208,7 +213,7 @@ export default function UslugiHub() {
         {/* Którą usługę wybrać: lista porównawcza */}
         <section className="mt-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
-            Którą usługę wybrać?
+            Która usługa do czego pasuje
           </h2>
           <p className="leading-relaxed mb-7 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
             Najczęściej decyduje skala. Ten sam agent, który w jednym miejscu zwraca się w trzy miesiące,
@@ -263,6 +268,35 @@ export default function UslugiHub() {
           </p>
         </section>
 
+        {/* Granice agenta: czego nie zrobi */}
+        <section className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
+            Czego agent nie zrobi
+          </h2>
+          <p className="leading-relaxed mb-6 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Zanim wejdziemy w szczegóły, kilka rzeczy, których agent po prostu nie robi. Lepiej wiedzieć to teraz
+            niż w trzecim tygodniu wdrożenia.
+          </p>
+          <ul className="space-y-3">
+            {AGENT_LIMITS.map((t) => (
+              <li
+                key={t}
+                className="rounded-2xl px-5 py-4"
+                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)', color: 'var(--fg-70)' }}
+              >
+                {t}
+              </li>
+            ))}
+          </ul>
+          <p className="leading-relaxed mt-6 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Najczęstsza obawa, jaką słyszymy, brzmi: klienci nienawidzą botów. W dużej mierze słusznie, bo większość
+            botów w sieci to drzewka decyzyjne, które nie rozumieją pytania zadanego innymi słowami niż przewidziane.
+            U nas agent mówi na wstępie, kim jest, i oddaje rozmowę człowiekowi na pierwsze żądanie. Część osób od razu
+            prosi o konsultanta i to jest w porządku. Agent zbiera wtedy dane sprawy i przekazuje ją dalej, więc
+            pracownik nie zaczyna od pytania „w czym mogę pomóc”.
+          </p>
+        </section>
+
         {/* Od czego zaczynamy */}
         <section className="mt-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ letterSpacing: '-0.012em' }}>
@@ -280,18 +314,24 @@ export default function UslugiHub() {
           <ul className="space-y-3">
             {START_CRITERIA.map((c) => (
               <li
-                key={c.label}
+                key={c}
                 className="rounded-2xl px-5 py-4"
-                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
+                style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)', color: 'var(--fg-70)' }}
               >
-                <span className="font-semibold">{c.label}.</span>{' '}
-                <span style={{ color: 'var(--fg-70)' }}>{c.text}</span>
+                {c}
               </li>
             ))}
           </ul>
           <p className="leading-relaxed mt-6 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
             Jeśli proces nie spełnia trzech z czterech, szukamy lepszego kandydata. Czasem po takiej rozmowie wychodzi,
             że automatyzacja nie jest teraz potrzebna. Mówimy to od razu.
+          </p>
+          <p className="leading-relaxed mt-4 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Po Waszej stronie potrzebujemy czterech rzeczy. Osoby, która zna proces i ma czas na kilka rozmów.
+            Aktualnych materiałów: cennika, procedur, odpowiedzi na częste pytania. Zgody na dostępy do systemów,
+            które agent ma czytać. I decyzji, kto zatwierdza treść odpowiedzi, zanim zobaczy je klient. Reszta jest
+            po naszej stronie. Dodajmy uczciwie: projekt najczęściej przedłuża nie technologia, tylko szukanie
+            aktualnej wersji dokumentu.
           </p>
         </section>
 
@@ -306,10 +346,16 @@ export default function UslugiHub() {
             indywidualnie, po rozpoznaniu zakresu. Do tego dochodzi utrzymanie: Starter 249 zł, Standard 499 zł albo
             Premium 799 zł miesięcznie, zależnie od skali i tego, ile rozwoju agent potrzebuje po starcie.
           </p>
+          <p className="leading-relaxed mb-4 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Cena rośnie głównie od integracji. Agent, który odpowiada z bazy wiedzy, jest tani. Agent, który ma coś
+            zapisać w Waszym systemie, potrzebuje API, a gdy API nie ma, potrzebuje obejścia i to jest ta część
+            wyceny, która potrafi zaskoczyć. Dlatego o systemy pytamy już na pierwszej rozmowie, a nie w połowie
+            projektu.
+          </p>
           <p className="leading-relaxed max-w-3xl" style={{ color: 'var(--fg-70)' }}>
-            Czas realizacji to 2–4 tygodnie przy mniejszych wdrożeniach i 1–3 miesiące przy większych. Pierwsza
-            konsultacja jest bezpłatna i kończy się konkretną wyceną, nie prezentacją. Rozbicie na pakiety znajdziesz
-            w{' '}
+            Czas realizacji to od 2 do 4 tygodni przy mniejszych wdrożeniach i od miesiąca do trzech przy większych.
+            Pierwsza konsultacja jest bezpłatna i kończy się konkretną wyceną, nie prezentacją. Rozbicie na pakiety
+            znajdziesz w{' '}
             <Link href="/cennik" className="font-semibold hover:underline" style={{ color: 'var(--accent-text)' }}>
               cenniku wdrożeń AI
             </Link>
@@ -340,7 +386,7 @@ export default function UslugiHub() {
         </section>
 
         <section className="mt-16 rounded-2xl p-7" style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}>
-          <h2 className="text-xl font-bold mb-3">Nie wiesz, od czego zacząć?</h2>
+          <h2 className="text-xl font-bold mb-3">Jeśli nie wiesz, od czego zacząć</h2>
           <p className="leading-relaxed mb-5" style={{ color: 'var(--fg-70)' }}>
             Najczęściej tak właśnie wygląda pierwsza rozmowa. Przechodzimy przez Wasze procesy, wskazujemy te, które
             najszybciej się zwrócą, i mówimy wprost, jeśli automatyzacja nie ma tu sensu.
