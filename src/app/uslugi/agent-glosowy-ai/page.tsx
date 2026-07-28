@@ -210,6 +210,7 @@ const content: SeoLandingContent = {
     { label: 'Demo: PKS Gryfice, zapytaj o autobus', href: 'https://pks-gryfice-demo.vercel.app/' },
     { label: 'Demo: 5 asystentów branżowych', href: 'https://asystenci-glosowi.vercel.app' },
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
+    { label: 'Voicebot czy chatbot: co wybrać', href: '/blog/voicebot-czy-chatbot' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },

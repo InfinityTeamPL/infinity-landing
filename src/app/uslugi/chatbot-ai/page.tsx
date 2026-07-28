@@ -180,6 +180,7 @@ const content: SeoLandingContent = {
     'Wdrożenia wielokanałowych chatbotów AI dla firm: agent tekstowy na stronie www i w ponad 23 kanałach komunikacji, z wiedzą firmową i przekazywaniem rozmów do człowieka.',
   related: [
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
+    { label: 'Voicebot czy chatbot: co wybrać', href: '/blog/voicebot-czy-chatbot' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
