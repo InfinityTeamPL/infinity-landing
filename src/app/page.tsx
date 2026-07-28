@@ -1013,7 +1013,8 @@ function TechnologySection() {
 }
 
 // Teaser kalkulatora ROI: szybki szacunek + CTA do pełnego kalkulatora.
-// Formuły spójne z ROICalculator (plan Standard: 0.5% oszczędności czasu).
+// Plan Standard zakłada 0,5% oszczędności czasu. Pełne wyliczenia żyją
+// w src/lib/kalkulator/engine.ts — tu jest tylko uproszczony szacunek.
 function RoiTeaserSection() {
   const [employees, setEmployees] = useState(50);
   const monthlyHours = Math.round(employees * 176 * 0.005);
