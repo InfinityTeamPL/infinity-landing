@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const content: SeoLandingContent = {
   path: '/branze/voicebot-dla-nieruchomosci',
   breadcrumbLabel: 'Voicebot dla nieruchomości',
-  h1: 'Voicebot dla biura nieruchomości: telefon odebrany, gdy jesteś na prezentacji',
+  h1: 'Voicebot dla biura nieruchomości: telefon odebrany prosto z prezentacji',
   lead: 'Voicebot dla biura nieruchomości to agent głosowy AI, który odbiera telefony o ofertach, gdy agent prowadzi oględziny albo jedzie między spotkaniami. Odpowiada na pytania o metraż, piętro, cenę i dostępność, wstępnie kwalifikuje zainteresowanego i umawia oglądanie. Mówi naturalną polszczyzną (technologia ElevenLabs), pracuje całą dobę, a dane przetwarza na serwerach w Polsce zgodnie z RODO.',
   serviceName: 'Voicebot dla biura nieruchomości: odbieranie zapytań o oferty i umawianie oględzin',
   serviceDescription:
