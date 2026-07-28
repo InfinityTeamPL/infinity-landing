@@ -172,6 +172,7 @@ const content: SeoLandingContent = {
   related: [
     { label: 'Agent głosowy AI: jak wdrażamy', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Voicebot dla salonów i warsztatów', href: '/branze/voicebot-dla-salonow' },
+    { label: 'Voicebot dla hotelu', href: '/branze/voicebot-dla-hotelu' },
     { label: 'Wszystkie branże', href: '/branze' },
     { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },
     { label: 'Scenariusz rozmowy w biurze nieruchomości', href: '/akademia/scenariusz-nieruchomosci' },

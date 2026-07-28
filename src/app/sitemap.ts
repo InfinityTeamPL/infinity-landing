@@ -39,6 +39,7 @@ const ENTRIES: Entry[] = [
   { path: '/branze/voicebot-dla-gastronomii', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/branze/ai-dla-kancelarii', lastModified: '2026-07-26', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/branze/voicebot-dla-nieruchomosci', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/branze/voicebot-dla-hotelu', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
 
   // Decyzyjne
   { path: '/cennik', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDown, ExternalLink, ShoppingCart, UtensilsCrossed, Gavel, KeyRound } from 'lucide-react';
+import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDown, ExternalLink, ShoppingCart, UtensilsCrossed, Gavel, KeyRound, Hotel } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -77,6 +77,12 @@ const WITH_PAGE = [
     href: '/uslugi/automatyzacja-hr',
     title: 'Kadry, płace i biura rachunkowe',
     lead: 'Agent, który zna Kodeks pracy, cytuje konkretny artykuł i pokazuje źródło. Generuje dokumenty kadrowe i pilnuje terminów ZUS oraz PIT.',
+  },
+  {
+    icon: Hotel,
+    href: '/branze/voicebot-dla-hotelu',
+    title: 'Hotele, pensjonaty i agroturystyka',
+    lead: 'Recepcja, która odbiera telefon w nocy i w szczycie zameldowań. Sprawdza dostępność pokoju, podaje cenę i zapisuje rezerwację, zamiast budzić gospodarza.',
   },
 ];
 
