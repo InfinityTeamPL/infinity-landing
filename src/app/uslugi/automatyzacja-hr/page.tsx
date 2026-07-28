@@ -45,6 +45,18 @@ const content: SeoLandingContent = {
       ],
     },
     {
+      heading: 'Kiedy automatyzacja HR się nie opłaca',
+      paragraphs: [
+        'Nie każdy dział kadr zyska na wdrożeniu agenta AI. Czasem koszt wdrożenia i utrzymania przewyższa oszczędność czasu, a czasem sama natura procesu wymaga człowieka. Zanim zaproponujemy zakres, sprawdzamy, czy poniższe sytuacje nie dotyczą Twojej firmy:',
+      ],
+      bullets: [
+        'Bardzo mały zespół, w którym jedna osoba z kadr zna każdą sprawę na pamięć, a obsługa pytań zajmuje kilkanaście minut dziennie. Wdrożenie się nie zwróci.',
+        'Rekrutacja na stanowiska senior lub kierownicze. Liczy się tam dopasowanie kulturowe i wyczucie rozmówcy, nie porównanie CV z listą wymagań.',
+        'Zwolnienia dyscyplinarne, spory pracownicze i mediacje. To wymaga empatii i osobistej odpowiedzialności, więc zostaje po stronie ludzi.',
+        'Okres restrukturyzacji albo fuzji, gdy zasady kadrowe zmieniają się co tydzień. Automatyzację warto wdrożyć dopiero, gdy nowy proces się ustabilizuje.',
+      ],
+    },
+    {
       heading: 'AI w HR a dane pracowników: RODO i bezpieczeństwo',
       paragraphs: [
         'Dane kadrowe to jedne z najwrażliwszych informacji w firmie, dlatego bezpieczeństwo traktujemy jako warunek wstępny, a nie dodatek. Dane naszych klientów przetwarzamy na serwerach w Polsce, w pełnej zgodności z RODO, a nasze standardy bezpieczeństwa są zgodne z ISO 27001.',
