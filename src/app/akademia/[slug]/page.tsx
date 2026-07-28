@@ -89,9 +89,11 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
       />
 
       <header className="max-w-3xl mx-auto px-6 pt-8 pb-2">
+        {/* py-1.5 nie jest kosmetyką: bez niego link ma 20 px wysokości,
+            czyli poniżej progu 24 px z WCAG 2.5.8 dla celów dotykowych. */}
         <Link
           href="/akademia"
-          className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors w-fit"
+          className="flex items-center gap-2 py-1.5 text-sm text-white/60 hover:text-white transition-colors w-fit"
         >
           <ArrowRight className="w-4 h-4 rotate-180" />
           Akademia Głosowa
@@ -170,7 +172,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
                   className="group rounded-xl px-5 py-4"
                   style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
                 >
-                  <summary className="cursor-pointer font-semibold text-[15.5px] list-none flex justify-between gap-4">
+                  <summary className="cursor-pointer font-semibold text-[15.5px] list-none flex justify-between gap-4 min-h-[24px] items-center">
                     {q}
                     <span className="text-white/40 group-open:rotate-45 transition-transform flex-shrink-0">+</span>
                   </summary>
@@ -189,7 +191,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
                 <li key={r.href}>
                   <Link
                     href={r.href}
-                    className="text-[15px] hover:underline"
+                    className="inline-block py-1 text-[15px] hover:underline"
                     style={{ color: 'var(--accent-text)' }}
                   >
                     {r.label}
