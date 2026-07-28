@@ -172,10 +172,11 @@ export default function AkademiaIndex() {
           className="mt-4 rounded-2xl p-7"
           style={{ background: 'var(--surface-1)', border: '1px solid var(--border-soft)' }}
         >
-          <h2 className="text-xl font-bold mb-3">Jak to wygląda w Twojej branży</h2>
+          <h2 className="text-xl font-bold mb-3">Kurs a strony branżowe</h2>
           <p className="text-[16px] text-white/70 leading-[1.75] mb-5">
-            Kurs jest ogólny, bo zasady są wspólne. Konkretne scenariusze, typowe pytania klientów
-            i rachunek opłacalności rozpisaliśmy osobno dla każdej branży.
+            Druga ścieżka kursu uczy projektowania rozmowy w konkretnej branży: co agent mówi
+            i kiedy oddaje słuchawkę. Strony branżowe odpowiadają na inne pytanie, czyli jak wygląda
+            u nas wdrożenie i ile kosztuje. Jeśli szukacie tego drugiego, zacznijcie stąd.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-[15px]">
             {[
@@ -183,6 +184,7 @@ export default function AkademiaIndex() {
               { label: 'Transport i przewoźnicy', href: '/branze/voicebot-dla-transportu' },
               { label: 'Salony i warsztaty', href: '/branze/voicebot-dla-salonow' },
               { label: 'Restauracje', href: '/branze/voicebot-dla-gastronomii' },
+              { label: 'Biura nieruchomości', href: '/branze/voicebot-dla-nieruchomosci' },
               { label: 'Administracja publiczna', href: '/branze/ai-dla-administracji' },
               { label: 'Wszystkie branże', href: '/branze' },
             ].map((b) => (
