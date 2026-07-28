@@ -82,6 +82,19 @@ const content: SeoLandingContent = {
         'Drugi typowy sygnał to nieodebrane połączenia. Każdy telefon, którego nikt nie odebrał (bo było po godzinach, bo linia była zajęta, bo pracownik obsługiwał klienta przy ladzie), to potencjalnie utracona wizyta, rezerwacja albo zlecenie. Ile takich telefonów przepada miesięcznie, zwykle nikt w firmie nie wie, dopóki nie zacznie ich liczyć. Agent głosowy AI nie zastępuje zespołu: przejmuje rozmowy proste i powtarzalne, a ludzi odciąża do spraw, w których naprawdę są potrzebni. Wdrożenie zaczynamy od wąskiego zakresu i rozszerzamy go, gdy agent udowodni swoją wartość na realnych rozmowach.',
       ],
     },
+    {
+      heading: 'Kiedy voicebot się nie sprawdzi',
+      paragraphs: [
+        'Automatyzacja telefonu ma sens tam, gdzie rozmowy się powtarzają. Tam, gdzie każda rozmowa jest inna i wymaga negocjacji albo oceny sytuacji na bieżąco, agent pomoże mniej, niż mogłoby się wydawać. Windykacja z targowaniem się o warunki spłaty, sprzedaż wymagająca osobistego przekonania klienta, rozmowy kryzysowe: to obszary, w których telefon zostawiamy człowiekowi.',
+        'Druga sytuacja to po prostu za mało telefonów. Firma odbierająca kilkanaście połączeń tygodniowo, w większości już dziś załatwianych sprawnie, nie odzyska kosztu wdrożenia szybko. Mówimy to wprost na konsultacji, zanim padnie jakakolwiek wycena. Czasem kończy się na tym, że odradzamy wdrożenie i proponujemy coś prostszego, na przykład lepiej opisaną stronę z odpowiedziami na najczęstsze pytania.',
+      ],
+      bullets: [
+        'Mniej niż kilkadziesiąt połączeń miesięcznie, gdzie niemal każde jest inne',
+        'Rozmowy wymagające negocjacji ceny albo warunków, nie samego przekazania informacji',
+        'Sytuacje kryzysowe i skargi, gdzie liczy się ludzki ton rozmowy',
+        'Sprawy prawne i finansowe, gdzie błędna odpowiedź kosztuje więcej niż zaoszczędzony czas',
+      ],
+    },
   ],
   howTo: {
     title: 'Jak wdrażamy agenta głosowego AI',
