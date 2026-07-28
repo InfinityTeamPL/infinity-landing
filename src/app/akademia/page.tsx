@@ -11,7 +11,7 @@ const BASE = 'https://www.infinityteam.io';
 export const metadata: Metadata = {
   title: 'Akademia Głosowa — bezpłatny kurs o voicebotach',
   description:
-    'Kurs po polsku o agentach telefonicznych: jak działa voicebot, czy Wasz telefon nadaje się do automatyzacji, jak zaprojektować rozmowę i co mówi prawo. Bez zapisu.',
+    'Kurs po polsku o agentach telefonicznych: jak działa voicebot, kiedy się opłaca, jak zaprojektować rozmowę i co mówi prawo. Bez zapisu.',
   alternates: { canonical: '/akademia' },
   openGraph: {
     title: 'Akademia Głosowa Infinity Tech — bezpłatny kurs o voicebotach',

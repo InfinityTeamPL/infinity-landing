@@ -50,7 +50,7 @@ export const LESSONS: Lesson[] = [
     title: 'Jak działa voicebot i dlaczego przestał brzmieć jak automat',
     metaTitle: 'Jak działa voicebot — rozmowa telefoniczna z AI krok po kroku',
     metaDescription:
-      'Co się dzieje między słowem klienta a odpowiedzią voicebota: rozpoznanie mowy, model językowy, synteza głosu. Wyjaśniamy, skąd bierze się opóźnienie i co je psuje.',
+      'Co dzieje się między słowem klienta a odpowiedzią voicebota: rozpoznanie mowy, model, synteza głosu. Skąd bierze się opóźnienie i co je psuje.',
     lead: 'Różnica między infolinią sprzed dekady a dzisiejszym voicebotem nie polega na lepszym lektorze. Polega na tym, że po drodze ktoś w ogóle rozumie, co mówicie.',
     sections: [
       {
@@ -107,7 +107,7 @@ export const LESSONS: Lesson[] = [
     title: 'Czy Wasz telefon w ogóle nadaje się do automatyzacji',
     metaTitle: 'Czy voicebot ma sens w Twojej firmie — test w trzy dni',
     metaDescription:
-      'Zanim wydacie złotówkę: jak policzyć połączenia, rozpoznać pytania powtarzalne i sprawdzić, czy voicebot zdejmie realny ciężar. Z listą sytuacji, w których nie warto.',
+      'Zanim wydacie złotówkę: jak policzyć połączenia i pytania powtarzalne. Z listą sytuacji, w których voicebot się nie opłaca.',
     lead: 'Najdroższy voicebot to ten, który obsługuje pięć telefonów dziennie. Ta lekcja jest o tym, jak sprawdzić skalę, zanim ktokolwiek zacznie coś budować.',
     sections: [
       {
@@ -537,7 +537,7 @@ export const LESSONS: Lesson[] = [
     number: 8,
     title: "Jak sprawdzić, czy voicebot naprawdę pomaga",
     metaTitle: "Jak mierzyć voicebota - metryki i odsłuchy",
-    metaDescription: "Na co patrzeć po uruchomieniu voicebota, jak liczyć sprawy załatwione bez człowieka i dlaczego odsetek odebranych połączeń niczego nie mówi. Plus sygnały do wycofania.",
+    metaDescription: "Na co patrzeć po uruchomieniu voicebota, dlaczego odsetek odebranych połączeń niczego nie mówi i po czym poznać, że trzeba się wycofać.",
     lead: "Voicebot bez pomiaru zamienia się w rozmowę o wrażeniach. Punkt odniesienia macie z lekcji drugiej, tu pokazujemy, co oglądać po starcie i po czym poznać, że lepiej się wycofać.",
     sections: [
     {
