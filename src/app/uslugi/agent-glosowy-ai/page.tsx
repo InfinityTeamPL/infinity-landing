@@ -211,6 +211,7 @@ const content: SeoLandingContent = {
     { label: 'Demo: 5 asystentów branżowych', href: 'https://asystenci-glosowi.vercel.app' },
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
+    { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
     { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },

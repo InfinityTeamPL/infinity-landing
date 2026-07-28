@@ -204,6 +204,7 @@ const content: SeoLandingContent = {
   },
   related: [
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
+    { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'Branże', href: '/branze' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
     { label: 'Agent AI a chatbot', href: '/blog/agent-ai-a-chatbot' },
