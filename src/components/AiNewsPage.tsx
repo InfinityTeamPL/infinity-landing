@@ -126,7 +126,7 @@ export default function AiNewsPage({ initialNews }: AiNewsPageProps) {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'swiat-ai-newsletter' }),
+        body: JSON.stringify({ email, source: 'swiat-ai-newsletter', zgoda: newsletterConsent }),
       });
       setEmailStatus(res.ok ? 'sent' : 'error');
     } catch { setEmailStatus('error'); }

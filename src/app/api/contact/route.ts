@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
 
     const payload = await request.json();
-    const { name, email, phone, message } = payload;
+    const { name, email, phone, message, zgoda } = payload;
 
     // Bot dostaje odpowiedź sukcesu, żeby nie wiedział, że go rozpoznaliśmy.
     if (wyglądaNaBota(payload)) {
@@ -55,6 +55,15 @@ export async function POST(request: Request) {
     if (typeof phone === 'string' && phone.length > LIMITY.telefon) {
       return NextResponse.json({ error: 'Numer telefonu jest za długi' }, { status: 400 });
     }
+    // Formularz blokuje wysyłkę bez zaznaczonej zgody, ale to sprawdzenie
+    // po stronie klienta da się obejść. Bez zgody nie mamy podstawy do
+    // przetwarzania danych kontaktowych, więc odrzucamy takie zgłoszenie.
+    if (zgoda !== true) {
+      return NextResponse.json(
+        { error: 'Do wysłania wiadomości potrzebna jest zgoda na kontakt.' },
+        { status: 400 },
+      );
+    }
 
     const cleanEmail = email.trim();
     const cleanName = typeof name === 'string' ? name.trim() : '';
@@ -71,8 +80,16 @@ export async function POST(request: Request) {
     const from = process.env.WAITLIST_FROM || 'Infinity Tech <waitlist@infinityteam.io>';
 
     if (!apiKey) {
-      console.warn('[contact] RESEND_API_KEY missing');
-      return NextResponse.json({ ok: true, delivered: false });
+      // Bez klucza nie mamy jak dostarczyć wiadomości. Wcześniej zwracaliśmy
+      // tu 200 z ok:true, więc formularz pokazywał "Wiadomość wysłana!",
+      // a zgłoszenie przepadało bez śladu — żadne z czterech miejsc
+      // wywołujących nie czytało flagi delivered, tylko status HTTP.
+      // Lepiej powiedzieć wprost, że się nie udało, i dać adres zapasowy.
+      console.error('[contact] RESEND_API_KEY missing — zgłoszenie NIE zostało dostarczone');
+      return NextResponse.json(
+        { error: 'Nie możemy teraz wysłać wiadomości. Napisz na contact@infinityteam.io — odpowiemy tak samo szybko.' },
+        { status: 503 },
+      );
     }
 
     const notificationHtml = `
@@ -83,6 +100,7 @@ export async function POST(request: Request) {
         ${safePhone ? `<p style="margin: 0 0 8px; color: #334155;"><strong>Telefon:</strong> ${safePhone}</p>` : ''}
         <p style="margin: 0 0 8px; color: #334155;"><strong>Wiadomość:</strong></p>
         <p style="margin: 0 0 16px; color: #334155; white-space: pre-wrap; background: #f8fafc; padding: 12px; border-radius: 8px;">${safeMessage}</p>
+        <p style="margin: 12px 0 0; color: #334155;"><strong>Zgoda na kontakt:</strong> udzielona ${new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' })}</p>
         <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">Zgłoszenie wysłane z landing page infinityteam.io</p>
       </div>
     `;

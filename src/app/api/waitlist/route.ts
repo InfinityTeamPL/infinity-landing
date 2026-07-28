@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
 
     const payload = await request.json();
-    const { email, source } = payload;
+    const { email, source, zgoda } = payload;
 
     // Bot dostaje odpowiedź sukcesu, żeby nie wiedział, że go rozpoznaliśmy.
     if (wyglądaNaBota(payload)) {
@@ -62,8 +62,13 @@ export async function POST(request: Request) {
     const from = process.env.WAITLIST_FROM || 'Infinity Tech <waitlist@infinityteam.io>';
 
     if (!apiKey) {
-      console.warn('[waitlist] RESEND_API_KEY missing');
-      return NextResponse.json({ ok: true, delivered: false });
+      // Patrz komentarz w api/contact: zwracanie 200 przy braku klucza
+      // dawało fałszywe potwierdzenie zapisu, a adres nigdzie nie trafiał.
+      console.error('[waitlist] RESEND_API_KEY missing — zapis NIE został dostarczony');
+      return NextResponse.json(
+        { error: 'Nie możemy teraz zapisać zgłoszenia. Napisz na contact@infinityteam.io, dopiszemy Cię ręcznie.' },
+        { status: 503 },
+      );
     }
 
     const notificationHtml = `
@@ -71,6 +76,11 @@ export async function POST(request: Request) {
         <h2 style="margin: 0 0 12px; color: #0A1628;">Nowy zapis na waitlist</h2>
         <p style="margin: 0 0 8px; color: #334155;"><strong>Źródło:</strong> ${safeSource}</p>
         <p style="margin: 0 0 8px; color: #334155;"><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+        <p style="margin: 0 0 8px; color: #334155;"><strong>Zgoda:</strong> ${
+          zgoda === true
+            ? `udzielona ${new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' })}`
+            : 'brak pola zgody w tym formularzu — zapis na podstawie samego zgłoszenia adresu'
+        }</p>
         <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">Zgłoszenie wysłane z landing page infinityteam.io</p>
       </div>
     `;
