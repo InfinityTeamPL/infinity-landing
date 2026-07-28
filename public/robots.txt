@@ -1,28 +1,40 @@
-# infinityteam.io — wszyscy mile widziani, API i panele wyłączone z indeksu
+# infinityteam.io — wszyscy mile widziani, API wyłączone z indeksu.
+#
+# UWAGA przy edycji: robot dopasowuje się do JEDNEJ grupy, tej najbardziej
+# szczegółowej, i reguły z pozostałych grup go nie obowiązują. Dlatego
+# "Disallow: /api/" musi być powtórzone w każdym nazwanym bloku. Wcześniej
+# stało tylko w grupie gwiazdkowej, więc wszystkie nazwane roboty, łącznie
+# z Googlebotem, miały API otwarte wbrew temu, co deklarował ten komentarz.
 
 User-agent: *
 Allow: /
 Disallow: /api/
 
-# Wyszukiwarki — pełny dostęp
+# Wyszukiwarki
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /api/
 
 # Crawlery AI — celowo dozwolone: chcemy być cytowani w odpowiedziach AI
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /api/
 
 Sitemap: https://www.infinityteam.io/sitemap.xml
 
