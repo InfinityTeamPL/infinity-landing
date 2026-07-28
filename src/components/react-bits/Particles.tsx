@@ -17,14 +17,14 @@ export default function Particles({
   speed = 1,
 }: ParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const czyAnimowac = useCzyAnimowac(canvasRef);
+  const { wWidoku, ograniczonyRuch } = useCzyAnimowac(canvasRef);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Patrz Aurora: poza kadrem i w tle karty pętla tylko grzeje procesor.
-    if (!czyAnimowac) return;
+    // Patrz Aurora: poza kadrem pętla tylko grzeje procesor.
+    if (!wWidoku) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -92,6 +92,8 @@ export default function Particles({
         });
       });
       
+      // Jedna statyczna klatka zamiast pustej sekcji — patrz Aurora.
+      if (ograniczonyRuch) return;
       animationId = requestAnimationFrame(draw);
     };
 
@@ -103,7 +105,7 @@ export default function Particles({
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationId);
     };
-  }, [quantity, color, speed, czyAnimowac]);
+  }, [quantity, color, speed, wWidoku, ograniczonyRuch]);
 
   return (
     <canvas

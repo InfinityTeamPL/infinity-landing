@@ -3,21 +3,31 @@
 import { useEffect, useState, type RefObject } from 'react';
 
 /**
- * Mówi, czy warto w ogóle kręcić pętlą animacji.
+ * Mówi, czy element jest w polu widzenia i czy użytkownik godzi się na ruch.
  *
- * Powstał, bo komponenty rysujące po canvasie (Aurora, Particles,
- * FloatingLines) chodziły bez przerwy od wejścia na stronę — także wtedy,
- * gdy siedziały kilka ekranów niżej albo karta była w tle. Na stronie
- * głównej to trzy równoległe pętle po 60 klatek na sekundę, których nikt
- * nie widzi: darmowy koszt dla procesora, baterii i czasu reakcji
- * na interakcje.
+ * Powstał, bo komponenty rysujące po canvasie (Aurora, Particles) chodziły
+ * bez przerwy od wejścia na stronę — także wtedy, gdy siedziały kilka ekranów
+ * niżej. Na stronie głównej to dwie równoległe pętle po 60 klatek na sekundę,
+ * których nikt nie widzi.
  *
- * Zwraca true tylko wtedy, gdy element jest w polu widzenia, karta jest
- * aktywna, a użytkownik nie prosił o ograniczenie ruchu.
+ * DWIE DECYZJE PROJEKTOWE, obie z przeglądu kodu:
+ *
+ * 1. NIE śledzimy widoczności karty. Przeglądarki same wstrzymują
+ *    requestAnimationFrame w kartach w tle, więc nic byśmy nie zyskali,
+ *    a stan „karta aktywna" w tablicy zależności efektu powodował, że każdy
+ *    powrót do karty rozbierał i składał od nowa cały stan komponentu —
+ *    w Particles znaczyło to losowanie cząstek od zera przy każdym przełączeniu.
+ *
+ * 2. Zwracamy DWIE osobne flagi zamiast jednej. Wcześniej prefers-reduced-motion
+ *    zwracało false z całego haka, co blokowało nie samą animację, ale cały
+ *    efekt — Aurora i Particles nie rysowały wtedy niczego. Teraz komponent
+ *    rysuje jedną statyczną klatkę i po prostu się nie zapętla.
  */
-export function useCzyAnimowac(ref: RefObject<Element | null>): boolean {
+export function useCzyAnimowac(ref: RefObject<Element | null>): {
+  wWidoku: boolean;
+  ograniczonyRuch: boolean;
+} {
   const [wWidoku, setWWidoku] = useState(false);
-  const [kartaAktywna, setKartaAktywna] = useState(true);
   const [ograniczonyRuch, setOgraniczonyRuch] = useState(false);
 
   useEffect(() => {
@@ -35,13 +45,6 @@ export function useCzyAnimowac(ref: RefObject<Element | null>): boolean {
   }, [ref]);
 
   useEffect(() => {
-    const przyZmianie = () => setKartaAktywna(!document.hidden);
-    przyZmianie();
-    document.addEventListener('visibilitychange', przyZmianie);
-    return () => document.removeEventListener('visibilitychange', przyZmianie);
-  }, []);
-
-  useEffect(() => {
     const zapytanie = window.matchMedia('(prefers-reduced-motion: reduce)');
     const przyZmianie = () => setOgraniczonyRuch(zapytanie.matches);
     przyZmianie();
@@ -49,5 +52,5 @@ export function useCzyAnimowac(ref: RefObject<Element | null>): boolean {
     return () => zapytanie.removeEventListener('change', przyZmianie);
   }, []);
 
-  return wWidoku && kartaAktywna && !ograniczonyRuch;
+  return { wWidoku, ograniczonyRuch };
 }

@@ -21,10 +21,11 @@ interface ClickSparkProps {
  *
  * 1. Canvas jest przypięty do OKNA (position: fixed), nie do rodzica.
  *    Wcześniej dostawał wymiary elementu nadrzędnego, a ten opakowuje całą
- *    stronę — na stronie głównej dawało to bufor 1280 × 33363 px, czyli
- *    ponad 42 megapiksele i ~170 MB pamięci. Iskry i tak pojawiają się
- *    wyłącznie w miejscu kliknięcia, więc bufor wielkości okna wystarcza
- *    w zupełności i schodzi do ~4 MB.
+ *    stronę. Zmierzona wysokość bufora na stronie głównej: 33 363 px, czyli
+ *    tyle, ile liczy sobie cały dokument. Przy typowej szerokości okna
+ *    wychodzi z tego kilkadziesiąt megapikseli i rząd wielkości 100 MB
+ *    pamięci. Iskry i tak pojawiają się wyłącznie w miejscu kliknięcia,
+ *    więc bufor wielkości okna wystarcza w zupełności.
  *
  * 2. Pętla animacji chodzi tylko wtedy, gdy jest co rysować. Wcześniej
  *    requestAnimationFrame wywoływał się bezwarunkowo, więc przeglądarka
@@ -53,9 +54,15 @@ const ClickSpark = ({
 
     let opoznienie: ReturnType<typeof setTimeout>;
     const dopasuj = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      if (canvas.width !== w || canvas.height !== h) {
+      // Rozmiar bufora bierzemy z RZECZYWISTEGO pudełka canvasu, nie
+      // z window.innerWidth. Na urządzeniach mobilnych 100vw i innerWidth
+      // potrafią się różnić (pasek przewijania, chowające się paski
+      // przeglądarki), a rozjazd tych dwóch wartości przesuwałby iskry
+      // względem miejsca kliknięcia.
+      const { width, height } = canvas.getBoundingClientRect();
+      const w = Math.round(width);
+      const h = Math.round(height);
+      if (w > 0 && h > 0 && (canvas.width !== w || canvas.height !== h)) {
         canvas.width = w;
         canvas.height = h;
       }
