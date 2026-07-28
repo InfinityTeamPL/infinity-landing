@@ -204,6 +204,7 @@ const content: SeoLandingContent = {
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
     { label: 'Branże', href: '/branze' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
+    { label: 'Scenariusz rozmowy w urzędzie', href: '/akademia/scenariusz-administracja' },
   ],
 };
 
