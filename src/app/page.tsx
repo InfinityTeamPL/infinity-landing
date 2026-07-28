@@ -1452,7 +1452,7 @@ export default function LandingPage() {
         />
       </div>
 
-      <main className="relative" style={{ zIndex: 1 }}>
+      <main id="tresc" className="relative" style={{ zIndex: 1 }}>
         <div id="start">
           <HeroSection />
         </div>

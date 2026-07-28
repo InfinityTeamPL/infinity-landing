@@ -95,7 +95,7 @@ export default function BlogArticle({ content }: { content: BlogArticleContent }
         </nav>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-20">
+      <main id="tresc" className="max-w-3xl mx-auto px-6 pb-20">
         <article>
           <p className="text-xs uppercase tracking-widest mt-10 mb-4" style={{ color: 'var(--accent-text)' }}>
             {dateLabel}

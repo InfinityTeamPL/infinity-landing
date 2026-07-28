@@ -73,7 +73,7 @@ export default function AkademiaIndex() {
         </Link>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-20">
+      <main id="tresc" className="max-w-3xl mx-auto px-6 pb-20">
         <span
           className="inline-block text-xs uppercase tracking-widest font-medium mt-10 mb-4"
           style={{ color: 'var(--accent-text)' }}

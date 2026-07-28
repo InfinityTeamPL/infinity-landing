@@ -196,7 +196,7 @@ export default function BranzeHub() {
         </nav>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 pb-20">
+      <main id="tresc" className="max-w-5xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-5" style={{ letterSpacing: '-0.022em' }}>
           AI dla branż
         </h1>

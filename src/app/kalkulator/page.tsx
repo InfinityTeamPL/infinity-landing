@@ -49,6 +49,7 @@ export default function KalkulatorPage() {
           />
         </div>
 
+        <main id="tresc">
         {/* Hero */}
         <section className="relative overflow-hidden print:hidden" style={{ zIndex: 1 }}>
           <div className="relative z-10 max-w-5xl mx-auto px-4 pt-24 pb-16 text-center">
@@ -186,9 +187,11 @@ export default function KalkulatorPage() {
           </div>
         </section>
 
+        </main>
+
         {/* Footer */}
         <footer className="text-center py-8 print:hidden relative" style={{ zIndex: 1, borderTop: '1px solid rgba(123,155,219,0.1)' }}>
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/60">
             &copy; {new Date().getFullYear()} Infinity Tech. Dane: GUS, ZUS, Eurostat, badania branżowe PL 2026.
           </p>
           <div className="flex items-center justify-center gap-4 mt-3">

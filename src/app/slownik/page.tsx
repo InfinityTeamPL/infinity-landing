@@ -290,7 +290,7 @@ export default function SlownikPage() {
         </nav>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-20">
+      <main id="tresc" className="max-w-3xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-5" style={{ letterSpacing: '-0.022em' }}>
           Słownik AI
         </h1>

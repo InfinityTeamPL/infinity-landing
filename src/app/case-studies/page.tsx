@@ -150,7 +150,7 @@ export default function CaseStudiesPage() {
         </nav>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-20">
+      <main id="tresc" className="max-w-4xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-6" style={{ letterSpacing: '-0.022em' }}>
           Realizacje: wdrożenia agentów AI, które działają na produkcji
         </h1>

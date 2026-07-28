@@ -162,6 +162,15 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
+        {/*
+          Link pomijający nawigację (WCAG 2.4.1). Niewidoczny, dopóki nie
+          dostanie fokusu — wtedy zjeżdża na wierzch. Musi być pierwszym
+          elementem w kolejności tabulacji, stąd miejsce na początku body.
+          Cel #tresc mają wszystkie elementy main w serwisie.
+        */}
+        <a href="#tresc" className="skip-link">
+          Przejdź do treści
+        </a>
         {children}
         <ThemeToggle />
         <CookieConsent />

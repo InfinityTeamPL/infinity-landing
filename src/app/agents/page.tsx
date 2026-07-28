@@ -815,7 +815,7 @@ export default function AgentsPage() {
         </div>
       </nav>
 
-      <main>
+      <main id="tresc">
         <HeroSection />
         <StatsOverview />
         <HRSection />

@@ -128,7 +128,7 @@ export default function SeoLanding({ content }: { content: SeoLandingContent }) 
         </nav>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 pb-20">
+      <main id="tresc" className="max-w-4xl mx-auto px-6 pb-20">
         {/* H1 + lead (definicja pod snippet) */}
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-6" style={{ letterSpacing: '-0.022em' }}>
           {c.h1}
