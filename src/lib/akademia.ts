@@ -1197,6 +1197,91 @@ export const LESSONS: Lesson[] = [
       { label: "Jak zbudować scenariusz rozmowy", href: "/akademia/scenariusz-rozmowy" },
     ],
   },
+  {
+    slug: "scenariusz-nieruchomosci",
+    number: 16,
+    track: 'scenariusze',
+    title: "Rozmowa w biurze nieruchomości: oferta, kwalifikacja, oględziny",
+    metaTitle: "Scenariusz rozmowy voicebota w biurze nieruchomości",
+    metaDescription: "Scenariusz telefonu w biurze nieruchomości zdanie po zdaniu: identyfikacja oferty, powtarzalne pytania, kwalifikacja zainteresowanego i umówienie oględzin.",
+    lead: "Telefon w biurze nieruchomości prawie zawsze dotyczy jednej konkretnej oferty, nie firmy w ogóle. Ta lekcja rozbiera taką rozmowę na zdania: co agent ustala jako pierwsze, o co dopytuje i gdzie kończy się jego rola.",
+    sections: [
+      {
+        h2: "Pierwsze zdanie i pytanie o konkretną ofertę",
+        paragraphs: [
+          "Rozmowa w biurze nieruchomości rzadko zaczyna się od ogólnego „dzień dobry, mam pytanie”. Dzwoniący ma przed sobą konkretne ogłoszenie, otwarte kwadrans wcześniej w portalu, i chce wiedzieć, czy jest jeszcze aktualne. Powitanie musi to uwzględnić od pierwszego zdania.",
+          "U nas brzmi ono tak: „Biuro Nieruchomości Kowalscy, dzień dobry. Rozmawia Pan z automatycznym asystentem. Mogę odpowiedzieć na pytania o ofertę i umówić oglądanie. O którą nieruchomość Pan pyta?”. Zdanie o AI nie jest formalnością. Od 2 sierpnia 2026 informowanie rozmówcy, że ma do czynienia z systemem sztucznej inteligencji, wynika wprost z unijnego rozporządzenia.",
+          "Część dzwoniących pamięta adres albo numer oferty z portalu, i wtedy sprawa jest prosta: agent odczytuje dane z bazy i przechodzi dalej. Częściej pamiętają fragmenty, dzielnicę, przybliżony metraż, cenę z grubsza. Wtedy agent dopytuje o dwa szczegóły z opisu, żeby trafić na właściwy rekord, zamiast zgadywać po jednym słowie.",
+          "Zdarza się też telefon o ofertę, która już zniknęła z bazy, bo została sprzedana albo wycofana. Agent nie improwizuje w tym miejscu. Mówi wprost, że oferta jest nieaktualna, i pyta, czy dzwoniący chce usłyszeć o podobnych. Krótsza rozmowa niż dochodzenie do prawdy przez trzy kolejne pytania.",
+        ],
+      },
+      {
+        h2: "Pytania, które padają przy każdej ofercie",
+        paragraphs: [
+          "Niezależnie od tego, czy chodzi o mieszkanie w bloku, czy o dom pod miastem, wraca ten sam zestaw pytań. Agent odpowiada na nie z opisu oferty, bez przełączania do człowieka. Cztery grupy pokrywają większość takich rozmów.",
+        ],
+        list: [
+          "Parametry lokalu: metraż, liczba pokoi, piętro, winda, rok budowy, stan wykończenia.",
+          "Koszty poza ceną: czynsz administracyjny, media, forma własności, prowizja biura.",
+          "Otoczenie i dojazd: szkoła w pobliżu, komunikacja, parking, zgoda na zwierzęta w budynku.",
+          "Termin oglądania: kiedy można obejrzeć lokal i ile trwa samo spotkanie.",
+        ],
+      },
+      {
+        h2: "Kwalifikacja i umówienie oględzin",
+        paragraphs: [
+          "Sama odpowiedź na pytania o metraż nic Wam jeszcze nie mówi o tym, czy dzwoniący może kupić tę nieruchomość. Do tego służy krótka kwalifikacja, którą agent prowadzi zaraz po ustaleniu, że oferta wciąż interesuje rozmówcę. Cztery pytania wystarczają w większości przypadków, i tyle też zwykle ustalamy z Wami przed wdrożeniem.",
+        ],
+        list: [
+          "Czy zakup będzie gotówkowy, czy z kredytem.",
+          "Na jakim etapie jest finansowanie, jeśli kredyt już wstępnie rozpatrzono.",
+          "W jakim terminie dzwoniący chce się przeprowadzić.",
+          "Czy ma do sprzedania własną nieruchomość.",
+        ],
+      },
+      {
+        h2: "Zdania, których agent nie wypowie",
+        paragraphs: [
+          "Agent w biurze nieruchomości pracuje jako pierwszy kontakt i recepcjonista bazy ofert. Transakcji nie prowadzi, bo tam liczy się coś, czego żaden model nie ma: wyczucie sytuacji i znajomość obu stron. Cztery rodzaje rozmów zostawiamy człowiekowi bez wyjątku.",
+        ],
+        list: [
+          "Negocjacje ceny, bo liczy się w nich wyczucie i znajomość motywacji obu stron.",
+          "Doradztwo prawne i podatkowe: stan księgi wieczystej, sprawy spadkowe, podatek od czynności cywilnoprawnych.",
+          "Doradztwo kredytowe. Agent pyta o etap finansowania, nie ocenia zdolności ani nie poleca banku.",
+          "Rozmowy ze sprzedającym o obniżce ceny albo o przedłużeniu umowy z biurem.",
+        ],
+      },
+    ],
+    takeaways: [
+      "Pierwsze pytanie ustala, o którą ofertę chodzi, bo w nieruchomościach rozmowa rzadko dotyczy firmy w ogóle.",
+      "Cztery grupy pytań, czyli parametry, koszty, otoczenie i termin, pokrywają większość rozmów o ofertę.",
+      "Kwalifikacja przed umówieniem oględzin mówi Wam, czy dzwoniący realnie może kupić tę nieruchomość.",
+      "Negocjacje, doradztwo prawne i kredytowe zostają przy człowieku niezależnie od tego, jak dobrze napisano scenariusz.",
+    ],
+    faq: [
+      {
+        q: "Co się dzieje, gdy oferta została już sprzedana?",
+        a: "Agent czyta aktualny status z bazy i mówi to wprost, zamiast potwierdzać dostępność mieszkania, którego już nie ma. Pyta też, czy zaproponować podobne oferty z tej samej okolicy.",
+      },
+      {
+        q: "Czy agent umówi oglądanie bez udziału biura?",
+        a: "Tak, jeśli termin jest wolny w kalendarzu i dane oferty są aktualne. Agent podaje dwa warianty godzin, potwierdza wybór i zapisuje spotkanie, a Wy dostajecie powiadomienie od razu, nie po fakcie.",
+      },
+      {
+        q: "Jak agent radzi sobie, gdy dzwoniący pyta o kilka ofert naraz?",
+        a: "Prowadzi rozmowę po kolei, jedna oferta na raz, i na końcu podsumowuje ustalenia dla każdej z nich. Trzymanie trzech wątków naraz kończy się pomyłkami, więc scenariusz świadomie tego unika.",
+      },
+      {
+        q: "Czy trzeba mieć system CRM, żeby to działało?",
+        a: "Potrzebne jest źródło danych, z którego agent odczyta aktualny stan ofert, czy to CRM z API, czy regularnie odświeżany eksport. Bez tego agent operowałby na nieaktualnych danych, a to w tej branży boli bardziej niż brak automatyzacji.",
+      },
+    ],
+    related: [
+      { label: "Voicebot dla biura nieruchomości", href: "/branze/voicebot-dla-nieruchomosci" },
+      { label: "Skąd voicebot bierze dane", href: "/akademia/skad-voicebot-bierze-dane" },
+      { label: "Granice voicebota: kiedy oddać słuchawkę", href: "/akademia/granice-voicebota" },
+    ],
+  },
 ];
 
 export const LESSON_SLUGS = LESSONS.map((l) => l.slug);

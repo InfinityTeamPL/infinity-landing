@@ -173,7 +173,8 @@ const content: SeoLandingContent = {
     { label: 'Agent głosowy AI: jak wdrażamy', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Voicebot dla salonów i warsztatów', href: '/branze/voicebot-dla-salonow' },
     { label: 'Wszystkie branże', href: '/branze' },
-    { label: 'Akademia Głosowa: bezpłatny kurs', href: '/akademia' },
+    { label: 'Bezpłatny kurs o voicebotach', href: '/akademia' },
+    { label: 'Scenariusz rozmowy w biurze nieruchomości', href: '/akademia/scenariusz-nieruchomosci' },
     { label: 'Ile kosztuje voicebot', href: '/blog/ile-kosztuje-voicebot' },
   ],
 };
