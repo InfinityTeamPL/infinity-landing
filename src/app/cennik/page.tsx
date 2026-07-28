@@ -155,6 +155,7 @@ const content: SeoLandingContent = {
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Automatyzacja HR i kadr', href: '/uslugi/automatyzacja-hr' },
+    { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'Kalkulator ROI', href: '/kalkulator' },
   ],
 };

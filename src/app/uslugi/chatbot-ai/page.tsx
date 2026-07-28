@@ -181,6 +181,7 @@ const content: SeoLandingContent = {
   related: [
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
+    { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
   ],
 };

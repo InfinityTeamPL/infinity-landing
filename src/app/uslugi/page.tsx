@@ -244,6 +244,18 @@ export default function UslugiHub() {
               </div>
             ))}
           </div>
+          <p className="leading-relaxed mt-8 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
+            Część z Was nie wybiera jednej usługi, tylko łączy telefon i czat w jedną obsługę klienta z jedną bazą
+            wiedzy. Taki układ opisaliśmy osobno na stronie o{' '}
+            <Link
+              href="/uslugi/automatyzacja-obslugi-klienta"
+              className="font-semibold hover:underline"
+              style={{ color: 'var(--accent-text)' }}
+            >
+              automatyzacji obsługi klienta
+            </Link>
+            .
+          </p>
         </section>
 
         {/* Od czego zaczynamy */}

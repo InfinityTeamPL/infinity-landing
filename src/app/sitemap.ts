@@ -26,6 +26,7 @@ const ENTRIES: Entry[] = [
   { path: '/uslugi/chatbot-ai', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
   { path: '/uslugi/automatyzacja-procesow-ai', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
   { path: '/uslugi/automatyzacja-hr', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/uslugi/automatyzacja-obslugi-klienta', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
 
   // Branże
   { path: '/branze', lastModified: REBUILD, changeFrequency: 'monthly', priority: 0.9 },
