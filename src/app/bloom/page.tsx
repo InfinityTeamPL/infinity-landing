@@ -52,7 +52,7 @@ export default function BloomPage() {
       </video>
 
       {/* Content — z-10 */}
-      <div className="relative z-10 flex min-h-screen">
+      <main id="tresc" tabIndex={-1} className="relative z-10 flex min-h-screen">
         {/* ───────── Left Panel (52%) ───────── */}
         <div className="w-full lg:w-[52%] relative min-h-screen">
           {/* Glass overlay */}
@@ -221,7 +221,7 @@ export default function BloomPage() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -110,7 +110,7 @@ export default function BlogIndex() {
         </Link>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 pb-20">
+      <main id="tresc" tabIndex={-1} className="max-w-3xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-4" style={{ letterSpacing: '-0.022em' }}>
           Blog — agenci AI i automatyzacja w praktyce
         </h1>
