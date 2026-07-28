@@ -11,7 +11,7 @@ const Background3D = dynamic(() => import('@/components/Background3D'), { ssr: f
 
 export const metadata: Metadata = {
   title: 'Regulamin',
-  description: 'Regulamin korzystania z serwisu Infinity Tech — warunki świadczenia usług drogą elektroniczną.',
+  description: 'Regulamin korzystania z serwisu Infinity Tech: warunki świadczenia usług drogą elektroniczną.',
   alternates: { canonical: '/regulamin' },
 };
 

@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     url: "https://www.infinityteam.io",
     siteName: "Infinity Tech",
     title: "Infinity Tech — Agenci AI dla biznesu",
-    description: "Budujemy agentów AI — głosowych i tekstowych — oraz automatyzacje procesów dla firm. Voice AI, obsługa klienta 24/7, kadry, sprzedaż i wdrożenia szyte na miarę. Dane w Polsce, zgodność z RODO.",
+    description: "Budujemy agentów AI, głosowych i tekstowych, oraz automatyzacje procesów dla firm. Voice AI, obsługa klienta 24/7, kadry, sprzedaż i wdrożenia szyte na miarę. Dane w Polsce, zgodność z RODO.",
     images: [
       {
         url: "https://www.infinityteam.io/og.png",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Infinity Tech — Agenci AI dla biznesu",
-    description: "Agenci AI — głosowi i tekstowi — oraz automatyzacje procesów dla Twojej firmy.",
+    description: "Agenci AI, głosowi i tekstowi, oraz automatyzacje procesów dla Twojej firmy.",
     images: ["https://www.infinityteam.io/og.png"],
     creator: "@InfinityTech_PL",
   },
@@ -74,7 +74,7 @@ const organizationJsonLd = {
   email: 'contact@infinityteam.io',
   telephone: '+48 735 170 957',
   description:
-    'Budujemy agentów AI — głosowych (voice AI) i tekstowych — oraz automatyzacje procesów dla firm. Obsługa klienta 24/7, kadry, sprzedaż, integracja z 23+ kanałami, hosting w Polsce.',
+    'Budujemy agentów AI, głosowych (voice AI) i tekstowych, oraz automatyzacje procesów dla firm. Obsługa klienta 24/7, kadry, sprzedaż, integracja z 23+ kanałami, hosting w Polsce.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'ul. Rynek Solny 1 lok. 6',
