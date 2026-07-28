@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useCzyAnimowac } from '@/lib/useCzyAnimowac';
 
 interface AuroraProps {
   className?: string;
@@ -18,10 +19,15 @@ export default function Aurora({
   amplitude = 1,
 }: AuroraProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const czyAnimowac = useCzyAnimowac(canvasRef);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // Poza kadrem, w tle karty albo przy prośbie o ograniczenie ruchu
+    // nie ma po co kręcić pętlą — nikt tego nie zobaczy.
+    if (!czyAnimowac) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -84,7 +90,7 @@ export default function Aurora({
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationId);
     };
-  }, [colorStops, speed, blend, amplitude]);
+  }, [colorStops, speed, blend, amplitude, czyAnimowac]);
 
   return (
     <canvas
