@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDown, ExternalLink, ShoppingCart, UtensilsCrossed, Gavel } from 'lucide-react';
+import { ArrowRight, Stethoscope, Users, Bus, Building2, Scale, Store, ChevronDown, ExternalLink, ShoppingCart, UtensilsCrossed, Gavel, KeyRound } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
@@ -59,6 +59,12 @@ const WITH_PAGE = [
     href: '/branze/voicebot-dla-gastronomii',
     title: 'Restauracje i gastronomia',
     lead: 'Telefon dzwoni w piątek o dziewiętnastej, czyli wtedy, gdy nikt nie ma go jak odebrać. Agent przyjmuje rezerwacje, odpowiada o menu i potwierdza terminy.',
+  },
+  {
+    icon: KeyRound,
+    href: '/branze/voicebot-dla-nieruchomosci',
+    title: 'Biura nieruchomości',
+    lead: 'Telefon o ofercie dzwoni, gdy agent stoi na prezentacji. Bot odpowiada o metrażu i cenie, wstępnie kwalifikuje zainteresowanego i umawia oglądanie.',
   },
   {
     icon: Gavel,

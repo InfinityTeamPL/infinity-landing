@@ -124,6 +124,7 @@ const content: BlogArticleContent = {
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'Kalkulator ROI', href: '/kalkulator' },
     { label: 'Ile kosztuje chatbot AI', href: '/blog/ile-kosztuje-chatbot-ai' },
+    { label: 'Agent AI czy nowy pracownik', href: '/blog/agent-ai-czy-nowy-pracownik' },
   ],
   ctaHeading: 'Policzmy koszt voicebota na Twoich liczbach',
   ctaSub:

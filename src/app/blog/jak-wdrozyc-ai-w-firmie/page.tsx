@@ -123,6 +123,7 @@ const content: BlogArticleContent = {
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
     { label: 'Kalkulator ROI', href: '/kalkulator' },
     { label: 'Ile kosztuje chatbot AI', href: '/blog/ile-kosztuje-chatbot-ai' },
+    { label: 'Agent AI czy nowy pracownik', href: '/blog/agent-ai-czy-nowy-pracownik' },
   ],
   ctaHeading: 'Nie wiesz, od którego procesu zacząć?',
   ctaSub:

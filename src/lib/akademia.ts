@@ -20,10 +20,39 @@ export interface LessonSection {
   list?: string[];
 }
 
+/**
+ * Ścieżki kursu. Dzielimy je, bo czytelnik przychodzi tu z dwoma różnymi
+ * pytaniami: „czy to w ogóle ma sens u mnie" (podstawy) oraz „jak ma
+ * brzmieć rozmowa w mojej branży" (scenariusze). Wrzucone do jednej listy
+ * kanibalizowały się nawzajem w nawigacji.
+ */
+export type TrackId = 'podstawy' | 'scenariusze';
+
+export interface Track {
+  id: TrackId;
+  name: string;
+  lead: string;
+}
+
+export const TRACKS: Track[] = [
+  {
+    id: 'podstawy',
+    name: 'Podstawy',
+    lead: 'Od tego, jak działa rozmowa z agentem, po decyzję czy wdrażać i jak to zmierzyć. Jeśli dopiero rozważacie voicebota, zacznijcie tutaj.',
+  },
+  {
+    id: 'scenariusze',
+    name: 'Scenariusze branżowe',
+    lead: 'Konkretne rozmowy, zdanie po zdaniu: co agent mówi, gdzie oddaje słuchawkę człowiekowi i co w danej branży psuje się najczęściej.',
+  },
+];
+
 export interface Lesson {
   slug: string;
   /** Numer w kursie, używany w nawigacji i danych strukturalnych. */
   number: number;
+  /** Ścieżka, do której należy lekcja. Brak = podstawy (zgodność wsteczna). */
+  track?: TrackId;
   title: string;
   metaTitle: string;
   metaDescription: string;
@@ -48,7 +77,7 @@ export const LESSONS: Lesson[] = [
     slug: 'jak-dziala-voicebot',
     number: 1,
     title: 'Jak działa voicebot i dlaczego przestał brzmieć jak automat',
-    metaTitle: 'Jak działa voicebot — rozmowa telefoniczna z AI krok po kroku',
+    metaTitle: 'Jak działa voicebot — od słowa klienta do odpowiedzi',
     metaDescription:
       'Co dzieje się między słowem klienta a odpowiedzią voicebota: rozpoznanie mowy, model, synteza głosu. Skąd bierze się opóźnienie i co je psuje.',
     lead: 'Różnica między infolinią sprzed dekady a dzisiejszym voicebotem nie polega na lepszym lektorze. Polega na tym, że po drodze ktoś w ogóle rozumie, co mówicie.',
@@ -751,6 +780,423 @@ export const LESSONS: Lesson[] = [
     { label: "Obowiązek informowania, że rozmawiasz z AI", href: "/blog/ai-act-chatboty-obowiazki" },
     ],
   },
+  {
+    slug: "scenariusz-przychodnia",
+    number: 11,
+    track: 'scenariusze',
+    title: "Rozmowa w przychodni: rejestracja, przekładanie, odwoływanie",
+    metaTitle: "Scenariusz rozmowy voicebota w przychodni",
+    metaDescription: "Scenariusz telefonu do rejestracji zdanie po zdaniu: powitanie z informacją o AI, cztery ścieżki sprawy, propozycja terminów i granice przy objawach.",
+    lead: "Rejestracja telefoniczna to najbardziej powtarzalna rozmowa w przychodni i jednocześnie ta, w której agent najłatwiej przekracza granicę. Rozbieramy ją na zdania: co mówi, o co pyta, kiedy oddaje słuchawkę.",
+    sections: [
+      {
+        h2: "Pierwsze dziesięć sekund: kto mówi i w jakiej sprawie",
+        paragraphs: [
+          "Rozmowa zaczyna się od zdania, które robi dwie rzeczy naraz. Mówi pacjentowi, dokąd trafił, i uprzedza go, że po drugiej stronie odpowiada maszyna. Od 2 sierpnia 2026 informowanie o tym, że rozmówcą jest AI, wynika z przepisów unijnych, więc nie traktujcie tego zdania jako ozdobnika. U nas brzmi ono tak: „Przychodnia Zdrowie, dzień dobry. Rozmawia Pani z automatycznym asystentem. Mogę umówić, przełożyć albo odwołać wizytę. W czym mogę pomóc?”",
+          "Kolejność ma znaczenie. Najpierw nazwa placówki, bo pacjent chce wiedzieć, czy dodzwonił się dobrze. Potem informacja o automacie, zanim rozmówca zdąży zacząć opowiadać. Na końcu zakres spraw, czyli lista tego, co agent faktycznie załatwi. Ten ostatni element oszczędza mnóstwo nieporozumień, bo pacjent od razu słyszy, że o wyniki badań pytać nie ma sensu. Całość mieści się w kilkunastu sekundach.",
+          "Pierwsze pytanie ma rozdzielić ruch na cztery ścieżki. Jeśli pacjent zaczyna ogólnie („dzień dobry, ja w sprawie wizyty”), agent dopytuje wprost: „Chodzi o umówienie nowej wizyty, przełożenie istniejącej, czy o jej odwołanie?”. Zdanie „chcę się zapisać” prowadzi do pytania o poradnię albo o nazwisko lekarza, a dopiero potem agent zagląda do wolnych okien. Zdanie „nie dam rady we wtorek” uruchamia ścieżkę przełożenia, w której najpierw trzeba odnaleźć istniejącą rezerwację.",
+          "Zostają dwa pozostałe warianty. „Proszę mnie wykreślić” to najkrótsza ścieżka w całym scenariuszu, dwa pytania i potwierdzenie. „Dzwonię po wyniki” kończy się natychmiastowym przekazaniem do rejestracji, bez zaglądania do jakiegokolwiek systemu. Cztery ścieżki, cztery różne zakończenia. Nic poza nimi agent nie obsługuje samodzielnie.",
+        ],
+      },
+      {
+        h2: "Terminy: jak agent proponuje, potwierdza i cofa",
+        paragraphs: [
+          "Najczęstszy błąd w scenariuszach rejestracji polega na czytaniu pacjentowi całej listy wolnych godzin. Przez telefon nikt tego nie zapamięta. Agent podaje dwa terminy i pyta o wybór: „Mam wolne w czwartek czwartego czerwca o dziewiątej dwadzieścia oraz w piątek piątego czerwca o czternastej. Który termin Pani odpowiada?”. Jeżeli żaden nie pasuje, podaje kolejne dwa, a za trzecim razem proponuje inne rozwiązanie: „Mogę zapisać Panią na listę oczekujących i oddzwonimy, gdy ktoś odwoła. Zrobić tak?”",
+          "Osobno obsłużcie pacjenta, który mówi „potrzebuję jak najszybciej”. To zdanie brzmi jak prośba o termin, a bywa sygnałem, że dzieje się coś niedobrego. Agent nie ocenia, jak pilna jest sprawa, bo nie ma do tego żadnych podstaw. Mówi: „Najbliższy wolny termin u doktora Nowaka to poniedziałek o ósmej dziesięć. Jeżeli sprawa jest pilna, przełączę Panią do rejestratorki, ona zdecyduje o przyjęciu poza kolejnością.” Decyzja wraca do człowieka, a pacjent nie zostaje z niczym.",
+          "Dane pacjenta agent zbiera na końcu, nie na wstępie. Pyta o imię, nazwisko i datę urodzenia, po czym powtarza wszystko głośno: „Powtarzam: Anna Kowalska, dwunasty marca tysiąc dziewięćset osiemdziesiątego drugiego, poradnia dermatologiczna, czwartek o dziewiątej dwadzieścia. Zgadza się?”. Powtórzenie łapie literówki w nazwisku i pomyłki w dacie, zanim trafią do kalendarza. Na koniec zapowiedź potwierdzenia: „Za chwilę wyślemy SMS na numer, z którego Pani dzwoni.”",
+          "Przy przekładaniu i odwoływaniu agent najpierw nazywa to, co znalazł, a dopiero potem pyta o zgodę: „Widzę wizytę u doktor Zielińskiej w piątek o jedenastej czterdzieści. Odwołać ten termin?”. Po odwołaniu pada jedno pytanie więcej: „Odwołane. Umówić od razu nowy termin?”. Przy projektowaniu tej części scenariusza pilnujemy czterech rzeczy.",
+        ],
+          list: [
+          "Dwa terminy naraz i ani jednego więcej, bo trzeci już się nie mieści w pamięci rozmówcy.",
+          "Data zawsze z dniem tygodnia, bo „czwartek czwartego” jest odporniejszy na przesłyszenie niż samo „czwartego”.",
+          "Godzina wypowiadana pełnymi słowami, bez skrótów w rodzaju „dziewiąta dwadzieścia po”.",
+          "Każde ustalenie powtórzone przed zapisem, łącznie z nazwiskiem lekarza i nazwą poradni.",
+      ],
+      },
+      {
+        h2: "Zdania, których agent w przychodni nie wypowie",
+        paragraphs: [
+          "Agent w przychodni pracuje jako rejestrator. Porad medycznych nie udziela, wyników badań nie interpretuje, o pilności objawów nie orzeka. Tę granicę zapisujemy w scenariuszu jako gotową formułę, żeby model nie próbował jej obchodzić uprzejmością. Nasza brzmi: „Nie mogę oceniać objawów ani doradzać w sprawach zdrowia. Łączę Panią z rejestracją.” Kropka, przekazanie, koniec tematu.",
+          "Najostrzejsza reguła dotyczy objawów alarmowych. Jeżeli w wypowiedzi pacjenta pojawia się ból w klatce piersiowej, duszność, nagłe zaburzenia mowy albo silne krwawienie, agent przerywa scenariusz w pół zdania: „Proszę natychmiast zadzwonić pod numer 112. Przełączam Pana teraz do rejestracji.” Nie dopytuje o szczegóły, nie prosi o dokończenie danych, nie proponuje terminu. Przerwanie jest twarde i zawsze wygrywa z resztą scenariusza.",
+          "Listę wyzwalaczy budujecie razem z personelem medycznym, a nie sami przy biurku. Cztery grupy sytuacji muszą się w niej znaleźć zawsze.",
+        ],
+          list: [
+          "Objawy ze strony serca i oddechu, razem z opisami potocznymi w rodzaju „ściska mnie w piersi”.",
+          "Nagłe objawy neurologiczne: opadający kącik ust, bełkotliwa mowa, brak czucia w ręce.",
+          "Ciąża z bólem lub krwawieniem, gdzie termin za tydzień nie jest żadną odpowiedzią.",
+          "Zdania o odebraniu sobie życia, po których agent podaje numer alarmowy i natychmiast oddaje rozmowę.",
+      ],
+      },
+      {
+        h2: "Dane wrażliwe i rozmowy, które zostają przy człowieku",
+        paragraphs: [
+          "Informacja o zdrowiu należy do szczególnej kategorii danych, więc scenariusz projektujemy tak, żeby agent zebrał ich jak najmniej. Do umówienia wizyty wystarczy imię, nazwisko, data urodzenia, poradnia i termin. Agent nie pyta „na co Pani choruje”, nie prosi o PESEL na wszelki wypadek i nie zbiera opisu dolegliwości „dla lekarza”. Każde dodatkowe pole to dane, które potem trzeba przechowywać, zabezpieczać i kiedyś usunąć.",
+          "Pacjenci i tak opowiadają. To zupełnie naturalne, dzwonią przecież w sprawie zdrowia. Agent ma na to gotową odpowiedź, uprzejmą i zamykającą temat: „Dziękuję, tych informacji nie potrzebuję do zapisania wizyty. Powie je Pani lekarzowi na miejscu.” Całą resztę, czyli nagrania i zapisy rozmów, obejmujemy tymi samymi regułami retencji, a systemy stawiamy na hostingu w Polsce lub w chmurze UE, zgodnie z RODO.",
+          "Cztery rozmowy zostawiamy człowiekowi i nie próbujemy ich obejść lepiej napisanym promptem. Pierwsza to wyniki badań, bo nawet neutralne „są gotowe” pacjent słyszy jako komunikat o swoim zdrowiu, a pytanie „to co tam wyszło” pada sekundę później. Druga to poradnia onkologiczna, gdzie sama rejestracja bywa rozmową o strachu. Trzecia to pacjent zdenerwowany, który podnosi głos albo płacze: agent rozpoznaje ton i przekazuje rozmowę bez negocjacji. Czwarta to każda sytuacja, w której pacjent od pierwszego zdania prosi o człowieka. Prośbę „proszę mnie połączyć z kimś żywym” traktujemy jak polecenie, którego się nie zbija.",
+          "Zaplanujcie też wariant, w którym przekazanej rozmowy nikt nie odbiera. Agent nie może wtedy wrócić do umawiania wizyty, jakby nic się nie stało. Mówi: „Nie mogę teraz połączyć Pani z rejestracją. Jeżeli sprawa jest nagła, proszę dzwonić pod 112. Przekażę informację, żeby rejestracja oddzwoniła najszybciej, jak się da.” To zdanie ratuje więcej rozmów niż cała reszta scenariusza razem wzięta.",
+        ],
+      },
+    ],
+    takeaways: [
+      "Zakres spraw podany w powitaniu ucina połowę nieporozumień, bo pacjent od razu wie, czego agent nie zrobi.",
+      "Dwa terminy naraz zamiast listy godzin, a każde ustalenie powtórzone głośno przed zapisaniem w kalendarzu.",
+      "Objawy alarmowe przerywają scenariusz natychmiast: numer alarmowy i przekazanie do człowieka, bez dopytywania.",
+      "Agent zbiera minimum danych, bo informacja o zdrowiu to szczególna kategoria, a każde pole trzeba potem chronić.",
+    ],
+    faq: [
+      {
+        q: "Czy agent może powiedzieć pacjentowi, że wyniki badań są gotowe?",
+        a: "Odradzamy to nawet w tak okrojonej formie. Sama informacja o wykonanym badaniu dotyczy zdrowia konkretnej osoby, a po zdaniu „są gotowe” niemal zawsze pada pytanie „to co tam wyszło”. Bezpieczniej, gdy agent przekazuje rozmowę do rejestracji od razu, bez zaglądania do systemu.",
+      },
+      {
+        q: "Po czym agent poznaje, że pacjent jest zdenerwowany?",
+        a: "Częściowo po słowach, czyli po skargach, podniesionym tonie i prośbach o człowieka, a częściowo po tym, że rozmowa nie posuwa się do przodu mimo dwóch prób. Ustawiamy próg nisko i wolimy przekazać rozmowę o jedną za wcześnie niż o jedną za późno. Przekazanie nigdy nie jest błędem agenta.",
+      },
+      {
+        q: "Co z pacjentami, którzy nie chcą rozmawiać z automatem?",
+        a: "Scenariusz ma zawsze jedno zdanie wyjścia, dostępne w każdym momencie: „Oczywiście, przełączam do rejestracji.” Agent nie tłumaczy wtedy swoich zalet i nie prosi o jeszcze jedną szansę. Zakres tego, co przechodzi do ludzi, ustalamy na pierwszej konsultacji, która jest bezpłatna.",
+      },
+    ],
+    related: [
+      { label: "Voicebot dla przychodni", href: "/branze/voicebot-dla-przychodni" },
+      { label: "Granice voicebota", href: "/akademia/granice-voicebota" },
+      { label: "Prawo i nagrywanie rozmów", href: "/akademia/prawo-i-nagrywanie" },
+    ],
+  },
+  {
+    slug: "scenariusz-warsztat-salon",
+    number: 12,
+    track: 'scenariusze',
+    title: "Rozmowa w salonie i warsztacie: terminy, wyceny, przypomnienia",
+    metaTitle: "Voicebot w salonie i warsztacie: scenariusz rozmowy",
+    metaDescription: "Gotowy scenariusz rozmowy w salonie i warsztacie: rozpoznanie usługi, długość wizyty, widełki cenowe, potwierdzenie SMS i przypomnienie dzień wcześniej.",
+    lead: "Telefon w salonie dzwoni zawsze wtedy, gdy ktoś ma ręce w farbie albo głowę pod maską samochodu. Ta lekcja to scenariusz takiej rozmowy, zdanie po zdaniu, gotowy do przetestowania na sobie.",
+    sections: [
+      {
+        h2: "Powitanie i rozpoznanie usługi",
+        paragraphs: [
+          "Powitanie w salonie może być krótsze niż w przychodni, bo sprawa jest prostsza. Nadal musi zawierać informację o AI, która od 2 sierpnia 2026 wynika z przepisów unijnych. U fryzjera brzmi to tak: „Salon Perfekt, dzień dobry. Mówi automatyczny asystent salonu. Umówię Panią na wizytę albo sprawdzę wolny termin. Czego dotyczy telefon?”. W warsztacie prawie identycznie: „Serwis Kowalski, dzień dobry. Rozmawia Pan z automatycznym asystentem. Mogę zapisać samochód na termin. W czym pomóc?”",
+          "Zaraz potem zaczyna się część, którą najczęściej projektuje się za płytko. Klient mówi „chciałabym się ostrzyc” albo „coś mi stuka z przodu”, a agent musi z tego zrobić pozycję z Waszego cennika i konkretne okno w grafiku. Strzyżenie zajmuje inny czas niż koloryzacja, wymiana opon inny niż diagnostyka zawieszenia. Żadnych uniwersalnych czasów tu nie podamy, bo każdy zakład ma swoje. Chodzi o to, żeby agent w ogóle o tej różnicy wiedział.",
+          "Zanim agent dotknie kalendarza, ustala cztery rzeczy.",
+        ],
+          list: [
+          "Jaka usługa, nazwana tak jak w Waszym cenniku, a nie tak jak nazwał ją klient przez telefon.",
+          "Ile trwa, czyli które okno w grafiku zostaje zablokowane.",
+          "Kto wykonuje, jeżeli u Was liczy się konkretna osoba, a nie samo stanowisko.",
+          "Czy dochodzi coś dodatkowego: mycie i modelowanie, odbiór auta z parkingu, samochód zastępczy.",
+      ],
+      },
+      {
+        h2: "Warsztat: marka i model, zanim padnie termin",
+        paragraphs: [
+          "W warsztacie kolejność jest odwrotna niż w salonie. Najpierw samochód, potem termin. Agent pyta prosto: „Poproszę markę i model, a jeśli Pan pamięta, także rocznik.” Bez tego nie da się sensownie zarezerwować stanowiska, bo ta sama usługa na różnych autach zajmuje różne okna, a część robót wymaga podnośnika albo zamówienia części z wyprzedzeniem.",
+          "Cała wymiana wygląda wtedy tak. Klient: „Chcę wymienić opony.” Agent: „Jasne. Jaka marka i model auta?” Klient: „Octavia, rocznik dwa tysiące osiemnaście.” Agent: „Dziękuję. Opony ma Pan swoje na felgach, czy zdejmujemy z felg i zakładamy nowe?”. Dopiero po tej odpowiedzi agent sięga do kalendarza i proponuje dwa terminy, tak samo jak w każdym innym scenariuszu rezerwacyjnym.",
+          "Gdy klient nie wie, co się dzieje z autem, agent nie zgaduje przyczyny. Zapisuje objaw własnymi słowami klienta i rezerwuje okno diagnostyczne: „Nie szkodzi, mechanik ustali to na miejscu. Zapiszę Pana na diagnostykę i zanotuję, że stuka przy skręcaniu w lewo.” Żadnych podpowiedzi w stylu „to pewnie łożysko”. Agent nie stawia diagnozy, nawet jeśli brzmi to bardzo prawdopodobnie.",
+        ],
+      },
+      {
+        h2: "„Ile to będzie kosztować?” bez zgadywania",
+        paragraphs: [
+          "To pytanie pada w większości rozmów i jest najtrudniejszym fragmentem scenariusza. Agent ma dostęp do cennika z widełkami, więc odpowiada dwuczęściowo. Najpierw liczby, potem warunek: „Wymiana klocków i tarcz z przodu to u nas zwykle od czterystu do siedmiuset złotych za robociznę, plus części. Dokładną kwotę poda mechanik po obejrzeniu auta.” Obie części w jednej wypowiedzi, nigdy osobno.",
+          "W salonie działa ta sama zasada, tylko powód jest inny. Cena zależy od włosów, nie od oględzin podnośnikiem. „Koloryzacja zaczyna się u nas od dwustu pięćdziesięciu złotych. Przy długich i gęstych włosach schodzi więcej farby, więc kwota rośnie. Ostateczną cenę ustali fryzjerka na konsultacji przed usługą.” Klient wychodzi z rozmowy z widełkami i ze świadomością, od czego zależy końcowa liczba.",
+          "Agent nie negocjuje. Nie obiecuje rabatu, nie mówi „na pewno się zmieścimy”, nie schodzi z ceny, gdy klient naciska. Ma na to jedno zdanie: „Nie mogę ustalać cen ani rabatów. Zanotuję Pana pytanie i oddzwoni kierownik serwisu.” Cztery reguły opisują całą tę część scenariusza.",
+        ],
+          list: [
+          "Widełki zawsze z górną granicą, bo samo „od czterystu złotych” klient zapamięta jako cenę końcową.",
+          "Zdanie o ostatecznej wycenie w tej samej wypowiedzi, nie dopiero na pożegnanie.",
+          "Kwoty wymawiane pełnymi słowami, bez skrótów w rodzaju „czterysta plus”.",
+          "Brak pozycji w cenniku oznacza przekazanie pytania człowiekowi, nie improwizację agenta.",
+      ],
+      },
+      {
+        h2: "SMS, przypomnienie i rozmowy, których nie oddajemy maszynie",
+        paragraphs: [
+          "Rezerwacja kończy się potwierdzeniem, które klient może sobie później obejrzeć. Agent zapowiada je jednym zdaniem: „Potwierdzenie wyślemy SMS na ten numer, będzie w nim termin i adres.” Dzień przed wizytą wychodzi przypomnienie. Głos w połączeniach wychodzących opieramy na ElevenLabs, więc brzmi tak samo jak w rozmowie przychodzącej, co dla stałych klientów ma znaczenie.",
+          "Przypomnienie to osobny, bardzo krótki scenariusz: „Dzień dobry, przypominam o jutrzejszej wizycie w Serwisie Kowalski o dziesiątej. Termin aktualny?”. Przy odpowiedzi twierdzącej rozmowa kończy się w dwóch zdaniach. Przy odmowie agent od razu przechodzi do zmiany: „Odwołuję jutrzejszy termin. Chce Pan wybrać nowy teraz, czy mamy oddzwonić w przyszłym tygodniu?”. Milczenia nie liczymy jako potwierdzenia, wtedy grafik zostaje bez zmian, a informacja idzie do obsługi.",
+          "Czterech rozmów nie oddajemy maszynie i nie ma tu dyskusji. Pierwsza to reklamacja po nieudanej usłudze, kiedy klient dzwoni z pretensją o kolor albo o hałas, który wrócił po naprawie. Agent mówi wtedy jedno zdanie i przekazuje: „Przykro mi, że tak wyszło. Łączę Pana z kierownikiem.” Druga to negocjacja ceny, bo maszyna, która raz zejdzie z kwoty, ustawia precedens na wszystkie kolejne telefony.",
+          "Trzecia to stały klient, który dzwoni „do Pani Basi” i nie interesuje go żadne wolne okno u kogokolwiek innego. Agent rozpoznaje imię pracownika i przekazuje rozmowę, zamiast proponować zamiennik. Czwarta to duża zmiana, na przykład rozjaśnienie ciemnych włosów albo nietypowa naprawa po kolizji, gdzie przed zapisaniem terminu potrzebna jest rozmowa z fachowcem. W tych czterech przypadkach automat ma tylko rozpoznać sytuację i szybko zniknąć z linii.",
+        ],
+      },
+    ],
+    takeaways: [
+      "Agent tłumaczy język klienta na pozycję z cennika, bo od nazwy usługi zależy długość okna w grafiku.",
+      "W warsztacie najpierw marka i model auta, dopiero potem propozycja terminu i rezerwacja stanowiska.",
+      "Na pytanie o cenę odpowiadają widełki z górną granicą razem ze zdaniem o wycenie po oględzinach.",
+      "Reklamacja, negocjacja ceny i prośba o konkretną osobę idą do człowieka, bez próby zatrzymania klienta.",
+    ],
+    faq: [
+      {
+        q: "Czy agent może odwołać wizytę bez sprawdzania tożsamości?",
+        a: "Przy zwykłej usłudze wystarczy zwykle numer telefonu, z którego przychodzi połączenie, oraz potwierdzenie imienia i nazwiska. Gdy numer się nie zgadza z rezerwacją, agent prosi o datę wizyty jako drugi element i dopiero wtedy odwołuje. Przy droższych usługach z zadatkiem wolimy, żeby odwołanie potwierdzał człowiek.",
+      },
+      {
+        q: "Co robi agent, gdy klient prosi o usługę spoza cennika?",
+        a: "Nie wymyśla ceny ani czasu trwania. Mówi wprost: „Tej usługi nie mam w cenniku. Zanotuję Pani prośbę i oddzwonimy z terminem.” Taki telefon trafia na listę do obsługi razem z nagranym opisem sprawy, więc nic nie ginie.",
+      },
+      {
+        q: "Lepiej przypominać SMS-em czy telefonem?",
+        a: "SMS jest tańszy i mniej nachalny, telefon skuteczniej wyłapuje odwołania, bo klient odpowiada od razu i można od ręki zaproponować nowy termin. Wiele zakładów łączy oba kanały: SMS zaraz po rezerwacji, połączenie dzień przed wizytą. Który wariant ma sens u Was, ustalamy na pierwszej konsultacji, która jest bezpłatna.",
+      },
+    ],
+    related: [
+      { label: "Voicebot dla salonów", href: "/branze/voicebot-dla-salonow" },
+      { label: "Jak zbudować scenariusz rozmowy", href: "/akademia/scenariusz-rozmowy" },
+      { label: "Voicebot w innych branżach", href: "/branze" },
+    ],
+  },
+  {
+    slug: "scenariusz-transport",
+    number: 13,
+    track: 'scenariusze',
+    title: "Rozmowa w firmie transportowej: rozkłady, statusy, reklamacje",
+    metaTitle: "Voicebot w transporcie: scenariusz rozmowy o rozkładzie",
+    metaDescription: "Jak zbudować scenariusz voicebota w firmie transportowej: pytania o odjazd, status przesyłki, cytowanie rozkładu i moment przekazania do dyspozytora.",
+    lead: "Pod jednym numerem przewoźnika spotykają się dwie rozmowy, które nie mają ze sobą nic wspólnego. Ta lekcja rozpisuje obie, zdanie po zdaniu.",
+    sections: [
+      {
+        h2: "Dwa telefony na jednym numerze",
+        paragraphs: [
+          "Do firmy transportowej dzwonią dwie osoby o zupełnie różnych potrzebach. Pierwsza chce wiedzieć, o której odjeżdża autobus i czy zdąży na przesiadkę. Druga pyta, gdzie jest jej paleta i czy dojedzie przed weekendem. Jeśli agent zacznie rozmowę od ogólnego „w czym mogę pomóc”, obie osoby zaczną opowiadać po swojemu, a wy dostaniecie transkrypcje, z których niewiele wynika.",
+          "Dlatego pierwsze zdanie ma rozdzielić ruch. Brzmi to tak: „Dzień dobry, tu automatyczny asystent [nazwa firmy]. Rozmawia Pan z systemem AI. Dzwoni Pan w sprawie kursu i rozkładu, czy w sprawie przesyłki?”. Informacja o AI nie jest grzecznościowym dodatkiem. Unijny obowiązek informowania rozmówcy, że po drugiej stronie jest sztuczna inteligencja, ma termin stosowania 2 sierpnia 2026, więc lepiej wpisać to zdanie od razu, niż dopisywać je potem w pośpiechu.",
+          "Rozdzielenie na starcie daje jeszcze jedną rzecz: dwa osobne zestawy danych. Gałąź pasażerska sięga do rozkładu. Gałąź przesyłkowa sięga do systemu zleceń. Agent, który miesza jedno z drugim, prędzej czy później odpowie na pytanie o paletę godziną odjazdu autobusu.",
+          "Zbudowaliśmy publiczne demo transportowe, żeby pokazać, jak agent zachowuje się na prawdziwych, nierównych danych rozkładowych. Stoi ono na publicznie dostępnym rozkładzie PKS Gryfice: 6 przystanków i 276 odjazdów. Przewoźnik nie jest naszym klientem, a dane pochodzą ze źródła jawnego. Traktujcie to jako poligon, nie jako opis wdrożenia.",
+        ],
+      },
+      {
+        h2: "Pasażer: skąd, dokąd, kiedy",
+        paragraphs: [
+          "Rozmowa pasażerska ma komplet zmiennych: przystanek początkowy, przystanek docelowy, datę oraz porę dnia. Agent pyta o nie pojedynczo, bo człowiek przez telefon nie odpowiada na listę. „Z którego przystanku Pani wyjeżdża?”, potem „Dokąd Pani jedzie?”, potem „Jedzie Pani dzisiaj czy w inny dzień?”. Dopiero na końcu doprecyzowanie: „Rano czy po południu?”.",
+          "Kiedy agent ma komplet, podaje godziny i od razu mówi, skąd je ma: „Z Gryfic do Trzebiatowa w piątek mam dwa odjazdy przed południem, o 6:40 i 11:05. Godziny czytam z rozkładu obowiązującego od 1 marca”. Ten drugi człon wygląda na zbędny, dopóki rozmowa nie trafi na dzień świąteczny albo objazd. Wtedy ratuje sytuację, bo pasażer wie, na czym opiera się odpowiedź, i sam dopyta.",
+          "Najważniejsze zdanie w tym scenariuszu jest krótkie: „Nie mam takiego kursu w rozkładzie”. Bez ozdobników, bez „chyba”, bez „raczej nie kursuje”. Model, który w tym miejscu improwizuje, wysyła kogoś na przystanek o godzinie, której nie ma, a taki błąd wraca do was telefonem od zdenerwowanego człowieka. Zaraz po tym zdaniu agent daje wyjście: „Mogę sprawdzić inny dzień albo przełączyć Panią do dyspozytora. Co wybieramy?”.",
+          "Zanim agent w ogóle otworzy rozkład, musi mieć zebrane cztery rzeczy, i każda z nich ma własną pułapkę.",
+        ],
+          list: [
+          "Przystanek początkowy w brzmieniu z rozkładu. Pasażer powie „spod szkoły”, a w danych stoi nazwa ulicy, więc agent musi umieć potwierdzić: „Chodzi o przystanek [nazwa]?”.",
+          "Przystanek docelowy z rozstrzygnięciem nazw, które się powtarzają. „Nowa Wieś jest u nas na dwóch trasach. Jedzie Pani przez Płoty czy przez Brojce?”.",
+          "Data, a nie sam dzień tygodnia. Rozkład szkolny i wakacyjny to dwa różne pliki, a pasażer mówi „w poniedziałek”, mając na myśli za tydzień.",
+          "Pora dnia albo godzina graniczna, żeby agent nie zaczął czytać kilkunastu odjazdów pod rząd. „Mam sześć kursów tego dnia. Podać dwa najbliższe czy przeczytać wszystkie?”.",
+      ],
+      },
+      {
+        h2: "Przesyłka: numer zlecenia, status, termin",
+        paragraphs: [
+          "Gałąź przesyłkowa zaczyna się od identyfikatora i tu przegrywa najwięcej rozmów, bo numery są długie, a linia telefoniczna gubi cyfry. Agent prosi o numer i od razu narzuca tempo: „Proszę podać numer zlecenia, może Pan czytać cyfra po cyfrze”. Po odczycie potwierdza całość na głos: „Odczytuję: siedem, cztery, zero, dwa, jeden, osiem. Zgadza się?”. To kosztuje pięć sekund. Oszczędza całą rozmowę.",
+          "Odpowiedź o statusie ma dwa elementy: gdzie przesyłka jest teraz i kiedy planowo dojedzie. „Ostatni skan mam dzisiaj o 4:20 w sortowni w Poznaniu. Planowana dostawa to jutro, w przedziale od 9 do 15”. Agent nie dokłada nic od siebie. Nie mówi „pewnie dojedzie rano”, bo za takim zdaniem klient przestawia sobie cały dzień i zostaje w domu na próżno.",
+          "Kiedy numeru nie ma w systemie, obowiązuje ta sama zasada co przy braku kursu. „Nie znajduję zlecenia o tym numerze. Może brakować jednej cyfry, albo nadanie nie zostało jeszcze zeskanowane. Podamy numer jeszcze raz, czy mam przełączyć do obsługi?”. Dwie drogi wyjścia, żadnej hipotezy o tym, gdzie paczka jest naprawdę.",
+          "Jest też zestaw rzeczy, których agent w tej gałęzi nie robi, choć technicznie by potrafił. Nie podaje numeru telefonu kierowcy ani jego pozycji na trasie. Nie zmienia adresu dostawy, bo to zmiana warunków zlecenia. Nie zawęża godziny dostawy poniżej przedziału z systemu, nawet gdy klient naciska, a naciskać będzie.",
+        ],
+      },
+      {
+        h2: "Jedno źródło prawdy i sprawy poza zasięgiem agenta",
+        paragraphs: [
+          "Rozkład jest danymi zmiennymi i to odróżnia transport od większości branż. Zmienia się sezonowo, zmienia się przy remoncie drogi, a kursy szkolne znikają na wakacje. Scenariusz musi więc wskazywać jedno miejsce, z którego agent czyta godziny, i mieć w tym miejscu datę obowiązywania. Dwa pliki od dwóch osób z dwóch działów to gwarancja, że agent poda godzinę z tego starszego.",
+          "Datę aktualizacji opłaca się wystawić poza samą rozmowę. Agent może ją wypowiadać, a wy powinniście widzieć ją w panelu. Do tego przydaje się bezpiecznik: jeśli plik rozkładu jest starszy niż ustalony przez was próg, agent przestaje podawać godziny i mówi „Nie mam potwierdzonej aktualnej wersji rozkładu, przełączam do dyspozytora”. Lepszy taki komunikat niż pewnie brzmiąca nieprawda.",
+          "Osobno stoją sprawy, których nie oddajemy agentowi w żadnej wersji scenariusza. Łączy je jedno: od pierwszego zdania powstaje materiał, który może trafić do ubezpieczyciela, do sądu albo do rozliczenia kary umownej.",
+          "Przekazanie do człowieka ma brzmieć jak decyzja, a nie jak awaria: „Ta sprawa wymaga rozmowy z dyspozytorem, przełączam, proszę o chwilę”. Poza godzinami pracy agent nie zostawia rozmówcy z niczym: „Dyspozytornia pracuje od siódmej. Zapiszę zgłoszenie i Pani numer, oddzwonimy rano”. Zapisane zgłoszenie z konkretnym numerem zlecenia jest warte więcej niż nieodebrany telefon o drugiej w nocy. Poniżej sprawy, które w transporcie agent oddaje od razu, nawet jeśli technicznie potrafiłby zebrać dane.",
+        ],
+          list: [
+          "Zgłoszenie szkody w przesyłce. Opis uszkodzenia, zdjęcia i termin zgłoszenia to dokumentacja, którą prowadzi człowiek.",
+          "Opóźnienie, z którego wynikają pieniądze: przepadła przesiadka, stanęła produkcja, naliczy się kara umowna.",
+          "Każda rozmowa po wypadku, kolizji albo zdarzeniu z udziałem pasażera.",
+          "Zmiana warunków zlecenia: adres, termin, sposób płatności, dane odbiorcy.",
+      ],
+      },
+    ],
+    takeaways: [
+      "Pierwsze zdanie agenta rozdziela ruch pasażerski od przesyłkowego, bo obie gałęzie sięgają po inne dane.",
+      "Przy każdej godzinie agent mówi, z jakiego rozkładu ją czyta, i nigdy nie zgaduje kursu, którego nie ma.",
+      "Numer zlecenia agent potwierdza cyfra po cyfrze, a status podaje dokładnie taki, jaki widzi w systemie.",
+      "Szkody, opóźnienia z konsekwencjami finansowymi i sprawy po wypadku zostają po stronie człowieka.",
+    ],
+    faq: [
+      {
+        q: "Co agent ma zrobić, gdy pasażer pyta o kurs, którego nie ma w rozkładzie?",
+        a: "Powiedzieć wprost: „Nie mam takiego kursu w rozkładzie”. Zaraz potem zaproponować dwie drogi, czyli sprawdzenie innego dnia albo przełączenie do dyspozytora. Improwizacja w tym miejscu kończy się pasażerem na pustym przystanku.",
+      },
+      {
+        q: "Czy demo transportowe na danych PKS Gryfice oznacza, że przewoźnik jest waszym klientem?",
+        a: "Nie. Demo powstało na publicznie dostępnych danych rozkładowych (6 przystanków, 276 odjazdów) i pokazuje zachowanie agenta na realnym zbiorze godzin. Przewoźnik nie jest naszym klientem i nie zamawiał tego wdrożenia.",
+      },
+      {
+        q: "Jak często trzeba aktualizować rozkład w scenariuszu?",
+        a: "Tak często, jak zmienia się u was rozkład, i zawsze z jednego źródła. Przy zmianie sezonowej to kilka razy w roku, przy objazdach częściej. Dobrze ustawić próg, po którym agent przestaje podawać godziny i przekazuje rozmowę do dyspozytora.",
+      },
+    ],
+    related: [
+      { label: "Voicebot dla firm transportowych", href: "/branze/voicebot-dla-transportu" },
+      { label: "Lekcja 4: scenariusz rozmowy", href: "/akademia/scenariusz-rozmowy" },
+      { label: "Agent głosowy AI", href: "/uslugi/agent-glosowy-ai" },
+    ],
+  },
+  {
+    slug: "scenariusz-gastronomia",
+    number: 14,
+    track: 'scenariusze',
+    title: "Rozmowa w restauracji: rezerwacje, zamówienia, alergeny",
+    metaTitle: "Voicebot w restauracji: rezerwacje i zamówienia na wynos",
+    metaDescription: "Scenariusz voicebota dla restauracji: rezerwacja stolika, zamówienie na wynos z powtórzeniem kwoty, pytania o alergeny i moment przekazania do kuchni.",
+    lead: "Piątek, dziewiętnasta, sala pełna, a telefon dzwoni po raz szósty. Ta lekcja rozpisuje, co dokładnie mówi agent, który odbiera go zamiast kelnera.",
+    sections: [
+      {
+        h2: "Piątkowy szczyt i pierwsze zdanie",
+        paragraphs: [
+          "W restauracji telefon dzwoni najgęściej wtedy, kiedy nikt nie ma na niego czasu. Kelner idzie z czterema talerzami, kuchnia woła o wydanie, przy barze czeka rachunek. Telefon przegrywa z gościem, który siedzi na sali, i słusznie przegrywa. Tylko że po drugiej stronie ktoś właśnie chciał zarezerwować stolik na osiem osób.",
+          "Agent odbiera od pierwszego sygnału i od razu segreguje ruch: „Dzień dobry, restauracja [nazwa], tu automatyczny asystent, rozmawia Pani z AI. Rezerwacja stolika, zamówienie na wynos, czy inna sprawa?”. Zdanie o AI ma paść na początku, a nie po minucie rozmowy. Unijny obowiązek informowania, że rozmówcą jest sztuczna inteligencja, ma termin stosowania 2 sierpnia 2026.",
+          "Zanim zajmiecie się rezerwacjami, opłaca się wpisać odpowiedzi na pytania, które wracają codziennie w tym samym brzmieniu. Agent zamyka je w kilka sekund i rozmowa się kończy, bez zajmowania kelnera. Poniżej cztery, które słychać najczęściej, w formie gotowych kwestii do przerobienia na wasze realia.",
+        ],
+          list: [
+          "Parking. „Mamy własne miejsca na tyłach budynku, wjazd od ulicy [nazwa]. W piątek wieczorem bywa komplet, wtedy najbliższy parking miejski jest kilka minut spacerem”.",
+          "Pies. „Psy są u nas mile widziane na tarasie i w dolnej sali. Miska z wodą czeka przy wejściu”.",
+          "Krzesełko dla dziecka. „Mamy krzesełka dla dzieci. Zapiszę to przy rezerwacji, żeby czekało już przy stoliku”.",
+          "Taras. „Taras jest czynny do końca września i ogrzewany po zmroku. Przy deszczu przenosimy Państwa do sali, dzwonimy wtedy wcześniej”.",
+      ],
+      },
+      {
+        h2: "Rezerwacja: liczba osób, godzina, miejsce, okazja",
+        paragraphs: [
+          "Rezerwacja ma cztery zmienne i agent zbiera je pojedynczo, w tej kolejności: „Na ile osób szukamy stolika?”, „Na którą godzinę?”, „Woli Pani salę czy taras?”, „Czy świętujecie coś szczególnego?”. Ostatnie pytanie wygląda na uprzejmość, a bywa najbardziej praktyczne z całej czwórki. Urodziny oznaczają świeczkę w deserze, rocznica stolik dalej od przejścia, spotkanie służbowe względną ciszę.",
+          "Kiedy termin jest zajęty, agent nie obiecuje, że „spróbujemy coś wcisnąć”. Podaje alternatywy: „Na dwudziestą nie mam już stolika na cztery osoby. Wolna jest osiemnasta trzydzieści albo dwudziesta pierwsza. Która godzina Państwu pasuje?”. Dwie konkretne propozycje działają lepiej niż pytanie „a może inna godzina?”, bo gość nie musi zgadywać, co jeszcze u was wchodzi w grę.",
+          "Zamknięcie rezerwacji to powtórzenie kompletu i zapowiedź potwierdzenia: „Powtarzam: czwartek, dwudziesta, cztery osoby, taras, urodziny. Wyślę SMS z potwierdzeniem na ten numer. Wszystko się zgadza?”. Przy okazji agent mówi o zasadzie, o którą i tak zapytacie później: „Stolik trzymamy piętnaście minut. Jeśli się Państwo spóźnią, proszę o telefon, wtedy poczekamy dłużej”.",
+          "Ta sama gałąź obsługuje odwołanie i przesunięcie, bo gość dzwoni w tej sprawie z tego samego powodu co przy rezerwowaniu: jest w biegu. Agent odnajduje wpis po numerze telefonu i potwierdza go na głos, zanim cokolwiek zmieni: „Mam rezerwację na czwartek, dwudziesta, cztery osoby. Odwołujemy czy przesuwamy na inny termin?”. Odwołany stolik o osiemnastej w piątek to stolik, który zdążycie sprzedać jeszcze raz.",
+        ],
+      },
+      {
+        h2: "Zamówienie na wynos i powtórzenie z kwotą",
+        paragraphs: [
+          "Zamówienie na wynos dyktuje się szybko i chaotycznie, bo gość ma przed sobą menu na telefonie i dwie osoby w tle, które zmieniają zdanie. Agent musi domykać każdą pozycję od razu, zamiast zbierać warianty na koniec. Po „poproszę margheritę” pada natychmiast „Rozmiar trzydzieści dwa czy czterdzieści pięć?”, a zaraz potem „Dodać sos czosnkowy albo ostry?”. Doprecyzowanie na końcu rozmowy oznacza czytanie całej listy od nowa.",
+          "Osobno trzeba przewidzieć „to co zwykle”. Agent, który nie ma potwierdzonej historii zamówień z tego numeru, mówi wprost: „Nie mam podglądu w poprzednie zamówienia, podyktuje mi Pan pozycje?”. Zgadywanie kończy się pizzą, po którą nikt nie przyjeżdża.",
+          "Najważniejszy krok całej rozmowy jest jeden i wygląda niepozornie. Przed potwierdzeniem agent czyta całe zamówienie razem z kwotą i czasem odbioru: „Powtarzam: dwie margherity czterdzieści pięć, jedna z podwójnym serem, sałatka cezar bez grzanek, dwa sosy czosnkowe. Razem sto dwadzieścia cztery złote. Odbiór osobisty za około czterdzieści minut. Wszystko się zgadza?”. Ten fragment ratuje więcej zamówień niż cała reszta scenariusza, bo wyłapuje pomyłkę, zanim kuchnia zacznie pracować.",
+          "Płatność kartą przez telefon odrzucamy jawnie i bez wyjątków. Agent nie prosi o dane karty, a gdy gość zaczyna je dyktować, przerywa: „Proszę nie podawać numeru karty. Płatność przyjmujemy przy odbiorze, gotówką albo kartą na miejscu”. Jeśli macie link do płatności, agent może go zapowiedzieć i wysłać po rozmowie. Numer karty w nagraniu to problem, którego nie chcecie mieć na dysku.",
+        ],
+      },
+      {
+        h2: "Alergeny i rozmowy, których agent nie prowadzi",
+        paragraphs: [
+          "Alergeny są jedynym miejscem w tym scenariuszu, gdzie pomyłka agenta może skończyć się karetką. Zasada jest więc twarda: agent odpowiada wyłącznie z zatwierdzonej karty składników, bez wnioskowania i bez analogii między daniami. Jeśli w karcie stoi nerkowiec, agent mówi „W tym daniu, według naszej karty składników, jest nerkowiec”. Jeśli w karcie czegoś nie ma, agent nie zakłada, że nie ma tego w potrawie.",
+          "Przy jakiejkolwiek niepewności rozmowa idzie do kuchni, natychmiast: „Nie mam potwierdzonej informacji o [składnik] w tym daniu. Nie będę zgadywać, łączę Panią z kuchnią”. Zakazane są wszystkie miękkie formy: „chyba nie ma”, „raczej bezpieczne”, „nie sądzę, żeby było”. Model, który zgaduje przy orzechach, jest gorszy niż nieodebrany telefon, bo nieodebrany telefon kosztuje jedno zamówienie. Pytania o wspólną patelnię i ryzyko śladowych ilości zostawcie człowiekowi w całości.",
+          "Poza alergenami jest jeszcze kilka rozmów, których nie oddajemy agentowi, choć wszystkie zaczynają się od zwykłego telefonu. Łączy je to, że po drugiej stronie ktoś potrzebuje decyzji, a nie informacji.",
+          "Przekazanie ma brzmieć spokojnie i konkretnie: „Poproszę o chwilę, przekazuję słuchawkę menedżerowi”. Jeśli menedżera nie ma, agent nie udaje, że poradzi sobie sam: „Menedżer jest dostępny od jedenastej. Zapiszę Pani numer i temat, oddzwoni rano”. Wolniejsza decyzja człowieka jest lepsza niż szybka decyzja agenta, który nie ma do niej podstaw. Cztery sytuacje zostawiamy ludziom i warto ustalić to w scenariuszu, zanim agent odbierze pierwszy telefon.",
+        ],
+          list: [
+          "Duże grupy i imprezy zamknięte, czyli komunia, osiemnastka albo wigilia firmowa. To negocjacja menu, zaliczki i godzin, więc rozmowa handlowa.",
+          "Reklamacja jedzenia. Gość, który dzwoni po niedobrym daniu, chce usłyszeć człowieka i decyzję o rekompensacie.",
+          "Gość, który już siedzi na sali i dzwoni, bo coś jest nie tak przy stoliku. Ta rozmowa musi trafić na salę w kilkanaście sekund.",
+          "Pytania o alergeny wykraczające poza zatwierdzoną kartę składników.",
+      ],
+      },
+    ],
+    takeaways: [
+      "Pierwsze zdanie agenta rozdziela rezerwacje od zamówień na wynos i od razu informuje, że rozmówcą jest AI.",
+      "Powtórzenie całego zamówienia z kwotą przed potwierdzeniem wyłapuje pomyłki, zanim kuchnia zacznie pracować.",
+      "Przy alergenach agent cytuje zatwierdzoną kartę składników albo łączy z kuchnią, nigdy nie zgaduje.",
+      "Imprezy zamknięte, reklamacje jedzenia, gość na sali i płatność kartą przez telefon zostają poza scenariuszem agenta.",
+    ],
+    faq: [
+      {
+        q: "Czy agent może przyjąć płatność kartą przez telefon?",
+        a: "Nie. Odrzucamy to jawnie, a agent przerywa gościowi, gdy ten zaczyna dyktować numer karty. Płatność przyjmujecie przy odbiorze albo linkiem wysłanym po rozmowie, jeśli macie taki kanał.",
+      },
+      {
+        q: "Co zrobić, gdy gość pyta o alergen, którego nie ma w karcie składników?",
+        a: "Agent mówi, że nie ma potwierdzonej informacji, i łączy z kuchnią. Żadnych form warunkowych w stylu „chyba nie ma”. Zatwierdzona karta składników jest jedynym źródłem, z którego agent może cytować.",
+      },
+      {
+        q: "Ile trwa przygotowanie takiego scenariusza dla jednej restauracji?",
+        a: "Mniejsze wdrożenia zamykamy w 2 do 4 tygodni, większe w 1 do 3 miesięcy. Wdrożenie zaczyna się od 5 000 zł netto, a utrzymanie kosztuje 249, 499 albo 799 zł netto miesięcznie. Pierwsza konsultacja jest bezpłatna.",
+      },
+    ],
+    related: [
+      { label: "Voicebot dla gastronomii", href: "/branze/voicebot-dla-gastronomii" },
+      { label: "Lekcja 3: granice voicebota", href: "/akademia/granice-voicebota" },
+      { label: "Automatyzacja obsługi klienta", href: "/uslugi/automatyzacja-obslugi-klienta" },
+    ],
+  },
+  {
+    slug: "scenariusz-administracja",
+    number: 15,
+    track: 'scenariusze',
+    title: "Rozmowa w urzędzie: statusy spraw, dokumenty, terminy",
+    metaTitle: "Scenariusz rozmowy dla urzędu: sprawy i dokumenty",
+    metaDescription: "Scenariusz rozmowy dla urzędu: powitanie z informacją o AI, rozpoznanie sprawy po języku potocznym, dokumenty, godziny przyjęć i granice agenta.",
+    lead: "Administracja to jedyny sektor, w którym dzwoniący często nie umie nazwać własnej sprawy. Ta lekcja pokazuje, co agent głosowy ma mówić zdanie po zdaniu, żeby mimo to skierować mieszkańca we właściwe miejsce.",
+    sections: [
+      {
+        h2: "Powitanie: kto odbiera i w czyim imieniu",
+        paragraphs: [
+          "Rozmowa z urzędem zaczyna się inaczej niż rozmowa ze sklepem. Dzwoniący nie wybrał Was z reklamy, tylko musi coś załatwić, a często dzwoni już drugi albo trzeci raz. Pierwsze zdanie agenta załatwia cztery sprawy naraz: mówi, gdzie człowiek trafił, uprzedza, że rozmawia z programem, zarysowuje zakres pomocy i oddaje głos rozmówcy. Krótko.",
+          "Brzmi to mniej więcej tak: „Urząd Miasta, infolinia ogólna. Rozmawia Pani z asystentem głosowym, czyli programem. Mogę powiedzieć, jakie dokumenty są potrzebne, w jakich godzinach przyjmują wydziały i gdzie sprawę złożyć. W czym mogę pomóc?”. Informacja o tym, że rozmówcą jest AI, przestaje być dobrym zwyczajem i staje się obowiązkiem, bo unijne przepisy trzeba stosować od 2 sierpnia 2026. W urzędzie ta jedna linijka robi jeszcze coś: ustawia oczekiwania. Człowiek od razu wie, że po drugiej stronie nie siedzi urzędnik prowadzący jego sprawę.",
+          "Druga rzecz, o której komercyjne scenariusze nie muszą myśleć, to podział kompetencji między urzędami. Mieszkaniec dzwoni do gminy w sprawie rejestracji auta, do starostwa w sprawie meldunku, do skarbówki w sprawie odpadów. Agent musi rozpoznać taką pomyłkę i nie odbić się od niej zdaniem „to nie u nas”. Zamiast tego: „Tu urząd gminy. Rejestracją pojazdów zajmuje się starostwo powiatowe, to osobny urząd. Mogę podać numer i godziny, w jakich przyjmują. Podyktować?”.",
+          "Granicę kompetencji agenta stawiacie od razu, zanim rozmówca zdąży zapytać o rozstrzygnięcie. Agent informuje o procedurze i nie ocenia sprawy: „Mogę powiedzieć, co jest wymagane i ile trwa procedura. Nie oceniam, czy w Pana sytuacji decyzja będzie pozytywna, bo to należy do urzędnika prowadzącego”. To zdanie zapisujecie w scenariuszu raz i wracacie do niego przy każdym pytaniu, które zaczyna się od „a czy mi się należy”.",
+        ],
+      },
+      {
+        h2: "Kiedy dzwoniący nie zna nazwy swojej sprawy",
+        paragraphs: [
+          "Mieszkaniec dzwoni z problemem, nie z nazwą procedury. Mówi „papier na dom”, „chcę zameldować babcię u siebie”, „kupiłem auto i nie wiem, co teraz”. Żadne z tych sformułowań nie występuje w strukturze urzędu ani w nazwie żadnego wydziału. Cała robota projektowa w tym sektorze polega na zbudowaniu mostu między językiem mieszkańca a językiem procedury.",
+          "Zanim napiszecie choćby jedno zdanie agenta, zróbcie listę potocznych określeń, które faktycznie padają na Waszej infolinii. Najprościej wyciągnąć je z pamięci osób odbierających telefon w kancelarii, bo one słyszą je codziennie. Kilka przykładów, które powtarzają się niemal wszędzie:",
+          "Agent nigdy nie zgaduje po cichu. Dopasowanie powtarza głośno i prosi o potwierdzenie: „Jeśli dobrze rozumiem, chodzi o budowę domu na własnej działce. U nas ta sprawa nazywa się pozwolenie na budowę i prowadzi ją wydział architektury. Zgadza się?”. Jeżeli rozmówca zaprzeczy, agent nie próbuje drugiego strzału w ciemno, tylko oddaje inicjatywę: „To proszę opisać własnymi słowami, co chce Pan zrobić. Ja dopasuję to do naszej listy spraw”.",
+          "Część opisów pasuje do dwóch procedur naraz i to jest normalne. Agent ma prawo tego nie rozstrzygać: „Ta sprawa ma dwie ścieżki, zależnie od wielkości budynku. Przy altanie zwykle wystarcza zgłoszenie, przy domu potrzebne jest pozwolenie. Łączę z architekturą, tam ustalą to w minutę”. Zwróćcie uwagę na słowo „zwykle”. Agent, który powie „wystarczy zgłoszenie” bez tego zastrzeżenia, właśnie zinterpretował przepis za urzędnika. Sześć najczęstszych zwrotów potocznych zebraliśmy razem z procedurą, która się za nimi kryje, i wydziałem prowadzącym sprawę.",
+        ],
+          list: [
+          "„papier na dom”, „pozwolenie, żeby budować”: pozwolenie na budowę albo zgłoszenie robót, wydział architektury",
+          "„chcę wyciąć drzewo na swojej działce”: zgłoszenie zamiaru usunięcia drzewa, ochrona środowiska",
+          "„wyrobić dowód dla dziecka”: wniosek o dowód osobisty, sprawy obywatelskie",
+          "„zameldować babcię u siebie”: zameldowanie na pobyt stały, ewidencja ludności",
+          "„sprzedałem auto, czy muszę coś zgłaszać”: zawiadomienie o zbyciu pojazdu, wydział komunikacji w starostwie",
+          "„czy mogę postawić altankę bez pozwolenia”: zgłoszenie obiektu małej architektury, znowu architektura",
+      ],
+      },
+      {
+        h2: "Dokumenty, terminy i status sprawy",
+        paragraphs: [
+          "Lista dokumentów to najczęstszy powód, dla którego ludzie dzwonią do urzędu, i najłatwiejsza rzecz do oddania automatowi. Warunek jest jeden: agent czyta ją porcjami, nie jednym ciągiem. „Do wniosku o dowód potrzebne są dwie rzeczy. Aktualne zdjęcie, takie jak do paszportu, oraz dokument potwierdzający tożsamość, na przykład stary dowód albo paszport. Powtórzyć wolniej?”. Po liście zawsze pada oferta zapisu: „Mogę wysłać to SMS na numer, z którego Pani dzwoni. Wysłać?”.",
+          "Godziny przyjęć wyglądają w urzędzie inaczej niż w firmie i scenariusz musi to uwzględniać. Wydziały mają różne godziny, kasa zamyka się wcześniej niż budynek, jeden dzień w tygodniu bywa dłuższy. Agent podaje to od razu, bez dopytywania: „Wydział przyjmuje od poniedziałku do piątku od ósmej. W poniedziałki dłużej, do siedemnastej. Kasa kończy pół godziny przed urzędem, więc opłatę wygodniej zrobić przelewem”.",
+          "Status sprawy po numerze ma sens tylko wtedy, gdy Wasz system faktycznie go udostępnia. Wtedy agent prosi o numer i podpowiada, gdzie go szukać: „Proszę podać numer sprawy, to ciąg znaków z pisma, zwykle w prawym górnym rogu, nad datą”. Odpowiedź ogranicza się do etapu, bez treści rozstrzygnięcia: „Sprawa jest na etapie uzgodnień, wpłynęła piętnastego. Treści decyzji nie odczytuję przez telefon, dostanie ją Pan na piśmie”. Gdy integracji nie ma, agent mówi to wprost i proponuje kontakt zwrotny, zamiast udawać, że sprawdza w komputerze.",
+          "Ostatni element to przekazanie rozmowy. „Przełączę do informacji” jest dla dzwoniącego karą, bo oznacza opowiadanie wszystkiego od nowa obcej osobie. Agent kieruje do konkretnego wydziału i mówi, dokąd dzwoni: „Łączę z geodezją, numer wewnętrzny dwieście czternaście. Uprzedzam ich, że pyta Pani o wypis z rejestru gruntów”. Gdy nikt nie odbiera, zamiast ciszy pada plan B: „Nikt nie odbiera, pewnie są przy okienku. Mogę zostawić wiadomość z Pani numerem i opisem sprawy. Oddzwonią dziś albo jutro rano”.",
+        ],
+      },
+      {
+        h2: "Wolniej i cierpliwiej, bo telefon bywa jedynym kanałem",
+        paragraphs: [
+          "Część mieszkańców nie ma konta na rządowej platformie, nie zagląda na stronę urzędu i nie odbierze maila. Telefon jest dla nich jedynym kanałem kontaktu z administracją, a to zmienia parametry scenariusza mocniej niż jakakolwiek branżowa specyfika. Rozmowa musi być wolniejsza niż komercyjna. Naprawdę wolniejsza.",
+          "W praktyce oznacza to kilka ustawień, o które trzeba poprosić przy wdrożeniu, bo domyślnie systemy stroi się pod sprawne rozmowy sprzedażowe. Agent czeka dłużej na ciszy, zanim uzna, że rozmówca skończył zdanie. Nie wchodzi w słowo. Powtarza bez pretensji: „Oczywiście, powtórzę”. I nie rzuca skrótem bez wyjaśnienia: „Wniosek można złożyć przez internet, na rządowej platformie ePUAP. Jeśli woli Pani papierowo, wszystko da się załatwić na miejscu, w okienku”.",
+          "Do tego dochodzi coś, czego nie widać w transkrypcie: ton. W urzędzie sprawdza się głos spokojny i niski, bez sprzedażowej energii. Zdanie „Nie spieszę się, proszę mówić spokojnie” warto wpisać jako gotową reakcję na zawahanie, bo starsze osoby często przepraszają, że zajmują czas. Głos opieramy na ElevenLabs, więc tempo i barwę ustawiamy razem z Wami podczas prób, na prawdziwych nagraniach. Agent pełni rolę telefonicznej recepcji Waszego urzędu i nic ponad to.",
+          "Osobno decydujecie, czego agent w ogóle nie tyka. W administracji ta lista jest krótsza i twardsza niż w biznesie, bo po drugiej stronie stoją terminy ustawowe i prawa strony postępowania. Cztery obszary zostawiacie ludziom:",
+        ],
+          list: [
+          "skargi i wnioski, które mają własny tryb oraz termin i muszą trafić do człowieka",
+          "sprawy sporne, w tym każdą rozmowę o odmowie albo o odwołaniu",
+          "wszystko, co przypomina decyzję administracyjną lub jej wykładnię",
+          "sprawy wymagające oceny urzędnika, na przykład czy dany dokument w tej konkretnej sytuacji wystarczy",
+      ],
+      },
+    ],
+    takeaways: [
+      "Pierwsze zdanie nazywa urząd i uprzedza, że rozmówcą jest program. Obowiązek informowania o AI trzeba stosować od 2 sierpnia 2026.",
+      "Zbudujcie słownik potocznych określeń, zanim napiszecie scenariusz. Agent powtarza dopasowanie głośno i prosi o potwierdzenie, zamiast zgadywać po cichu.",
+      "Agent informuje o procedurze i nie ocenia sprawy. Zdanie o tym, że decyzja należy do urzędnika, wraca przy każdym pytaniu w stylu „czy mi się należy”.",
+      "Tempo w administracji jest wolniejsze niż w komercji: dłuższe pauzy, spokojne powtórzenia i skróty tłumaczone za każdym razem.",
+    ],
+    faq: [
+      {
+        q: "Czy agent głosowy może podać status sprawy?",
+        a: "Może, jeśli Wasz system pozwala odpytać go o etap po numerze sprawy. Agent podaje wtedy sam etap i datę wpływu, bez treści rozstrzygnięcia. Gdy integracji nie ma, mówi wprost, że nie ma wglądu w akta, i proponuje wiadomość do wydziału albo kontakt zwrotny.",
+      },
+      {
+        q: "Co zrobić, gdy mieszkaniec nie chce rozmawiać z automatem?",
+        a: "Przełączenie na człowieka musi działać na pierwsze żądanie, bez dopytywania o powód i bez przekonywania. W scenariuszu zapisujemy jedno zdanie: „Rozumiem, łączę z pracownikiem”. Jeśli linia jest zajęta, agent proponuje oddzwonienie i podaje realny przedział czasu.",
+      },
+      {
+        q: "Ile trwa uruchomienie takiego scenariusza w urzędzie?",
+        a: "Mniejsze wdrożenia zajmują 2 do 4 tygodni, większe od miesiąca do trzech, bo dochodzą uzgodnienia wewnętrzne i integracje. Wdrożenie zaczyna się od 5 000 zł netto, utrzymanie kosztuje 249, 499 albo 799 zł netto miesięcznie. Hosting stoi w Polsce lub w chmurze UE, zgodnie z RODO, a pierwsza konsultacja jest bezpłatna.",
+      },
+    ],
+    related: [
+      { label: "Voicebot dla administracji publicznej", href: "/branze/ai-dla-administracji" },
+      { label: "Granice voicebota: kiedy oddać słuchawkę", href: "/akademia/granice-voicebota" },
+      { label: "Jak zbudować scenariusz rozmowy", href: "/akademia/scenariusz-rozmowy" },
+    ],
+  },
 ];
 
 export const LESSON_SLUGS = LESSONS.map((l) => l.slug);
@@ -759,11 +1205,29 @@ export function getLesson(slug: string): Lesson | undefined {
   return LESSONS.find((l) => l.slug === slug);
 }
 
-/** Poprzednia i następna lekcja, do nawigacji na dole strony. */
+/** Lekcje jednej ścieżki, w kolejności numerów. */
+export function getTrackLessons(track: TrackId): Lesson[] {
+  return LESSONS.filter((l) => (l.track ?? 'podstawy') === track).sort(
+    (a, b) => a.number - b.number,
+  );
+}
+
+export function getTrack(id: TrackId): Track | undefined {
+  return TRACKS.find((t) => t.id === id);
+}
+
+/**
+ * Poprzednia i następna lekcja. Nawigujemy WEWNĄTRZ ścieżki, nie po całej
+ * liście: przeskok z ostatniej lekcji podstaw prosto w scenariusz dla
+ * przychodni byłby dla czytelnika zgrzytem.
+ */
 export function getNeighbours(slug: string): { prev?: Lesson; next?: Lesson } {
-  const i = LESSONS.findIndex((l) => l.slug === slug);
+  const lekcja = getLesson(slug);
+  if (!lekcja) return {};
+  const rodzenstwo = getTrackLessons(lekcja.track ?? 'podstawy');
+  const i = rodzenstwo.findIndex((l) => l.slug === slug);
   if (i === -1) return {};
-  return { prev: LESSONS[i - 1], next: LESSONS[i + 1] };
+  return { prev: rodzenstwo[i - 1], next: rodzenstwo[i + 1] };
 }
 
 /**

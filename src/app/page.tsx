@@ -518,6 +518,7 @@ function ServicesSection() {
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
               {[
                 { label: 'Automatyzacja HR i kadr', href: '/uslugi/automatyzacja-hr' },
+                { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
                 { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },
                 { label: 'Voicebot dla transportu', href: '/branze/voicebot-dla-transportu' },
                 { label: 'Voicebot dla salonów', href: '/branze/voicebot-dla-salonow' },
@@ -526,6 +527,7 @@ function ServicesSection() {
                 { label: 'Chatbot dla sklepu internetowego', href: '/branze/chatbot-dla-sklepu-internetowego' },
                 { label: 'Voicebot dla restauracji', href: '/branze/voicebot-dla-gastronomii' },
                 { label: 'AI dla kancelarii', href: '/branze/ai-dla-kancelarii' },
+                { label: 'Voicebot dla biur nieruchomości', href: '/branze/voicebot-dla-nieruchomosci' },
                 { label: 'Wszystkie branże', href: '/branze' },
                 { label: 'Akademia Głosowa: bezpłatny kurs', href: '/akademia' },
               ].map((l) => (

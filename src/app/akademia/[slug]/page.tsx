@@ -7,7 +7,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, Check, Clock } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { LESSONS, getLesson, getNeighbours, readingMinutes } from '@/lib/akademia';
+import {
+  LESSONS,
+  getLesson,
+  getNeighbours,
+  getTrack,
+  getTrackLessons,
+  readingMinutes,
+} from '@/lib/akademia';
 
 const BASE = 'https://www.infinityteam.io';
 
@@ -80,6 +87,11 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
   const lesson = getLesson(params.slug);
   if (!lesson) notFound();
   const { prev, next } = getNeighbours(lesson.slug);
+  // Pozycja liczona w obrębie ścieżki. Globalne "z 10" przestało być prawdą,
+  // gdy doszła druga ścieżka, a lekcja 13 z etykietą "z 10" wygląda na błąd.
+  const rodzenstwo = getTrackLessons(lesson.track ?? 'podstawy');
+  const pozycja = rodzenstwo.findIndex((l) => l.slug === lesson.slug) + 1;
+  const sciezka = getTrack(lesson.track ?? 'podstawy');
 
   return (
     <div className="min-h-screen relative" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
@@ -106,7 +118,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
             className="text-xs uppercase tracking-widest font-medium"
             style={{ color: 'var(--accent-text)' }}
           >
-            Lekcja {lesson.number} z {LESSONS.length}
+            {sciezka?.name}: lekcja {pozycja} z {rodzenstwo.length}
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs text-white/50">
             <Clock className="w-3.5 h-3.5" />

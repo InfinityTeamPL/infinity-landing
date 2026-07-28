@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { LESSONS, TOTAL_MINUTES, readingMinutes } from '@/lib/akademia';
+import { LESSONS, TRACKS, TOTAL_MINUTES, readingMinutes, getTrackLessons } from '@/lib/akademia';
 
 const BASE = 'https://www.infinityteam.io';
 
@@ -98,38 +98,58 @@ export default function AkademiaIndex() {
           <span>Nie trzeba zostawiać adresu</span>
         </div>
 
-        <ol className="space-y-5">
-          {LESSONS.map((l) => (
-            <li key={l.slug}>
-              <Link
-                href={`/akademia/${l.slug}`}
-                className="flex gap-5 rounded-2xl p-6 transition-transform hover:-translate-y-0.5"
-                style={{
-                  background: 'var(--surface-1)',
-                  border: '1px solid var(--border-soft)',
-                  boxShadow: 'var(--shadow-card, none)',
-                }}
-              >
-                <span
-                  className="text-sm font-mono pt-0.5 flex-shrink-0"
-                  style={{ color: 'var(--accent-text)' }}
-                >
-                  {String(l.number).padStart(2, '0')}
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-lg font-bold mb-2" style={{ letterSpacing: '-0.012em' }}>
-                    {l.title}
-                  </span>
-                  <span className="block text-sm text-white/60 leading-relaxed mb-3">{l.lead}</span>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-white/40">
-                    <Clock className="w-3.5 h-3.5" />
-                    {readingMinutes(l)} min
-                  </span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ol>
+        {TRACKS.map((track) => {
+          const lekcje = getTrackLessons(track.id);
+          if (lekcje.length === 0) return null;
+          return (
+            <section key={track.id} className="mb-14">
+              <h2 className="text-2xl font-bold mb-2" style={{ letterSpacing: '-0.015em' }}>
+                Ścieżka: {track.name}
+              </h2>
+              <p className="text-[15.5px] text-white/60 leading-relaxed mb-6 max-w-2xl">
+                {track.lead}
+              </p>
+
+              <ol className="space-y-5">
+                {lekcje.map((l) => (
+                  <li key={l.slug}>
+                    <Link
+                      href={`/akademia/${l.slug}`}
+                      className="flex gap-5 rounded-2xl p-6 transition-transform hover:-translate-y-0.5"
+                      style={{
+                        background: 'var(--surface-1)',
+                        border: '1px solid var(--border-soft)',
+                        boxShadow: 'var(--shadow-card, none)',
+                      }}
+                    >
+                      <span
+                        className="text-sm font-mono pt-0.5 flex-shrink-0"
+                        style={{ color: 'var(--accent-text)' }}
+                      >
+                        {String(l.number).padStart(2, '0')}
+                      </span>
+                      <span className="min-w-0">
+                        <span
+                          className="block text-lg font-bold mb-2"
+                          style={{ letterSpacing: '-0.012em' }}
+                        >
+                          {l.title}
+                        </span>
+                        <span className="block text-sm text-white/60 leading-relaxed mb-3">
+                          {l.lead}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 text-xs text-white/40">
+                          <Clock className="w-3.5 h-3.5" />
+                          {readingMinutes(l)} min
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          );
+        })}
 
         <section
           className="mt-14 rounded-2xl p-7"
