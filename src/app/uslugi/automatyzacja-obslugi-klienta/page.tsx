@@ -212,6 +212,7 @@ const content: SeoLandingContent = {
     { label: 'Chatbot AI (czat i komunikatory)', href: '/uslugi/chatbot-ai' },
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'AI Act a chatboty: obowiązki od sierpnia 2026', href: '/blog/ai-act-chatboty-obowiazki' },
+    { label: 'Chatbot dla sklepu internetowego', href: '/branze/chatbot-dla-sklepu-internetowego' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
     { label: 'AI dla branż', href: '/branze' },
   ],

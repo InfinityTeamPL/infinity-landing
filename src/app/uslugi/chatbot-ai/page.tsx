@@ -184,6 +184,7 @@ const content: SeoLandingContent = {
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'Automatyzacja obsługi klienta', href: '/uslugi/automatyzacja-obslugi-klienta' },
     { label: 'AI dla kancelarii prawnej', href: '/branze/ai-dla-kancelarii' },
+    { label: 'Chatbot dla sklepu internetowego', href: '/branze/chatbot-dla-sklepu-internetowego' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
   ],
 };
