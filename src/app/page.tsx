@@ -1206,7 +1206,10 @@ function ContactCTASection() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formState),
+        // Zgoda leci razem z formularzem. Wcześniej istniała tylko w stanie
+        // komponentu i odblokowywała przycisk, więc po stronie serwera nie
+        // było czym wykazać, że użytkownik ją wyraził.
+        body: JSON.stringify({ ...formState, zgoda: contactConsent }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
