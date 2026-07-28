@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-white/90">Na skróty</h4>
+            <h2 className="font-semibold mb-4 text-white/90">Na skróty</h2>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-[#7B9BDB]">
               <a href="/#start" className="hover:text-white transition-colors text-sm">Start</a>
               <a href="/swiat-ai" className="hover:text-white transition-colors text-sm">Świat AI</a>
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-white/90">Nasze produkty</h4>
+            <h2 className="font-semibold mb-4 text-white/90">Nasze produkty</h2>
             <div className="flex flex-col gap-2 text-[#7B9BDB]">
               <a href="https://clawlabs.pro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">ClawLabs: platforma agentów AI</a>
               <a href="https://clawlabs.pro/akademia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Darmowy kurs o agentach AI</a>
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Newsletter</h4>
+            <h2 className="font-semibold mb-4">Newsletter</h2>
             <p className="text-[#7B9BDB] mb-4">Zapisz się, aby otrzymywać najnowsze informacje o AI.</p>
             {newsletterStep === 'done' ? (
               <div className="flex items-center gap-2 text-sm text-[#7B9BDB]">
