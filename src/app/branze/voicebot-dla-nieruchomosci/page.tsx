@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SeoLanding, { SeoLandingContent } from '@/components/SeoLanding';
 
 export const metadata: Metadata = {
-  title: 'Voicebot dla biura nieruchomości — telefon odebrany z oględzin',
+  title: 'Voicebot dla nieruchomości — telefon odebrany z oględzin',
   description:
     'Agent głosowy AI odbiera pytania o oferty, gdy agent jest na prezentacji. Kwalifikuje zainteresowanych, umawia oglądanie i przekazuje gotową notatkę.',
   alternates: { canonical: '/branze/voicebot-dla-nieruchomosci' },
