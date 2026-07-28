@@ -37,10 +37,10 @@ export default function ProcessConfigStep({
       {/* Lewa kolumna: konfiguracja procesów */}
       <div className="lg:col-span-2 space-y-3">
         <div className="text-center lg:text-left mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#fff' }}>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: 'var(--fg)' }}>
             Skonfiguruj szczegóły
           </h2>
-          <p className="text-sm" style={{ color: '#7B9BDB' }}>
+          <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
             Dla każdego procesu podaj liczbę pracowników i czas poświęcany tygodniowo.
           </p>
         </div>
@@ -78,10 +78,10 @@ export default function ProcessConfigStep({
                     <IconComponent className="w-4 h-4" style={{ color: category.color }} />
                   </div>
                   <div>
-                    <span className="font-bold text-sm" style={{ color: '#fff' }}>
+                    <span className="font-bold text-sm" style={{ color: 'var(--fg)' }}>
                       {category.name}
                     </span>
-                    <div className="flex items-center gap-3 text-xs" style={{ color: '#7B9BDB' }}>
+                    <div className="flex items-center gap-3 text-xs" style={{ color: 'var(--accent-text)' }}>
                       <span className="flex items-center gap-1">
                         <Users className="w-3 h-3" /> {selection.employeeCount} os.
                       </span>
@@ -92,9 +92,9 @@ export default function ProcessConfigStep({
                   </div>
                 </div>
                 {isExpanded ? (
-                  <ChevronUp className="w-5 h-5" style={{ color: '#7B9BDB' }} />
+                  <ChevronUp className="w-5 h-5" style={{ color: 'var(--accent-text)' }} />
                 ) : (
-                  <ChevronDown className="w-5 h-5" style={{ color: '#7B9BDB' }} />
+                  <ChevronDown className="w-5 h-5" style={{ color: 'var(--accent-text)' }} />
                 )}
               </button>
 
@@ -105,7 +105,7 @@ export default function ProcessConfigStep({
                   <div className="pt-4">
                     <div className="flex items-center gap-2 mb-3">
                       <Users className="w-4 h-4" style={{ color: category.color }} />
-                      <span className="text-sm font-medium" style={{ color: '#fff' }}>
+                      <span className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
                         Liczba pracowników
                       </span>
                     </div>
@@ -118,7 +118,7 @@ export default function ProcessConfigStep({
                           })
                         }
                         className="w-8 h-8 rounded-lg flex items-center justify-center text-lg font-bold border"
-                        style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#7B9BDB' }}
+                        style={{ borderColor: 'rgba(123,155,219,0.2)', color: 'var(--accent-text)' }}
                       >
                         −
                       </button>
@@ -133,7 +133,7 @@ export default function ProcessConfigStep({
                           })
                         }
                         className="w-20 text-center py-1.5 rounded-lg text-sm font-bold border bg-transparent"
-                        style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#fff' }}
+                        style={{ borderColor: 'rgba(123,155,219,0.2)', color: 'var(--fg)' }}
                       />
                       <button
                         type="button"
@@ -143,7 +143,7 @@ export default function ProcessConfigStep({
                           })
                         }
                         className="w-8 h-8 rounded-lg flex items-center justify-center text-lg font-bold border"
-                        style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#7B9BDB' }}
+                        style={{ borderColor: 'rgba(123,155,219,0.2)', color: 'var(--accent-text)' }}
                       >
                         +
                       </button>
@@ -164,7 +164,7 @@ export default function ProcessConfigStep({
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <CheckSquare className="w-4 h-4" style={{ color: category.color }} />
-                      <span className="text-sm font-medium" style={{ color: '#fff' }}>
+                      <span className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
                         Zadania do automatyzacji
                       </span>
                     </div>
@@ -188,7 +188,7 @@ export default function ProcessConfigStep({
                               className="w-4 h-4 rounded"
                               style={{ accentColor: category.color }}
                             />
-                            <span className="text-sm" style={{ color: '#fff' }}>
+                            <span className="text-sm" style={{ color: 'var(--fg)' }}>
                               {task.name}
                             </span>
                             <span
@@ -226,7 +226,7 @@ export default function ProcessConfigStep({
       {/* Prawa kolumna: Live podsumowanie */}
       <div className="lg:col-span-1">
         <div
-          className="sticky top-24 rounded-2xl p-6"
+          className="dark-scope sticky top-24 rounded-2xl p-6"
           style={{
             background: 'linear-gradient(135deg, #0B0F2E 0%, #1A2461 100%)',
           }}
@@ -238,7 +238,7 @@ export default function ProcessConfigStep({
               <div className="text-white/50 text-xs mb-1">Rocznie</div>
               <div className="text-3xl font-bold text-white">
                 {formatZl(results.totalAnnualSavings)}{' '}
-                <span className="text-base font-normal text-white/40">zł</span>
+                <span className="text-base font-normal text-white/60">zł</span>
               </div>
             </div>
 
@@ -251,7 +251,7 @@ export default function ProcessConfigStep({
               </div>
               <div className="rounded-xl p-3" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
                 <div className="text-white/50 text-xs">Ekwiwalent etatów</div>
-                <div className="text-lg font-bold" style={{ color: '#2E4AAD' }}>
+                <div className="text-lg font-bold" style={{ color: 'var(--accent-text)' }}>
                   {results.fteEquivalent}
                 </div>
               </div>

@@ -641,7 +641,7 @@ function CaseStudiesSection() {
         </div>
 
         <FadeIn delay={0.4}>
-          <p className="text-center text-sm text-white/40 mt-8">
+          <p className="text-center text-sm text-white/60 mt-8">
             Część wdrożeń realizujemy pod NDA. O szczegółach chętnie opowiemy na rozmowie.
           </p>
         </FadeIn>
@@ -696,7 +696,7 @@ function TechBentoSection() {
           {/* Row 2: Stripe + Vercel + MiniMax (1/3 each) */}
           <FadeIn delay={0.15}>
             <div className="dark-scope tech-tile relative overflow-hidden rounded-2xl p-6 h-full" style={{ background: 'linear-gradient(135deg, #635BFF, #7A73FF)', minHeight: '140px' }}>
-              <div className="tech-coins absolute pointer-events-none" style={{ right: '20px', top: '20px', width: '40px', height: '50px' }}>
+              <div aria-hidden="true" className="tech-coins absolute pointer-events-none" style={{ right: '20px', top: '20px', width: '40px', height: '50px' }}>
                 <span className="tech-coin tech-coin-1">$</span>
                 <span className="tech-coin tech-coin-2">$</span>
                 <span className="tech-coin tech-coin-3">$</span>
@@ -835,7 +835,9 @@ function OpenClawSection() {
                   pointerEvents: activeQuote === i ? 'auto' : 'none',
                 }}
               >
-                <span className="text-2xl md:text-4xl leading-none select-none mb-2 md:mb-3" style={{ color: 'rgba(var(--accent-text-rgb), 0.3)' }}>&ldquo;</span>
+                {/* Ozdobnik. Cytat ma własny cudzysłów w treści niżej, więc ten
+                    znak nie niesie informacji i nie powinien trafiać do czytników. */}
+                <span aria-hidden="true" className="text-2xl md:text-4xl leading-none select-none mb-2 md:mb-3" style={{ color: 'rgba(var(--accent-text-rgb), 0.3)' }}>&ldquo;</span>
                 <p className="italic text-sm md:text-lg leading-relaxed text-white/80 max-w-3xl">
                   &ldquo;{item.quote}&rdquo;
                 </p>
@@ -858,8 +860,11 @@ function OpenClawSection() {
                     />
                   ) : null}
                   <span
-                    className="rounded-full flex-shrink-0 items-center justify-center text-xs font-bold text-white w-8 h-8 md:w-10 md:h-10"
-                    style={{ backgroundColor: '#2E4AAD', border: '2px solid rgba(123,155,219,0.25)', display: QUOTE_AVATARS[item.author] ? 'none' : 'flex' }}
+                    className="rounded-full flex-shrink-0 items-center justify-center text-xs font-bold w-8 h-8 md:w-10 md:h-10"
+                    /* Kolor wpisany wprost, bo tło jest granatowe w obu motywach.
+                       Klasa text-white zostałaby w motywie jasnym przemapowana
+                       na ciemny atrament i inicjały spadłyby do 2,16:1. */
+                    style={{ color: '#ffffff', backgroundColor: '#2E4AAD', border: '2px solid rgba(123,155,219,0.25)', display: QUOTE_AVATARS[item.author] ? 'none' : 'flex' }}
                   >
                     {item.author.split(' ').map(w => w[0]).join('').slice(0, 2)}
                   </span>
@@ -940,54 +945,54 @@ function TechnologySection() {
                 <div className="w-3 h-3 rounded-full bg-red-500/70" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
                 <div className="w-3 h-3 rounded-full bg-green-500/70" />
-                <span className="ml-3 text-xs text-white/40 font-mono">ai-agent.ts · demo</span>
+                <span className="ml-3 text-xs text-white/55 font-mono">ai-agent.ts · demo</span>
               </div>
 
               {/* Terminal body */}
               <div className="p-4 md:p-6 font-mono text-xs md:text-sm space-y-3" style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: '#2E4AAD' }}>▸</span>
+                  <span style={{ color: 'var(--accent-text)' }}>▸</span>
                   <span className="text-white/50">Inicjalizacja agenta...</span>
                   <span className="text-green-400">✓</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: '#2E4AAD' }}>▸</span>
+                  <span style={{ color: 'var(--accent-text)' }}>▸</span>
                   <span className="text-white/50">Łączenie z GPT-4o + Claude...</span>
                   <span className="text-green-400">✓</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: '#2E4AAD' }}>▸</span>
+                  <span style={{ color: 'var(--accent-text)' }}>▸</span>
                   <span className="text-white/50">Głos: ElevenLabs (PL, naturalny)...</span>
                   <span className="text-green-400">✓</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: '#2E4AAD' }}>▸</span>
+                  <span style={{ color: 'var(--accent-text)' }}>▸</span>
                   <span className="text-white/50">Integracja: telefon, Slack, Teams, CRM...</span>
                   <span className="text-green-400">✓</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span style={{ color: '#2E4AAD' }}>▸</span>
+                  <span style={{ color: 'var(--accent-text)' }}>▸</span>
                   <span className="text-white/50">Agent aktywny, tryb 24/7</span>
                   <span className="text-green-400">✓</span>
                 </div>
 
                 {/* Ślad prawdziwej rozmowy z publicznego dema PKS Gryfice */}
                 <div className="pt-3 mt-3 border-t border-white/10 space-y-2.5">
-                  <div className="text-white/30 text-xs">Przebieg rozmowy · demo PKS Gryfice</div>
+                  <div className="text-white/55 text-xs">Przebieg rozmowy · demo PKS Gryfice</div>
                   <div>
-                    <span className="text-white/40">pasażer › </span>
+                    <span className="text-white/55">pasażer › </span>
                     <span className="text-white/70">&bdquo;O której jest autobus z Gryfic do Pobierowa?&rdquo;</span>
                   </div>
                   <div>
-                    <span className="text-white/40">agent  › </span>
+                    <span className="text-white/55">agent  › </span>
                     <span className="text-white/50">wyszukuje w rozkładzie (6 przystanków, 276 odjazdów)</span>
                   </div>
                   <div>
-                    <span className="text-white/40">agent  › </span>
+                    <span className="text-white/55">agent  › </span>
                     <span className="text-white/70">podaje godziny i dni kursowania</span>
                   </div>
                   <div>
-                    <span className="text-white/40">agent  › </span>
+                    <span className="text-white/55">agent  › </span>
                     <span className="text-white/70">cytuje źródło rozkładu, bez zgadywania</span>
                   </div>
                 </div>
@@ -1163,7 +1168,7 @@ function ProcessSection() {
                   <span className="text-2xl font-bold tabular-nums" style={{ color: 'var(--accent-text)' }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-xs uppercase tracking-widest text-white/40">{step.time}</span>
+                  <span className="text-xs uppercase tracking-widest text-white/60">{step.time}</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-white">{step.label}</h3>

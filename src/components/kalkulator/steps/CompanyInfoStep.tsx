@@ -14,10 +14,10 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
   return (
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: '#fff' }}>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: 'var(--fg)' }}>
           Dane Twojej firmy
         </h2>
-        <p className="text-sm" style={{ color: '#7B9BDB' }}>
+        <p className="text-sm" style={{ color: 'var(--accent-text)' }}>
           Opcjonalne informacje, które pozwolą lepiej dopasować kalkulację.
         </p>
       </div>
@@ -33,10 +33,10 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
       >
         {/* Nazwa firmy */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium mb-2" style={{ color: '#fff' }}>
-            <Building2 className="w-4 h-4" style={{ color: '#2E4AAD' }} />
+          <label className="flex items-center gap-2 text-sm font-medium mb-2" style={{ color: 'var(--fg)' }}>
+            <Building2 className="w-4 h-4" style={{ color: 'var(--accent-text)' }} />
             Nazwa firmy
-            <span className="text-xs font-normal" style={{ color: 'rgba(255,255,255,0.4)' }}>(opcjonalne)</span>
+            <span className="text-xs font-normal" style={{ color: 'var(--fg-60)' }}>(opcjonalne)</span>
           </label>
           <input
             type="text"
@@ -44,13 +44,13 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
             onChange={(e) => onUpdate({ companyName: e.target.value })}
             placeholder="np. ABC Sp. z o.o."
             className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-transparent transition-colors focus:border-[#2E4AAD]"
-            style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#fff' }}
+            style={{ borderColor: 'rgba(123,155,219,0.2)', color: 'var(--fg)' }}
           />
         </div>
 
         {/* Branża */}
         <div>
-          <label className="block text-sm font-medium mb-2" style={{ color: '#fff' }}>
+          <label className="block text-sm font-medium mb-2" style={{ color: 'var(--fg)' }}>
             Branża
           </label>
           <select
@@ -88,17 +88,17 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
           suffix=" zł"
           onChange={(val) => onUpdate({ avgSalary: val })}
         />
-        <p className="text-xs -mt-3" style={{ color: 'rgba(255,255,255,0.4)' }}>
+        <p className="text-xs -mt-3" style={{ color: 'var(--fg-60)' }}>
           Średnia krajowa: {NATIONAL_AVG_SALARY.toLocaleString('pl-PL')} zł (marzec 2026).
           Wartość domyślna — poszczególne działy mogą mieć inne stawki (konfiguracja w kroku 2).
         </p>
 
         {/* Email */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium mb-2" style={{ color: '#fff' }}>
-            <Mail className="w-4 h-4" style={{ color: '#2E4AAD' }} />
+          <label className="flex items-center gap-2 text-sm font-medium mb-2" style={{ color: 'var(--fg)' }}>
+            <Mail className="w-4 h-4" style={{ color: 'var(--accent-text)' }} />
             E-mail do wysłania raportu
-            <span className="text-xs font-normal" style={{ color: 'rgba(255,255,255,0.4)' }}>(opcjonalne)</span>
+            <span className="text-xs font-normal" style={{ color: 'var(--fg-60)' }}>(opcjonalne)</span>
           </label>
           <input
             type="email"
@@ -106,7 +106,7 @@ export default function CompanyInfoStep({ profile, onUpdate }: CompanyInfoStepPr
             onChange={(e) => onUpdate({ email: e.target.value })}
             placeholder="jan@firma.pl"
             className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-transparent transition-colors focus:border-[#2E4AAD]"
-            style={{ borderColor: 'rgba(123,155,219,0.2)', color: '#fff' }}
+            style={{ borderColor: 'rgba(123,155,219,0.2)', color: 'var(--fg)' }}
           />
         </div>
       </div>

@@ -32,11 +32,13 @@ export default function TimelineChart({ years, implementationCost }: TimelineCha
   return (
     <div
       ref={ref}
-      className="rounded-2xl p-6"
+      /* dark-scope: karta jest granatowa w obu motywach, więc tokeny tekstu
+         muszą tu zostać jasne zamiast iść za motywem strony. */
+      className="dark-scope rounded-2xl p-6"
       style={{ background: 'linear-gradient(135deg, #0B0F2E 0%, #1A2461 100%)' }}
     >
       <div className="flex items-center gap-2 mb-1">
-        <Zap className="w-5 h-5" style={{ color: '#2E4AAD' }} />
+        <Zap className="w-5 h-5" style={{ color: 'var(--accent-text)' }} />
         <span className="text-white/70 text-sm font-medium">
           Skumulowane oszczędności (5 lat)
         </span>
@@ -45,7 +47,7 @@ export default function TimelineChart({ years, implementationCost }: TimelineCha
         {formatZl(years[4]?.cumulative ?? 0)}{' '}
         <span className="text-base font-normal text-white/50">zł</span>
       </div>
-      <div className="text-xs text-white/40 mb-6">
+      <div className="text-xs text-white/60 mb-6">
         Koszt wdrożenia: {formatZl(implementationCost)} zł (rok 1)
       </div>
 
@@ -75,7 +77,7 @@ export default function TimelineChart({ years, implementationCost }: TimelineCha
               />
               <div className="text-center mt-2">
                 <span className="text-xs text-white/50">Rok {y.year}</span>
-                <div className="text-xs text-white/30 mt-0.5">
+                <div className="text-xs text-white/60 mt-0.5">
                   ×{y.efficiencyMultiplier.toFixed(2)}
                 </div>
               </div>
@@ -88,7 +90,7 @@ export default function TimelineChart({ years, implementationCost }: TimelineCha
       <div className="flex items-center gap-4 pt-4 border-t border-white/10">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#2E4AAD' }} />
-          <span className="text-xs text-white/40">
+          <span className="text-xs text-white/60">
             +15% wzrost efektywności AI rocznie (compound)
           </span>
         </div>

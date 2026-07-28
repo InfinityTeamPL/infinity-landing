@@ -214,7 +214,7 @@ export default function ROICalculator({ className = '' }: ROICalculatorProps) {
 
             <div className="flex items-center gap-2 pt-4 border-t border-white/10">
               <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#2E4AAD' }} />
-              <span className="text-xs text-white/40">+15% wzrost efektywności AI rocznie (compound)</span>
+              <span className="text-xs text-white/60">+15% wzrost efektywności AI rocznie (compound)</span>
             </div>
           </div>
 

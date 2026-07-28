@@ -92,11 +92,14 @@ export default function ROISummaryCards({ results }: ROISummaryCardsProps) {
       {cards.map((card, i) => (
         <div
           key={i}
-          className="rounded-2xl p-4 text-center transition-transform hover:scale-105"
+          className="dark-scope rounded-2xl p-4 text-center transition-transform hover:scale-105"
           style={{
             background: card.highlight
               ? 'linear-gradient(135deg, #2E4AAD 0%, #1A2461 100%)'
-              : 'rgba(10,22,40,0.6)',
+              /* Było rgba(10,22,40,0.6): na jasnej stronie przezroczystość
+                 rozjaśniała kafelek do szarości, na której ani biel, ani ciemny
+                 atrament nie dawały 4,5:1. Pełne krycie działa w obu motywach. */
+              : '#0A1628',
             border: card.highlight ? 'none' : '1px solid rgba(123,155,219,0.1)',
             boxShadow: card.highlight
               ? '0 8px 30px rgba(46,74,173,0.25)'
@@ -109,7 +112,7 @@ export default function ROISummaryCards({ results }: ROISummaryCardsProps) {
           />
           <div
             className="text-xl md:text-2xl font-bold mb-1"
-            style={{ color: '#fff' }}
+            style={{ color: 'var(--fg)' }}
           >
             <AnimatedNumber value={card.value} suffix={card.suffix} />
           </div>

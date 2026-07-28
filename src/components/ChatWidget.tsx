@@ -146,7 +146,8 @@ export default function ChatWidget() {
                 <p className="text-xs text-white/60">Infinity Tech</p>
               </div>
             </div>
-            <p className="text-[10px] text-white/40 mt-2">Rozmawiasz z systemem AI, nie z człowiekiem. Odpowiedzi mogą zawierać nieścisłości.</p>
+            {/* Zastrzeżenie o rozmowie z automatem musi być czytelne — /40 dawało 3,78:1. */}
+            <p className="text-[10px] text-white/70 mt-2">Rozmawiasz z systemem AI, nie z człowiekiem. Odpowiedzi mogą zawierać nieścisłości.</p>
           </div>
 
           {/* Messages */}

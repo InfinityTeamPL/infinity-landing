@@ -143,7 +143,7 @@ export default function CaseStudiesPage() {
           <ArrowRight className="w-4 h-4 rotate-180" />
           Strona główna
         </Link>
-        <nav aria-label="breadcrumb" className="text-xs text-white/40">
+        <nav aria-label="breadcrumb" className="text-xs text-white/60">
           <Link href="/" className="hover:text-white/70">Infinity Tech</Link>
           <span className="mx-2">/</span>
           <span className="text-white/70">Realizacje</span>

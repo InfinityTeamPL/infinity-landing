@@ -34,10 +34,10 @@ export default function ResultsChart({ processes }: ResultsChartProps) {
       className="rounded-2xl p-5 md:p-6"
       style={{ background: 'rgba(10,22,40,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
     >
-      <h3 className="text-lg font-bold mb-1" style={{ color: '#fff' }}>
+      <h3 className="text-lg font-bold mb-1" style={{ color: 'var(--fg)' }}>
         Obecne koszty vs. po automatyzacji
       </h3>
-      <p className="text-xs mb-6" style={{ color: '#7B9BDB' }}>
+      <p className="text-xs mb-6" style={{ color: 'var(--accent-text)' }}>
         Porównanie rocznych kosztów roboczogodzin per proces
       </p>
 
@@ -56,18 +56,18 @@ export default function ResultsChart({ processes }: ResultsChartProps) {
                     className="w-2.5 h-2.5 rounded-full"
                     style={{ backgroundColor: proc.categoryColor }}
                   />
-                  <span className="text-sm font-medium" style={{ color: '#fff' }}>
+                  <span className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
                     {proc.categoryName}
                   </span>
                 </div>
-                <span className="text-xs font-semibold" style={{ color: '#2E4AAD' }}>
+                <span className="text-xs font-semibold" style={{ color: 'var(--accent-text)' }}>
                   -{proc.automationPercentage}%
                 </span>
               </div>
 
               {/* Obecne koszty */}
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs w-16 text-right flex-shrink-0" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                <span className="text-xs w-16 text-right flex-shrink-0" style={{ color: 'var(--fg-60)' }}>
                   Teraz
                 </span>
                 <div className="flex-1 h-5 rounded-md bg-white/10 overflow-hidden">
@@ -88,7 +88,7 @@ export default function ResultsChart({ processes }: ResultsChartProps) {
 
               {/* Po automatyzacji */}
               <div className="flex items-center gap-2">
-                <span className="text-xs w-16 text-right flex-shrink-0" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                <span className="text-xs w-16 text-right flex-shrink-0" style={{ color: 'var(--fg-60)' }}>
                   Z AI
                 </span>
                 <div className="flex-1 h-5 rounded-md bg-white/10 overflow-hidden">
@@ -114,11 +114,11 @@ export default function ResultsChart({ processes }: ResultsChartProps) {
       <div className="flex items-center gap-4 mt-6 pt-4" style={{ borderTop: '1px solid rgba(123,155,219,0.2)' }}>
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#7B9BDB' }} />
-          <span className="text-xs" style={{ color: '#7B9BDB' }}>Obecne koszty</span>
+          <span className="text-xs" style={{ color: 'var(--accent-text)' }}>Obecne koszty</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#2E4AAD' }} />
-          <span className="text-xs" style={{ color: '#7B9BDB' }}>Po automatyzacji AI</span>
+          <span className="text-xs" style={{ color: 'var(--accent-text)' }}>Po automatyzacji AI</span>
         </div>
       </div>
     </div>
