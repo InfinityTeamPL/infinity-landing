@@ -138,6 +138,7 @@ const content: BlogArticleContent = {
     { label: 'Słownik AI: RODO, BYOK, self-hosting i reszta pojęć', href: '/slownik' },
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Voicebot dla przychodni', href: '/branze/voicebot-dla-przychodni' },
+    { label: 'AI dla kancelarii prawnej', href: '/branze/ai-dla-kancelarii' },
     { label: 'Ile kosztuje wdrożenie AI', href: '/cennik' },
   ],
   ctaHeading: 'Przejdziemy przez te pytania na Waszym przypadku',

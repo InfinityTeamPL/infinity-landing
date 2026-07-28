@@ -157,6 +157,7 @@ const content: BlogArticleContent = {
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'AI w rekrutacji', href: '/branze/ai-w-rekrutacji' },
+    { label: 'AI dla kancelarii prawnej', href: '/branze/ai-dla-kancelarii' },
     { label: 'Ile kosztuje wdrożenie AI', href: '/cennik' },
   ],
   ctaHeading: 'Sprawdzimy powitanie Waszego agenta',

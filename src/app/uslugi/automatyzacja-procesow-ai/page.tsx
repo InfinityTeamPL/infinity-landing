@@ -184,6 +184,7 @@ const content: SeoLandingContent = {
   related: [
     { label: 'Automatyzacja HR i kadr', href: '/uslugi/automatyzacja-hr' },
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
+    { label: 'AI dla kancelarii prawnej', href: '/branze/ai-dla-kancelarii' },
     { label: 'OpenClaw Polska', href: '/openclaw' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
   ],
