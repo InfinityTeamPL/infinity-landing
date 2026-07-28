@@ -213,7 +213,12 @@ export default function UslugiHub() {
           <p className="leading-relaxed mb-7 max-w-3xl" style={{ color: 'var(--fg-70)' }}>
             Najczęściej decyduje skala. Ten sam agent, który w jednym miejscu zwraca się w trzy miesiące,
             w innym jest wydatkiem bez pokrycia. Poniżej krótko: kiedy która usługa się sprawdza, a kiedy lepiej
-            odpuścić.
+            odpuścić. Pełne porównanie kosztów, czasu wdrożenia i typów spraw między telefonem a czatem znajdziecie
+            w artykule{' '}
+            <Link href="/blog/voicebot-czy-chatbot" className="font-semibold hover:underline" style={{ color: 'var(--accent-text)' }}>
+              Voicebot czy chatbot
+            </Link>
+            .
           </p>
           <div className="grid md:grid-cols-2 gap-5">
             {CHOICE.map((c) => (
