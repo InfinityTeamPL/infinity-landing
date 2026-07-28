@@ -179,7 +179,7 @@ export default function BranzeHub() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <header className="max-w-5xl mx-auto px-6 pt-8 pb-2 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+        <Link href="/" className="flex items-center gap-2 py-1.5 text-sm text-white/60 hover:text-white transition-colors">
           <ArrowRight className="w-4 h-4 rotate-180" />
           Strona główna
         </Link>

@@ -66,7 +66,7 @@ export default function AkademiaIndex() {
       <header className="max-w-3xl mx-auto px-6 pt-8 pb-2">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors w-fit"
+          className="flex items-center gap-2 py-1.5 text-sm text-white/60 hover:text-white transition-colors w-fit"
         >
           <ArrowRight className="w-4 h-4 rotate-180" />
           Strona główna
@@ -169,7 +169,7 @@ export default function AkademiaIndex() {
               <Link
                 key={b.href}
                 href={b.href}
-                className="hover:underline"
+                className="inline-block py-1 hover:underline"
                 style={{ color: 'var(--accent-text)' }}
               >
                 {b.label}
