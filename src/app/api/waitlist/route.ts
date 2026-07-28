@@ -79,7 +79,9 @@ export async function POST(request: Request) {
         <p style="margin: 0 0 8px; color: #334155;"><strong>Zgoda:</strong> ${
           zgoda === true
             ? `udzielona ${new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' })}`
-            : 'brak pola zgody w tym formularzu — zapis na podstawie samego zgłoszenia adresu'
+            : zgoda === false
+              ? 'NIE udzielona, mimo obecności pola zgody. Zweryfikuj zgłoszenie przed kontaktem.'
+              : 'formularz nie zawierał pola zgody (waitlista w kartach usług), zapis na podstawie samego zgłoszenia adresu'
         }</p>
         <p style="margin: 16px 0 0; color: #64748b; font-size: 12px;">Zgłoszenie wysłane z landing page infinityteam.io</p>
       </div>

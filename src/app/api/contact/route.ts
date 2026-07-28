@@ -87,7 +87,7 @@ export async function POST(request: Request) {
       // Lepiej powiedzieć wprost, że się nie udało, i dać adres zapasowy.
       console.error('[contact] RESEND_API_KEY missing — zgłoszenie NIE zostało dostarczone');
       return NextResponse.json(
-        { error: 'Nie możemy teraz wysłać wiadomości. Napisz na contact@infinityteam.io — odpowiemy tak samo szybko.' },
+        { error: 'Nie możemy teraz wysłać wiadomości. Napisz na contact@infinityteam.io, odpowiemy tak samo szybko.' },
         { status: 503 },
       );
     }
