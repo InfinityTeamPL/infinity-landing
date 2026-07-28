@@ -1182,7 +1182,16 @@ function ProcessSection() {
 }
 
 function ContactCTASection() {
-  const [formState, setFormState] = useState({ name: '', email: '', phone: '', message: '' });
+  // firma_www to pole-pułapka: ukryte przed człowiekiem, więc jego wypełnienie
+  // zdradza automat. Nazwa celowo brzmi jak zwykłe pole formularza, bo boty
+  // omijają te nazwane wprost "honeypot".
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    firma_www: '',
+  });
   const [contactConsent, setContactConsent] = useState(false);
   const [submitState, setSubmitState] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -1239,6 +1248,22 @@ function ContactCTASection() {
                     </div>
                   ) : (
                     <form className="space-y-2" onSubmit={handleSubmit}>
+                      {/* Pole-pułapka. Ukryte poza ekranem, wyjęte z nawigacji tabem
+                          i z drzewa dostępności, więc człowiek go nie zobaczy ani w nie
+                          nie trafi. Wypełnia je tylko automat, a serwer odrzuca wtedy
+                          zgłoszenie, udając sukces. */}
+                      <div aria-hidden="true" className="absolute w-px h-px -left-[9999px] overflow-hidden">
+                        <label htmlFor="firma_www">Nie wypełniaj tego pola</label>
+                        <input
+                          id="firma_www"
+                          name="firma_www"
+                          type="text"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={formState.firma_www}
+                          onChange={(e) => setFormState({ ...formState, firma_www: e.target.value })}
+                        />
+                      </div>
                       <div>
                         <label className="block text-xs font-medium text-white/70 mb-1">Imię i nazwisko</label>
                         <input
@@ -1249,6 +1274,7 @@ function ContactCTASection() {
                           onChange={(e) => setFormState({...formState, name: e.target.value})}
                           className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30 disabled:opacity-60"
                           placeholder="Imię i nazwisko"
+                          maxLength={100}
                         />
                       </div>
                       <div>
@@ -1261,6 +1287,7 @@ function ContactCTASection() {
                           onChange={(e) => setFormState({...formState, email: e.target.value})}
                           className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30 disabled:opacity-60"
                           placeholder="jan@firma.pl"
+                          maxLength={254}
                         />
                       </div>
                       <div>
@@ -1272,6 +1299,7 @@ function ContactCTASection() {
                           onChange={(e) => setFormState({...formState, phone: e.target.value})}
                           className="w-full px-3 py-2 rounded-lg border border-white/10 bg-white/5 text-white text-sm focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all placeholder:text-white/30 disabled:opacity-60"
                           placeholder="+48 000 000 000"
+                          maxLength={32}
                         />
                       </div>
                       <div>
@@ -1285,6 +1313,7 @@ function ContactCTASection() {
                           className="w-full px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-white focus:border-[#2E4AAD] focus:ring-2 focus:ring-[#7B9BDB]/30 outline-none transition-all resize-y placeholder:text-white/30 disabled:opacity-60"
                           style={{ minHeight: '96px' }}
                           placeholder="Opisz swój projekt..."
+                          maxLength={4000}
                         />
                       </div>
                       {submitState === 'error' && submitError && (

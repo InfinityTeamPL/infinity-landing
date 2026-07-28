@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { escapeHtml, rateLimit } from '@/lib/api-utils';
+import { escapeHtml, rateLimit, wyglądaNaBota, LIMITY } from '@/lib/api-utils';
 
 const EMAIL_RE = /^\S+@\S+\.\S+$/;
 
@@ -29,13 +29,31 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Zbyt wiele zapytań. Spróbuj ponownie za chwilę.' }, { status: 429 });
     }
 
-    const { name, email, phone, message } = await request.json();
+    const payload = await request.json();
+    const { name, email, phone, message } = payload;
 
-    if (typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
+    // Bot dostaje odpowiedź sukcesu, żeby nie wiedział, że go rozpoznaliśmy.
+    if (wyglądaNaBota(payload)) {
+      return NextResponse.json({ ok: true, delivered: true });
+    }
+
+    if (typeof email !== 'string' || !EMAIL_RE.test(email.trim()) || email.length > LIMITY.email) {
       return NextResponse.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
     if (typeof message !== 'string' || message.trim().length < 3) {
       return NextResponse.json({ error: 'Wiadomość jest za krótka' }, { status: 400 });
+    }
+    if (message.length > LIMITY.wiadomosc) {
+      return NextResponse.json(
+        { error: `Wiadomość jest za długa. Maksimum to ${LIMITY.wiadomosc} znaków.` },
+        { status: 400 },
+      );
+    }
+    if (typeof name === 'string' && name.length > LIMITY.imie) {
+      return NextResponse.json({ error: 'Imię i nazwisko są za długie' }, { status: 400 });
+    }
+    if (typeof phone === 'string' && phone.length > LIMITY.telefon) {
+      return NextResponse.json({ error: 'Numer telefonu jest za długi' }, { status: 400 });
     }
 
     const cleanEmail = email.trim();
@@ -83,9 +101,21 @@ export async function POST(request: Request) {
           <p style="margin: 0 0 16px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
             Otrzymaliśmy Twoją wiadomość i odezwiemy się najszybciej jak to możliwe — zazwyczaj w ciągu 24 godzin roboczych.
           </p>
+          <!--
+            CELOWO NIE ODSYŁAMY TU TREŚCI WIADOMOŚCI.
+            Adres odbiorcy pochodzi wprost z żądania, więc gdyby ten mail
+            zawierał dowolny tekst nadawcy, formularz stawałby się narzędziem
+            do wysyłania czegokolwiek na czyjkolwiek adres z naszej domeny,
+            w naszej szacie graficznej. Treść jest wprawdzie escapowana, więc
+            nie da się wstrzyknąć kodu, ale sam tekst wystarczy do podszycia
+            się pod nas. Najgorszy scenariusz to wpisanie naszej domeny na
+            czarne listy, co zabiłoby całą pocztę transakcyjną.
+            Pełna treść trafia do wiadomości wewnętrznej, na stały adres.
+          -->
           <div style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 16px; margin-bottom: 24px;">
-            <p style="margin: 0 0 6px; color: rgba(255,255,255,0.4); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Twoja wiadomość</p>
-            <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${safeMessage}</p>
+            <p style="margin: 0; color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6;">
+              Zapisaliśmy treść Twojego zgłoszenia i wrócimy do niej przy odpowiedzi.
+            </p>
           </div>
           <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 8px;">
             <p style="margin: 0; color: rgba(255,255,255,0.4); font-size: 12px;">

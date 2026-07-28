@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { escapeHtml, rateLimit } from '@/lib/api-utils';
+import { escapeHtml, rateLimit, wyglądaNaBota, LIMITY } from '@/lib/api-utils';
 
 const EMAIL_RE = /^\S+@\S+\.\S+$/;
 
@@ -29,13 +29,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Zbyt wiele zapytań. Spróbuj ponownie za chwilę.' }, { status: 429 });
     }
 
-    const { email, source } = await request.json();
+    const payload = await request.json();
+    const { email, source } = payload;
 
-    if (typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
+    // Bot dostaje odpowiedź sukcesu, żeby nie wiedział, że go rozpoznaliśmy.
+    if (wyglądaNaBota(payload)) {
+      return NextResponse.json({ ok: true });
+    }
+
+    if (
+      typeof email !== 'string' ||
+      !EMAIL_RE.test(email.trim()) ||
+      email.length > LIMITY.email
+    ) {
       return NextResponse.json(
         { error: 'Nieprawidłowy adres email' },
         { status: 400 }
       );
+    }
+    if (typeof source === 'string' && source.length > LIMITY.zrodlo) {
+      return NextResponse.json({ error: 'Nieprawidłowe źródło zapisu' }, { status: 400 });
     }
 
     const cleanEmail = email.trim();
