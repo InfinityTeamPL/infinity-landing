@@ -815,7 +815,7 @@ export default function AgentsPage() {
         </div>
       </nav>
 
-      <main id="tresc">
+      <main id="tresc" tabIndex={-1}>
         <HeroSection />
         <StatsOverview />
         <HRSection />

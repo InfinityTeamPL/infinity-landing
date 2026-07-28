@@ -46,7 +46,7 @@ export default async function SwiatAiPage() {
       </nav>
 
       {/* AI News Content — pre-rendered with data */}
-      <main id="tresc" className="relative z-10">
+      <main id="tresc" tabIndex={-1} className="relative z-10">
         <AiNewsPage initialNews={news} />
       </main>
 

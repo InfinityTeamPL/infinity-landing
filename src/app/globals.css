@@ -125,6 +125,14 @@ html {
   top: 1rem;
 }
 
+/* Cel skoku nie może wylądować pod przyklejonym nagłówkiem. WCAG 2.2
+   dodało SC 2.4.11 Focus Not Obscured, a opis niepowodzenia F110 podaje
+   jako przykład dokładnie ten przypadek: sticky header zasłaniający
+   element, który właśnie dostał fokus. Odsuwamy cel o wysokość nagłówka. */
+#tresc {
+  scroll-margin-top: 6rem;
+}
+
 /* Accessibility: respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   html {

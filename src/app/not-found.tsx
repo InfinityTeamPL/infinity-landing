@@ -20,7 +20,7 @@ const RESCUE = [
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
-      <main id="tresc" className="flex-1 max-w-3xl mx-auto px-6 py-20 md:py-28 w-full">
+      <main id="tresc" tabIndex={-1} className="flex-1 max-w-3xl mx-auto px-6 py-20 md:py-28 w-full">
         <p className="text-sm font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--accent-text)' }}>
           Błąd 404
         </p>

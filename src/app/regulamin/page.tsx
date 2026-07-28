@@ -33,7 +33,7 @@ export default function TermsPage() {
         </div>
       </nav>
 
-      <main id="tresc" className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
+      <main id="tresc" tabIndex={-1} className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">Regulamin</h1>
         <p className="text-[#7B9BDB] mb-12">Ostatnia aktualizacja: 13 kwietnia 2026 r.</p>
 

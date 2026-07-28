@@ -114,7 +114,7 @@ export default function LessonPage({ params }: { params: { slug: string } }) {
 
       {/* main jako punkt orientacyjny dla czytników i cel linku pomijającego
           nawigację; article zostaje, bo treść lekcji jest samodzielna. */}
-      <main id="tresc">
+      <main id="tresc" tabIndex={-1}>
       <article className="max-w-3xl mx-auto px-6 pb-20">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-10 mb-4">
           <span

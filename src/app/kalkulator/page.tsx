@@ -49,7 +49,7 @@ export default function KalkulatorPage() {
           />
         </div>
 
-        <main id="tresc">
+        <main id="tresc" tabIndex={-1}>
         {/* Hero */}
         <section className="relative overflow-hidden print:hidden" style={{ zIndex: 1 }}>
           <div className="relative z-10 max-w-5xl mx-auto px-4 pt-24 pb-16 text-center">
