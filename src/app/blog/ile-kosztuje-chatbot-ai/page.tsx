@@ -106,6 +106,7 @@ const content: BlogArticleContent = {
     { label: 'Chatbot AI dla firm', href: '/uslugi/chatbot-ai' },
     { label: 'Kalkulator ROI', href: '/kalkulator' },
     { label: 'Agent AI a chatbot', href: '/blog/agent-ai-a-chatbot' },
+    { label: 'Chatbot dla sklepu internetowego', href: '/branze/chatbot-dla-sklepu-internetowego' },
   ],
   ctaHeading: 'Chcesz konkretną wycenę dla swojej firmy?',
   ctaSub:
