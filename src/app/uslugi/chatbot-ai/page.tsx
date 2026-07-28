@@ -4,7 +4,7 @@ import SeoLanding, { SeoLandingContent } from '@/components/SeoLanding';
 export const metadata: Metadata = {
   title: 'Chatbot AI dla firm — wdrożenie, 23+ kanałów komunikacji',
   description:
-    'Chatbot AI dla firm: jeden agent na stronie www i w 23+ kanałach — WhatsApp, Teams, Slack. Wdrożenie od 5 000 zł netto. Umów bezpłatną konsultację.',
+    'Chatbot AI dla firm: jeden agent na stronie www i w 23+ kanałach, WhatsApp, Teams, Slack. Wdrożenie od 5 000 zł netto. Umów bezpłatną konsultację.',
   alternates: { canonical: '/uslugi/chatbot-ai' },
   openGraph: {
     title: 'Chatbot AI dla firm — jeden agent, 23+ kanałów komunikacji',

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Ile kosztuje wdrożenie AI w firmie? Cennik 2026',
     description:
-      'Wdrożenie agenta AI od 5 000 zł netto, utrzymanie od 249 zł/mies. Zobacz pełny cennik AI dla firm — chatboty, voiceboty, automatyzacja procesów.',
+      'Wdrożenie agenta AI od 5 000 zł netto, utrzymanie od 249 zł/mies. Zobacz pełny cennik AI dla firm: chatboty, voiceboty, automatyzacja procesów.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },

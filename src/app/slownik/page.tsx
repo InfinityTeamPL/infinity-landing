@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/slownik' },
   openGraph: {
     title: 'Słownik AI — pojęcia wyjaśnione po ludzku | Infinity Tech',
-    description: 'Agent AI, voicebot, RAG, LLM i reszta żargonu — wytłumaczone zrozumiale.',
+    description: 'Agent AI, voicebot, RAG, LLM i reszta żargonu, wytłumaczone zrozumiale.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },

@@ -10,7 +10,7 @@ const Background3D = dynamic(() => import('@/components/Background3D'), { ssr: f
 
 export const metadata: Metadata = {
   title: 'Polityka Prywatności',
-  description: 'Polityka prywatności serwisu Infinity Tech — informacje o przetwarzaniu danych osobowych zgodnie z RODO.',
+  description: 'Polityka prywatności serwisu Infinity Tech: informacje o przetwarzaniu danych osobowych zgodnie z RODO.',
   alternates: { canonical: '/polityka-prywatnosci' },
 };
 
