@@ -55,7 +55,8 @@ const content: SeoLandingContent = {
       heading: 'Przykłady z naszych wdrożeń',
       paragraphs: [
         'Realizacje opisujemy anonimowo, bo naszym klientom zależy na dyskrecji. W obszarze kadr i płac zbudowaliśmy agentkę AI z bazą aktualnego polskiego prawa pracy. Pilnuje terminów ZUS i PIT, wypełnia dokumenty kadrowe i odpowiada na pytania pracowników, a specjalista kadrowy zatwierdza efekty jej pracy.',
-        'Dla sektora rolniczego stworzyliśmy aplikację AI wspierającą codzienne decyzje operacyjne. Regionalnemu przewoźnikowi autobusowemu zbudowaliśmy agenta głosowego, który przez telefon podaje rozkłady jazdy 24/7. Powstała też platforma kojarząca startupy z inwestorami. Różne branże, ten sam schemat: powtarzalny proces przejmuje agent, człowiek pilnuje jakości.',
+        'Dla sektora rolniczego stworzyliśmy aplikację AI wspierającą codzienne decyzje operacyjne. Powstała też platforma kojarząca startupy z inwestorami. Różne branże, ten sam schemat: powtarzalny proces przejmuje agent, człowiek pilnuje jakości.',
+        'Osobno, i to nie jest wdrożenie u klienta, zbudowaliśmy własne demo agenta podającego rozkłady jazdy. Działa na publicznych danych PKS Gryfice, obejmuje 6 przystanków i 276 odjazdów. Przewoźnik nie jest naszym klientem, to nasza prezentacja techniczna, którą można sprawdzić bez umawiania rozmowy.',
       ],
     },
   ],
@@ -186,6 +187,7 @@ const content: SeoLandingContent = {
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'AI dla kancelarii prawnej', href: '/branze/ai-dla-kancelarii' },
     { label: 'OpenClaw Polska', href: '/openclaw' },
+    { label: 'Agent AI w HR, marketingu i sprzedaży', href: '/agents' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
   ],
 };

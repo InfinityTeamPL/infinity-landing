@@ -26,7 +26,7 @@ export async function POST(request: Request) {
   try {
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
     if (!rateLimit(ip, 5, 60_000)) {
-      return NextResponse.json({ error: 'Zbyt wiele zapytań. Spróbuj ponownie za chwilę.' }, { status: 429 });
+      return NextResponse.json({ error: 'Za dużo prób z tego adresu. Odczekaj minutę i wyślij jeszcze raz.' }, { status: 429 });
     }
 
     const payload = await request.json();
@@ -38,29 +38,29 @@ export async function POST(request: Request) {
     }
 
     if (typeof email !== 'string' || !EMAIL_RE.test(email.trim()) || email.length > LIMITY.email) {
-      return NextResponse.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
+      return NextResponse.json({ error: 'Ten adres e-mail nie wygląda poprawnie. Sprawdź go, bo na niego odpiszemy.' }, { status: 400 });
     }
     if (typeof message !== 'string' || message.trim().length < 3) {
-      return NextResponse.json({ error: 'Wiadomość jest za krótka' }, { status: 400 });
+      return NextResponse.json({ error: 'Napisz choć jedno zdanie, inaczej nie będziemy wiedzieć, o co chodzi.' }, { status: 400 });
     }
     if (message.length > LIMITY.wiadomosc) {
       return NextResponse.json(
-        { error: `Wiadomość jest za długa. Maksimum to ${LIMITY.wiadomosc} znaków.` },
+        { error: `Wiadomość jest za długa. Zmieść się w ${LIMITY.wiadomosc} znakach, resztę dopowiesz na rozmowie.` },
         { status: 400 },
       );
     }
     if (typeof name === 'string' && name.length > LIMITY.imie) {
-      return NextResponse.json({ error: 'Imię i nazwisko są za długie' }, { status: 400 });
+      return NextResponse.json({ error: 'Imię i nazwisko są za długie.' }, { status: 400 });
     }
     if (typeof phone === 'string' && phone.length > LIMITY.telefon) {
-      return NextResponse.json({ error: 'Numer telefonu jest za długi' }, { status: 400 });
+      return NextResponse.json({ error: 'Numer telefonu jest za długi.' }, { status: 400 });
     }
     // Formularz blokuje wysyłkę bez zaznaczonej zgody, ale to sprawdzenie
     // po stronie klienta da się obejść. Bez zgody nie mamy podstawy do
     // przetwarzania danych kontaktowych, więc odrzucamy takie zgłoszenie.
     if (zgoda !== true) {
       return NextResponse.json(
-        { error: 'Do wysłania wiadomości potrzebna jest zgoda na kontakt.' },
+        { error: 'Bez zgody na kontakt nie mamy podstawy, żeby do Ciebie napisać. Zaznacz pole i wyślij ponownie.' },
         { status: 400 },
       );
     }
@@ -87,7 +87,7 @@ export async function POST(request: Request) {
       // Lepiej powiedzieć wprost, że się nie udało, i dać adres zapasowy.
       console.error('[contact] RESEND_API_KEY missing — zgłoszenie NIE zostało dostarczone');
       return NextResponse.json(
-        { error: 'Nie możemy teraz wysłać wiadomości. Napisz na contact@infinityteam.io, odpowiemy tak samo szybko.' },
+        { error: 'Formularz nam w tej chwili nie działa. Napisz wprost na contact@infinityteam.io albo zadzwoń: +48 735 170 957.' },
         { status: 503 },
       );
     }
@@ -115,9 +115,9 @@ export async function POST(request: Request) {
           </div>
         </div>
         <div style="padding: 32px;">
-          <h2 style="margin: 0 0 12px; color: #ffffff; font-size: 20px;">Dziękujemy za wiadomość${safeName ? ', ' + escapeHtml(cleanName.split(' ')[0]) : ''}!</h2>
+          <h2 style="margin: 0 0 12px; color: #ffffff; font-size: 20px;">Mamy Twoją wiadomość${safeName ? ', ' + escapeHtml(cleanName.split(' ')[0]) : ''}</h2>
           <p style="margin: 0 0 16px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
-            Otrzymaliśmy Twoją wiadomość i odezwiemy się najszybciej jak to możliwe — zazwyczaj w ciągu 24 godzin roboczych.
+            Odpisujemy zwykle w ciągu jednego dnia roboczego. Jeśli piszesz w piątek wieczorem, realnie odezwiemy się w poniedziałek.
           </p>
           <!--
             CELOWO NIE ODSYŁAMY TU TREŚCI WIADOMOŚCI.
@@ -132,9 +132,15 @@ export async function POST(request: Request) {
           -->
           <div style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 16px; margin-bottom: 24px;">
             <p style="margin: 0; color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6;">
-              Zapisaliśmy treść Twojego zgłoszenia i wrócimy do niej przy odpowiedzi.
+              Treść zgłoszenia mamy zapisaną, nie musisz jej powtarzać. Chcesz coś dorzucić, zanim odpiszemy? Napisz na contact@infinityteam.io, dopniemy to do sprawy.
             </p>
           </div>
+          <p style="margin: 0 0 16px; color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
+            Jeśli piszesz w sprawie wdrożenia, pierwsza rozmowa nic nie kosztuje. Pytamy na niej głównie o dwie rzeczy: który proces zjada u Was najwięcej godzin i gdzie leżą dane, z których agent miałby korzystać. Jeden konkretny przykład sprawy pomaga nam bardziej niż opis całej firmy.
+          </p>
+          <p style="margin: 0 0 24px; color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.6;">
+            A jeśli nic do nas nie wysyłałeś i ten mail trafił do Ciebie przez pomyłkę, po prostu go zignoruj. Z formularza kontaktowego nie zapisujemy nikogo na listę mailingową.
+          </p>
           <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 8px;">
             <p style="margin: 0; color: rgba(255,255,255,0.4); font-size: 12px;">
               Infinity Tech · <a href="https://www.infinityteam.io" style="color: #7B9BDB; text-decoration: none;">infinityteam.io</a> · <a href="mailto:contact@infinityteam.io" style="color: #7B9BDB; text-decoration: none;">contact@infinityteam.io</a>
@@ -155,13 +161,13 @@ export async function POST(request: Request) {
       sendEmail(apiKey, {
         from,
         to: [cleanEmail],
-        subject: 'Dziękujemy za wiadomość — Infinity Tech',
+        subject: 'Mamy Twoją wiadomość (Infinity Tech)',
         html: confirmationHtml,
       }),
     ]);
 
     if (!notification.ok) {
-      return NextResponse.json({ error: 'Nie udało się wysłać wiadomości' }, { status: 502 });
+      return NextResponse.json({ error: 'Nie udało się wysłać wiadomości. Spróbuj jeszcze raz, a jeśli znowu nie przejdzie, napisz na contact@infinityteam.io.' }, { status: 502 });
     }
 
     if (!confirmation.ok) {
@@ -171,6 +177,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, delivered: true });
   } catch (err) {
     console.error('[contact] unexpected error', err);
-    return NextResponse.json({ error: 'Wystąpił błąd serwera' }, { status: 500 });
+    return NextResponse.json({ error: 'Coś się u nas wysypało. Spróbuj za chwilę albo napisz na contact@infinityteam.io.' }, { status: 500 });
   }
 }

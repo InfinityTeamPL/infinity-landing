@@ -31,15 +31,15 @@ const REALIZACJE: Realizacja[] = [
     id: 'pks-gryfice',
     icon: Mic,
     sector: 'Transport autobusowy',
-    client: 'Demo publiczne: asystent na rozkładach PKS Gryfice',
-    badge: 'Demo publiczne',
-    title: 'Głosowy asystent AI z rozkładami jazdy PKS Gryfice',
+    client: 'Nasze własne demo. PKS Gryfice nie jest naszym klientem',
+    badge: 'Nasze demo',
+    title: 'Głosowy asystent AI na publicznych rozkładach jazdy',
     problem:
-      'Pytania o rozkłady jazdy trafiają do biura przewoźnika, które pracuje w standardowych godzinach. Po ich zakończeniu pasażerowie zostają bez informacji, a w godzinach szczytu linia bywa zajęta.',
+      'Chcieliśmy pokazać agenta głosowego na czymś, co każdy może kliknąć i od razu sprawdzić, czy odpowiedź jest prawdziwa. Rozkłady jazdy pasowały idealnie: dane są publiczne, pytanie proste, a kłamstwo widać w sekundę. Wzięliśmy więc jawne rozkłady PKS Gryfice.',
     solution:
-      'Głosowy asystent AI działający w przeglądarce w trybie push-to-talk (stack: ElevenLabs Conversational AI). Zna rozkłady z 6 przystanków w Gryficach, łącznie 276 odjazdów. Podaje godziny i dni kursowania, a przy każdej odpowiedzi cytuje źródło rozkładu i nie zmyśla, gdy czegoś nie wie.',
+      'Głosowy asystent AI działający w przeglądarce w trybie push-to-talk (stack: ElevenLabs Conversational AI). Zna rozkłady z 6 przystanków w Gryficach, łącznie 276 odjazdów. Podaje godziny i dni kursowania, przy każdej odpowiedzi cytuje źródło i mówi wprost, gdy czegoś nie wie. To nasza prezentacja techniczna, zbudowana z własnej inicjatywy. Przewoźnik jej nie zamawiał i nie jest z nami związany.',
     result:
-      'Demo jest publiczne. Wystarczy wejść na stronę, przytrzymać przycisk i zapytać o kurs własnymi słowami. Odpowiedź głosem przychodzi w kilka sekund, bez czekania na połączenie z biurem i bez drzewka „wciśnij 1".',
+      'Demo jest publiczne. Wystarczy wejść na stronę, przytrzymać przycisk i zapytać o kurs własnymi słowami. Odpowiedź głosem przychodzi w kilka sekund, bez czekania na połączenie i bez drzewka „wciśnij 1". Zakres jest wąski i lepiej powiedzieć to od razu: dane są statyczne, agent nie zna opóźnień, nie sprzeda biletu i nie obsłuży innych miast. Ma pokazać, jak brzmi taka rozmowa, a nie udawać systemu przewoźnika.',
     demo: { label: 'Zobacz demo', href: 'https://pks-gryfice-demo.vercel.app/' },
     related: { label: 'Zobacz usługę: Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
   },
@@ -55,7 +55,7 @@ const REALIZACJE: Realizacja[] = [
     solution:
       'Janina to wirtualna kadrowa AI, która rozmawia głosem lub na czacie po polsku, cytuje konkretne artykuły Kodeksu pracy i weryfikuje, czy przepis jest aktualny. Jej baza to 40+ aktów prawnych, 900+ dokumentów, 13 opracowań orzecznictwa Sądu Najwyższego, 17 wzorów dokumentów i 100+ zestawów danych GUS. Generuje dokumenty do druku (świadectwa, wypowiedzenia, wnioski) i pilnuje kalendarza terminów ZUS, PIT i PFRON.',
     result:
-      'Każda firma dostaje dedykowaną instancję na serwerze w UE. Demo głosowe działa bez logowania. Z Janiną można porozmawiać od razu po wejściu na stronę.',
+      'Każda firma dostaje osobną instancję na serwerze w UE. Demo głosowe działa bez logowania, więc z Janiną porozmawiasz od razu po wejściu na stronę. Granica jest jasna: Janina przygotowuje dokument i pokazuje podstawę prawną, ale nie podpisuje się pod decyzją. Odpowiedzialność zostaje po stronie firmy i jej kadrowej. Przy nietypowych sprawach, na przykład sporze z pracownikiem, Janina odsyła do człowieka zamiast improwizować.',
     demo: { label: 'Zobacz demo', href: 'https://superkadrowa.vercel.app' },
     related: { label: 'Zobacz usługę: Automatyzacja HR', href: '/uslugi/automatyzacja-hr' },
   },
@@ -69,9 +69,9 @@ const REALIZACJE: Realizacja[] = [
     problem:
       'Zarządzanie gospodarstwem to wiele decyzji naraz, a gotowe narzędzia rzadko przystają do realiów konkretnego gospodarstwa. Dane są rozproszone, a część rzeczy trzyma się w zeszycie i w głowie.',
     solution:
-      'Dedykowana aplikacja AI zbudowana na miarę, która wspiera codzienne decyzje i zarządzanie gospodarstwem: od zebranych w jednym miejscu danych po podpowiedzi w bieżącej pracy.',
+      'Aplikacja AI zbudowana na miarę, która wspiera codzienne decyzje i zarządzanie gospodarstwem: od zebranych w jednym miejscu danych po podpowiedzi w bieżącej pracy. Nie kupiliśmy gotowego produktu i nie dopasowaliśmy go na siłę, bo w tym przypadku to by nie zadziałało.',
     result:
-      'Aplikacja działa produkcyjnie i jest rozwijana wspólnie z klientem, a zakres rośnie w miarę tego, jak sprawdza się w codziennej pracy gospodarstwa.',
+      'Aplikacja działa produkcyjnie i rozwijamy ją razem z właścicielem, a zakres rośnie w miarę tego, jak sprawdza się w polu. Więcej nie napiszemy i to nie jest kokieteria: umowa obejmuje NDA, więc nazwy, liczb ani zrzutów ekranu tu nie zobaczysz. Na rozmowie możemy opowiedzieć o samym podejściu i o tym, co poszło nie tak po drodze.',
     demo: null,
     related: { label: 'Zobacz usługę: Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
   },
@@ -85,9 +85,9 @@ const REALIZACJE: Realizacja[] = [
     problem:
       'Firmy chcą korzystać z agentów AI zbudowanych na open-source OpenClaw, ale samodzielne utrzymanie to serwery, aktualizacje, bezpieczeństwo kluczy API i integracje z kanałami komunikacji. Praca na cały zespół.',
     solution:
-      'ClawLabs to managed hosting agentów AI: agent startuje w ok. 60 sekund, każdy na dedykowanym VPS-ie w izolowanym kontenerze. Do dyspozycji 13 kanałów komunikacji, 35+ modeli AI (Claude, GPT, Gemini, modele lokalne) i BYOK, czyli własne klucze API szyfrowane AES-256-GCM. Do wyboru chmura w UE (Hetzner, ISO 27001/SOC 2) albo instalacja on-premise.',
+      'ClawLabs to managed hosting agentów AI: agent startuje w ok. 60 sekund, każdy na własnym VPS-ie w izolowanym kontenerze. Do dyspozycji 13 kanałów komunikacji, 35+ modeli AI (Claude, GPT, Gemini, modele lokalne) i BYOK, czyli własne klucze API szyfrowane AES-256-GCM. Do wyboru chmura w UE u Hetznera albo instalacja on-premise. Certyfikaty ISO 27001 i SOC 2 ma tu dostawca infrastruktury, nie my. Budujemy na OpenClaw, ale nie jesteśmy jego oficjalnym partnerem.',
     result:
-      'Platforma działa komercyjnie: plany Cloud od 399 zł/mies. (Premium), Pro za 799 zł i Ultra Pro za 1999 zł, z 5-dniowym okresem próbnym, płatnościami Stripe i polską fakturą VAT. Na ClawLabs działa m.in. Superkadrowa.',
+      'Platforma działa komercyjnie: plany Cloud od 399 zł/mies. (Premium), Pro za 799 zł i Ultra Pro za 1999 zł, z 5-dniowym okresem próbnym, płatnościami Stripe i polską fakturą VAT. Na ClawLabs działa m.in. Superkadrowa. Model BYOK ma jedną konsekwencję, o której warto wiedzieć przed założeniem konta: za zużycie modeli płacisz bezpośrednio ich dostawcom, a nasz abonament pokrywa infrastrukturę i utrzymanie. I jeszcze jedno, bo pytają o to często. ClawLabs to narzędzie do samodzielnej pracy, konfigurację robisz sam. Jeśli wolisz, żeby ktoś poukładał to za Ciebie, mówimy już o wdrożeniu agencyjnym i innej półce cenowej.',
     demo: { label: 'Zobacz stronę', href: 'https://clawlabs.pro' },
     related: { label: 'Zobacz: Cennik wdrożeń AI', href: '/cennik' },
   },
@@ -152,13 +152,15 @@ export default function CaseStudiesPage() {
 
       <main id="tresc" tabIndex={-1} className="max-w-4xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-6" style={{ letterSpacing: '-0.022em' }}>
-          Realizacje: wdrożenia agentów AI, które działają na produkcji
+          Realizacje: wdrożenia agentów AI i nasze własne dema
         </h1>
         <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-3xl">
-          Cztery prawdziwe realizacje. Trzy z nich możesz kliknąć i przetestować samodzielnie:
-          głosowego asystenta z rozkładami PKS Gryfice, wirtualną kadrową Superkadrową (Janinę)
-          i naszą platformę ClawLabs. Zero wymyślonych procentów. Piszemy, jaki był problem,
-          co dokładnie zbudowaliśmy i co się zmieniło w codziennej pracy.
+          Cztery projekty i jedno zastrzeżenie na start. Dwa z nich to nasze własne produkty
+          (Superkadrowa i platforma ClawLabs), jeden to wdrożenie u klienta pod NDA, a asystent
+          z rozkładami PKS Gryfice jest naszym demo, nie zleceniem. Przewoźnik nie jest naszym
+          klientem i nie chcemy, żeby ktokolwiek wyczytał tu coś innego. Trzy z czterech możesz
+          kliknąć i sprawdzić sam. Nie znajdziesz tu wymyślonych procentów ani logotypów firm,
+          z którymi nigdy nie pracowaliśmy.
         </p>
 
         <div className="flex flex-wrap gap-4 mb-14">
@@ -263,7 +265,7 @@ export default function CaseStudiesPage() {
           </h2>
           <p className="text-white/70 leading-relaxed mb-4">
             Część naszych projektów ma publiczne dema, więc nie musisz wierzyć nam na słowo:
-            linkujemy wprost i możesz przetestować je samodzielnie, jak asystenta PKS Gryfice,
+            linkujemy wprost i możesz je przeklikać, jak asystenta na rozkładach PKS Gryfice,
             Superkadrową czy platformę ClawLabs. Udostępniamy też demo pięciu branżowych
             asystentów głosowych (transport, medycyna, nieruchomości, usługi i rezerwacje,
             administracja):{' '}
@@ -278,11 +280,21 @@ export default function CaseStudiesPage() {
             </a>
             .
           </p>
+          <p className="text-white/70 leading-relaxed mb-4">
+            Demo to nie to samo co wdrożenie i mieszanie tych dwóch rzeczy jest w tej branży
+            plagą. Nasze dema pokazują technologię na wąskim, wybranym przez nas zakresie:
+            czyste dane, jeden temat, żadnych integracji z systemami, których nie kontrolujemy.
+            W prawdziwym wdrożeniu dochodzi cała reszta, czyli bałagan w bazie wiedzy, stare
+            systemy bez API, wyjątki, o których nikt nie pamiętał, i pytania klientów, na które
+            nie da się odpowiedzieć jednym zdaniem. Dlatego demo robi się w kilka dni, a wdrożenie
+            w kilka tygodni.
+          </p>
           <p className="text-white/70 leading-relaxed">
-            Pozostałe wdrożenia realizujemy pod NDA. Wtedy opisujemy uczciwie branżę, zakres prac
-            i użyte technologie, bez nazwy firmy. Nie publikujemy zmyślonych statystyk: jeśli nie
-            możemy czegoś rzetelnie policzyć, opisujemy efekt słowami, tak jak wygląda w praktyce.
-            Szczegóły konkretnych wdrożeń omawiamy na bezpłatnej rozmowie.
+            Pozostałe wdrożenia realizujemy pod NDA. Wtedy opisujemy branżę, zakres prac i użyte
+            technologie, bez nazwy firmy. Nie publikujemy zmyślonych statystyk. Jeśli nie potrafimy
+            czegoś rzetelnie policzyć, opisujemy efekt słowami, tak jak wygląda w praktyce. Wolimy
+            to od tabelki z liczbą 47%, której nikt nie umie wyjaśnić. Szczegóły konkretnych
+            wdrożeń omawiamy na bezpłatnej rozmowie.
           </p>
         </section>
 
@@ -313,7 +325,8 @@ export default function CaseStudiesPage() {
           </h2>
           <p className="text-white/60 mb-7 max-w-xl mx-auto">
             Opowiedz nam, co zabiera Twojemu zespołowi najwięcej czasu. Pierwsza konsultacja jest
-            bezpłatna. Po niej dostaniesz konkretną wycenę, a wdrożenia zaczynają się od 5 000 zł netto.
+            bezpłatna, a wdrożenia zaczynają się od 5 000 zł netto. Jeśli po rozmowie uznamy, że
+            u Ciebie to się nie zwróci, powiemy to wprost i nie wystawimy za to faktury.
           </p>
           <Link
             href="/#kontakt"

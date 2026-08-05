@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import SeoLanding, { SeoLandingContent } from '@/components/SeoLanding';
 
 export const metadata: Metadata = {
-  title: 'Voicebot dla firm transportowych — infolinia AI',
+  title: 'Voicebot dla firm transportowych: infolinia AI',
   description:
-    'Voicebot dla firm transportowych: rozkłady jazdy przez telefon 24/7, utrudnienia i reklamacje. Publiczne demo, wdrożenie od 5 000 zł netto.',
+    'Voicebot dla firm transportowych: rozkłady jazdy przez telefon 24/7, utrudnienia i reklamacje. Nasze publiczne demo, wdrożenie od 5 000 zł netto.',
   alternates: { canonical: '/branze/voicebot-dla-transportu' },
   openGraph: {
-    title: 'Voicebot dla firm transportowych — infolinia AI',
+    title: 'Voicebot dla firm transportowych: infolinia AI',
     description:
-      'Agent głosowy w transporcie: rozkłady jazdy przez telefon 24/7, statusy kursów, reklamacje. Publiczne demo na danych rozkładowych, dane na serwerach w Polsce.',
+      'Agent głosowy w transporcie: rozkłady jazdy przez telefon 24/7, statusy kursów, reklamacje. Nasze publiczne demo na danych rozkładowych, dane na serwerach w Polsce.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const content: SeoLandingContent = {
   path: '/branze/voicebot-dla-transportu',
   breadcrumbLabel: 'Voicebot dla transportu',
-  h1: 'Voicebot dla firm transportowych — infolinia, która odbiera o piątej rano',
+  h1: 'Voicebot dla firm transportowych, czyli infolinia, która odbiera o piątej rano',
   lead: 'Voicebot dla firm transportowych to agent głosowy AI, który odbiera infolinię przewoźnika przez całą dobę: podaje rozkłady jazdy przez telefon, informuje o statusie kursu i utrudnieniach, przyjmuje reklamacje i przekierowuje trudniejsze sprawy do dyspozytora. Mówi naturalną polszczyzną, obsługuje wiele połączeń naraz, a dane trzyma na serwerach w Polsce.',
   serviceName: 'Voicebot dla firm transportowych: infolinia przewoźnika AI',
   serviceDescription:
@@ -50,8 +50,18 @@ const content: SeoLandingContent = {
       heading: 'Nasze demo: rozkłady jazdy przez telefon na publicznych danych',
       paragraphs: [
         'To jest branża, w której mamy najwięcej do pokazania, więc powiemy wprost, co to jest, a czym nie jest. Pod adresem pks-gryfice-demo.vercel.app działa nasza publiczna prezentacja agenta głosowego zbudowana na publicznie dostępnych danych rozkładowych PKS Gryfice. To nie jest wdrożenie u tego przewoźnika i PKS Gryfice nie jest naszym klientem. Zbudowaliśmy je sami, żeby pokazać działający system, bo slajdów z obietnicami każdy widział już wystarczająco dużo.',
-        'Demo obsługuje 6 przystanków i 276 odjazdów. Można je otworzyć w przeglądarce, zapytać o najbliższy kurs z wybranego przystanku i usłyszeć odpowiedź. Jeden szczegół ma tu większe znaczenie niż sam głos: agent przy odpowiedzi podaje źródło danych. Wiadomo, skąd wziął godzinę odjazdu, więc odpowiedź da się zweryfikować, a nie tylko przyjąć na wiarę. To ważne w transporcie, gdzie zmyślona przez model godzina odjazdu oznacza pasażera na przystanku o złej porze.',
-        'Ten sam mechanizm przenosimy na wdrożenia produkcyjne: dane w kontrolowanym źródle, odpowiedź z cytowaniem, zero swobodnej improwizacji modelu. Jeśli chcesz sprawdzić, jak brzmi agent w innych branżach, pod asystenci-glosowi.vercel.app udostępniamy pięciu asystentów branżowych, w tym Tomka obsługującego scenariusze transportowe.',
+        'Demo obsługuje 6 przystanków i 276 odjazdów. Można je otworzyć w przeglądarce, zapytać o najbliższy kurs z wybranego przystanku i usłyszeć odpowiedź. Jeden szczegół ma tu większe znaczenie niż sam głos: agent przy odpowiedzi podaje źródło danych. Wiadomo, skąd wziął godzinę odjazdu, więc da się ją sprawdzić, zamiast przyjmować na wiarę. W transporcie ma to bardzo konkretne przełożenie. Zmyślona przez model godzina odjazdu oznacza pasażera stojącego na przystanku o złej porze, w listopadzie, bez wiaty.',
+        'Ten sam mechanizm przenosimy na wdrożenia produkcyjne. Agent czyta z kontrolowanego źródła i przy odpowiedzi pokazuje, skąd ją wziął. Nie improwizuje. Jeśli chcesz sprawdzić, jak brzmi agent w innych branżach, pod asystenci-glosowi.vercel.app udostępniamy pięciu asystentów branżowych, w tym Tomka obsługującego scenariusze transportowe.',
+      ],
+    },
+    {
+      heading: 'Rozmowy, w których bot sobie nie radzi',
+      paragraphs: [
+        'Cztery sytuacje wracają w testach z regularnością, która przestała nas już dziwić. Lepiej powiedzieć o nich teraz niż po podpisaniu umowy.',
+        'Pierwsza. Pasażer nie mówi nazwą przystanku, tylko „spod poczty" albo „z rynku do szpitala", bo tak się w miasteczku mówi od trzydziestu lat i nikt tego nie zmieni. Agent tego nie odgadnie, dopóki nie dostanie listy potocznych nazw przypisanych do przystanków. Zbieramy ją w testach, ale zawsze coś zostaje poza listą. Wtedy bot dopytuje zamiast zgadywać.',
+        'Druga. Telefon z jadącego autobusu. Silnik, rozmowy w tle, telefon trzymany daleko od ust. Rozpoznawanie mowy ma wtedy realnie gorsze wyniki i nie będziemy udawać, że jest inaczej. Po dwóch nieudanych podejściach agent powinien przełączyć do dyspozytora i tak to zwykle ustawiamy.',
+        'Trzecia. Pytanie o kurs, którego nie ma. Ktoś dzwoni z pretensją, dlaczego zlikwidowano połączenie do sąsiedniej wsi i kiedy wróci. Bot poda stan z rozkładu i przyjmie zgłoszenie, ale decyzji o siatce połączeń nie wyjaśni ani nie podejmie. Nie jest od tego i nie powinien próbować.',
+        'Czwarta. Przesiadka u innego przewoźnika. Jeżeli nie mamy jego rozkładu, agent nie policzy czasu przesiadki. Da się to podłączyć, o ile dane są dostępne w czytelnej formie, ale to osobne ustalenie przy wdrożeniu, a nie coś, co dostajecie z pudełka.',
       ],
     },
     {
@@ -59,7 +69,7 @@ const content: SeoLandingContent = {
       paragraphs: [
         'Jeśli obsługujesz kilka kursów dziennie, a telefon dzwoni pięć razy w tygodniu, to wdrożenie za 5 000 zł netto plus abonament nigdy się nie zwróci. W tej skali kierowca albo właściciel odbierze telefon szybciej, niż zajęłoby zaprojektowanie scenariuszy rozmów. Mówimy to na konsultacji, zanim ktokolwiek podpisze umowę.',
         'Drugi przypadek: rozkład, którego nie ma w żadnej ustrukturyzowanej formie. Jeżeli aktualne godziny istnieją wyłącznie jako skan PDF wieszany na przystanku i zmieniany ręcznie co miesiąc, najpierw trzeba uporządkować dane. Bot nie naprawi bałaganu w źródle. Powieli go, tylko szybciej i przez telefon. Porządkowanie cudzych rozkładów to zresztą najmniej wdzięczna część tej roboty i nie będziemy udawać, że ją lubimy. Bez niej jednak nie ma o czym rozmawiać.',
-        'Trzeci przypadek: gdy większość rozmów to nietypowe sprawy wymagające decyzji. Przewóz ładunku specjalnego, negocjacja stawki, reklamacja szkody transportowej. W takich rozmowach kontrahent i tak trafi do człowieka. Wtedy voicebot ma sens najwyżej jako pierwsza warstwa: odbiera, kwalifikuje sprawę i przekazuje ją dalej wraz z notatką. Bywa, że i to wystarczy, żeby wdrożenie się opłaciło, ale liczby trzeba policzyć przed startem, a nie po.',
+        'Trzeci przypadek: gdy większość rozmów to nietypowe sprawy wymagające decyzji. Ta strona jest przede wszystkim o przewozach pasażerskich. W spedycji i przewozie ładunków telefon wygląda inaczej, bo nie ma rozkładu, z którego można odczytać odpowiedź. Przewóz ładunku specjalnego, negocjacja stawki, reklamacja szkody transportowej. W takich rozmowach kontrahent i tak trafi do człowieka. Wtedy voicebot ma sens najwyżej jako pierwsza warstwa: odbiera, kwalifikuje sprawę i przekazuje ją dalej wraz z notatką. Bywa, że i to wystarczy, żeby wdrożenie się opłaciło, ale liczby trzeba policzyć przed startem, a nie po.',
       ],
     },
     {
@@ -187,7 +197,17 @@ const content: SeoLandingContent = {
     {
       question: 'Ile trwa wdrożenie voicebota u przewoźnika?',
       answer:
-        'Mniejsze wdrożenie zamyka się zwykle w 2–4 tygodniach: przegląd infolinii, uporządkowanie danych rozkładowych, scenariusze rozmów, testy i start. Przy większym zakresie (wiele linii, integracja z systemem sprzedaży biletów lub obsługi reklamacji) realny horyzont to 1–3 miesiące. Najdłużej trwa zwykle nie technologia, tylko doprowadzenie danych rozkładowych do porządku.',
+        'Mniejsze wdrożenie zamyka się zwykle w 2 do 4 tygodni: przegląd infolinii, uporządkowanie danych rozkładowych, scenariusze rozmów, testy i start. Przy większym zakresie (wiele linii, integracja z systemem sprzedaży biletów lub obsługi reklamacji) realny horyzont to 1 do 3 miesięcy. Najdłużej trwa zwykle nie technologia, tylko doprowadzenie danych rozkładowych do porządku.',
+    },
+    {
+      question: 'Trzeba zmieniać numer infolinii albo centralę?',
+      answer:
+        'Nie. Agenta podpinamy pod numer, który już macie, i zwykle nie od razu na całym ruchu. Najczęściej zaczynamy od tego, co dziś nie jest obsługiwane w ogóle, czyli od godzin poza pracą biura. Dzwoniący nie musi nic wiedzieć ani nic wybierać. Jeśli po miesiącu nagrania wypadną słabo, wracacie do poprzedniego ustawienia przekierowania i tyle.',
+    },
+    {
+      question: 'Co przygotować przed wdrożeniem?',
+      answer:
+        'Cztery rzeczy i żadna nie wymaga informatyka. Aktualne źródło rozkładu w formie, którą maszyna umie przeczytać, czyli plik albo API zamiast skanu wieszanego na przystanku. Nazwisko osoby, która to źródło realnie zmienia, bo do niej wracamy przy każdej korekcie. Listę przystanków razem z nazwami, których używają pasażerowie, nawet jeśli nie ma ich na żadnej tabliczce. I tydzień zliczonych połączeń, choćby kreską na kartce. Bez tej ostatniej liczby rozmowa o zwrocie z inwestycji jest zgadywanką po obu stronach.',
     },
   ],
   cta: {

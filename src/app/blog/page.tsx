@@ -4,13 +4,13 @@ import { ArrowRight } from 'lucide-react';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Blog — agenci AI i automatyzacja w praktyce',
+  title: 'Blog o agentach AI i automatyzacji w praktyce',
   description:
-    'Praktyczna wiedza o agentach AI dla firm: koszty wdrożeń, porównania technologii, przewodniki krok po kroku. Bez marketingowej waty.',
+    'Praktyczna wiedza o agentach AI dla firm: koszty wdrożeń, porównania, przewodniki krok po kroku i granice tej technologii. Bez marketingowej waty.',
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Blog Infinity Tech — agenci AI i automatyzacja w praktyce',
-    description: 'Koszty wdrożeń AI, porównania, przewodniki krok po kroku.',
+    title: 'Blog Infinity Tech o agentach AI i automatyzacji',
+    description: 'Koszty wdrożeń AI, porównania, przewodniki krok po kroku i granice tej technologii.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },
@@ -41,28 +41,28 @@ const POSTS = [
   },
   {
     slug: 'voicebot-czy-chatbot',
-    title: 'Voicebot czy chatbot — co wybrać dla swojej firmy?',
+    title: 'Voicebot czy chatbot. Co wybrać dla swojej firmy',
     description:
-      'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każde z rozwiązań sprawdza się lepiej. Z przykładami z branż.',
+      'Telefon czy czat? Porównujemy koszty, czas wdrożenia i typ spraw, w których każdy z tych kanałów sprawdza się lepiej. Z przykładami z branż.',
     date: '2026-07-26',
   },
   {
     slug: 'voicebot-a-ivr',
-    title: 'Voicebot a IVR — czym się różnią i co daje zmiana?',
+    title: 'Voicebot a IVR. Czym się różnią i co daje zmiana',
     description:
       'Klasyczne „wciśnij jeden" kontra agent, który rozumie swobodną mowę. Różnice w obsłudze, kosztach i tym, co realnie zmienia się dla dzwoniącego.',
     date: '2026-07-26',
   },
   {
     slug: 'agent-ai-czy-nowy-pracownik',
-    title: 'Agent AI czy nowy pracownik — jak policzyć, co się opłaca',
+    title: 'Agent AI czy nowy pracownik. Jak policzyć, co się opłaca',
     description:
       'Uczciwe porównanie kosztów: co realnie kosztuje etat, co agent AI, czego AI nie zrobi i kiedy zatrudnienie człowieka jest po prostu lepsze.',
     date: '2026-07-26',
   },
   {
     slug: 'agent-ai-a-chatbot',
-    title: 'Agent AI a chatbot — czym się różnią i co wybrać dla firmy?',
+    title: 'Agent AI a chatbot. Czym się różnią i co wybrać dla firmy',
     description:
       'Chatbot odpowiada, agent AI działa. Wyjaśniamy różnicę bez żargonu: kiedy wystarczy prosty bot, a kiedy potrzebujesz agenta, który sam wykonuje zadania.',
     date: '2026-07-25',
@@ -76,7 +76,7 @@ const POSTS = [
   },
   {
     slug: 'jak-wdrozyc-ai-w-firmie',
-    title: 'Jak wdrożyć AI w firmie — przewodnik krok po kroku',
+    title: 'Jak wdrożyć AI w firmie. Przewodnik krok po kroku',
     description:
       'Od audytu procesów po działającego agenta: sprawdzona kolejność wdrożenia AI w małej i średniej firmie. Z czego zrezygnować na start i jak nie przepalić budżetu.',
     date: '2026-07-25',
@@ -112,11 +112,11 @@ export default function BlogIndex() {
 
       <main id="tresc" tabIndex={-1} className="max-w-3xl mx-auto px-6 pb-20">
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-10 mb-4" style={{ letterSpacing: '-0.022em' }}>
-          Blog — agenci AI i automatyzacja w praktyce
+          Blog o agentach AI i automatyzacji w praktyce
         </h1>
         <p className="text-lg text-white/70 leading-relaxed mb-12 max-w-2xl">
-          Konkretna wiedza z wdrożeń: ile co kosztuje, co działa, czego unikać. Piszemy tak, jak rozmawiamy z klientami,
-          bez marketingowej waty.
+          Konkretna wiedza z wdrożeń: ile co kosztuje i czego unikać. Piszemy tak, jak rozmawiamy z klientami, bez
+          marketingowej waty. Gdzie technologia ma granice, piszemy o tym wprost, zamiast to przemilczeć.
         </p>
 
         <div className="space-y-5">

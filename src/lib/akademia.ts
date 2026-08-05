@@ -87,6 +87,7 @@ export const LESSONS: Lesson[] = [
         paragraphs: [
           'Gdy klient mówi „chciałbym przełożyć wizytę na czwartek”, system wykonuje trzy osobne operacje. Najpierw zamienia dźwięk na tekst. Potem model językowy odczytuje intencję i decyduje, co zrobić. Na końcu odpowiedź wraca zamieniona z powrotem na mowę.',
           'To rozdzielenie ma praktyczne znaczenie, bo każdy etap psuje się inaczej. Zła jakość połączenia uderza w pierwszy, źle opisane zadanie w drugi, a nienaturalna barwa głosu w trzeci. Kiedy klient mówi, że „bot go nie rozumie”, warto najpierw ustalić, o który etap chodzi, bo winowajcą bywa coś zupełnie innego niż rozumienie.',
+          'Między tymi etapami siedzi jeszcze coś, czego nikt nie liczy: droga dźwięku i moment, w którym system uznaje, że rozmówca skończył mówić. Głos leci przez sieć operatora paczkami, zanim w ogóle trafi do rozpoznania mowy. Potem trzeba odczekać chwilę ciszy, żeby nie wejść człowiekowi w słowo. To czekanie klient odbiera jako namysł agenta, choć z myśleniem nie ma nic wspólnego.',
         ],
       },
       {
@@ -95,6 +96,21 @@ export const LESSONS: Lesson[] = [
           'Człowiek w rozmowie telefonicznej zaczyna się niepokoić po mniej więcej sekundzie ciszy. To jest budżet, w którym muszą zmieścić się wszystkie trzy etapy razem z drogą przez sieć.',
           'Dlatego dobrze zbudowany voicebot nie czeka z odpowiedzią, aż przetworzy całe zdanie. Zaczyna mówić, gdy ma pierwszy fragment, podobnie jak człowiek, który wtrąca „tak, sprawdzam”. Ta jedna sztuczka robi większą różnicę w odbiorze niż wymiana modelu na droższy.',
           'Jest też druga strona medalu. Agent, który odpowiada natychmiast na wszystko, brzmi nienaturalnie i przerywa rozmówcy w połowie zdania. Strojenie tego progu to zwykle kilka dni pracy przy wdrożeniu, nie jedno ustawienie.',
+          'Gdzie w tym łańcuchu uciekają milisekundy. Poniżej rzędy wielkości, a nie obietnica, bo wynik zależy od łącza i od tego, jak długo mówi rozmówca.',
+        ],
+        list: [
+          'Cisza, po której system uznaje wypowiedź za zakończoną: kilkaset milisekund. Skrócicie ją, agent zacznie przerywać. Wydłużycie, zrobi się ospały.',
+          'Rozpoznanie mowy pracuje na bieżąco, więc po ostatnim słowie zostaje mu do domknięcia ułamek sekundy, nie cała.',
+          'Model językowy: liczy się moment, w którym pada pierwsze słowo odpowiedzi, nie długość całej. Reszta powstaje już w trakcie mówienia.',
+          'Synteza głosu i droga z powrotem do słuchawki: znowu kilkaset milisekund, zanim rozmówca usłyszy pierwszą sylabę.',
+        ],
+      },
+      {
+        h2: 'Dlaczego czasem słychać pauzę',
+        paragraphs: [
+          'Czasem agent milczy dłużej i nie zawsze da się to wyciąć. Najczęstszy powód jest prozaiczny: poszedł po dane. Sprawdzenie wolnego terminu w kalendarzu albo statusu przesyłki to osobne zapytanie do Waszego systemu, a agent czeka na nie tak samo jak człowiek wpatrzony w kręcące się kółko. Jeśli tamten system odpowiada dwie sekundy, żaden lepszy model tego nie skróci.',
+          'Drugi powód leży po stronie mówiącego. Zdanie z poprawką w środku („na wtorek, nie, czekaj, na środę”) trzeba wysłuchać do końca, bo sens pada dopiero na końcu. Bywa też rwące się połączenie, przy którym rozpoznanie mowy dostaje dziurawy dźwięk i czeka na resztę. No i długość samej odpowiedzi: im dłuższe zdanie agent ma wypowiedzieć, tym więcej trzeba przygotować, zanim padnie pierwsza sylaba.',
+          'Da się z tym zrobić kilka rzeczy i żadna nie jest magiczna. Agent może powiedzieć, że sprawdza, zamiast milczeć. Może mieć limit czekania, po którym przyznaje, że nie dostał odpowiedzi, zamiast wisieć w ciszy piętnaście sekund. Czego nie zrobi: nie zacznie mówić, zanim będzie wiedział co. Pauza przed odpowiedzią, która wymaga zajrzenia do danych, jest uczciwa i lepiej ją zapowiedzieć, niż udawać, że jej nie ma.',
         ],
       },
       {
@@ -114,8 +130,13 @@ export const LESSONS: Lesson[] = [
       'Rozmowa to trzy osobne etapy: rozpoznanie mowy, decyzja modelu, synteza głosu. Każdy psuje się inaczej.',
       'Budżet na odpowiedź to około sekundy. Dlatego agent zaczyna mówić, zanim przetworzy całe zdanie.',
       'Voicebot nie zna Waszej firmy. Dane muszą przyjść z systemu, a ich uporządkowanie zajmuje najwięcej czasu.',
+      'Najdłuższą pauzę robi zwykle nie AI, tylko zapytanie do Waszego systemu. Tam szukajcie sekund, nie w modelu.',
     ],
     faq: [
+      {
+        q: 'Ile realnie trwa odpowiedź agenta?',
+        a: 'Gdy agent odpowiada z tego, co już wie, mieści się mniej więcej w sekundzie i rozmowa płynie. Gdy musi sprawdzić termin albo status w Waszym systemie, dochodzi tyle, ile ten system potrzebuje, i wtedy agent ma to powiedzieć, a nie milczeć. Te liczby traktujcie jako rząd wielkości, bo mierzy się je na prawdziwej linii telefonicznej, nie na laptopie przy dobrym wifi.',
+      },
       {
         q: 'Czy klient pozna, że rozmawia z AI?',
         a: 'Przy krótkiej, prostej sprawie często nie. Przy dłuższej rozmowie zwykle tak, bo agent trzyma się tematu bardziej konsekwentnie niż człowiek. Niezależnie od tego od 2 sierpnia 2026 roku unijne przepisy nakazują poinformować rozmówcę, że rozmawia z systemem AI, więc kwestia i tak przestaje być hipotetyczna.',
@@ -173,12 +194,48 @@ export const LESSONS: Lesson[] = [
           'Gdzie postawić próg. Poniżej mniej więcej dziesięciu godzin miesięcznie rzadko widzimy sensowny zwrot, bo sama konfiguracja i późniejsze poprawki zjadają tę oszczędność. Powyżej trzydziestu rozmowa o wdrożeniu robi się konkretna. Między jednym a drugim decyduje to, ile z tych połączeń dziś w ogóle przepada. To samo liczymy na pierwszym spotkaniu i mówimy wprost, gdy wynik nie wychodzi.',
         ],
       },
+      {
+        h2: 'Druga połowa pytania: czy Wasza telefonia to udźwignie',
+        paragraphs: [
+          'Skala odpowiada za połowę decyzji. Druga połowa siedzi w tym, jak macie dziś zestawiony telefon, i tam zaskoczenia bywają większe niż w kalkulacji.',
+          'Poniżej układy, na które trafiamy najczęściej, i to, co w każdym z nich potrafi zaskoczyć.',
+        ],
+        list: [
+          'Komórka właściciela z przekierowaniem. Przy wariancie „gdy nie odbieram” najpierw dzwoni aparat w kieszeni, agent rusza po kilkunastu sekundach, a rozmówca ma przez ten czas sam sygnał.',
+          'Stara centrala analogowa albo ISDN, utrzymywana przez firmę z zewnątrz. Agenta nie ma tam gdzie wpiąć bez bramki albo bez zmiany łącza na SIP. Da się, tylko harmonogram przestaje zależeć od Was.',
+          'Numer bezpłatny 800 albo 801. Ma własne zasady rozliczeń i przekierowanie potrafi zmienić to, kto płaci za minutę. Lepiej zapytać wcześniej, niż zobaczyć na fakturze.',
+          'System call center z kolejką. Agent staje przed nią albo za nią. Przed kolejką zdejmuje ruch od razu, za kolejką łapie już tylko tych, którym znudziło się czekanie.',
+          'Numer zapisany na osobę fizyczną, a nie na firmę. Problem nie jest techniczny i blokuje najskuteczniej, bo każdą zmianę musi podpisać ta konkretna osoba.',
+        ],
+      },
+      {
+        h2: 'O co zapytać operatora, zanim ktokolwiek zacznie budować',
+        paragraphs: [
+          'Ta rozmowa trwa kwadrans i prawie zawsze ląduje na końcu listy, przez co potrafi wywrócić termin tydzień przed startem. Odpowiedzi zapiszcie, bo konsultant na infolinii mówi jedno, a umowa bywa napisana inaczej.',
+        ],
+        list: [
+          'Ile połączeń naraz przechodzi przez nasz numer i co słyszy drugi dzwoniący, gdy pierwszy rozmawia?',
+          'Dostaniemy do numeru dostęp SIP, czy zostaje nam samo przekierowanie?',
+          'Przekierowanie ustawiamy sami w panelu czy zgłoszeniem, i ile trwa cofnięcie zmiany?',
+          'Czy przekazanie rozmowy na komórkę pracownika liczy się jako osobne połączenie i po jakiej stawce?',
+          'Czy dostaniemy billing z rozbiciem na godziny i osobno wykaz nieodebranych? Ten jeden zapiszcie nawet wtedy, gdy resztę odpuścicie, bo daje Wam pierwsze trzy liczby z tej lekcji bez tygodnia notowania.',
+        ],
+      },
+      {
+        h2: 'Gdy odpowiedź brzmi: nie tym numerem',
+        paragraphs: [
+          'Czasem wychodzi twarde nie. Numer stoi na kimś, kogo nie ma jak złapać, albo centrala jest cudza i jej opiekun nie ma teraz czasu. To nie kończy tematu, zmienia kolejność prac.',
+          'Obejście jest proste. Agent dostaje własny numer, a stary przekierowujecie na niego wtedy, kiedy chcecie: po godzinach, po kilkunastu sekundach dzwonienia, albo na start wcale. Niczego nie przenosicie i niczego nie podpisujecie. Cena jest taka, że przez jakiś czas macie w obiegu dwa numery i ktoś musi pilnować, który gdzie jest opublikowany. Przeniesienie numeru do operatora VoIP ma własne terminy po stronie obu operatorów, więc zaczyna się je razem z budową agenta, nie po odbiorze.',
+          'Jest wreszcie odpowiedź, przy której nie ma po co szukać obejść. Firma, do której ludzie piszą na WhatsAppie, a dzwonią co drugi dzień, nie potrzebuje agenta głosowego, tylko szybszych odpowiedzi na wiadomości. Mówimy to na bezpłatnej konsultacji, zanim pojawi się jakakolwiek faktura.',
+        ],
+      },
     ],
     takeaways: [
       'Trzy liczby na start: połączenia dziennie, nieodebrane, średni czas rozmowy.',
       'Posortujcie pytania na powtarzalne, wymagające decyzji i takie, które musi wziąć człowiek.',
       'Przy kilku telefonach dziennie albo przy braku powtarzalności voicebot się nie opłaca.',
       'Policzcie godziny miesięcznie: rozmowy dziennie razy minuty, podzielone przez 60, razy 21 dni roboczych. Poniżej dziesięciu godzin rzadko warto zaczynać.',
+      'Zapytajcie operatora, ile połączeń przechodzi przez numer naraz, kto figuruje w umowie i jak szybko cofniecie przekierowanie. Gdy usłyszycie nie, agent dostaje własny numer.',
     ],
     faq: [
       {
@@ -225,6 +282,20 @@ export const LESSONS: Lesson[] = [
       ],
     },
     {
+      h2: "Czego agent nie usłyszy, choćby scenariusz był idealny",
+      paragraphs: [
+        "Progi mówią, kiedy oddać rozmowę. Osobne pytanie brzmi, co najczęściej doprowadza do tego momentu. Wracają te same sytuacje i żadna z nich nie bierze się ze źle napisanego scenariusza. Rozpoznawanie mowy ma swoje warunki brzegowe, a lepiej poznać je na testach niż na nagraniach z pierwszego tygodnia.",
+        "Część da się ustawić. Próg ciszy, po którym agent uznaje, że rozmówca skończył zdanie, to pierwsza rzecz, którą ruszamy na infolinii z przewagą starszych osób. Numer zlecenia albo kod rezerwacji łatwiej wystukać na klawiaturze telefonu niż podyktować w hałasie, więc zostawiamy obie drogi. Reszty nie naprawi żaden zapis w promptcie i wtedy zostaje jedno: krótka droga do człowieka.",
+      ],
+      list: [
+        "Gwar w tle. Telewizor w pokoju obok, radio w aucie, druga rozmowa w open space. Transkrypcja wciąga wtedy słowa, których rozmówca nie powiedział, i najczęściej gubi się na cyfrach.",
+        "Mowa potoczna. Ludzie nie mówią „chciałbym umówić wizytę”, tylko „dzwonię w sprawie tego, co Pani doktor robiła mi w piątek”. Do tego poprawki w środku zdania: „na wtorek, nie, czekaj, na środę”. Agent zapisze wtorek, jeśli nikt nie przewidział takiej poprawki.",
+        "Osoby starsze. Mówią ciszej i robią dłuższe przerwy w środku wypowiedzi. System bierze przerwę za koniec zdania i wchodzi w słowo, rozmówca traci wątek i zaczyna od początku. Czasem pyta „halo?”, bo nie wie, czy cokolwiek się dzieje.",
+        "Akcent i gwara. Najlepiej wychodzi standardowa polszczyzna. Przy wyraźnym akcencie regionalnym albo u osób mówiących po polsku jako drugim językiem sypią się nazwiska i nazwy miejscowości, czyli akurat te słowa, których nie da się odgadnąć z kontekstu.",
+        "Zdenerwowany rozmówca. Mówi szybko, głośno, przerywa i nie odpowiada na pytanie, tylko opowiada całą sprawę od początku. Tu nie zawodzi technika, tylko sam pomysł, żeby ta osoba rozmawiała z automatem.",
+      ],
+    },
+    {
       h2: "Zdanie, które gasi większość problemów",
       paragraphs: [
         "Brzmi banalnie: jeżeli agent nie ma pewności, mówi, że sprawdzi, i przekazuje rozmowę dalej. Jedna reguła załatwia zaskakująco dużo, bo daje agentowi gotowe wyjście w każdej niejasnej sytuacji. Zamiast produkować odpowiedź na siłę, ma ruch, który zawsze jest dopuszczalny.",
@@ -240,12 +311,21 @@ export const LESSONS: Lesson[] = [
         "Druga dziura to godziny i obłożenie. O 21:00 nie ma komu przełączyć rozmowy, w poniedziałek rano wszystkie linie są zajęte. Wtedy jedyne uczciwe rozwiązanie polega na zebraniu prośby o kontakt z konkretnym oknem czasowym i faktycznym oddzwonieniu. Voicebot, który obiecuje kontakt, a nikt nie dzwoni, szkodzi bardziej niż zwykła zapowiedź o godzinach pracy.",
       ],
     },
+    {
+      h2: "Jak sprawdzić granice przed startem",
+      paragraphs: [
+        "Te wszystkie rzeczy i tak wyjdą w pierwszym tygodniu produkcji, choć wystarczyłoby na nie jedno popołudnie wcześniej. Zdania wymyślone przy biurku zawsze przechodzą, więc nie ma sensu ich sprawdzać. Puśćcie agentowi to, co ludzie mówią naprawdę, najlepiej z nagrań albo z pamięci osoby, która przez rok odbierała ten numer.",
+        "Kilka telefonów warto wykonać w warunkach, w jakich klienci naprawdę dzwonią: z auta na trasie, z korytarza, sprzed hali. Ktoś z zespołu powinien też celowo mówić półzdaniami, poprawiać się w połowie i podać nazwisko z trudną końcówką. Nie po to, żeby złamać agenta. Po to, żeby zobaczyć, co robi po drugiej nieudanej próbie i czy faktycznie przekazuje rozmowę zamiast pytać trzeci raz.",
+        "Oceniajcie przy tym transkrypcję, nie wrażenie z rozmowy. Rozmowa potrafi brzmieć składnie, a w zapisie widać, że agent usłyszał Kowalczyk zamiast Kowalczuk i nikt tego nie potwierdził. Nazwiska, numery telefonów i daty sprawdzajcie osobno, bo to na nich wykłada się najwięcej wdrożeń, a nie na pytaniach o ofertę.",
+      ],
+    },
     ],
     takeaways: [
     "Agent bez opisanych granic nie przyzna się do niewiedzy. Wygeneruje odpowiedź, która brzmi pewnie i bywa nieprawdziwa.",
     "Ustalcie cztery twarde progi przekazania: prośba rozmówcy, skarga, sprawa pieniężna, druga nieudana próba zrozumienia.",
     "Reguła „sprawdzę i przekażę dalej” rozwiązuje większość niejasnych sytuacji, o ile agent nie obiecuje przy tym terminów.",
     "Przekazanie bez kontekstu jest gorsze niż brak bota. Klient opowiada swoją sprawę drugi raz i zwykle już nie wraca.",
+    "Nie każde nieporozumienie to wina scenariusza. Gwar w tle i mowa potoczna psują transkrypcję niezależnie od tego, jak dobrze opisaliście granice.",
     ],
     faq: [
     {
@@ -259,6 +339,14 @@ export const LESSONS: Lesson[] = [
     {
       q: "Co zrobić, gdy w firmie nie ma komu odebrać przekazanej rozmowy?",
       a: "Trzeba to powiedzieć wprost już na etapie projektu. Agent wtedy nie przełącza nikogo, tylko zbiera zgłoszenie i podaje realne okno kontaktu, na przykład następny dzień roboczy do południa. Obietnica natychmiastowego połączenia, której nikt nie dowiezie, kosztuje więcej niż brak takiej opcji.",
+    },
+    {
+      q: "Dzwonią do nas głównie starsze osoby. Czy agent głosowy ma wtedy sens?",
+      a: "Bywa, że ma, ale przy innych ustawieniach i po trzeźwej ocenie. Dłuższy próg ciszy, wolniejsze tempo, krótsze zdania i wcześniejsze przekazanie, na przykład już przy pierwszej nieudanej próbie zamiast drugiej. Jeśli po testach na własnych nagraniach widać, że i tak połowa rozmów ląduje u konsultanta, uczciwiej jest zostawić agenta na wieczory i weekendy, a w godzinach pracy nie wpuszczać go na pierwszą linię.",
+    },
+    {
+      q: "Czy da się nauczyć agenta gwary albo akcentu?",
+      a: "Nie w takim sensie, w jakim uczy się człowieka. Można natomiast podać modelowi listę nazw własnych, które padają w waszych rozmowach: ulice, miejscowości, nazwy produktów, nazwiska lekarzy. To realnie pomaga, bo system przestaje zgadywać te słowa z powietrza. Samego akcentu nie zmieni, więc przy takich rozmówcach agent powinien powtarzać nazwisko i numer do potwierdzenia zamiast zakładać, że usłyszał dobrze.",
     },
     ],
     related: [
@@ -368,6 +456,26 @@ export const LESSONS: Lesson[] = [
       ],
     },
     {
+      h2: "Tempo i ton pod branżę",
+      paragraphs: [
+        "Jedno ustawienie tempa na cały scenariusz to skrót, który mści się zawsze w tym samym miejscu. Powitanie i pytania mogą iść zwyczajnie, ale w chwili, gdy agent podaje termin, adres albo numer zlecenia, po drugiej stronie ktoś szuka długopisu. Tam trzeba zwolnić i rozbić zdanie na krótsze kawałki. Testujcie to na kimś, kto naprawdę zapisuje. Inaczej nie usłyszycie, że agent zdążył podać trzy rzeczy, a rozmówca zapamiętał jedną.",
+        "Poza tym punktem ton idzie za sytuacją, w jakiej ludzie sięgają po telefon. Kilka układów, które widujemy najczęściej.",
+      ],
+      list: [
+        "Transport i rozkłady: rozmówca stoi na dworze, w hałasie, chce usłyszeć godzinę i się rozłączyć. Krótkie zdania i godzina powtórzona raz na końcu.",
+        "Przychodnia albo gabinet: dzwoni ktoś chory lub rodzic z małym dzieckiem w tle. Wolniej, bez wesołości, z cierpliwością na zacinanie się, bo agent nie może wchodzić w słowo komuś, kto szuka nazwy leku.",
+        "Gastronomia wieczorem: hałas po obu stronach linii. Wyraźniej i głośniej, ale nie szybciej. To dwie różne rzeczy i mylenie ich psuje najwięcej rozmów.",
+        "Serwis i awarie po godzinach: rozmówca jest zdenerwowany. Spokojny, lekko wolniejszy głos brzmi jak ktoś, kto się tym zajmie. Szybkie tempo odbiera się jako zbywanie, nawet gdy treść jest w porządku.",
+      ],
+    },
+    {
+      h2: "Kto ma wybrać tempo",
+      paragraphs: [
+        "Da się rozdzielić ton po porze dnia albo po numerze, na który ktoś dzwoni. Rzadko to proponujemy. Każda wersja to osobny zestaw nagrań i osobne miejsce, w którym coś pójdzie nie tak, a przy przeglądaniu rozmów trudniej dojść, która zawiodła. Prościej ustawić jedno tempo pod trudniejszy przypadek i pilnować, żeby w łatwiejszym nie brzmiało ślamazarnie.",
+        "Sam wybór zamyka się szybciej, niż wygląda, o ile nie robicie z niego dyskusji o gustach. Nagrywamy jedno zdanie w trzech tempach i puszczamy je przez telefon osobie, która na co dzień odbiera te połączenia. Właściciel firmy wybiera zwykle ładniejszy głos. Recepcjonistka wybiera ten, przy którym rzadziej trzeba powtarzać. My idziemy za recepcjonistką.",
+      ],
+    },
+    {
       h2: "Imię, przedstawienie się i spójność z marką",
       paragraphs: [
         "Imię pomaga, bo daje rozmówcy sposób mówienia o asystencie i porządkuje rozmowę. Ma też drugą stronę. Ludzkie imię podane bez wyjaśnienia sugeruje pracownika, a tego chcemy uniknąć. Bezpieczny układ to imię plus rola nazwana wprost, na przykład „Ola, asystentka AI salonu”. Nie „asystentka głosowa”, nie „wirtualna recepcja”, tylko AI, bo tylko to słowo rozmówca zrozumie od razu.",
@@ -383,12 +491,22 @@ export const LESSONS: Lesson[] = [
         "Osobno odradzamy klonowanie głosu konkretnej osoby z firmy. Na pokazie robi wrażenie, a potem zaczynają się kłopoty: zgoda pracownika, zapis w umowie, aktualizacja nagrań, gdy ta osoba odejdzie. Do tego rozmówca, który zorientuje się później, że słyszał kopię głosu recepcjonistki, ma prawo poczuć się wprowadzony w błąd. Więcej papieru niż pożytku.",
       ],
     },
+    {
+      h2: "Gdy rozmówca nie wie, że to automat",
+      paragraphs: [
+        "Ludzie mówią inaczej do człowieka niż do maszyny, a różnica jest większa, niż się wydaje. Do człowieka opowiada się sprawę od początku, z dygresją o tym, że dzwoniło się już we wtorek i nikt nie odebrał. W jednej wypowiedzi siedzą wtedy dwie intencje i pół historii rodzinnej. Rozpoznawanie mowy radzi sobie z takim materiałem gorzej niż z prostym „chcę przełożyć wizytę”. Wychodzi z tego rzecz przewrotna: im bardziej ludzki głos, tym trudniejsze wejście dostaje system, który ma za nim nadążyć.",
+        "Druga sprawa jest czysto techniczna i kosztuje najwięcej. W rozmowie z człowiekiem przytakujemy. „Mhm”, „tak, tak”, odruchowo, żeby pokazać, że słuchamy. Wykrywanie mowy traktuje takie mruknięcie jak wejście w słowo i przerywa zdanie agenta w połowie. Rozmówca słyszy urwaną informację, więc pyta jeszcze raz, agent zaczyna od nowa, a przy trzecim podejściu ktoś się rozłącza. Kiedy człowiek wie, że po drugiej stronie jest automat, przytakuje wyraźnie rzadziej, bo nie ma komu.",
+        "Zostaje moment odkrycia. Ktoś w połowie rozmowy orientuje się, z czym rozmawia, i prawie zawsze robi to samo: zostawia swoją sprawę i zaczyna sprawdzać. Najpierw „czy ja rozmawiam z człowiekiem”, potem pytanie z zupełnie innej beczki, żeby przyłapać. Rozmowa rusza od zera, z gorszym nastawieniem niż na starcie. Gorzej, jeśli po drodze powiedział więcej, niż zamierzał, bo mówił jak do recepcji. Pretensja nie dotyczy wtedy głosu, tylko tego, że nikt go nie uprzedził. Co i kiedy trzeba powiedzieć, opisujemy w lekcji siódmej.",
+        "Dlatego barwę dobiera się razem z pierwszym zdaniem, a nie osobno. Bez informacji o AI naturalny głos pracuje przeciwko Wam, bo im lepiej udaje człowieka, tym mocniejsze będzie zderzenie. Z tą informacją można pozwolić sobie na cieplejszą barwę, bo nikt się już w połowie rozmowy niczego nie dowie.",
+      ],
+    },
     ],
     takeaways: [
     "Barwa głosu ustawia oczekiwania co do kompetencji, zanim padnie pierwsza odpowiedź. Dobierajcie ją do branży i do stanu, w jakim dzwonią ludzie.",
     "Tempo nieco wolniejsze niż w zwykłej rozmowie, wyraźna pauza po pytaniu, cyfry czytane grupami.",
     "Imię plus rola nazwana wprost: „asystentka AI”, nie „asystentka głosowa”. Skąd bierze się ten obowiązek, tłumaczy lekcja siódma.",
     "Bardzo naturalny głos przy prostym bocie działa przeciwko Wam. Neutralna barwa mniej obiecuje i mniej rozczarowuje.",
+    "Kto nie wie, że mówi do maszyny, mówi dłużej i przytakuje w środku zdania. Agent przerywa, rozmowa się zapętla. Zdanie o AI na wstępie oszczędza tę pętlę.",
     ],
     faq: [
     {
@@ -398,6 +516,10 @@ export const LESSONS: Lesson[] = [
     {
       q: "Czy asystent może nosić imię pracownika z recepcji?",
       a: "Odradzamy. Rozmówca może uznać, że rozmawia z tą osobą, a to kłóci się z obowiązkiem informowania o AI, który opisujemy w lekcji siódmej. Lepiej wybrać imię neutralne i zawsze dokleić do niego rolę ze słowem AI, na przykład „Ola, asystentka AI salonu”. Wtedy od pierwszego zdania jest jasne, kto jest po drugiej stronie.",
+    },
+    {
+      q: "Rozmówcy mówią, że asystent mówi za wolno. Przyspieszać?",
+      a: "Najpierw sprawdźcie, w którym miejscu pada ta uwaga. Jeśli przy powitaniu, tnijcie bez wahania, bo tam ludzie chcą przejść dalej. Przy podawaniu terminu albo numeru zostawcie wolne tempo, bo ono pracuje na Waszą korzyść, tylko rozmówca tego tak nie nazwie. I zwykle więcej daje skrócenie tekstu niż przyspieszenie odtwarzania. Krótsze zdanie w normalnym tempie brzmi lepiej niż długie puszczone szybciej.",
     },
     {
       q: "Ile trwa dobranie głosu i czy to osobny koszt?",
@@ -449,11 +571,38 @@ export const LESSONS: Lesson[] = [
       ],
     },
     {
+      h2: "Stare dane nie krzyczą",
+      paragraphs: [
+        "Zepsuta integracja jest łaskawa. Rzuca błędem, agent mówi, że nie ma teraz dostępu do kalendarza, ktoś dzwoni do nas tego samego dnia. Gorzej wygląda sytuacja, w której połączenie działa poprawnie, tylko po drugiej stronie leży odpowiedź sprzed miesiąca. Agent poda ją tym samym spokojnym tonem co wszystko inne. Nikt nie ma powodu jej podważać, bo brzmi identycznie jak prawda.",
+        "Dlatego przy każdym źródle ustalcie, ile godzin wstecz jeszcze akceptujecie i co agent robi po przekroczeniu tej granicy. Zła odpowiedź to podać dalej i udawać, że nic się nie stało. Sensowne są dwie: podać z zastrzeżeniem, w stylu „to stan z porannego eksportu, potwierdzę SMS-em”, albo nie podawać w ogóle i przełączyć do człowieka.",
+        "Do tego jedna rzecz techniczna, która ratuje skórę przy pierwszej reklamacji. W logu rozmowy ma być zapisane nie tylko to, co agent powiedział, ale też godzina pobrania danych i system, z którego przyszły. Bez tego po tygodniu nie ustalicie, czy agent podał złą cenę, czy dostał złą cenę. To dwa różne problemy i naprawia się je w dwóch różnych miejscach.",
+        "Sprzeczność między źródłami w trakcie rozmowy to osobna sprawa i agent nie powinien jej rozstrzygać sam. Kalendarz pokazuje wolne, a w systemie recepcyjnym ta sama godzina jest zajęta, bo ktoś wpisał wizytę ręcznie po telefonie. Ustalcie pierwszeństwo na papierze, a przypadki rozjazdu kierujcie do człowieka i zapisujcie osobno. Po miesiącu ta lista powie Wam o stanie Waszych systemów więcej niż niejeden audyt.",
+        "Przy odbiorze poproście o pokazanie, jak wygląda rozmowa przy padniętej integracji. Nie opis w dokumencie, tylko odtworzenie: odcinamy dostęp i dzwonimy. Agent ma wtedy powiedzieć, że nie może w tej chwili sprawdzić terminu, i zaproponować drugą drogę. Jeśli zamiast tego milknie na kilka sekund albo zaczyna improwizować, nie jest gotowy do odebrania pierwszego prawdziwego telefonu.",
+      ],
+    },
+    {
       h2: "Gdzie ta układanka się sypie",
       paragraphs: [
         "Pierwsza przeszkoda to system bez API. Stary program na jednym komputerze w księgowości, dane wyciągane ręcznym eksportem do pliku. Da się na tym pracować, ale agent operuje wtedy obrazem sprzed kilku godzin albo sprzed doby. Dla rozkładu jazdy to bez znaczenia, bo rozkład zmienia się rzadko. Dla wolnych terminów u fryzjera to już kłopot, bo agent zaproponuje godzinę zajętą rano.",
         "Druga przeszkoda jest trudniejsza, bo nie widać jej w żadnej dokumentacji. Część wiedzy siedzi wyłącznie w głowach zespołu. Że doktor Kowalska nie przyjmuje dzieci poniżej trzeciego roku życia. Że w piątki po piętnastej nie umawiamy pierwszych wizyt, bo nie zdążymy. Nikt tego nie zapisał, bo pani Ania wie. Agent takich reguł nie odgadnie. Ktoś u Was musi usiąść i je spisać, zwykle są to dwie albo trzy godziny rozmów przy kawie, i tej roboty nie przerzucicie na dostawcę.",
         "Czasem wniosek jest niewygodny. Jeśli większość pytań dotyczy rzeczy, których nie ma w żadnym systemie i nie da się ich sensownie opisać, voicebot obsłuży wąski kawałek ruchu. Uczciwie jest wtedy zacząć od uporządkowania danych, a rozmowę o wdrożeniu odłożyć o kwartał. Mówimy to na bezpłatnej pierwszej konsultacji, zanim ktokolwiek podpisze umowę.",
+      ],
+    },
+    {
+      h2: "Test dwudziestu rozmów",
+      paragraphs: [
+        "Zostaje pytanie, jak stwierdzić, że to właśnie Wasz przypadek, zanim ktokolwiek wystawi fakturę. Test jest prosty i zrobicie go sami, w jedno popołudnie. Weźcie dwadzieścia ostatnich telefonów od klientów, z rejestru połączeń albo z notatek recepcji, i na każdy spróbujcie odpowiedzieć wyłącznie z systemów. Bez pytania kogokolwiek z zespołu, bez zaglądania do zeszytu przy recepcji.",
+        "Liczba, która wyjdzie, to górny pułap tego, co agent obsłuży w pierwszym miesiącu. Nie średnia, pułap, bo Wy przy takim teście i tak podświadomie włączacie intuicję, której agent nie ma. Jeśli wyszło siedem na dwadzieścia, wdrożenie dalej ma sens, tylko zakres trzeba zawęzić do tych siedmiu spraw i nie obiecywać sobie reszty. Siódemka jest tu przykładem, nie progiem z żadnych badań.",
+        "Nie wszystko, co przy tym wypłynie, blokuje start, więc nie róbcie z porządków projektu na pół roku. Duplikaty klientów bolą od pierwszego dnia, bo agent nie wie, do którego rekordu dopisać wizytę, i albo pyta o te same dane trzeci raz, albo trafia w zły. Martwe rekordy zwykle da się odfiltrować jednym warunkiem i posprzątać po starcie. Wyjątkiem są pola używane niezgodnie z nazwą, bo tu nie pomoże żaden skrypt, a agent, który znajdzie cenę w polu na komentarz, poda ją jako pewnik.",
+        "Osobno uważajcie na dane, które wyglądają na świeże, bo ktoś je niedawno edytował, a mimo to kłamią. Cennik z datą sprzed tygodnia, w którym poprawiono dwie pozycje z czterdziestu. Grafik odświeżany codziennie w kolumnie z nazwiskami, ale nie w kolumnie z godzinami. Data ostatniej modyfikacji nie mówi nic o tym, czy rekord jest prawdziwy, a to na nią wszyscy patrzą pierwszym odruchem.",
+        "Ile takie sprzątanie trwa, nie podamy, bo każde widełki byłyby zmyślone. Bywa, że popołudnie. Bywa, że dłużej niż samo wdrożenie, jeśli system pracował latami bez nikogo, kto by go pilnował. Przy przeglądzie warto celowo poszukać kilku rzeczy, które powtarzają się prawie wszędzie.",
+      ],
+      list: [
+        "Ten sam klient w bazie kilka razy, bo raz numer wpisano z kierunkowym, raz bez",
+        "Pozycje w cenniku, których nikt już nie sprzedaje, zostawione na wszelki wypadek",
+        "Pole używane niezgodnie z własną nazwą, bo trzy lata temu tak było szybciej",
+        "Blokady w kalendarzu, które dla każdej osoby w zespole znaczą co innego",
+        "Rekordy testowe sprzed lat, których nikt nie kasuje, bo a nuż do czegoś służą",
       ],
     },
     ],
@@ -462,6 +611,8 @@ export const LESSONS: Lesson[] = [
     "Zanim policzycie integracje, ustalcie, który system rozstrzyga spór. Dwie wersje cennika kończą się reklamacją.",
     "Agent, który cytuje źródło, jest łatwiejszy do sprawdzenia i rzadziej wprowadza rozmówcę w błąd.",
     "Brak API albo wiedza wyłącznie w głowach zespołu to realna przeszkoda, nie drobiazg do dogrania po starcie.",
+    "Zepsuta integracja daje o sobie znać. Działająca integracja podająca stare dane nie daje znaku i to ona kosztuje najwięcej.",
+    "Przejdźcie dwadzieścia ostatnich rozmów wyłącznie po systemach. Wynik pokazuje realny zakres na pierwszy miesiąc.",
     ],
     faq: [
     {
@@ -475,6 +626,10 @@ export const LESSONS: Lesson[] = [
     {
       q: "Co, jeśli nasz system nie ma API?",
       a: "Sprawdzamy inne drogi: eksport uruchamiany na harmonogram, dostęp do bazy, czasem prostą warstwę pośrednią. Jeśli żadna nie wchodzi w grę, mówimy o tym przed podpisaniem umowy, a nie w połowie realizacji. Bywa, że sensowniejszą kolejnością jest najpierw zmiana systemu, a voicebot poczeka.",
+    },
+    {
+      q: "Sprzątacie bazę za nas przed wdrożeniem?",
+      a: "Przeglądamy ją i mówimy wprost, co się nie nadaje, to część pierwszej, bezpłatnej rozmowy. Samego przepisywania rekordów nie weźmiemy na siebie i nie dlatego, że nam się nie chce. Przy dwóch wersjach ceny tej samej usługi tylko ktoś od Was wie, która obowiązuje. Możemy przygotować listę miejsc do poprawy i sprawdzić efekt, decyzje zostają po Waszej stronie.",
     },
     ],
     related: [
@@ -591,11 +746,35 @@ export const LESSONS: Lesson[] = [
       ],
     },
     {
+      h2: "Miary, które mylą, i czym je zastąpić",
+      paragraphs: [
+        "Średni czas rozmowy jest w tej rodzinie najbardziej podstępny, bo spada z dwóch przeciwnych powodów. Albo agent szybciej dochodzi do sedna. Albo ludzie odkładają słuchawkę po trzydziestu sekundach. Średnia w obu przypadkach wygląda tak samo, rozkład już nie. Wystarczy sprawdzić, ile rozmów mieści się poniżej minuty, żeby odróżnić jedno od drugiego. My oglądamy medianę i ogon powyżej trzech minut, samej średniej nie ruszamy.",
+        "Druga pułapka to ankieta na końcu rozmowy. Odpowiada na nią garstka i zwykle są to ludzie z krańców skali, więc dostajecie wynik piękny albo dramatyczny, w obu przypadkach zbudowany na kilku osobach. Jeśli ją zostawiacie, traktujcie ją jak źródło cytatów, nie jak wskaźnik. Jedno zdanie wpisane przez zirytowanego klienta bywa warte więcej niż średnia ocena z całego miesiąca.",
+        "Trzecia rzecz przychodzi od strony technicznej i brzmi poważnie, bo ma dwa miejsca po przecinku. Dostawcy silników mowy podają skuteczność rozpoznawania. Ta liczba mówi, czy system poprawnie zapisał słowa, a nie czy zrozumiał, o co człowiek prosi. Rozmówca powie wyraźnie „chciałbym przełożyć to, co miałem w piątek”, transkrypcja wyjdzie bezbłędna, a agent i tak nie skojarzy, o którą wizytę chodzi. To parametr do szukania usterek, nie do slajdu dla zarządu.",
+        "Jest za to miara, której prawie nikt nie liczy, a stoi najbliżej pytania „czy to się opłaca”. Koszt jednej domkniętej sprawy, czyli miesięczne utrzymanie plus rachunek za minuty, podzielone przez liczbę spraw zamkniętych bez człowieka. Przy utrzymaniu za 249 zł netto i pięciuset domkniętych sprawach w miesiącu samo utrzymanie kosztuje pół złotego na sprawę. Przy trzydziestu sprawach to już ponad osiem złotych i minuty dochodzą osobno. Ta jedna liczba zamyka dyskusję szybciej niż godzinna prezentacja z wykresami.",
+      ],
+      list: [
+        "Liczba obsłużonych rozmów w miesiącu. Rośnie razem z ruchem i sezonem, więc opisuje głównie to, ile razy zadzwonił telefon",
+        "Czas oczekiwania na połączenie. Spada do zera pierwszego dnia, bo automat odbiera od razu, i potem nie powie już nic",
+        "Liczba rozpoznanych intencji w panelu. Mówi, ile razy agent coś dopasował, nie ile razy dopasował dobrze",
+        "Wrażenie z demo przed startem. To ocena scenariusza, nie rozmowy z kimś, kto dzwoni z peronu i ma minutę do odjazdu",
+      ],
+    },
+    {
       h2: "Raz w tygodniu posłuchajcie prawdziwych rozmów",
       paragraphs: [
         "Panel z liczbami pokaże, ile spraw zamknięto bez człowieka. Nie pokaże, że agent po trzeciej minucie zaczyna mówić za szybko, że powitanie jest o zdanie za długie albo że codziennie ktoś pyta o rzecz, której w scenariuszu nigdy nie było. To słychać dopiero w nagraniu. Dziesięć losowych rozmów tygodniowo plus wszystkie zakończone eskalacją to rozsądna próbka na początek.",
         "Ważne, kto słucha. Najwięcej wyłapie osoba z pierwszej linii, nie właściciel. Recepcjonistka po piętnastu sekundach wie, czego klient naprawdę chciał, i wyłapie ton, który dla nas brzmi neutralnie, a dla dzwoniącego opryskliwie. Po pierwszym miesiącu można zejść do próbki co dwa tygodnie, bo najgrubsze błędy są już wtedy wyłapane.",
         "Z odsłuchu ma powstać lista poprawek uporządkowana według liczby powtórzeń, a nie według tego, co najbardziej zirytowało szefa. Zwykle w pierwszych tygodniach zbiera się kilkanaście drobiazgów i dwie większe zmiany w scenariuszu. To normalna część utrzymania, które kosztuje 249, 499 albo 799 zł netto miesięcznie zależnie od zakresu, i właśnie za to się w nim płaci.",
+      ],
+    },
+    {
+      h2: "Ile trzeba czekać, zanim liczby coś znaczą",
+      paragraphs: [
+        "Dane z pierwszych dwóch dni wyrzućcie. Dzwonią wtedy pracownicy, znajomi pracowników i ktoś z zarządu, kto chce sprawdzić, czy agent pozna jego nazwisko. To nie jest ruch, to zwiedzanie. Normalne rozmowy zaczynają się wtedy, gdy przestaje być ciekawie, zwykle w drugim tygodniu.",
+        "Dalej liczy się nie kalendarz, tylko liczba rozmów w konkretnej kategorii. Cztery tygodnie przy trzydziestu połączeniach dziennie to zupełnie inna próbka niż cztery tygodnie przy pięciu. Nasza reguła kciuka, wzięta z doświadczenia, a nie z podręcznika statystyki: żeby powiedzieć cokolwiek o jednym typie sprawy, chcemy zobaczyć przynajmniej sto takich rozmów. O całym agencie da się mówić po pełnym miesiącu, bo dopiero wtedy przejdzie końcówka miesiąca i kilka weekendów.",
+        "Jest jeszcze rzecz, która psuje pomiar częściej niż mała próbka. Każda zmiana w scenariuszu zaczyna nową próbkę. Jeśli w środę skróciliście powitanie, to dane z poniedziałku i z czwartku opisują dwa różne agenty i zestawianie ich w jednej kolumnie nie ma sensu. Wystarczy plik z datą i jednym zdaniem, co zmieniono. Bez niego po dwóch miesiącach nikt nie odtworzy, dlaczego w połowie maja odsetek eskalacji podskoczył, a po tygodniu wrócił na swoje.",
+        "Ostatnia sprawa to sezon. Przychodnia w lutym i przychodnia w lipcu to dwa różne miejsca, a w biurze rachunkowym różnica między drugim tygodniem miesiąca a końcówką bywa większa niż wszystko, co zrobi agent. Zestawiajcie okresy, które da się zestawić. Jeśli takich nie macie, powiedzcie to na spotkaniu wprost, zamiast udawać, że wykres jest czysty. Rok danych ten problem zdejmuje, tylko mało kto ma cierpliwość czekać rok.",
       ],
     },
     {
@@ -610,7 +789,9 @@ export const LESSONS: Lesson[] = [
     takeaways: [
     "Punktem odniesienia są liczby z audytu w lekcji drugiej. Nie zbierajcie ich drugi raz w innej formie, bo po starcie i tak nie odtworzycie stanu sprzed.",
     "Odsetek odebranych połączeń niczego nie mówi. Liczy się sprawa zamknięta bez przekazania i bez oddzwonienia tego samego dnia, plus to, co poszło nie tak w pozostałych.",
+    "Średni czas rozmowy spada i wtedy, gdy agent działa dobrze, i wtedy, gdy ludzie się rozłączają. Patrzcie na rozkład, nie na średnią.",
     "Dziesięć odsłuchanych rozmów tygodniowo pokazuje więcej niż tabela z liczbami, zwłaszcza gdy słucha ktoś z pierwszej linii.",
+    "Pierwsze dwa dni to zwiedzanie, nie ruch. O jednym typie sprawy da się coś powiedzieć po mniej więcej stu takich rozmowach, a każda zmiana w scenariuszu zaczyna liczenie od nowa.",
     "Brak poprawy po kilku rundach zmian to sygnał do zawężenia zakresu albo wyłączenia agenta, a nie do dokładania funkcji.",
     ],
     faq: [
@@ -662,11 +843,44 @@ export const LESSONS: Lesson[] = [
       ],
     },
     {
+      h2: "Godzina przed przełączeniem",
+      paragraphs: [
+        "Samo przełączenie ruchu to jedna zmiana w ustawieniach przekierowania i zajmuje moment. Godzina przed nią jest ciekawsza. Przechodzimy wtedy listę rzeczy, których nie widać z panelu, bo panel pokazuje zielone kropki także wtedy, gdy dzwoniący słyszy sygnał zajętości.",
+        "Awarie na tym etapie są nudne i powtarzalne. Przekierowanie ustawione na godziny, ale bez świąt. Kalendarz podpięty do konta, którego nikt w recepcji nie otwiera. Numer konsultanta, który przestał istnieć przy zmianie operatora. Żadna z tych rzeczy nie ma nic wspólnego z tym, jak agent rozmawia.",
+        "Termin też ma znaczenie. Pierwszy etap uruchamiamy w środę albo w czwartek wieczorem. Po piątkowym starcie dwie doby ruchu przechodzą bez nikogo, kto mógłby zareagować, a w poniedziałek rano do przesłuchania czeka nie pięć nagrań, tylko czterdzieści. Ostatni punkt listy jest zawsze ten sam: ktoś dzwoni z prywatnej komórki, z zewnątrz, zanim zrobi to pierwszy klient.",
+      ],
+      list: [
+        "Warunek przekierowania po godzinach: czy obejmuje święta i dni wolne, czy tylko zakres godzin. Pierwsze święto w środku tygodnia sprawdza to bezlitośnie.",
+        "Co słyszy dzwoniący, gdy agent nie podniesie w ciągu kilku sekund. To ustawienie leży po stronie operatora, nie w panelu agenta, i domyślnie bywa nim sygnał zajętości.",
+        "Ścieżka do człowieka wieczorem, czyli wtedy, gdy żadnego człowieka nie ma. Agent musi mówić co innego niż w środku dnia: przyjmuje prośbę o kontakt i podaje, kiedy ktoś oddzwoni.",
+        "Zapis terminu sprawdzony na żywo, w tym kalendarzu, który rano otwiera recepcja. Do tego jedna próba zapisu na zajętą godzinę, żeby zobaczyć, co się dzieje przy kolizji.",
+        "Informacja, że rozmówca rozmawia z asystentem AI, pada przed pierwszym pytaniem, a nie po nim.",
+        "Pięć połączeń naraz. Wieczorem to rzadko problem, w drugim etapie już bywa, a mało kto wie, ile jednoczesnych rozmów wytrzymuje jego numer.",
+        "Cennik, godziny i lista usług w wersji z dnia przełączenia. Jeśli coś zmieniło się w trakcie budowy agenta, zwykle nie trafiło do jego bazy.",
+        "Kto dostaje sygnał, gdy w nocy coś przestanie działać, i pod jaki numer ten sygnał idzie.",
+        "Ostatni punkt jest zawsze ten sam: ktoś dzwoni z prywatnej komórki, z zewnątrz, zanim zrobi to pierwszy klient. Nie z biurka, nie z numeru wewnętrznego, bo te przechodzą inną drogą i potrafią zadziałać wtedy, gdy zwykłe połączenie nie działa.",
+      ],
+    },
+    {
       h2: "Plan wycofania, czyli co robimy, gdy zapali się czerwona lampka",
       paragraphs: [
         "Zanim voicebot odbierze pierwsze połączenie, powinny być ustalone dwie sprawy: kto może zdecydować o wyłączeniu i ile to zajmuje. Przy naszych wdrożeniach powrót do poprzedniego układu trwa minuty, a nie dni, bo bot siedzi na przekierowaniu numeru i nie zastępuje centrali. To celowa decyzja projektowa i radzimy jej pilnować niezależnie od tego, kto wdraża.",
         "Wyłączenie warto przećwiczyć na sucho przed startem. Ktoś z zespołu je wykonuje, ktoś inny dzwoni i sprawdza, czy naprawdę odbiera człowiek. Brzmi trywialnie i właśnie dlatego bywa pomijane. Potem okazuje się, że dostęp do panelu ma jedna osoba, akurat na urlopie.",
         "Trzeba się też umówić, co jest powodem do wyłączenia. Kilka rozmów, w których bot nie zrozumiał pytania, to normalny pierwszy tydzień i nie ma sensu na to reagować paniką. Skarga od kogoś, kto w pilnej sprawie nie mógł dodzwonić się do człowieka, należy do innej kategorii i reakcja powinna być natychmiastowa.",
+        "Samo wycofanie rzadko oznacza wyłączenie wszystkiego. Ma trzy głębokości, a wybór między nimi trwa chwilę pod warunkiem, że ktoś przemyślał je wcześniej niż w środku awarii.",
+      ],
+      list: [
+        "Zawężenie zakresu. Agent zostaje na linii, ale traci sprawę, która się sypie. Zamiast umawiać terminy, przyjmuje prośbę o oddzwonienie. Sięgamy po to najczęściej, bo problem zwykle siedzi w jednej ścieżce.",
+        "Cofnięcie o etap. Ruch dzienny wraca do zespołu, agent zostaje na wieczorach i weekendach, czyli tam, gdzie już się sprawdził.",
+        "Zdjęcie przekierowania. Numer zachowuje się dokładnie tak jak przed wdrożeniem. To wybór na sytuacje, w których wciąż nie wiadomo, co się właściwie zepsuło.",
+      ],
+    },
+    {
+      h2: "Po wyłączeniu zostaje robota ręczna",
+      paragraphs: [
+        "O tej części łatwo zapomnieć w nerwach. Zgłoszenia, które agent przyjął w ostatnich godzinach, nie przepiszą się same, więc ktoś musi je przejrzeć i oddzwonić. Zespół trzeba uprzedzić od razu, inaczej przez pół dnia wszyscy zakładają, że wieczorne telefony ktoś odbiera. Do tego dwa zdania w notatce: co się stało, o której godzinie, na którym nagraniu. Bez tego ten sam problem wraca za dwa tygodnie, a nikt już nie pamięta, jak wyglądał za pierwszym razem.",
+        "Nie każde wycofanie da się przeprowadzić czysto. Jeśli agent zapisuje coś w systemie rezerwacji albo w CRM, po wyłączeniu zostają rekordy w połowie drogi i ktoś musi je odszukać. Przy takich integracjach pytamy przed startem, jak wygląda ręczne odkręcenie pojedynczego zapisu. Kiedy nikt w firmie nie potrafi odpowiedzieć, przełączenie ruchu przesuwamy o kilka dni.",
+        "Powrót jest osobną decyzją i nie zapada tego samego popołudnia. Kusi, żeby po godzinie naprawiania wrócić dokładnie tam, gdzie się było. Bezpieczniej zejść o jeden etap niżej, przepuścić kilka wieczorów i dopiero potem wracać na ruch dzienny. Kosztuje to tydzień. Druga awaria w tym samym miejscu kosztuje zaufanie zespołu do całego wdrożenia, a to odbudowuje się dużo dłużej.",
       ],
     },
     {
@@ -687,6 +901,7 @@ export const LESSONS: Lesson[] = [
     takeaways: [
     "Zaczynajcie od godzin, w których alternatywą dla bota jest nieodebrany telefon. Ryzyko jest wtedy najmniejsze, a korzyść widać od razu.",
     "Plan wycofania ustalcie przed startem i przetestujcie go na sucho, razem z listą osób, które mogą go uruchomić.",
+    "Listę przed przełączeniem przechodźcie z telefonem w ręce, nie z otwartym panelem. Zajęty numer i martwe przekierowanie widać tylko od strony dzwoniącego.",
     "Przez pierwszy tydzień odsłuchujcie rozmowy i notujcie nieprzewidziane pytania, zamiast przerabiać scenariusz po każdym telefonie.",
     "Zatrzymanie się na drugim etapie na stałe jest normalnym wynikiem wdrożenia, nie jego porażką.",
     ],
@@ -702,6 +917,10 @@ export const LESSONS: Lesson[] = [
     {
       q: "Co jeśli po pierwszym etapie widać, że bot sobie nie radzi?",
       a: "Wtedy pierwszy etap zrobił dokładnie to, po co był. Zostaje decyzja: poprawiamy scenariusz i dane, na których bot się opiera, albo ograniczamy jego rolę do prostszych spraw. Jest też trzecie wyjście, czyli rezygnacja. Kosztuje mniej niż utrzymywanie przez rok czegoś, co irytuje dzwoniących.",
+    },
+    {
+      q: "Czy wycofanie oznacza, że wdrożenie trzeba zbudować od nowa?",
+      a: "Nie. Konfiguracja, scenariusze i dane zostają na miejscu, zmienia się tylko to, ile ruchu trafia do agenta. Najczęściej wracamy o jeden etap, poprawiamy jedną ścieżkę i po kilku dniach ruszamy dalej. Realny koszt to czas zespołu na przejrzenie zgłoszeń z ostatnich godzin i oddzwonienie do tych osób, a nie ponowne wdrożenie.",
     },
     ],
     related: [
@@ -1228,6 +1447,19 @@ export const LESSONS: Lesson[] = [
         ],
       },
       {
+        h2: "Pytania, na które nie ma odpowiedzi w ogłoszeniu",
+        paragraphs: [
+          "Reszta pytań nie ma odpowiedzi nigdzie w opisie oferty, a pada w co drugiej rozmowie. „Dlaczego właściciel sprzedaje?” Agent nie zgaduje i nie mówi „chyba się przeprowadzają”. Ma jedno zdanie: „Tego nie mam w karcie oferty, zanotuję pytanie dla agenta prowadzącego”. Przy cenie podobnie: „W ogłoszeniu jest cena wywoławcza, o warunkach rozmawia agent prowadzący”. Ani słowa o tym, czy da się zejść niżej.",
+          "Osobno pilnujemy pytania „czy ktoś jeszcze to oglądał”. Kusi, żeby automat podbił zainteresowanie. Nie robimy tego. Agent, który powie „mam już trzech chętnych”, kiedyś trafi na kogoś, kto zapyta o to samo na oględzinach, a wtedy tracicie nie klienta, tylko wiarygodność biura.",
+          "Dwie rzeczy agent zatrzymuje dla siebie, choć obie ma w bazie: dokładny adres i numer do właściciela. Jeśli u Was adres podaje się dopiero przy potwierdzaniu terminu, musi to stać w scenariuszu wprost. Model domyślnie odczyta cały rekord, razem z numerem mieszkania.",
+        ],
+        list: [
+          "„Ile wynosi prowizja?” Agent podaje stawkę z Waszego cennika i na tym kończy. Prowizji przez telefon się nie negocjuje.",
+          "„To oferta od właściciela czy z biura?” Odpowiedź prosta i zgodna z prawdą, bo dzwoniący filtruje po tym ogłoszenia.",
+          "„A da się to wynająć zamiast kupić?” Jeśli najem prowadzicie osobno, agent sprawdza tam, zamiast odsyłać z niczym.",
+        ],
+      },
+      {
         h2: "Kwalifikacja i umówienie oględzin",
         paragraphs: [
           "Sama odpowiedź na pytania o metraż nic Wam jeszcze nie mówi o tym, czy dzwoniący może kupić tę nieruchomość. Do tego służy krótka kwalifikacja, którą agent prowadzi zaraz po ustaleniu, że oferta wciąż interesuje rozmówcę. Cztery pytania wystarczają w większości przypadków, i tyle też zwykle ustalamy z Wami przed wdrożeniem.",
@@ -1237,6 +1469,14 @@ export const LESSONS: Lesson[] = [
           "Na jakim etapie jest finansowanie, jeśli kredyt już wstępnie rozpatrzono.",
           "W jakim terminie dzwoniący chce się przeprowadzić.",
           "Czy ma do sprzedania własną nieruchomość.",
+        ],
+      },
+      {
+        h2: "Nie każdy telefon jest od kupującego",
+        paragraphs: [
+          "Scenariusz napisany wyłącznie pod kupującego pęka w pierwszym tygodniu. Dzwonią też właściciele, którzy chcą coś sprzedać, agenci z innych biur i handlowcy. Ile tego jest, w każdym biurze wychodzi inaczej.",
+          "Właściciel z nieruchomością do oddania jest wart więcej niż pytanie o cudze ogłoszenie. Agent nie wycenia i nie obiecuje, że biuro ofertę weźmie. Zbiera pięć rzeczy: typ nieruchomości, lokalizację, metraż, oczekiwaną cenę i numer telefonu, a potem zapowiada kontakt z konkretną porą. Pora ma wynikać z Waszego grafiku, nie z uprzejmości.",
+          "Agent z innego biura, pytający o współpracę przy ofercie, idzie do człowieka od razu. Telefony handlowe kończymy inaczej, a dzwonią tu często: portale ogłoszeniowe, sesje zdjęciowe, pośrednicy kredytowi. „Nie prowadzę takich rozmów, ofertę proszę wysłać mailem na adres biura”. Bez notatki i bez oddzwaniania.",
         ],
       },
       {
@@ -1251,10 +1491,24 @@ export const LESSONS: Lesson[] = [
           "Rozmowy ze sprzedającym o obniżce ceny albo o przedłużeniu umowy z biurem.",
         ],
       },
+      {
+        h2: "Po czym agent poznaje, że pora oddać słuchawkę",
+        paragraphs: [
+          "Poprzednia sekcja mówi, czego agent nie robi. Ta o tym, kiedy ma wyjść z rozmowy prowadzonej dotąd poprawnie. Granicę widać po zdaniu dzwoniącego, nie po temacie wpisanym w scenariusz.",
+          "Przekazanie wygląda tu inaczej niż w przychodni, gdzie po drugiej stronie siedzi rejestracja. Agent prowadzący ofertę stoi właśnie w kuchni oglądanego mieszkania i nie odbierze, więc domyślnym trybem jest oddzwonienie: „Mam Pana numer z połączenia, oddzwonimy dziś do osiemnastej”. Cztery sygnały kończą rozmowę z automatem.",
+        ],
+        list: [
+          "Pada konkretna kwota, na przykład „dam czterysta pięćdziesiąt”. To już oferta, a nie pytanie o ofertę.",
+          "W rozmowie pojawia się spadek, rozwód, współwłaściciel, komornik albo sprawa w sądzie.",
+          "Dzwoni właściciel oferty, którą prowadzicie, w sprawie swojej umowy z biurem.",
+          "To samo pytanie wraca trzeci raz. Agent go nie rozumie i czwarta próba niczego nie zmieni.",
+        ],
+      },
     ],
     takeaways: [
       "Pierwsze pytanie ustala, o którą ofertę chodzi, bo w nieruchomościach rozmowa rzadko dotyczy firmy w ogóle.",
       "Cztery grupy pytań, czyli parametry, koszty, otoczenie i termin, pokrywają większość rozmów o ofertę.",
+      "Pytania spoza ogłoszenia, czyli powód sprzedaży, cena i stan prawny, wymagają gotowych zdań, bo model odpowie na nie sam i pewnym tonem.",
       "Kwalifikacja przed umówieniem oględzin mówi Wam, czy dzwoniący realnie może kupić tę nieruchomość.",
       "Negocjacje, doradztwo prawne i kredytowe zostają przy człowieku niezależnie od tego, jak dobrze napisano scenariusz.",
     ],
@@ -1270,6 +1524,10 @@ export const LESSONS: Lesson[] = [
       {
         q: "Jak agent radzi sobie, gdy dzwoniący pyta o kilka ofert naraz?",
         a: "Prowadzi rozmowę po kolei, jedna oferta na raz, i na końcu podsumowuje ustalenia dla każdej z nich. Trzymanie trzech wątków naraz kończy się pomyłkami, więc scenariusz świadomie tego unika.",
+      },
+      {
+        q: "Kto odbiera telefon od właściciela, który chce sprzedać przez Was?",
+        a: "Agent zbiera podstawy oferty i numer, a rozmowę o warunkach prowadzi już człowiek. Takie zgłoszenia warto oznaczać osobno, żeby nie leżały w jednej kolejce z pytaniami o metraż.",
       },
       {
         q: "Czy trzeba mieć system CRM, żeby to działało?",

@@ -59,32 +59,60 @@ function XIcon({ className = '' }: { className?: string }) {
 // FAQ
 const FAQ_ITEMS = [
   {
-    question: 'Ile kosztuje wdrożenie rozwiązań AI?',
-    answer: 'Ceny zaczynają się od 5000 PLN dla małych firm. Każde wdrożenie jest wyceniane indywidualnie na podstawie potrzeb Twojej organizacji. Oferujemy bezpłatną konsultację, podczas której przygotujemy wycenę.'
+    question: 'Ile kosztuje wdrożenie AI?',
+    answer: 'Wdrożenie agencyjne zaczyna się od 5 000 zł netto za mały zakres, na przykład chatbota na stronę albo prostego agenta głosowego. Przy większych integracjach wyceniamy po audycie, bo wcześniej byłoby to zgadywanie. Do tego dochodzi utrzymanie: 249, 499 albo 799 zł netto miesięcznie, zależnie od planu. Pierwsza rozmowa i audyt procesu nic nie kosztują.'
   },
   {
     question: 'Czy budujecie agentów głosowych (voice AI)?',
-    answer: 'Tak. Tworzymy telefonicznych asystentów AI, którzy odbierają połączenia 24/7 i rozmawiają naturalnym głosem po polsku. Udzielają informacji, umawiają terminy i odpowiadają na pytania klientów. Wykorzystujemy m.in. ElevenLabs i potrafimy podpiąć agenta pod Waszą infolinię oraz bazę wiedzy.'
+    answer: 'Tak. Telefoniczny asystent AI odbiera połączenia całą dobę i rozmawia po polsku naturalnym głosem. Umawia terminy, sprawdza dane w Waszych systemach, odpowiada na pytania i spisuje zgłoszenia. Korzystamy z ElevenLabs i podpinamy agenta pod Waszą infolinię oraz bazę wiedzy. Jak to brzmi, można posłuchać w naszym publicznym demo rozkładu jazdy.'
+  },
+  {
+    question: 'Czego agent głosowy nie zrobi?',
+    answer: 'Nie poprowadzi negocjacji i nie odstąpi od procedury, bo nie ma od tego mandatu. Nie podejmie decyzji, za którą ktoś musi wziąć odpowiedzialność: reklamacji powyżej ustalonego progu, zmiany umowy, niczego z pieniędzmi. Gorzej radzi sobie z gwarą, mocnym akcentem i rozmową w hałasie. Z klientem, który jest naprawdę wściekły, też nie ma co eksperymentować. Takie rozmowy agent ma rozpoznać i oddać człowiekowi, i tak go ustawiamy.'
+  },
+  {
+    question: 'Kiedy automatyzacja się nie opłaca?',
+    answer: 'Gdy powtarzalnych spraw jest mało, a każda wygląda inaczej. Gdy proces istnieje wyłącznie w głowie jednej osoby i nikt nie umie opisać go krok po kroku, bo wtedy najpierw trzeba go spisać, a to robota po Waszej stronie. Gdy dane siedzą w programie bez API i w segregatorach, koszt integracji potrafi przebić oszczędność. Mówimy o tym na pierwszej rozmowie, przed wyceną, nie po podpisaniu.'
   },
   {
     question: 'Jak długo trwa wdrożenie?',
-    answer: 'Typowe wdrożenie dla małych firm trwa 2-4 tygodnie. Średnie i duże przedsiębiorstwa wdrażamy w ciągu 1-3 miesięcy, w zależności od skali i złożoności integracji.'
+    answer: 'Mały zakres to zwykle od 2 do 4 tygodni. Większe integracje z ERP albo CRM to od 1 do 3 miesięcy. Najwięcej czasu zabiera nie pisanie kodu, tylko zebranie od Was wiedzy: cennika, procedur i prawdziwych pytań, które zadają klienci. Jeśli macie to już spisane, idzie szybciej.'
+  },
+  {
+    question: 'Co trzeba przygotować przed startem?',
+    answer: 'Cztery rzeczy. Osobę po Waszej stronie, która zna proces i ma czas odpowiadać na pytania. Materiały, z których agent ma korzystać: cennik, procedury, FAQ, regulamin. Dostępy albo API do systemów, z którymi ma się integrować. I decyzję, co agent może załatwić sam, a co ma od razu przekazać człowiekowi. Ten ostatni punkt najczęściej się odkłada, i to na nim wdrożenia się rozjeżdżają.'
   },
   {
     question: 'Czy moje dane są bezpieczne?',
-    answer: 'Tak. Wszystkie dane są przechowywane na serwerach w Polsce, zgodnie z RODO. Stosujemy szyfrowanie end-to-end i standardy bezpieczeństwa zgodne z normą ISO 27001.'
+    answer: 'Dane trzymamy na serwerach w Polsce albo w chmurze EU, zgodnie z RODO, a każdy klient ma osobną, izolowaną instancję. Podpisujemy umowę powierzenia. Stosujemy standardy bezpieczeństwa zgodne z normą ISO 27001, ale samego certyfikatu ISO nie posiadamy i nie udajemy, że jest inaczej. Treści rozmów nie idą na trenowanie cudzych modeli, a klucze API możecie przynieść własne.'
+  },
+  {
+    question: 'Co, jeśli agent czegoś nie wie albo się pomyli?',
+    answer: 'Agent odpowiada z Waszej bazy wiedzy i podaje źródło. Kiedy nie znajdzie odpowiedzi, ma powiedzieć, że nie wie, i przekazać sprawę dalej, zamiast zgadywać. Tak działa nasze demo rozkładu jazdy: albo podaje godzinę z rozkładu, albo mówi, że jej nie ma. Pomyłki i tak się zdarzają, dlatego przez pierwsze tygodnie czytamy transkrypty rozmów i poprawiamy odpowiedzi. To siedzi w abonamencie, nie na osobnej fakturze.'
+  },
+  {
+    question: 'Czy klient pozna, że rozmawia z AI?',
+    answer: 'Zwykle tak i nie ukrywamy tego. Agent przedstawia się jako asystent, bo udawanie człowieka kończy się źle: rozmówca orientuje się po drugim pytaniu i traci zaufanie nie do agenta, tylko do całej firmy. Głos ma brzmieć naturalnie po to, żeby dobrze się słuchało, nie po to, żeby kogoś nabrać.'
   },
   {
     question: 'Jakie firmy obsługujecie?',
-    answer: 'Obsługujemy firmy każdej wielkości - od małych startupów po duże korporacje. Mamy doświadczenie w branżach: finansowej, produkcyjnej, e-commerce, usługowej i IT.'
+    answer: 'Od jednoosobowych działalności po średnie firmy. Najlepiej wychodzi to tam, gdzie jest dużo powtarzalnych rozmów albo dokumentów: przychodnie, transport, gastronomia, salony usługowe, sklepy internetowe, kadry i rekrutacja. Jeśli Wasz proces wymaga zgód albo certyfikacji, których nie mamy, powiemy o tym na pierwszej rozmowie zamiast obiecywać.'
   },
   {
     question: 'Czy oferujecie wsparcie po wdrożeniu?',
-    answer: 'Tak, oferujemy pakiety supportu: podstawowy (8h/miesiąc), rozszerzony (20h/miesiąc) i premium (non-stop). Wszystkie pakiety obejmują monitoring i aktualizacje systemu.'
+    answer: 'Tak, w abonamencie. Starter kosztuje 249 zł netto miesięcznie, Standard 499 zł, Premium 799 zł. Każdy plan obejmuje monitoring jakości odpowiedzi, poprawki i aktualizacje bazy wiedzy, a różnice dotyczą czasu reakcji i tego, jak często rozwijamy scenariusze. Premium ma sens głównie wtedy, gdy agent odbiera telefony w nocy i w weekendy. Bez utrzymania agent po kilku miesiącach zaczyna mijać się z Waszą ofertą, więc nie sprzedajemy wdrożenia bez opieki.'
   },
   {
     question: 'Czy mogę zintegrować AI z moim obecnym systemem?',
-    answer: 'Tak, nasze rozwiązania integrują się z większością popularnych systemów: SAP, Oracle, Salesforce, Microsoft 365, Slack, Teams i wieloma innymi. Oferujemy również customowe integracje API.'
+    answer: 'Jeśli system ma API albo eksport danych, prawie zawsze tak: SAP, Oracle, Salesforce, Microsoft 365, Slack, Teams, popularne CRM-y. Gorzej z programami, które nie wypuszczają danych na zewnątrz, i ze starymi systemami lokalnymi bez dokumentacji. Zostaje wtedy integracja przez pliki albo praca na kopii danych. Zawsze mówimy o tym przed wyceną, bo to zmienia koszt i termin.'
+  },
+  {
+    question: 'Czy jesteście oficjalnym partnerem OpenClaw?',
+    answer: 'Nie. Budujemy na OpenClaw, ale nie jesteśmy jego oficjalnym partnerem i nie mamy z tym projektem żadnej umowy. Wybraliśmy go dlatego, że jest otwarty: kod i konfiguracja zostają po stronie klienta, a agenta da się przenieść na własny serwer.'
+  },
+  {
+    question: 'Czym różni się wdrożenie z Wami od ClawLabs?',
+    answer: 'ClawLabs to nasz osobny produkt w modelu self-serve, 399 zł miesięcznie. Zakładacie agenta sami, konfigurujecie go i utrzymujecie po swojej stronie. Wdrożenie agencyjne zaczyna się od 5 000 zł netto i wtedy to my rozbieramy proces, budujemy, testujemy i pilnujemy jakości. Jeśli ktoś ma w firmie osobę techniczną i prosty przypadek, zwykle mówimy wprost: zacznijcie od ClawLabs, do nas wrócicie, gdy zrobi się skomplikowanie.'
   }
 ];
 
@@ -93,7 +121,7 @@ const SERVICES = [
   {
     title: 'Agenci głosowi',
     tierLabel: 'VOICE AI',
-    description: 'Telefoniczni asystenci AI, którzy odbierają połączenia 24/7, rozmawiają naturalnym głosem i realnie załatwiają sprawy. Udzielają informacji, umawiają terminy, odpowiadają na pytania klientów. Naturalne, ludzkie brzmienie, pełna obsługa po polsku.',
+    description: 'Telefoniczni asystenci AI, którzy odbierają połączenia całą dobę i rozmawiają po polsku naturalnym głosem. Umawiają terminy, sprawdzają dane w Twoich systemach, odpowiadają na pytania i spisują zgłoszenia. Sprawy, których nie powinni ruszać sami, przekazują człowiekowi.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
@@ -104,7 +132,7 @@ const SERVICES = [
   {
     title: 'Agenci wielokanałowi',
     tierLabel: 'CHAT / OMNICHANNEL',
-    description: 'Agent AI „pod klucz" wpięty w kanały, których już używasz: WhatsApp, Slack, Teams, Telegram, Discord i 23+ innych. W pełni autonomiczny system, który obsługuje klientów i zespół 24/7, na dedykowanym serwerze w Polsce.',
+    description: 'Agent AI wpięty w kanały, których już używasz: WhatsApp, Slack, Teams, Telegram, Discord i ponad dwadzieścia innych. Jedna baza wiedzy, więc odpowiedź jest ta sama niezależnie od tego, gdzie klient napisze. Osobna, izolowana instancja na serwerze w Polsce.',
     price: '',
     features: [],
     accentColor: '#2E4AAD',
@@ -114,7 +142,7 @@ const SERVICES = [
   {
     title: 'Automatyzacja procesów',
     tierLabel: 'AUTOMATYZACJA',
-    description: 'Wyspecjalizowani agenci dla działów HR, kadr i płac, marketingu i sprzedaży. Selekcja CV, onboarding, dokumenty kadrowe, pilnowanie terminów, generowanie treści, kwalifikacja leadów i follow-upy. Przejmują powtarzalną pracę, żeby Twój zespół robił to, co wymaga człowieka.',
+    description: 'Agenci dla kadr i płac, rekrutacji, marketingu i sprzedaży. Selekcja CV, onboarding, dokumenty kadrowe, pilnowanie terminów ZUS i PIT, kwalifikacja leadów, follow-upy. Przejmują powtarzalną robotę, a decyzje o ludziach i pieniądzach zostają przy człowieku.',
     price: '',
     features: [],
     accentColor: '#4F6AE8',
@@ -124,7 +152,7 @@ const SERVICES = [
   {
     title: 'Doradztwo i wdrożenia',
     tierLabel: 'CONSULTING & CUSTOM',
-    description: 'Audyt procesów, mapa quick-wins i realny ROI. Bez słownictwa „transformacji cyfrowej". Projektujemy i budujemy rozwiązania AI szyte na miarę: od pojedynczego agenta po dedykowaną aplikację dla Twojej branży. Pierwsza konsultacja jest bezpłatna.',
+    description: 'Audyt procesu, mapa quick-winów i policzony zwrot na Twoich liczbach. Bez slajdów o cyfrowej przyszłości firmy. Budujemy pod konkretny proces: od pojedynczego agenta po własną aplikację dla Twojej branży. Jeśli wyjdzie, że to się nie zwróci, powiemy tak na pierwszej rozmowie. Jest bezpłatna.',
     price: '',
     features: [],
     accentColor: '#7B9BDB',
@@ -169,6 +197,9 @@ const QUOTE_AVATARS: Record<string, string> = {
 // Cytaty zweryfikowane ze źródłami (keynote GTC 2026, X/CNBC 02.2026, WEF 2023)
 const OPENCLAW_QUOTES = [
   {
+    // CYTAT DOSŁOWNY, ze wskazanym źródłem. Myślnik należy do oryginału i zostaje.
+    // Zasada "bez długich myślników" dotyczy naszego tekstu, nie cudzych słów.
+    // To już trzecia próba rozbicia tego zdania na dwa przy czyszczeniu stylu.
     quote: 'OpenClaw to system operacyjny dla osobistego AI. To moment, na który branża czekała — początek nowego renesansu oprogramowania.',
     author: 'Jensen Huang',
     role: 'CEO NVIDIA · keynote GTC 2026'
@@ -208,8 +239,8 @@ const OPENCLAW_QUOTES = [
 // Stats
 const STATS = [
   { value: '92', suffix: '%', label: 'firm w Polsce nie korzysta jeszcze z AI (Eurostat 2025)', icon: Building2 },
-  { value: '4', suffix: '', label: 'własne produkty i wdrożenia na produkcji', icon: Zap },
-  { value: '2-4', suffix: ' tyg.', label: 'do pierwszego działającego agenta', icon: Clock },
+  { value: '4', suffix: '', label: 'własne produkty i wdrożenia, o których wolno nam mówić', icon: Zap },
+  { value: '2-4', suffix: ' tyg.', label: 'do pierwszego działającego agenta, przy małym zakresie', icon: Clock },
   { value: '24/7', suffix: '', label: 'autonomiczna praca agentów AI', icon: Bot },
 ];
 
@@ -244,7 +275,7 @@ function HeroSection() {
 
           <FadeIn delay={0.5}>
             <p className="text-base md:text-lg xl:text-xl 2xl:text-2xl mb-7 max-w-lg xl:max-w-2xl mx-auto text-white/80 px-2">
-              Budujemy agentów AI, głosowych i tekstowych, oraz automatyzacje, które przejmują powtarzalną pracę: od obsługi klienta, przez kadry, po sprzedaż. Ty skupiasz się na tym, co naprawdę napędza rozwój firmy.
+              Budujemy agentów AI, głosowych i tekstowych, którzy przejmują powtarzalną robotę: odbieranie telefonów, dokumenty kadrowe, odpowiadanie klientom. Zaczynamy od jednego procesu i pokazujemy działającą wersję, zanim trafi do Twoich klientów.
             </p>
           </FadeIn>
 
@@ -342,7 +373,7 @@ function TeamSection2() {
         <FadeIn>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Nasz <span style={{ color: 'var(--accent-text)' }}>Zespół</span>
+              Nasz <span style={{ color: 'var(--accent-text)' }}>zespół</span>
             </h2>
             <p className="text-xl text-white/50">Ludzie, którzy stoją za Infinity Tech</p>
           </div>
@@ -381,8 +412,8 @@ function TeamSection2() {
 
         <FadeIn delay={0.4}>
           <p className="text-center text-white/60 max-w-2xl mx-auto mt-10 leading-relaxed">
-            Łączymy ekspertyzę w AI, inżynierii oprogramowania i strategii biznesowej, a wszystkich nas trzyma razem jedna misja:
-            automatyzować firmy tak, by mogły rosnąć bez granic.
+            Piątka ludzi, nie korporacja. Ktoś z tej listy odbiera telefon, prowadzi audyt i potem pisze ten kod.
+            Dlatego bierzemy naraz tyle projektów, ile realnie udźwigniemy. Czasem oznacza to, że trzeba poczekać na wolny termin.
           </p>
         </FadeIn>
       </div>
@@ -460,7 +491,7 @@ function BenefitsSection() {
             },
             {
               title: 'Wdrożenie w tygodniach',
-              body: 'Pierwszy działający agent zwykle w 2–4 tygodnie dla mniejszego zakresu, 1–3 miesiące przy większych integracjach. Zaczynamy od jednego procesu, nie od rewolucji w całej firmie.',
+              body: 'Pierwszy działający agent zwykle w 2 do 4 tygodni przy mniejszym zakresie, od 1 do 3 miesięcy przy większych integracjach. Zaczynamy od jednego procesu, nie od rewolucji w całej firmie.',
             },
           ].map((item, i) => (
             <FadeIn key={i} delay={i * 0.07}>
@@ -471,6 +502,24 @@ function BenefitsSection() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.5}>
+          <div className="max-w-4xl mx-auto mt-16 pt-8" style={{ borderTop: '1px solid var(--border-soft)' }}>
+            <h3 className="text-xl font-semibold mb-3 text-white">Kiedy mówimy, żeby tego nie robić</h3>
+            <p className="leading-relaxed mb-4" style={{ color: 'var(--fg-70)' }}>
+              Nie każdy proces nadaje się pod agenta. Odradzamy start, gdy powtarzalnych spraw jest niewiele, a każda wygląda inaczej.
+              Gdy proces siedzi w głowie jednej osoby i nikt nie umie opisać go krok po kroku, najpierw trzeba go spisać, a to robota
+              po Twojej stronie, nie po naszej. Gdy dane leżą w programie bez API i w segregatorach, koszt integracji potrafi przebić
+              oszczędność. Wolimy powiedzieć to na pierwszej rozmowie, niż wystawić fakturę i zobaczyć się za pół roku.
+            </p>
+            <p className="leading-relaxed" style={{ color: 'var(--fg-70)' }}>
+              Sam agent też ma granice. Wie dokładnie tyle, ile mu damy, a jeśli czegoś nie ma w bazie wiedzy, ma powiedzieć, że nie
+              wie, zamiast improwizować. Nie zastąpi też systemu, którego nie ma: jeśli terminy prowadzisz w zeszycie, agent najpierw
+              potrzebuje kalendarza, do którego może pisać, i to jest osobny koszt. No i nie działa bezobsługowo. Przez pierwsze
+              tygodnie ktoś po obu stronach musi czytać transkrypty rozmów i mówić, co poprawić.
+            </p>
+          </div>
+        </FadeIn>
 
       </div>
     </section>
@@ -554,10 +603,10 @@ function ServicesSection() {
 const CASE_STUDIES = [
   {
     icon: PhoneCall,
-    sector: 'Transport · demo na danych PKS Gryfice',
+    sector: 'Transport · nasze demo na danych PKS Gryfice',
     title: 'Asystent głosowy z rozkładem jazdy',
-    description: 'Głosowy agent AI, który odpowiada pasażerom na pytania o odjazdy z 6 przystanków (276 kursów): kierunki, godziny, dni kursowania. Zawsze cytuje źródło rozkładu i nie zmyśla godzin. Możesz z nim porozmawiać w przeglądarce.',
-    tags: ['Voice AI', 'ElevenLabs', 'Demo publiczne'],
+    description: 'To nasza prezentacja techniczna na publicznych danych rozkładowych, nie wdrożenie u klienta. Agent odpowiada na pytania o odjazdy z 6 przystanków (276 kursów): kierunki, godziny, dni kursowania. Jak czegoś nie ma w rozkładzie, mówi, że nie ma, zamiast zgadywać. Możesz z nim porozmawiać w przeglądarce i sam sprawdzić, gdzie się gubi.',
+    tags: ['Voice AI', 'ElevenLabs', 'Nasze demo'],
     link: 'https://pks-gryfice-demo.vercel.app/',
     linkLabel: 'Porozmawiaj z demo',
   },
@@ -574,7 +623,7 @@ const CASE_STUDIES = [
     icon: MessagesSquare,
     sector: 'Platforma · ClawLabs',
     title: 'Agenci AI w chmurze, gotowi w ~60 sekund',
-    description: 'Nasza platforma managed hostingu agentów na frameworku OpenClaw: dedykowany, izolowany serwer per agent, 13 kanałów komunikacji, 35+ modeli AI do wyboru i własne klucze API. W chmurze EU albo on-premise.',
+    description: 'Nasza platforma hostingu agentów na frameworku OpenClaw: osobny, izolowany serwer dla każdego agenta, 13 kanałów komunikacji, 35+ modeli AI do wyboru i własne klucze API. W chmurze EU albo na Waszym serwerze. Produkt self-serve za 399 zł miesięcznie, konfigurujecie go sami.',
     tags: ['Produkt SaaS', 'OpenClaw', 'Hosting EU'],
     link: 'https://clawlabs.pro',
     linkLabel: 'Odwiedź clawlabs.pro',
@@ -583,7 +632,7 @@ const CASE_STUDIES = [
     icon: Sprout,
     sector: 'AgroTech',
     title: 'Aplikacja AI dla rolnictwa',
-    description: 'Dedykowana aplikacja, która wspiera gospodarstwa w codziennych decyzjach i zarządzaniu, od danych po rekomendacje. Wdrożona produkcyjnie i rozwijana z klientem.',
+    description: 'Aplikacja pisana pod jedno gospodarstwo: zbiera dane, porządkuje je i podpowiada decyzje na co dzień. Działa na produkcji i rozwijamy ją dalej razem z klientem. Nazwy nie podajemy.',
     tags: ['Aplikacja na miarę', 'Wdrożenie produkcyjne'],
   },
 ];
@@ -597,7 +646,7 @@ function CaseStudiesSection() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Co <span style={{ color: 'var(--accent-text)' }}>zbudowaliśmy</span>
             </h2>
-            <p className="text-xl text-white/50">Realne wdrożenia AI w różnych branżach</p>
+            <p className="text-xl text-white/50">Dwa własne produkty, wdrożenie u klienta i demo, z którym możesz porozmawiać</p>
           </div>
         </FadeIn>
 
@@ -658,8 +707,8 @@ function TechBentoSection() {
       <div className="max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">Technologie: OpenClaw, ElevenLabs i 23+ kanałów komunikacji</h2>
-            <p style={{ color: 'var(--accent-text)' }}>Technologie i 23+ kanałów komunikacji</p>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">OpenClaw, ElevenLabs i 23+ kanałów komunikacji</h2>
+            <p style={{ color: 'var(--accent-text)' }}>Nic z tego nie jest nasze. Nasza jest robota, żeby to zagrało razem</p>
           </div>
         </FadeIn>
 
@@ -778,8 +827,8 @@ function OpenClawSection() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <FadeIn>
           <div className="text-center mb-8 md:mb-14">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-white">Stoimy na ramionach najlepszych technologii open source</h2>
-            <p className="text-white/50">Jedną z nich jest OpenClaw: od weekendowego projektu do #1 na GitHubie w 60 dni</p>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-white">Stoimy na cudzej robocie i mówimy o tym wprost</h2>
+            <p className="text-white/50">Jedna z tych technologii to OpenClaw. Od weekendowego projektu do #1 na GitHubie w 60 dni</p>
           </div>
         </FadeIn>
 
@@ -897,7 +946,7 @@ function OpenClawSection() {
 
         <FadeIn delay={0.7}>
           <p className="text-center text-sm text-white/60 mt-8">
-            OpenClaw to jeden z frameworków, na których budujemy, obok ElevenLabs (voice AI) i wiodących modeli językowych. Dobieramy technologię do zadania, nie odwrotnie.
+            Budujemy na OpenClaw, ale nie jesteśmy jego oficjalnym partnerem i nie mamy z tym projektem żadnej umowy. Używamy go obok ElevenLabs i modeli językowych, bo jest otwarty i kod zostaje po stronie klienta. Dobieramy technologię do zadania, nie odwrotnie.
           </p>
         </FadeIn>
       </div>
@@ -918,8 +967,9 @@ function TechnologySection() {
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Jak działają nasi agenci</h2>
             <p className="text-xl text-slate-300 mb-8">
-              Łączymy najlepsze modele językowe, silniki głosowe i otwarte frameworki agentowe
-              w jeden autonomiczny system, który pracuje 24/7 głosem i tekstem, w kanałach Twoich klientów.
+              Pod spodem siedzą model językowy, silnik głosowy i otwarty framework agentowy. Nasza robota polega na tym,
+              żeby to trzymało się kupy: agent ma pamiętać kontekst rozmowy, sięgać do Twoich danych i wiedzieć,
+              kiedy przestać i oddać sprawę człowiekowi.
             </p>
 
             <div className="space-y-4">
@@ -928,6 +978,7 @@ function TechnologySection() {
                 'Integracja z 23+ kanałami komunikacji',
                 'Modele: ChatGPT, Claude, Gemini + głos (ElevenLabs)',
                 'Własne bazy wiedzy dla Twojej branży',
+                'Przekazanie rozmowy człowiekowi, gdy agent nie ma pewności',
                 'Self-hosted i dane w Polsce (RODO)'
               ].map((feature, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -1029,7 +1080,7 @@ function RoiTeaserSection() {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-white">
               Ile może zaoszczędzić <span style={{ color: 'var(--accent-text)' }}>Twoja firma?</span>
             </h2>
-            <p className="text-white/60 mb-8">Przesuń suwak i zobacz szybki szacunek dla planu Standard</p>
+            <p className="text-white/60 mb-8">Przesuń suwak i zobacz zgrubny szacunek dla planu Standard</p>
 
             <div className="max-w-xl mx-auto mb-8">
               <div className="flex justify-between text-sm text-white/60 mb-2">
@@ -1059,6 +1110,11 @@ function RoiTeaserSection() {
               </div>
             </div>
 
+            <p className="text-xs leading-relaxed text-white/45 max-w-xl mx-auto mb-8">
+              To założenie, nie obietnica. Suwak liczy 0,5% czasu pracy odzyskane w planie Standard, przy 176 godzinach
+              miesięcznie i 8 000 zł kosztu pracownika. Twoje liczby będą inne i poznamy je dopiero po audycie procesu.
+            </p>
+
             <a href="/kalkulator" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white bg-[#2E4AAD] hover:bg-[#1A2461] transition-colors">
               Oblicz pełne ROI dla swojej firmy
               <ArrowRight className="w-5 h-5" />
@@ -1079,9 +1135,9 @@ function FAQSection() {
         <FadeIn>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Częste <span style={{ color: 'var(--accent-text)' }}>Pytania</span>
+              Częste <span style={{ color: 'var(--accent-text)' }}>pytania</span>
             </h2>
-            <p className="text-xl text-white/50">Odpowiedzi na najczęściej zadawane pytania</p>
+            <p className="text-xl text-white/50">Także te niewygodne, o które i tak ktoś zapyta na rozmowie</p>
           </div>
         </FadeIn>
 
@@ -1121,27 +1177,27 @@ const PROCESS_STEPS = [
   },
   {
     label: 'Audyt procesu',
-    time: '3–5 dni roboczych',
-    what: 'Rozkładamy wybrany proces na kroki i sprawdzamy, co da się przejąć, a co musi zostać przy człowieku. Zaglądamy do systemów, z którymi agent ma się integrować.',
-    get: 'Mapa procesu, wskazanie quick-winów i wyliczenie zwrotu z inwestycji.',
+    time: 'od 3 do 5 dni roboczych',
+    what: 'Rozkładamy wybrany proces na kroki i sprawdzamy, co da się przejąć, a co musi zostać przy człowieku. Zaglądamy do systemów, z którymi agent ma się integrować, i sprawdzamy, czy w ogóle wypuszczają dane na zewnątrz. Od Was potrzebujemy jednej osoby, która zna proces, oraz materiałów: cennika, procedur i listy pytań, które klienci zadają naprawdę.',
+    get: 'Mapa procesu, lista quick-winów i wyliczenie zwrotu na Waszych liczbach, nie na średniej rynkowej.',
   },
   {
     label: 'Wycena i zakres',
-    time: '2–3 dni',
+    time: 'od 2 do 3 dni',
     what: 'Dostajesz konkretną ofertę: co budujemy, w jakiej kolejności, ile to kosztuje i ile trwa. Zaczynamy od jednego procesu, nie od całej firmy naraz.',
     get: 'Oferta z widełkami, harmonogramem i jawnymi kosztami utrzymania.',
   },
   {
     label: 'Budowa i testy',
-    time: '2–4 tygodnie',
-    what: 'Budujemy agenta na Waszych danych i pokazujemy działającą wersję, zanim trafi do klientów. Wy testujecie i mówicie, co poprawić.',
+    time: 'od 2 do 4 tygodni',
+    what: 'Budujemy agenta na Waszych danych i pokazujemy działającą wersję, zanim trafi do klientów. Wy testujecie i mówicie, co poprawić. Tu też ustalamy, czego agent nie rusza: które sprawy oddaje człowiekowi od razu i po czym ma poznać, że sobie nie radzi.',
     get: 'Działający agent w środowisku testowym plus scenariusze rozmów do akceptacji.',
   },
   {
     label: 'Uruchomienie i opieka',
     time: 'na bieżąco',
     what: 'Wypuszczamy agenta na produkcję. Najczęściej najpierw na części ruchu. Monitorujemy rozmowy, poprawiamy odpowiedzi i rozszerzamy zakres.',
-    get: 'Wsparcie w abonamencie (od 249 zł/mies.) i raport z tego, co agent faktycznie załatwił.',
+    get: 'Wsparcie w abonamencie (od 249 zł netto miesięcznie) i raport z tego, co agent faktycznie załatwił, a czego nie.',
   },
 ];
 
@@ -1236,7 +1292,7 @@ function ContactCTASection() {
         <div className="text-center pt-20 pb-12 px-6">
           <FadeIn>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">Wdrożenie AI w Twojej firmie zaczyna się od rozmowy</h2>
-            <p className="text-xl max-w-2xl mx-auto text-white/50">Dołącz do firm, które już oszczędzają czas i pieniądze z Infinity Tech</p>
+            <p className="text-xl max-w-2xl mx-auto text-white/50">Napisz, co u Was zżera najwięcej czasu. Pierwsza rozmowa trwa 45 minut i nic nie kosztuje</p>
           </FadeIn>
         </div>
 

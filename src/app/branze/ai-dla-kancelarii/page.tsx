@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import SeoLanding, { SeoLandingContent } from '@/components/SeoLanding';
 
 export const metadata: Metadata = {
-  title: 'AI dla kancelarii prawnej — automatyzacja i chatbot',
+  title: 'AI dla kancelarii prawnej: automatyzacja i chatbot',
   description:
     'AI dla kancelarii i biura rachunkowego: powtarzalne pytania klientów, szukanie w archiwum pism, szkice z wzorca. Wdrożenie od 5 000 zł netto.',
   alternates: { canonical: '/branze/ai-dla-kancelarii' },
   openGraph: {
-    title: 'AI dla kancelarii prawnej — automatyzacja i chatbot',
+    title: 'AI dla kancelarii prawnej: automatyzacja i chatbot',
     description:
       'Agent AI w kancelarii i biurze rachunkowym: odbiera powtarzalne pytania, przeszukuje archiwum pism, przygotowuje szkice z wzorca. Nie udziela porad prawnych. Dane na serwerach w Polsce.',
     type: 'website',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const content: SeoLandingContent = {
   path: '/branze/ai-dla-kancelarii',
   breadcrumbLabel: 'AI dla kancelarii',
-  h1: 'AI dla kancelarii prawnej — agent, który szuka w Waszych aktach i nie udaje prawnika',
+  h1: 'AI dla kancelarii prawnej, czyli agent, który szuka w Waszych aktach i nie udaje prawnika',
   lead: 'AI dla kancelarii prawnej to agent, który odbiera powtarzalne pytania klientów, przeszukuje archiwum pism i orzeczeń kancelarii oraz przygotowuje pierwsze wersje typowych dokumentów. Nie udziela porad prawnych i nie zastępuje prawnika. Każdą odpowiedź opiera na dokumentach kancelarii i wskazuje źródło, a decyzję podejmuje człowiek.',
   serviceName: 'AI dla kancelarii prawnej i biura rachunkowego',
   serviceDescription:
@@ -57,7 +57,7 @@ const content: SeoLandingContent = {
       heading: 'Archiwum, wzory pism i terminy, o których nikt nie pamięta',
       paragraphs: [
         'Kancelaria z dziesięcioletnim stażem ma archiwum, o którym wiadomo głównie tyle, że gdzieś jest. Pisma leżą w folderach nazwanych nazwiskiem klienta, część w skanach, część w załącznikach do maili, a najlepsze wzory siedzą na dysku osoby, która odeszła dwa lata temu. Szukanie po nazwie pliku działa dopóty, dopóki ktoś tę nazwę pamięta.',
-        'Agent przeszukuje ten zbiór po treści. Pytasz, czy kancelaria pisała kiedyś odwołanie od decyzji ZUS w sprawie podlegania ubezpieczeniu, a w odpowiedzi dostajesz konkretne dokumenty i fragmenty, na których agent się oparł. Technicznie nazywa się to RAG, czyli odpowiadanie z podpiętej bazy dokumentów zamiast z pamięci modelu. Praktycznie oznacza tyle, że agent może zacytować wyłącznie to, co faktycznie macie u siebie. Halucynacja w kontekście prawnym jest realnym ryzykiem i to jest jedyny znany nam sposób, żeby je przyciąć.',
+        'Agent przeszukuje ten zbiór po treści. Pytasz, czy kancelaria pisała kiedyś odwołanie od decyzji ZUS w sprawie podlegania ubezpieczeniu, a w odpowiedzi dostajesz konkretne dokumenty i fragmenty, na których agent się oparł. Technicznie nazywa się to RAG, czyli odpowiadanie z podpiętej bazy dokumentów zamiast z pamięci modelu. Praktycznie oznacza tyle, że agent może zacytować wyłącznie to, co faktycznie macie u siebie. Halucynacja w piśmie procesowym to ryzyko realne, nie teoretyczne, a to jedyny znany nam sposób, żeby je przyciąć.',
         'Że umiemy to zrobić na tekstach prawnych, wiemy z własnego produktu. Superkadrowa to nasza wirtualna kadrowa AI o imieniu Janina. Odpowiada na pytania z prawa pracy w oparciu o bazę ponad 40 aktów prawnych, ponad 900 dokumentów, 13 opracowań orzecznictwa Sądu Najwyższego i 17 wzorów dokumentów. Przy odpowiedzi podaje konkretny artykuł Kodeksu pracy, więc da się sprawdzić, czy nie zmyśla. Demo stoi pod adresem superkadrowa.vercel.app i można je kliknąć bez umawiania spotkania. Publicznego wdrożenia w kancelarii nie mamy i nie będziemy udawać, że mamy. Superkadrowa jest naszym własnym produktem, ale mechanizm cytowania źródła jest dokładnie ten sam.',
         'Poza szukaniem zostają dwie rzeczy, o które kancelarie pytają najczęściej. Pierwsza to powtarzalne pisma: wezwanie do zapłaty, sprzeciw od nakazu, wypowiedzenie, pełnomocnictwo, pismo przewodnie do sądu. Agent podstawia dane sprawy do wzorca kancelarii i oddaje szkic. Nie wymyśla treści od zera, korzysta z Waszego wzoru, a prawnik i tak czyta całość przed podpisem. Druga to terminy. Agent pilnuje dat wpisanych do kalendarza spraw i przypomina o nich z wyprzedzeniem, ale odpowiedzialność za termin procesowy zostaje przy prawniku i nie da się jej przenieść na oprogramowanie. To druga para oczu, a nie zabezpieczenie.',
       ],
@@ -74,7 +74,7 @@ const content: SeoLandingContent = {
       heading: 'Kiedy AI w kancelarii się nie opłaca',
       paragraphs: [
         'Mała kancelaria bez powtarzalnego wolumenu nie ma z czego odzyskać tych pieniędzy. Jeśli telefon dzwoni kilka razy dziennie, a spraw prowadzicie kilkanaście miesięcznie, wdrożenie od 5 000 zł netto plus abonament nie zwróci się nigdy. Sekretariat odbierze szybciej, niż zajęłoby zaprojektowanie scenariuszy rozmów. Mówimy to na pierwszej konsultacji, bo wolimy stracić projekt niż tłumaczyć się pół roku później.',
-        'Drugi przypadek to archiwum wyłącznie w papierze. Segregatory na regale są dla agenta zbiorem pustym. Zanim cokolwiek zacznie działać, trzeba je zeskanować i opisać, a to osobny projekt, kosztowny i nudny. Czasem opłaca się zdigitalizować tylko wycinek, na przykład wzory pism z ostatnich trzech lat, i zacząć od niego. Ale liczby trzeba zobaczyć przed podpisaniem czegokolwiek, nie po.',
+        'Drugi przypadek to archiwum wyłącznie w papierze. Segregatory na regale są dla agenta zbiorem pustym. Gorzej, że skan bywa nim tak samo: PDF bez warstwy tekstowej jest dla systemu obrazkiem, więc trzeba przez niego przepuścić OCR, a przy pismach z pieczątkami i odręcznymi dopiskami na marginesie wynik potrafi być kiepski. Zanim więc cokolwiek zacznie działać, trzeba te papiery zeskanować, rozpoznać i opisać. Osobny projekt, kosztowny i nudny. Czasem opłaca się zdigitalizować sam wycinek, na przykład wzory pism z ostatnich trzech lat, i od niego zacząć. Liczby trzeba jednak zobaczyć przed podpisaniem czegokolwiek, nie po.',
         'Trzeci przypadek jest najciekawszy. Praktyka oparta na sprawach nietypowych, gdzie każda wymaga indywidualnej analizy, a każde pismo pisze się od zera. Spory arbitrażowe, skomplikowane restrukturyzacje. Tam nie ma czego automatyzować w warstwie merytorycznej, a próba na siłę kończy się szkicem, którego poprawianie trwa dłużej niż napisanie pisma od nowa. Zostaje wyszukiwanie w archiwum i to akurat bywa przydatne nawet w takiej kancelarii. Reszta to strata czasu i pieniędzy.',
       ],
     },
@@ -125,7 +125,7 @@ const content: SeoLandingContent = {
       {
         title: 'Szkic powtarzalnego pisma',
         description:
-          'Wezwanie do zapłaty, wypowiedzenie, pełnomocnictwo. Agent podstawia dane sprawy do wzorca kancelarii i oddaje wersję roboczą. Prawnik czyta ją i poprawia przed podpisem.',
+          'Wezwanie do zapłaty, wypowiedzenie, pełnomocnictwo, pismo przewodnie. Agent podstawia dane sprawy do wzorca kancelarii i oddaje wersję roboczą. Prawnik czyta ją i poprawia przed podpisem.',
       },
       {
         title: 'Przypomnienia o terminach',
@@ -198,6 +198,16 @@ const content: SeoLandingContent = {
       question: 'Czym różni się AI w biurze rachunkowym od AI w kancelarii prawnej?',
       answer:
         'Mechanizm jest ten sam, zmienia się baza i kalendarz. W biurze rachunkowym powtarzalne pytania dotyczą kompletu dokumentów do rozliczenia, terminów płatności i statusu deklaracji, a szczyty ruchu wypadają przy terminach podatkowych. W kancelarii częściej chodzi o etap postępowania i o archiwum pism. Granica jest identyczna: agent nie rozstrzyga kwalifikacji podatkowej i nie zastępuje doradcy podatkowego.',
+    },
+    {
+      question: 'Czy nasze akta trafią do trenowania modelu?',
+      answer:
+        'My ich do trenowania niczego nie przekazujemy i nie mieszamy z danymi innych klientów, bo każda kancelaria pracuje na osobnej instancji. Jest jednak druga strona tego pytania i rzadko się o niej mówi. Model językowy działa w wariancie BYOK, czyli na Waszym kluczu API, więc to Wasza umowa z dostawcą modelu, a nie nasza, rozstrzyga, co on może zrobić z treścią zapytań. Warto ją przeczytać, bo warunki między dostawcami potrafią się różnić. Sam zakres danych, które w ogóle trafiają do agenta, ustalamy przed uruchomieniem i zapisujemy w umowie powierzenia.',
+    },
+    {
+      question: 'Kto odpowiada, jeśli agent poda klientowi błędną informację?',
+      answer:
+        'Kancelaria. Dokładnie tak samo jak wtedy, gdy pomyli się sekretariat. Odpowiedzialności zawodowej nie da się przenieść na oprogramowanie i nikt uczciwy tego nie obieca. Możemy natomiast zmniejszyć szansę na taki błąd i pokazać, gdzie powstał: agent podaje źródło każdej odpowiedzi, rozmowy zostają zapisane, a scenariusz ma wpisane tematy, w których agent się w ogóle nie wypowiada, tylko przełącza do prawnika. Po to jest też pilotaż. To prawnik czyta odpowiedzi i wskazuje te, w których agent poszedł za daleko.',
     },
     {
       question: 'Macie już wdrożenie w kancelarii?',
