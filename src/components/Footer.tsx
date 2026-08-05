@@ -57,8 +57,11 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h2 className="font-semibold mb-4 text-white/90">Na skróty</h2>
+          {/* Znacznik nav robi z tego punkt orientacyjny dla czytników ekranu.
+              Menu główne jest komponentem klienckim i landmarku nie daje, więc
+              bez tego na stronie głównej i kalkulatorze nie było ani jednego. */}
+          <nav aria-labelledby="stopka-skroty">
+            <h2 id="stopka-skroty" className="font-semibold mb-4 text-white/90">Na skróty</h2>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-[#7B9BDB]">
               <a href="/#start" className="hover:text-white transition-colors text-sm">Start</a>
               <a href="/swiat-ai" className="hover:text-white transition-colors text-sm">Świat AI</a>
@@ -78,10 +81,10 @@ export default function Footer() {
               <a href="/#faq" className="hover:text-white transition-colors text-sm">FAQ</a>
               <a href="/#kontakt" className="hover:text-white transition-colors text-sm">Kontakt</a>
             </div>
-          </div>
+          </nav>
 
-          <div>
-            <h2 className="font-semibold mb-4 text-white/90">Nasze produkty</h2>
+          <nav aria-labelledby="stopka-produkty">
+            <h2 id="stopka-produkty" className="font-semibold mb-4 text-white/90">Nasze produkty</h2>
             <div className="flex flex-col gap-2 text-[#7B9BDB]">
               <a href="https://clawlabs.pro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">ClawLabs: platforma agentów AI</a>
               <a href="https://clawlabs.pro/akademia" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Darmowy kurs o agentach AI</a>
@@ -89,7 +92,7 @@ export default function Footer() {
               <a href="https://asystenci-glosowi.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Demo: asystenci głosowi</a>
               <a href="https://pks-gryfice-demo.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">Demo: PKS Gryfice</a>
             </div>
-          </div>
+          </nav>
 
           <div>
             <h2 className="font-semibold mb-4">Newsletter</h2>

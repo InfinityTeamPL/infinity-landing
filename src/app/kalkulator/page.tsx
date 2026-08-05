@@ -196,14 +196,17 @@ export default function KalkulatorPage() {
           <p className="text-sm text-white/60">
             &copy; {new Date().getFullYear()} Infinity Tech. Dane: GUS, ZUS, Eurostat, badania branżowe PL 2026.
           </p>
-          <div className="flex items-center justify-center gap-4 mt-3">
+          {/* Kalkulator nie korzysta ze wspólnej stopki, więc landmark nawigacji
+              musi mieć własny. Bez niego była to jedyna strona serwisu, na której
+              czytnik ekranu nie miał się czego złapać. */}
+          <nav aria-label="Nawigacja w stopce" className="flex items-center justify-center gap-4 mt-3">
             <Link href="/" className="text-sm text-[#7B9BDB] hover:text-white transition-colors">
               Strona główna
             </Link>
             <Link href="/#kontakt" className="text-sm text-[#7B9BDB] hover:text-white transition-colors">
               Kontakt
             </Link>
-          </div>
+          </nav>
         </footer>
       </div>
     </ClickSpark>
