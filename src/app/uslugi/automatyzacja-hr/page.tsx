@@ -222,6 +222,7 @@ const content: SeoLandingContent = {
   related: [
     { label: 'Automatyzacja procesów AI', href: '/uslugi/automatyzacja-procesow-ai' },
     { label: 'AI w rekrutacji', href: '/branze/ai-w-rekrutacji' },
+    { label: 'Agent AI w HR, marketingu i sprzedaży', href: '/agents' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
   ],
 };

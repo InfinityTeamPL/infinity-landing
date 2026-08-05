@@ -1,12 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Agenci AI',
-  description: 'Poznaj naszych agentów AI: automatyzacja HR, marketingu i sprzedaży. Rozwiązania dopasowane do Twojego biznesu.',
+  title: 'Agent AI w HR, marketingu i sprzedaży: co realnie zrobi',
+  description:
+    'Agent AI w trzech działach: kadry, marketing, sprzedaż. Co naprawdę przejmie, czego nie zrobi i kiedy nie warto go stawiać. Bez liczb, których nie zmierzyliśmy.',
   alternates: { canonical: '/agents' },
   openGraph: {
-    title: 'Agenci AI | Infinity Tech',
-    description: 'Poznaj naszych agentów AI: automatyzacja HR, marketingu i sprzedaży.',
+    title: 'Agent AI w HR, marketingu i sprzedaży: co realnie zrobi',
+    description:
+      'Trzy działy i w każdym to samo pytanie: co agent przejmie, czego nie zrobi i kiedy odpuścić.',
     type: 'website',
     images: [{ url: 'https://www.infinityteam.io/og.png', width: 1200, height: 630 }],
   },

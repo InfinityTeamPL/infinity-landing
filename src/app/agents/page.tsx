@@ -206,6 +206,10 @@ function HeroSection() {
             duration={1}
             delay={80}
           />
+          {/* Spacja jest tu potrzebna, choć wizualnie nic nie wnosi: oba człony
+              są blokami, więc bez niej tekst H1 skleja się w wyszukiwarce
+              w "robotęResztę" i traci sens jako fraza. */}
+          {' '}
           <ShinyText text="Resztę robicie wy" />
         </h1>
 

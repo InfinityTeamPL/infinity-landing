@@ -187,6 +187,7 @@ const content: SeoLandingContent = {
     { label: 'Agent głosowy AI', href: '/uslugi/agent-glosowy-ai' },
     { label: 'AI dla kancelarii prawnej', href: '/branze/ai-dla-kancelarii' },
     { label: 'OpenClaw Polska', href: '/openclaw' },
+    { label: 'Agent AI w HR, marketingu i sprzedaży', href: '/agents' },
     { label: 'Cennik wdrożeń AI', href: '/cennik' },
   ],
 };
