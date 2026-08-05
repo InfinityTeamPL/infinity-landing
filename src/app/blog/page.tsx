@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Okruszki from '@/components/Okruszki';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Footer from '@/components/Footer';
@@ -101,6 +102,7 @@ const blogJsonLd = {
 export default function BlogIndex() {
   return (
     <div className="min-h-screen relative" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
+      <Okruszki nazwa="Blog" sciezka="/blog" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }} />
 
       <header className="max-w-3xl mx-auto px-6 pt-8 pb-2">
