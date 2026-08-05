@@ -289,7 +289,7 @@ export const LESSONS: Lesson[] = [
       ],
       list: [
         "Gwar w tle. Telewizor w pokoju obok, radio w aucie, druga rozmowa w open space. Transkrypcja wciąga wtedy słowa, których rozmówca nie powiedział, i najczęściej gubi się na cyfrach.",
-        "Mowa potoczna. Ludzie nie mówią „chciałbym umówić wizytę”, tylko „dzwonię w sprawie tego, co Pani doktor robiła mi w piątek”. Do tego poprawki w środku zdania: „na wtorek, nie, czekaj, na środę”. Agent zapisze wtorek, jeśli nikt nie przewidział takiej poprawki.",
+        "Mowa potoczna. Ludzie nie mówią „chciałbym umówić wizytę”, tylko „dzwonię w sprawie tego, co Pani doktor robiła mi w piątek”. Do tego poprawki w locie: „na nazwisko Kowalska, znaczy Kowalczyk, przez cze”. Agent zapisze pierwsze nazwisko, jeśli nikt nie przewidział, że rozmówca sam się poprawi.",
         "Osoby starsze. Mówią ciszej i robią dłuższe przerwy w środku wypowiedzi. System bierze przerwę za koniec zdania i wchodzi w słowo, rozmówca traci wątek i zaczyna od początku. Czasem pyta „halo?”, bo nie wie, czy cokolwiek się dzieje.",
         "Akcent i gwara. Najlepiej wychodzi standardowa polszczyzna. Przy wyraźnym akcencie regionalnym albo u osób mówiących po polsku jako drugim językiem sypią się nazwiska i nazwy miejscowości, czyli akurat te słowa, których nie da się odgadnąć z kontekstu.",
         "Zdenerwowany rozmówca. Mówi szybko, głośno, przerywa i nie odpowiada na pytanie, tylko opowiada całą sprawę od początku. Tu nie zawodzi technika, tylko sam pomysł, żeby ta osoba rozmawiała z automatem.",
@@ -342,7 +342,7 @@ export const LESSONS: Lesson[] = [
     },
     {
       q: "Dzwonią do nas głównie starsze osoby. Czy agent głosowy ma wtedy sens?",
-      a: "Bywa, że ma, ale przy innych ustawieniach i po trzeźwej ocenie. Dłuższy próg ciszy, wolniejsze tempo, krótsze zdania i wcześniejsze przekazanie, na przykład już przy pierwszej nieudanej próbie zamiast drugiej. Jeśli po testach na własnych nagraniach widać, że i tak połowa rozmów ląduje u konsultanta, uczciwiej jest zostawić agenta na wieczory i weekendy, a w godzinach pracy nie wpuszczać go na pierwszą linię.",
+      a: "Bywa, że ma, ale decyduje o tym test na własnych nagraniach, nie deklaracja dostawcy. Ustawienia opisane wyżej przesuwają granicę, tyle że nie w nieskończoność. Jeśli po testach widać, że i tak połowa rozmów ląduje u konsultanta, uczciwiej jest zostawić agenta na wieczory i weekendy, a w godzinach pracy nie wpuszczać go na pierwszą linię. Sam próg przekazania warto wtedy obniżyć: przekazujemy już po pierwszej nieudanej próbie, nie po drugiej.",
     },
     {
       q: "Czy da się nauczyć agenta gwary albo akcentu?",
@@ -598,9 +598,9 @@ export const LESSONS: Lesson[] = [
         "Ile takie sprzątanie trwa, nie podamy, bo każde widełki byłyby zmyślone. Bywa, że popołudnie. Bywa, że dłużej niż samo wdrożenie, jeśli system pracował latami bez nikogo, kto by go pilnował. Przy przeglądzie warto celowo poszukać kilku rzeczy, które powtarzają się prawie wszędzie.",
       ],
       list: [
-        "Ten sam klient w bazie kilka razy, bo raz numer wpisano z kierunkowym, raz bez",
+        "Daty trzymane jako zwykły tekst, więc „12.03” i „12 marca” to dla systemu dwie różne rzeczy",
         "Pozycje w cenniku, których nikt już nie sprzedaje, zostawione na wszelki wypadek",
-        "Pole używane niezgodnie z własną nazwą, bo trzy lata temu tak było szybciej",
+        "Skróty zrozumiałe tylko dla zespołu, w rodzaju „PK2” albo „stary pakiet”",
         "Blokady w kalendarzu, które dla każdej osoby w zespole znaczą co innego",
         "Rekordy testowe sprzed lat, których nikt nie kasuje, bo a nuż do czegoś służą",
       ],
@@ -1441,7 +1441,7 @@ export const LESSONS: Lesson[] = [
         ],
         list: [
           "Parametry lokalu: metraż, liczba pokoi, piętro, winda, rok budowy, stan wykończenia.",
-          "Koszty poza ceną: czynsz administracyjny, media, forma własności, prowizja biura.",
+          "Koszty poza ceną: czynsz administracyjny, media, forma własności.",
           "Otoczenie i dojazd: szkoła w pobliżu, komunikacja, parking, zgoda na zwierzęta w budynku.",
           "Termin oglądania: kiedy można obejrzeć lokal i ile trwa samo spotkanie.",
         ],
@@ -1508,7 +1508,7 @@ export const LESSONS: Lesson[] = [
     takeaways: [
       "Pierwsze pytanie ustala, o którą ofertę chodzi, bo w nieruchomościach rozmowa rzadko dotyczy firmy w ogóle.",
       "Cztery grupy pytań, czyli parametry, koszty, otoczenie i termin, pokrywają większość rozmów o ofertę.",
-      "Pytania spoza ogłoszenia, czyli powód sprzedaży, cena i stan prawny, wymagają gotowych zdań, bo model odpowie na nie sam i pewnym tonem.",
+      "Pytania spoza ogłoszenia, czyli powód sprzedaży, prowizja i to, czy ktoś już oglądał, wymagają gotowych zdań, bo model odpowie na nie sam i pewnym tonem. Stan prawny to osobna kategoria: tam agent nie dostaje gotowego zdania, tylko przekazuje rozmowę.",
       "Kwalifikacja przed umówieniem oględzin mówi Wam, czy dzwoniący realnie może kupić tę nieruchomość.",
       "Negocjacje, doradztwo prawne i kredytowe zostają przy człowieku niezależnie od tego, jak dobrze napisano scenariusz.",
     ],

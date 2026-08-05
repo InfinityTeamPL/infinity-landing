@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Okruszki from '@/components/Okruszki';
 
 export const metadata: Metadata = {
   title: 'Agent AI w HR, marketingu i sprzedaży: co realnie zrobi',
@@ -15,5 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default function AgentsLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <Okruszki nazwa="Agent AI w HR, marketingu i sprzedaży" sciezka="/agents" />
+      {children}
+    </>
+  );
 }

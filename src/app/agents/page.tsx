@@ -263,6 +263,12 @@ function StatsOverview() {
   return (
     <section className="dark-scope py-16 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white">
       <div className="max-w-6xl mx-auto px-6">
+        {/* Nagłówek sekcji jest tu potrzebny dla struktury dokumentu:
+            bez niego karty działów wchodzą jako h3 zaraz po h1 strony
+            i hierarchia przeskakuje o poziom. */}
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+          Trzy działy, w których agent ma co robić
+        </h2>
         <div className="grid md:grid-cols-3 gap-6">
           {Object.entries(AGENT_STATS).map(([key, dept], i) => (
             <FadeIn key={key} delay={i * 0.1}>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Okruszki from '@/components/Okruszki';
 
 export const metadata: Metadata = {
   title: 'Kalkulator ROI automatyzacji AI dla firm',
@@ -13,5 +14,10 @@ export const metadata: Metadata = {
 };
 
 export default function KalkulatorLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <Okruszki nazwa="Kalkulator ROI automatyzacji AI" sciezka="/kalkulator" />
+      {children}
+    </>
+  );
 }

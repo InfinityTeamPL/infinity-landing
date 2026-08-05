@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Okruszki from '@/components/Okruszki';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen relative" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
+      <Okruszki nazwa="Polityka prywatności" sciezka="/polityka-prywatnosci" />
       <Background3D />
 
       <nav className="relative z-20 bg-transparent">

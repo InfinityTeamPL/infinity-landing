@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Okruszki from '@/components/Okruszki';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
@@ -29,6 +30,7 @@ export default async function SwiatAiPage() {
 
   return (
     <div className="min-h-screen relative" style={{ background: 'var(--bg-page)', color: 'var(--fg)' }}>
+      <Okruszki nazwa="Świat AI" sciezka="/swiat-ai" />
       <Background3D />
 
       {/* Navigation */}
