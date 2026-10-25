@@ -35,7 +35,6 @@ infinity-landing/
 │   │       ├── Cards/
 │   │       │   ├── SpotlightCard.tsx
 │   │       │   ├── TiltedCard.tsx
-│   │       │   ├── ProfileCard.tsx
 │   │       │   └── GlowBorder.tsx
 │   │       └── UI/
 │   │           ├── Ripple.tsx
@@ -70,7 +69,6 @@ infinity-landing/
 ### Cards
 - **SpotlightCard** - Karta z efektem reflektora
 - **TiltedCard** - Karta 3D z efektem tilt
-- **ProfileCard** - Karta członka zespołu ze zdjęciem
 - **GlowBorder** - Świecąca ramka przy hover
 
 ### UI Components
@@ -110,14 +108,13 @@ Strona będzie dostępna pod adresem: http://localhost:3000
 1. **Hero** - Nagłówek z Beams i Particles
 2. **Statystyki** - Animowane liczniki
 3. **Dlaczego My** - Karty z Spotlight
-4. **Zespół** - ProfileCards ze zdjęciami
-5. **Usługi** - TiltedCards z cenami
-6. **Partnerzy** - Marquee z technologiami
-7. **Technologia** - Aurora + Particles
-8. **FAQ** - Accordion
-9. **Kontakt** - Formularz
-10. **CTA** - Wezwanie do działania
-11. **Footer** - Rozbudowany z social media
+4. **Usługi** - TiltedCards z cenami
+5. **Partnerzy** - Marquee z technologiami
+6. **Technologia** - Aurora + Particles
+7. **FAQ** - Accordion
+8. **Kontakt** - Formularz
+9. **CTA** - Wezwanie do działania
+10. **Footer** - Rozbudowany z social media
 
 ## Zdjęcia
 
@@ -130,13 +127,6 @@ Strona promuje rozwiązania oparte na:
 - OpenCLAW - Framework agentów AI
 - ChatGPT, Claude, Gemini - Modele językowe
 
-## Autorzy
-
-- **Jan Kowalski** - CEO & Founder
-- **Anna Nowak** - CTO
-- **Piotr Wiśniewski** - AI Engineer
-- **Maria Lewandowska** - Business Development
-
 ## Licencja
 
 MIT License
@@ -144,4 +134,4 @@ MIT License
 ## Kontakt
 
 - Email: contact@infinityteam.io
-- Website: https://infinitytech.io
+- Website: https://infinityteam.io

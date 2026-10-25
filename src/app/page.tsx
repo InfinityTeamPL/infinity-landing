@@ -18,7 +18,6 @@ import {
   Linkedin,
   Send,
   ChevronDown,
-  Users,
   Sprout,
   MessagesSquare
 } from 'lucide-react';
@@ -35,7 +34,6 @@ import { Ripple } from '@/components/react-bits/Ripple';
 import Aurora from '@/components/react-bits/Aurora';
 import Particles from '@/components/react-bits/Particles';
 import TiltedCard from '@/components/react-bits/TiltedCard';
-import ProfileCard from '@/components/react-bits/ProfileCard';
 import ShinyText from '@/components/react-bits/ShinyText';
 import Marquee from '@/components/react-bits/Marquee';
 import AnimatedCounter from '@/components/react-bits/AnimatedCounter';
@@ -349,73 +347,6 @@ function StatsSection() {
             </FadeIn>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function TeamSection2() {
-  // Karty zespołu są zawsze ciemne z pełnym holo, stała poświata jak w oryginale.
-  // Układ: jeden rząd małych kart, imię i stanowisko podpisane POD kartą.
-  const matteGlow = 'rgba(79,106,232,0.3)';
-  const matteGradient = 'var(--card-gradient)';
-  const team = [
-    { name: 'Cezary Gąsior', title: 'CEO & Founder', handle: 'ceo', avatar: '/images/cezary-gasior-nobg.webp', glow: matteGlow, gradient: matteGradient },
-    { name: 'Artur Seredziuk', title: 'Co-Founder', handle: 'account', avatar: '/images/artur-seredziuk-nobg.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { objectPosition: '50% 5%' } },
-    { name: 'Tomasz Pędzierski', title: 'Co-Founder', handle: 'bizdev', avatar: '/images/tomasz-pedzierski2.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '110%', objectPosition: '50% 8%' } },
-    { name: 'Krzysztof Stoczkowski', title: 'Co-Founder', handle: 'cofounder', avatar: '/images/krzysztof-stoczkowski-nobg.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '108%', height: '89%' } },
-    { name: 'Tobias Guanyi Du', title: 'Developer', handle: 'dev', avatar: '/images/tobias-guanyi-du-nobg.webp', glow: matteGlow, gradient: matteGradient, avatarStyle: { width: '97%', height: '79%' } },
-  ];
-
-  return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <FadeIn>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Nasz <span style={{ color: 'var(--accent-text)' }}>zespół</span>
-            </h2>
-            <p className="text-xl text-white/50">Ludzie, którzy stoją za Infinity Tech</p>
-          </div>
-        </FadeIn>
-
-        {/* Jeden rząd 5 małych kart; na mobile zawija się 2-2-1 */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 justify-items-center">
-          {team.map((person, i) => (
-            <FadeIn key={i} delay={i * 0.08} className="w-full max-w-[200px]">
-              <div className="dark-scope">
-                <ProfileCard
-                  name={person.name}
-                  title={person.title}
-                  handle={person.handle}
-                  status="Infinity Tech"
-                  avatarUrl={person.avatar}
-                  iconUrl="/holo.webp"
-                  showUserInfo={false}
-                  showDetails={false}
-                  enableTilt={true}
-                  enableMobileTilt={false}
-                  behindGlowEnabled={true}
-                  behindGlowColor={person.glow}
-                  innerGradient={person.gradient}
-                  avatarStyle={(person as any).avatarStyle}
-                />
-              </div>
-              {/* Podpis pod kartą */}
-              <div className="text-center mt-3">
-                <p className="font-semibold text-sm text-white leading-tight">{person.name}</p>
-                <p className="text-xs mt-0.5" style={{ color: 'var(--accent-text)' }}>{person.title}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={0.4}>
-          <p className="text-center text-white/60 max-w-2xl mx-auto mt-10 leading-relaxed">
-            Piątka ludzi, nie korporacja. Ktoś z tej listy odbiera telefon, prowadzi audyt i potem pisze ten kod.
-            Dlatego bierzemy naraz tyle projektów, ile realnie udźwigniemy. Czasem oznacza to, że trzeba poczekać na wolny termin.
-          </p>
-        </FadeIn>
       </div>
     </section>
   );
@@ -1532,8 +1463,6 @@ export default function LandingPage() {
         <div id="realizacje">
           <CaseStudiesSection />
         </div>
-
-        <TeamSection2 />
 
         <div id="o-nas">
           <BenefitsSection />
