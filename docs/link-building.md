@@ -1266,7 +1266,7 @@ We build AI agents: voice agents that answer inbound calls day and night in natu
 Trzy pola wracają w każdym formularzu, a nie mam ich w faktach. Nie zgaduj, bo GoodFirms odrzuca profile z danymi rozjeżdżającymi się ze stroną i social mediami.
 
 1. **Year founded.** Numer KRS 0001236454 wskazuje na wpis z 2025 roku, ale to trzeba odczytać z odpisu KRS, a nie ze mnie. Ustal jedną datę i wpisuj ją wszędzie tak samo.
-2. **Team size.** Na stronie w sekcji zespołu jest pięć osób (Cezary Gąsior, Artur Seredziuk, Tomasz Pędzierski, Krzysztof Stoczkowski, Tobias Guanyi Du). Jeśli tyle liczy firma, wszędzie idzie przedział `2-9` albo `2-10`. Jeśli realnie jest więcej, popraw przed wysyłką.
+2. **Team size.** Strona nie publikuje składu zespołu, więc liczebności nie da się odczytać z homepage. Ustal realną liczbę przed wysyłką i wpisuj ten sam przedział wszędzie (katalogi zwykle mają `2-9` albo `2-10`).
 3. **Average hourly rate.** Nie mamy publikowanej stawki godzinowej, a cztery z pięciu katalogów o nią pytają i filtrują po niej wyniki. Sugeruję `$25 - $49 / hr`, bo pasuje do rynku polskiego i do wdrożeń od 5 000 PLN, ale to decyzja biznesowa. Pominięcie tego pola na Clutch wyrzuca profil z filtrowanych list, więc lepiej coś wybrać.
 
 Dodatkowo przygotuj przed startem: logo w PNG z przezroczystym tłem, cover image, oraz dwie do trzech realizacji do portfolio. Najbezpieczniej wystawić własne produkty i dema: ClawLabs, Superkadrowa, zestaw asystentów głosowych, demo transportowe. Przy tym ostatnim w opisie musi stać wprost, że to nasze demo na publicznych danych rozkładowych PKS Gryfice, a PKS nie jest klientem.
